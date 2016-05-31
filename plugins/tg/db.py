@@ -37,6 +37,18 @@ def add_chat_assoc(master_uid, slave_uid):
     return ChatAssoc.create(master_uid=master_uid, slave_uid=slave_uid)
 
 
+def remove_chat_assoc(master_uid=None, slave=None):
+    try:
+        if bool(master_uid) == bool(slave_uid):
+            raise ValueError("Only one parameter is to be provided.")
+        elif master_uid:
+            return ChatAssoc.get(ChatAssoc.master_uid == master_uid).delete_instance()
+        elif slave_uid:
+            return ChatAssoc.get(ChatAssoc.slave_uid == slave_uid).delete_instance()
+    except DoesNotExist:
+        return True
+
+
 def get_chat_assoc(master_uid=None, slave_uid=None):
     try:
         if bool(master_uid) == bool(slave_uid):
