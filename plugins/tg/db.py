@@ -37,7 +37,7 @@ def add_chat_assoc(master_uid, slave_uid):
     return ChatAssoc.create(master_uid=master_uid, slave_uid=slave_uid)
 
 
-def remove_chat_assoc(master_uid=None, slave=None):
+def remove_chat_assoc(master_uid=None, slave_uid=None):
     try:
         if bool(master_uid) == bool(slave_uid):
             raise ValueError("Only one parameter is to be provided.")

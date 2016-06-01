@@ -55,23 +55,40 @@ class TelegramChannel(EFBChannel):
         self.bot.dispatcher.add_handler(WhitelistHandler(config.eh_telegram_master['admins']))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("link", self.link_chat_show_list))
         self.bot.dispatcher.add_handler(telegram.ext.CallbackQueryHandler(self.callback_query_dispatcher))
+        self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("start", self.start))
 
     def callback_query_dispatcher(self, bot, update):
+        # Get essential information about the query
         query = update.callback_query
         chat_id = query.message.chat_id
         user_id = query.from_user.id
         text = query.data
         msg_id = update.inline_message_id
         msg_status = self.msg_status[msg_id]
+
+        # dispatch the query
         if msg_status in [Flags.CONFIRM_LINK]:
-            self.link_chat_confirm(bot, chat_id, msg_id, msg_status)
+            self.link_chat_confirm(bot, chat_id, msg_id, text)
+        if msg_status in [Flags.EXEC_LINK]:
+            self.link_chat_exec(bot, chat_id, msg_id, text)
         else:
             bot.editMessageText(text="Session expired. Please try again.",
                                 chat_id=chat_id,
                                 message_id=msg_id)
 
     def process_msg(self, msg):
-        pass
+        chat_uid = "%s.%s" % (msg.channel_id, msg.origin['uid'])
+        tg_chat = db.get_chat_assoc(slave_uid=chat_uid) or False
+        msg_prefix = ""
+        if msg.source == MsgSource.Group:
+            msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "$s (%s)" % (msg.member['name'], msg.member['alias'])
+        if tg_chat:
+            tg_dest = tg_chat
+        else:
+            tg_dest = self.me.id
+            emoji_prefix = msg.channel_emoji + utils.get_source_emoji(msg.source)
+            
+
 
     def link_chat_show_list(self, bot, update):
         user_id = update.message.from_user.id
@@ -101,7 +118,7 @@ class TelegramChannel(EFBChannel):
             for chat in slave_chats:
                 uid = "%s.%s" % (slave_id, chat['uid'])
                 linked = utils.Emojis.LINK_EMOJI if bool(db.get_chat_assoc(slave_id=uid)) else ""
-                chat_type = utils.Emojis.get_type_emoji(chat['type'])
+                chat_type = utils.Emojis.get_source_emoji(chat['type'])
                 chat_name = chat['alias'] if chat['name'] == chat['alias'] else "%s(%s)" % (chat['alias'], chat['name'])
                 button_text = "%s%s: %s%s" % (slave_emoji, chat_type, chat_name, linked)
                 chat_btn_list.append(
@@ -120,9 +137,10 @@ class TelegramChannel(EFBChannel):
             return bot.editMessageText(text=txt,
                                        chat_id=tg_chat_id,
                                        message_id=tg_msg_id)
-        self.msg_status[tg_msg_id] = Flags.EXEC_LINK
         chat_uid, button_txt = callback_uid.split('\x1f', 1)
         linked = bool(db.get_chat_assoc(slave_id=chat_uid))
+        self.msg_status[tg_msg_id] = Flags.EXEC_LINK
+        self.msg_status[chat_uid] = tg_msg_id
         txt = "You've selected chat '%s'."
         if linked:
             txt += "\nThis chat has already linked to Telegram."
@@ -139,6 +157,40 @@ class TelegramChannel(EFBChannel):
                             chat_id=tg_chat_id,
                             message_id=tg_msg_id,
                             reply_markup=telegram.InlineKeyboardMarkup([btn_list]))
+
+    def link_chat_exec(self, bot, tg_chat_id, tg_msg_id, callback_uid):
+        if callback_uid == Flags.CANCEL_PROCESS:
+            txt = "Cancelled."
+            self.msg_status.pop(tg_msg_id, None)
+            return bot.editMessageText(text=txt,
+                                       chat_id=tg_chat_id,
+                                       message_id=tg_msg_id)
+        chat_uid, button_txt, cmd = callback_uid.split('\x1f', 2)
+        self.msg_status.pop(tg_msg_id, None)
+        self.msg_status.pop(chat_uid, None)
+        if cmd == "Unlink":
+            db.remove_chat_assoc(slave_uid=chat_uid)
+            txt = "Chat '%s' has been unlinked." % (button_txt)
+            return bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
+        txt = "Command '%s' (%s) is not recognised, please try again" % (cmd, callback_uid)
+        bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
+
+    def start(self, bot, update, args):
+        if update.message.from_user.id is not update.message.chat_id:  # from group
+            chat_uid = ' '.join(args)
+            slave_channel, slave_chat_uid = chat_uid.split('.', 1)
+            if slave_channel in self.slaves and chat_uid in self.msg_status:
+                db.add_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat_id), slave_uid=chat_uid)
+                txt = "Chat has been associated."
+                bot.sendMessage(update.message.chat_id, text=txt)
+                bot.editMessageText(chat_id=update.message.from_user.id,
+                                    message_id=self.msg_status[chat_uid],
+                                    text=txt)
+                self.msg_status.pop(self.msg_status[chat_uid], False)
+                self.msg_status.pop(chat_uid, False)
+        elif update.message.from_user.id is update.message.chat_id and args is []:
+            txt = "Welcome to EH Forwarder Bot.\n\nLearn more, please visit https://github.com/blueset/ehForwarderBot ."
+            self.sendMessage(update.message.from_user.id, txt)
 
     def poll(self):
         self.bot.start_polling(network_delay=5)

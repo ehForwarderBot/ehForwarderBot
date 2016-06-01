@@ -17,16 +17,19 @@ class MsgSource:
     Group = "Group"
     System = "System"
 
+
 class TargetType:
     Member = "Member"
     Message = "Message"
     Substitution = "Substitution"
+
 
 class ChannelType:
     Master = "Master"
     Slave = "Slave"
 
 # Objects
+
 
 class EFBChannel:
     channel_name = "Empty Channel"
@@ -42,7 +45,7 @@ class EFBChannel:
 
     def get_extra_functions(self):
         """Get a list of extra functions
-        
+
         Returns:
             dict: A dict of functions marked as extra functions. `methods[methodName]()`
         """
