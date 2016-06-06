@@ -64,7 +64,7 @@ class TelegramChannel(EFBChannel):
         user_id = query.from_user.id
         text = query.data
         msg_id = update.inline_message_id
-        msg_status = self.msg_status[msg_id]
+        msg_status = self.msg_status.get(msg_id, None)
 
         # dispatch the query
         if msg_status in [Flags.CONFIRM_LINK]:
@@ -80,27 +80,51 @@ class TelegramChannel(EFBChannel):
         chat_uid = "%s.%s" % (msg.channel_id, msg.origin['uid'])
         tg_chat = db.get_chat_assoc(slave_uid=chat_uid) or False
         msg_prefix = ""
-        if msg.source == MsgSource.Group:
-            msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "$s (%s)" % (msg.member['name'], msg.member['alias'])
-        if tg_chat:
-            tg_dest = tg_chat
-        else:
-            tg_dest = self.me.id
-            emoji_prefix = msg.channel_emoji + utils.get_source_emoji(msg.source)
+        if msg.type == MsgType.Text:
+            if msg.source == MsgSource.Group:
+                msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "$s (%s)" % (msg.member['name'], msg.member['alias'])
+            if tg_chat: # if this chat is linked
+                tg_dest = tg_chat
+                if msg_prefix: # if group message
+                    txt = "%s:\n%s" % (msg_prefix, msg.text)
+                else:
+                    txt = msg.text
+            else: # when chat is not linked
+                tg_dest = self.me.id
+                emoji_prefix = msg.channel_emoji + utils.get_source_emoji(msg.source)
+                name_prefix = msg.destination["alias"] if msg.destination["alias"] == msg.destination["name"] else "%s (%s)" % (msg.destination["alias"], msg.destination["name"])
+                if msg_prefix:
+                    txt = "%s %s [%s]:\n%s" % (emoji_prefix, msg_prefix, name_prefix, msg.text)
+                else:
+                    txt = "%s %s:\n%s" % (emoji_prefix, name_prefix, msg.text)
             
+            self.tb.sendMessage(tg_dest, text=txt)
 
 
     def link_chat_show_list(self, bot, update):
         user_id = update.message.from_user.id
-        # if update.chat_id != bot.me.id:
-        #     init_msg = bot.send("processing")
-        #     cid = db.get_chat_assoc(master_cid=update.chat_id).slave_cid
-        #     return self.link_chat_confirm_list(msg_id, msg_id=init_msg.id, chat_id=cid)
+        
+        # if message sent from a group
+        if update.message.chat_id is not self.me.id:
+            init_msg = bot.sendMessage(self.me.id, "Processing...")
+            try:
+                cid = db.get_chat_assoc(update.message.chat_id).slave_cid
+                return self.link_chat_confirm(bot, init_msg.fsom_chat.id, init_msg.message_id, cid)
+            except:
+                return bot.editMessageText(chat_id=update.message.chat_id,
+                                    message_id=init_msg.message_id,
+                                    text="No chat is found linked with this group. Please send /link privately to link a chat.")
 
-        # if update.reply_to:
-        #     init_msg = bot.send("processing")
-        #     cid = db.get_chat_log(replyto.id).chat_id
-        #     retrun self.link_chat_confirm_list(msg_id, msg_id=init_msg.id, chat_id=cid)
+        # if message ir replied to an existing one
+        if update.message.reply_to_message:
+            init_msg = bot.sendMessage(self.me.id, "Processing...")
+            try:
+                cid = db.get_chat_log(update.message.reply_to_message.message_id).chat_id
+                return self.link_chat_confirm(bot, init_msg.fsom_chat.id, init_msg.message_id, cid)
+            except:
+                return bot.editMessageText(chat_id=update.message.chat_id,
+                                    message_id=init_msg.message_id,
+                                    text="No chat is found linked with this group. Please send /link privately to link a chat.")
         legend = [
             "%s: Linked" % utils.Emojis.LINK_EMOJI,
             "%s: User" % utils.Emojis.USER_EMOJI,
