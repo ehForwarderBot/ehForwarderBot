@@ -77,6 +77,9 @@ class TelegramChannel(EFBChannel):
                                 chat_id=chat_id,
                                 message_id=msg_id)
 
+    def _reply_error(self, bot, update, errmsg):
+        return bot.sendMessage(update.message.chat_id, errmsg, reply_to_message_id=rupdate.message.message_id)
+    
     def process_msg(self, msg):
         chat_uid = "%s.%s" % (msg.channel_id, msg.origin['uid'])
         tg_chat = db.get_chat_assoc(slave_uid=chat_uid) or False
@@ -180,7 +183,7 @@ class TelegramChannel(EFBChannel):
                             message_id=tg_msg_id,
                             reply_markup=telegram.InlineKeyboardMarkup([btn_list]))
 
-    def link_chat_exec(self, bot, tg_chat_id, tg_msg_id, callback_uid):
+    def link_chat_exec(self, bot, tg_chat_id, tg_msg$_id, callback_uid):
         if callback_uid == Flags.CANCEL_PROCESS:
             txt = "Cancelled."
             self.msg_status.pop(tg_msg_id, None)
@@ -203,9 +206,15 @@ class TelegramChannel(EFBChannel):
             return bot.sendMessage(update.message.chat_id, txt, reply_to_message_id=update.message.message_id)
         if update.message.chat_id is not self.me.id:  # from group
             assoc = db.get_chat_assoc(master_uid=update.message_id)
-            if assoc:
-                channel, uid = assoc.split('.', 2)
+        elif update.message.chat_id is me and getattr(update.message, "reply_to_message", False):
+            assoc = db.get_msg_log(update.message.message_id)
+        if assoc:
+            channel, uid = assoc.split('.', 2)
+            if channel not in self.slaves:
+                return self._reply_error(bot, update, "Internal error: Channel not found.")
+            try:
                 # TODO: HERE!!
+            except 
 
     def start(self, bot, update, args):
         if update.message.from_user.id is not update.message.chat_id:  # from group
