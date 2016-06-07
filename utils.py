@@ -6,7 +6,7 @@ class Emojis:
     LINK_EMOJI = "🔗"
 
     @staticmethod
-    def get_type_emoji(t):
+    def get_source_emoji(t):
         if t == "User":
             return Emojis.USER_EMOJI
         elif t == "Group":

@@ -56,6 +56,7 @@ class TelegramChannel(EFBChannel):
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("link", self.link_chat_show_list))
         self.bot.dispatcher.add_handler(telegram.ext.CallbackQueryHandler(self.callback_query_dispatcher))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("start", self.start))
+        self.bot.dispatcher.add_handler(telegram.ext.RegexHandler('.*', self.msg))
 
     def callback_query_dispatcher(self, bot, update):
         # Get essential information about the query
@@ -83,13 +84,13 @@ class TelegramChannel(EFBChannel):
         if msg.type == MsgType.Text:
             if msg.source == MsgSource.Group:
                 msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "$s (%s)" % (msg.member['name'], msg.member['alias'])
-            if tg_chat: # if this chat is linked
+            if tg_chat:  # if this chat is linked
                 tg_dest = tg_chat
-                if msg_prefix: # if group message
+                if msg_prefix:  # if group message
                     txt = "%s:\n%s" % (msg_prefix, msg.text)
                 else:
                     txt = msg.text
-            else: # when chat is not linked
+            else:  # when chat is not linked
                 tg_dest = self.me.id
                 emoji_prefix = msg.channel_emoji + utils.get_source_emoji(msg.source)
                 name_prefix = msg.destination["alias"] if msg.destination["alias"] == msg.destination["name"] else "%s (%s)" % (msg.destination["alias"], msg.destination["name"])
@@ -97,13 +98,10 @@ class TelegramChannel(EFBChannel):
                     txt = "%s %s [%s]:\n%s" % (emoji_prefix, msg_prefix, name_prefix, msg.text)
                 else:
                     txt = "%s %s:\n%s" % (emoji_prefix, name_prefix, msg.text)
-            
             self.tb.sendMessage(tg_dest, text=txt)
-
 
     def link_chat_show_list(self, bot, update):
         user_id = update.message.from_user.id
-        
         # if message sent from a group
         if update.message.chat_id is not self.me.id:
             init_msg = bot.sendMessage(self.me.id, "Processing...")
@@ -198,6 +196,16 @@ class TelegramChannel(EFBChannel):
             return bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
         txt = "Command '%s' (%s) is not recognised, please try again" % (cmd, callback_uid)
         bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
+
+    def msg(self, bot, update):
+        if update.message.chat_id is self.me.id and not getattr(update.message, "reply_to_message", False):
+            txt = "Unknown message target. Message discarded."
+            return bot.sendMessage(update.message.chat_id, txt, reply_to_message_id=update.message.message_id)
+        if update.message.chat_id is not self.me.id:  # from group
+            assoc = db.get_chat_assoc(master_uid=update.message_id)
+            if assoc:
+                channel, uid = assoc.split('.', 2)
+                # TODO: HERE!!
 
     def start(self, bot, update, args):
         if update.message.from_user.id is not update.message.chat_id:  # from group
