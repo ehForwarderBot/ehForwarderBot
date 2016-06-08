@@ -7,7 +7,7 @@ from . import db
 from .whitelisthandler import WhitelistHandler
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
 from channelExceptions import EFBChatNotFound
-
+from msgType import get_msg_type, TGMsgType
 
 class Flags:
     # General Flags
@@ -79,8 +79,8 @@ class TelegramChannel(EFBChannel):
                                 message_id=msg_id)
 
     def _reply_error(self, bot, update, errmsg):
-        return bot.sendMessage(update.message.chat_id, errmsg, reply_to_message_id=rupdate.message.message_id)
-    
+        return bot.sendMessage(update.message.chat_id, errmsg, reply_to_message_id=update.message.message_id)
+
     def process_msg(self, msg):
         chat_uid = "%s.%s" % (msg.channel_id, msg.origin['uid'])
         tg_chat = db.get_chat_assoc(slave_uid=chat_uid) or False
@@ -202,9 +202,13 @@ class TelegramChannel(EFBChannel):
         bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
 
     def msg(self, bot, update):
+        target = None
         if update.message.chat_id is not self.me.id:  # from group
             assoc = db.get_chat_assoc(master_uid=update.message_id)
-        elif update.message.chat_id is self.me.id and getattr(update.message, "reply_to_message", False):
+            if hasattr(update.message, "reply_to_message"):
+                target = db.get_chat_log(update.message.reply_to_message)
+                targetChannel, targetUid = target.split('.', 2)
+        elif update.message.chat_id is self.me.id and hasattr(update.message, "reply_to_message"):  # reply to user
             assoc = db.get_msg_log(update.message.message_id)
         else:
             return self._reply_error(bot, update, "Unknown recipient.")
@@ -215,8 +219,32 @@ class TelegramChannel(EFBChannel):
             return self._reply_error(bot, update, "Internal error: Channel not found.")
         try:
             m = EFBMsg(self)
-            
-            # TODO: HERE!!
+            mtype = get_msg_type(update.message)
+            # Chat and author related stuff
+            m.origin['uid'] = update.messaeg.from_user.id
+            if hasattr(update.message.from_user, "last_name"):
+                m.origin['alias'] = "%s %s" % (update.message.from_user.first_name, update.message.from_user.last_name)
+            else:
+                m.origin['alias'] = update.message.from_user.first_name
+            if hasattr(update.message.from_user, "username"):
+                m.origin['name'] = "@%s" % update.message.from_user.id
+            else:
+                m.origin['name'] = m.origin['alias']
+            m.destination = {
+                'channel': channel,
+                'uid': uid,
+                'name': '',
+                'alias': ''
+            }
+            if target:
+                if targetChannel is channel:
+                    m.target = {"uid": uid, 'name': '', 'alias': ''}
+            # Type related stuff
+            if mtype is TGMsgType.Text:
+                m.type = MsgType.Text
+                m.text = update.message.text
+
+            self.slaves[channel].send_message(m)
         except EFBChatNotFound:
             return self._reply_error(bot, update, "Internal error: Chat not found in channel.")
 

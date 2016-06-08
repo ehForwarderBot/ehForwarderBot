@@ -7,9 +7,14 @@
     - [x] Queue processing
     - [ ] Multimedia
 - [ ] Telgeram Master Channel
-    - [ ] Basic Text processing
+    - [x] Basic Text processing
+    - [ ] Controlling by command
+    - [x] Chat association
 - [ ] Wechat Slave Channel
     - [x] Basic Text/Link processing
 - [ ] WhatsApp Slave Channel
+- [ ] Line Slave Channel
+- [ ] QQ Slave channel
+- [ ] Documentations
 - [ ] More...
 

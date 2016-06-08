@@ -80,13 +80,14 @@ class EFBMsg:
         destination (dict): Destination (may be a user or a group)
         member (dict): Author of this msg in a group. `None` for priv msgs.
         origin (dict): Origin (may be a user or a group)
-        path (str): Path to multimedia file, `None` if N/A
         source (MsgSource): Source of message: User/Group/System
         target (dict): Target (refers to @ messages and "reply to" messages.)
         text (str): text of the message
         type (MsgType): Type of message
         uid (str): Unique ID of message
         url (str): URL of multimedia file/Link share. `None` if N/A
+        file (file): File object to multimedia object. `None` if N/A
+        mime (str): MIME type of the file. `None` if N/A
     """
     channel_name = "Empty Channel"
     channel_emoji = "?"
@@ -100,6 +101,7 @@ class EFBMsg:
         'uid': 'Origin UID',
     }
     destination = {
+        "channel": "channel_id"
         "name": "Destination name",
         'alias': 'Destination alias',
         'uid': 'Destination UID',
@@ -144,7 +146,8 @@ class EFBMsg:
     uid = "Message UID"
     text = "Message"
     url = None
-    path = None
+    file = None
+    mime = None
     attributes = {}
 
     def __init__(self, channel=None):
