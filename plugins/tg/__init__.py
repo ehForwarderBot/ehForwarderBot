@@ -6,6 +6,7 @@ import urllib
 from . import db
 from .whitelisthandler import WhitelistHandler
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
+from channelExceptions import EFBChatNotFound
 
 
 class Flags:
@@ -183,7 +184,7 @@ class TelegramChannel(EFBChannel):
                             message_id=tg_msg_id,
                             reply_markup=telegram.InlineKeyboardMarkup([btn_list]))
 
-    def link_chat_exec(self, bot, tg_chat_id, tg_msg$_id, callback_uid):
+    def link_chat_exec(self, bot, tg_chat_id, tg_msg_id, callback_uid):
         if callback_uid == Flags.CANCEL_PROCESS:
             txt = "Cancelled."
             self.msg_status.pop(tg_msg_id, None)
@@ -201,20 +202,23 @@ class TelegramChannel(EFBChannel):
         bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
 
     def msg(self, bot, update):
-        if update.message.chat_id is self.me.id and not getattr(update.message, "reply_to_message", False):
-            txt = "Unknown message target. Message discarded."
-            return bot.sendMessage(update.message.chat_id, txt, reply_to_message_id=update.message.message_id)
         if update.message.chat_id is not self.me.id:  # from group
             assoc = db.get_chat_assoc(master_uid=update.message_id)
-        elif update.message.chat_id is me and getattr(update.message, "reply_to_message", False):
+        elif update.message.chat_id is self.me.id and getattr(update.message, "reply_to_message", False):
             assoc = db.get_msg_log(update.message.message_id)
-        if assoc:
-            channel, uid = assoc.split('.', 2)
-            if channel not in self.slaves:
-                return self._reply_error(bot, update, "Internal error: Channel not found.")
-            try:
-                # TODO: HERE!!
-            except 
+        else:
+            return self._reply_error(bot, update, "Unknown recipient.")
+        if not assoc:
+            return self._reply_error(bot, update, "Unknown recipient.")
+        channel, uid = assoc.split('.', 2)
+        if channel not in self.slaves:
+            return self._reply_error(bot, update, "Internal error: Channel not found.")
+        try:
+            m = EFBMsg(self)
+            
+            # TODO: HERE!!
+        except EFBChatNotFound:
+            return self._reply_error(bot, update, "Internal error: Chat not found in channel.")
 
     def start(self, bot, update, args):
         if update.message.from_user.id is not update.message.chat_id:  # from group
