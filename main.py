@@ -1,6 +1,9 @@
 import config
 import queue
 import threading
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 # Init Queue
 q = queue.Queue()
@@ -15,5 +18,6 @@ master = getattr(__import__(config.master_channel[0], fromlist=config.master_cha
 master_thread = threading.Thread(target=master.poll)
 slave_threads = {key: threading.Thread(target=slaves[key].poll) for key in slaves}
 
-# master_thread.start()
-# filter(lambda a: a.start(), slave_threads)
+master_thread.start()
+for i in slave_threads:
+    slave_threads[i].start()

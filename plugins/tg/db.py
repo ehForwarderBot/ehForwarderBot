@@ -1,11 +1,12 @@
 import os
 import inspect
+import logging
 from peewee import *
 
 basePath = os.path.dirname(os.path.abspath(inspect.stack()[0][1]))
 
 db = SqliteDatabase(basePath + '/tgdata.db')
-
+logger = logging.getLogger("masterTG.db.%s" % __name__)
 
 class BaseModel(Model):
 
@@ -62,6 +63,16 @@ def get_chat_assoc(master_uid=None, slave_uid=None):
 
 
 def add_msg_log(**kwargs):
+    """
+    master_msg_id
+    text
+    slave_origin_uid
+    msg_type
+    sent_to
+    slave_origin_display_name
+    slave_member_uid
+    slave_member_display_name
+    """
     master_msg_id = kwargs.get('master_msg_id')
     text = kwargs.get('text')
     slave_origin_uid = kwargs.get('slave_origin_uid')
@@ -70,7 +81,7 @@ def add_msg_log(**kwargs):
     slave_origin_display_name = kwargs.get('slave_origin_display_name', None)
     slave_member_uid = kwargs.get('slave_member_uid', None)
     slave_member_display_name = kwargs.get('slave_member_display_name', None)
-
+    logger.info("add_msg_log %s Done!\n---" % master_msg_id)
     return MsgLog.create(master_msg_id=master_msg_id,
                          text=text,
                          slave_origin_uid=slave_origin_uid,
@@ -82,10 +93,11 @@ def add_msg_log(**kwargs):
 
 
 def get_msg_log(master_msg_id):
-    try:
-        return MsgLog.get(master_msg_id=master_msg_id)
-    except DoesNotExist:
-        return None
+    logger.info("get_msg_log %s" % master_msg_id)
+    # try:
+    return MsgLog.get(master_msg_id=master_msg_id)
+    # except DoesNotExist:
+        # return None
 
 db.connect()
 if not ChatAssoc.table_exists():

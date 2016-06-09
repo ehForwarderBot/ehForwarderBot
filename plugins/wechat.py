@@ -2,38 +2,46 @@ from . import itchat
 import requests
 import re
 import xmltodict
+import logging
 from binascii import crc32
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
 from utils import extra
 
 def incomeMsgMeta(func):
     def wcFunc(self, msg, isGroupChat=False):
-        mobj = self.func(msg, isGroupChat)
+        mobj = func(self, msg, isGroupChat)
         if isGroupChat:
             mobj.source = MsgSource.Group
             mobj.origin = {
                 'name': msg['FromNickName'],
                 'alias': msg['FromRemarkName'] or msg['FromNickName'],
-                'uid': self.get_uid(msg['FromUserName'])
+                'uid': self.get_uid(UserName=msg['FromUserName'])
             }
             mobj.member = {
                 'name': msg['ActualNickName'],
                 'alias': msg['ActualDisplayName'],
-                'uid': self.get_uid(msg['ActualUserName'])
+                'uid': self.get_uid(UserName=msg['ActualUserName'])
             }
         else:
+            print('start ifuser')
             mobj.source = MsgSource.User
             mobj.origin = {
                 'name': msg['FromNickName'],
                 'alias': msg['FromRemarkName'] or msg['FromNickName'],
-                'uid': self.get_uid(msg['FromUserName'])
+                'uid': self.get_uid(UserName=msg['FromUserName'])
             }
+            print('end ifuser')
         mobj.destination = {
-            'name': itchat.__client.storageClass.nickName,
-            'alias': itchat.__client.storageClass.nickName,
-            'uid': self.get_uid(itchat.__client.storageClass.userName)
+            'name': itchat.client().storageClass.nickName,
+            'alias': itchat.client().storageClass.nickName,
+            'uid': self.get_uid(NickName=itchat.client().storageClass.userName)
         }
+        print('so end')
+        logger = logging.getLogger("SlaveWC.%s" % __name__)
+        print("Slave - Wechat Incomming message:\nType: %s\nText: %s\n---\n" % (mobj.type, msg['Text']))
+        print("Added to queue\n")
         self.queue.put(mobj)
+
     return wcFunc
 
 
@@ -52,25 +60,27 @@ class WeChatChannel(EFBChannel):
 
     def __init__(self, queue):
         super().__init__(queue)
-        #itchat.auto_login()
-        #usersdata = itchat.get_contract(True) + itchat.get_chatrooms()
+        itchat.auto_login()
+        self.logger = logging.getLogger("SlaveWC.%s" % __name__)
+        self.logger.info("Inited!!!\n---")
 
     def get_uid(self, UserName=None, NickName=None):
         if not (UserName or NickName):
             print('No name provided.')
             return False
         if UserName:
-            NickName = itchat.__client.storageClass.find_nickname(UserName)
-        return crc32(NickName)
+            NickName = itchat.client().find_nickname(UserName)
+        return crc32(NickName.encode("utf-8"))
 
     def get_UserName(self, uid, refresh=False):
         if refresh or len(self.users) < 1:
             usersdata = itchat.get_contract(True) + itchat.get_chatrooms()
             for i in usersdata:
-                self.users[crc32(i['NickName'])] = i['UserName']
-        return self.users.get(uid, False)
+                self.users[crc32(i['NickName'].encode("utf-8"))] = i['UserName']
+        return self.users.get(int(uid), False)
 
     def poll(self):
+        self.usersdata = itchat.get_contract(True) + itchat.get_chatrooms()
         @itchat.msg_register(['Text'])
         def wcText(msg):
             self.textMsg(msg)
@@ -87,15 +97,18 @@ class WeChatChannel(EFBChannel):
         def wcLinkGroup(msg):
             self.linkMsg(msg, True)
 
-        itchat.start_receiving()
+        itchat.run()
 
     @incomeMsgMeta
     def textMsg(self, msg, isGroupChat=False):
+        self.logger.info("TextMsg!!!\n---")
         if msg['Text'].startswith("http://weixin.qq.com/cgi-bin/redirectforward?args="):
             return self.locationMsg(msg, isGroupChat)
         mobj = EFBMsg(self)
         mobj.text = msg['Text']
         mobj.type = MsgType.Text
+        print("end textmsg")
+        return mobj
 
     @incomeMsgMeta
     def locationMsg(self, msg, isGroupChat):
@@ -104,6 +117,7 @@ class WeChatChannel(EFBChannel):
         loc = re.search("center=([0-9.]+),([0-9.]+)", requests.get(msg['text'].strip()).text).groups()
         mobj.attributes = {"longitude": loc[0], "latitude": loc[1]}
         mobj.type = MsgType.Location
+        return mobj
 
     @incomeMsgMeta
     def linkMsg(self, msg, isGroupChat=False):
@@ -121,13 +135,17 @@ class WeChatChannel(EFBChannel):
         # format text
         mobj.text = "🔗 %s\n%s\n\n%s" % (mobj.attributes['title'], mobj.attributes['description'], mobj.attributes['url'])
         mobj.type = MsgType.Link
+        return mobj
 
     def send_message(self, msg):
-        UserName = self.get_UserName(msg['destination']['uid'])
+        print('msg.text', msg.text)
+        UserName = self.get_UserName(msg.destination['uid'])
+        print("uid: %s\nUserName: %s\nNickName: %s" % (msg.destination['uid'], UserName, itchat.find_nickname(UserName)))
+        self.logger.info("uid: %s\nUserName: %s\nNickName: %s" % (msg.destination['uid'], UserName, itchat.find_nickname(UserName)))
         if msg.type == MsgType.Text:
             if msg.target:
                 if msg.target['type'] == TargetType.Member:
-                    msg.text = "@%s\u2005 %s" % (msg.target['target']['alias'], msg.text)
+                    msg.text = "@%s\u2005 %s" % (msg.target['alias'], msg.text)
                 elif msg.target['type'] == TargetType.Message:
                     msg.text = "@%s\u2005 「%s」\n\n%s" % (msg.target['target'].member['alias'], msg.target['target'].text, msg.text)
             itchat.send(msg.text, UserName)
@@ -145,18 +163,21 @@ class WeChatChannel(EFBChannel):
                     'channel_name': self.channel_name,
                     'name': i['NickName'],
                     'alias': i['RemarkName'] or i['NickName'],
-                    'uid': self.get_uid(i['UserName']),
+                    'uid': self.get_uid(UserName=i['UserName']),
                     'type': "User"
                 })
         if group:
-            t = itchat.get_contract(True)
+            t = itchat.get_chatrooms(True)
             for i in t:
                 r.append({
                     'channel_name': self.channel_name,
                     'channel_id': self.channel_id,
                     'name': i['NickName'],
                     'alias': i['RemarkName'] or i['NickName'],
-                    'uid': self.get_uid(i['UserName']),
+                    'uid': self.get_uid(UserName=i['UserName']),
                     'type': "Group"
                 })
         return r
+
+    def get_itchat(self):
+        return itchat

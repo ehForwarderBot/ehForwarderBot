@@ -17,6 +17,9 @@ def get_contract(update = False): return __client.get_contract(update)
 def get_chatrooms(update = False): return __client.get_chatrooms(update)
 def show_mobile_login(): return __client.show_mobile_login()
 def start_receiving(): return __client.start_receiving()
+def find_username(n): return __client.find_username(n)
+def find_nickname(n): return __client.find_nickname(n)
+def find_remarkname(n): return __client.find_remarkname(n)
 # <<<
 # if toUserName is set to None, msg will be sent to yourself
 def send_msg(msg = 'Test Message', toUserName = None): return __client.send_msg(msg, toUserName)
@@ -26,6 +29,7 @@ def add_friend(Status, UserName, Ticket): return __client.add_friend(Status, Use
 def create_chatroom(memberList, topic = ''): return __client.create_chatroom(memberList, topic)
 def delete_member_from_chatroom(chatRoomUserName, memberList): return __client.delete_member_from_chatroom(chatRoomUserName, memberList)
 def add_member_into_chatroom(chatRoomUserName, memberList): return __client.add_member_into_chatroom(chatRoomUserName, memberList)
+def client(): return __client
 def send(msg, toUserName = None):
     if msg is None: return False
     if msg[:5] == '@fil@':

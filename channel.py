@@ -101,7 +101,7 @@ class EFBMsg:
         'uid': 'Origin UID',
     }
     destination = {
-        "channel": "channel_id"
+        "channel": "channel_id",
         "name": "Destination name",
         'alias': 'Destination alias',
         'uid': 'Destination UID',

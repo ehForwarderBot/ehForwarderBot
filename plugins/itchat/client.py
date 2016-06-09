@@ -164,7 +164,8 @@ class client:
 
     def get_contract(self, update=False):
         def get_SeqID(user):
-            user['SeqID'] = int(re.search(r'seq=([0-9]+)', user['HeadImgUrl']).match(1))
+            user['SeqID'] = int(re.search(r'seq=([0-9]+)', user['HeadImgUrl']).group(1))
+            return user
         if 1 < len(self.memberList) and not update:
             return self.memberList
         url = '%s/webwxgetcontact?r=%s&seq=0&skey=%s' % (self.loginInfo['url'],
@@ -173,13 +174,14 @@ class client:
         r = self.s.get(url, headers=headers)
         memberList = json.loads(r.content.decode(
             'utf-8', 'replace'))['MemberList']
-        memberList = filter(get_SeqID, memberList)
+        memberList = list(map(get_SeqID, memberList))
         chatroomList = memberList[:]
         while 1:
             i = 0
             for m in chatroomList:
-                if ('@@' in m['UserName'] and any([str(n) in m['UserName'] for n in range(10)]) and
-                        any([chr(n) in m['UserName'] for n in (list(range(ord('a'), ord('z') + 1)) + list(range(ord('A'), ord('Z') + 1)))])):
+                if ('@@' in m['UserName'] 
+                    and any([str(n) in m['UserName'] for n in range(10)]) 
+                    and any([chr(n) in m['UserName'] for n in (list(range(ord('a'), ord('z') + 1)) + list(range(ord('A'), ord('Z') + 1)))])):
                     continue
                 chatroomList.remove(m)
                 i += 1
@@ -621,6 +623,21 @@ class client:
             'AddMemberList': ','.join([member['UserName'] for member in memberList]), }
         headers = {'content-type': 'application/json; charset=UTF-8'}
         r = self.s.post(url, data=json.dumps(params), headers=headers)
+
+    def find_username(self, n):
+        for member in self.memberList:
+            if member['NickName'] == n:
+                return member['UserName']
+
+    def find_nickname(self, u):
+        for member in self.memberList:
+            if member['UserName'] == u:
+                return member['NickName']
+
+    def find_remarkname(self, u):
+        for member in self.memberList:
+            if member['UserName'] == u:
+                return member['RemarkName']
 
 if __name__ == '__main__':
     wcc = WeChatClient()

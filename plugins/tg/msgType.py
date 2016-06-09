@@ -25,7 +25,7 @@ def get_msg_type(msg):
            'channel_chat_created',
            'pinned_message']
     for i in sys:
-        if hasattr(msg, i):
+        if getattr(msg, i, False):
             return TGMsgType.System
     types = ['audio',
              'document',
@@ -37,6 +37,6 @@ def get_msg_type(msg):
              'location',
              'venue']
     for i in types:
-        if hasattr(msg, i):
+        if getattr(msg, i, False):
             return getattr(TGMsgType, i.capitalize())
     return TGMsgType.Text
