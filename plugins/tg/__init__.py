@@ -94,7 +94,7 @@ class TelegramChannel(EFBChannel):
             if msg.source == MsgSource.Group:
                 msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "$s (%s)" % (msg.member['name'], msg.member['alias'])
             if tg_chat:  # if this chat is linked
-                tg_dest = tg_chat
+                tg_dest = int(tg_chat.split('.')[1])
                 if msg_prefix:  # if group message
                     txt = "%s:\n%s" % (msg_prefix, msg.text)
                 else:
@@ -218,7 +218,7 @@ class TelegramChannel(EFBChannel):
     def msg(self, bot, update):
         target = None
         if not (update.message.chat.id == update.message.from_user.id):  # from group
-            assoc = db.get_chat_assoc(master_uid=update.message.message_id)
+            assoc = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
             if getattr(update.message, "reply_to_message", None):
                 target = db.get_msg_log("%s.%s" % (update.message.reply_to_message.chat.id, update.message.reply_to_message.message_id)).slave_origin_uid
                 targetChannel, targetUid = target.split('.', 2)
@@ -266,7 +266,6 @@ class TelegramChannel(EFBChannel):
     def start(self, bot, update, args=[]):
         if not update.message.from_user.id == update.message.chat.id:  # from group
             chat_uid = ' '.join(args)
-            print("chat_uid", chat_uid)
             slave_channel, slave_chat_uid = chat_uid.split('.', 1)
             if slave_channel in self.slaves and chat_uid in self.msg_status:
                 db.add_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id), slave_uid=chat_uid)

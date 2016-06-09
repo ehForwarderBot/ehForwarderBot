@@ -138,9 +138,9 @@ class WeChatChannel(EFBChannel):
         return mobj
 
     def send_message(self, msg):
-        print('msg.text', msg.text)
+        self.logger.info('msg.text', msg.text)
         UserName = self.get_UserName(msg.destination['uid'])
-        print("uid: %s\nUserName: %s\nNickName: %s" % (msg.destination['uid'], UserName, itchat.find_nickname(UserName)))
+        self.logger.info("uid: %s\nUserName: %s\nNickName: %s" % (msg.destination['uid'], UserName, itchat.find_nickname(UserName)))
         self.logger.info("uid: %s\nUserName: %s\nNickName: %s" % (msg.destination['uid'], UserName, itchat.find_nickname(UserName)))
         if msg.type == MsgType.Text:
             if msg.target:
