@@ -10,33 +10,35 @@ from utils import extra
 def incomeMsgMeta(func):
     def wcFunc(self, msg, isGroupChat=False):
         mobj = func(self, msg, isGroupChat)
+        print(msg)
         if isGroupChat:
             mobj.source = MsgSource.Group
             mobj.origin = {
                 'name': msg['FromNickName'],
                 'alias': msg['FromRemarkName'] or msg['FromNickName'],
-                'uid': self.get_uid(UserName=msg['FromUserName'])
+                'uid': self.get_uid(NickName=msg['FromNickName'])
             }
             mobj.member = {
                 'name': msg['ActualNickName'],
-                'alias': msg['ActualDisplayName'],
-                'uid': self.get_uid(UserName=msg['ActualUserName'])
+                'alias': msg['ActualDisplayName'] or msg['ActualNickName'],
+                'uid': self.get_uid(NickName=msg['ActualNickName'])
             }
         else:
-            print('start ifuser')
             mobj.source = MsgSource.User
             mobj.origin = {
                 'name': msg['FromNickName'],
                 'alias': msg['FromRemarkName'] or msg['FromNickName'],
-                'uid': self.get_uid(UserName=msg['FromUserName'])
+                'uid': self.get_uid(NickName=msg['FromNickName'])
             }
-            print('end ifuser')
         mobj.destination = {
             'name': itchat.client().storageClass.nickName,
             'alias': itchat.client().storageClass.nickName,
             'uid': self.get_uid(NickName=itchat.client().storageClass.userName)
         }
-        print('so end')
+        print('source', mobj.source)
+        print('origin', mobj.origin)
+        print('member', mobj.member)
+        print('destination', mobj.destination)
         logger = logging.getLogger("SlaveWC.%s" % __name__)
         print("Slave - Wechat Incomming message:\nType: %s\nText: %s\n---\n" % (mobj.type, msg['Text']))
         print("Added to queue\n")
@@ -87,6 +89,7 @@ class WeChatChannel(EFBChannel):
 
         @itchat.msg_register(['Text'], isGroupChat=True)
         def wcTextGroup(msg):
+            self.logger.info("text Msg from group %s", msg['Text'])
             self.textMsg(msg, True)
 
         @itchat.msg_register(['Link'])
@@ -138,14 +141,14 @@ class WeChatChannel(EFBChannel):
         return mobj
 
     def send_message(self, msg):
-        self.logger.info('msg.text', msg.text)
+        self.logger.info('msg.text %s', msg.text)
         UserName = self.get_UserName(msg.destination['uid'])
         self.logger.info("uid: %s\nUserName: %s\nNickName: %s" % (msg.destination['uid'], UserName, itchat.find_nickname(UserName)))
         self.logger.info("uid: %s\nUserName: %s\nNickName: %s" % (msg.destination['uid'], UserName, itchat.find_nickname(UserName)))
         if msg.type == MsgType.Text:
             if msg.target:
                 if msg.target['type'] == TargetType.Member:
-                    msg.text = "@%s\u2005 %s" % (msg.target['alias'], msg.text)
+                    msg.text = "@%s\u2005 %s" % (msg.target['target'].member['alias'], msg.text)
                 elif msg.target['type'] == TargetType.Message:
                     msg.text = "@%s\u2005 「%s」\n\n%s" % (msg.target['target'].member['alias'], msg.target['target'].text, msg.text)
             itchat.send(msg.text, UserName)

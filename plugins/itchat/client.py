@@ -448,7 +448,7 @@ class client:
         try:
             self.storageClass.groupDict[msg['FromUserName']][ActualUserName]
         except:
-            groupMemberList = self.get_batch_contract(msg['FromUserName'], True)
+            groupMemberList = self.get_batch_contract(msg['FromUserName'])
             self.storageClass.groupDict[msg['FromUserName']] = {
                 member['UserName']: member for member in groupMemberList}
         ActualNickName = tools.escape_emoji(self.storageClass.groupDict[
@@ -625,17 +625,20 @@ class client:
         r = self.s.post(url, data=json.dumps(params), headers=headers)
 
     def find_username(self, n):
-        for member in self.memberList:
+        l = self.memberList + self.chatroomList
+        for member in l:
             if member['NickName'] == n:
                 return member['UserName']
 
     def find_nickname(self, u):
-        for member in self.memberList:
+        l = self.memberList + self.chatroomList
+        for member in l:
             if member['UserName'] == u:
                 return member['NickName']
 
     def find_remarkname(self, u):
-        for member in self.memberList:
+        l = self.memberList + self.chatroomList
+        for member in l:
             if member['UserName'] == u:
                 return member['RemarkName']
 

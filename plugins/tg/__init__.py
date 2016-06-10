@@ -92,7 +92,7 @@ class TelegramChannel(EFBChannel):
             msg.member = {"uid": -1, "name": "", "alias": ""}
         if msg.type == MsgType.Text:
             if msg.source == MsgSource.Group:
-                msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "$s (%s)" % (msg.member['name'], msg.member['alias'])
+                msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "%s (%s)" % (msg.member['alias'], msg.member['name'])
             if tg_chat:  # if this chat is linked
                 tg_dest = int(tg_chat.split('.')[1])
                 if msg_prefix:  # if group message
@@ -102,14 +102,14 @@ class TelegramChannel(EFBChannel):
             else:  # when chat is not linked
                 tg_dest = config.eh_telegram_master['admins'][0]
                 emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
-                name_prefix = msg.destination["alias"] if msg.destination["alias"] == msg.destination["name"] else "%s (%s)" % (msg.destination["alias"], msg.destination["name"])
+                name_prefix = msg.origin["alias"] if msg.origin["alias"] == msg.origin["name"] else "%s (%s)" % (msg.origin["alias"], msg.origin["name"])
                 if msg_prefix:
                     txt = "%s %s [%s]:\n%s" % (emoji_prefix, msg_prefix, name_prefix, msg.text)
                 else:
                     txt = "%s %s:\n%s" % (emoji_prefix, name_prefix, msg.text)
             tg_msg=self.bot.bot.sendMessage(tg_dest, text=txt)
         db.add_msg_log(master_msg_id="%s.%s" % (tg_msg.chat.id, tg_msg.message_id),
-                       text=tg_msg.text,
+                       text=msg.text,
                        slave_origin_uid="%s.%s" % (msg.channel_id, msg.origin['uid']),
                        msg_type=msg.type,
                        sent_to="Master",
@@ -161,8 +161,9 @@ class TelegramChannel(EFBChannel):
                 chat_type = utils.Emojis.get_source_emoji(chat['type'])
                 chat_name = chat['alias'] if chat['name'] == chat['alias'] else "%s(%s)" % (chat['alias'], chat['name'])
                 button_text = "%s%s: %s%s" % (slave_emoji, chat_type, chat_name, linked)
+                button_callback = "%s\x1f%s" % (uid, chat_name)
                 chat_btn_list.append(
-                    [telegram.InlineKeyboardButton(button_text, callback_data="%s\x1f%s" % (uid, button_text))])
+                    [telegram.InlineKeyboardButton(button_text, callback_data=button_callback[:32])])
         chat_btn_list.append([telegram.InlineKeyboardButton("Cancel", callback_data=Flags.CANCEL_PROCESS)])
         msg_text = "Please choose the chat you want to link with ...\n\nLegend:\n"
         for i in legend:
@@ -220,8 +221,12 @@ class TelegramChannel(EFBChannel):
         if not (update.message.chat.id == update.message.from_user.id):  # from group
             assoc = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
             if getattr(update.message, "reply_to_message", None):
-                target = db.get_msg_log("%s.%s" % (update.message.reply_to_message.chat.id, update.message.reply_to_message.message_id)).slave_origin_uid
-                targetChannel, targetUid = target.split('.', 2)
+                try:
+                    targetlog = db.get_msg_log("%s.%s" % (update.message.reply_to_message.chat.id, update.message.reply_to_message.message_id))
+                    target = targetlog.slave_origin_uid
+                    targetChannel, targetUid = target.split('.', 2)
+                except:
+                    return self._reply_error(bot, update, "Unknown recipient (UC03).")
         elif (update.message.chat.id == update.message.from_user.id) and hasattr(update.message, "reply_to_message"):  # reply to user
             assoc = db.get_msg_log("%s.%s" % (update.message.reply_to_message.chat.id, update.message.reply_to_message.message_id)).slave_origin_uid
         else:
@@ -251,8 +256,24 @@ class TelegramChannel(EFBChannel):
                 'alias': ''
             }
             if target:
-                if targetChannel is channel:
-                    m.target = {"uid": uid, 'name': '', 'alias': ''}
+                if targetChannel == channel:
+                    trgtMsg = EFBMsg(self.slaves[targetChannel])
+                    trgtMsg.type = MsgType.Text
+                    trgtMsg.text = targetlog.text
+                    trgtMsg.member = {
+                        "name": targetlog.slave_member_display_name,
+                        "alias": targetlog.slave_member_display_name,
+                        "uid": targetlog.slave_member_uid
+                    }
+                    trgtMsg.origin = {
+                        "name": targetlog.slave_origin_display_name,
+                        "alias": targetlog.slave_origin_display_name,
+                        "uid": targetlog.slave_origin_uid.split('.', 2)[1]
+                    }
+                    m.target = {
+                        "type": TargetType.Message,
+                        "target": trgtMsg
+                    }
             # Type specific stuff
             if mtype is TGMsgType.Text:
                 m.type = MsgType.Text
