@@ -140,6 +140,10 @@ class WeChatChannel(EFBChannel):
         mobj.type = MsgType.Link
         return mobj
 
+    @incomeMsgMeta
+    def stickerMsg(self, msg, isGroupChat=False):
+        pass
+
     def send_message(self, msg):
         self.logger.info('msg.text %s', msg.text)
         UserName = self.get_UserName(msg.destination['uid'])

@@ -311,8 +311,12 @@ class client:
                     with open(picDir, 'wb') as f:
                         for block in r.iter_content(1024):
                             f.write(block)
+                if m['MsgType'] == 3:
+                    MsgType = "Picture"
+                else:
+                    MsgType = "Sticker"
                 msg = {
-                    'Type': 'Picture',
+                    'Type': MsgType,
                     'Text': download_picture, }
             elif m['MsgType'] == 34:  # voice
                 def download_voice(voiceDir):
@@ -369,7 +373,7 @@ class client:
                     msg = {
                         'Type': 'Note',
                         'Text': data.group(2), }
-                elif m['AppMsgType'] == 6: # Shared links
+                elif m['AppMsgType'] == 5: # Shared links
                     msg = {
                         'Type': 'Link', 
                         'Text': m['FileName'],

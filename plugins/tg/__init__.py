@@ -88,9 +88,10 @@ class TelegramChannel(EFBChannel):
         chat_uid = "%s.%s" % (msg.channel_id, msg.origin['uid'])
         tg_chat = db.get_chat_assoc(slave_uid=chat_uid) or False
         msg_prefix = ""
+        tg_msg = None
         if not msg.source == MsgSource.Group:
             msg.member = {"uid": -1, "name": "", "alias": ""}
-        if msg.type == MsgType.Text:
+        if msg.type in [MsgType.Text, MsgType.Link]:
             if msg.source == MsgSource.Group:
                 msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "%s (%s)" % (msg.member['alias'], msg.member['name'])
             if tg_chat:  # if this chat is linked
@@ -107,7 +108,9 @@ class TelegramChannel(EFBChannel):
                     txt = "%s %s [%s]:\n%s" % (emoji_prefix, msg_prefix, name_prefix, msg.text)
                 else:
                     txt = "%s %s:\n%s" % (emoji_prefix, name_prefix, msg.text)
-            tg_msg=self.bot.bot.sendMessage(tg_dest, text=txt)
+            tg_msg = self.bot.bot.sendMessage(tg_dest, text=txt)
+        if not tg_msg:
+            return
         db.add_msg_log(master_msg_id="%s.%s" % (tg_msg.chat.id, tg_msg.message_id),
                        text=msg.text,
                        slave_origin_uid="%s.%s" % (msg.channel_id, msg.origin['uid']),
@@ -127,8 +130,8 @@ class TelegramChannel(EFBChannel):
                 return self.link_chat_confirm(bot, init_msg.fsom_chat.id, init_msg.message_id, cid)
             except:
                 return bot.editMessageText(chat_id=update.message.chat.id,
-                                    message_id=init_msg.message_id,
-                                    text="No chat is found linked with this group. Please send /link privately to link a chat.")
+                                           message_id=init_msg.message_id,
+                                           text="No chat is found linked with this group. Please send /link privately to link a chat.")
 
         # if message ir replied to an existing one
         if update.message.reply_to_message:
@@ -138,8 +141,8 @@ class TelegramChannel(EFBChannel):
                 return self.link_chat_confirm(bot, init_msg.fsom_chat.id, init_msg.message_id, cid)
             except:
                 return bot.editMessageText(chat_id=update.message.chat.id,
-                                    message_id=init_msg.message_id,
-                                    text="No chat is found linked with this group. Please send /link privately to link a chat.")
+                                           message_id=init_msg.message_id,
+                                           text="No chat is found linked with this group. Please send /link privately to link a chat.")
         legend = [
             "%s: Linked" % utils.Emojis.LINK_EMOJI,
             "%s: User" % utils.Emojis.USER_EMOJI,

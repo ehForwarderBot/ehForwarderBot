@@ -8,6 +8,7 @@ class MsgType:
     Location = "Location"
     Video = "Video"
     Link = "Link"
+    Sticker = "Sticker"
     Unsupported = "Unsupported"
     Command = "Command"
 
