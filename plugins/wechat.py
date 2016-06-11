@@ -103,6 +103,22 @@ class WeChatChannel(EFBChannel):
         def wcLinkGroup(msg):
             self.linkMsg(msg, True)
 
+        @itchat.msg_register(['Sticker'])
+        def wcSticker(msg):
+            self.stickerMsg(msg)
+
+        @itchat.msg_register(['Sticker'], isGroupChat=True)
+        def wcStickerGroup(msg):
+            self.stickerMsg(msg, True)
+
+        @itchat.msg_register(['Picture'])
+        def wcPicture(msg):
+            self.pictureMsg(msg)
+
+        @itchat.msg_register(['Picture'], isGroupChat=True)
+        def wcPictureGroup(msg):
+            self.pictureMsg(msg, True)
+
         itchat.run()
 
     @incomeMsgMeta
@@ -148,12 +164,31 @@ class WeChatChannel(EFBChannel):
     def stickerMsg(self, msg, isGroupChat=False):
         fullpath, mime = self.save_file(msg, MsgType.Sticker)
         mobj = EFBMsg(self)
-        
-        pass
+        mobj.type = MsgType.Sticker
+        mobj.text = None
+        mobj.file = open(fullpath, "rb")
+        mobj.mime = mime
+        return mobj
 
     @incomeMsgMeta
     def pictureMsg(self, msg, isGroupChat=False):
-        pass
+        fullpath, mime = self.save_file(msg, MsgType.Image)
+        mobj = EFBMsg(self)
+        mobj.type = MsgType.Image
+        mobj.text = None
+        mobj.file = open(fullpath, "rb")
+        mobj.mime = mime
+        return mobj
+
+    @incomeMsgMeta
+    def fileMsg(self, msg, isGroupChat=False):
+        fullpath, mime = self.save_file(msg, MsgType.File)
+        mobj = EFBMsg(self)
+        mobj.type = MsgType.File
+        mobj.text = None
+        mobj.file = open(fullpath, "rb")
+        mobj.mime = mime
+        return mobj
 
     def save_file(self, msg, msg_type):
         if not os.path.exists("storage/%s" % self.channel_id):
@@ -177,6 +212,8 @@ class WeChatChannel(EFBChannel):
                 elif msg.target['type'] == TargetType.Message:
                     msg.text = "@%s\u2005 「%s」\n\n%s" % (msg.target['target'].member['alias'], msg.target['target'].text, msg.text)
             itchat.send(msg.text, UserName)
+        if msg.type == MsgType.Image:
+            pass
 
     @extra(name="Refresh Contacts and Groups list", desc="Refresh the list of contacts when unidentified contacts found.", emoji="🔁")
     def refresh_contacts(self):

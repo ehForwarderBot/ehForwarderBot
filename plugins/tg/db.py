@@ -63,20 +63,18 @@ def get_chat_assoc(master_uid=None, slave_uid=None):
 
 def get_last_msg_from_chat(chat_id):
     """Get last message from a certain chat in Telegram
-    
+
     Args:
         chat_id (int/str): Chat ID
-    
+
     Returns:
         Record: The last message from the chat
     """
     try:
-        return MsgLog.select()
-                     .where(MsgLog.master_msg_id.startswith("%s." % chat_id))
-                     .order_by(MsgLog.id.desc())
-                     .first()
+        return MsgLog.select().where(MsgLog.master_msg_id.startswith("%s." % chat_id)).order_by(MsgLog.id.desc()).first()
     except DoesNotExist:
         return None
+
 
 def add_msg_log(**kwargs):
     """
@@ -97,15 +95,29 @@ def add_msg_log(**kwargs):
     slave_origin_display_name = kwargs.get('slave_origin_display_name', None)
     slave_member_uid = kwargs.get('slave_member_uid', None)
     slave_member_display_name = kwargs.get('slave_member_display_name', None)
-    logger.info("add_msg_log %s Done!\n---" % master_msg_id)
-    return MsgLog.create(master_msg_id=master_msg_id,
-                         text=text,
-                         slave_origin_uid=slave_origin_uid,
-                         msg_type=msg_type,
-                         sent_to=sent_to,
-                         slave_origin_display_name=slave_origin_display_name,
-                         slave_member_uid=slave_member_uid,
-                         slave_member_display_name=slave_member_display_name)
+    msg_id = kwargs.get('ID', None)
+    if msg_id:
+        msg_log = MsgLog.get(MsgLog.id == msg_id)
+        msg_log.text = text
+        msg_log.master_msg_id = master_msg_id
+        msg_log.text = text
+        msg_log.slave_origin_uid = slave_origin_uid
+        msg_log.msg_type = msg_type
+        msg_log.sent_to = sent_to
+        msg_log.slave_origin_display_name = slave_origin_display_name
+        msg_log.slave_member_uid = slave_member_uid
+        msg_log.slave_member_display_name = slave_member_display_name
+        msg_log.save()
+        return msg_log
+    else:
+        return MsgLog.create(master_msg_id=master_msg_id,
+                             text=text,
+                             slave_origin_uid=slave_origin_uid,
+                             msg_type=msg_type,
+                             sent_to=sent_to,
+                             slave_origin_display_name=slave_origin_display_name,
+                             slave_member_uid=slave_member_uid,
+                             slave_member_display_name=slave_member_display_name)
 
 
 def get_msg_log(master_msg_id):

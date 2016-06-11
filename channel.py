@@ -87,7 +87,7 @@ class EFBMsg:
         type (MsgType): Type of message
         uid (str): Unique ID of message
         url (str): URL of multimedia file/Link share. `None` if N/A
-        file (file): File object to multimedia object. `None` if N/A
+        file (file): File object to multimedia object, type "ra". `None` if N/A
         mime (str): MIME type of the file. `None` if N/A
 
     `target`:

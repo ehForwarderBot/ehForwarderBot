@@ -27,6 +27,8 @@ class WhitelistHandler(Handler):
             obj = update.message
         elif getattr(update, "callback_query", None):
             obj = update.callback_query
+        elif getattr(update, "edited_message", None):
+            obj = update.edited_message
         return isinstance(update, Update) and not int(obj.from_user.id) in self.whitelist
 
     def handle_update(self, update, dispatcher):

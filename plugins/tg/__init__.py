@@ -89,36 +89,66 @@ class TelegramChannel(EFBChannel):
         tg_chat = db.get_chat_assoc(slave_uid=chat_uid) or False
         msg_prefix = ""
         tg_msg = None
+        tg_chat_assoced = False
+        is_last_member = False
         if not msg.source == MsgSource.Group:
             msg.member = {"uid": -1, "name": "", "alias": ""}
+
+        # Generate chat text template & Decide type target
+
+        if msg.source == MsgSource.Group:
+            msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "%s (%s)" % (msg.member['alias'], msg.member['name'])
+        if tg_chat:  # if this chat is linked
+            tg_dest = int(tg_chat.split('.')[1])
+            tg_chat_assoced = True
+            if msg_prefix:  # if group message
+                msg_template = "%s:\n%s" % (msg_prefix, "%s")
+            else:
+                msg_template = "%s"
+        else:  # when chat is not linked
+            tg_dest = config.eh_telegram_master['admins'][0]
+            emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
+            name_prefix = msg.origin["alias"] if msg.origin["alias"] == msg.origin["name"] else "%s (%s)" % (msg.origin["alias"], msg.origin["name"])
+            if msg_prefix:
+                msg_template = "%s %s [%s]:\n%s" % (emoji_prefix, msg_prefix, name_prefix, "%s")
+            else:
+                msg_template = "%s %s:\n%s" % (emoji_prefix, name_prefix, "%s")
+
+        # Type dispatch
+
         if msg.type in [MsgType.Text, MsgType.Link]:
+            last_msg = db.get_last_msg_from_chat(tg_dest)
             if msg.source == MsgSource.Group:
-                msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "%s (%s)" % (msg.member['alias'], msg.member['name'])
-            if tg_chat:  # if this chat is linked
-                tg_dest = int(tg_chat.split('.')[1])
-                if msg_prefix:  # if group message
-                    txt = "%s:\n%s" % (msg_prefix, msg.text)
-                else:
-                    txt = msg.text
-            else:  # when chat is not linked
-                tg_dest = config.eh_telegram_master['admins'][0]
-                emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
-                name_prefix = msg.origin["alias"] if msg.origin["alias"] == msg.origin["name"] else "%s (%s)" % (msg.origin["alias"], msg.origin["name"])
-                if msg_prefix:
-                    txt = "%s %s [%s]:\n%s" % (emoji_prefix, msg_prefix, name_prefix, msg.text)
-                else:
-                    txt = "%s %s:\n%s" % (emoji_prefix, name_prefix, msg.text)
-            tg_msg = self.bot.bot.sendMessage(tg_dest, text=txt)
+                is_last_member = last_msg.slave_member_uid == msg.member['uid']
+            else:
+                is_last_member = last_msg.slave_origin == "%s.%s" % (msg.channel_id, msg.origin['uid'])
+            if tg_chat_assoced and is_last_member:
+                msg.text = "%s\n%s" % (last_msg.text, msg.text)
+                tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest, 
+                    message_id=last_msg.master_msg_id.split(".", 2)[1],
+                    text=msg_template % msg.text)
+            else:
+                tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text)
+        elif msg.type in [MsgType.Image, MsgType.Sticker]:
+            if not msg.text:
+                if msg.type == MsgType.Image:
+                    msg.text = "sent a picture."
+                elif msg.type == MsgType.Sticker:
+                    msg.text = "sent a sticker."
+            tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template % msg.text)
         if not tg_msg:
             return
-        db.add_msg_log(master_msg_id="%s.%s" % (tg_msg.chat.id, tg_msg.message_id),
-                       text=msg.text,
-                       slave_origin_uid="%s.%s" % (msg.channel_id, msg.origin['uid']),
-                       msg_type=msg.type,
-                       sent_to="Master",
-                       slave_origin_display_name=msg.origin['alias'],
-                       slave_member_uid=msg.member['uid'],
-                       slave_member_display_name=msg.member['alias'])
+        msg_log = {"master_msg_id": "%s.%s" % (tg_msg.chat.id, tg_msg.message_id),
+                   "text": msg.text,
+                   "msg_type": msg.type,
+                   "sent_to": "Master",
+                   "slave_origin_uid": "%s.%s" % (msg.channel_id, msg.origin['uid']),
+                   "slave_origin_display_name": msg.origin['alias'],
+                   "slave_member_uid": msg.member['uid'],
+                   "slave_member_display_name": msg.member['alias']}
+        if tg_chat_assoced and is_last_member:
+            msg_log['id'] = last_msg.id
+        db.add_msg_log(**msg_log)
 
     def link_chat_show_list(self, bot, update):
         user_id = update.message.from_user.id
