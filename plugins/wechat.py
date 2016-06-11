@@ -3,6 +3,9 @@ import requests
 import re
 import xmltodict
 import logging
+import os
+import time
+import magic
 from binascii import crc32
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
 from utils import extra
@@ -133,6 +136,7 @@ class WeChatChannel(EFBChannel):
         mobj.attributes = {
             "title": data['msg']['appmsg']['title'],
             "description": data['msg']['appmsg']['des'],
+            "image": None,
             "url": data['msg']['appmsg']['url']
         }
         # format text
@@ -142,7 +146,24 @@ class WeChatChannel(EFBChannel):
 
     @incomeMsgMeta
     def stickerMsg(self, msg, isGroupChat=False):
+        fullpath, mime = self.save_file(msg, MsgType.Sticker)
+        mobj = EFBMsg(self)
+        
         pass
+
+    @incomeMsgMeta
+    def pictureMsg(self, msg, isGroupChat=False):
+        pass
+
+    def save_file(self, msg, msg_type):
+        if not os.path.exists("storage/%s" % self.channel_id):
+            os.makedirs("storage/%s" % self.channel_id)
+        path = os.path.join("storage", self.channel_id)
+        filename = "%s_%s_%s" % (msg_type, msg['NewMsgId'], int(time.time()))
+        fullpath = os.path.join(path, filename)
+        msg['Text'](fullpath)
+        mime = magic.from_file(fullpath, mime=True).decode()
+        return (fullpath, mine)
 
     def send_message(self, msg):
         self.logger.info('msg.text %s', msg.text)

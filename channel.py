@@ -89,6 +89,86 @@ class EFBMsg:
         url (str): URL of multimedia file/Link share. `None` if N/A
         file (file): File object to multimedia object. `None` if N/A
         mime (str): MIME type of the file. `None` if N/A
+
+    `target`:
+        There are 3 types of targets: `Member`, `Message`, and `Substitution`
+
+        TargetType: Member
+            This is for the case where the message is targeting to a specific member in the group.
+            `target['target']` here is a `user dict`.  
+            
+            Example:
+            ```
+            target = {
+               'type': TargetType.Member,
+               'target': {
+                   "name": "Target name",
+                   'alias': 'Target alias',
+                   'uid': 'Target UID',
+               }
+            }
+            ```
+
+        TargetType: Message
+            This is for the case where the message is directly replying to another message.
+            `target['target']` here is an `EFBMsg` object.
+
+            Example:
+            ```
+            target = {
+               'type': TargetType.Message,
+               'target': EFBMsg()
+            }
+            ```
+        
+        TargetType: Substitution
+            This is for the case when user "@-ed" a list of users in the message.
+            `target['target']` here is a dict of correspondence between 
+            the string used to refer to the user in the message
+            and a user dict.
+
+            Example:
+            ```
+            target = {
+               'type': TargetType.Substitution,
+               'target': {
+                  '@alice': {
+                      'name': "Alice",
+                      'alias': 'Alisi',
+                      'uid': 123456
+                  },
+                  '@bob': {
+                      'name': "Bob",
+                      'alias': 'Baobu',
+                      'uid': 654321
+                  }
+               }
+            }
+            ```
+
+    `attributes`:
+        A dict of attributes can be attached for some specific message types.
+        Please specify `None` for values not available.
+
+        Link:
+            ```
+            attributes = {
+                "title": "Title of the article",
+                "description": "Description of the article",
+                "image": "URL to the thumbnail/featured image of the article",
+                "url": "URL to the article"
+            }
+            ```
+
+        Sticker, Pictures, Audio:
+            ```
+            attributes = {
+                "caption": "An Emoji, or a caption title",
+                "url": "URL to the sticker, or",
+                "path": "Local path to the sticker",
+                "mime": "MIME type of the file"
+            }
+            ```
     """
     channel_name = "Empty Channel"
     channel_emoji = "?"
@@ -108,42 +188,6 @@ class EFBMsg:
         'uid': 'Destination UID',
     }
     target = None
-    #
-    # TargetType: Member
-    #
-    # target = {
-    #    'type': TargetType.Member,
-    #    'target': {
-    #        "name": "Target name",
-    #        'alias': 'Target alias',
-    #        'uid': 'Target UID',
-    #    }
-    # }
-    #
-    # TargetType: Message
-    #
-    # target = {
-    #    'type': TargetType.Message,
-    #    'target': EFBMsg()
-    # }
-    #
-    # TargetType: Substitution
-    #
-    # target = {
-    #    'type': TargetType.Substitution,
-    #    'target': {
-    #       '@alice': {
-    #           'name': "Alice",
-    #           'alias': 'Alisi',
-    #           'uid': 123456
-    #       },
-    #       '@bob': {
-    #           'name': "Bob",
-    #           'alias': 'Baobu',
-    #           'uid': 654321
-    #       }
-    #    }
-    # }
     uid = "Message UID"
     text = "Message"
     url = None

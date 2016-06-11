@@ -141,3 +141,5 @@ config.py
 test.py
 test.db
 tgdata.db
+test*
+storage/*
