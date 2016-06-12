@@ -139,6 +139,10 @@ class TelegramChannel(EFBChannel):
                 tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
             else:
                 tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template % msg.text)
+        elif msg.type in [MsgType.File]:
+            if not msg.text:
+                msg.text = "sent a file."
+            tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
         if not tg_msg:
             return
         msg_log = {"master_msg_id": "%s.%s" % (tg_msg.chat.id, tg_msg.message_id),
