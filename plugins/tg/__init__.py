@@ -114,7 +114,7 @@ class TelegramChannel(EFBChannel):
             else:
                 msg_template = "%s %s:\n%s" % (emoji_prefix, name_prefix, "%s")
 
-        # Type dispatch
+        # Type dispatching
 
         if msg.type in [MsgType.Text, MsgType.Link]:
             last_msg = db.get_last_msg_from_chat(tg_dest)
@@ -135,7 +135,10 @@ class TelegramChannel(EFBChannel):
                     msg.text = "sent a picture."
                 elif msg.type == MsgType.Sticker:
                     msg.text = "sent a sticker."
-            tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template % msg.text)
+            if msg.mime == "image/gif":
+                tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
+            else:
+                tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template % msg.text)
         if not tg_msg:
             return
         msg_log = {"master_msg_id": "%s.%s" % (tg_msg.chat.id, tg_msg.message_id),

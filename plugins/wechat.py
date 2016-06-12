@@ -118,6 +118,14 @@ class WeChatChannel(EFBChannel):
         @itchat.msg_register(['Picture'], isGroupChat=True)
         def wcPictureGroup(msg):
             self.pictureMsg(msg, True)
+            
+        @itchat.msg_register(['File'])
+        def wcFile(msg):
+            self.fileMsg(msg)
+
+        @itchat.msg_register(['File'], isGroupChat=True)
+        def wcFileGroup(msg):
+            self.fileMsg(msg, True)
 
         itchat.run()
 
