@@ -7,7 +7,7 @@ import _thread
 import subprocess
 import json
 import xml.dom.minidom
-import mimetypes
+import magic
 from . import config, storage, out, tools
 
 BASE_URL = config.BASE_URL
@@ -22,6 +22,7 @@ class client:
         self.loginInfo = {}
         self.s = requests.Session()
         self.uuid = None
+        self.media_count = 0
 
     def auto_login(self):
         def open_QR():
@@ -483,24 +484,25 @@ class client:
             payloads, ensure_ascii=False).encode('utf-8'), headers=headers)
         return r
 
-    def __upload_file(self, fileDir, isPicture=False):
+    def __upload_file(self, fileDir, toUserName, file_type="doc"):
         if not tools.check_file(fileDir):
             return
-        url = 'https://file%s.wx.qq.com/cgi-bin/mmwebwx-bin/webwxuploadmedia?f=json' % (
+        url = 'https://file.web%s.wechat.com/cgi-bin/mmwebwx-bin/webwxuploadmedia?f=json' % (
             '2' if '2' in self.loginInfo['url'] else '')
+        self.s.options(url)
         # save it on server
         fileSize = str(os.path.getsize(fileDir))
         cookiesList = {name: data for name,
                        data in list(self.s.cookies.items())}
-        fileType = mimetypes.guess_type(
-            fileDir)[0] or 'application/octet-stream'
+        fileType = magic.from_file(fileDir, True).decode() or 'application/octet-stream'
+        self.media_count += 1
         files = {
-            'id': (None, 'WU_FILE_0'),
+            'id': (None, 'WU_FILE_%s' % self.media_count),
             'name': (None, os.path.basename(fileDir)),
             'type': (None, fileType),
             'lastModifiedDate': (None, time.strftime('%a %b %d %Y %H:%M:%S GMT+0800 (CST)')),
             'size': (None, fileSize),
-            'mediatype': (None, 'pic' if isPicture else 'doc'),
+            'mediatype': (None, file_type),
             'uploadmediarequest': (None, json.dumps({
                 'BaseRequest': self.loginInfo['BaseRequest'],
                 'ClientMediaId': int(time.time()),
@@ -508,6 +510,10 @@ class client:
                 'StartPos': 0,
                 'DataLen': fileSize,
                 'MediaType': 4,
+                'UploadType': 2,
+                'FromUserName': self.storageClass.userName,
+                'ToUserName': toUserName or self.storageClass.userName,
+                'FileMd5': tools.md5sum(fileDir)
             }, separators=(',', ':'))),
             'webwx_data_ticket': (None, cookiesList['webwx_data_ticket']),
             'pass_ticket': (None, 'undefined'),
@@ -516,12 +522,13 @@ class client:
         headers = {
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36', }
         r = self.s.post(url, files=files, headers=headers)
+        print("Uploaded response", r.headers, r.text)
         return json.loads(r.text)['MediaId']
 
-    def send_file(self, fileDir, toUserName=None):
+    def send_file(self, fileDir, toUserName=None, isGIF=False):
         if toUserName is None:
             toUserName = self.storageClass.userName
-        mediaId = self.__upload_file(fileDir)
+        mediaId = self.__upload_file(fileDir, toUserName, file_type="doc")
         if mediaId is None:
             return False
         url = '%s/webwxsendappmsg?fun=async&f=json' % self.loginInfo['url']
@@ -539,6 +546,10 @@ class client:
                 'ToUserName': toUserName,
                 'LocalID': str(time.time() * 1e7),
                 'ClientMsgId': str(time.time() * 1e7), }, }
+        if isGIF:
+            url = '%s/webwxsendemoticon?fun=sys' % self.loginInfo['url']
+            payloads['Msg']['Type'] = 47
+            payloads['Msg']['EmojiFlag'] = 2
         headers = {
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36',
             'Content-Type': 'application/json;charset=UTF-8', }
@@ -550,7 +561,7 @@ class client:
         if toUserName is None:
             toUserName = self.storageClass.userName
         mediaId = self.__upload_file(
-            fileDir, isPicture=not fileDir[-4:] == '.gif')
+            fileDir, toUserName, file_type="pic")
         if mediaId is None:
             return False
         url = '%s/webwxsendmsgimg?fun=async&f=json' % self.loginInfo['url']
@@ -563,15 +574,37 @@ class client:
                 'ToUserName': toUserName,
                 'LocalID': str(time.time() * 1e7),
                 'ClientMsgId': str(time.time() * 1e7), }, }
-        if fileDir[-4:] == '.gif':
-            url = '%s/webwxsendemoticon?fun=sys' % self.loginInfo['url']
-            payloads['Msg']['Type'] = 47
-            payloads['Msg']['EmojiFlag'] = 2
         headers = {
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36',
             'Content-Type': 'application/json;charset=UTF-8', }
         r = self.s.post(url, data=json.dumps(
             payloads, ensure_ascii=False), headers=headers)
+        print("r.content", r.content)
+        return True
+
+    def send_video(self, fileDir, toUserName=None):
+        if toUserName is None:
+            toUserName = self.storageClass.userName
+        mediaId = self.__upload_file(
+            fileDir, toUserName, file_type="video")
+        if mediaId is None:
+            return False
+        url = '%s/webwxsendvideomsg?fun=async&f=json' % self.loginInfo['url']
+        payloads = {
+            'BaseRequest': self.loginInfo['BaseRequest'],
+            'Msg': {
+                'Type': 43,
+                'MediaId': mediaId,
+                'FromUserName': self.storageClass.userName,
+                'ToUserName': toUserName,
+                'LocalID': str(time.time() * 1e7),
+                'ClientMsgId': str(time.time() * 1e7), }, }
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36',
+            'Content-Type': 'application/json;charset=UTF-8', }
+        r = self.s.post(url, data=json.dumps(
+            payloads, ensure_ascii=False), headers=headers)
+        print("r.content", r.content)
         return True
 
     def add_friend(self, Status, UserName, Ticket, VerifyContent=''):

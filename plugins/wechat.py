@@ -258,35 +258,46 @@ class WeChatChannel(EFBChannel):
         """
         self.logger.info('msg.text %s', msg.text)
         UserName = self.get_UserName(msg.destination['uid'])
-        self.logger.info("uid: %s\nUserName: %s\nNickName: %s" % (msg.destination['uid'], UserName, itchat.find_nickname(UserName)))
-        self.logger.info("uid: %s\nUserName: %s\nNickName: %s" % (msg.destination['uid'], UserName, itchat.find_nickname(UserName)))
+        self.logger.info("Sending message to Wechat:\nTarget-------\nuid: %s\nUserName: %s\nNickName: %s" % (msg.destination['uid'], UserName, itchat.find_nickname(UserName)))
+        self.logger.info("Got message of type %s", msg.type)
         if msg.type == MsgType.Text:
             if msg.target:
                 if msg.target['type'] == TargetType.Member:
                     msg.text = "@%s\u2005 %s" % (msg.target['target'].member['alias'], msg.text)
                 elif msg.target['type'] == TargetType.Message:
                     msg.text = "@%s\u2005 「%s」\n\n%s" % (msg.target['target'].member['alias'], msg.target['target'].text, msg.text)
-            itchat.send(msg.text, UserName)
+            r = itchat.send(msg.text, UserName)
+            return r
         elif msg.type in [MsgType.Image, MsgType.Sticker]:
-            if not msg.mime == "image/jpeg":  # Convert Image format
+            self.logger.info("Image/Sticker %s", msg.type)
+            if msg.mime == "image/gif":
+                r = itchat.send_file(msg.path, UserName, isGIF=True)
+                os.remove(msg.path)
+                return r
+            elif not msg.mime == "image/jpeg":  # Convert Image format
                 img = Image.open(msg.path)
                 bg = Image.new("RGB", img.size, (255, 255, 255))
                 bg.paste(img, img)
                 bg.save("%s.jpg" % msg.path)
                 msg.path = "%s.jpg" % msg.path
-            itchat.send_image(msg.path, UserName)
+                self.logger.info('Image converted to JPEG: %s', msg.path)
+            self.logger.info('Sending Image...')
+            r = itchat.send_image(msg.path, UserName)
+            self.logger.info('Image sent with result %s', r)
             os.remove(msg.path)
             if not msg.mime == "image/jpeg":
                 os.remove(msg.path[:-4])
+            return r
         elif msg.type == MsgType.File:
-            itchat.send_file(msg.path, UserName)
+            r = itchat.send_file(msg.path, UserName)
             os.remove(msg.path)
+            return r
         else:
             raise EFBMessageTypeNotSupported()
 
     @extra(name="Refresh Contacts and Groups list", desc="Refresh the list of contacts when unidentified contacts found.", emoji="🔁")
     def refresh_contacts(self):
-        itchat.get_contract(True)
+        itchat.get_contract(true)
 
     def get_chats(self, group=True, user=True):
         r = []

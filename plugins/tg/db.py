@@ -72,7 +72,6 @@ def get_last_msg_from_chat(chat_id):
     """
     try:
         return MsgLog.select().where(MsgLog.master_msg_id.startswith("%s." % chat_id)).first()
-        return MsgLog.select().where(MsgLog.master_msg_id.startswith("%s." % chat_id)).order_by(MsgLog.id.desc()).first()
     except DoesNotExist:
         return None
 
@@ -125,7 +124,6 @@ def get_msg_log(master_msg_id):
     logger.info("get_msg_log %s" % master_msg_id)
     try:
         return MsgLog.select().where(MsgLog.master_msg_id == master_msg_id).first()
-        return MsgLog.select().where(MsgLog.master_msg_id == master_msg_id).order_by(MsgLog.id.desc()).first()
     except DoesNotExist:
         return None
 

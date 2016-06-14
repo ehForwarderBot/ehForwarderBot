@@ -416,6 +416,14 @@ class TelegramChannel(EFBChannel):
                 tg_file_id = update.message.sticker.file_id
                 m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
                 m.file = open(m.path, "rb")
+            elif mtype == TGMsgType.Document:
+                m.type = MsgType.File
+                m.text = None
+                tg_file_id = update.message.document.file_id
+                m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
+                m.file = open(m.path, "rb")
+            else:
+                return self._reply_error(bot, update, "Message type not supported. (MN02)")
 
             self.slaves[channel].send_message(m)
         except EFBChatNotFound:
