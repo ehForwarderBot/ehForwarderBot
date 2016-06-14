@@ -12,12 +12,13 @@ def emoji_dealer(l):
     return l
 
 def escape_emoji(s):
-    s = re.split('<span class="emoji emoji|"></span>', s)
+    s = re.split('<span class="emoji |"></span>', s)
     for i in range(len(s)):
-        try:
-            s[i] = chr(int(s[i], 16))
-        except:
-            pass
+        if s[i].startswith("emoji"):
+            try:
+                s[i] = chr(int(s[i][5:], 16))
+            except:
+                pass
     s = ''.join(s)
     s = s.replace('<br/>', '\n')
     s = html.unescape(s)
