@@ -87,6 +87,7 @@ class EFBMsg:
         type (MsgType): Type of message
         uid (str): Unique ID of message
         url (str): URL of multimedia file/Link share. `None` if N/A
+        path (str): Local path of multimedia file. `None` if N/A
         file (file): File object to multimedia object, type "ra". `None` if N/A
         mime (str): MIME type of the file. `None` if N/A
 
@@ -95,8 +96,8 @@ class EFBMsg:
 
         TargetType: Member
             This is for the case where the message is targeting to a specific member in the group.
-            `target['target']` here is a `user dict`.  
-            
+            `target['target']` here is a `user dict`.
+
             Example:
             ```
             target = {
@@ -120,10 +121,10 @@ class EFBMsg:
                'target': EFBMsg()
             }
             ```
-        
+
         TargetType: Substitution
             This is for the case when user "@-ed" a list of users in the message.
-            `target['target']` here is a dict of correspondence between 
+            `target['target']` here is a dict of correspondence between
             the string used to refer to the user in the message
             and a user dict.
 
@@ -160,13 +161,43 @@ class EFBMsg:
             }
             ```
 
-        Sticker, Pictures, Audio:
+        Location:
+            ```
+            text = "Name of the location"
+            attributes = {
+                "longitude": float("A float number indicating longitude"),
+                "latitute": float("A float number indicating latitude")
+            }
+            ```
+
+        Command:
+            Messages with type `Command` allow user to take action to
+            a specific message, including vote, add friends, etc.
+
+            Example:
             ```
             attributes = {
-                "caption": "An Emoji, or a caption title",
-                "url": "URL to the sticker, or",
-                "path": "Local path to the sticker",
-                "mime": "MIME type of the file"
+                "commands": [
+                    {
+                        "name": "A human-readable name for the command",
+                        "callable": "name to the callable function in your channel object",
+                        "args": [
+                            "a list of positional parameters passed to your function"
+                        ],
+                        "kwargs": {
+                            "desc": "a dict of keyword parameters passed to your function"
+                        }
+                    },
+                    {
+                        "name": "Greet @blueset on Telegram",
+                        "callable": "send_message_by_username",
+                        "args": [
+                            "blueset",
+                            "Hello!"
+                        ],
+                        "kwargs": {}
+                    }
+                ]
             }
             ```
     """
@@ -191,6 +222,7 @@ class EFBMsg:
     uid = "Message UID"
     text = "Message"
     url = None
+    path = None
     file = None
     mime = None
     attributes = {}

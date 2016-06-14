@@ -4,3 +4,7 @@ class EFBChatNotFound(Exception):
 
 class EFBmessageNotFound(Exception):
     pass
+
+
+class EFBMessageTypeNotSupported(Exception):
+    pass

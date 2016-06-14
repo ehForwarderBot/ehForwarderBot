@@ -1,0 +1,8 @@
+peewee == 2.8.1
+pydub == 0.16.4
+PyQRCode == 1.2
+requests == 2.10.0
+python_telegram_bot == 4.1.1
+xmltodict == 0.10.1
+Pillow == 3.2.0
+python_magic == 0.4.11

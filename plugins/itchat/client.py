@@ -134,8 +134,6 @@ class client:
         payloads = {
             'BaseRequest': self.loginInfo['BaseRequest']
         }
-        import pprint
-        pprint.pprint(payloads)
         headers = {'ContentType': 'application/json; charset=UTF-8'}
         r = self.s.post(url, data=json.dumps(payloads), headers=headers)
         dic = json.loads(r.content.decode('utf-8', 'replace'))
@@ -576,7 +574,7 @@ class client:
             payloads, ensure_ascii=False), headers=headers)
         return True
 
-    def add_friend(self, Status, UserName, Ticket):
+    def add_friend(self, Status, UserName, Ticket, VerifyContent=''):
         url = '%s/webwxverifyuser?r=%s&pass_ticket=%s' % (
             self.loginInfo['url'], int(time.time()), self.loginInfo['pass_ticket'])
         payloads = {
@@ -587,10 +585,23 @@ class client:
                 'Value': UserName,
                 'VerifyUserTicket': Ticket,
             }],
-            'VerifyContent': '',
+            'VerifyContent': VerifyContent,
             'SceneListCount': 1,
-            'SceneList': 33,
+            'SceneList': [33],
             'skey': self.loginInfo['skey'], }
+        headers = {'ContentType': 'application/json; charset=UTF-8'}
+        r = self.s.post(url, data=json.dumps(payloads), headers=headers)
+
+    def add_namecard(self, UserName, VerifyContent):
+        self.add_friend(2, UserName, '', VerifyContent)
+
+    def define_alias(self, RemarkName, UserName):
+        url = '%s/webwxoplog' % (self.loginInfo['url'])
+        payloads = {
+            'BaseRequest': self.loginInfo['BaseRequest'],
+            'CmdId': 2,
+            'RemarkName': RemarkName,
+            'UserName': UserName}
         headers = {'ContentType': 'application/json; charset=UTF-8'}
         r = self.s.post(url, data=json.dumps(payloads), headers=headers)
 

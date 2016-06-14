@@ -11,11 +11,30 @@ A (extensible) tunnel bot between chat protocols
     - [x] Basic Text processing
     - [ ] Controlling by command
     - [x] Chat association
+    - [x] Multimedia
+    - [x] Generate chat head
 - [ ] Wechat Slave Channel
     - [x] Basic Text/Link processing
+    - [x] Multimedia
 - [ ] WhatsApp Slave Channel
 - [ ] Line Slave Channel
 - [ ] QQ Slave channel
 - [ ] Documentations
 - [ ] More...
 
+## Dependencies
+
+### Python dependencies
+Refer to `requirements.txt`.
+
+### Non-Python dependencies
+* libmagic (for mime type detection)
+* libopus (Required by `eh-telegram-master` for voice encoding)
+* ffmpeg with libopus support (Required by `eh-telegram-master` for voice encoding)
+
+#### Install non-Python dependencies
+##### OS X / macOS
+
+1. Install [Homebrew](https://brew.sh)
+2. `brew install libmagic`
+3. `brew install ffmpeg --with-opus`

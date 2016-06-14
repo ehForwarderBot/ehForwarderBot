@@ -6,9 +6,11 @@ import logging
 import os
 import time
 import magic
+from PIL import Image
 from binascii import crc32
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
 from utils import extra
+from channelExceptions import EFBMessageTypeNotSupported
 
 def incomeMsgMeta(func):
     def wcFunc(self, msg, isGroupChat=False):
@@ -118,7 +120,7 @@ class WeChatChannel(EFBChannel):
         @itchat.msg_register(['Picture'], isGroupChat=True)
         def wcPictureGroup(msg):
             self.pictureMsg(msg, True)
-            
+
         @itchat.msg_register(['File'])
         def wcFile(msg):
             self.fileMsg(msg)
@@ -126,6 +128,22 @@ class WeChatChannel(EFBChannel):
         @itchat.msg_register(['File'], isGroupChat=True)
         def wcFileGroup(msg):
             self.fileMsg(msg, True)
+
+        @itchat.msg_register(['Recording'])
+        def wcRecording(msg):
+            self.voiceMsg(msg)
+
+        @itchat.msg_register(['Recording'], isGroupChat=True)
+        def wcRecordingGroup(msg):
+            self.voiceMsg(msg, True)
+
+        @itchat.msg_register(['Map'])
+        def wcLocation(msg):
+            self.locationMsg(msg)
+
+        @itchat.msg_register(['Map'], isGroupChat=True)
+        def wcLocationGroup(msg):
+            self.locationMsg(msg, True)
 
         itchat.run()
 
@@ -144,8 +162,8 @@ class WeChatChannel(EFBChannel):
     def locationMsg(self, msg, isGroupChat):
         mobj = EFBMsg(self)
         mobj.text = msg['Text']
-        loc = re.search("center=([0-9.]+),([0-9.]+)", requests.get(msg['text'].strip()).text).groups()
-        mobj.attributes = {"longitude": loc[0], "latitude": loc[1]}
+        loc = re.search("=-?([0-9.]+),-?([0-9.]+)", requests.get(msg['text'].strip()).text).groups()
+        mobj.attributes = {"longitude": float(loc[0]), "latitude": float(loc[1])}
         mobj.type = MsgType.Location
         return mobj
 
@@ -170,45 +188,74 @@ class WeChatChannel(EFBChannel):
 
     @incomeMsgMeta
     def stickerMsg(self, msg, isGroupChat=False):
-        fullpath, mime = self.save_file(msg, MsgType.Sticker)
         mobj = EFBMsg(self)
         mobj.type = MsgType.Sticker
+        mobj.path, mime = self.save_file(msg, mobj.type)
         mobj.text = None
-        mobj.file = open(fullpath, "rb")
+        mobj.file = open(mobj.path, "rb")
         mobj.mime = mime
         return mobj
 
     @incomeMsgMeta
     def pictureMsg(self, msg, isGroupChat=False):
-        fullpath, mime = self.save_file(msg, MsgType.Image)
         mobj = EFBMsg(self)
         mobj.type = MsgType.Image
+        mobj.path, mime = self.save_file(msg, mobj.type)
         mobj.text = None
-        mobj.file = open(fullpath, "rb")
+        mobj.file = open(mobj.path, "rb")
         mobj.mime = mime
         return mobj
 
     @incomeMsgMeta
     def fileMsg(self, msg, isGroupChat=False):
-        fullpath, mime = self.save_file(msg, MsgType.File)
         mobj = EFBMsg(self)
         mobj.type = MsgType.File
+        mobj.path, mobj.mime = self.save_file(msg, mobj.type)
         mobj.text = None
-        mobj.file = open(fullpath, "rb")
-        mobj.mime = mime
+        mobj.file = open(mobj.path, "rb")
+        return mobj
+
+    @incomeMsgMeta
+    def voiceMsg(self, msg, isGroupChat=False):
+        mobj = EFBMsg(self)
+        mobj.type = MsgType.Audio
+        mobj.path, mobj.mime = self.save_file(msg, mobj.type)
+        mobj.text = None
+        mobj.file = open(mobj.path, "rb")
+        return mobj
+
+    @incomeMsgMeta
+    def videoMsg(self, msg, isGroupChat=False):
+        mobj = EFBMsg(self)
+        mobj.path, mobj.mime = self.save_file(msg, MsgType.Video)
+        mobj.type = MsgType.Video
+        mobj.text = None
+        mobj.file = open(mobj.path, "rb")
         return mobj
 
     def save_file(self, msg, msg_type):
-        if not os.path.exists("storage/%s" % self.channel_id):
-            os.makedirs("storage/%s" % self.channel_id)
         path = os.path.join("storage", self.channel_id)
+        if not os.path.exists(path):
+            os.makedirs(path)
         filename = "%s_%s_%s" % (msg_type, msg['NewMsgId'], int(time.time()))
         fullpath = os.path.join(path, filename)
         msg['Text'](fullpath)
         mime = magic.from_file(fullpath, mime=True).decode()
-        return (fullpath, mine)
+        return (fullpath, mime)
 
     def send_message(self, msg):
+        """Send a message to WeChat.
+        Supports text, image, sticker, and file.
+
+        Args:
+            msg (channel.EFBMsg): Message Object to be sent.
+
+        Returns:
+            This method returns nothing.
+
+        Raises:
+            EFBMessageTypeNotSupported: Raised when message type is not supported by the channel.
+        """
         self.logger.info('msg.text %s', msg.text)
         UserName = self.get_UserName(msg.destination['uid'])
         self.logger.info("uid: %s\nUserName: %s\nNickName: %s" % (msg.destination['uid'], UserName, itchat.find_nickname(UserName)))
@@ -220,8 +267,22 @@ class WeChatChannel(EFBChannel):
                 elif msg.target['type'] == TargetType.Message:
                     msg.text = "@%s\u2005 「%s」\n\n%s" % (msg.target['target'].member['alias'], msg.target['target'].text, msg.text)
             itchat.send(msg.text, UserName)
-        if msg.type == MsgType.Image:
-            pass
+        elif msg.type in [MsgType.Image, MsgType.Sticker]:
+            if not msg.mime == "image/jpeg":  # Convert Image format
+                img = Image.open(msg.path)
+                bg = Image.new("RGB", img.size, (255, 255, 255))
+                bg.paste(img, img)
+                bg.save("%s.jpg" % msg.path)
+                msg.path = "%s.jpg" % msg.path
+            itchat.send_image(msg.path, UserName)
+            os.remove(msg.path)
+            if not msg.mime == "image/jpeg":
+                os.remove(msg.path[:-4])
+        elif msg.type == MsgType.File:
+            itchat.send_file(msg.path, UserName)
+            os.remove(msg.path)
+        else:
+            raise EFBMessageTypeNotSupported()
 
     @extra(name="Refresh Contacts and Groups list", desc="Refresh the list of contacts when unidentified contacts found.", emoji="🔁")
     def refresh_contacts(self):

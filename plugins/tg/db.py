@@ -71,6 +71,7 @@ def get_last_msg_from_chat(chat_id):
         Record: The last message from the chat
     """
     try:
+        return MsgLog.select().where(MsgLog.master_msg_id.startswith("%s." % chat_id)).first()
         return MsgLog.select().where(MsgLog.master_msg_id.startswith("%s." % chat_id)).order_by(MsgLog.id.desc()).first()
     except DoesNotExist:
         return None
@@ -101,9 +102,9 @@ def add_msg_log(**kwargs):
         msg_log.text = text
         msg_log.master_msg_id = master_msg_id
         msg_log.text = text
-        msg_log.slave_origin_uid = slave_origin_uid
         msg_log.msg_type = msg_type
         msg_log.sent_to = sent_to
+        msg_log.slave_origin_uid = slave_origin_uid
         msg_log.slave_origin_display_name = slave_origin_display_name
         msg_log.slave_member_uid = slave_member_uid
         msg_log.slave_member_display_name = slave_member_display_name
@@ -123,7 +124,8 @@ def add_msg_log(**kwargs):
 def get_msg_log(master_msg_id):
     logger.info("get_msg_log %s" % master_msg_id)
     try:
-        return MsgLog.select().where(master_msg_id=master_msg_id).order_by(MsgLog.id.desc()).first()
+        return MsgLog.select().where(MsgLog.master_msg_id == master_msg_id).first()
+        return MsgLog.select().where(MsgLog.master_msg_id == master_msg_id).order_by(MsgLog.id.desc()).first()
     except DoesNotExist:
         return None
 
