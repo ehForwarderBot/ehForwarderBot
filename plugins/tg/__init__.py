@@ -133,10 +133,16 @@ class TelegramChannel(EFBChannel):
 
         if msg.type in [MsgType.Text, MsgType.Link]:
             last_msg = db.get_last_msg_from_chat(tg_dest)
-            if msg.source == MsgSource.Group:
-                is_last_member = last_msg.slave_member_uid == msg.member['uid']
+            if last_msg:
+                if last_msg.msg_type == "Text":
+                    if msg.source == MsgSource.Group:
+                        is_last_member = str(last_msg.slave_member_uid) == str(msg.member['uid'])
+                    else:
+                        is_last_member = str(last_msg.slave_origin_uid) == "%s.%s" % (msg.channel_id, msg.origin['uid'])
+                else:
+                    is_last_member = False
             else:
-                is_last_member = last_msg.slave_origin_uid == "%s.%s" % (msg.channel_id, msg.origin['uid'])
+                is_last_member = False
             if tg_chat_assoced and is_last_member:
                 msg.text = "%s\n%s" % (last_msg.text, msg.text)
                 tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest, 
@@ -145,6 +151,9 @@ class TelegramChannel(EFBChannel):
             else:
                 tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text)
         elif msg.type in [MsgType.Image, MsgType.Sticker]:
+            if os.stat(msg.path).st_size == 0:
+                os.remove(msg.path)
+                return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s recieved" % msg.type))
             if not msg.text:
                 if msg.type == MsgType.Image:
                     msg.text = "sent a picture."
@@ -156,11 +165,17 @@ class TelegramChannel(EFBChannel):
                 tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template % msg.text)
             os.remove(msg.path)
         elif msg.type == MsgType.File:
+            if os.stat(msg.path).st_size == 0:
+                os.remove(msg.path)
+                return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s recieved" % msg.type))
             if not msg.text:
                 msg.text = "sent a file."
             tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
             os.remove(msg.path)
         elif msg.type == MsgType.Audio:
+            if os.stat(msg.path).st_size == 0:
+                os.remove(msg.path)
+                return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s recieved" % msg.type))
             pydub.AudioSegment.from_file(msg.file).export("%s.ogg" % msg.path, format="ogg", codec="libopus")
             ogg_file = open("%s.ogg" % msg.path, 'rb')
             if not msg.text:
@@ -172,6 +187,9 @@ class TelegramChannel(EFBChannel):
         elif msg.type == MsgType.Location:
             tg_msg = self.bot.bot.sendVenue(tg_dest, latitude=msg.attributes['latitude'], longitude=msg.attributes['longitude'], title=msg.text, address=msg_template % "")
         elif msg.type == MsgType.Video:
+            if os.stat(msg.path).st_size == 0:
+                os.remove(msg.path)
+                return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s recieved" % msg.type))
             if not msg.text:
                 msg.text = "sent a video."
             tg_msg = self.bot.bot.sendVideo(tg_dest, video=msg.file, caption=msg_template % msg.text)
@@ -187,7 +205,7 @@ class TelegramChannel(EFBChannel):
                    "slave_member_uid": msg.member['uid'],
                    "slave_member_display_name": msg.member['alias']}
         if tg_chat_assoced and is_last_member:
-            msg_log['id'] = last_msg.id
+            msg_log['update'] = True
         db.add_msg_log(**msg_log)
 
     def link_chat_show_list(self, bot, update):

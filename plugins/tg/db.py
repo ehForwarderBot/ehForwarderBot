@@ -112,11 +112,10 @@ def add_msg_log(**kwargs):
     slave_origin_display_name = kwargs.get('slave_origin_display_name', None)
     slave_member_uid = kwargs.get('slave_member_uid', None)
     slave_member_display_name = kwargs.get('slave_member_display_name', None)
-    msg_id = kwargs.get('ID', None)
-    if msg_id:
-        msg_log = MsgLog.get(MsgLog.id == msg_id)
+    update = kwargs.get('update', False)
+    if update:
+        msg_log = MsgLog.get(MsgLog.master_msg_id == master_msg_id)
         msg_log.text = text
-        msg_log.master_msg_id = master_msg_id
         msg_log.text = text
         msg_log.msg_type = msg_type
         msg_log.sent_to = sent_to

@@ -15,7 +15,6 @@ from channelExceptions import EFBMessageTypeNotSupported
 def incomeMsgMeta(func):
     def wcFunc(self, msg, isGroupChat=False):
         mobj = func(self, msg, isGroupChat)
-        print(msg)
         if isGroupChat:
             mobj.source = MsgSource.Group
             mobj.origin = {
@@ -40,13 +39,8 @@ def incomeMsgMeta(func):
             'alias': itchat.client().storageClass.nickName,
             'uid': self.get_uid(NickName=itchat.client().storageClass.userName)
         }
-        print('source', mobj.source)
-        print('origin', mobj.origin)
-        print('member', mobj.member)
-        print('destination', mobj.destination)
         logger = logging.getLogger("SlaveWC.%s" % __name__)
-        print("Slave - Wechat Incomming message:\nType: %s\nText: %s\n---\n" % (mobj.type, msg['Text']))
-        print("Added to queue\n")
+        logger.info("Slave - Wechat Incomming message:\nType: %s\nText: %s\n---\n" % (mobj.type, msg['Text']))
         self.queue.put(mobj)
 
     return wcFunc
@@ -155,7 +149,6 @@ class WeChatChannel(EFBChannel):
         mobj = EFBMsg(self)
         mobj.text = msg['Text']
         mobj.type = MsgType.Text
-        print("end textmsg")
         return mobj
 
     @incomeMsgMeta
