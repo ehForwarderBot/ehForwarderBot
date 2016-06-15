@@ -52,7 +52,10 @@ class BingSpeech:
         with open("%s.wav" % path, 'rb') as f:
             r = requests.post("https://speech.platform.bing.com/recognize", params=d, data=f.read(), headers=header)
         os.remove("%s.wav" % path)
-        rjson = r.json()
+        try:
+            rjson = r.json()
+        except:
+            return ["ERROR!", r.text]
         if r.status_code == 200:
             return [i['name'] for i in rjson['results']]
         else:
