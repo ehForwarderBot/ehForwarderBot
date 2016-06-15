@@ -8,7 +8,7 @@ import time
 import magic
 import os
 import pydub
-from . import db
+from . import db, speech
 from .whitelisthandler import WhitelistHandler
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
 from channelExceptions import EFBChatNotFound, EFBMessageTypeNotSupported
@@ -33,10 +33,21 @@ class TelegramChannel(EFBChannel):
 
     Author: Eana Hufwe <https://github.com/blueset>
 
+    External Services:
+        You may need API keys from following service providers to enjoy more functions.
+        Baidu Speech Recognition API: http://yuyin.baidu.com/
+        Bing Speech API: https://www.microsoft.com/cognitive-services/en-us/speech-api
+
     Additional configs:
     eh_telegram_master = {
-        "token": "123456789:1A2b3C4D5e6F7G8H9i0J1k2L3m4N5o6P7q8",
-        "admins": [12345678, 87654321]
+        "token": "Telegram bot token",
+        "admins": [12345678, 87654321],
+        "bing_speech_api": ["token1", "token2"],
+        "baidu_speech_api": {
+            "app_id": 123456,
+            "api_key": "APIkey",
+            "secret_key": "secret_key"
+        }
     }
     """
 
@@ -65,6 +76,7 @@ class TelegramChannel(EFBChannel):
         self.bot.dispatcher.add_handler(WhitelistHandler(config.eh_telegram_master['admins']))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("link", self.link_chat_show_list))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("chat", self.start_chat_list))
+        self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("recog", self.recognize_speech, pass_args=True))
         self.bot.dispatcher.add_handler(telegram.ext.CallbackQueryHandler(self.callback_query_dispatcher))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("start", self.start, pass_args=True))
         self.bot.dispatcher.add_handler(telegram.ext.MessageHandler(
@@ -476,6 +488,70 @@ class TelegramChannel(EFBChannel):
         elif update.message.from_user.id == update.message.chat.id and args == []:
             txt = "Welcome to EH Forwarder Bot.\n\nLearn more, please visit https://github.com/blueset/ehForwarderBot ."
             self.sendMessage(update.message.from_user.id, txt)
+
+    def recognize_speech(self, bot, update, args=[]):
+        class speechNotImplemented:
+            lang_list = []
+            
+            def __init__(self, *args, **kwargs):
+                pass
+
+            def recognize(self, *args, **kwargs):
+                return ["Not Implemented."]
+
+        if not getattr(update.message, "reply_to_message", None):
+            txt = "/recog [lang_code]\nReply to a voice with this command to recognised a voice.\nExamples:\n/recog\n/recog zh\n/recog en\n(RS01)"
+            return self._reply_error(bot, update, txt)
+        if not getattr(update.message.reply_to_message, "voice"):
+            return self._reply_error(bot, update, "Reply only to a voice with this command to recognised a voice. (RS02)")
+        try:
+            baidu_speech = speech.BaiduSpeech(config.eh_telegram_master['baidu_speech_api'])
+        except:
+            baidu_speech = speechNotImplemented()
+        try:
+            bing_speech = speech.BingSpeech(config.eh_telegram_master['bing_speech_api'])
+        except:
+            bing_speech = speechNotImplemented()
+        if len(args) > 0 and (args[0][:2] not in ['zh', 'en', 'ja'] or args[0] not in bing_speech.lang_list):
+            return self._reply_error(bot, update, "Language is not supported. Try with zh, ja or en. (RS03)")
+        if update.message.reply_to_message.voice.duration > 60:
+            return self._reply_error(bot, update, "Only voice shorter than 60s is supported. (RS04)")
+        path, mime = self._download_file(update.message, update.message.reply_to_message.voice.file_id, MsgType.Audio)
+
+        results = {}
+        if len(args) == 0:
+            results['Baidu (English)'] = baidu_speech.recognize(path, "en")
+            results['Baidu (Mandarin)'] = baidu_speech.recognize(path, "zh")
+            results['Bing (English)'] = bing_speech.recognize(path, "en-US")
+            results['Bing (Mandarin)'] = bing_speech.recognize(path, "zh-CN")
+            results['Bing (Japanese)'] = bing_speech.recognize(path, "ja-JP")
+        elif args[0][:2] == 'zh':
+            results['Baidu (Mandarin)'] = baidu_speech.recognize(path, "zh")
+            if args[0] in bing_speech.lang_list:
+                results['Bing (%s)' % args[0]] = bing_speech.recognize(path, args[0])
+            else:
+                results['Bing (Mandarin)'] = bing_speech.recognize(path, "zh-CN")
+        elif args[0][:2] == 'en':
+            results['Baidu (English)'] = baidu_speech.recognize(path, "en")
+            if args[0] in bing_speech.lang_list:
+                results['Bing (%s)' % args[0]] = bing_speech.recognize(path, args[0])
+            else:
+                results['Bing (English)'] = bing_speech.recognize(path, "en-US")
+        elif args[0][:2] == 'ja':
+            results['Bing (Japanese)'] = bing_speech.recognize(path, "ja-JP")
+        elif args[0][:2] == 'ct':
+            results['Baidu (Cantonese)'] = baidu_speech.recognize(path, "ct")
+        elif args[0] in bing_speech.lang_list:
+            results['Bing (%s)' % args[0]] = bing_speech.recognize(path, args[0])
+
+        msg = ""
+        for i in results:
+            msg += "\n*%s*:\n" % i
+            for j in results[i]:
+                msg += "%s\n" % j
+        msg = "Results:\n%s" % msg
+        bot.sendMessage(update.message.reply_to_message.chat.id, msg, reply_to_message_id=update.message.reply_to_message.message_id, parse_mode=telegram.ParseMode.MARKDOWN)
+        os.remove(path)
 
     def poll(self):
         self.bot.start_polling(network_delay=5)
