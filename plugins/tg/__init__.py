@@ -492,7 +492,7 @@ class TelegramChannel(EFBChannel):
     def recognize_speech(self, bot, update, args=[]):
         class speechNotImplemented:
             lang_list = []
-            
+
             def __init__(self, *args, **kwargs):
                 pass
 
@@ -512,7 +512,7 @@ class TelegramChannel(EFBChannel):
             bing_speech = speech.BingSpeech(config.eh_telegram_master['bing_speech_api'])
         except:
             bing_speech = speechNotImplemented()
-        if len(args) > 0 and (args[0][:2] not in ['zh', 'en', 'ja'] or args[0] not in bing_speech.lang_list):
+        if len(args) > 0 and (args[0][:2] not in ['zh', 'en', 'ja'] and args[0] not in bing_speech.lang_list):
             return self._reply_error(bot, update, "Language is not supported. Try with zh, ja or en. (RS03)")
         if update.message.reply_to_message.voice.duration > 60:
             return self._reply_error(bot, update, "Only voice shorter than 60s is supported. (RS04)")

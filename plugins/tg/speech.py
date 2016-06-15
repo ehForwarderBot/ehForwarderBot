@@ -52,7 +52,6 @@ class BingSpeech:
         with open("%s.wav" % path, 'rb') as f:
             r = requests.post("https://speech.platform.bing.com/recognize", params=d, data=f.read(), headers=header)
         os.remove("%s.wav" % path)
-        print(r.text)
         rjson = r.json()
         if r.status_code == 200:
             return [i['name'] for i in rjson['results']]
@@ -100,7 +99,6 @@ class BaiduSpeech:
             "speech": base64.b64encode(audio.raw_data).decode()
         }
         r = requests.post("http://vop.baidu.com/server_api", json=d)
-        print(r.text)
         rjson = r.json()
         if rjson['err_no'] == 0:
             return rjson['result']
