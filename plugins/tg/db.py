@@ -1,12 +1,15 @@
 import os
 import inspect
 import logging
+import datetime
 from peewee import *
+from playhouse.migrate import *
 
 basePath = os.path.dirname(os.path.abspath(inspect.stack()[0][1]))
 
 db = SqliteDatabase(basePath + '/tgdata.db')
 logger = logging.getLogger("masterTG.db.%s" % __name__)
+
 
 class BaseModel(Model):
 
@@ -28,10 +31,23 @@ class MsgLog(BaseModel):
     slave_member_display_name = CharField(null=True)
     msg_type = CharField()
     sent_to = CharField()
+    time = DateTimeField(default=datetime.datetime.now, null=True)
 
 
 def _create():
     db.create_tables([ChatAssoc, MsgLog])
+
+
+def _migrate(i):
+    if i == 0:
+        """
+        Migrate 0: Added Time column in MsgLog table.
+        2016JUN15
+        """
+        migrator = SqliteMigrator(db)
+        migrate(migrator.add_column("msglog", "time", DateTimeField(default=datetime.datetime.now, null=True)))
+    else:
+        return False
 
 
 def add_chat_assoc(master_uid, slave_uid):
@@ -71,6 +87,7 @@ def get_last_msg_from_chat(chat_id):
         Record: The last message from the chat
     """
     try:
+        return MsgLog.select().where(MsgLog.master_msg_id.startswith("%s." % chat_id)).order_by(MsgLog.time.desc()).first()
         return MsgLog.select().where(MsgLog.master_msg_id.startswith("%s." % chat_id)).first()
     except DoesNotExist:
         return None
@@ -123,6 +140,7 @@ def add_msg_log(**kwargs):
 def get_msg_log(master_msg_id):
     logger.info("get_msg_log %s" % master_msg_id)
     try:
+        return MsgLog.select().where(MsgLog.master_msg_id == master_msg_id).order_by(MsgLog.time.desc()).first()
         return MsgLog.select().where(MsgLog.master_msg_id == master_msg_id).first()
     except DoesNotExist:
         return None
@@ -130,3 +148,5 @@ def get_msg_log(master_msg_id):
 db.connect()
 if not ChatAssoc.table_exists():
     _create()
+elif "time" not in [i.name for i in db.get_columns("msglog")]:
+    _migrate(0)
