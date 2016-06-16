@@ -346,7 +346,8 @@ class client:
                     def download_atta(attaDir):
                         cookiesList = {name: data for name,
                                        data in list(self.s.cookies.items())}
-                        url = 'https://file2.wx.qq.com/cgi-bin/mmwebwx-bin/webwxgetmedia'
+                        url = 'https://file%s.wx2.qq.com/cgi-bin/mmwebwx-bin/webwxgetmedia' % ('2' if '2' in self.loginInfo['url'] else '')
+                        print("Media ID", m['MediaId'], "FileName", m['FileName'])
                         payloads = {
                             'sender': m['FromUserName'],
                             'mediaid': m['MediaId'],
@@ -354,6 +355,8 @@ class client:
                             'fromuser': self.loginInfo['wxuin'],
                             'pass_ticket': 'undefined',
                             'webwx_data_ticket': cookiesList['webwx_data_ticket'], }
+                        payloads = tools.urlencode_withoutplus(payloads)
+                        print("downloadattaurl", url, payloads)
                         r = self.s.get(url, params=payloads, stream=True)
                         with open(attaDir, 'wb') as f:
                             for block in r.iter_content(1024):
@@ -484,9 +487,11 @@ class client:
             payloads, ensure_ascii=False).encode('utf-8'), headers=headers)
         return r
 
-    def __upload_file(self, fileDir, toUserName, file_type="doc"):
+    def __upload_file(self, fileDir, toUserName, file_type="doc", filename=None):
         if not tools.check_file(fileDir):
             return
+        if not filename:
+            filename = os.path.basename(fileDir)
         url = 'https://file.web%s.wechat.com/cgi-bin/mmwebwx-bin/webwxuploadmedia?f=json' % (
             '2' if '2' in self.loginInfo['url'] else '')
         self.s.options(url)
@@ -498,7 +503,7 @@ class client:
         self.media_count += 1
         files = {
             'id': (None, 'WU_FILE_%s' % self.media_count),
-            'name': (None, os.path.basename(fileDir)),
+            'name': (None, filename),
             'type': (None, fileType),
             'lastModifiedDate': (None, time.strftime('%a %b %d %Y %H:%M:%S GMT+0800 (CST)')),
             'size': (None, fileSize),
@@ -517,18 +522,22 @@ class client:
             }, separators=(',', ':'))),
             'webwx_data_ticket': (None, cookiesList['webwx_data_ticket']),
             'pass_ticket': (None, 'undefined'),
-            'filename': (os.path.basename(fileDir), open(fileDir, 'rb'), fileType),
+            'filename': (filename, open(fileDir, 'rb'), fileType),
         }
         headers = {
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36', }
         r = self.s.post(url, files=files, headers=headers)
-        print("Uploaded response", r.headers, r.text)
+
+        print("Uploaded request", r.request.body)
+        print("Uploaded response", r.headers, r.text, r.status_code)
         return json.loads(r.text)['MediaId']
 
-    def send_file(self, fileDir, toUserName=None, isGIF=False):
+    def send_file(self, fileDir, toUserName=None, isGIF=False, filename=None):
         if toUserName is None:
             toUserName = self.storageClass.userName
-        mediaId = self.__upload_file(fileDir, toUserName, file_type="doc")
+        if not filename:
+            filename = os.path.basename(fileDir)
+        mediaId = self.__upload_file(fileDir, toUserName, file_type="doc", filename=filename)
         if mediaId is None:
             return False
         url = '%s/webwxsendappmsg?fun=async&f=json' % self.loginInfo['url']
@@ -536,10 +545,10 @@ class client:
             'BaseRequest': self.loginInfo['BaseRequest'],
             'Msg': {
                 'Type': 6,
-                'Content': ("<appmsg appid='wxeb7ec651dd0aefa9' sdkver=''><title>%s</title>" % os.path.basename(fileDir) +
+                'Content': ("<appmsg appid='wxeb7ec651dd0aefa9' sdkver=''><title>%s</title>" % filename +
                             "<des></des><action></action><type>6</type><content></content><url></url><lowurl></lowurl>" +
                             "<appattach><totallen>%s</totallen><attachid>%s</attachid>" % (str(os.path.getsize(fileDir)), mediaId) +
-                            "<fileext>%s</fileext></appattach><extinfo></extinfo></appmsg>" % os.path.splitext(fileDir)[
+                            "<fileext>%s</fileext></appattach><extinfo></extinfo></appmsg>" % os.path.splitext(filename)[
                     1].replace('.', '')
                 ),
                 'FromUserName': self.storageClass.userName,

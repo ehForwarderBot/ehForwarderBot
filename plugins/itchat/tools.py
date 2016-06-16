@@ -2,6 +2,7 @@ import re
 import html
 import hashlib
 import os
+import urllib
 from functools import partial
 from . import config
 
@@ -46,3 +47,14 @@ def md5sum(filename):
         for buf in iter(partial(f.read, 128), b''):
             d.update(buf)
     return d.hexdigest()
+
+
+def urlencode_withoutplus(query):
+    if hasattr(query, 'items'):
+        query = query.items()
+    l = []
+    for k, v in query:
+        k = urllib.parse.quote(str(k), safe="!#$%&'()*+,/:;=?@~")
+        v = urllib.parse.quote(str(v), safe="!#$%&'()*+,/:;=?@~")
+        l.append(k + '=' + v)
+    return '&'.join(l)

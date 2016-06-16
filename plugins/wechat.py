@@ -6,6 +6,7 @@ import logging
 import os
 import time
 import magic
+import mimetypes
 from PIL import Image
 from binascii import crc32
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
@@ -115,11 +116,11 @@ class WeChatChannel(EFBChannel):
         def wcPictureGroup(msg):
             self.pictureMsg(msg, True)
 
-        @itchat.msg_register(['File'])
+        @itchat.msg_register(['Attachment'])
         def wcFile(msg):
             self.fileMsg(msg)
 
-        @itchat.msg_register(['File'], isGroupChat=True)
+        @itchat.msg_register(['Attachment'], isGroupChat=True)
         def wcFileGroup(msg):
             self.fileMsg(msg, True)
 
@@ -204,7 +205,7 @@ class WeChatChannel(EFBChannel):
         mobj = EFBMsg(self)
         mobj.type = MsgType.File
         mobj.path, mobj.mime = self.save_file(msg, mobj.type)
-        mobj.text = None
+        mobj.text = msg['FileName']
         mobj.file = open(mobj.path, "rb")
         return mobj
 
@@ -234,6 +235,10 @@ class WeChatChannel(EFBChannel):
         fullpath = os.path.join(path, filename)
         msg['Text'](fullpath)
         mime = magic.from_file(fullpath, mime=True).decode()
+        ext = mimetypes.guess_extension(mime)
+        os.rename(fullpath, "%s.%s" % (fullpath, ext))
+        fullpath = "%s.%s" % (fullpath, ext)
+        self.logger.info("File saved from WeChat\nFull path: %s\nMIME: %s", fullpath, mime)
         return (fullpath, mime)
 
     def send_message(self, msg):
@@ -282,7 +287,8 @@ class WeChatChannel(EFBChannel):
                 os.remove(msg.path[:-4])
             return r
         elif msg.type == MsgType.File:
-            r = itchat.send_file(msg.path, UserName)
+            self.logger.info("Sending file to WeChat\nFileName: %s\nPath: %s", msg.text, msg.path)
+            r = itchat.send_file(msg.path, UserName, filename=msg.text)
             os.remove(msg.path)
             return r
         else:

@@ -7,6 +7,7 @@ import logging
 import time
 import magic
 import os
+import mimetypes
 import pydub
 from . import db, speech
 from .whitelisthandler import WhitelistHandler
@@ -163,6 +164,7 @@ class TelegramChannel(EFBChannel):
             else:
                 tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text)
         elif msg.type in [MsgType.Image, MsgType.Sticker]:
+            self.logger.info("recieved Image/Sticker \nPath: %s\nSize: %s\nMIME: %s", msg.path, os.stat(msg.path).st_size, msg.mime)
             if os.stat(msg.path).st_size == 0:
                 os.remove(msg.path)
                 return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s recieved" % msg.type))
@@ -181,8 +183,11 @@ class TelegramChannel(EFBChannel):
                 os.remove(msg.path)
                 return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s recieved" % msg.type))
             if not msg.text:
+                file_name = os.path.basename(msg.path)
                 msg.text = "sent a file."
-            tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
+            else:
+                file_name = msg.text
+            tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text, filename=file_name)
             os.remove(msg.path)
         elif msg.type == MsgType.Audio:
             if os.stat(msg.path).st_size == 0:
@@ -448,7 +453,7 @@ class TelegramChannel(EFBChannel):
                 m.file = open(m.path, "rb")
             elif mtype == TGMsgType.Document:
                 m.type = MsgType.File
-                m.text = None
+                m.text = update.message.document.file_name
                 tg_file_id = update.message.document.file_id
                 m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
                 m.file = open(m.path, "rb")
@@ -470,6 +475,9 @@ class TelegramChannel(EFBChannel):
         fullpath = os.path.join(path, fname)
         f.download(fullpath)
         mime = magic.from_file(fullpath, mime=True).decode()
+        ext = mimetypes.guess_extension(mime)
+        os.rename(fullpath, "%s.%s" % (fullpath, ext))
+        fullpath = "%s.%s" % (fullpath, ext)
         return fullpath, mime
 
     def start(self, bot, update, args=[]):
