@@ -12,7 +12,7 @@ def ErrorIgnore(fn, *args, **kwargs):
     return wrapped
 
 @ErrorIgnore
-def print_line(msg, oneLine = False):
+def print_line(msg, oneLine=False):
     if oneLine:
         sys.stdout.write(' '*40 + '\r')
         sys.stdout.flush()

@@ -5,6 +5,7 @@ import time
 import re
 import _thread
 import subprocess
+import logging
 import json
 import xml.dom.minidom
 import magic
@@ -23,6 +24,7 @@ class client:
         self.s = requests.Session()
         self.uuid = None
         self.media_count = 0
+        self.status = False
 
     def auto_login(self):
         def open_QR():
@@ -55,7 +57,8 @@ class client:
         self.get_contract()
         out.print_line('Login successfully as %s\n' % (
             self.storageClass.find_nickname(self.storageClass.userName)), False)
-        self.start_receiving()
+        self.status = True
+        return self.start_receiving()
 
     def get_QRuuid(self):
         url = '%s/jslogin' % BASE_URL
@@ -237,9 +240,11 @@ class client:
                     i = self.__sync_check()
                     count = 0
                 except Exception as e:
+                    logging.exception(e)
                     count += 1
                     time.sleep(count * 3)
             out.print_line('LOG OUT', False)
+            self.status = False
         _thread.start_new_thread(maintain_loop, ())
 
     def __sync_check(self):

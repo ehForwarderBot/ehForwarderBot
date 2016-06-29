@@ -141,6 +141,22 @@ class WeChatChannel(EFBChannel):
             self.locationMsg(msg, True)
 
         itchat.run()
+        while True:
+            if not itchat.client().status:
+                msg = EFBMsg(self)
+                msg.type = MsgType.Text
+                msg.source = MsgType.System
+                msg.origin = {
+                    "name": "EFB System",
+                    "alias": "EFB System",
+                    "uid": None
+                }
+                mobj.destination = {
+                    'name': itchat.client().storageClass.nickName,
+                    'alias': itchat.client().storageClass.nickName,
+                    'uid': self.get_uid(NickName=itchat.client().storageClass.userName)
+                }
+                msg.text = "Logged out unexpectedly."
 
     @incomeMsgMeta
     def textMsg(self, msg, isGroupChat=False):

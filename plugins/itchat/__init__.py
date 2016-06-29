@@ -23,7 +23,7 @@ def find_remarkname(n): return __client.find_remarkname(n)
 # <<<
 # if toUserName is set to None, msg will be sent to yourself
 def send_msg(msg = 'Test Message', toUserName = None): return __client.send_msg(msg, toUserName)
-def send_file(fileDir, toUserName, **kwargs): return __client.send_file(fileDir, toUserName, **kwargs)
+def send_file(fileDir, toUserName, isGIF=False, filename=None): return __client.send_file(fileDir, toUserName, isGIF=isGIF, filename=filename)
 def send_image(fileDir, toUserName): return __client.send_image(fileDir, toUserName)
 def send_video(fileDir, toUserName): return __client.send_video(fileDir, toUserName)
 def add_friend(Status, UserName, Ticket): return __client.add_friend(Status, UserName, Ticket)

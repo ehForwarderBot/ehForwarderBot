@@ -1,3 +1,4 @@
+# coding=utf-8
 import telegram
 import telegram.ext
 import config
@@ -89,6 +90,25 @@ class TelegramChannel(EFBChannel):
         ))
         self.bot.dispatcher.add_error_handler(self.error)
 
+    # Truncate string by bytes
+    # Written by Mark Tolonen
+    # http://stackoverflow.com/a/13738452/1989455
+
+    def _utf8_lead_byte(self, b):
+        '''A UTF-8 intermediate byte starts with the bits 10xxxxxx.'''
+        return (b & 0xC0) != 0x80
+
+    def _utf8_byte_truncate(self, text, max_bytes):
+        '''If text[max_bytes] is not a lead byte, back up until a lead byte is
+        found and truncate before that character.'''
+        utf8 = text.encode('utf8')
+        if len(utf8) <= max_bytes:
+            return utf8.decode()
+        i = max_bytes
+        while i > 0 and not self._utf8_lead_byte(utf8[i]):
+            i -= 1
+        return utf8[:i].decode()
+
     def callback_query_dispatcher(self, bot, update):
         # Get essential information about the query
         query = update.callback_query
@@ -125,7 +145,8 @@ class TelegramChannel(EFBChannel):
         # Generate chat text template & Decide type target
 
         if msg.source == MsgSource.Group:
-            msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "%s (%s)" % (msg.member['alias'], msg.member['name'])
+            msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "%s (%s)" % (
+                msg.member['alias'], msg.member['name'])
         if tg_chat:  # if this chat is linked
             tg_dest = int(tg_chat.split('.')[1])
             tg_chat_assoced = True
@@ -136,7 +157,8 @@ class TelegramChannel(EFBChannel):
         else:  # when chat is not linked
             tg_dest = config.eh_telegram_master['admins'][0]
             emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
-            name_prefix = msg.origin["alias"] if msg.origin["alias"] == msg.origin["name"] else "%s (%s)" % (msg.origin["alias"], msg.origin["name"])
+            name_prefix = msg.origin["alias"] if msg.origin["alias"] == msg.origin["name"] else "%s (%s)" % (
+                msg.origin["alias"], msg.origin["name"])
             if msg_prefix:
                 msg_template = "%s %s [%s]:\n%s" % (emoji_prefix, msg_prefix, name_prefix, "%s")
             else:
@@ -158,13 +180,14 @@ class TelegramChannel(EFBChannel):
                 is_last_member = False
             if tg_chat_assoced and is_last_member:
                 msg.text = "%s\n%s" % (last_msg.text, msg.text)
-                tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest, 
-                    message_id=last_msg.master_msg_id.split(".", 2)[1],
-                    text=msg_template % msg.text)
+                tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest,
+                                                      message_id=last_msg.master_msg_id.split(".", 2)[1],
+                                                      text=msg_template % msg.text)
             else:
                 tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text)
         elif msg.type in [MsgType.Image, MsgType.Sticker]:
-            self.logger.info("recieved Image/Sticker \nPath: %s\nSize: %s\nMIME: %s", msg.path, os.stat(msg.path).st_size, msg.mime)
+            self.logger.info("recieved Image/Sticker \nPath: %s\nSize: %s\nMIME: %s", msg.path,
+                             os.stat(msg.path).st_size, msg.mime)
             if os.stat(msg.path).st_size == 0:
                 os.remove(msg.path)
                 return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s recieved" % msg.type))
@@ -202,7 +225,9 @@ class TelegramChannel(EFBChannel):
             os.remove("%s.ogg" % msg.path)
             self.bot.bot.sendVoice(tg_dest, ogg_file, reply_to_message_id=tg_msg.message_id)
         elif msg.type == MsgType.Location:
-            tg_msg = self.bot.bot.sendVenue(tg_dest, latitude=msg.attributes['latitude'], longitude=msg.attributes['longitude'], title=msg.text, address=msg_template % "")
+            tg_msg = self.bot.bot.sendVenue(tg_dest, latitude=msg.attributes['latitude'],
+                                            longitude=msg.attributes['longitude'], title=msg.text,
+                                            address=msg_template % "")
         elif msg.type == MsgType.Video:
             if os.stat(msg.path).st_size == 0:
                 os.remove(msg.path)
@@ -271,7 +296,7 @@ class TelegramChannel(EFBChannel):
                 button_text = "%s%s: %s%s" % (slave_emoji, chat_type, chat_name, linked)
                 button_callback = "%s\x1f%s" % (uid, chat_name)
                 chat_btn_list.append(
-                    [telegram.InlineKeyboardButton(button_text, callback_data=button_callback[:32])])
+                    [telegram.InlineKeyboardButton(button_text, callback_data=self._utf8_byte_truncate(button_callback, 64))])
         chat_btn_list.append([telegram.InlineKeyboardButton("Cancel", callback_data=Flags.CANCEL_PROCESS)])
         msg_text = "Please choose the chat you want to link with ...\n\nLegend:\n"
         for i in legend:
@@ -296,10 +321,12 @@ class TelegramChannel(EFBChannel):
         txt += "\nWhat would you like to do?"
 
         if linked:
-            btn_list = [telegram.InlineKeyboardButton("Relink", url="https://telegram.me/%s?startgroup=%s" % (self.me.username, urllib.parse.quote(chat_uid))),
-                        telegram.InlineKeyboardButton("Unlink", callback_data="%s\x1fUnlink" % callback_uid)]
+            btn_list = [telegram.InlineKeyboardButton("Relink", url="https://telegram.me/%s?startgroup=%s" % (
+                self.me.username, urllib.parse.quote(chat_uid))),
+                        telegram.InlineKeyboardButton("Unlink", callback_data=self._utf8_byte_truncate("%s\x1fUnlink" % callback_uid, 64))]
         else:
-            btn_list = [telegram.InlineKeyboardButton("Link", url="https://telegram.me/%s?startgroup=%s" % (self.me.username, urllib.parse.quote(chat_uid)))]
+            btn_list = [telegram.InlineKeyboardButton("Link", url="https://telegram.me/%s?startgroup=%s" % (
+                self.me.username, urllib.parse.quote(chat_uid)))]
         btn_list.append(telegram.InlineKeyboardButton("Cancel", callback_data=Flags.CANCEL_PROCESS))
 
         bot.editMessageText(text=txt,
@@ -347,12 +374,13 @@ class TelegramChannel(EFBChannel):
                 button_text = "%s%s: %s" % (slave_emoji, chat_type, chat_name)
                 button_callback = "%s\x1f%s" % (uid, chat_name)
                 chat_btn_list.append(
-                    [telegram.InlineKeyboardButton(button_text, callback_data=button_callback[:32])])
+                    [telegram.InlineKeyboardButton(button_text, callback_data=self._utf8_byte_truncate(button_callback, 64))])
         chat_btn_list.append([telegram.InlineKeyboardButton("Cancel", callback_data=Flags.CANCEL_PROCESS)])
         msg_text = "Choose a chat you want to start with...\n\nLegend:\n"
         for i in legend:
             msg_text += "%s\n" % i
-        msg = bot.sendMessage(update.message.from_user.id, text=msg_text, reply_markup=telegram.InlineKeyboardMarkup(chat_btn_list))
+        msg = bot.sendMessage(update.message.from_user.id, text=msg_text,
+                              reply_markup=telegram.InlineKeyboardMarkup(chat_btn_list))
         self.msg_status[msg.message_id] = Flags.START_CHOOSE_CHAT
 
     def make_chat_head(self, bot, tg_chat_id, tg_msg_id, callback_uid):
@@ -383,13 +411,16 @@ class TelegramChannel(EFBChannel):
             assoc = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
             if getattr(update.message, "reply_to_message", None):
                 try:
-                    targetlog = db.get_msg_log("%s.%s" % (update.message.reply_to_message.chat.id, update.message.reply_to_message.message_id))
+                    targetlog = db.get_msg_log(
+                        "%s.%s" % (update.message.reply_to_message.chat.id, update.message.reply_to_message.message_id))
                     target = targetlog.slave_origin_uid
                     targetChannel, targetUid = target.split('.', 2)
                 except:
                     return self._reply_error(bot, update, "Unknown recipient (UC03).")
-        elif (update.message.chat.id == update.message.from_user.id) and getattr(update.message, "reply_to_message", None):  # reply to user
-            assoc = db.get_msg_log("%s.%s" % (update.message.reply_to_message.chat.id, update.message.reply_to_message.message_id)).slave_origin_uid
+        elif (update.message.chat.id == update.message.from_user.id) and getattr(update.message, "reply_to_message",
+                                                                                 None):  # reply to user
+            assoc = db.get_msg_log("%s.%s" % (
+                update.message.reply_to_message.chat.id, update.message.reply_to_message.message_id)).slave_origin_uid
         else:
             return self._reply_error(bot, update, "Unknown recipient (UC01).")
         if not assoc:
@@ -511,7 +542,8 @@ class TelegramChannel(EFBChannel):
             txt = "/recog [lang_code]\nReply to a voice with this command to recognised a voice.\nExamples:\n/recog\n/recog zh\n/recog en\n(RS01)"
             return self._reply_error(bot, update, txt)
         if not getattr(update.message.reply_to_message, "voice"):
-            return self._reply_error(bot, update, "Reply only to a voice with this command to recognised a voice. (RS02)")
+            return self._reply_error(bot, update,
+                                     "Reply only to a voice with this command to recognised a voice. (RS02)")
         try:
             baidu_speech = speech.BaiduSpeech(config.eh_telegram_master['baidu_speech_api'])
         except:
@@ -558,7 +590,9 @@ class TelegramChannel(EFBChannel):
             for j in results[i]:
                 msg += "%s\n" % j
         msg = "Results:\n%s" % msg
-        bot.sendMessage(update.message.reply_to_message.chat.id, msg, reply_to_message_id=update.message.reply_to_message.message_id, parse_mode=telegram.ParseMode.MARKDOWN)
+        bot.sendMessage(update.message.reply_to_message.chat.id, msg,
+                        reply_to_message_id=update.message.reply_to_message.message_id,
+                        parse_mode=telegram.ParseMode.MARKDOWN)
         os.remove(path)
 
     def poll(self):

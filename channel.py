@@ -166,7 +166,7 @@ class EFBMsg:
             text = "Name of the location"
             attributes = {
                 "longitude": float("A float number indicating longitude"),
-                "latitute": float("A float number indicating latitude")
+                "latitude": float("A float number indicating latitude")
             }
             ```
 
