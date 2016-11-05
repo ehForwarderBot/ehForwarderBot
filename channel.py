@@ -71,7 +71,7 @@ class EFBChannel:
 
 
 class EFBMsg:
-    """A message
+    """A message.
 
     Attributes:
         attributes (dict): Attributes used for a specific message type

@@ -2,6 +2,8 @@
 A (extensible) tunnel bot between chat protocols  
 ![Python 3.x](https://img.shields.io/badge/Python-3.x-blue.svg)
 
+![EFB](https://images.1a23.com/upload/images/SPET.png)
+
 ## Progress
 - [ ] Structural stuff
     - [x] Inter-channel communication
@@ -23,6 +25,11 @@ A (extensible) tunnel bot between chat protocols
 - [ ] QQ Slave Channel
 - [ ] IRC Slave Channel
 - [ ] Documentations
+    - [x] Walk-through
+    - [x] Slave channel
+    - [ ] Master channel
+    - [ ] EFBMsg specification
+    - [ ] Tutorial/Commented example
 - [ ] and more...
 
 ## Dependencies

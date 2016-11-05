@@ -72,7 +72,7 @@ class TelegramChannel(EFBChannel):
             self.bot = telegram.ext.Updater(config.eh_telegram_master['token'])
         except (AttributeError, KeyError):
             raise NameError("Token is not properly defined. Please define it in `config.py`.")
-
+        mimetypes.init()
         self.logger = logging.getLogger("masterTG.%s" % __name__)
         self.me = self.bot.bot.get_me()
         self.bot.dispatcher.add_handler(WhitelistHandler(config.eh_telegram_master['admins']))
@@ -526,7 +526,7 @@ class TelegramChannel(EFBChannel):
                 self.msg_status.pop(chat_uid, False)
         elif update.message.from_user.id == update.message.chat.id and args == []:
             txt = "Welcome to EH Forwarder Bot.\n\nLearn more, please visit https://github.com/blueset/ehForwarderBot ."
-            self.sendMessage(update.message.from_user.id, txt)
+            bot.sendMessage(update.message.from_user.id, txt)
 
     def recognize_speech(self, bot, update, args=[]):
         class speechNotImplemented:

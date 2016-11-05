@@ -2,7 +2,7 @@ class EFBChatNotFound(Exception):
     pass
 
 
-class EFBmessageNotFound(Exception):
+class EFBMessageNotFound(Exception):
     pass
 
 

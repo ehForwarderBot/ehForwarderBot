@@ -1,4 +1,4 @@
-from . import itchat
+import itchat
 import requests
 import re
 import xmltodict
@@ -62,7 +62,7 @@ class WeChatChannel(EFBChannel):
 
     def __init__(self, queue):
         super().__init__(queue)
-        itchat.auto_login()
+        itchat.auto_login(enableCmdQR=True, hotReload=True)
         self.logger = logging.getLogger("SlaveWC.%s" % __name__)
         self.logger.info("Inited!!!\n---")
 
@@ -139,6 +139,14 @@ class WeChatChannel(EFBChannel):
         @itchat.msg_register(['Map'], isGroupChat=True)
         def wcLocationGroup(msg):
             self.locationMsg(msg, True)
+
+        @itchat.msg_register(['Video'])
+        def wcVideo(msg):
+            self.videoMsg(msg)
+
+        @itchat.msg_register(['Video'], isGroupChat=True)
+        def wcVideoGroup(msg):
+            self.videoMsg(msg, True)
 
         itchat.run()
         while True:
@@ -321,6 +329,7 @@ class WeChatChannel(EFBChannel):
             for i in t:
                 r.append({
                     'channel_name': self.channel_name,
+                    'channel_id': self.channel_id,
                     'name': i['NickName'],
                     'alias': i['RemarkName'] or i['NickName'],
                     'uid': self.get_uid(UserName=i['UserName']),
