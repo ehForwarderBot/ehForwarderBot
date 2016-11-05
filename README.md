@@ -35,10 +35,10 @@ A (extensible) tunnel bot between chat protocols
 ## Dependencies
 
 ### Non-Python dependencies
-* gcc (for building `pillow`)
-* libmagic (for mime type detection)
-* libopus (Required by `eh-telegram-master` for voice encoding)
-* ffmpeg with libopus support (Required by `eh-telegram-master` for voice encoding)
+* __gcc__ (for building `pillow`)
+* __libmagic__ (for mime type detection)
+* __libopus__ (Required by `eh-telegram-master` for voice encoding)
+* __ffmpeg__ with libopus support (Required by `eh-telegram-master` for voice encoding)
 * Everything required by `pillow`, including:
     * `libjpeg, zlib, libwebp, (libtiff, libfreetype, openjpeg, tk, littlecms)`
 
