@@ -28,7 +28,7 @@ A (extensible) tunnel bot between chat protocols
     - [x] Walk-through
     - [x] Slave channel
     - [ ] Master channel
-    - [ ] EFBMsg specification
+    - [x] EFBMsg specification
     - [ ] Tutorial/Commented example
 - [ ] and more...
 
