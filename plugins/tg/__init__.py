@@ -63,7 +63,11 @@ class TelegramChannel(EFBChannel):
     slaves = None
     bot = None
     msg_status = {}
+    msg_storage = {}
     me = None
+
+    # Constants
+    INLINE_CHAT_PER_PAGE = 10
 
     def __init__(self, queue, slaves):
         super().__init__(queue)
@@ -95,12 +99,12 @@ class TelegramChannel(EFBChannel):
     # http://stackoverflow.com/a/13738452/1989455
 
     def _utf8_lead_byte(self, b):
-        '''A UTF-8 intermediate byte starts with the bits 10xxxxxx.'''
+        """A UTF-8 intermediate byte starts with the bits 10xxxxxx."""
         return (b & 0xC0) != 0x80
 
     def _utf8_byte_truncate(self, text, max_bytes):
-        '''If text[max_bytes] is not a lead byte, back up until a lead byte is
-        found and truncate before that character.'''
+        """If text[max_bytes] is not a lead byte, back up until a lead byte is
+        found and truncate before that character."""
         utf8 = text.encode('utf8')
         if len(utf8) <= max_bytes:
             return utf8.decode()
@@ -129,7 +133,8 @@ class TelegramChannel(EFBChannel):
                                 chat_id=chat_id,
                                 message_id=msg_id)
 
-    def _reply_error(self, bot, update, errmsg):
+    @staticmethod
+    def _reply_error(bot, update, errmsg):
         return bot.sendMessage(update.message.chat.id, errmsg, reply_to_message_id=update.message.message_id)
 
     def process_msg(self, msg):
@@ -250,29 +255,8 @@ class TelegramChannel(EFBChannel):
             msg_log['update'] = True
         db.add_msg_log(**msg_log)
 
-    def link_chat_show_list(self, bot, update):
-        user_id = update.message.from_user.id
-        # if message sent from a group
-        if not update.message.chat.id == update.message.from_user.id:
-            init_msg = bot.sendMessage(self.me.id, "Processing...")
-            try:
-                cid = db.get_chat_assoc(update.message.chat.id).slave_cid
-                return self.link_chat_confirm(bot, init_msg.fsom_chat.id, init_msg.message_id, cid)
-            except:
-                return bot.editMessageText(chat_id=update.message.chat.id,
-                                           message_id=init_msg.message_id,
-                                           text="No chat is found linked with this group. Please send /link privately to link a chat.")
+    def slave_chats_pagination(self, message_id, offset=0):
 
-        # if message ir replied to an existing one
-        if update.message.reply_to_message:
-            init_msg = bot.sendMessage(self.me.id, "Processing...")
-            try:
-                cid = db.get_chat_log(update.message.reply_to_message.message_id).slave_origin_uid
-                return self.link_chat_confirm(bot, init_msg.fsom_chat.id, init_msg.message_id, cid)
-            except:
-                return bot.editMessageText(chat_id=update.message.chat.id,
-                                           message_id=init_msg.message_id,
-                                           text="No chat is found linked with this group. Please send /link privately to link a chat.")
         legend = [
             "%s: Linked" % utils.Emojis.LINK_EMOJI,
             "%s: User" % utils.Emojis.USER_EMOJI,
@@ -280,42 +264,126 @@ class TelegramChannel(EFBChannel):
             "%s: System" % utils.Emojis.SYSTEM_EMOJI,
             "%s: Unknown" % utils.Emojis.UNKNOWN_EMOJI
         ]
+
+        if self.msg_storage.get(message_id, None):
+            chats = self.msg_storage[message_id]['chats']
+            channels = self.msg_storage[message_id]['channels']
+            count = self.msg_storage[message_id]['count']
+        else:
+            chats = []
+            channels = {}
+            for slave_id in self.slaves:
+                slave = self.slaves[slave_id]
+                slave_chats = slave.get_chats()
+                channels[slave.channel_id] = {
+                    "channel_name": slave.channel_name,
+                    "channel_emoji": slave.channel_emoji
+                }
+                for chat in slave_chats:
+                    c = {
+                        "channel_id": slave.channel_id,
+                        "channel_name": slave.channel_name,
+                        "channel_emoji": slave.channel_emoji,
+                        "chat_name": chat['name'],
+                        "chat_alias": chat['alias'],
+                        "chat_uid": chat['uid']
+                    }
+                    chats.append(c)
+            count = len(chats)
+            self.msg_storage[message_id] = {
+                "offset": offset,
+                "count": len(chats),
+                "chats": chats.copy(),
+                "channels": channels.copy()
+            }
+
+        for ch in channels:
+            legend.append("%s: %s" % (channels[ch]['channel_emoji'], channels[ch]['channel_name']))
+
+        # Build inline button list
         chat_btn_list = []
-        for slave_id in self.slaves:
-            slave = self.slaves[slave_id]
-            slave_chats = slave.get_chats()
-            # slave_id = slave.channel_id
-            slave_name = slave.channel_name
-            slave_emoji = slave.channel_emoji
-            legend.append("%s: %s" % (slave_emoji, slave_name))
-            for chat in slave_chats:
-                uid = "%s.%s" % (slave_id, chat['uid'])
-                linked = utils.Emojis.LINK_EMOJI if bool(db.get_chat_assoc(slave_uid=uid)) else ""
-                chat_type = utils.Emojis.get_source_emoji(chat['type'])
-                chat_name = chat['alias'] if chat['name'] == chat['alias'] else "%s(%s)" % (chat['alias'], chat['name'])
-                button_text = "%s%s: %s%s" % (slave_emoji, chat_type, chat_name, linked)
-                button_callback = "%s\x1f%s" % (uid, chat_name)
-                chat_btn_list.append(
-                    [telegram.InlineKeyboardButton(button_text, callback_data=self._utf8_byte_truncate(button_callback, 64))])
-        chat_btn_list.append([telegram.InlineKeyboardButton("Cancel", callback_data=Flags.CANCEL_PROCESS)])
+
+        for i in range(offset, min(offset + self.INLINE_CHAT_PER_PAGE, count)):
+            chat = chats[i]
+            linked = utils.Emojis.LINK_EMOJI if bool(db.get_chat_assoc(slave_uid=chat['chat_uid'])) else ""
+            chat_type = utils.Emojis.get_source_emoji(chat['type'])
+            chat_name = chat['alias'] if chat['name'] == chat['alias'] else "%s(%s)" % (chat['alias'], chat['name'])
+            button_text = "%s%s: %s%s" % (chat['channel_emoji'], chat_type, chat_name, linked)
+            button_callback = "chat %s" % i
+            chat_btn_list.append([telegram.InlineKeyboardButton(button_text, callback_data=button_callback)])
+
+        # Pagination
+        page_number_row = []
+
+        if offset - self.INLINE_CHAT_PER_PAGE > 0:
+            page_number_row.append(telegram.InlineKeyboardButton("< Prev", callback_data="offset %s" % (
+                offset - self.INLINE_CHAT_PER_PAGE)))
+        page_number_row.append([telegram.InlineKeyboardButton("Cancel", callback_data=Flags.CANCEL_PROCESS)])
+        if offset + self.INLINE_CHAT_PER_PAGE < count:
+            page_number_row.append(telegram.InlineKeyboardButton("Next >", callback_data="offset %s" % (
+                offset + self.INLINE_CHAT_PER_PAGE)))
+        chat_btn_list.append(page_number_row)
+
+        return legend, chat_btn_list
+
+    def link_chat_show_list(self, bot, update):
+        user_id = update.message.from_user.id
+        # if message sent from a group
+        if not update.message.chat.id == update.message.from_user.id:
+            init_msg = bot.sendMessage(user_id, "Processing...")
+            try:
+                cid = db.get_chat_assoc(update.message.chat.id).slave_cid
+                return self.link_chat_confirm(bot, init_msg.from_chat.id, init_msg.message_id, cid)
+            except:
+                return bot.editMessageText(chat_id=update.message.chat.id,
+                                           message_id=init_msg.message_id,
+                                           text="No chat is found linked with this group. Please send /link privately to link a chat.")
+
+        # if message ir replied to an existing one
+        if update.message.reply_to_message:
+            init_msg = bot.sendMessage(user_id, "Processing...")
+            try:
+                cid = db.get_chat_log(update.message.reply_to_message.message_id).slave_origin_uid
+                return self.link_chat_confirm(bot, init_msg.from_chat.id, init_msg.message_id, cid)
+            except:
+                return bot.editMessageText(chat_id=update.message.chat.id,
+                                           message_id=init_msg.message_id,
+                                           text="No chat is found linked with this group. Please send /link privately to link a chat.")
+
+        self.link_chat_gen_list(bot, update.message.from_chat.id)
+
+    def link_chat_gen_list(self, bot, chat_id, message_id=None, offset=0):
+        if not message_id:
+            message_id = bot.sendMessage(chat_id, "Processing...").message_id
+
         msg_text = "Please choose the chat you want to link with ...\n\nLegend:\n"
+        chat_btn_list, legend = self.slave_chats_pagination(message_id, offset)
         for i in legend:
             msg_text += "%s\n" % i
-        msg = bot.sendMessage(user_id, text=msg_text, reply_markup=telegram.InlineKeyboardMarkup(chat_btn_list))
+
+        msg = bot.editmMessageText(chat_id=chat_id, message_id=message_id, text=msg_text,
+                                   reply_markup=telegram.InlineKeyboardMarkup(chat_btn_list))
         self.msg_status[msg.message_id] = Flags.CONFIRM_LINK
 
     def link_chat_confirm(self, bot, tg_chat_id, tg_msg_id, callback_uid):
+        if callback_uid.split()[0] == "offset":
+            return self.link_chat_gen_list(bot, tg_chat_id, message_id=tg_msg_id, offset=int(callback_uid.split()[1]))
         if callback_uid == Flags.CANCEL_PROCESS:
             txt = "Cancelled."
             self.msg_status.pop(tg_msg_id, None)
+            self.msg_storage.pop(tg_msg_id, None)
             return bot.editMessageText(text=txt,
                                        chat_id=tg_chat_id,
                                        message_id=tg_msg_id)
-        chat_uid, button_txt = callback_uid.split('\x1f', 1)
+        chat = self.msg_storage[tg_msg_id]['chats'][int(callback_uid)]
+        chat_uid = "%s.%s" % (chat['channel_uid'], chat['chat_uid'])
+        chat_display_name = chat['chat_name'] if chat['chat_name'] == chat['chat_alias'] else "%s(%s)" % (chat['chat_alias'], chat['chat_name'])
+        chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name'])
+
         linked = bool(db.get_chat_assoc(slave_uid=chat_uid))
         self.msg_status[tg_msg_id] = Flags.EXEC_LINK
         self.msg_status[chat_uid] = tg_msg_id
-        txt = "You've selected chat '%s'." % button_txt
+        txt = "You've selected chat %s." % chat_display_name
         if linked:
             txt += "\nThis chat has already linked to Telegram."
         txt += "\nWhat would you like to do?"
@@ -323,7 +391,7 @@ class TelegramChannel(EFBChannel):
         if linked:
             btn_list = [telegram.InlineKeyboardButton("Relink", url="https://telegram.me/%s?startgroup=%s" % (
                 self.me.username, urllib.parse.quote(chat_uid))),
-                        telegram.InlineKeyboardButton("Unlink", callback_data=self._utf8_byte_truncate("%s\x1fUnlink" % callback_uid, 64))]
+                        telegram.InlineKeyboardButton("Unlink", callback_data="unlink %s" % callback_uid)]
         else:
             btn_list = [telegram.InlineKeyboardButton("Link", url="https://telegram.me/%s?startgroup=%s" % (
                 self.me.username, urllib.parse.quote(chat_uid)))]
@@ -338,71 +406,71 @@ class TelegramChannel(EFBChannel):
         if callback_uid == Flags.CANCEL_PROCESS:
             txt = "Cancelled."
             self.msg_status.pop(tg_msg_id, None)
+            self.msg_storage.pop(tg_msg_id, None)
+
             return bot.editMessageText(text=txt,
                                        chat_id=tg_chat_id,
                                        message_id=tg_msg_id)
-        chat_uid, button_txt, cmd = callback_uid.split('\x1f', 2)
+        cmd, chat_lid = callback_uid.split()
+        chat = self.msg_storage[tg_msg_id]['chats'][int(chat_lid)]
+        chat_uid = "%s.%s" % (chat['channel_uid'], chat['chat_uid'])
+        chat_display_name = chat['chat_name'] if chat['chat_name'] == chat['chat_alias'] else "%s(%s)" % (
+            chat['chat_alias'], chat['chat_name'])
+        chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name'])
         self.msg_status.pop(tg_msg_id, None)
-        self.msg_status.pop(chat_uid, None)
+        self.msg_storage.pop(tg_msg_id, None)
         if cmd == "Unlink":
             db.remove_chat_assoc(slave_uid=chat_uid)
-            txt = "Chat '%s' has been unlinked." % (button_txt)
+            txt = "Chat '%s' has been unlinked." % (chat_display_name)
             return bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
         txt = "Command '%s' (%s) is not recognised, please try again" % (cmd, callback_uid)
         bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
 
     def start_chat_list(self, bot, update):
-        legend = [
-            "%s: Linked" % utils.Emojis.LINK_EMOJI,
-            "%s: User" % utils.Emojis.USER_EMOJI,
-            "%s: Group" % utils.Emojis.GROUP_EMOJI,
-            "%s: System" % utils.Emojis.SYSTEM_EMOJI,
-            "%s: Unknown" % utils.Emojis.UNKNOWN_EMOJI
-        ]
-        chat_btn_list = []
-        for slave_id in self.slaves:
-            slave = self.slaves[slave_id]
-            slave_chats = slave.get_chats()
-            # slave_id = slave.channel_id
-            slave_name = slave.channel_name
-            slave_emoji = slave.channel_emoji
-            legend.append("%s: %s" % (slave_emoji, slave_name))
-            for chat in slave_chats:
-                uid = "%s.%s" % (slave_id, chat['uid'])
-                chat_type = utils.Emojis.get_source_emoji(chat['type'])
-                chat_name = chat['alias'] if chat['name'] == chat['alias'] else "%s(%s)" % (chat['alias'], chat['name'])
-                button_text = "%s%s: %s" % (slave_emoji, chat_type, chat_name)
-                button_callback = "%s\x1f%s" % (uid, chat_name)
-                chat_btn_list.append(
-                    [telegram.InlineKeyboardButton(button_text, callback_data=self._utf8_byte_truncate(button_callback, 64))])
-        chat_btn_list.append([telegram.InlineKeyboardButton("Cancel", callback_data=Flags.CANCEL_PROCESS)])
+        self.chat_head_req_generate(bot, update.message.from_user.id)
+        self.msg_status[msg.message_id] = Flags.START_CHOOSE_CHAT
+
+    def chat_head_req_generate(self, bot, chat_id, message_id=None, offset=0):
+        if not message_id:
+            message_id = bot.sendMessage(chat_id, text="Processing...").message_id
+
+        chat_btn_list, legend = self.slave_chats_pagination(message_id, offset)
         msg_text = "Choose a chat you want to start with...\n\nLegend:\n"
         for i in legend:
             msg_text += "%s\n" % i
-        msg = bot.sendMessage(update.message.from_user.id, text=msg_text,
-                              reply_markup=telegram.InlineKeyboardMarkup(chat_btn_list))
-        self.msg_status[msg.message_id] = Flags.START_CHOOSE_CHAT
+
+        bot.editMessageText(text=msg_text,
+                            chat_id=chat_id,
+                            message_id=message_id,
+                            reply_markup=telegram.InlineKeyboardMarkup(chat_btn_list))
 
     def make_chat_head(self, bot, tg_chat_id, tg_msg_id, callback_uid):
+        if callback_uid.split()[0] == "offset":
+            return self.link_chat_gen_list(bot, tg_chat_id, message_id=tg_msg_id, offset=int(callback_uid.split()[1]))
         if callback_uid == Flags.CANCEL_PROCESS:
             txt = "Cancelled."
             self.msg_status.pop(tg_msg_id, None)
+            self.msg_storage.pop(tg_msg_id, None)
             return bot.editMessageText(text=txt,
                                        chat_id=tg_chat_id,
                                        message_id=tg_msg_id)
-        chat_uid, button_txt = callback_uid.split('\x1f', 1)
+        chat = self.msg_storage[tg_msg_id]['chats'][int(callback_uid)]
+        chat_uid = "%s.%s" % (chat['channel_uid'], chat['chat_uid'])
+        chat_display_name = chat['chat_name'] if chat['chat_name'] == chat['chat_alias'] else "%s(%s)" % (
+        chat['chat_alias'], chat['chat_name'])
+        chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name'])
         self.msg_status.pop(tg_msg_id, None)
-        self.msg_status.pop(chat_uid, None)
+        self.msg_storage.pop(tg_msg_id, None)
+        txt = "Reply to this message to chat with %s." % (chat_display_name)
         msg_log = {"master_msg_id": "%s.%s" % (tg_chat_id, tg_msg_id),
-                   "text": "",
+                   "text": txt,
                    "msg_type": "Text",
                    "sent_to": "Master",
                    "slave_origin_uid": chat_uid,
-                   "slave_origin_display_name": button_txt,
+                   "slave_origin_display_name": chat_display_name,
                    "slave_member_uid": None,
                    "slave_member_display_name": None}
         db.add_msg_log(**msg_log)
-        txt = "Reply to this message to chat with %s." % (button_txt)
         bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
 
     def msg(self, bot, update):
