@@ -25,7 +25,8 @@ class Flags:
     EXEC_LINK = 0x12
     # Start a chat
     START_CHOOSE_CHAT = 0x21
-    pass
+    # Command
+    COMMAND_PENDING = 0x31
 
 
 class TelegramChannel(EFBChannel):
@@ -128,6 +129,8 @@ class TelegramChannel(EFBChannel):
             self.link_chat_exec(bot, chat_id, msg_id, text)
         elif msg_status == Flags.START_CHOOSE_CHAT:
             self.make_chat_head(bot, chat_id, msg_id, text)
+        elif msg_status == Flags.COMMAND_PENDING:
+            self.command_exec(bot, chat_id, msg_id, text)
         else:
             bot.editMessageText(text="Session expired. Please try again.",
                                 chat_id=chat_id,
@@ -191,11 +194,11 @@ class TelegramChannel(EFBChannel):
             else:
                 tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text)
         elif msg.type in [MsgType.Image, MsgType.Sticker]:
-            self.logger.info("recieved Image/Sticker \nPath: %s\nSize: %s\nMIME: %s", msg.path,
+            self.logger.info("Received Image/Sticker \nPath: %s\nSize: %s\nMIME: %s", msg.path,
                              os.stat(msg.path).st_size, msg.mime)
             if os.stat(msg.path).st_size == 0:
                 os.remove(msg.path)
-                return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s recieved" % msg.type))
+                return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s received. (MS01)" % msg.type))
             if not msg.text:
                 if msg.type == MsgType.Image:
                     msg.text = "sent a picture."
@@ -209,7 +212,7 @@ class TelegramChannel(EFBChannel):
         elif msg.type == MsgType.File:
             if os.stat(msg.path).st_size == 0:
                 os.remove(msg.path)
-                return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s recieved" % msg.type))
+                return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s received. (MS02)" % msg.type))
             if not msg.text:
                 file_name = os.path.basename(msg.path)
                 msg.text = "sent a file."
@@ -220,7 +223,7 @@ class TelegramChannel(EFBChannel):
         elif msg.type == MsgType.Audio:
             if os.stat(msg.path).st_size == 0:
                 os.remove(msg.path)
-                return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s recieved" % msg.type))
+                return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s received. (MS03)" % msg.type))
             pydub.AudioSegment.from_file(msg.file).export("%s.ogg" % msg.path, format="ogg", codec="libopus")
             ogg_file = open("%s.ogg" % msg.path, 'rb')
             if not msg.text:
@@ -241,6 +244,13 @@ class TelegramChannel(EFBChannel):
                 msg.text = "sent a video."
             tg_msg = self.bot.bot.sendVideo(tg_dest, video=msg.file, caption=msg_template % msg.text)
             os.remove(msg.path)
+        elif msg.type == MsgType.Command:
+            buttons = []
+            for i, ival in enumerate(msg.attributes['commands']):
+                buttons.append([telegram.InlineKeyboardButton(ival['name'], callback_data=str(i))])
+            tg_msg = self.bot.bot.send_message(tg_dest, msg_template % msg.text, reply_markup=telegram.InlineKeyboardMarkup(buttons))
+            self.msg_status[tg_msg.message_id] = Flags.COMMAND_PENDING
+            self.msg_storage[tg_msg.message_id] = {"channel": msg.channel_id, "commands": msg.attributes['commands']}
         else:
             tg_msg = self.bot.bot.sendMessage(tg_dest, msg_template % "Unsupported incoming message type. (UT01)")
         msg_log = {"master_msg_id": "%s.%s" % (tg_msg.chat.id, tg_msg.message_id),
@@ -361,7 +371,7 @@ class TelegramChannel(EFBChannel):
         for i in legend:
             msg_text += "%s\n" % i
 
-        msg = bot.editmMessageText(chat_id=chat_id, message_id=message_id, text=msg_text,
+        msg = bot.editMessageText(chat_id=chat_id, message_id=message_id, text=msg_text,
                                    reply_markup=telegram.InlineKeyboardMarkup(chat_btn_list))
         self.msg_status[msg.message_id] = Flags.CONFIRM_LINK
 
@@ -472,6 +482,20 @@ class TelegramChannel(EFBChannel):
                    "slave_member_display_name": None}
         db.add_msg_log(**msg_log)
         bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
+
+    def command_exec(self, bot, chat_id, message_id, callback):
+        if not callback.isdecimal():
+            msg = "Invalid parameter: %s. (CE01)" % callback
+            return bot.editMessageText(text=msg, chat_id=chat_id, message_id=message_id)
+        elif not (0 <= int(msg) < len(self.msg_storage[message_id])):
+            msg = "Index out of bound: %s. (CE02)" % callback
+            return bot.editMessageText(text=msg, chat_id=chat_id, message_id=message_id)
+
+        callback = int(callback)
+        channel_id = self.msg_storage[message_id]['channel']
+        command = self.msg_storage[message_id]['comamnds'][callback]
+        msg = getattr(self.slaves[channel_id], command['callable'])(*command['args'], **command['kwargs'])
+        return bot.editMessageText(text=msg, chat_id=chat_id, message_id=message_id)
 
     def msg(self, bot, update):
         target = None

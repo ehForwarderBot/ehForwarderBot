@@ -9,17 +9,19 @@ A (extensible) tunnel bot between chat protocols
     - [x] Inter-channel communication
     - [x] Queue processing
     - [x] Multimedia
-    - [ ] Inter-channel commands
+    - [x] Inter-channel commands
+    - [ ] Extra functions from slave channels
 - [ ] Telgeram Master Channel
     - [x] Basic Text processing
     - [ ] Controlling slaves by command
     - [x] Chat association
     - [x] Multimedia
     - [x] Generate chat head
-- [ ] Wechat Slave Channel
+- [ ] WeChat Slave Channel
     - [x] Basic Text/Link processing
     - [x] Multimedia
-    - [ ] Add friends (Cards & Requests)
+    - [x] Add friends (Cards & Requests)
+    - [ ] Other actions
 - [ ] WhatsApp Slave Channel
 - [ ] Line Slave Channel
 - [ ] QQ Slave Channel

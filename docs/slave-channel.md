@@ -83,3 +83,10 @@ Each `dict` item should have:
 ### `get_group_members(self, group_uid)`
 
 > TODO: Documentation for `get_group_members`
+
+## Command message
+Slave channels can send messages that offer the user options to take action. This can be used in situations such as friend request, fund transfer and Telegram Inline Buttons.
+
+Aside from sending a message with "Command" type (refer to the specification in "Message" documentation), the slave channel have to also provide a method for the command to be issued.
+
+The method can take any argument of Python's standard data structure, and returns a string which is shown to the user as the result of the action.

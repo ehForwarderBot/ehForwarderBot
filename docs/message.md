@@ -182,7 +182,41 @@ Shared links.
   "url": URL in the message.
 
 ### Command
-> TODO: Command message documentation.
+**Type**: MsgType.Command
+**Additional Parameters**: attributes
+
+This message is sent when a message from **slave** channel provides action options to the user. E.g.: Friend request,
+money transfer, etc.
+
+`text` should include all necessary information for the user understand the situation and take action.
+
+`attributes` is a dict with one item: `commands`, whose value is a list of commands with structure described below:
+
+```python
+msg.attributes = {
+    "commands": [
+        {
+            "name": "A human-readable name for the command",
+            "callable": "name to the callable function in your channel object",
+            "args": [
+                "a list of positional parameters passed to your function"
+            ],
+            "kwargs": {
+                "desc": "a dict of keyword parameters passed to your function"
+            }
+        },
+        {
+            "name": "Greet @blueset on Telegram",
+            "callable": "send_message_by_username",
+            "args": [
+                "blueset",
+                "Hello!"
+            ],
+            "kwargs": {}
+        }
+    ]
+}
+```
 
 ### Unsupported message
 > TODO: Unsupported message documentation.

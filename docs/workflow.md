@@ -41,4 +41,9 @@ To deliver user's message to a slave channel, you should first gather all the in
 ## Slave Channel
 Slave channel has rather less things to do, get and enqueue incoming message, and send message to the platform. Also you may need to generate a list of possible recipients for the Master channel. That should be most of it.
 
-> In the future, I may also come out with a protocol for command delivery. This includes some common ones like adding or accepting new contacts to slave channel, or even customizable ones. See when can I finish it. :P
+# Commands
+Once there's any message from a slave channel that allows the user to take action, the slave channel will enclose detail of actions (namely method names and arguments) into an `EFBMsg` object and send it to the master channel.
+
+Master channel will use it's own method to ask the user to make a decision, and with the decision, the master channel will call the respective method of the slave channel with the argument given.
+
+The method of slave channel returns a string as the result which is then reflected back to the user.

@@ -148,6 +148,22 @@ class WeChatChannel(EFBChannel):
         def wcVideoGroup(msg):
             self.videoMsg(msg, True)
 
+        @itchat.msg_register(['Card'])
+        def wcCard(msg):
+            self.cardMsg(msg)
+
+        @itchat.msg_register(['Card'], isGroupChat=True)
+        def wcCardGroup(msg):
+            self.cardMsg(msg, True)
+
+        @itchat.msg_register(['Friends'])
+        def wcFriends(msg):
+            self.friendMsg(msg)
+
+        @itchat.msg_register(['Friends'], isGroupChat=True)
+        def wcFriendsGroup(msg):
+            self.friendMsg(msg, True)
+
         itchat.run()
         while True:
             if not itchat.client().status:
@@ -251,6 +267,63 @@ class WeChatChannel(EFBChannel):
         mobj.file = open(mobj.path, "rb")
         return mobj
 
+    @incomeMsgMeta
+    def cardMsg(self, msg, isGroupChat=False):
+        mobj = EFBMsg(self)
+        msg = """Name card: {NickName}
+From: {Province}, {City}
+QQ: {QQNum}
+ID: {Alias}
+Signature: {Signature}
+Gender: {Sex}"""
+        msg = msg.format(**msg['Text'])
+        mobj.text = msg
+        mobj.type = MsgType.Command
+        mobj.attributes = {
+            "commands": [
+                {
+                    "name": "Send friend request",
+                    "callable": "addFriend",
+                    "args": [],
+                    "kwargs": {
+                        "userName": msg['Text']['UserName'],
+                        "status": 2,
+                        "ticket": ""
+                    }
+                }
+            ]
+        }
+        return mobj
+
+    @incomeMsgMeta
+    def friendMsg(self, msg, isGroupChat=False):
+        mobj = EFBMsg(self)
+        msg = """Friend request: {NickName}
+Status: {Status}
+From: {Province}, {City}
+QQ: {QQNum}
+ID: {Alias}
+Signature: {Signature}
+Gender: {Sex}"""
+        msg = msg.format(**{**msg['Text'], **msg['Text']['userInfo']})
+        mobj.text = msg
+        mobj.type = MsgType.Command
+        mobj.attributes = {
+            "commands": [
+                {
+                    "name": "Send friend request",
+                    "callable": "addFriend",
+                    "args": [],
+                    "kwargs": {
+                        "userName": msg['Text']['userInfo']['UserName'],
+                        "status": 3,
+                        "ticket": msg['Ticket']
+                    }
+                }
+            ]
+        }
+        return mobj
+
     def save_file(self, msg, msg_type):
         path = os.path.join("storage", self.channel_id)
         if not os.path.exists(path):
@@ -259,11 +332,11 @@ class WeChatChannel(EFBChannel):
         fullpath = os.path.join(path, filename)
         msg['Text'](fullpath)
         mime = magic.from_file(fullpath, mime=True).decode()
-        ext = mimetypes.guess_extension(mime)
+        ext = "jpg" if mime == "image/jpeg" else mimetypes.guess_extension(mime)
         os.rename(fullpath, "%s.%s" % (fullpath, ext))
         fullpath = "%s.%s" % (fullpath, ext)
         self.logger.info("File saved from WeChat\nFull path: %s\nMIME: %s", fullpath, mime)
-        return (fullpath, mime)
+        return fullpath, mime
 
     def send_message(self, msg):
         """Send a message to WeChat.
@@ -318,9 +391,21 @@ class WeChatChannel(EFBChannel):
         else:
             raise EFBMessageTypeNotSupported()
 
+    # Extra functions
+
     @extra(name="Refresh Contacts and Groups list", desc="Refresh the list of contacts when unidentified contacts found.", emoji="🔁")
     def refresh_contacts(self):
-        itchat.get_contract(true)
+        itchat.get_contract(True)
+
+    # Command functions
+    def add_friend(self, userName=None, status=2, ticket="", userInfo={}):
+        if not userName:
+            return "Username is empty. (UE01)"
+        try:
+            itchat.add_friend(userName, status, ticket, userInfo)
+            return "Success."
+        except:
+            return "Error occurred during the process. (AF01)"
 
     def get_chats(self, group=True, user=True):
         r = []
