@@ -410,7 +410,7 @@ Gender: {Sex}"""
     def get_chats(self, group=True, user=True):
         r = []
         if user:
-            t = itchat.get_contract(True)
+            t = itchat.get_contract(True) + itchat.get_mps(True)
             for i in t:
                 r.append({
                     'channel_name': self.channel_name,
