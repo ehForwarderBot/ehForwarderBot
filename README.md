@@ -11,7 +11,7 @@ A (extensible) tunnel bot between chat protocols
     - [x] Multimedia
     - [x] Inter-channel commands
     - [ ] Extra functions from slave channels
-- [ ] Telgeram Master Channel
+- [ ] Telegram Master Channel
     - [x] Basic Text processing
     - [ ] Controlling slaves by command
     - [x] Chat association
@@ -33,6 +33,10 @@ A (extensible) tunnel bot between chat protocols
     - [x] EFBMsg specification
     - [ ] Tutorial/Commented example
 - [ ] and more...
+
+## Documentations
+
+To read an (incomplete) documentation of this project, please visit [here](https://github.com/blueset/ehForwarderBot/blob/master/docs/home.md).
 
 ## Dependencies
 

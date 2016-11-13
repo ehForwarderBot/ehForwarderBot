@@ -16,8 +16,8 @@ msg = EFBMsg(self)
 * `member`: The member in a group who sent the message. A "User dict" or `None`. Only available when `msg.source == MsgSource.Group`.
 * `origin`: The sender, a user or a group who sent the message. A "User dict".
 * `destination`: The destination user/group of the message. A "User dict", `"channel"` property is required, and shall not equal to the `channel_id` of the message.
-* `target`: A "Target dict" or none. Used when the message is reply to or refering to another message or user.
-* `uid`: String. A unique ID of the message. If your platform did not offer one, you may use the concatnation of the channel ID and a random GUID.
+* `target`: A "Target dict" or none. Used when the message is reply to or referring to another message or user.
+* `uid`: String. A unique ID of the message. If your platform did not offer one, you may use the concatenation of the channel ID and a random GUID.
 * `text`: String. The text content of the message.
 
 ### "User dict"
