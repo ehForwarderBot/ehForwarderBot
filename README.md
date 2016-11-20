@@ -1,5 +1,5 @@
 # EH Forwarder Bot
-A (extensible) tunnel bot between chat protocols  
+A (extensible) tunnel bot between chat platforms  
 ![Python 3.x](https://img.shields.io/badge/Python-3.x-blue.svg)
 
 ![EFB](https://images.1a23.com/upload/images/SPET.png)
@@ -11,6 +11,8 @@ A (extensible) tunnel bot between chat protocols
     - [x] Multimedia
     - [x] Inter-channel commands
     - [ ] Extra functions from slave channels
+- [ ] Framework features
+    - [ ] Daemon support
 - [ ] Telegram Master Channel
     - [x] Basic Text processing
     - [ ] Controlling slaves by command
@@ -22,10 +24,8 @@ A (extensible) tunnel bot between chat protocols
     - [x] Multimedia
     - [x] Add friends (Cards & Requests)
     - [ ] Other actions
+- [ ] Messenger Slave Channel
 - [ ] WhatsApp Slave Channel
-- [ ] Line Slave Channel
-- [ ] QQ Slave Channel
-- [ ] IRC Slave Channel
 - [ ] Documentations
     - [x] Walk-through
     - [x] Slave channel
@@ -43,8 +43,8 @@ To read an (incomplete) documentation of this project, please visit [here](https
 ### Non-Python dependencies
 * __gcc__ (for building `pillow`)
 * __libmagic__ (for mime type detection)
-* __libopus__ (Required by `eh-telegram-master` for voice encoding)
-* __ffmpeg__ with libopus support (Required by `eh-telegram-master` for voice encoding)
+* __libopus__ (Required by `eh_telegram_master` for voice encoding)
+* __ffmpeg__ with libopus support (Required by `eh_telegram_master` for voice encoding)
 * Everything required by `pillow`, including:
     * `libjpeg, zlib, libwebp, (libtiff, libfreetype, openjpeg, tk, littlecms)`
 
@@ -62,6 +62,7 @@ brew install libmagic
 brew install ffmpeg --with-opus
 ```
 
+Alternatively, you can use the corresponding packages from other package managers like MacPort, or any other methods.
 ##### Debian/Ubuntu/Mint/etc.
 
 ```bash
@@ -75,5 +76,5 @@ Refer to `requirements.txt`.
 
 #### To install
 ```bash
-pip3 install -r requirements.txt
+pip(3) install -r requirements.txt
 ```

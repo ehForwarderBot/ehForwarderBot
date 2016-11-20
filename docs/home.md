@@ -1,11 +1,15 @@
-# Welcome to EH Forwarder Bot Documentation
+# EH Forwarder Bot
+
+![Python 3.x](https://img.shields.io/badge/Python-3.x-blue.svg)
+
+![EFB](https://images.1a23.com/upload/images/SPET.png)
 
 _Codename_ **EH Forwarder Bot** (EFB) is a extensible chat tunnel framework which allows users to contact people from other chat platforms, and ultimately remotely control their accounts in other platforms.
 
 ## Navigation
-* [Installation]() _(TODO)_
-* [Getting started]() _(TODO)_
-* [Plugins repository]() _(TODO)_
+* [Installation](installation.md)
+* [Getting started](getting-started.md) _(TODO)_
+* [Plugins repository](plugins-repository.md) _(TODO)_
 * Your first channel
     * [EFB workflow](workflow.md)
     * [Slave Channel](slave-channel.md)
@@ -26,7 +30,7 @@ _Codename_ **EH Forwarder Bot** (EFB) is a extensible chat tunnel framework whic
 Anyone is welcomed to raise an issue or submit a pull request, just remember to read through and understand the [contribution guideline](CONTRIBUTION.md) _(TODO)_ before you do so.
 
 ## License
-EFB framework is licensed under [GNU Public License 3.0](https://www.gnu.org/licenses/gpl-3.0.txt).
+EFB framework is licensed under [GNU General Public License 3.0](https://www.gnu.org/licenses/gpl-3.0.txt).
 
 ```
 EH Forwarder Bot: An extensible chat tunneling bot framework.
