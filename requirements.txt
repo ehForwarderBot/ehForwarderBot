@@ -6,4 +6,4 @@ python_telegram_bot == 5.2.0
 xmltodict == 0.10.1
 Pillow == 3.2.0
 python_magic == 0.4.11
-itchat == 1.1.19
+itchat == 1.2.4

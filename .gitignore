@@ -143,3 +143,5 @@ test.db
 tgdata.db
 test*
 storage/*
+temp*
+itchat.pkl

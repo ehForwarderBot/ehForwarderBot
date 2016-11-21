@@ -38,5 +38,7 @@ def get_msg_type(msg):
              'venue']
     for i in types:
         if getattr(msg, i, False):
+            if i == "document" and msg['document']['mime_type'] == "video/mp4":
+                return TGMsgType.Video
             return getattr(TGMsgType, i.capitalize())
     return TGMsgType.Text

@@ -87,10 +87,7 @@ class TelegramChannel(EFBChannel):
         self.bot.dispatcher.add_handler(telegram.ext.CallbackQueryHandler(self.callback_query_dispatcher))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("start", self.start, pass_args=True))
         self.bot.dispatcher.add_handler(telegram.ext.MessageHandler(
-            [telegram.ext.Filters.text,
-             telegram.ext.Filters.photo,
-             telegram.ext.Filters.sticker,
-             telegram.ext.Filters.document],
+            telegram.ext.Filters.text | telegram.ext.Filters.photo | telegram.ext.Filters.sticker | telegram.ext.Filters.document,
             self.msg
         ))
         self.bot.dispatcher.add_error_handler(self.error)
@@ -121,7 +118,6 @@ class TelegramChannel(EFBChannel):
         text = query.data
         msg_id = update.callback_query.message.message_id
         msg_status = self.msg_status.get(msg_id, None)
-
         # dispatch the query
         if msg_status in [Flags.CONFIRM_LINK]:
             self.link_chat_confirm(bot, chat_id, msg_id, text)
@@ -132,7 +128,7 @@ class TelegramChannel(EFBChannel):
         elif msg_status == Flags.COMMAND_PENDING:
             self.command_exec(bot, chat_id, msg_id, text)
         else:
-            bot.editMessageText(text="Session expired. Please try again.",
+            bot.editMessageText(text="Session expired. Please try again. (SE01)",
                                 chat_id=chat_id,
                                 message_id=msg_id)
 
@@ -200,7 +196,7 @@ class TelegramChannel(EFBChannel):
                 os.remove(msg.path)
                 return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s received. (MS01)" % msg.type))
             if not msg.text:
-                if msg.type == MsgType.Image:
+                if MsgType.Image:
                     msg.text = "sent a picture."
                 elif msg.type == MsgType.Sticker:
                     msg.text = "sent a sticker."
@@ -233,6 +229,7 @@ class TelegramChannel(EFBChannel):
             os.remove("%s.ogg" % msg.path)
             self.bot.bot.sendVoice(tg_dest, ogg_file, reply_to_message_id=tg_msg.message_id)
         elif msg.type == MsgType.Location:
+            self.logger.info("---\nsending venue\nlat: %s, long: %s\ntitle: %s\naddr: %s", msg.attributes['latitude'], msg.attributes['longitude'], msg.text, msg_template % "")
             tg_msg = self.bot.bot.sendVenue(tg_dest, latitude=msg.attributes['latitude'],
                                             longitude=msg.attributes['longitude'], title=msg.text,
                                             address=msg_template % "")
@@ -250,7 +247,7 @@ class TelegramChannel(EFBChannel):
                 buttons.append([telegram.InlineKeyboardButton(ival['name'], callback_data=str(i))])
             tg_msg = self.bot.bot.send_message(tg_dest, msg_template % msg.text, reply_markup=telegram.InlineKeyboardMarkup(buttons))
             self.msg_status[tg_msg.message_id] = Flags.COMMAND_PENDING
-            self.msg_storage[tg_msg.message_id] = {"channel": msg.channel_id, "commands": msg.attributes['commands']}
+            self.msg_storage[tg_msg.message_id] = {"channel": msg.channel_id, "text": msg_template % msg.text, "commands": msg.attributes['commands']}
         else:
             tg_msg = self.bot.bot.sendMessage(tg_dest, msg_template % "Unsupported incoming message type. (UT01)")
         msg_log = {"master_msg_id": "%s.%s" % (tg_msg.chat.id, tg_msg.message_id),
@@ -296,7 +293,8 @@ class TelegramChannel(EFBChannel):
                         "channel_emoji": slave.channel_emoji,
                         "chat_name": chat['name'],
                         "chat_alias": chat['alias'],
-                        "chat_uid": chat['uid']
+                        "chat_uid": chat['uid'],
+                        "type": chat['type']
                     }
                     chats.append(c)
             count = len(chats)
@@ -317,7 +315,7 @@ class TelegramChannel(EFBChannel):
             chat = chats[i]
             linked = utils.Emojis.LINK_EMOJI if bool(db.get_chat_assoc(slave_uid=chat['chat_uid'])) else ""
             chat_type = utils.Emojis.get_source_emoji(chat['type'])
-            chat_name = chat['alias'] if chat['name'] == chat['alias'] else "%s(%s)" % (chat['alias'], chat['name'])
+            chat_name = chat['chat_alias'] if chat['chat_name'] == chat['chat_alias'] else "%s(%s)" % (chat['chat_alias'], chat['chat_name'])
             button_text = "%s%s: %s%s" % (chat['channel_emoji'], chat_type, chat_name, linked)
             button_callback = "chat %s" % i
             chat_btn_list.append([telegram.InlineKeyboardButton(button_text, callback_data=button_callback)])
@@ -325,10 +323,10 @@ class TelegramChannel(EFBChannel):
         # Pagination
         page_number_row = []
 
-        if offset - self.INLINE_CHAT_PER_PAGE > 0:
+        if offset - self.INLINE_CHAT_PER_PAGE >= 0:
             page_number_row.append(telegram.InlineKeyboardButton("< Prev", callback_data="offset %s" % (
                 offset - self.INLINE_CHAT_PER_PAGE)))
-        page_number_row.append([telegram.InlineKeyboardButton("Cancel", callback_data=Flags.CANCEL_PROCESS)])
+        page_number_row.append(telegram.InlineKeyboardButton("Cancel", callback_data=Flags.CANCEL_PROCESS))
         if offset + self.INLINE_CHAT_PER_PAGE < count:
             page_number_row.append(telegram.InlineKeyboardButton("Next >", callback_data="offset %s" % (
                 offset + self.INLINE_CHAT_PER_PAGE)))
@@ -367,7 +365,7 @@ class TelegramChannel(EFBChannel):
             message_id = bot.sendMessage(chat_id, "Processing...").message_id
 
         msg_text = "Please choose the chat you want to link with ...\n\nLegend:\n"
-        chat_btn_list, legend = self.slave_chats_pagination(message_id, offset)
+        legend, chat_btn_list = self.slave_chats_pagination(message_id, offset)
         for i in legend:
             msg_text += "%s\n" % i
 
@@ -385,8 +383,16 @@ class TelegramChannel(EFBChannel):
             return bot.editMessageText(text=txt,
                                        chat_id=tg_chat_id,
                                        message_id=tg_msg_id)
-        chat = self.msg_storage[tg_msg_id]['chats'][int(callback_uid)]
-        chat_uid = "%s.%s" % (chat['channel_uid'], chat['chat_uid'])
+        if callback_uid[:4] != "chat":
+            txt = "Invalid parameter. (%s)" % callback_uid
+            self.msg_status.pop(tg_msg_id, None)
+            self.msg_storage.pop(tg_msg_id, None)
+            return bot.editMessageText(text=txt,
+                                       chat_id=tg_chat_id,
+                                       message_id=tg_msg_id)
+        callback_uid = int(callback_uid.split()[1])
+        chat = self.msg_storage[tg_msg_id]['chats'][callback_uid]
+        chat_uid = "%s.%s" % (chat['channel_id'], chat['chat_uid'])
         chat_display_name = chat['chat_name'] if chat['chat_name'] == chat['chat_alias'] else "%s(%s)" % (chat['chat_alias'], chat['chat_name'])
         chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name'])
 
@@ -423,7 +429,7 @@ class TelegramChannel(EFBChannel):
                                        message_id=tg_msg_id)
         cmd, chat_lid = callback_uid.split()
         chat = self.msg_storage[tg_msg_id]['chats'][int(chat_lid)]
-        chat_uid = "%s.%s" % (chat['channel_uid'], chat['chat_uid'])
+        chat_uid = "%s.%s" % (chat['channel_id'], chat['chat_uid'])
         chat_display_name = chat['chat_name'] if chat['chat_name'] == chat['chat_alias'] else "%s(%s)" % (
             chat['chat_alias'], chat['chat_name'])
         chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name'])
@@ -437,26 +443,26 @@ class TelegramChannel(EFBChannel):
         bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
 
     def start_chat_list(self, bot, update):
-        self.chat_head_req_generate(bot, update.message.from_user.id)
-        self.msg_status[msg.message_id] = Flags.START_CHOOSE_CHAT
+        msg_id = self.chat_head_req_generate(bot, update.message.from_user.id)
+        self.msg_status[msg_id] = Flags.START_CHOOSE_CHAT
 
     def chat_head_req_generate(self, bot, chat_id, message_id=None, offset=0):
         if not message_id:
             message_id = bot.sendMessage(chat_id, text="Processing...").message_id
 
-        chat_btn_list, legend = self.slave_chats_pagination(message_id, offset)
+        legend, chat_btn_list = self.slave_chats_pagination(message_id, offset)
         msg_text = "Choose a chat you want to start with...\n\nLegend:\n"
         for i in legend:
             msg_text += "%s\n" % i
-
         bot.editMessageText(text=msg_text,
                             chat_id=chat_id,
                             message_id=message_id,
                             reply_markup=telegram.InlineKeyboardMarkup(chat_btn_list))
+        return message_id
 
     def make_chat_head(self, bot, tg_chat_id, tg_msg_id, callback_uid):
         if callback_uid.split()[0] == "offset":
-            return self.link_chat_gen_list(bot, tg_chat_id, message_id=tg_msg_id, offset=int(callback_uid.split()[1]))
+            return self.chat_head_req_generate(bot, tg_chat_id, message_id=tg_msg_id, offset=int(callback_uid.split()[1]))
         if callback_uid == Flags.CANCEL_PROCESS:
             txt = "Cancelled."
             self.msg_status.pop(tg_msg_id, None)
@@ -464,8 +470,17 @@ class TelegramChannel(EFBChannel):
             return bot.editMessageText(text=txt,
                                        chat_id=tg_chat_id,
                                        message_id=tg_msg_id)
-        chat = self.msg_storage[tg_msg_id]['chats'][int(callback_uid)]
-        chat_uid = "%s.%s" % (chat['channel_uid'], chat['chat_uid'])
+
+        if callback_uid[:4] != "chat":
+            txt = "Invalid parameter. (%s)" % callback_uid
+            self.msg_status.pop(tg_msg_id, None)
+            self.msg_storage.pop(tg_msg_id, None)
+            return bot.editMessageText(text=txt,
+                                       chat_id=tg_chat_id,
+                                       message_id=tg_msg_id)
+        callback_uid = int(callback_uid.split()[1])
+        chat = self.msg_storage[tg_msg_id]['chats'][callback_uid]
+        chat_uid = "%s.%s" % (chat['channel_id'], chat['chat_uid'])
         chat_display_name = chat['chat_name'] if chat['chat_name'] == chat['chat_alias'] else "%s(%s)" % (
         chat['chat_alias'], chat['chat_name'])
         chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name'])
@@ -487,17 +502,18 @@ class TelegramChannel(EFBChannel):
         if not callback.isdecimal():
             msg = "Invalid parameter: %s. (CE01)" % callback
             return bot.editMessageText(text=msg, chat_id=chat_id, message_id=message_id)
-        elif not (0 <= int(msg) < len(self.msg_storage[message_id])):
+        elif not (0 <= int(callback) < len(self.msg_storage[message_id])):
             msg = "Index out of bound: %s. (CE02)" % callback
             return bot.editMessageText(text=msg, chat_id=chat_id, message_id=message_id)
 
         callback = int(callback)
         channel_id = self.msg_storage[message_id]['channel']
-        command = self.msg_storage[message_id]['comamnds'][callback]
-        msg = getattr(self.slaves[channel_id], command['callable'])(*command['args'], **command['kwargs'])
+        command = self.msg_storage[message_id]['commands'][callback]
+        msg = self.msg_storage[message_id]['text'] + "\n------\n" + getattr(self.slaves[channel_id], command['callable'])(*command['args'], **command['kwargs'])
         return bot.editMessageText(text=msg, chat_id=chat_id, message_id=message_id)
 
     def msg(self, bot, update):
+        self.logger.debug("----\nMsg from tg user:\n%s", update.message.to_dict())
         target = None
         if not (update.message.chat.id == update.message.from_user.id):  # from group
             assoc = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
@@ -690,10 +706,9 @@ class TelegramChannel(EFBChannel):
     def poll(self):
         self.bot.start_polling(network_delay=5)
         while True:
-            if not self.queue.empty():
-                m = self.queue.get()
-                self.logger.info("Got message from queue\nType: %s\nText: %s\n----" % (m.type, m.text))
-                self.process_msg(m)
+            m = self.queue.get()
+            self.logger.info("Got message from queue\nType: %s\nText: %s\n----" % (m.type, m.text))
+            self.process_msg(m)
 
     def error(self, bot, update, error):
         """ Print error to console """
