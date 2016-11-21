@@ -9,7 +9,7 @@ Here lists all public plugins/channels made for EFB. For any issue related to an
 #### EFB Telegram Master
 * Based on **Telegram**: Official Telegram bot API
 * UID: `eh_telegram_master`
-* Import path: `plugins.tg`
+* Import path: `plugins.eh_telegram_master`
 * Class name: `TelegramChannel`
 * Documentation: ETM.md _(TODO)_
 
@@ -17,7 +17,7 @@ Here lists all public plugins/channels made for EFB. For any issue related to an
 #### EFB WeChat Slave
 * Based on **Wechat**: Rev.eng. of Wechat Web with [itchat](https://github.com/littlecodersh/ItChat)
 * UID: `eh_wechat_slave`
-* Import path: `plugins.wechat`
+* Import path: `plugins.eh_wechat_slave`
 * Class name: `WeChatChannel`
 * Documentation: EWS.md _(TODO)_
 
@@ -26,8 +26,8 @@ Here lists all public plugins/channels made for EFB. For any issue related to an
 ### Master channels
 #### Dummy channel (Example)
 * Based on **MyChat**: MyChannel User API
-* UID: `aruyat-mychat-master`
-* Import path: `plugins.aryat_mychat`
+* UID: `aruyat_mychat_master`
+* Import path: `plugins.aryat_mychat_master`
 * Class name: `MyChatChannel`
 * Author: Aruyatsuno Uragawa
 * Repo: https://git.example.com/aruyat/efb-mychat-channel

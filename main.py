@@ -3,8 +3,8 @@ import queue
 import threading
 import logging
 
-# logging.basicConfig(level=logging.ERROR)
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.ERROR)
+# logging.basicConfig(level=logging.DEBUG)
 
 # Init Queue
 q = queue.Queue()

@@ -18,8 +18,8 @@
 # You may have more than 1 slave channel.
 #
 
-master_channel = 'plugins.tg', 'TelegramChannel'
-slave_channels = [('plugins.wechat', 'WeChatChannel')]
+master_channel = 'plugins.eh_telegram_master', 'TelegramChannel'
+slave_channels = [('plugins.eh_wechat_slave', 'WeChatChannel')]
 
 #
 #  Plugin specific settings
