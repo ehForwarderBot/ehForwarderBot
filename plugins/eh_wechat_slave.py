@@ -196,11 +196,11 @@ class WeChatChannel(EFBChannel):
         def wcFriendsGroup(msg):
             self.friendMsg(msg, True)
 
-        @itchat.msg_register(['Useless', 'Note', 'System'], isFriendChat=True, isMpChat=True)
+        @itchat.msg_register(['Useless', 'Note'], isFriendChat=True, isMpChat=True)
         def wcSystem(msg):
             self.systemMsg(msg)
 
-        @itchat.msg_register(['Useless', 'Note', 'System'], isGroupChat=True)
+        @itchat.msg_register(['Useless', 'Note'], isGroupChat=True)
         def wcSystemGroup(msg):
             self.systemMsg(msg, True)
 
@@ -235,7 +235,7 @@ class WeChatChannel(EFBChannel):
     @incomeMsgMeta
     def systemMsg(self, msg, isGroupChat=False):
         mobj = EFBMsg(self)
-        mobj.text = "System message: " + msg['Text']
+        mobj.text = "System message: %s" % msg['Text']
         mobj.type = MsgType.Text
         return mobj
 
