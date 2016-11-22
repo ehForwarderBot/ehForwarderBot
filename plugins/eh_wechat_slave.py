@@ -8,6 +8,7 @@ import time
 import magic
 import mimetypes
 from PIL import Image
+from binascii import crc32
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
 from utils import extra
 from channelExceptions import EFBMessageTypeNotSupported
@@ -73,7 +74,7 @@ class WeChatChannel(EFBChannel):
             return False
         r = self.search_user(UserName=UserName, name=NickName)
         if r:
-            return r[0]['AttrStatus'] or r[0]['Uin'] or r[0]['Alias']
+            return r[0]['AttrStatus'] or r[0]['Uin'] or crc32(r[0]['NickName'].encode("utf-8"))
         else:
             return False
 
@@ -90,7 +91,8 @@ class WeChatChannel(EFBChannel):
                i['AttrStatus'] == uid or \
                i['Alias'] == wid or \
                i['NickName'] == name or \
-               i['DisplayName'] == name:
+               i['DisplayName'] == name or \
+               crc32(i['NickName'].encode("utf-8")) == uid:
                 result.append(i.copy())
         for i in itchat.get_chatrooms(refresh):
             if not i['MemberList']:
@@ -99,7 +101,8 @@ class WeChatChannel(EFBChannel):
                i['Uin'] == uid or \
                i['Alias'] == wid or \
                i['NickName'] == name or \
-               i['DisplayName'] == name: # TODO: KeyError: ['DisplayName'] not found
+               i['DisplayName'] == name or \
+               crc32(i['NickName'].encode("utf-8")) == uid: # TODO: KeyError: ['DisplayName'] not found
                 result.append(i.copy())
                 result[-1]['MemberList'] = []
                 if ActualUserName:
