@@ -358,7 +358,7 @@ class TelegramChannel(EFBChannel):
                                            message_id=init_msg.message_id,
                                            text="No chat is found linked with this group. Please send /link privately to link a chat.")
 
-        self.link_chat_gen_list(bot, update.message.from_chat.id)
+        self.link_chat_gen_list(bot, update.message.chat.id)
 
     def link_chat_gen_list(self, bot, chat_id, message_id=None, offset=0):
         if not message_id:
