@@ -68,7 +68,22 @@ class WeChatChannel(EFBChannel):
         self.logger = logging.getLogger("SlaveWC.%s" % __name__)
         self.logger.info("Inited!!!\n---")
 
+    #
+    # Utilities
+    #
+
     def get_uid(self, UserName=None, NickName=None):
+        """
+        Get unique identifier of a chat, by UserName or NickName.
+        Fill in `UserName` or `NickName`.
+
+        Args:
+            UserName (str): WeChat `UserName` of the chat.
+            NickName (str): Display Name (`NickName`) of the chat.
+
+        Returns:
+            int|str|bool: Unique ID of the chat. `False` if not found.
+        """
         if not (UserName or NickName):
             self.logger.error('No name provided.')
             return False
@@ -79,6 +94,16 @@ class WeChatChannel(EFBChannel):
             return False
 
     def get_UserName(self, uid, refresh=False):
+        """
+        Get WeChat `UserName` of a chat by UID.
+
+        Args:
+            uid (str|int): UID of the chat.
+            refresh (bool): Refresh the chat list from WeChat, `False` by default.
+
+        Returns:
+            str|bool: `UserName` of the chosen chat. `False` if not found.
+        """
         r = self.search_user(uid=uid, refresh=refresh)
         if r:
             return r[0]['UserName']
@@ -87,30 +112,30 @@ class WeChatChannel(EFBChannel):
     def search_user(self, UserName=None, uid=None, wid=None, name=None, ActualUserName=None, refresh=False):
         result = []
         for i in itchat.get_friends(refresh) + itchat.get_mps(refresh):
-            if i['UserName'] == UserName or \
-               i['AttrStatus'] == uid or \
-               i['Alias'] == wid or \
-               i['NickName'] == name or \
-               i['DisplayName'] == name or \
-               crc32(i['NickName'].encode("utf-8")) == uid:
+            if str(i['UserName']) == str(UserName) or \
+               str(i['AttrStatus']) == str(uid) or \
+               str(i['Alias']) == str(wid) or \
+               str(i['NickName']) == str(name) or \
+               str(i['DisplayName']) == str(name) or \
+               str(crc32(i['NickName'].encode("utf-8"))) == str(uid):
                 result.append(i.copy())
         for i in itchat.get_chatrooms(refresh):
             if not i['MemberList']:
                 i = itchat.update_chatroom(i['UserName'])
-            if i['UserName'] == UserName or \
-               i['Uin'] == uid or \
-               i['Alias'] == wid or \
-               i['NickName'] == name or \
-               i['DisplayName'] == name or \
-               crc32(i['NickName'].encode("utf-8")) == uid: # TODO: KeyError: ['DisplayName'] not found
+            if str(i['UserName']) == str(UserName) or \
+               str(i['Uin']) == str(uid) or \
+               str(i['Alias']) == str(wid) or \
+               str(i['NickName']) == str(name) or \
+               str(i['DisplayName']) == str(name) or \
+               str(crc32(i['NickName'].encode("utf-8"))) == str(uid):
                 result.append(i.copy())
                 result[-1]['MemberList'] = []
                 if ActualUserName:
                     for j in itchat.search_chatrooms(userName=i['UserName'])['MemberList']:
-                        if j['UserName'] == ActualUserName or \
-                           j['AttrStatus'] == uid or \
-                           j['NickName'] == name or \
-                           j['DisplayName'] == name:
+                        if str(j['UserName']) == str(ActualUserName) or \
+                           str(j['AttrStatus']) == str(uid) or \
+                           str(j['NickName']) == str(name) or \
+                           str(j['DisplayName']) == str(name):
                             result[-1]['MemberList'].append(j)
         if not result and not refresh:
             return self.search_user(UserName, uid, wid, name, ActualUserName, refresh=True)
@@ -445,11 +470,77 @@ Gender: {Sex}"""
 
     # Extra functions
 
-    @extra(name="Refresh Contacts and Groups list", desc="Refresh the list of contacts when unidentified contacts found.", emoji="🔁")
-    def refresh_contacts(self):
-        itchat.get_contract(True)
+    @extra(name="Show chat list",
+           desc="Get a list of chat from Wechat.\nUsage:\n    {function_name} [-r]\n    -r: Force refresh",
+           emoji="📃")
+    def get_chat_list(self, param=""):
+        refresh = False
+        if param:
+            if param == "-r":
+                refresh = True
+            else:
+                return "Invalid command: %s." % param
+        l = []
+        for i in itchat.get_friends(refresh)[1:]:
+            l.append(i)
+            l[-1]['Type'] = "User"
+
+        for i in itchat.get_chatrooms(refresh):
+            l.append(i)
+            l[-1]['Type'] = "Group"
+
+        for i in itchat.get_mps(refresh):
+            l.append(i)
+            l[-1]['Type'] = "MPS"
+
+        msg = "List of chats:\n"
+        for n, i in enumerate(l):
+            alias = i.get('Alias', '') or i.get('DisplayName', '')
+            name = i.get('NickName', '')
+            x = "%s (%s)" % (alias, name) if alias else name
+            msg += "\n%s: [%s] %s" % (n, x, i['Type'])
+
+        return msg
+
+    @extra(name="Set alias",
+           desc="Set alias for a contact in WeChat. You may not set alias to a group or a MPS contact.\n" + \
+                "Usage:\n    {function_name} [-r] id [alias]\n    id: Chad ID (You may obtain it from \"Show chat list\" function.\n" + \
+                "    alias: Alias to be set. Omit to remove.\n    -r: Force refresh",
+           emoji="📃")
+    def get_chat_list(self, param=""):
+        refresh = False
+        if param:
+            if param.startswith("-r "):
+                refresh = True
+                param = param[2:]
+            param = param.split(maxsplit=1)
+            if len(param) == 1:
+                cid = param[0]
+                alias = ""
+            else:
+                cid, alias = param
+
+        if not cid.isdecimal():
+            return "ID must be integer, \"%s\" given." % cid
+        else:
+            cid = int(cid)
+
+        l = itchat.get_friends(refresh)[1:]
+
+        if cid < 0:
+            return "ID must between 0 and %s inclusive, %s given." % (len(l) - 1, cid)
+
+        if cid >= len(l):
+            return "You may not set alias to a group or a MPS contact."
+
+        itchat.set_alias(l[cid]['UserName'], alias)
+        if alias:
+            return "Chat \"%s\" is set with alias \"%s\"." % (l[cid]["NickName"], alias)
+        else:
+            return "Chat \"%s\" has removed its alias." % l[cid]["NickName"]
 
     # Command functions
+
     def add_friend(self, userName=None, status=2, ticket="", userInfo={}):
         if not userName:
             return "Username is empty. (UE01)"
