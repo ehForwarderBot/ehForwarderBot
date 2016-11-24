@@ -18,7 +18,7 @@ def incomeMsgMeta(func):
         mobj = func(self, msg, isGroupChat)
         FromUser = self.search_user(UserName=msg['FromUserName'])[0] or {"NickName": "User error. (UE01)", "Alias": "User error. (UE01)"}
         if isGroupChat:
-            ActualDisplayName = self.search_user(UserName=msg['FromUserName'], ActualUserName=msg['ActualUserName'])[0]['MemberList'][0]['DisplayName']
+            member = self.search_user(UserName=msg['FromUserName'], ActualUserName=msg['ActualUserName'])[0]['MemberList'][0]
             mobj.source = MsgSource.Group
             mobj.origin = {
                 'name': FromUser['NickName'],
@@ -26,8 +26,8 @@ def incomeMsgMeta(func):
                 'uid': self.get_uid(NickName=FromUser['NickName'])
             }
             mobj.member = {
-                'name': msg['ActualNickName'],
-                'alias': ActualDisplayName or msg['ActualNickName'],
+                'name': member['NickName'],
+                'alias': member['DisplayName'],
                 'uid': self.get_uid(NickName=msg['ActualNickName'])
             }
         else:
