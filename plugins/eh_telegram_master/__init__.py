@@ -112,6 +112,13 @@ class TelegramChannel(EFBChannel):
         return utf8[:i].decode()
 
     def callback_query_dispatcher(self, bot, update):
+        """
+        Dispatch a callback query based on the message session status.
+
+        Args:
+            bot (telegram.bot): bot
+            update (telegram.Update): update
+        """
         # Get essential information about the query
         query = update.callback_query
         chat_id = query.message.chat.id
@@ -137,6 +144,12 @@ class TelegramChannel(EFBChannel):
         return bot.sendMessage(update.message.chat.id, errmsg, reply_to_message_id=update.message.message_id)
 
     def process_msg(self, msg):
+        """
+        Process a message from slave channel and deliver it to the user.
+
+        Args:
+            msg (EFBMsg): The message.
+        """
         chat_uid = "%s.%s" % (msg.channel_id, msg.origin['uid'])
         tg_chat = db.get_chat_assoc(slave_uid=chat_uid) or False
         msg_prefix = ""
@@ -263,7 +276,21 @@ class TelegramChannel(EFBChannel):
         db.add_msg_log(**msg_log)
 
     def slave_chats_pagination(self, message_id, offset=0):
+        """
+        Generate a list of (list of) `InlineKeyboardButton`s of chats in slave channels,
+        based on the status of message located by `message_id` and the paging from
+        `offset` value.
 
+        Args:
+            message_id (int): Message ID for generating the buttons list.
+            offset (int): Offset for pagination
+
+        Returns:
+            tuple (str, list of list of InlineKeyboardButton):
+                A tuple: legend, chat_btn_list
+                `legend` is the legend of all Emoji headings in the entire list.
+                `chat_btn_list` is a list which can be fit into `telegram.InlineKeyboardMarkup`.
+        """
         legend = [
             "%s: Linked" % utils.Emojis.LINK_EMOJI,
             "%s: User" % utils.Emojis.USER_EMOJI,

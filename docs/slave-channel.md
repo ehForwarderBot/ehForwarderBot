@@ -90,3 +90,39 @@ Slave channels can send messages that offer the user options to take action. Thi
 Aside from sending a message with "Command" type (refer to the specification in "Message" documentation), the slave channel have to also provide a method for the command to be issued.
 
 The method can take any argument of Python's standard data structure, and returns a string which is shown to the user as the result of the action.
+
+## Extra functions
+
+In some cases, your slave channel may allow the user to achieve extra functionality, such as creating groups, managing group members, etc.
+
+You can receive such commands issued in a CLI-like style. An "extra function" method should only take one string parameter aside from `self`, and wrap it with `@extra` decorator from `utils` module. The extra decorator takes 2 arguments: `name`, a short name of the function, and `desc` a description of the function and its usage.
+
+> **More on `desc`**  
+`desc` should describe what the function does and how to use it. It's more like the help text for an CLI program. Since method of calling an extra function depends on the implementation of the master channel, you should use `{function_name}` as the function name in `desc`, and master channel will replace it with respective name.
+
+The method should in the end return a string, which will be shown to the user as the result. Depends on the functionality of the function, it may be just a simple success message, or a long chunk of results.
+
+Example:
+```python
+@extra(name="New group",
+       desc="Create a new group.\n" +
+            "Usage:\n" +
+            "    {function_name} group_name|member_id_1|member_id_2|...\n" +
+            "    e.g.: {function_name} My Group|123456|654321|393901"
+            "    group_name: Name of new group, \"|\" is not allowed.\n" +
+            "    member_id_n: ID of group members, you should fill at least one.")
+def new_group(self, param):
+    param = param.split('|')
+    if len(param) < 2:
+        return "Group name and at least one member ID should be provided."
+    group_name = param[0]
+    members = param[1:]
+    try:
+        self.myChat.create_group(group_name, members)
+    except Exception as e:
+        return repr(e)
+    return "Group %s created with members %s." % (group_name, members).
+```
+
+## Media processing
+Please refer to the _Media Processing_ section in the [Workflow](workflow.md) page.

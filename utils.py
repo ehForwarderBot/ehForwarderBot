@@ -19,6 +19,8 @@ class Emojis:
 
 def extra(**kw):
     def attr_dec(f):
+        if not "name" in kw or not "desc" in kw:
+            raise ValueError("Key `name` and `desc` is required for extra functions.")
         f.__setattr__("extra_fn", True)
         for i in kw:
             f.__setattr__(i, kw[i])
