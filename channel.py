@@ -54,7 +54,7 @@ class EFBChannel:
         for mName in dir(self):
             m = getattr(self, mName)
             if getattr(m, "extra_fn", False):
-                methods[mName](getattr(self, m))
+                methods[mName] = m
         return methods
 
     def send_message(self, *arg, **kwarg):

@@ -376,12 +376,12 @@ class WeChatChannel(EFBChannel):
     @incomeMsgMeta
     def cardMsg(self, msg, isGroupChat=False):
         mobj = EFBMsg(self)
-        txt = """Name card: {NickName}
-From: {Province}, {City}
-QQ: {QQNum}
-ID: {Alias}
-Signature: {Signature}
-Gender: {Sex}"""
+        txt = ("Name card: {NickName}\n"
+               "From: {Province}, {City}\n"
+               "QQ: {QQNum}\n"
+               "ID: {Alias}\n"
+               "Signature: {Signature}\n"
+               "Gender: {Sex}")
         txt = txt.format(**msg['Text'])
         mobj.text = txt
         mobj.type = MsgType.Command
@@ -404,13 +404,12 @@ Gender: {Sex}"""
     @incomeMsgMeta
     def friendMsg(self, msg, isGroupChat=False):
         mobj = EFBMsg(self)
-        txt = """Friend request: {NickName}
-Status: {Status}
-From: {Province}, {City}
-QQ: {QQNum}
-ID: {Alias}
-Signature: {Signature}
-Gender: {Sex}"""
+        txt = ("Friend request: {NickName}\n"
+               "From: {Province}, {City}\n"
+               "QQ: {QQNum}\n"
+               "ID: {Alias}\n"
+               "Signature: {Signature}\n"
+               "Gender: {Sex}")
         txt = txt.format(**{**msg['Text'], **msg['Text']['userInfo']})
         mobj.text = txt
         mobj.type = MsgType.Command
@@ -459,7 +458,12 @@ Gender: {Sex}"""
         """
         self.logger.info('msg.text %s', msg.text)
         UserName = self.get_UserName(msg.destination['uid'])
-        self.logger.info("Sending message to Wechat:\nTarget-------\nuid: %s\nUserName: %s\nNickName: %s" % (msg.destination['uid'], UserName, msg.destination['name']))
+        self.logger.info("Sending message to Wechat:\n"
+                         "Target-------\n"
+                         "uid: %s\n"
+                         "UserName: %s\n"
+                         "NickName: %s"
+                         % (msg.destination['uid'], UserName, msg.destination['name']))
         self.logger.info("Got message of type %s", msg.type)
         if msg.type == MsgType.Text:
             if msg.target:
@@ -500,7 +504,9 @@ Gender: {Sex}"""
     # Extra functions
 
     @extra(name="Show chat list",
-           desc="Get a list of chat from Wechat.\nUsage:\n    {function_name} [-r]\n    -r: Force refresh")
+           desc="Get a list of chat from WeChat.\n"
+                "Usage:\n    {function_name} [-r]\n"
+                "    -r: Force refresh")
     def get_chat_list(self, param=""):
         refresh = False
         if param:
@@ -523,7 +529,7 @@ Gender: {Sex}"""
 
         msg = "List of chats:\n"
         for n, i in enumerate(l):
-            alias = i.get('Alias', '') or i.get('DisplayName', '')
+            alias = i.get('RemarkName', '') or i.get('DisplayName', '')
             name = i.get('NickName', '')
             x = "%s (%s)" % (alias, name) if alias else name
             msg += "\n%s: [%s] %s" % (n, x, i['Type'])
@@ -531,10 +537,13 @@ Gender: {Sex}"""
         return msg
 
     @extra(name="Set alias",
-           desc="Set alias for a contact in WeChat. You may not set alias to a group or a MPS contact.\n" + \
-                "Usage:\n    {function_name} [-r] id [alias]\n    id: Chad ID (You may obtain it from \"Show chat list\" function.\n" + \
-                "    alias: Alias to be set. Omit to remove.\n    -r: Force refresh")
-    def get_chat_list(self, param=""):
+           desc="Set alias for a contact in WeChat. You may not set alias to a group or a MPS contact.\n"
+                "Usage:\n"
+                "    {function_name} [-r] id [alias]\n"
+                "    id: Chad ID (You may obtain it from \"Show chat list\" function.\n"
+                "    alias: Alias to be set. Omit to remove.\n"
+                "    -r: Force refresh")
+    def set_alias(self, param=""):
         refresh = False
         if param:
             if param.startswith("-r "):
@@ -546,6 +555,8 @@ Gender: {Sex}"""
                 alias = ""
             else:
                 cid, alias = param
+        else:
+            return self.set_alias.desc
 
         if not cid.isdecimal():
             return "ID must be integer, \"%s\" given." % cid

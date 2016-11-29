@@ -116,7 +116,6 @@ def add_msg_log(**kwargs):
     if update:
         msg_log = MsgLog.get(MsgLog.master_msg_id == master_msg_id)
         msg_log.text = text
-        msg_log.text = text
         msg_log.msg_type = msg_type
         msg_log.sent_to = sent_to
         msg_log.slave_origin_uid = slave_origin_uid

@@ -2,6 +2,7 @@
 import telegram
 import telegram.ext
 import config
+import datetime
 import utils
 import urllib
 import logging
@@ -15,6 +16,7 @@ from .whitelisthandler import WhitelistHandler
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
 from channelExceptions import EFBChatNotFound, EFBMessageTypeNotSupported
 from .msgType import get_msg_type, TGMsgType
+from moviepy.editor import VideoFileClip
 
 
 class Flags:
@@ -69,6 +71,7 @@ class TelegramChannel(EFBChannel):
 
     # Constants
     INLINE_CHAT_PER_PAGE = 10
+    MSG_COMBINE_THRESHOLD_SECS = 15
 
     def __init__(self, queue, slaves):
         super().__init__(queue)
@@ -76,7 +79,7 @@ class TelegramChannel(EFBChannel):
         try:
             self.bot = telegram.ext.Updater(config.eh_telegram_master['token'])
         except (AttributeError, KeyError):
-            raise NameError("Token is not properly defined. Please define it in `config.py`.")
+            raise ValueError("Token is not properly defined. Please define it in `config.py`.")
         mimetypes.init()
         self.logger = logging.getLogger("masterTG.%s" % __name__)
         self.me = self.bot.bot.get_me()
@@ -86,6 +89,8 @@ class TelegramChannel(EFBChannel):
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("recog", self.recognize_speech, pass_args=True))
         self.bot.dispatcher.add_handler(telegram.ext.CallbackQueryHandler(self.callback_query_dispatcher))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("start", self.start, pass_args=True))
+        self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("extra", self.extra_help))
+        self.bot.dispatcher.add_handler(telegram.ext.RegexHandler(r"^/(?P<id>[0-9]+)_(?P<command>[a-z0-9_-]+)", self.extra_call, pass_groupdict=True))
         self.bot.dispatcher.add_handler(telegram.ext.MessageHandler(
             telegram.ext.Filters.text | telegram.ext.Filters.photo | telegram.ext.Filters.sticker | telegram.ext.Filters.document,
             self.msg
@@ -184,21 +189,22 @@ class TelegramChannel(EFBChannel):
         # Type dispatching
 
         if msg.type in [MsgType.Text, MsgType.Link]:
-            last_msg = db.get_last_msg_from_chat(tg_dest)
-            if last_msg:
-                if last_msg.msg_type == "Text":
-                    if msg.source == MsgSource.Group:
-                        is_last_member = str(last_msg.slave_member_uid) == str(msg.member['uid'])
+            if tg_chat_assoced:
+                last_msg = db.get_last_msg_from_chat(tg_dest)
+                if last_msg:
+                    if last_msg.msg_type == "Text":
+                        append_last_msg = str(last_msg.slave_origin_uid) == "%s.%s" % (msg.channel_id, msg.origin['uid'])
+                        if msg.source == MsgSource.Group:
+                            append_last_msg &= str(last_msg.slave_member_uid) == str(msg.member['uid'])
+                        append_last_msg &= datetime.datetime.now() - last_msg.time <= datetime.timedelta(seconds=self.MSG_COMBINE_THRESHOLD_SECS)
                     else:
-                        is_last_member = str(last_msg.slave_origin_uid) == "%s.%s" % (msg.channel_id, msg.origin['uid'])
+                        append_last_msg = False
                 else:
-                    is_last_member = False
-            else:
-                is_last_member = False
-            if tg_chat_assoced and is_last_member:
+                    append_last_msg = False
+            if tg_chat_assoced and append_last_msg:
                 msg.text = "%s\n%s" % (last_msg.text, msg.text)
                 tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest,
-                                                      message_id=last_msg.master_msg_id.split(".", 2)[1],
+                                                      message_id=last_msg.master_msg_id.split(".", 1)[1],
                                                       text=msg_template % msg.text)
             else:
                 tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text)
@@ -539,6 +545,33 @@ class TelegramChannel(EFBChannel):
         msg = self.msg_storage[message_id]['text'] + "\n------\n" + getattr(self.slaves[channel_id], command['callable'])(*command['args'], **command['kwargs'])
         return bot.editMessageText(text=msg, chat_id=chat_id, message_id=message_id)
 
+    def extra_help(self, bot, update):
+        msg = "List of slave channel features:"
+        for n, i in enumerate(sorted(self.slaves)):
+            i = self.slaves[i]
+            msg += "\n\n<b>%s %s</b>" % (i.channel_emoji, i.channel_name)
+            xfns = i.get_extra_functions()
+            if xfns:
+                for j in xfns:
+                    fn_name = "/%s_%s" % (n, j)
+                    msg += "\n\n%s <i>(%s)</i>\n%s" % (fn_name, xfns[j].name, xfns[j].desc.format(function_name=fn_name))
+            else:
+                msg += "No command found."
+        self.logger.debug("xtrahelp-----\n%s", msg)
+        bot.sendMessage(update.message.chat.id, msg, parse_mode="HTML")
+
+    def extra_call(self, bot, update, groupdict=None):
+        if int(groupdict['id']) >= len(self.slaves):
+            return self._reply_error(bot, update, "Invalid slave channel ID. (XC01)")
+        ch = self.slaves[sorted(self.slaves)[int(groupdict['id'])]]
+        fns = ch.get_extra_functions()
+        if groupdict['command'] not in fns:
+            return self._reply_error(bot, update, "Command not found in selected channel. (XC02)")
+        header = "%s %s: %s\n-------\n" % (ch.channel_emoji, ch.channel_name, fns[groupdict['command']].name)
+        msg = bot.sendMessage(update.message.chat.id, header+"Please wait...")
+        result = fns[groupdict['command']]("".join(update.message.text.split(' ', 1)[1:]))
+        bot.editMessageText(text=header+result, chat_id=update.message.chat.id, message_id=msg.message_id)
+
     def msg(self, bot, update):
         self.logger.debug("----\nMsg from tg user:\n%s", update.message.to_dict())
         target = None
@@ -618,11 +651,45 @@ class TelegramChannel(EFBChannel):
                 m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
                 m.file = open(m.path, "rb")
             elif mtype == TGMsgType.Document:
-                m.type = MsgType.File
+                m.text = update.message.document.file_name
+                tg_file_id = update.message.document.file_id
+                if update.message.document.mime_type == "video/mp4":
+                    m.type = MsgType.Image
+                    m.path, m.mime = self._download_gif(update.message, tg_file_id, "gif")
+                else:
+                    m.type = MsgType.File
+                    m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
+                m.file = open(m.path, "rb")
+            elif mtype == TGMsgType.Video:
+                m.type = MsgType.Video
                 m.text = update.message.document.file_name
                 tg_file_id = update.message.document.file_id
                 m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
                 m.file = open(m.path, "rb")
+            elif mtype == TGMsgType.Audio:
+                m.type = MsgType.Audio
+                m.text = "%s - %s" % (update.message.audio.title, update.message.audio.perfomer)
+                tg_file_id = update.message.audio.file_id
+                m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
+            elif mtype == TGMsgType.Voice:
+                m.type = MsgType.Audio
+                m.text = ""
+                tg_file_id = update.message.voice.file_id
+                m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
+            elif mtype == TGMsgType.Location:
+                m.type = MsgType.Location
+                m.text = "Location"
+                m.attributes = {
+                    "latitude": update.message.location.latitude,
+                    "longitude": update.message.location.longitude
+                }
+            elif mtype == TGMsgType.Venue:
+                m.type = MsgType.Location
+                m.text = update.message.location.title + "\n" + update.message.location.adderss
+                m.attributes = {
+                    "latitude": update.message.venue.location.latitude,
+                    "longitude": update.message.venue.location.longitude
+                }
             else:
                 return self._reply_error(bot, update, "Message type not supported. (MN02)")
 
@@ -645,6 +712,11 @@ class TelegramChannel(EFBChannel):
         os.rename(fullpath, "%s.%s" % (fullpath, ext))
         fullpath = "%s.%s" % (fullpath, ext)
         return fullpath, mime
+
+    def _download_gif(self, tg_msg, file_id, msg_type):
+        fullpath, mime = self._download_file(tg_msg, file_id, msg_type)
+        clip = VideoFileClip(fullpath).write_gif(fullpath + ".gif")
+        return fullpath + ".gif", "image/gif"
 
     def start(self, bot, update, args=[]):
         if not update.message.from_user.id == update.message.chat.id:  # from group
