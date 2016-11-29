@@ -635,6 +635,8 @@ class TelegramChannel(EFBChannel):
                         "target": trgtMsg
                     }
             # Type specific stuff
+            self.logger.debug("tg: msg type: %s", mtype)
+
             if mtype == TGMsgType.Text:
                 m.type = MsgType.Text
                 m.text = update.message.text
@@ -653,9 +655,11 @@ class TelegramChannel(EFBChannel):
             elif mtype == TGMsgType.Document:
                 m.text = update.message.document.file_name
                 tg_file_id = update.message.document.file_id
+                self.logger.debug("tg: Document file received")
                 if update.message.document.mime_type == "video/mp4":
+                    self.logger.debug("tg: GIF received")
                     m.type = MsgType.Image
-                    m.path, m.mime = self._download_gif(update.message, tg_file_id, "gif")
+                    m.path, m.mime = self._download_gif(update.message, tg_file_id, m.type)
                 else:
                     m.type = MsgType.File
                     m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)

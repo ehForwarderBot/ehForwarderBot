@@ -476,7 +476,7 @@ class WeChatChannel(EFBChannel):
         elif msg.type in [MsgType.Image, MsgType.Sticker]:
             self.logger.info("Image/Sticker %s", msg.type)
             if msg.mime == "image/gif":
-                r = itchat.send_file(msg.path, UserName, isGIF=True)
+                r = itchat.send_image(msg.path, UserName)
                 os.remove(msg.path)
                 return r
             elif not msg.mime == "image/jpeg":  # Convert Image format
