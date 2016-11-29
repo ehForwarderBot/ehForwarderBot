@@ -495,7 +495,7 @@ class WeChatChannel(EFBChannel):
             return r
         elif msg.type in [MsgType.File, MsgType.Video]:
             self.logger.info("Sending file to WeChat\nFileName: %s\nPath: %s", msg.text, msg.path)
-            r = itchat.send_file(msg.path, UserName, filename=msg.text)
+            r = itchat.send_file(msg.path, UserName)
             os.remove(msg.path)
             return r
         else:
