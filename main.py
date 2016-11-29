@@ -23,6 +23,15 @@ master = None
 master_thread = None
 slave_threads = None
 
+def set_log_file(fn):
+    fh = logging.FileHandler(fn, 'a')
+    f = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s \n %(message)s')
+    fh.setFormatter(f)
+    l = logging.getLogger()
+    for hdlr in l.handlers[:]:
+        l.removeHandler(hdlr)
+    l.addHandler(fh)
+
 
 def init():
     global q, slaves, master, master_thread, slave_threads
@@ -68,11 +77,12 @@ else:
         logging.basicConfig(level=logging.DEBUG)
 
     if getattr(args, "log", None):
-        logging.basicConfig(filename=args.log)
+        LOG = args.log
+        set_log_file(LOG)
 
     if getattr(args, "d", None):
         d = EFBDaemon(PID, poll)
-        logging.basicConfig(filename=LOG)
+        set_log_file(LOG)
         if args.d == "start":
             init()
             d.start()
