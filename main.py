@@ -5,11 +5,17 @@ import logging
 import argparse
 from daemon import Daemon
 
-parser = argparse.ArgumentParser()
+__version__ = "1.0 build 20161204"
+
+parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible chat tunnel framework which allows "
+                                             "users to contact people from other chat platforms, and ultimately "
+                                             "remotely control their accounts in other platforms.",
+                                 epilog="Support: https://github.com/blueset/ehForwarderBot")
 parser.add_argument("-v", default=0, action="count",
                     help="Increase verbosity.")
-parser.add_argument("-V", "--version",
-                    help="Show version number and exit.")
+parser.add_argument("-V", "--version", action="version",
+                    help="Show version number and exit.",
+                    version="EFB Forwarder Bot %s" % __version__)
 parser.add_argument("-d", choices=["start", "stop", "restart"],
                     help="Run as a daemon.")
 parser.add_argument("-l", "--log",
@@ -66,7 +72,7 @@ LOG = "EFB.log"
 
 if getattr(args, "V", None):
     print("EH Forwarder Bot\n"
-          "Version: Alpha 0.0 build 20161126")
+          "Version: Be")
 else:
     if args.v == 0:
         logging.basicConfig(level=logging.ERROR)
