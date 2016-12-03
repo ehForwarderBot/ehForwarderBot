@@ -145,3 +145,4 @@ test*
 storage/*
 temp*
 itchat.pkl
+.itchat
