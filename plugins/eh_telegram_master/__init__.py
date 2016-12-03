@@ -74,6 +74,13 @@ class TelegramChannel(EFBChannel):
     MSG_COMBINE_THRESHOLD_SECS = 15
 
     def __init__(self, queue, slaves):
+        """
+        Initialization.
+
+        Args:
+            queue (queue.Queue): global message queue
+            slaves (dict): Dictionary of slaves
+        """
         super().__init__(queue)
         self.slaves = slaves
         try:
@@ -92,7 +99,14 @@ class TelegramChannel(EFBChannel):
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("extra", self.extra_help))
         self.bot.dispatcher.add_handler(telegram.ext.RegexHandler(r"^/(?P<id>[0-9]+)_(?P<command>[a-z0-9_-]+)", self.extra_call, pass_groupdict=True))
         self.bot.dispatcher.add_handler(telegram.ext.MessageHandler(
-            telegram.ext.Filters.text | telegram.ext.Filters.photo | telegram.ext.Filters.sticker | telegram.ext.Filters.document,
+            telegram.ext.Filters.text |
+            telegram.ext.Filters.photo |
+            telegram.ext.Filters.sticker |
+            telegram.ext.Filters.document |
+            telegram.ext.Filters.venue |
+            telegram.ext.Filters.location |
+            telegram.ext.Filters.audio |
+            telegram.ext.Filters.voice,
             self.msg
         ))
         self.bot.dispatcher.add_error_handler(self.error)
@@ -146,6 +160,12 @@ class TelegramChannel(EFBChannel):
 
     @staticmethod
     def _reply_error(bot, update, errmsg):
+        """
+        A wrap that directly reply a message with error details.
+
+        Returns:
+            telegram.Message: Message sent
+        """
         return bot.sendMessage(update.message.chat.id, errmsg, reply_to_message_id=update.message.message_id)
 
     def process_msg(self, msg):
@@ -300,9 +320,7 @@ class TelegramChannel(EFBChannel):
         legend = [
             "%s: Linked" % utils.Emojis.LINK_EMOJI,
             "%s: User" % utils.Emojis.USER_EMOJI,
-            "%s: Group" % utils.Emojis.GROUP_EMOJI,
-            "%s: System" % utils.Emojis.SYSTEM_EMOJI,
-            "%s: Unknown" % utils.Emojis.UNKNOWN_EMOJI
+            "%s: Group" % utils.Emojis.GROUP_EMOJI
         ]
 
         if self.msg_storage.get(message_id, None):
@@ -378,7 +396,8 @@ class TelegramChannel(EFBChannel):
             except:
                 return bot.editMessageText(chat_id=update.message.chat.id,
                                            message_id=init_msg.message_id,
-                                           text="No chat is found linked with this group. Please send /link privately to link a chat.")
+                                           text="No chat is found linked with this group. "
+                                                "Please send /link privately to link a chat.")
 
         # if message ir replied to an existing one
         if update.message.reply_to_message:
@@ -389,7 +408,8 @@ class TelegramChannel(EFBChannel):
             except:
                 return bot.editMessageText(chat_id=update.message.chat.id,
                                            message_id=init_msg.message_id,
-                                           text="No chat is found linked with this group. Please send /link privately to link a chat.")
+                                           text="No chat is found linked with this group. "
+                                                "Please send /link privately to link a chat.")
 
         self.link_chat_gen_list(bot, update.message.chat.id)
 
@@ -747,7 +767,7 @@ class TelegramChannel(EFBChannel):
                 pass
 
             def recognize(self, *args, **kwargs):
-                return ["Not Implemented."]
+                return ["Not enabled or error in configuration."]
 
         if not getattr(update.message, "reply_to_message", None):
             txt = "/recog [lang_code]\nReply to a voice with this command to recognised a voice.\nExamples:\n/recog\n/recog zh\n/recog en\n(RS01)"

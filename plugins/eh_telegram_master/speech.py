@@ -4,7 +4,6 @@ import base64
 import uuid
 import os
 
-
 class BingSpeech:
     keys = None
     access_token = None

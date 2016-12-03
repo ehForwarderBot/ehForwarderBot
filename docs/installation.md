@@ -15,7 +15,6 @@ chmod +rw ./storage
 
 ## Non-python dependencies
 
-* __gcc__
 * __libmagic__
 * __libopus__
 * __ffmpeg__ with libopus support
@@ -45,7 +44,7 @@ sudo apt-get install libmagic-dev ffmpeg
 ```
 
 ## Python dependencies
-Refer to `requirements.txt`, or [Plugins Repository]() _(TODO)_ for more details.
+Refer to `requirements.txt`, or [Plugins Repository](plugins-repository.md) for more details.
 
 ### To install
 ```bash

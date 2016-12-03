@@ -1,6 +1,10 @@
 # EH Forwarder Bot
 
 ![Python 3.x](https://img.shields.io/badge/Python-3.x-blue.svg)
+[![Gitter](https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg)](https://gitter.im/blueset/ehForwarderBot)
+[![Telegram support group](https://img.shields.io/badge/Chat-on%20Telegram-blue.svg)](https://telegram.me/efbsupport)
+[![license](https://img.shields.io/github/license/blueset/ehforwarderbot.svg)](LICENSE)
+
 
 ![EFB](https://images.1a23.com/upload/images/SPET.png)
 
@@ -13,11 +17,11 @@ _Codename_ **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework whi
 * Your first channel
     * [EFB workflow](workflow.md)
     * [Slave Channel](slave-channel.md)
-    * [Master Channel]() _(TODO)_
+    * [Master Channel](master-channel.md)
 * API Documentation
     * [`EFBMsg`](message.md)
-    * [`EFBChannel`]() _(TODO)_
-    * [Exceptions]() _(TODO)_
+    * [`EFBChannel`](channel.md)
+    * [Exceptions](exceptions.md)
 
 ## Glossary
 * **Channel**: A class that communicates with a chat platform, also known as a plugin.
@@ -27,7 +31,7 @@ _Codename_ **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework whi
 * **Slave channel**: A channel linked to the platform which is controlled by the user through EFB framework.
 
 ## Feel like contributing?
-Anyone is welcomed to raise an issue or submit a pull request, just remember to read through and understand the [contribution guideline](CONTRIBUTION.md) _(TODO)_ before you do so.
+Anyone is welcomed to raise an issue or submit a pull request, just remember to read through and understand the [contribution guideline](CONTRIBUTING.md) before you do so.
 
 ## License
 EFB framework is licensed under [GNU General Public License 3.0](https://www.gnu.org/licenses/gpl-3.0.txt).

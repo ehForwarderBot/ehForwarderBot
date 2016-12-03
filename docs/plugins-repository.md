@@ -11,7 +11,7 @@ Here lists all public plugins/channels made for EFB. For any issue related to an
 * UID: `eh_telegram_master`
 * Import path: `plugins.eh_telegram_master`
 * Class name: `TelegramChannel`
-* Documentation: ETM.md _(TODO)_
+* Documentation: [ETM.md](ETM.md)
 
 ### Slave channels
 #### EFB WeChat Slave
@@ -19,7 +19,7 @@ Here lists all public plugins/channels made for EFB. For any issue related to an
 * UID: `eh_wechat_slave`
 * Import path: `plugins.eh_wechat_slave`
 * Class name: `WeChatChannel`
-* Documentation: EWS.md _(TODO)_
+* Documentation: [EWS.md](EWS.md)
 
 ## Third-party channels
 
@@ -34,3 +34,4 @@ Here lists all public plugins/channels made for EFB. For any issue related to an
 * Documentation https://git.example.com/aruyat/efb-mychat-channel/wiki
 
 ### Slave channels
+None.

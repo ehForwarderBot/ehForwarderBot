@@ -49,3 +49,15 @@ Master channel will use it's own method to ask the user to make a decision, and 
 The method of slave channel returns a string as the result which is then reflected back to the user.
 
 ## Media processing
+In order to suit the requirement of each chat platform API, it's often necessary to preprocess media files, such as encoding, converting formats, etc. The usual procedure of delivering message with media file is as follows:
+
+1. Sender channel downloads the media file to `storage/<channel_name>` directory.
+2. Sender channel compiles details (MIME type, file path, etc) to an `EFBMsg` object.
+3. Recipient channel gets the object and analyze the file.
+4. Recipient channel pre-process the media file (encoding, resizing, etc.)
+5. Recipient channel send out the message to remote server, and then remove all files related to the message.
+
+Despite there is no requirement on the module or external library used by a channel, it is recommended to utilizing one of the following external library, in order to minimize the external libraries to be installed by the end-user.
+* `ffmpeg`
+* `imagick`
+* `libmagic`

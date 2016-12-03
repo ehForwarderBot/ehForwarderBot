@@ -2,8 +2,11 @@
 
 A few simple steps to get started with EFB.
 
+## A good network environment
+Since most of our channels are using polling for message retrieval, a good network environment is necessary for the bot to run smoothly. A poor network environment may lead to slow response, or lost of messages in some cases.
+
 ## Choose, install and enable plugins
-From the [Plugins repository]() _(TODO)_, you can choose among a range of different channels that fits your need. If you have completed all the steps in [Installation instruction](installation.md), you are ready to proceed with **official channels** (i.e. channels maintained by the framework author). For other channels, you may need to check up with their respective instructions.
+From the [Plugins repository](plugins-repository.md), you can choose among a range of different channels that fits your need. If you have completed all the steps in [Installation instruction](installation.md), you are ready to proceed with **official channels** (i.e. channels maintained by the framework author). For other channels, you may need to check up with their respective instructions.
 
 To install plugins, download or clone their project, and save it in the `/plugins` folder.
 
@@ -49,16 +52,19 @@ The variable `slave_channels` is a list of tuples of 2 strings where each of the
 The "import path" and "class name" of the module is actually used to import the channel class at root level.  
 It can be understood as `from <import_path> import <class_name>`.
 
+## Permissions
+`storage` directory should be given read and write access for media processing.
+
 ## Configure your channels
 Some channels, regardless of its type, may require you to provide some details for it to operate, such as API key/secret, login credentials, preferences, etc. Different modules may put the configuration in different way, but it should always be a variable in `config.py`, where its variable name is the "unique ID" of the channel.
 
 For more details on how do configure your channel, please consult respective documentation of the channels.
 
 ## Get it up and running
-Most of the times, you can just run `python3 main.py -d start` _(TODO: Daemon in plan)_ and it should be ready to go.
+Most of the times, you can just run `python3 main.py -d start`  and it should be ready to go.
 
-> **Daemon process is in plan**  
-> As of now, you can still use the classic `python3 main.py` to launch EFB. If you want to keep it running in the background when accessing the machine via SSH, you can use tools like `screen` to prevent it from being terminated during disconnection.
+> **Run it as a normal process**  
+> Besides, you can still use the classic `python3 main.py` to launch EFB. If you want to keep it running in the background when accessing the machine via SSH, you can use tools like `screen` to prevent it from being terminated during disconnection.
 
 However, some channels may require one-time credentials (e.g. Dynamic QR code scanning for WeChat Web Protocol). When you run the module, you may be required to take some actions before the bot goes online.
 

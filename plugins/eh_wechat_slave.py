@@ -599,7 +599,7 @@ class WeChatChannel(EFBChannel):
                     'name': i['NickName'],
                     'alias': i['RemarkName'] or i['NickName'],
                     'uid': self.get_uid(NickName=i['NickName']),
-                    'type': "User"
+                    'type': MsgSource.User
                 })
         if group:
             t = itchat.get_chatrooms(True)
@@ -608,9 +608,9 @@ class WeChatChannel(EFBChannel):
                     'channel_name': self.channel_name,
                     'channel_id': self.channel_id,
                     'name': i['NickName'],
-                    'alias': i['RemarkName'] or i['NickName'],
+                    'alias': i['RemarkName'] or i['NickName'] or None,
                     'uid': self.get_uid(NickName=i['NickName']),
-                    'type': "Group"
+                    'type': MsgSource.Group
                 })
         return r
 

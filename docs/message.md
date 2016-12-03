@@ -185,8 +185,10 @@ Shared links.
 **Type**: MsgType.Command
 **Additional Parameters**: attributes
 
-This message is sent when a message from **slave** channel provides action options to the user. E.g.: Friend request,
-money transfer, etc.
+This message is sent when a message from **slave** channel provides action options to the user. E.g.: Friend request, money transfer, etc.
+
+> **Attention**  
+Only slave channel can send a command message to the master channel, master channel CANNOT send command messages.
 
 `text` should include all necessary information for the user understand the situation and take action.
 
@@ -199,17 +201,17 @@ msg.attributes = {
             "name": "A human-readable name for the command",
             "callable": "name to the callable function in your channel object",
             "args": [
-                "a list of positional parameters passed to your function"
+                "a list of positional arguments passed to your function"
             ],
             "kwargs": {
-                "desc": "a dict of keyword parameters passed to your function"
+                "desc": "a dict of keyword arguments passed to your function"
             }
         },
         {
             "name": "Greet @blueset on Telegram",
             "callable": "send_message_by_username",
             "args": [
-                "blueset",
+                "admin",
                 "Hello!"
             ],
             "kwargs": {}
@@ -217,6 +219,3 @@ msg.attributes = {
     ]
 }
 ```
-
-### Unsupported message
-> TODO: Unsupported message documentation.

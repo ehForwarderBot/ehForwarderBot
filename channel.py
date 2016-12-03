@@ -16,7 +16,6 @@ class MsgType:
 class MsgSource:
     User = "User"
     Group = "Group"
-    System = "System"
 
 
 class TargetType:
@@ -39,8 +38,6 @@ class EFBChannel:
     channel_type = ChannelType.Slave
     queue = None
 
-    extra_fn = []
-
     def __init__(self, queue):
         self.queue = queue
 
@@ -50,6 +47,8 @@ class EFBChannel:
         Returns:
             dict: A dict of functions marked as extra functions. `methods[methodName]()`
         """
+        if self.channel_type == ChannelType.Master:
+            raise NameError("get_extra_function is not available on master channels.")
         methods = {}
         for mName in dir(self):
             m = getattr(self, mName)
@@ -57,16 +56,13 @@ class EFBChannel:
                 methods[mName] = m
         return methods
 
-    def send_message(self, *arg, **kwarg):
+    def send_message(self, *args, **kwargs):
         return "Not implemented"
 
-    def poll(self, *arg, **kward):
+    def poll(self, *args, **kwargs):
         return "Not implemented"
 
-    def get_chats(self, *arg, **kward):
-        return "Not implemented"
-
-    def get_group_members(self, *arg, **kward):
+    def get_chats(self, *args, **kwargs):
         return "Not implemented"
 
 

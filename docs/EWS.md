@@ -26,7 +26,8 @@ libmagic
 and all other required by Pillow.
 
 ### Configuration
-* Copy `eh_wechat_slave.py` to "plugins" directory,
+* Copy `eh_wechat_slave.py` to "plugins" directory  
+  _May not be necessary as it's a built-in plugin of EFB_
 * Append `("plugins.we_wechat_slave", "WeChatChannel")` to `slaves` dict in `config.py`
 * No other configuration is required
 
@@ -63,4 +64,4 @@ and all other required by Pillow.
 * **I want to report a bug.**  
   **I have some suggestions.**  
   **Can I submit a pull request?**  
-  All bug reports, suggestions and pull requests are welcomed. Please read through and understand the [Contribution guideline](CONTRIBUTION.md) before submitting.
+  All bug reports, suggestions and pull requests are welcomed. Please read through and understand the [Contribution guideline](CONTRIBUTING.md) before submitting.
