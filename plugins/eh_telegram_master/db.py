@@ -40,10 +40,8 @@ def _create():
 
 def _migrate(i):
     if i == 0:
-        """
-        Migrate 0: Added Time column in MsgLog table.
-        2016JUN15
-        """
+        # Migrate 0: Added Time column in MsgLog table.
+        # 2016JUN15
         migrator = SqliteMigrator(db)
         migrate(migrator.add_column("msglog", "time", DateTimeField(default=datetime.datetime.now, null=True)))
     else:
@@ -88,7 +86,6 @@ def get_last_msg_from_chat(chat_id):
     """
     try:
         return MsgLog.select().where(MsgLog.master_msg_id.startswith("%s." % chat_id)).order_by(MsgLog.time.desc()).first()
-        return MsgLog.select().where(MsgLog.master_msg_id.startswith("%s." % chat_id)).first()
     except DoesNotExist:
         return None
 
@@ -139,7 +136,6 @@ def get_msg_log(master_msg_id):
     logger.info("get_msg_log %s" % master_msg_id)
     try:
         return MsgLog.select().where(MsgLog.master_msg_id == master_msg_id).order_by(MsgLog.time.desc()).first()
-        return MsgLog.select().where(MsgLog.master_msg_id == master_msg_id).first()
     except DoesNotExist:
         return None
 

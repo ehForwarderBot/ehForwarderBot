@@ -28,3 +28,14 @@ slave_channels = [('plugins.eh_wechat_slave', 'WeChatChannel')]
 # `channel_name = {"key1": "value1", "key2": "value2"}`
 # Please refer to docs of individual plugin for details
 #
+
+eh_telegram_master = {
+    "token": "12345678:QWFPGJLUYarstdheioZXCVBKM",
+    "admins": [0],
+    "bing_speech_api": ["3243f6a8885a308d313198a2e037073", "2b7e151628ae082b7e151628ae08"],
+    "baidu_speech_api": {
+        "app_id": 0,
+        "api_key": "3243f6a8885a308d313198a2e037073",
+        "secret_key": "2b7e151628ae082b7e151628ae08"
+    }
+}

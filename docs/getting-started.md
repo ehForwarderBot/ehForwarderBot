@@ -19,6 +19,8 @@ The variable `master_channel` is a tuple of 2 strings where first string is its 
 
 The variable `slave_channels` is a list of tuples of 2 strings where each of the tuples is formatted in the same way described above.
 
+A sample of config file is available at `config.sample.py`.
+
 > **Example**
 >
 > When enabling the following channels:

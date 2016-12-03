@@ -739,7 +739,7 @@ class TelegramChannel(EFBChannel):
 
     def _download_gif(self, tg_msg, file_id, msg_type):
         fullpath, mime = self._download_file(tg_msg, file_id, msg_type)
-        clip = VideoFileClip(fullpath).write_gif(fullpath + ".gif")
+        VideoFileClip(fullpath).write_gif(fullpath + ".gif")
         return fullpath + ".gif", "image/gif"
 
     def start(self, bot, update, args=[]):

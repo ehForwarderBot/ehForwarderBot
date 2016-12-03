@@ -1,80 +1,55 @@
 # EH Forwarder Bot
-A (extensible) tunnel bot between chat platforms  
+
 ![Python 3.x](https://img.shields.io/badge/Python-3.x-blue.svg)
+[![Gitter](https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg)](https://gitter.im/blueset/ehForwarderBot)
+[![Telegram support group](https://img.shields.io/badge/Chat-on%20Telegram-blue.svg)](https://telegram.me/efbsupport)
+[![license](https://img.shields.io/github/license/blueset/ehforwarderbot.svg)](LICENSE)
+
 
 ![EFB](https://images.1a23.com/upload/images/SPET.png)
 
-## Progress
-- [ ] Structural stuff
-    - [x] Inter-channel communication
-    - [x] Queue processing
-    - [x] Multimedia
-    - [x] Inter-channel commands
-    - [ ] Extra functions from slave channels
-- [ ] Framework features
-    - [ ] Daemon support
-- [ ] Telegram Master Channel
-    - [x] Basic Text processing
-    - [ ] Controlling slaves by command
-    - [x] Chat association
-    - [x] Multimedia
-    - [x] Generate chat head
-- [ ] WeChat Slave Channel
-    - [x] Basic Text/Link processing
-    - [x] Multimedia
-    - [x] Add friends (Cards & Requests)
-    - [ ] Other actions
-- [ ] Messenger Slave Channel
-- [ ] WhatsApp Slave Channel
-- [ ] Documentations
-    - [x] Walk-through
-    - [x] Slave channel
-    - [ ] Master channel
-    - [x] EFBMsg specification
-    - [ ] Tutorial/Commented example
-- [ ] and more...
+_Codename_ **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework which allows users to contact people from other chat platforms, and ultimately remotely control their accounts in other platforms.
 
-## Documentations
+## Navigation
+* [Installation](docs/installation.md)
+* [Getting started](docs/getting-started.md)
+* [Plugins repository](docs/plugins-repository.md)
+* Your first channel
+    * [EFB workflow](docs/workflow.md)
+    * [Slave Channel](docs/slave-channel.md)
+    * [Master Channel](docs/master-channel.md)
+* API Documentation
+    * [`EFBMsg`](docs/message.md)
+    * [`EFBChannel`](docs/channel.md)
+    * [Exceptions](docs/exceptions.md)
 
-To read an (incomplete) documentation of this project, please visit [here](https://github.com/blueset/ehForwarderBot/blob/master/docs/home.md).
+## Glossary
+* **Channel**: A class that communicates with a chat platform, also known as a plugin.
+* **EFB**: abbreviation for EH Forwarder Bot, this project.
+* **Master channel**: A channel linked to the platform which directly interact with the user.
+* **Plugin**: See "channel".
+* **Slave channel**: A channel linked to the platform which is controlled by the user through EFB framework.
 
-## Dependencies
+## Feel like contributing?
+Anyone is welcomed to raise an issue or submit a pull request, just remember to read through and understand the [contribution guideline](CONTRIBUTING.md) before you do so.
 
-### Non-Python dependencies
-* __gcc__ (for building `pillow`)
-* __libmagic__ (for mime type detection)
-* __libopus__ (Required by `eh_telegram_master` for voice encoding)
-* __ffmpeg__ with libopus support (Required by `eh_telegram_master` for voice encoding)
-* Everything required by `pillow`, including:
-    * `libjpeg, zlib, libwebp, (libtiff, libfreetype, openjpeg, tk, littlecms)`
+## License
+EFB framework is licensed under [GNU General Public License 3.0](https://www.gnu.org/licenses/gpl-3.0.txt).
 
-#### Install non-Python dependencies
-
-For more information regarding installation of Pillow, plaese visit [Pillow documentation](https://pillow.readthedocs.io/en/3.0.x/installation.html)
-
-##### OS X / macOS
-
-Install [Homebrew](https://brew.sh), then:
-
-```bash
-brew install libtiff libjpeg webp little-cms2
-brew install libmagic
-brew install ffmpeg --with-opus
 ```
+EH Forwarder Bot: An extensible chat tunneling bot framework.
+Copyright (C) 2016 Eana Hufwe
+All rights reserved.
 
-Alternatively, you can use the corresponding packages from other package managers like MacPort, or any other methods.
-##### Debian/Ubuntu/Mint/etc.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or any later version.
 
-```bash
-sudo apt-get install python3-dev python3-setuptools
-sudo apt-get install libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.5-dev tk8.5-dev
-sudo apt-get install libmagic-dev ffmpeg
-```
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-### Python dependencies
-Refer to `requirements.txt`.
-
-#### To install
-```bash
-pip(3) install -r requirements.txt
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ```
