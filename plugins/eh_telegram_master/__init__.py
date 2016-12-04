@@ -221,6 +221,7 @@ class TelegramChannel(EFBChannel):
                         append_last_msg = False
                 else:
                     append_last_msg = False
+                self.logger.debug("Text: Append last msg: %s", append_last_msg)
             if tg_chat_assoced and append_last_msg:
                 msg.text = "%s\n%s" % (last_msg.text, msg.text)
                 tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest,
@@ -229,7 +230,7 @@ class TelegramChannel(EFBChannel):
             else:
                 tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text)
         elif msg.type in [MsgType.Image, MsgType.Sticker]:
-            self.logger.info("Received Image/Sticker \nPath: %s\nSize: %s\nMIME: %s", msg.path,
+            self.logger.info("Received %s \nPath: %s\nSize: %s\nMIME: %s", msg.type, msg.path,
                              os.stat(msg.path).st_size, msg.mime)
             if os.stat(msg.path).st_size == 0:
                 os.remove(msg.path)
@@ -297,7 +298,7 @@ class TelegramChannel(EFBChannel):
                    "slave_origin_display_name": msg.origin['alias'],
                    "slave_member_uid": msg.member['uid'],
                    "slave_member_display_name": msg.member['alias']}
-        if tg_chat_assoced and is_last_member:
+        if tg_chat_assoced and append_last_msg:
             msg_log['update'] = True
         db.add_msg_log(**msg_log)
 
@@ -386,6 +387,14 @@ class TelegramChannel(EFBChannel):
         return legend, chat_btn_list
 
     def link_chat_show_list(self, bot, update):
+        """
+        Show the list of available chats for linking.
+        Triggered by `/link`.
+
+        Args:
+            bot: Telegram Bot instance
+            update: Message update
+        """
         user_id = update.message.from_user.id
         # if message sent from a group
         if not update.message.chat.id == update.message.from_user.id:
@@ -414,6 +423,15 @@ class TelegramChannel(EFBChannel):
         self.link_chat_gen_list(bot, update.message.chat.id)
 
     def link_chat_gen_list(self, bot, chat_id, message_id=None, offset=0):
+        """
+        Generate the list for chat linking, and update it to a message.
+
+        Args:
+            bot: Telegram Bot instance
+            chat_id: Chat ID
+            message_id: ID of message to be updated, None to send a new message.
+            offset: Offset for pagination.
+        """
         if not message_id:
             message_id = bot.sendMessage(chat_id, "Processing...").message_id
 
@@ -427,6 +445,15 @@ class TelegramChannel(EFBChannel):
         self.msg_status[msg.message_id] = Flags.CONFIRM_LINK
 
     def link_chat_confirm(self, bot, tg_chat_id, tg_msg_id, callback_uid):
+        """
+        Confirmation of chat linking. Triggered by callback message on status `Flags.CONFIRM_LINK`.
+
+        Args:
+            bot: Telegram Bot instance
+            tg_chat_id: Chat ID
+            tg_msg_id: Message ID triggered the callback
+            callback_uid: Callback message
+        """
         if callback_uid.split()[0] == "offset":
             return self.link_chat_gen_list(bot, tg_chat_id, message_id=tg_msg_id, offset=int(callback_uid.split()[1]))
         if callback_uid == Flags.CANCEL_PROCESS:
@@ -472,6 +499,15 @@ class TelegramChannel(EFBChannel):
                             reply_markup=telegram.InlineKeyboardMarkup([btn_list]))
 
     def link_chat_exec(self, bot, tg_chat_id, tg_msg_id, callback_uid):
+        """
+        Action to link a chat. Triggered by callback message with status `Flags.EXEC_LINK`.
+
+        Args:
+            bot: Telegram Bot instance
+            tg_chat_id: Chat ID
+            tg_msg_id: Message ID triggered the callback
+            callback_uid: Callback message
+        """
         if callback_uid == Flags.CANCEL_PROCESS:
             txt = "Cancelled."
             self.msg_status.pop(tg_msg_id, None)
@@ -496,10 +532,27 @@ class TelegramChannel(EFBChannel):
         bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
 
     def start_chat_list(self, bot, update):
+        """
+        Send a list to for chat list generation.
+        Triggered by `/list`.
+
+        Args:
+            bot: Telegram Bot instance
+            update: Message update
+        """
         msg_id = self.chat_head_req_generate(bot, update.message.from_user.id)
         self.msg_status[msg_id] = Flags.START_CHOOSE_CHAT
 
     def chat_head_req_generate(self, bot, chat_id, message_id=None, offset=0):
+        """
+        Generate the list for chat head, and update it to a message.
+
+        Args:
+            bot: Telegram Bot instance
+            chat_id: Chat ID
+            message_id: ID of message to be updated, None to send a new message.
+            offset: Offset for pagination.
+        """
         if not message_id:
             message_id = bot.sendMessage(chat_id, text="Processing...").message_id
 
@@ -514,6 +567,15 @@ class TelegramChannel(EFBChannel):
         return message_id
 
     def make_chat_head(self, bot, tg_chat_id, tg_msg_id, callback_uid):
+        """
+        Create a chat head. Triggered by callback message with status `Flags.START_CHOOSE_CHAT`.
+
+        Args:
+            bot: Telegram Bot instance
+            tg_chat_id: Chat ID
+            tg_msg_id: Message ID triggered the callback
+            callback_uid: Callback message
+        """
         if callback_uid.split()[0] == "offset":
             return self.chat_head_req_generate(bot, tg_chat_id, message_id=tg_msg_id, offset=int(callback_uid.split()[1]))
         if callback_uid == Flags.CANCEL_PROCESS:
@@ -539,7 +601,7 @@ class TelegramChannel(EFBChannel):
         chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name'])
         self.msg_status.pop(tg_msg_id, None)
         self.msg_storage.pop(tg_msg_id, None)
-        txt = "Reply to this message to chat with %s." % (chat_display_name)
+        txt = "Reply to this message to chat with %s." % chat_display_name
         msg_log = {"master_msg_id": "%s.%s" % (tg_chat_id, tg_msg_id),
                    "text": txt,
                    "msg_type": "Text",
@@ -552,20 +614,44 @@ class TelegramChannel(EFBChannel):
         bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
 
     def command_exec(self, bot, chat_id, message_id, callback):
+        """
+        Run a command from a command message.
+        Triggered by callback message with status `Flags.COMMAND_PENDING`.
+
+        Args:
+            bot: Telegram Bot instance
+            chat_id: Chat ID
+            message_id: Message ID triggered the callback
+            callback: Callback message
+        """
         if not callback.isdecimal():
             msg = "Invalid parameter: %s. (CE01)" % callback
+            self.msg_status.pop(message_id, None)
+            self.msg_storage.pop(message_id, None)
             return bot.editMessageText(text=msg, chat_id=chat_id, message_id=message_id)
         elif not (0 <= int(callback) < len(self.msg_storage[message_id])):
             msg = "Index out of bound: %s. (CE02)" % callback
+            self.msg_status.pop(message_id, None)
+            self.msg_storage.pop(message_id, None)
             return bot.editMessageText(text=msg, chat_id=chat_id, message_id=message_id)
 
         callback = int(callback)
         channel_id = self.msg_storage[message_id]['channel']
         command = self.msg_storage[message_id]['commands'][callback]
         msg = self.msg_storage[message_id]['text'] + "\n------\n" + getattr(self.slaves[channel_id], command['callable'])(*command['args'], **command['kwargs'])
+        self.msg_status.pop(message_id, None)
+        self.msg_storage.pop(message_id, None)
         return bot.editMessageText(text=msg, chat_id=chat_id, message_id=message_id)
 
     def extra_help(self, bot, update):
+        """
+        Show list of extra functions and their usage.
+        Triggered by `/extra`.
+
+        Args:
+            bot: Telegram Bot instance
+            update: Message update
+        """
         msg = "List of slave channel features:"
         for n, i in enumerate(sorted(self.slaves)):
             i = self.slaves[i]

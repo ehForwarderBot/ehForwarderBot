@@ -29,7 +29,14 @@ master = None
 master_thread = None
 slave_threads = None
 
+
 def set_log_file(fn):
+    """
+    Set log file path for root logger
+
+    Args:
+        fn (str): File name
+    """
     fh = logging.FileHandler(fn, 'a')
     f = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s \n %(message)s')
     fh.setFormatter(f)
@@ -40,6 +47,9 @@ def set_log_file(fn):
 
 
 def init():
+    """
+    Initialize all channels.
+    """
     global q, slaves, master, master_thread, slave_threads
     # Init Queue
     q = queue.Queue()
@@ -56,11 +66,15 @@ def init():
     slave_threads = {key: threading.Thread(target=slaves[key].poll) for key in slaves}
 
 
-def poll(*args, **kwargs):
+def poll():
+    """
+    Start threads for polling
+    """
     global master_thread, slave_threads
     master_thread.start()
     for i in slave_threads:
         slave_threads[i].start()
+
 
 class EFBDaemon(Daemon):
     def __init__(self, pidfile, run):

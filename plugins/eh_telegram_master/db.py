@@ -10,6 +10,7 @@ basePath = os.path.dirname(os.path.abspath(inspect.stack()[0][1]))
 db = SqliteDatabase(basePath + '/tgdata.db')
 logger = logging.getLogger("masterTG.db.%s" % __name__)
 
+# Peewee Models
 
 class BaseModel(Model):
 
@@ -35,10 +36,22 @@ class MsgLog(BaseModel):
 
 
 def _create():
+    """
+    Initializing tables.
+    """
     db.create_tables([ChatAssoc, MsgLog])
 
 
 def _migrate(i):
+    """
+    Run migrations.
+
+    Args:
+        i: Migration ID
+
+    Returns:
+        False: when migration ID is not found
+    """
     if i == 0:
         # Migrate 0: Added Time column in MsgLog table.
         # 2016JUN15
@@ -49,10 +62,25 @@ def _migrate(i):
 
 
 def add_chat_assoc(master_uid, slave_uid):
+    """
+    Add chat associations (chat links).
+
+    Args:
+        master_uid (str): Master channel UID ("%(chat_id)s")
+        slave_uid (str): Slave channel UID ("%(channel_id)s.%(chat_id)s")
+    """
     return ChatAssoc.create(master_uid=master_uid, slave_uid=slave_uid)
 
 
 def remove_chat_assoc(master_uid=None, slave_uid=None):
+    """
+    Remove chat associations (chat links).
+    Only one parameter is to be provided.
+
+    Args:
+        master_uid (str): Master channel UID ("%(chat_id)s")
+        slave_uid (str): Slave channel UID ("%(channel_id)s.%(chat_id)s")
+    """
     try:
         if bool(master_uid) == bool(slave_uid):
             raise ValueError("Only one parameter is to be provided.")
@@ -65,6 +93,17 @@ def remove_chat_assoc(master_uid=None, slave_uid=None):
 
 
 def get_chat_assoc(master_uid=None, slave_uid=None):
+    """
+    Get chat association (chat link) information.
+    Only one parameter is to be provided.
+
+    Args:
+        master_uid (str): Master channel UID ("%(chat_id)s")
+        slave_uid (str): Slave channel UID ("%(channel_id)s.%(chat_id)s")
+
+    Returns:
+        ChatAssoc: The database entry queried.
+    """
     try:
         if bool(master_uid) == bool(slave_uid):
             raise ValueError("Only one parameter is to be provided.")
@@ -75,14 +114,15 @@ def get_chat_assoc(master_uid=None, slave_uid=None):
     except DoesNotExist:
         return None
 
+
 def get_last_msg_from_chat(chat_id):
-    """Get last message from a certain chat in Telegram
+    """Get last message from the selected chat from Telegram
 
     Args:
-        chat_id (int/str): Chat ID
+        chat_id (int|str): Telegram chat ID
 
     Returns:
-        Record: The last message from the chat
+        MsgLog: The last message from the chat
     """
     try:
         return MsgLog.select().where(MsgLog.master_msg_id.startswith("%s." % chat_id)).order_by(MsgLog.time.desc()).first()
@@ -92,14 +132,26 @@ def get_last_msg_from_chat(chat_id):
 
 def add_msg_log(**kwargs):
     """
-    master_msg_id
-    text
-    slave_origin_uid
-    msg_type
-    sent_to
-    slave_origin_display_name
-    slave_member_uid
-    slave_member_display_name
+    Add an entry to message log.
+
+    Display name is defined as `alias or name`.
+
+    Args:
+        master_msg_id (str): Telegram message ID ("%(chat_id)s.%(msg_id)s")
+        text (str): String representation of the message
+        slave_origin_uid (str): Slave chat ID ("%(channel_id)s.%(chat_id)s")
+        msg_type (str): String of the message type.
+        sent_to (str): "master" or "slave"
+        slave_origin_display_name (str): Display name of slave chat.
+        slave_member_uid (str|None):
+            User ID of the slave chat member (sender of the message, for group chat only).
+            ("%(channel_id)s.%(chat_id)s"), None if not available.
+        slave_member_display_name (str|None):
+            Display name of the member, None if not available.
+        update (bool): Update a previous record. Default: False.
+
+    Returns:
+        MsgLog: The added/updated entry.
     """
     master_msg_id = kwargs.get('master_msg_id')
     text = kwargs.get('text')
@@ -133,6 +185,14 @@ def add_msg_log(**kwargs):
 
 
 def get_msg_log(master_msg_id):
+    """Get message log by message ID.
+
+    Args:
+        master_msg_id (str): Telegram msessage ID ("%(chat_id)s.%(msg_id)s")
+
+    Returns:
+        MsgLog|None: The queried entry, None if not exist.
+    """
     logger.info("get_msg_log %s" % master_msg_id)
     try:
         return MsgLog.select().where(MsgLog.master_msg_id == master_msg_id).order_by(MsgLog.time.desc()).first()
