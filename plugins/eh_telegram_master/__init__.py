@@ -208,6 +208,7 @@ class TelegramChannel(EFBChannel):
 
         # Type dispatching
 
+        append_last_msg = False
         if msg.type in [MsgType.Text, MsgType.Link]:
             if tg_chat_assoced:
                 last_msg = db.get_last_msg_from_chat(tg_dest)
