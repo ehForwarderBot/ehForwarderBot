@@ -914,16 +914,17 @@ class TelegramChannel(EFBChannel):
         os.remove(path)
 
     def poll(self):
-        try:
-            self.bot.start_polling(network_delay=10, timeout=10)
-            while True:
+        self.bot.start_polling(network_delay=10, timeout=10)
+        while True:
+            try:
                 m = self.queue.get()
                 self.logger.info("Got message from queue\nType: %s\nText: %s\n----" % (m.type, m.text))
                 self.process_msg(m)
-        except Exception as e:
-            self.logger.error(repr(e))
-            self.bot.stop()
-            self.poll()
+            except Exception as e:
+                self.logger.error("Error on message polling")
+                self.logger.error(repr(e))
+                self.bot.stop()
+                self.poll()
 
     def error(self, bot, update, error):
         """ Print error to console """

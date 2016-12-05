@@ -5,7 +5,7 @@ import logging
 import argparse
 from daemon import Daemon
 
-__version__ = "1.0 build 20161204"
+__version__ = "1.0 build 20161205"
 
 parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible chat tunnel framework which allows "
                                              "users to contact people from other chat platforms, and ultimately "
@@ -115,7 +115,3 @@ else:
     else:
         init()
         poll()
-
-
-
-

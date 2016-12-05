@@ -1,7 +1,7 @@
-# Plugins Repository
-Here lists all public plugins/channels made for EFB. For any issue related to any third-party plugins, please direct your question to its maintainers. EFB only maintains the framework and official plugins.
+# Channels Repository
+Here lists all public channels made for EFB. For any issue related to any third-party channel, please direct your question to its maintainers. EFB only maintains the framework and official channels.
 
-> Please read the documentation before installing, or start using any plugins.
+> Please read the documentation before installation, or use of any channel.
 
 ## Official channels
 

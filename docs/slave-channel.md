@@ -18,16 +18,16 @@ class MySlaveChannel(EFBChannel):
 ```
 
 ### Message queue
-In the beginning, each channel is initialized with the common queue, namely a Python `queue.Queue()` queue. This is where your slave channel delivers messages to the master channel. Whenever there is a new message came from the slave channel, it should be processed to a `EFBMsg` object and then put in to the queue with `self.queue.put(mobj)` method.
+In the beginning, each channel is initialized with the common queue, namely a Python `queue.Queue()` queue. This is where your slave channel delivers messages to the master channel. Whenever there is a new message IS COMING from the slave channel, it should be processed to a `EFBMsg` object and then put in to the queue with `self.queue.put(mobj)` method.
 
 A few methods are required to be implemented for every slave channel.
 
 ### `__init__(self, queue)`
-`super().__init__(queue)` should be called in the beginning. The "super" `__init__` method assigns the message `queue` to `self.queue`. Any other authorization steps are recommended to be done is this method.
+`super().__init__(queue)` should be called in the beginning. The "super" `__init__` method assigns the message `queue` to `self.queue`. Any other authorization steps are recommended to be done in this method.
 
 > Try to avoid user interaction as far as possible, if there is a way to login the platform using any fixed credentials, please avoid using dynamical verification.
 
-If your platform requires user to provide any tokens (API key, secret, username, password, etc), you may ask your user to save those information to `config.py`, in a `dict` variable named with your channel unique ID. You can import it with `import config`, and call it with `config.<channel_id>`.
+If your platform requires the user to provide any tokens (API key, secret, username, password, etc), you may ask your user to save those information to `config.py`, in a `dict` variable named with your channel unique ID. You can import it with `import config`, and call it with `config.<channel_id>`.
 
 Definition of config keys and values should be written in the class docstring, and your channel support page.
 
@@ -86,9 +86,9 @@ As far as possible, the channel should associate each user, group and group memb
 Note that the ID should be and only need to be unique in your channel. There is no need to consider the uniqueness across all channels.
 
 ## Command message
-Slave channels can send messages that offer the user options to take action. This can be used in situations such as friend request, fund transfer and Telegram Inline Buttons.
+Slave channels can send messages that offer the user options to take actions. This can be used in situations such as friend request, fund transfer and Telegram Inline Buttons.
 
-Aside from sending a message with "Command" type (refer to the specification in "Message" documentation), the slave channel have to also provide a method for the command to be issued.
+Aside from sending a message with "Command" type (refer to the specification in "Message" documentation), the slave channel has to also provide a method for the command to be issued.
 
 The method can take any argument (positional and keyword) of Python's standard data structure, and returns a string which is shown to the user as the result of the action.
 
@@ -100,7 +100,7 @@ You can receive such commands issued in a CLI-like style. An "extra function" me
 > **More on `desc`**  
 `desc` should describe what the function does and how to use it. It's more like the help text for an CLI program. Since method of calling an extra function depends on the implementation of the master channel, you should use `{function_name}` as the function name in `desc`, and master channel will replace it with respective name.
 
-The method should in the end return a string, which will be shown to the user as the result. Depends on the functionality of the function, it may be just a simple success message, or a long chunk of results.
+The method should in the end return a string, which will be shown to the user as the result. Depending on the functionality of the function, it may be just a simple success message, or a long chunk of results.
 
 Callable name of extra functions has a more strict standard than a normal Python 3 identifier name, for compatibility reason. An extra function callable name should:
 * be case sensitive

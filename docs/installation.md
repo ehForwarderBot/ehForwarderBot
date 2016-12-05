@@ -1,11 +1,11 @@
 # Installation
-EFB framework itself does not require any external modules for it to work. However, most of its channels do require some external dependencies mainly for multimedia processing, and communication with remote chat platforms.
+EFB framework itself does not require any external modules to operate. However, most of its channels do require some external dependencies, mainly for multimedia processing and communication with remote chat platforms.
 
-You may follow the following instructions to install dependencies for **all** channels maintained by me, or you may refer to the documentations of each respective channel for their installation instructions.
+To install dependencies for **all** officially maintained channels, you may follow the following instructions, or refer to the respective documentations of each channel.
 
 ## Storage directory
 
-In order to process files and media (pictures, voices, videos, etc.), a storage folder is used to temporarily save and process them. Please create a `storage` folder, if not existing, and give write and read permission to it.
+In order to process files and media (pictures, voices, videos, etc.), a storage folder is used to temporarily save and process them. Create a `storage` folder, if not existing, and give write and read permission to it.
 
 Script for \*nix users:
 ```bash
@@ -44,11 +44,11 @@ sudo apt-get install libmagic-dev ffmpeg
 ```
 
 ## Python dependencies
-Refer to `requirements.txt`, or [Plugins Repository](plugins-repository.md) for more details.
+Refer to `requirements.txt`, or [Channels Repository](channels-repository.md) for more details.
 
 ### To install
 ```bash
 pip(3) install -r requirements.txt
 ```
 
-> If you'd like to start to give EFB a try, you can now head to the [Installation](installation.md) page.
+> If you'd like to start to give EFB a try, you can now head to the [Getting started](getting-started.md) page.
