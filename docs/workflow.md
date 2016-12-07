@@ -42,22 +42,22 @@ To deliver user's message to a slave channel, you should first gather all the in
 Slave channel has rather less things to do, get and enqueue incoming message, and send message to the platform. Also you may need to generate a list of possible recipients for the Master channel. That should be most of it.
 
 ## Commands
-Once there's any message from a slave channel that allows the user to take action, the slave channel will enclose detail of actions (namely method names and arguments) into an `EFBMsg` object and send it to the master channel.
+Once there's any message from a slave channel that allows the user to take action, the slave channel will enclose details of actions (namely method names and arguments) into an `EFBMsg` object and send them to the master channel.
 
-Master channel will use it's own method to ask the user to make a decision, and with the decision, the master channel will call the respective method of the slave channel with the argument given.
+Master channel uses its own method to ask the user to make a decision. With the decision, the master channel will call the respective method of the slave channel with the argument given.
 
 The method of slave channel returns a string as the result which is then reflected back to the user.
 
 ## Media processing
 In order to suit the requirement of each chat platform API, it's often necessary to preprocess media files, such as encoding, converting formats, etc. The usual procedure of delivering message with media file is as follows:
 
-1. Sender channel downloads the media file to `storage/<channel_name>` directory.
+1. Sender channel downloads the media file to `storage/<channel_id>` directory.
 2. Sender channel compiles details (MIME type, file path, etc) to an `EFBMsg` object.
 3. Recipient channel gets the object and analyze the file.
 4. Recipient channel pre-process the media file (encoding, resizing, etc.)
 5. Recipient channel send out the message to remote server, and then remove all files related to the message.
 
-Despite there is no requirement on the module or external library used by a channel, it is recommended to utilizing one of the following external library, in order to minimize the external libraries to be installed by the end-user.
+Despite no requirement on the module or external library used by a channel, it is recommended to utilize one of the following external libraries, in order to minimize the number of the external libraries to be installed by the end-user.
 * `ffmpeg`
 * `imagick`
 * `libmagic`

@@ -920,8 +920,9 @@ class TelegramChannel(EFBChannel):
                 m = self.queue.get()
                 self.logger.info("Got message from queue\nType: %s\nText: %s\n----" % (m.type, m.text))
                 self.process_msg(m)
+                self.queue.task_done()
             except Exception as e:
-                self.logger.error("Error on message polling")
+                self.logger.error("Error occured during message polling")
                 self.logger.error(repr(e))
                 self.bot.stop()
                 self.poll()

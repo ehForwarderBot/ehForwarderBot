@@ -38,6 +38,7 @@ When messages are dequeued from the global message queue, it should be processed
 while True:
     msg = self.queue.get()
     self.process_msg(msg)
+    self.queue.task_done()
 ```
 
 The `m` you get from the queue should be a valid `EFBMsg` object. If there's any problem with it, it should most probably be the fault of the issuing slave channel.
