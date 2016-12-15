@@ -10,7 +10,7 @@
 
 _Codename_ **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework which allows users to contact people from other chat platforms, and ultimately remotely control their accounts in other platforms.
 
-[Documentation](https://github.com/blueset/ehforwarderbot/docs).
+[Documentation](https://ehforwarderbot.readthedocs.io/en/latest/).
 
 ## Glossary
 * **Channel**: A class that communicates with a chat platform, also known as a plugin.
