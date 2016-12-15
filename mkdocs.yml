@@ -1,0 +1,17 @@
+site_name: EH Forwarder Bot
+pages:
+    - 'Home': 'home.md'
+    - 'Installation': 'installation.md'
+    - 'Getting started': 'getting-started.md'
+    - 'Plugins repository': 'plugins-repository.md'
+    - 'Your first channel':
+        - 'EFB workflow': 'workflow.md'
+        - 'Slave Channel': 'slave-channel.md'
+        - 'Master Channel': 'master-channel.md'
+    - 'API Documentation':
+        - 'EFBMsg': 'message.md'
+        - 'EFBChannel': 'channel.md'
+        - 'Exceptions': 'exceptions.md'
+    - 'Contributing': 'CONTRIBUTING.md'
+theme: readthedocs
+repo_url: 'https://github.com/blueset/ehforwarderbot'

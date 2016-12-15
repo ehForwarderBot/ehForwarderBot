@@ -33,6 +33,9 @@ _Codename_ **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework whi
 ## Feel like contributing?
 Anyone is welcomed to raise an issue or submit a pull request, just remember to read through and understand the [contribution guideline](CONTRIBUTING.md) before you do so.
 
+## Special thanks
+* @clairvoyantegg for documentation refine.
+
 ## License
 EFB framework is licensed under [GNU General Public License 3.0](https://www.gnu.org/licenses/gpl-3.0.txt).
 
