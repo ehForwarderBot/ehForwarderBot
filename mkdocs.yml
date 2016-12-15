@@ -1,6 +1,6 @@
 site_name: EH Forwarder Bot
 pages:
-    - 'Home': 'home.md'
+    - 'Home': 'index.md'
     - 'Installation': 'installation.md'
     - 'Getting started': 'getting-started.md'
     - 'Channels repository': 'channels-repository.md'
@@ -13,5 +13,8 @@ pages:
         - 'EFBChannel': 'channel.md'
         - 'Exceptions': 'exceptions.md'
     - 'Contributing': 'CONTRIBUTING.md'
+    - 'Official plugins':
+        - 'EFB Telegram Master': 'ETM.md'
+        - 'EFB WeChat Slave': 'EWS.md'
 theme: readthedocs
 repo_url: 'https://github.com/blueset/ehforwarderbot'

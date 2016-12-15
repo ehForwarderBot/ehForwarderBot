@@ -13,7 +13,7 @@ _Codename_ **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework whi
 ## Navigation
 * [Installation](installation.md)
 * [Getting started](getting-started.md)
-* [Plugins repository](plugins-repository.md)
+* [Channels repository](channels-repository.md)
 * Your first channel
     * [EFB workflow](workflow.md)
     * [Slave Channel](slave-channel.md)
