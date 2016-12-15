@@ -107,7 +107,6 @@ target = {
 ```
 
 ## Media storage
-
 Any media should be saved into the local storage path. The standard path should be `./storage/<channel id>/<filename>`. File should at least have read permission for all users. File may be unlink (deleted) by the target channel.
 
 ## Message types

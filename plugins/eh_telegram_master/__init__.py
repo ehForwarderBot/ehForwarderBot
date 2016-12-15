@@ -196,7 +196,7 @@ class TelegramChannel(EFBChannel):
                 msg_template = "%s:\n%s" % (msg_prefix, "%s")
             else:
                 msg_template = "%s"
-        else:  # when chat is not linked
+        elif msg.source == MsgSource.User:
             tg_dest = config.eh_telegram_master['admins'][0]
             emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
             name_prefix = msg.origin["alias"] if msg.origin["alias"] == msg.origin["name"] else "%s (%s)" % (
@@ -205,6 +205,9 @@ class TelegramChannel(EFBChannel):
                 msg_template = "%s %s [%s]:\n%s" % (emoji_prefix, msg_prefix, name_prefix, "%s")
             else:
                 msg_template = "%s %s:\n%s" % (emoji_prefix, name_prefix, "%s")
+        elif msg.source == MsgSource.System:
+            tg_dest = config.eh_telegram_master['admins'][0]
+            msg_template = "System Message: %s"
 
         # Type dispatching
 
@@ -291,17 +294,18 @@ class TelegramChannel(EFBChannel):
             self.msg_storage[tg_msg.message_id] = {"channel": msg.channel_id, "text": msg_template % msg.text, "commands": msg.attributes['commands']}
         else:
             tg_msg = self.bot.bot.sendMessage(tg_dest, msg_template % "Unsupported incoming message type. (UT01)")
-        msg_log = {"master_msg_id": "%s.%s" % (tg_msg.chat.id, tg_msg.message_id),
-                   "text": msg.text,
-                   "msg_type": msg.type,
-                   "sent_to": "Master",
-                   "slave_origin_uid": "%s.%s" % (msg.channel_id, msg.origin['uid']),
-                   "slave_origin_display_name": msg.origin['alias'],
-                   "slave_member_uid": msg.member['uid'],
-                   "slave_member_display_name": msg.member['alias']}
-        if tg_chat_assoced and append_last_msg:
-            msg_log['update'] = True
-        db.add_msg_log(**msg_log)
+        if msg.source in (MsgSource.User, MsgSource.Group):
+            msg_log = {"master_msg_id": "%s.%s" % (tg_msg.chat.id, tg_msg.message_id),
+                       "text": msg.text,
+                       "msg_type": msg.type,
+                       "sent_to": "Master",
+                       "slave_origin_uid": "%s.%s" % (msg.channel_id, msg.origin['uid']),
+                       "slave_origin_display_name": msg.origin['alias'],
+                       "slave_member_uid": msg.member['uid'],
+                       "slave_member_display_name": msg.member['alias']}
+            if tg_chat_assoced and append_last_msg:
+                msg_log['update'] = True
+            db.add_msg_log(**msg_log)
 
     def slave_chats_pagination(self, message_id, offset=0):
         """

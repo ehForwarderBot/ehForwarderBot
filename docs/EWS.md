@@ -61,7 +61,6 @@ and all other required by Pillow.
   Please remove the `itchat.pkl` file in the EFB root directory, and restart EFB for QR code scanning.
 * **Can I log in 2 WeChat accounts concurrently?**  
   No. The feature is not yet available to EWS.
-* **I want to report a bug.**  
-  **I have some suggestions.**  
-  **Can I submit a pull request?**  
-  All bug reports, suggestions and pull requests are welcomed. Please read through and understand the [Contribution guideline](CONTRIBUTING.md) before submitting.
+
+## Known issues
+* Random disconnection may occur occasionally due to the limit of protocol.

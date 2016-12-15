@@ -16,6 +16,7 @@ class MsgType:
 class MsgSource:
     User = "User"
     Group = "Group"
+    System = "System"
 
 
 class TargetType:

@@ -63,13 +63,27 @@ class WeChatChannel(EFBChannel):
 
     def __init__(self, queue):
         super().__init__(queue)
-        itchat.auto_login(enableCmdQR=2, hotReload=True)
+        itchat.auto_login(enableCmdQR=2, hotReload=True, exitCallback=self.exit_callback)
         self.logger = logging.getLogger("SlaveWC.%s" % __name__)
         self.logger.info("Inited!!!\n---")
 
     #
     # Utilities
     #
+
+    def exit_callback(self):
+        msg = EFBMsg(self)
+        msg.type = MsgType.Text
+        msg.source = MsgSource.System
+        msg.origin = {
+            'name': 'WeChat System Message',
+            'alias': 'WeChat System Message',
+            'uid': -1
+        }
+
+        msg.text = "WeChat system logged out the user."
+
+        self.queue.put(msg)
 
     def get_uid(self, UserName=None, NickName=None):
         """
