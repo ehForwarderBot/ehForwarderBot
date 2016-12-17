@@ -376,7 +376,7 @@ class TelegramChannel(EFBChannel):
 
         for i in range(offset, min(offset + self.INLINE_CHAT_PER_PAGE, count)):
             chat = chats[i]
-            linked = utils.Emojis.LINK_EMOJI if bool(db.get_chat_assoc(slave_uid="%s.%s" % (chat['channel_uid'], chat['chat_uid']))) else ""
+            linked = utils.Emojis.LINK_EMOJI if bool(db.get_chat_assoc(slave_uid="%s.%s" % (chat['channel_id'], chat['chat_uid']))) else ""
             chat_type = utils.Emojis.get_source_emoji(chat['type'])
             chat_name = chat['chat_alias'] if chat['chat_name'] == chat['chat_alias'] else "%s(%s)" % (chat['chat_alias'], chat['chat_name'])
             button_text = "%s%s: %s%s" % (chat['channel_emoji'], chat_type, chat_name, linked)
