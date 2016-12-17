@@ -64,3 +64,4 @@ and all other required by Pillow.
 
 ## Known issues
 * Random disconnection may occur occasionally due to the limit of protocol.
+* Chat linking may be unstable sometime due to the limit of API.

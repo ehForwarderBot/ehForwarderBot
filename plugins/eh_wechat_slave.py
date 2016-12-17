@@ -103,7 +103,7 @@ class WeChatChannel(EFBChannel):
             return False
         r = self.search_user(UserName=UserName, name=NickName)
         if r:
-            return str(r[0]['AttrStatus'] or r[0]['Uin'] or crc32(r[0]['NickName'].encode("utf-8")))
+            return r[0]['Uin'] or str(r[0]['AttrStatus'] or crc32(r[0]['NickName'].encode("utf-8")))
         else:
             return False
 
@@ -156,6 +156,7 @@ class WeChatChannel(EFBChannel):
 
         for i in itchat.get_friends(refresh) + itchat.get_mps(refresh):
             if str(i['UserName']) == UserName or \
+               str(i['Uin']) == uid or \
                str(i['AttrStatus']) == uid or \
                str(i['Alias']) == wid or \
                str(i['NickName']) == name or \
@@ -275,6 +276,10 @@ class WeChatChannel(EFBChannel):
         @itchat.msg_register(['Useless', 'Note'], isGroupChat=True)
         def wcSystemGroup(msg):
             self.systemMsg(msg, True)
+
+        @itchat.msg_register(["System"])
+        def wcSysLog(msg):
+            self.logger.debug("WeChat \"System\" message:\n%s", repr(msg))
 
         itchat.run()
         # while True:

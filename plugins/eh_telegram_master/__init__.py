@@ -379,7 +379,7 @@ class TelegramChannel(EFBChannel):
             linked = utils.Emojis.LINK_EMOJI if bool(db.get_chat_assoc(slave_uid="%s.%s" % (chat['channel_id'], chat['chat_uid']))) else ""
             chat_type = utils.Emojis.get_source_emoji(chat['type'])
             chat_name = chat['chat_alias'] if chat['chat_name'] == chat['chat_alias'] else "%s(%s)" % (chat['chat_alias'], chat['chat_name'])
-            button_text = "%s%s: %s%s" % (chat['channel_emoji'], chat_type, chat_name, linked)
+            button_text = "%s%s: %s %s" % (chat['channel_emoji'], chat_type, chat_name, linked)
             button_callback = "chat %s" % i
             chat_btn_list.append([telegram.InlineKeyboardButton(button_text, callback_data=button_callback)])
 
