@@ -90,6 +90,7 @@ if getattr(args, "V", None):
 else:
     logging.getLogger('requests').setLevel(logging.CRITICAL)
     logging.getLogger('urllib3').setLevel(logging.CRITICAL)
+    logging.getLogger('telegram.bot').setLevel(logging.CRITICAL)
     if args.v == 0:
         logging.basicConfig(level=logging.ERROR)
     elif args.v == 1:

@@ -89,7 +89,7 @@ class TelegramChannel(EFBChannel):
         except (AttributeError, KeyError):
             raise ValueError("Token is not properly defined. Please define it in `config.py`.")
         mimetypes.init()
-        self.logger = logging.getLogger("pluginst.%s.TelegramChannel" % self.channel_id)
+        self.logger = logging.getLogger("plugins.%s.TelegramChannel" % self.channel_id)
         self.me = self.bot.bot.get_me()
         self.bot.dispatcher.add_handler(WhitelistHandler(config.eh_telegram_master['admins']))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("link", self.link_chat_show_list))
