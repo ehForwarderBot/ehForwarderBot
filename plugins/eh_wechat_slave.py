@@ -103,7 +103,7 @@ class WeChatChannel(EFBChannel):
             return False
         r = self.search_user(UserName=UserName, name=NickName)
         if r:
-            return r[0]['Uin'] or str(r[0]['AttrStatus'] or crc32(r[0]['NickName'].encode("utf-8")))
+            return str(r[0]['AttrStatus'] or crc32(r[0]['NickName'].encode("utf-8")))
         else:
             return False
 
