@@ -11,6 +11,7 @@ import magic
 import os
 import mimetypes
 import pydub
+import threading
 from . import db, speech
 from .whitelisthandler import WhitelistHandler
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
@@ -88,7 +89,7 @@ class TelegramChannel(EFBChannel):
         except (AttributeError, KeyError):
             raise ValueError("Token is not properly defined. Please define it in `config.py`.")
         mimetypes.init()
-        self.logger = logging.getLogger("masterTG.%s" % __name__)
+        self.logger = logging.getLogger("pluginst.%s.TelegramChannel" % self.channel_id)
         self.me = self.bot.bot.get_me()
         self.bot.dispatcher.add_handler(WhitelistHandler(config.eh_telegram_master['admins']))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("link", self.link_chat_show_list))
@@ -175,17 +176,16 @@ class TelegramChannel(EFBChannel):
         Args:
             msg (EFBMsg): The message.
         """
+        self.logger.debug("process_msg_step_0")
         chat_uid = "%s.%s" % (msg.channel_id, msg.origin['uid'])
         tg_chat = db.get_chat_assoc(slave_uid=chat_uid) or False
         msg_prefix = ""
-        tg_msg = None
         tg_chat_assoced = False
-        is_last_member = False
         if not msg.source == MsgSource.Group:
             msg.member = {"uid": -1, "name": "", "alias": ""}
 
         # Generate chat text template & Decide type target
-
+        self.logger.debug("process_msg_step_1")
         if msg.source == MsgSource.Group:
             msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "%s (%s)" % (
                 msg.member['alias'], msg.member['name'])
@@ -210,7 +210,7 @@ class TelegramChannel(EFBChannel):
             msg_template = "System Message: %s"
 
         # Type dispatching
-
+        self.logger.debug("process_msg_step_2")
         append_last_msg = False
         if msg.type in [MsgType.Text, MsgType.Link]:
             if tg_chat_assoced:
@@ -226,6 +226,7 @@ class TelegramChannel(EFBChannel):
                 else:
                     append_last_msg = False
                 self.logger.debug("Text: Append last msg: %s", append_last_msg)
+            self.logger.debug("process_msg_step_3_0")
             if tg_chat_assoced and append_last_msg:
                 msg.text = "%s\n%s" % (last_msg.text, msg.text)
                 tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest,
@@ -233,7 +234,9 @@ class TelegramChannel(EFBChannel):
                                                       text=msg_template % msg.text)
             else:
                 tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text)
+            self.logger.debug("process_msg_step_3_1")
         elif msg.type in [MsgType.Image, MsgType.Sticker]:
+            self.logger.debug("process_msg_step_3_2")
             self.logger.info("Received %s \nPath: %s\nSize: %s\nMIME: %s", msg.type, msg.path,
                              os.stat(msg.path).st_size, msg.mime)
             if os.stat(msg.path).st_size == 0:
@@ -249,6 +252,7 @@ class TelegramChannel(EFBChannel):
             else:
                 tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template % msg.text)
             os.remove(msg.path)
+            self.logger.debug("process_msg_step_3_3")
         elif msg.type == MsgType.File:
             if os.stat(msg.path).st_size == 0:
                 os.remove(msg.path)
@@ -294,6 +298,7 @@ class TelegramChannel(EFBChannel):
             self.msg_storage[tg_msg.message_id] = {"channel": msg.channel_id, "text": msg_template % msg.text, "commands": msg.attributes['commands']}
         else:
             tg_msg = self.bot.bot.sendMessage(tg_dest, msg_template % "Unsupported incoming message type. (UT01)")
+        self.logger.debug("process_msg_step_4")
         if msg.source in (MsgSource.User, MsgSource.Group):
             msg_log = {"master_msg_id": "%s.%s" % (tg_msg.chat.id, tg_msg.message_id),
                        "text": msg.text,
@@ -306,6 +311,7 @@ class TelegramChannel(EFBChannel):
             if tg_chat_assoced and append_last_msg:
                 msg_log['update'] = True
             db.add_msg_log(**msg_log)
+        self.logger.debug("process_msg_step_5")
 
     def slave_chats_pagination(self, message_id, offset=0):
         """
@@ -405,7 +411,7 @@ class TelegramChannel(EFBChannel):
         if not update.message.chat.id == update.message.from_user.id:
             init_msg = bot.sendMessage(user_id, "Processing...")
             try:
-                cid = db.get_chat_assoc(update.message.chat.id).slave_cid
+                cid = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id)).slave_cid
                 return self.link_chat_confirm(bot, init_msg.from_chat.id, init_msg.message_id, cid)
             except:
                 return bot.editMessageText(chat_id=update.message.chat.id,
@@ -668,7 +674,6 @@ class TelegramChannel(EFBChannel):
                     msg += "\n\n%s <i>(%s)</i>\n%s" % (fn_name, xfns[j].name, xfns[j].desc.format(function_name=fn_name))
             else:
                 msg += "No command found."
-        self.logger.debug("xtrahelp-----\n%s", msg)
         bot.sendMessage(update.message.chat.id, msg, parse_mode="HTML")
 
     def extra_call(self, bot, update, groupdict=None):
@@ -686,7 +691,7 @@ class TelegramChannel(EFBChannel):
     def msg(self, bot, update):
         self.logger.debug("----\nMsg from tg user:\n%s", update.message.to_dict())
         target = None
-        if not (update.message.chat.id == update.message.from_user.id):  # from group
+        if update.message.chat.id != update.message.from_user.id:  # from group
             assoc = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
             if getattr(update.message, "reply_to_message", None):
                 try:
@@ -704,6 +709,7 @@ class TelegramChannel(EFBChannel):
             return self._reply_error(bot, update, "Unknown recipient (UC01).")
         if not assoc:
             return self._reply_error(bot, update, "Unknown recipient (UC02).")
+        self.logger.debug("Destination chat = %s", assoc)
         channel, uid = assoc.split('.', 2)
         if channel not in self.slaves:
             return self._reply_error(bot, update, "Internal error: Channel not found.")
@@ -746,7 +752,7 @@ class TelegramChannel(EFBChannel):
                         "target": trgtMsg
                     }
             # Type specific stuff
-            self.logger.debug("tg: msg type: %s", mtype)
+            self.logger.debug("Msg type: %s", mtype)
 
             if mtype == TGMsgType.Text:
                 m.type = MsgType.Text
@@ -923,11 +929,11 @@ class TelegramChannel(EFBChannel):
             try:
                 m = self.queue.get()
                 self.logger.info("Got message from queue\nType: %s\nText: %s\n----" % (m.type, m.text))
-                self.process_msg(m)
+                threading.Thread(target=self.process_msg, args=(m,)).start()
                 self.queue.task_done()
                 self.logger.info("Msg sent to TG, task_done marked.")
             except Exception as e:
-                self.logger.error("Error occured during message polling")
+                self.logger.error("Error occurred during message polling")
                 self.logger.error(repr(e))
                 self.bot.stop()
                 self.poll()

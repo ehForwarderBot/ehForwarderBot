@@ -22,12 +22,12 @@ def incomeMsgMeta(func):
             mobj.origin = {
                 'name': FromUser['NickName'],
                 'alias': FromUser['RemarkName'] or FromUser['NickName'],
-                'uid': self.get_uid(NickName=FromUser['NickName'])
+                'uid': self.get_uid(UserName=msg['FromUserName'])
             }
             mobj.member = {
                 'name': member['NickName'],
                 'alias': member['DisplayName'],
-                'uid': self.get_uid(NickName=msg['ActualNickName'])
+                'uid': self.get_uid(UserName=msg['ActualUserName'])
             }
         else:
             mobj.source = MsgSource.User
@@ -41,8 +41,9 @@ def incomeMsgMeta(func):
             'alias': itchat.get_friends()[0]['NickName'],
             'uid': self.get_uid(UserName=msg['ToUserName'])
         }
-        logger = logging.getLogger("SlaveWC.%s" % __name__)
-        logger.info("Slave - Wechat Incomming message:\nType: %s\nText: %s\n---\n" % (mobj.type, msg['Text']))
+        logger = logging.getLogger("plugins.eh_wechat_slave.%s" % __name__)
+        logger.info("WeChat incoming message:\nType: %s\nText: %s\nUserName: %s\nuid: %s\nname: %s" %
+                    (mobj.type, msg['Text'], msg['FromUserName'], mobj.origin['uid'], mobj.origin['name']))
         self.queue.put(mobj)
 
     return wcFunc
@@ -64,7 +65,7 @@ class WeChatChannel(EFBChannel):
     def __init__(self, queue):
         super().__init__(queue)
         itchat.auto_login(enableCmdQR=2, hotReload=True, exitCallback=self.exit_callback)
-        self.logger = logging.getLogger("SlaveWC.%s" % __name__)
+        self.logger = logging.getLogger("plugins.eh_wechat_slave.WeChatChannel")
         self.logger.info("Inited!!!\n---")
 
     #
@@ -470,15 +471,15 @@ class WeChatChannel(EFBChannel):
         Raises:
             EFBMessageTypeNotSupported: Raised when message type is not supported by the channel.
         """
-        self.logger.info('msg.text %s', msg.text)
         UserName = self.get_UserName(msg.destination['uid'])
-        self.logger.info("Sending message to Wechat:\n"
+        self.logger.info("Sending message to WeChat:\n"
                          "Target-------\n"
                          "uid: %s\n"
                          "UserName: %s\n"
-                         "NickName: %s"
-                         % (msg.destination['uid'], UserName, msg.destination['name']))
-        self.logger.info("Got message of type %s", msg.type)
+                         "NickName: %s\n"
+                         "Type: %s"
+                         "Text: %s"
+                         % (msg.destination['uid'], UserName, msg.destination['name'], msg.type, msg.text))
         if msg.type == MsgType.Text:
             if msg.target:
                 if msg.target['type'] == TargetType.Member:

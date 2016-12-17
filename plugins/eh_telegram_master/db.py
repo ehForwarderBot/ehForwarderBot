@@ -8,7 +8,7 @@ from playhouse.migrate import *
 basePath = os.path.dirname(os.path.abspath(inspect.stack()[0][1]))
 
 db = SqliteDatabase(basePath + '/tgdata.db')
-logger = logging.getLogger("masterTG.db.%s" % __name__)
+logger = logging.getLogger("plugins.eh_telegram_master.db")
 
 # Peewee Models
 
@@ -102,7 +102,7 @@ def get_chat_assoc(master_uid=None, slave_uid=None):
         slave_uid (str): Slave channel UID ("%(channel_id)s.%(chat_id)s")
 
     Returns:
-        ChatAssoc: The database entry queried.
+        str: The counterpart ID.
     """
     try:
         if bool(master_uid) == bool(slave_uid):
