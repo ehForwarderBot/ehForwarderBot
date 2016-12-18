@@ -231,13 +231,15 @@ class TelegramChannel(EFBChannel):
                 self.logger.debug("process_msg_step_3_0, tg_dest = %s, tg_chat_assoced = %s, append_last_msg = %s",
                                   tg_dest, tg_chat_assoced, append_last_msg)
                 if tg_chat_assoced and append_last_msg:
-                    self.logger.debug("process_msg_step_3_1")
+                    self.logger.debug("process_msg_step_3_0_1")
                     msg.text = "%s\n%s" % (last_msg.text, msg.text)
                     tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest,
                                                           message_id=last_msg.master_msg_id.split(".", 1)[1],
                                                           text=msg_template % msg.text)
                 else:
+                    self.logger.debug("process_msg_step_3_0_3")
                     tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text)
+                    self.logger.debug("process_msg_step_3_0_4, tg_msg = %s", tg_msg)
                 self.logger.debug("process_msg_step_3_1")
             elif msg.type in [MsgType.Image, MsgType.Sticker]:
                 self.logger.debug("process_msg_step_3_2")
