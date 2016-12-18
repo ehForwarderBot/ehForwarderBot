@@ -228,8 +228,10 @@ class TelegramChannel(EFBChannel):
                     else:
                         append_last_msg = False
                     self.logger.debug("Text: Append last msg: %s", append_last_msg)
-                self.logger.debug("process_msg_step_3_0")
+                self.logger.debug("process_msg_step_3_0, tg_dest = %s, tg_chat_assoced = %s, append_last_msg = %s",
+                                  tg_dest, tg_chat_assoced, append_last_msg)
                 if tg_chat_assoced and append_last_msg:
+                    self.logger.debug("process_msg_step_3_1")
                     msg.text = "%s\n%s" % (last_msg.text, msg.text)
                     tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest,
                                                           message_id=last_msg.master_msg_id.split(".", 1)[1],
