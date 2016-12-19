@@ -187,6 +187,7 @@ class TelegramChannel(EFBChannel):
                 msg.member = {"uid": -1, "name": "", "alias": ""}
 
             # Generate chat text template & Decide type target
+            tg_dest = config.eh_telegram_master['admins'][0]
             self.logger.debug("process_msg_step_1")
             if msg.source == MsgSource.Group:
                 msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "%s (%s)" % (
@@ -199,7 +200,6 @@ class TelegramChannel(EFBChannel):
                 else:
                     msg_template = "%s"
             elif msg.source == MsgSource.User:
-                tg_dest = config.eh_telegram_master['admins'][0]
                 emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
                 name_prefix = msg.origin["alias"] if msg.origin["alias"] == msg.origin["name"] else "%s (%s)" % (
                     msg.origin["alias"], msg.origin["name"])
@@ -208,7 +208,6 @@ class TelegramChannel(EFBChannel):
                 else:
                     msg_template = "%s %s:\n%s" % (emoji_prefix, name_prefix, "%s")
             elif msg.source == MsgSource.System:
-                tg_dest = config.eh_telegram_master['admins'][0]
                 msg_template = "System Message: %s"
 
             # Type dispatching
