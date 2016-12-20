@@ -203,10 +203,12 @@ class TelegramChannel(EFBChannel):
                 emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
                 name_prefix = msg.origin["alias"] if msg.origin["alias"] == msg.origin["name"] else "%s (%s)" % (
                     msg.origin["alias"], msg.origin["name"])
-                if msg_prefix:
-                    msg_template = "%s %s [%s]:\n%s" % (emoji_prefix, msg_prefix, name_prefix, "%s")
-                else:
-                    msg_template = "%s %s:\n%s" % (emoji_prefix, name_prefix, "%s")
+                msg_template = "%s %s:\n%s" % (emoji_prefix, name_prefix, "%s")
+            elif msg.source == MsgSource.Group:
+                emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
+                name_prefix = msg.origin["alias"] if msg.origin["alias"] == msg.origin["name"] else "%s (%s)" % (
+                    msg.origin["alias"], msg.origin["name"])
+                msg_template = "%s %s [%s]:\n%s" % (emoji_prefix, msg_prefix, name_prefix, "%s")
             elif msg.source == MsgSource.System:
                 msg_template = "System Message: %s"
 

@@ -482,7 +482,7 @@ class WeChatChannel(EFBChannel):
                          "uid: %s\n"
                          "UserName: %s\n"
                          "NickName: %s\n"
-                         "Type: %s"
+                         "Type: %s\n"
                          "Text: %s"
                          % (msg.destination['uid'], UserName, msg.destination['name'], msg.type, msg.text))
         if msg.type == MsgType.Text:
