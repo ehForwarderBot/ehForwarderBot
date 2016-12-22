@@ -69,6 +69,8 @@ def add_chat_assoc(master_uid, slave_uid):
         master_uid (str): Master channel UID ("%(chat_id)s")
         slave_uid (str): Slave channel UID ("%(channel_id)s.%(chat_id)s")
     """
+    remove_chat_assoc(master_uid=master_uid)
+    remove_chat_assoc(slave_uid=slave_uid)
     return ChatAssoc.create(master_uid=master_uid, slave_uid=slave_uid)
 
 
@@ -85,11 +87,11 @@ def remove_chat_assoc(master_uid=None, slave_uid=None):
         if bool(master_uid) == bool(slave_uid):
             raise ValueError("Only one parameter is to be provided.")
         elif master_uid:
-            return ChatAssoc.get(ChatAssoc.master_uid == master_uid).delete_instance()
+            return ChatAssoc.delete().where(ChatAssoc.master_uid == master_uid)
         elif slave_uid:
-            return ChatAssoc.get(ChatAssoc.slave_uid == slave_uid).delete_instance()
+            return ChatAssoc.delete().where(ChatAssoc.slave_uid == slave_uid)
     except DoesNotExist:
-        return True
+        return 0
 
 
 def get_chat_assoc(master_uid=None, slave_uid=None):
