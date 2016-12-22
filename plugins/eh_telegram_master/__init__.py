@@ -544,7 +544,7 @@ class TelegramChannel(EFBChannel):
         chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name'])
         self.msg_status.pop(tg_msg_id, None)
         self.msg_storage.pop(tg_msg_id, None)
-        if cmd == "Unlink":
+        if cmd == "unlink":
             db.remove_chat_assoc(slave_uid=chat_uid)
             txt = "Chat '%s' has been unlinked." % (chat_display_name)
             return bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
