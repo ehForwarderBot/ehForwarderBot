@@ -155,23 +155,23 @@ class WeChatChannel(EFBChannel):
             raise ValueError("At least one of [UserName, uid, wid, name] should be given.")
 
         for i in itchat.get_friends(refresh) + itchat.get_mps(refresh):
-            if str(i['UserName']) == UserName or \
-               str(i['Uin']) == uid or \
-               str(i['AttrStatus']) == uid or \
-               str(i['Alias']) == wid or \
-               str(i['NickName']) == name or \
-               str(i['DisplayName']) == name or \
-               str(crc32(i['NickName'].encode("utf-8"))) == uid:
+            if str(i.get('UserName', '')) == UserName or \
+               str(i.get('Uin', '')) == uid or \
+               str(i.get('AttrStatus', '')) == uid or \
+               str(i.get('Alias', '')) == wid or \
+               str(i.get('NickName', '')) == name or \
+               str(i.get('DisplayName', '')) == name or \
+               str(crc32(i.get('NickName', '').encode("utf-8"))) == uid:
                 result.append(i.copy())
         for i in itchat.get_chatrooms(refresh):
-            if not i['MemberList']:
-                i = itchat.update_chatroom(i['UserName'])
-            if str(i['UserName']) == UserName or \
-               str(i['Uin']) == uid or \
-               str(i['Alias']) == wid or \
-               str(i['NickName']) == name or \
-               str(i['DisplayName']) == name or \
-               str(crc32(i['NickName'].encode("utf-8"))) == uid:
+            if not i.get('MemberList', ''):
+                i = itchat.update_chatroom(i.get('UserName', ''))
+            if str(i.get('UserName', '')) == UserName or \
+               str(i.get('Uin', '')) == uid or \
+               str(i.get('Alias', '')) == wid or \
+               str(i.get('NickName', '')) == name or \
+               str(i.get('DisplayName', '')) == name or \
+               str(crc32(i.get('NickName', '').encode("utf-8"))) == uid:
                 result.append(i.copy())
                 result[-1]['MemberList'] = []
                 if ActualUserName:

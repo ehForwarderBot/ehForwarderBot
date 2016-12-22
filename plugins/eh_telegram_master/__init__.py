@@ -506,11 +506,11 @@ class TelegramChannel(EFBChannel):
 
         if linked:
             btn_list = [telegram.InlineKeyboardButton("Relink", url="https://telegram.me/%s?startgroup=%s" % (
-                self.me.username, urllib.parse.quote(chat_uid))),
+                self.me.username, urllib.parse.quote(" ".join((chat_uid, chat_display_name))))),
                         telegram.InlineKeyboardButton("Unlink", callback_data="unlink %s" % callback_uid)]
         else:
             btn_list = [telegram.InlineKeyboardButton("Link", url="https://telegram.me/%s?startgroup=%s" % (
-                self.me.username, urllib.parse.quote(chat_uid)))]
+                self.me.username, urllib.parse.quote(" ".join((chat_uid, chat_display_name)))))]
         btn_list.append(telegram.InlineKeyboardButton("Cancel", callback_data=Flags.CANCEL_PROCESS))
 
         bot.editMessageText(text=txt,
@@ -849,20 +849,21 @@ class TelegramChannel(EFBChannel):
         return fullpath + ".gif", "image/gif"
 
     def start(self, bot, update, args=[]):
-        if not update.message.from_user.id == update.message.chat.id:  # from group
-            chat_uid = ' '.join(args)
+        if update.message.from_user.id != update.message.chat.id:  # from group
+            chat_uid = args[0]
+            chat_display_name = args[1]
             slave_channel, slave_chat_uid = chat_uid.split('.', 1)
             if slave_channel in self.slaves and chat_uid in self.msg_status:
                 db.add_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id), slave_uid=chat_uid)
-                txt = "Chat has been associated."
+                txt = "Chat '%s' has been associated." % chat_display_name
                 bot.sendMessage(update.message.chat.id, text=txt)
                 bot.editMessageText(chat_id=update.message.from_user.id,
                                     message_id=self.msg_status[chat_uid],
                                     text=txt)
                 self.msg_status.pop(self.msg_status[chat_uid], False)
                 self.msg_status.pop(chat_uid, False)
-        elif update.message.from_user.id == update.message.chat.id and args == []:
-            txt = "Welcome to EH Forwarder Bot.\n\nLearn more, please visit https://github.com/blueset/ehForwarderBot ."
+        else:
+            txt = "Welcome to EH Forwarder Bot: EFB Telegram Master Channel.\n\nTo learn more, please visit https://github.com/blueset/ehForwarderBot ."
             bot.sendMessage(update.message.from_user.id, txt)
 
     def recognize_speech(self, bot, update, args=[]):
