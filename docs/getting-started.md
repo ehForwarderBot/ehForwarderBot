@@ -21,38 +21,36 @@ The variable `slave_channels` is a list of tuples of 2 strings where each of the
 
 A sample of config file is available at `config.sample.py`.
 
-> **Example**
->
-> When enabling the following channels:
-> * Master channel
->     * DemoMaster  
->       Import path: `plugins.eh_demo_master`  
->       Class name: `DemoMasterChannel`
-> * Slave channels
->     * DemoSlave  
->       Import path: `plugins.eh_demo_slave`  
->       Class name: `DemoSlaveChannel`
->     * RandomSlave  
->       Import path: `plugins.eh_random_slave`  
->       Class name: `RandomSlaveChannel`
->     * MyChatSlave  
->       Import path: `plugins.eh_mychat_slave`  
->       Class name: `MyChatSlaveChannel`
->
-> You should have the `master_channel` and `slave_channels` variable defined as follow:
->
-> ```python
-> master_channel = "plugins.eh_demo_master", "DemoMasterChannel"
-> slave_channels = [
->     ("plugins.eh_demo_slave", "DemoSlaveChannel"),
->     ("plugins.eh_random_slave", "RandomSlaveChannel"),
->     ("plugins.eh_mychat_slave", "MyChatSlaveChannel")
-> ]
-> ```
+!!! note "Example"
+    When enabling the following channels:
 
-> **Technical details**  
-The "import path" and "class name" of the module is actually used to import the channel class at root level.  
-It can be understood as `from <import_path> import <class_name>`.
+    * Master channel
+        * DemoMaster  
+          Import path: `plugins.eh_demo_master`  
+          Class name: `DemoMasterChannel`
+    * Slave channels
+        * DemoSlave  
+          Import path: `plugins.eh_demo_slave`  
+          Class name: `DemoSlaveChannel`
+        * RandomSlave  
+          Import path: `plugins.eh_random_slave`  
+          Class name: `RandomSlaveChannel`
+        * MyChatSlave  
+          Import path: `plugins.eh_mychat_slave`  
+          Class name: `MyChatSlaveChannel`
+
+    You should have the `master_channel` and `slave_channels` variable defined as follow:
+
+        master_channel = "plugins.eh_demo_master", "DemoMasterChannel"
+        slave_channels = [
+            ("plugins.eh_demo_slave", "DemoSlaveChannel"),
+            ("plugins.eh_random_slave", "RandomSlaveChannel"),
+            ("plugins.eh_mychat_slave", "MyChatSlaveChannel")
+        ]
+
+!!! tip "Technical details"
+    The "import path" and "class name" of the module is actually used to import the channel class at root level.  
+    It can be understood as `from <import_path> import <class_name>`.
 
 ## Permissions
 `storage` directory should be given read and write access for media processing.
@@ -65,8 +63,8 @@ For more details about how to configure your channel, please consult the respect
 ## Get it up and running
 Most of the time, you can just run `python3 main.py -d start`  and it should be ready to go.
 
-> **Run it as a normal process**  
-> Besides, you can still use the classic `python3 main.py` to launch EFB. If you want to keep it running in the background when accessing the machine via SSH, you can use tools like `screen` to prevent it from being terminated during disconnection.
+!!! tip "Run it as a normal process"
+    Besides, you can still use the classic `python3 main.py` to launch EFB. If you want to keep it running in the background when accessing the machine via SSH, you can use tools like `screen` to prevent it from being terminated during disconnection.
 
 However, some channels may require one-time credentials (e.g. Dynamic QR code scanning for WeChat Web Protocol). When you run the module, you may be required to take some actions before the bot goes online.
 

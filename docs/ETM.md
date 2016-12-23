@@ -1,5 +1,4 @@
 # EFB Telegram Master
-
 EFB Telegram Master (ETM) is a master channel for EFB based on [`python-telegram-bot`](https://python-telegram-bot.org/) and [Telegram Official Bot API](https://core.telegram.org/bots/api).
 
 ## Specs
@@ -18,8 +17,8 @@ pydub
 moviepy
 peewee
 ```
-> **Note**  
-> Please refer to [Pillow documentation](https://pillow.readthedocs.io/en/3.0.x/installation.html) for details on installing Pillow.
+!!! note
+    Please refer to [Pillow documentation](https://pillow.readthedocs.io/en/3.0.x/installation.html) for details on installing Pillow.
 
 #### Non-python dependencies
 ```
@@ -31,7 +30,7 @@ and all other required by Pillow.
 ### Configuration
 * Copy `eh_telegram_master` to "plugins" directory,  
   _May not be necessary as it's a built-in plugin of EFB_
-* Set `master = "plugins.eh_telegram_master", "TelegramChannel"` in `config.py`
+* Set `master_channel = "plugins.eh_telegram_master", "TelegramChannel"` in `config.py`
 * Give read and write access to `eh_telegram_master` directory
 * Add variable `eh_telegram_master` as follows
 
@@ -73,8 +72,8 @@ No extra action required during start up.
 ## Usage
 At the beginning, messages from all senders will be sent to the user directly, that means every message  will be mixed in the same conversation. By linking a chat, you can redirect messages from a specific sender to an empty group for a more organized conversation.
 
-> **Notice**:  
-In case of multiple admins are assigned, they may all send message on your behalf, but only the 0th admin can receive direct message from the bot.
+!!! note "Notice"  
+    In case of multiple admins are assigned, they may all send message on your behalf, but only the 0th admin can receive direct message from the bot.
 
 ### Link a chat
 1. Create a new group, invite your bot to the group
@@ -83,10 +82,11 @@ In case of multiple admins are assigned, they may all send message on your behal
    _You can also choose to unlink or relink a linked chat from this menu._
 4. Tap "Start" at the bottom of your screen, and you should see a success message: "Chat associated."
 
-> **Notice**:  
-You may introduce other non-ETM admins to the group, however, they:
-> * Can read all messages send from the related remote chat;
-> * May NOT send message on your behalf.
+!!! note "Notice"
+    You may introduce other non-ETM admins to the group, however, they:
+
+    * Can read all messages send from the related remote chat;
+    * May NOT send message on your behalf.
 
 ### Send a message
 #### Send to a linked chat
@@ -107,8 +107,8 @@ To send a message to a non-linked chat, you should "direct reply" to a message o
 
 In a non-linked chat, direct reply will not be delivered to the remote channel, everything else is supported as it does in a linked chat.
 
-> **Tip**  
-When direct replying to voice messages, always reply to the message preceding to it, or the message with the name of sender. Do not reply to the message itself.
+!!! tip
+    When direct replying to voice messages, always reply to the message preceding to it, or the message with the name of sender. Do not reply to the message itself.
 
 #### Chat head
 If you want to send a message to a non-linked chat which has not yet sent you a message, you can ask ETM to generate a "chat head". Chat head works similarly to an incoming message, you can reply to it to send messages to your recipient.
@@ -159,3 +159,6 @@ ko-KR | - | Korean
 nb-NO | - | Norwegian
 it-IT | - | Italian
 sv-SE | - | Swedish
+
+## Known issues
+* In rare cases, some messages may take 20 to 35 minutes to be delivered to user. (Upstream library [python-telegram-bot#364](https://github.com/python-telegram-bot/python-telegram-bot/issues/364))

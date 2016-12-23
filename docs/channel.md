@@ -1,6 +1,6 @@
 # `EFBChannel`
 
-`EFBChannel` is a base class for EFB channels. All channel classes, master and slave, should extend this class. It can be defined in either a single file or a module folder with `__init__.py`.
+`EFBChannel` is the base class for EFB channels. All channel classes, master and slave, should extend this class. It can be defined in either a single file or a module folder with `__init__.py`.
 
 ## Attributes
 **channel_name** (str)  
@@ -34,6 +34,7 @@ Methods below are required to be implemented for respective channel types noted,
 Initialize the channel and log in the account (if necessary) with in this method. `super().__init__(queue)` must always be called in the beginning.
 
 Args:
+
 * `queue` (queue.Queue): Global message queue, used for message delivery from slave channels to the master channel.
 * `slaves` (dict): All enabled slave channel objects. Format: `"channel_id": channel_object`.
 
@@ -49,9 +50,11 @@ Returns a `dict` of all extra functions of the slave channel, in the format of `
 This method sends messages from master channel to slave channel. All related media files should be cleared when the message is sent.
 
 Args:
+
 * msg (EFBMsg): The message object.
 
 Raises:
+
 * `EFBChatNotFound`
 * `EFBMessageNotFound`
 * `EFBMessageTypeNotSupported`

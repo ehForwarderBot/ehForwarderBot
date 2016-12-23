@@ -1,6 +1,6 @@
 # EH Forwarder Bot
 
-![Python 3.x](https://img.shields.io/badge/Python-3.x-blue.svg)
+![Python ≥ 3.5](https://img.shields.io/badge/Python-≥_3.5-blue.svg)
 [![Gitter](https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg)](https://gitter.im/blueset/ehForwarderBot)
 [![Telegram support group](https://img.shields.io/badge/Chat-on%20Telegram-blue.svg)](https://telegram.me/efbsupport)
 [![license](https://img.shields.io/github/license/blueset/ehforwarderbot.svg)](LICENSE)

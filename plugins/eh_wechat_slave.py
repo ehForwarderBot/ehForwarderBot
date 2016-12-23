@@ -98,12 +98,14 @@ class WeChatChannel(EFBChannel):
         Returns:
             str|bool: Unique ID of the chat. `False` if not found.
         """
+        if UserName == "filehelper":
+            return "filehelper"
         if not (UserName or NickName):
             self.logger.error('No name provided.')
             return False
         r = self.search_user(UserName=UserName, name=NickName)
         if r:
-            return str(r[0]['AttrStatus'] or crc32(r[0]['NickName'].encode("utf-8")))
+            return str(crc32(r[0]['NickName'].encode("utf-8")))
         else:
             return False
 
@@ -118,6 +120,8 @@ class WeChatChannel(EFBChannel):
         Returns:
             str|bool: `UserName` of the chosen chat. `False` if not found.
         """
+        if uid == "filehelper":
+            return "filehelper"
         r = self.search_user(uid=uid, refresh=refresh)
         if r:
             return r[0]['UserName']
@@ -155,23 +159,24 @@ class WeChatChannel(EFBChannel):
             raise ValueError("At least one of [UserName, uid, wid, name] should be given.")
 
         for i in itchat.get_friends(refresh) + itchat.get_mps(refresh):
-            if str(i.get('UserName', '')) == UserName or \
+
+            if str(crc32(i.get('NickName', '').encode("utf-8"))) == uid or \
+               str(i.get('UserName', '')) == UserName or \
                str(i.get('Uin', '')) == uid or \
                str(i.get('AttrStatus', '')) == uid or \
                str(i.get('Alias', '')) == wid or \
                str(i.get('NickName', '')) == name or \
-               str(i.get('DisplayName', '')) == name or \
-               str(crc32(i.get('NickName', '').encode("utf-8"))) == uid:
+               str(i.get('DisplayName', '')) == name:
                 result.append(i.copy())
         for i in itchat.get_chatrooms(refresh):
             if not i.get('MemberList', ''):
                 i = itchat.update_chatroom(i.get('UserName', ''))
-            if str(i.get('UserName', '')) == UserName or \
+            if str(crc32(i.get('NickName', '').encode("utf-8"))) == uid or \
                str(i.get('Uin', '')) == uid or \
                str(i.get('Alias', '')) == wid or \
                str(i.get('NickName', '')) == name or \
                str(i.get('DisplayName', '')) == name or \
-               str(crc32(i.get('NickName', '').encode("utf-8"))) == uid:
+               str(i.get('UserName', '')) == UserName:
                 result.append(i.copy())
                 result[-1]['MemberList'] = []
                 if ActualUserName:
@@ -612,13 +617,16 @@ class WeChatChannel(EFBChannel):
         r = []
         if user:
             t = itchat.get_friends(True) + itchat.get_mps(True)
+            t[0]['NickName'] = "File Helper"
+            t[0]['UserName'] = "filehelper"
+            t[0]['RemarkName'] = ""
             for i in t:
                 r.append({
                     'channel_name': self.channel_name,
                     'channel_id': self.channel_id,
                     'name': i['NickName'],
                     'alias': i['RemarkName'] or i['NickName'],
-                    'uid': self.get_uid(NickName=i['NickName']),
+                    'uid': self.get_uid(UserName=i['UserName']),
                     'type': MsgSource.User
                 })
         if group:

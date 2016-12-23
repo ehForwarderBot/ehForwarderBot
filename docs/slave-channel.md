@@ -25,7 +25,8 @@ A few methods are required to be implemented for every slave channel.
 ### `__init__(self, queue)`
 `super().__init__(queue)` should be called in the beginning. The "super" `__init__` method assigns the message `queue` to `self.queue`. Any other authorization steps are recommended to be done in this method.
 
-> Try to avoid user interaction as far as possible, if there is a way to login the platform using any fixed credentials, please avoid using dynamical verification.
+!!! note
+    Try to avoid user interaction as far as possible, if there is a way to login the platform using any fixed credentials, please avoid using dynamical verification.
 
 If your platform requires the user to provide any tokens (API key, secret, username, password, etc), you may ask your user to save those information to `config.py`, in a `dict` variable named with your channel unique ID. You can import it with `import config`, and call it with `config.<channel_id>`.
 
@@ -38,6 +39,7 @@ This method should start polling for new message and prepare for pushing it to t
 This method sends a message from the master channel to your channel. `msg` is an `EFBMsg` object, delivered out from the master channel.
 
 Some exceptions you may need to raise while processing an incoming message:
+
 * `EFBChatNotFound`:  
   When the target chat/user is not found, or not reachable from the current user.
 * `EFBMessageNotFound`:  
@@ -49,6 +51,7 @@ You can also use any other existing exceptions or write your own exceptions.
 
 ### `get_chats(self)`
 This method returns a `list` of `dict`s, where each item represents a chat session. It can be:
+
 * A "user", a "group", or a "bot" in Telegram, Messenger, WhatsApp, Line, WeChat, etc.
 * A "channel" in IRC, Slack
 * Any possible "Direct Message" conversations in Twitter, Slack, etc.
@@ -59,7 +62,8 @@ To simplify the categorization process, we name that:
 (Telegram _Channels_ with Admin access falls under here).
 * __"Group"__ type is for those we send and get message to more than one person.
 
-> __Note:__ You may not include chats that you can't send a message to, e.g. Telegram Channels with no admin access.
+!!! note
+    You may not include chats that you can't send a message to, e.g. Telegram Channels with no admin access.
 
 Each `dict` item should have:
 ```python
@@ -97,12 +101,13 @@ In some cases, your slave channel may allow the user to achieve extra functional
 
 You can receive such commands issued in a CLI-like style. An "extra function" method should only take one string parameter aside from `self`, and wrap it with `@extra` decorator from `utils` module. The extra decorator takes 2 arguments: `name`, a short name of the function, and `desc` a description of the function and its usage.
 
-> **More on `desc`**  
-`desc` should describe what the function does and how to use it. It's more like the help text for an CLI program. Since method of calling an extra function depends on the implementation of the master channel, you should use `{function_name}` as the function name in `desc`, and master channel will replace it with respective name.
+!!! note "More on `desc`"
+    `desc` should describe what the function does and how to use it. It's more like the help text for an CLI program. Since method of calling an extra function depends on the implementation of the master channel, you should use `{function_name}` as the function name in `desc`, and master channel will replace it with respective name.
 
 The method should in the end return a string, which will be shown to the user as the result. Depending on the functionality of the function, it may be just a simple success message, or a long chunk of results.
 
 Callable name of extra functions has a more strict standard than a normal Python 3 identifier name, for compatibility reason. An extra function callable name should:
+
 * be case sensitive
 * include only upper and lower-case letters, digits, and underscore.
 * starts only with a upper or lower-case letter.
