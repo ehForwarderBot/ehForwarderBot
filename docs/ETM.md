@@ -28,6 +28,8 @@ ffmpeg
 and all other required by Pillow.
 
 ### Configuration
+* Create a bot with [@BotFather](https://telegram.me/botfather). [Related tutorial](https://core.telegram.org/bots#6-botfather).
+* Set `/setjoingroups` to `Enable`, `/setprivacy` to `Disable`.
 * Copy `eh_telegram_master` to "plugins" directory,  
   _May not be necessary as it's a built-in plugin of EFB_
 * Set `master_channel = "plugins.eh_telegram_master", "TelegramChannel"` in `config.py`
@@ -47,7 +49,7 @@ eh_telegram_master = {
 }
 ```
 
-* `token`: (string) Telegram Bot token issued by [@BotFather](https://telegram.me/botfather). [Related tutorial](https://core.telegram.org/bots#6-botfather).
+* `token`: (string) Telegram Bot token issued by BotFather.
 * `admins`: (list of int) User IDs of admin.  
   **Only** messages from admins will be processed. All other messages will be discarded.  
   There are several ways obtaining your ID: Send a message to [@JackBot](https://telegram.me/jackbot), [@get_id_bot](https://telegram.me/get_id_bot), [@UserInfoBot](https://telegram.me/userinfobot), or check it with [Plus messenger](http://plusmessenger.org/).  
