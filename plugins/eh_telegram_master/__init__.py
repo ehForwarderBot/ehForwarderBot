@@ -178,7 +178,9 @@ class TelegramChannel(EFBChannel):
             msg (EFBMsg): The message.
         """
         try:
-            self.logger.debug("process_msg_step_0")
+            xid = datetime.datetime.now().timestamp()
+            self.logger.debug("%s, Msg text: %s", xid, msg.text)
+            self.logger.debug("%s, process_msg_step_0", xid)
             chat_uid = "%s.%s" % (msg.channel_id, msg.origin['uid'])
             tg_chat = db.get_chat_assoc(slave_uid=chat_uid) or False
             msg_prefix = ""
@@ -188,7 +190,7 @@ class TelegramChannel(EFBChannel):
 
             # Generate chat text template & Decide type target
             tg_dest = config.eh_telegram_master['admins'][0]
-            self.logger.debug("process_msg_step_1")
+            self.logger.debug("%s, process_msg_step_1", xid)
             if msg.source == MsgSource.Group:
                 msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "%s (%s)" % (
                     msg.member['alias'], msg.member['name'])
@@ -213,7 +215,7 @@ class TelegramChannel(EFBChannel):
                 msg_template = "System Message: %s"
 
             # Type dispatching
-            self.logger.debug("process_msg_step_2")
+            self.logger.debug("%s, process_msg_step_2", xid)
             append_last_msg = False
             if msg.type in [MsgType.Text, MsgType.Link]:
                 if tg_chat_assoced:
@@ -229,21 +231,21 @@ class TelegramChannel(EFBChannel):
                     else:
                         append_last_msg = False
                     self.logger.debug("Text: Append last msg: %s", append_last_msg)
-                self.logger.debug("process_msg_step_3_0, tg_dest = %s, tg_chat_assoced = %s, append_last_msg = %s",
+                self.logger.debug("%s, process_msg_step_3_0, tg_dest = %s, tg_chat_assoced = %s, append_last_msg = %s", xid,
                                   tg_dest, tg_chat_assoced, append_last_msg)
                 if tg_chat_assoced and append_last_msg:
-                    self.logger.debug("process_msg_step_3_0_1")
+                    self.logger.debug("%s, process_msg_step_3_0_1", xid)
                     msg.text = "%s\n%s" % (last_msg.text, msg.text)
                     tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest,
                                                           message_id=last_msg.master_msg_id.split(".", 1)[1],
                                                           text=msg_template % msg.text)
                 else:
-                    self.logger.debug("process_msg_step_3_0_3")
+                    self.logger.debug("%s, process_msg_step_3_0_3", xid)
                     tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text)
-                    self.logger.debug("process_msg_step_3_0_4, tg_msg = %s", tg_msg)
-                self.logger.debug("process_msg_step_3_1")
+                    self.logger.debug("%s, process_msg_step_3_0_4, tg_msg = %s", xid, tg_msg)
+                self.logger.debug("%s, process_msg_step_3_1", xid)
             elif msg.type in [MsgType.Image, MsgType.Sticker]:
-                self.logger.debug("process_msg_step_3_2")
+                self.logger.debug("%s, process_msg_step_3_2", xid)
                 self.logger.info("Received %s \nPath: %s\nSize: %s\nMIME: %s", msg.type, msg.path,
                                  os.stat(msg.path).st_size, msg.mime)
                 if os.stat(msg.path).st_size == 0:
@@ -259,7 +261,7 @@ class TelegramChannel(EFBChannel):
                 else:
                     tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template % msg.text)
                 os.remove(msg.path)
-                self.logger.debug("process_msg_step_3_3")
+                self.logger.debug("%s, process_msg_step_3_3", xid)
             elif msg.type == MsgType.File:
                 if os.stat(msg.path).st_size == 0:
                     os.remove(msg.path)
@@ -305,7 +307,7 @@ class TelegramChannel(EFBChannel):
                 self.msg_storage[tg_msg.message_id] = {"channel": msg.channel_id, "text": msg_template % msg.text, "commands": msg.attributes['commands']}
             else:
                 tg_msg = self.bot.bot.sendMessage(tg_dest, msg_template % "Unsupported incoming message type. (UT01)")
-            self.logger.debug("process_msg_step_4")
+            self.logger.debug("%s, process_msg_step_4", xid)
             if msg.source in (MsgSource.User, MsgSource.Group):
                 msg_log = {"master_msg_id": "%s.%s" % (tg_msg.chat.id, tg_msg.message_id),
                            "text": msg.text,
@@ -318,7 +320,7 @@ class TelegramChannel(EFBChannel):
                 if tg_chat_assoced and append_last_msg:
                     msg_log['update'] = True
                 db.add_msg_log(**msg_log)
-            self.logger.debug("process_msg_step_5")
+            self.logger.debug("%s, process_msg_step_5", xid)
         except Exception as e:
             self.logger.error(repr(e) + traceback.format_exc())
 

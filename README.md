@@ -12,6 +12,10 @@ _Codename_ **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework whi
 
 [Documentation](https://ehforwarderbot.readthedocs.io/en/latest/).
 
+## Media coverage
+* [Appinn: Send and Receive messages from WeChat on Telegram](http://www.appinn.com/eh-forwarder-bot/)  
+  _(EH Forwarder Bot – 在 Telegram 收发「微信」消息)_
+
 ## Glossary
 * **Channel**: A class that communicates with a chat platform, also known as a plugin.
 * **EFB**: abbreviation for EH Forwarder Bot, this project.
