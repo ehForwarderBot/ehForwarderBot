@@ -13,7 +13,8 @@ All log-in and initializing process are done `__init__(self, queue, slaves)` met
 
 If your platform requires extra interaction before polling, it should be done in the `__init__` method.
 
-> Try to avoid user interaction as far as possible, if there is a way to login the platform using any fixed credentials, please avoid using dynamical verification.
+!!! note
+    Try to avoid user interaction as far as possible, if there is a way to login the platform using any fixed credentials, please avoid using dynamical verification.
 
 If your platform requires user to provide any tokens (API key, secret, username, password, etc), you may ask your user to save those information to `config.py`, in a `dict` variable named with your channel unique ID. You can import it with `import config`, and call it with `config.<channel_id>`.
 
@@ -26,6 +27,7 @@ Definition of config keys and values should be written in the class docstring, a
 The implementation shall resemble the appearance as far as possible, and in the same time requires as less user involvement for set up as possible.
 
 In the extremely ideal case, the master channel agent should:
+
 * Have an independent chat "timeline" for each chat from slave channel, with indication of each slave channel. It should looks similar, if not identical to a normal chat in original platform.
 * Identify all members in a group chat.
 * Support all possible static message types (those defined in EFB, PRs are welcomed for extra type support).
@@ -47,6 +49,7 @@ For more details on `EFBMsg` format, check [the documentation of EFBMsg](message
 
 #### Command messages
 Different from normal messages, command messages allows user to give response with options provided by the message. The message shown to the user should only have:
+
 * Command description (usually `msg.text`)
 * List of options (`name` of each command)
 * How should the user choose an option. (button, command string, etc)
@@ -72,9 +75,11 @@ Possible message recipients can come from either incoming messages from slave ch
 
 Notice that channels should first identify a user with their unique ID, before checking with other properties such as `name`, `alias`, `type`, etc.
 
-> Refer to the [Channel documentation](channel.md) for details on `get_chat(self)`.
+!!! note
+    Refer to the [Channel documentation](channel.md) for details on `get_chat(self)`.
 
 When sending a message to a slave channel, you may encounter one of the following exceptions:
+
 * `EFBMessageTypeNotSupported`:  
   Message type sent is not supported by the slave channel.
 * `EFBChatNotFound`:  
@@ -95,3 +100,4 @@ Similar to command message methods, all "extra function" methods also returns a 
 
 ## Media processing
 Please refer to the "Media processing" section in [Walk through](workflow.md) for details.
+ 

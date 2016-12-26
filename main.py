@@ -5,7 +5,7 @@ import logging
 import argparse
 from daemon import Daemon
 
-__version__ = "1.0 build 20161207"
+__version__ = "1.0 build 20161220"
 
 parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible chat tunnel framework which allows "
                                              "users to contact people from other chat platforms, and ultimately "
@@ -88,6 +88,9 @@ if getattr(args, "V", None):
     print("EH Forwarder Bot\n"
           "Version: Be")
 else:
+    logging.getLogger('requests').setLevel(logging.CRITICAL)
+    logging.getLogger('urllib3').setLevel(logging.CRITICAL)
+    logging.getLogger('telegram.bot').setLevel(logging.CRITICAL)
     if args.v == 0:
         logging.basicConfig(level=logging.ERROR)
     elif args.v == 1:

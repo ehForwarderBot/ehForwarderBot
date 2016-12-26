@@ -18,3 +18,5 @@ pages:
         - 'EFB WeChat Slave': 'EWS.md'
 theme: readthedocs
 repo_url: 'https://github.com/blueset/ehforwarderbot'
+markdown_extensions:
+    - admonition:

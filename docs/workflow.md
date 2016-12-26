@@ -18,6 +18,7 @@ The polling method from the master thread not only needs to poll for message fro
 
 ## Master channel
 Roughly speaking, a master channel has mainly 2 jobs:
+
 * Process message from user
 * Process message from channel  
   _(Keep an infinite loop alongside the polling thread and pull new message from the global message queue to process)_
@@ -33,7 +34,8 @@ Then the user can directly send messages into the group for ETM to forward it. W
 For any message come from a chat not binded, EFB will deliver to user in the "bot chat". Then if you want to reply to the user, you need to "direct reply" to the message. However, when you want to send a message to a new remote chat when you have no where to reply to, there's where chat head comes in.
 
 Send `/chat` command, and ETM will send you a list of available remote chats to choose from. When choosing a chat, you will see a message, for message to the chat you've chosen previously, to reply to it.
-> Note that directly reply in remote channel is not available to unbind chat.
+
+Note that directly reply in remote channel is not available to unbind chat.
 
 ### Deliver user's message to a slave channel
 To deliver user's message to a slave channel, you should first gather all the information of the message, including: the target channel, target chat, message type, etc. Then compile it into an `EFBMsg` object and call the `sendMessage` method of the slave channel with the message.
@@ -58,6 +60,7 @@ In order to suit the requirement of each chat platform API, it's often necessary
 5. Recipient channel send out the message to remote server, and then remove all files related to the message.
 
 Despite no requirement on the module or external library used by a channel, it is recommended to utilize one of the following external libraries, in order to minimize the number of the external libraries to be installed by the end-user.
+
 * `ffmpeg`
 * `imagick`
 * `libmagic`

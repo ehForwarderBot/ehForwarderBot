@@ -32,6 +32,9 @@ Include details about your configuration and environment:
 * **What's the name and version of the OS you're using?**
 * **Which channel caused the problem?** Or did the framework cause it?
 
+!!! attention
+    When submitting your log, please remember to hide your private information.
+
 ## Suggesting enhancements
 
 If you have any suggestions, feel free to raise it up in the issue list. Please try to provide as much details as you can, that includes:

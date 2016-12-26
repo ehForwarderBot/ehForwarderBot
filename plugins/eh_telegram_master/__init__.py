@@ -11,6 +11,8 @@ import magic
 import os
 import mimetypes
 import pydub
+import threading
+import traceback
 from . import db, speech
 from .whitelisthandler import WhitelistHandler
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
@@ -88,7 +90,7 @@ class TelegramChannel(EFBChannel):
         except (AttributeError, KeyError):
             raise ValueError("Token is not properly defined. Please define it in `config.py`.")
         mimetypes.init()
-        self.logger = logging.getLogger("masterTG.%s" % __name__)
+        self.logger = logging.getLogger("plugins.%s.TelegramChannel" % self.channel_id)
         self.me = self.bot.bot.get_me()
         self.bot.dispatcher.add_handler(WhitelistHandler(config.eh_telegram_master['admins']))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("link", self.link_chat_show_list))
@@ -175,133 +177,150 @@ class TelegramChannel(EFBChannel):
         Args:
             msg (EFBMsg): The message.
         """
-        chat_uid = "%s.%s" % (msg.channel_id, msg.origin['uid'])
-        tg_chat = db.get_chat_assoc(slave_uid=chat_uid) or False
-        msg_prefix = ""
-        tg_msg = None
-        tg_chat_assoced = False
-        is_last_member = False
-        if not msg.source == MsgSource.Group:
-            msg.member = {"uid": -1, "name": "", "alias": ""}
+        try:
+            self.logger.debug("process_msg_step_0")
+            chat_uid = "%s.%s" % (msg.channel_id, msg.origin['uid'])
+            tg_chat = db.get_chat_assoc(slave_uid=chat_uid) or False
+            msg_prefix = ""
+            tg_chat_assoced = False
+            if not msg.source == MsgSource.Group:
+                msg.member = {"uid": -1, "name": "", "alias": ""}
 
-        # Generate chat text template & Decide type target
-
-        if msg.source == MsgSource.Group:
-            msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "%s (%s)" % (
-                msg.member['alias'], msg.member['name'])
-        if tg_chat:  # if this chat is linked
-            tg_dest = int(tg_chat.split('.')[1])
-            tg_chat_assoced = True
-            if msg_prefix:  # if group message
-                msg_template = "%s:\n%s" % (msg_prefix, "%s")
-            else:
-                msg_template = "%s"
-        else:  # when chat is not linked
+            # Generate chat text template & Decide type target
             tg_dest = config.eh_telegram_master['admins'][0]
-            emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
-            name_prefix = msg.origin["alias"] if msg.origin["alias"] == msg.origin["name"] else "%s (%s)" % (
-                msg.origin["alias"], msg.origin["name"])
-            if msg_prefix:
-                msg_template = "%s %s [%s]:\n%s" % (emoji_prefix, msg_prefix, name_prefix, "%s")
-            else:
+            self.logger.debug("process_msg_step_1")
+            if msg.source == MsgSource.Group:
+                msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "%s (%s)" % (
+                    msg.member['alias'], msg.member['name'])
+            if tg_chat:  # if this chat is linked
+                tg_dest = int(tg_chat.split('.')[1])
+                tg_chat_assoced = True
+                if msg_prefix:  # if group message
+                    msg_template = "%s:\n%s" % (msg_prefix, "%s")
+                else:
+                    msg_template = "%s"
+            elif msg.source == MsgSource.User:
+                emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
+                name_prefix = msg.origin["alias"] if msg.origin["alias"] == msg.origin["name"] else "%s (%s)" % (
+                    msg.origin["alias"], msg.origin["name"])
                 msg_template = "%s %s:\n%s" % (emoji_prefix, name_prefix, "%s")
+            elif msg.source == MsgSource.Group:
+                emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
+                name_prefix = msg.origin["alias"] if msg.origin["alias"] == msg.origin["name"] else "%s (%s)" % (
+                    msg.origin["alias"], msg.origin["name"])
+                msg_template = "%s %s [%s]:\n%s" % (emoji_prefix, msg_prefix, name_prefix, "%s")
+            elif msg.source == MsgSource.System:
+                msg_template = "System Message: %s"
 
-        # Type dispatching
-
-        append_last_msg = False
-        if msg.type in [MsgType.Text, MsgType.Link]:
-            if tg_chat_assoced:
-                last_msg = db.get_last_msg_from_chat(tg_dest)
-                if last_msg:
-                    if last_msg.msg_type == "Text":
-                        append_last_msg = str(last_msg.slave_origin_uid) == "%s.%s" % (msg.channel_id, msg.origin['uid'])
-                        if msg.source == MsgSource.Group:
-                            append_last_msg &= str(last_msg.slave_member_uid) == str(msg.member['uid'])
-                        append_last_msg &= datetime.datetime.now() - last_msg.time <= datetime.timedelta(seconds=self.MSG_COMBINE_THRESHOLD_SECS)
+            # Type dispatching
+            self.logger.debug("process_msg_step_2")
+            append_last_msg = False
+            if msg.type in [MsgType.Text, MsgType.Link]:
+                if tg_chat_assoced:
+                    last_msg = db.get_last_msg_from_chat(tg_dest)
+                    if last_msg:
+                        if last_msg.msg_type == "Text":
+                            append_last_msg = str(last_msg.slave_origin_uid) == "%s.%s" % (msg.channel_id, msg.origin['uid'])
+                            if msg.source == MsgSource.Group:
+                                append_last_msg &= str(last_msg.slave_member_uid) == str(msg.member['uid'])
+                            append_last_msg &= datetime.datetime.now() - last_msg.time <= datetime.timedelta(seconds=self.MSG_COMBINE_THRESHOLD_SECS)
+                        else:
+                            append_last_msg = False
                     else:
                         append_last_msg = False
+                    self.logger.debug("Text: Append last msg: %s", append_last_msg)
+                self.logger.debug("process_msg_step_3_0, tg_dest = %s, tg_chat_assoced = %s, append_last_msg = %s",
+                                  tg_dest, tg_chat_assoced, append_last_msg)
+                if tg_chat_assoced and append_last_msg:
+                    self.logger.debug("process_msg_step_3_0_1")
+                    msg.text = "%s\n%s" % (last_msg.text, msg.text)
+                    tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest,
+                                                          message_id=last_msg.master_msg_id.split(".", 1)[1],
+                                                          text=msg_template % msg.text)
                 else:
-                    append_last_msg = False
-                self.logger.debug("Text: Append last msg: %s", append_last_msg)
-            if tg_chat_assoced and append_last_msg:
-                msg.text = "%s\n%s" % (last_msg.text, msg.text)
-                tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest,
-                                                      message_id=last_msg.master_msg_id.split(".", 1)[1],
-                                                      text=msg_template % msg.text)
-            else:
+                    self.logger.debug("process_msg_step_3_0_3")
+                    tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text)
+                    self.logger.debug("process_msg_step_3_0_4, tg_msg = %s", tg_msg)
+                self.logger.debug("process_msg_step_3_1")
+            elif msg.type in [MsgType.Image, MsgType.Sticker]:
+                self.logger.debug("process_msg_step_3_2")
+                self.logger.info("Received %s \nPath: %s\nSize: %s\nMIME: %s", msg.type, msg.path,
+                                 os.stat(msg.path).st_size, msg.mime)
+                if os.stat(msg.path).st_size == 0:
+                    os.remove(msg.path)
+                    return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s received. (MS01)" % msg.type))
+                if not msg.text:
+                    if MsgType.Image:
+                        msg.text = "sent a picture."
+                    elif msg.type == MsgType.Sticker:
+                        msg.text = "sent a sticker."
+                if msg.mime == "image/gif":
+                    tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
+                else:
+                    tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template % msg.text)
+                os.remove(msg.path)
+                self.logger.debug("process_msg_step_3_3")
+            elif msg.type == MsgType.File:
+                if os.stat(msg.path).st_size == 0:
+                    os.remove(msg.path)
+                    return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s received. (MS02)" % msg.type))
+                if not msg.text:
+                    file_name = os.path.basename(msg.path)
+                    msg.text = "sent a file."
+                else:
+                    file_name = msg.text
+                tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text, filename=file_name)
+                os.remove(msg.path)
+            elif msg.type == MsgType.Audio:
+                if os.stat(msg.path).st_size == 0:
+                    os.remove(msg.path)
+                    return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s received. (MS03)" % msg.type))
+                pydub.AudioSegment.from_file(msg.file).export("%s.ogg" % msg.path, format="ogg", codec="libopus")
+                ogg_file = open("%s.ogg" % msg.path, 'rb')
+                if not msg.text:
+                    msg.text = "🔉"
                 tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text)
-        elif msg.type in [MsgType.Image, MsgType.Sticker]:
-            self.logger.info("Received %s \nPath: %s\nSize: %s\nMIME: %s", msg.type, msg.path,
-                             os.stat(msg.path).st_size, msg.mime)
-            if os.stat(msg.path).st_size == 0:
                 os.remove(msg.path)
-                return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s received. (MS01)" % msg.type))
-            if not msg.text:
-                if MsgType.Image:
-                    msg.text = "sent a picture."
-                elif msg.type == MsgType.Sticker:
-                    msg.text = "sent a sticker."
-            if msg.mime == "image/gif":
-                tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
+                os.remove("%s.ogg" % msg.path)
+                self.bot.bot.sendVoice(tg_dest, ogg_file, reply_to_message_id=tg_msg.message_id)
+            elif msg.type == MsgType.Location:
+                self.logger.info("---\nsending venue\nlat: %s, long: %s\ntitle: %s\naddr: %s", msg.attributes['latitude'], msg.attributes['longitude'], msg.text, msg_template % "")
+                tg_msg = self.bot.bot.sendVenue(tg_dest, latitude=msg.attributes['latitude'],
+                                                longitude=msg.attributes['longitude'], title=msg.text,
+                                                address=msg_template % "")
+            elif msg.type == MsgType.Video:
+                if os.stat(msg.path).st_size == 0:
+                    os.remove(msg.path)
+                    return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s recieved" % msg.type))
+                if not msg.text:
+                    msg.text = "sent a video."
+                tg_msg = self.bot.bot.sendVideo(tg_dest, video=msg.file, caption=msg_template % msg.text)
+                os.remove(msg.path)
+            elif msg.type == MsgType.Command:
+                buttons = []
+                for i, ival in enumerate(msg.attributes['commands']):
+                    buttons.append([telegram.InlineKeyboardButton(ival['name'], callback_data=str(i))])
+                tg_msg = self.bot.bot.send_message(tg_dest, msg_template % msg.text, reply_markup=telegram.InlineKeyboardMarkup(buttons))
+                self.msg_status[tg_msg.message_id] = Flags.COMMAND_PENDING
+                self.msg_storage[tg_msg.message_id] = {"channel": msg.channel_id, "text": msg_template % msg.text, "commands": msg.attributes['commands']}
             else:
-                tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template % msg.text)
-            os.remove(msg.path)
-        elif msg.type == MsgType.File:
-            if os.stat(msg.path).st_size == 0:
-                os.remove(msg.path)
-                return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s received. (MS02)" % msg.type))
-            if not msg.text:
-                file_name = os.path.basename(msg.path)
-                msg.text = "sent a file."
-            else:
-                file_name = msg.text
-            tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text, filename=file_name)
-            os.remove(msg.path)
-        elif msg.type == MsgType.Audio:
-            if os.stat(msg.path).st_size == 0:
-                os.remove(msg.path)
-                return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s received. (MS03)" % msg.type))
-            pydub.AudioSegment.from_file(msg.file).export("%s.ogg" % msg.path, format="ogg", codec="libopus")
-            ogg_file = open("%s.ogg" % msg.path, 'rb')
-            if not msg.text:
-                msg.text = "🔉"
-            tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text)
-            os.remove(msg.path)
-            os.remove("%s.ogg" % msg.path)
-            self.bot.bot.sendVoice(tg_dest, ogg_file, reply_to_message_id=tg_msg.message_id)
-        elif msg.type == MsgType.Location:
-            self.logger.info("---\nsending venue\nlat: %s, long: %s\ntitle: %s\naddr: %s", msg.attributes['latitude'], msg.attributes['longitude'], msg.text, msg_template % "")
-            tg_msg = self.bot.bot.sendVenue(tg_dest, latitude=msg.attributes['latitude'],
-                                            longitude=msg.attributes['longitude'], title=msg.text,
-                                            address=msg_template % "")
-        elif msg.type == MsgType.Video:
-            if os.stat(msg.path).st_size == 0:
-                os.remove(msg.path)
-                return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s recieved" % msg.type))
-            if not msg.text:
-                msg.text = "sent a video."
-            tg_msg = self.bot.bot.sendVideo(tg_dest, video=msg.file, caption=msg_template % msg.text)
-            os.remove(msg.path)
-        elif msg.type == MsgType.Command:
-            buttons = []
-            for i, ival in enumerate(msg.attributes['commands']):
-                buttons.append([telegram.InlineKeyboardButton(ival['name'], callback_data=str(i))])
-            tg_msg = self.bot.bot.send_message(tg_dest, msg_template % msg.text, reply_markup=telegram.InlineKeyboardMarkup(buttons))
-            self.msg_status[tg_msg.message_id] = Flags.COMMAND_PENDING
-            self.msg_storage[tg_msg.message_id] = {"channel": msg.channel_id, "text": msg_template % msg.text, "commands": msg.attributes['commands']}
-        else:
-            tg_msg = self.bot.bot.sendMessage(tg_dest, msg_template % "Unsupported incoming message type. (UT01)")
-        msg_log = {"master_msg_id": "%s.%s" % (tg_msg.chat.id, tg_msg.message_id),
-                   "text": msg.text,
-                   "msg_type": msg.type,
-                   "sent_to": "Master",
-                   "slave_origin_uid": "%s.%s" % (msg.channel_id, msg.origin['uid']),
-                   "slave_origin_display_name": msg.origin['alias'],
-                   "slave_member_uid": msg.member['uid'],
-                   "slave_member_display_name": msg.member['alias']}
-        if tg_chat_assoced and append_last_msg:
-            msg_log['update'] = True
-        db.add_msg_log(**msg_log)
+                tg_msg = self.bot.bot.sendMessage(tg_dest, msg_template % "Unsupported incoming message type. (UT01)")
+            self.logger.debug("process_msg_step_4")
+            if msg.source in (MsgSource.User, MsgSource.Group):
+                msg_log = {"master_msg_id": "%s.%s" % (tg_msg.chat.id, tg_msg.message_id),
+                           "text": msg.text,
+                           "msg_type": msg.type,
+                           "sent_to": "Master",
+                           "slave_origin_uid": "%s.%s" % (msg.channel_id, msg.origin['uid']),
+                           "slave_origin_display_name": msg.origin['alias'],
+                           "slave_member_uid": msg.member['uid'],
+                           "slave_member_display_name": msg.member['alias']}
+                if tg_chat_assoced and append_last_msg:
+                    msg_log['update'] = True
+                db.add_msg_log(**msg_log)
+            self.logger.debug("process_msg_step_5")
+        except Exception as e:
+            self.logger.error(repr(e) + traceback.format_exc())
 
     def slave_chats_pagination(self, message_id, offset=0):
         """
@@ -366,10 +385,10 @@ class TelegramChannel(EFBChannel):
 
         for i in range(offset, min(offset + self.INLINE_CHAT_PER_PAGE, count)):
             chat = chats[i]
-            linked = utils.Emojis.LINK_EMOJI if bool(db.get_chat_assoc(slave_uid=chat['chat_uid'])) else ""
+            linked = utils.Emojis.LINK_EMOJI if bool(db.get_chat_assoc(slave_uid="%s.%s" % (chat['channel_id'], chat['chat_uid']))) else ""
             chat_type = utils.Emojis.get_source_emoji(chat['type'])
             chat_name = chat['chat_alias'] if chat['chat_name'] == chat['chat_alias'] else "%s(%s)" % (chat['chat_alias'], chat['chat_name'])
-            button_text = "%s%s: %s%s" % (chat['channel_emoji'], chat_type, chat_name, linked)
+            button_text = "%s%s: %s %s" % (chat['channel_emoji'], chat_type, chat_name, linked)
             button_callback = "chat %s" % i
             chat_btn_list.append([telegram.InlineKeyboardButton(button_text, callback_data=button_callback)])
 
@@ -401,7 +420,7 @@ class TelegramChannel(EFBChannel):
         if not update.message.chat.id == update.message.from_user.id:
             init_msg = bot.sendMessage(user_id, "Processing...")
             try:
-                cid = db.get_chat_assoc(update.message.chat.id).slave_cid
+                cid = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id)).slave_cid
                 return self.link_chat_confirm(bot, init_msg.from_chat.id, init_msg.message_id, cid)
             except:
                 return bot.editMessageText(chat_id=update.message.chat.id,
@@ -487,11 +506,11 @@ class TelegramChannel(EFBChannel):
 
         if linked:
             btn_list = [telegram.InlineKeyboardButton("Relink", url="https://telegram.me/%s?startgroup=%s" % (
-                self.me.username, urllib.parse.quote(chat_uid))),
+                self.me.username, urllib.parse.quote(" ".join((chat_uid, chat_display_name))))),
                         telegram.InlineKeyboardButton("Unlink", callback_data="unlink %s" % callback_uid)]
         else:
             btn_list = [telegram.InlineKeyboardButton("Link", url="https://telegram.me/%s?startgroup=%s" % (
-                self.me.username, urllib.parse.quote(chat_uid)))]
+                self.me.username, urllib.parse.quote(" ".join((chat_uid, chat_display_name)))))]
         btn_list.append(telegram.InlineKeyboardButton("Cancel", callback_data=Flags.CANCEL_PROCESS))
 
         bot.editMessageText(text=txt,
@@ -525,7 +544,7 @@ class TelegramChannel(EFBChannel):
         chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name'])
         self.msg_status.pop(tg_msg_id, None)
         self.msg_storage.pop(tg_msg_id, None)
-        if cmd == "Unlink":
+        if cmd == "unlink":
             db.remove_chat_assoc(slave_uid=chat_uid)
             txt = "Chat '%s' has been unlinked." % (chat_display_name)
             return bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
@@ -664,7 +683,6 @@ class TelegramChannel(EFBChannel):
                     msg += "\n\n%s <i>(%s)</i>\n%s" % (fn_name, xfns[j].name, xfns[j].desc.format(function_name=fn_name))
             else:
                 msg += "No command found."
-        self.logger.debug("xtrahelp-----\n%s", msg)
         bot.sendMessage(update.message.chat.id, msg, parse_mode="HTML")
 
     def extra_call(self, bot, update, groupdict=None):
@@ -682,7 +700,7 @@ class TelegramChannel(EFBChannel):
     def msg(self, bot, update):
         self.logger.debug("----\nMsg from tg user:\n%s", update.message.to_dict())
         target = None
-        if not (update.message.chat.id == update.message.from_user.id):  # from group
+        if update.message.chat.id != update.message.from_user.id:  # from group
             assoc = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
             if getattr(update.message, "reply_to_message", None):
                 try:
@@ -700,6 +718,7 @@ class TelegramChannel(EFBChannel):
             return self._reply_error(bot, update, "Unknown recipient (UC01).")
         if not assoc:
             return self._reply_error(bot, update, "Unknown recipient (UC02).")
+        self.logger.debug("Destination chat = %s", assoc)
         channel, uid = assoc.split('.', 2)
         if channel not in self.slaves:
             return self._reply_error(bot, update, "Internal error: Channel not found.")
@@ -742,7 +761,7 @@ class TelegramChannel(EFBChannel):
                         "target": trgtMsg
                     }
             # Type specific stuff
-            self.logger.debug("tg: msg type: %s", mtype)
+            self.logger.debug("Msg type: %s", mtype)
 
             if mtype == TGMsgType.Text:
                 m.type = MsgType.Text
@@ -830,20 +849,21 @@ class TelegramChannel(EFBChannel):
         return fullpath + ".gif", "image/gif"
 
     def start(self, bot, update, args=[]):
-        if not update.message.from_user.id == update.message.chat.id:  # from group
-            chat_uid = ' '.join(args)
+        if update.message.from_user.id != update.message.chat.id:  # from group
+            chat_uid = args[0]
+            chat_display_name = args[1]
             slave_channel, slave_chat_uid = chat_uid.split('.', 1)
             if slave_channel in self.slaves and chat_uid in self.msg_status:
                 db.add_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id), slave_uid=chat_uid)
-                txt = "Chat has been associated."
+                txt = "Chat '%s' has been associated." % chat_display_name
                 bot.sendMessage(update.message.chat.id, text=txt)
                 bot.editMessageText(chat_id=update.message.from_user.id,
                                     message_id=self.msg_status[chat_uid],
                                     text=txt)
                 self.msg_status.pop(self.msg_status[chat_uid], False)
                 self.msg_status.pop(chat_uid, False)
-        elif update.message.from_user.id == update.message.chat.id and args == []:
-            txt = "Welcome to EH Forwarder Bot.\n\nLearn more, please visit https://github.com/blueset/ehForwarderBot ."
+        else:
+            txt = "Welcome to EH Forwarder Bot: EFB Telegram Master Channel.\n\nTo learn more, please visit https://github.com/blueset/ehForwarderBot ."
             bot.sendMessage(update.message.from_user.id, txt)
 
     def recognize_speech(self, bot, update, args=[]):
@@ -919,10 +939,11 @@ class TelegramChannel(EFBChannel):
             try:
                 m = self.queue.get()
                 self.logger.info("Got message from queue\nType: %s\nText: %s\n----" % (m.type, m.text))
-                self.process_msg(m)
+                threading.Thread(target=self.process_msg, args=(m,)).start()
                 self.queue.task_done()
+                self.logger.info("Msg sent to TG, task_done marked.")
             except Exception as e:
-                self.logger.error("Error occured during message polling")
+                self.logger.error("Error occurred during message polling")
                 self.logger.error(repr(e))
                 self.bot.stop()
                 self.poll()

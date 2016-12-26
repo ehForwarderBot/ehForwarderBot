@@ -45,69 +45,73 @@ There are 3 types of targets: `Member`, `Message`, and `Substitution`
 **TargetType: Member**  
 This is for the case where the message is targeting to a specific member in the group. `target['target']` here is a "User dict".
 
-Example:
-```python
-target = {
-   'type': TargetType.Member,
-   'target': {
-       "name": "Target name",
-       'alias': 'Target alias',
-       'uid': 'Target UID',
-   }
-}
-```
+!!! note "Example"
+    Sample target.
+
+        target = {
+           'type': TargetType.Member,
+           'target': {
+               "name": "Target name",
+               'alias': 'Target alias',
+               'uid': 'Target UID',
+           }
+        }
 
 **TargetType: Message**  
 This is for the case where the message is directly replying to another message. `target['target']` here is an `EFBMsg` object.
 
-> Tip: Depends on the need of the other channel, you may need to include at least:
-> * User dict for sender and recipient
-> * Message type and text
-> * Message unique ID
->
-> But try to include as much detail as possible.
->
-> **Notice**: You should not include further Target dict in this `EFBMsg` object.
+!!! tip
+    Depends on the need of the other channel, you may need to include at least:
+
+    * User dict for sender and recipient
+    * Message type and text
+    * Message unique ID
+
+    But try to include as much detail as possible.
+
+!!! note "Notice"
+    You should not include further Target dict in this `EFBMsg` object.
 
 
-Example:
-```python
-target = {
-   'type': TargetType.Message,
-   'target': EFBMsg()
-}
-```
+!!! note "Example"
+    Sample target.
+
+        target = {
+           'type': TargetType.Message,
+           'target': EFBMsg()
+        }
+
 
 **TargetType: Substitution**  
 This is for the case when user "@-ed" a list of users in the message. `target['target']` here is a dict of correspondence between the string, or start and end point of the substring (in Python index) used to refer to the user in the message and a user dict.
 
-Example:
-```python
-target = {
-   'type': TargetType.Substitution,
-   'target': {
-      '@alice': {
-          'name': "Megpoid",
-          'alias': 'Gumi',
-          'uid': "123456"
-      },
-      '@bob': {
-          'name': "Gackpoid",
-          'alias': 'Gakupo',
-          'uid': "654321"
-      },
-      (13, 18): {
-          'name': "Cyber Songman",
-          'alias': "Cyman",
-          'uid': "162534"
-      }
-      # Here (13, 18) refers to msg.text[13:18]
-   }
-}
-```
+!!! note "Example"
+    Sample target.
+
+        target = {
+           'type': TargetType.Substitution,
+           'target': {
+              '@alice': {
+                  'name': "Megpoid",
+                  'alias': 'Gumi',
+                  'uid': "123456"
+              },
+              '@bob': {
+                  'name': "Gackpoid",
+                  'alias': 'Gakupo',
+                  'uid': "654321"
+              },
+              (13, 18): {
+                  'name': "Cyber Songman",
+                  'alias': "Cyman",
+                  'uid': "162534"
+              }
+              # Here (13, 18) refers to msg.text[13:18]
+           }
+        }
+
 
 ## Media storage
-
 Any media should be saved into the local storage path. The standard path should be `./storage/<channel id>/<filename>`. File should at least have read permission for all users. File may be unlink (deleted) by the target channel.
 
 ## Message types
@@ -176,19 +180,19 @@ Shared links.
 
 * `text`: Structured text with at least the URL in the message.
 * `attributes`: a `dict` with 4 items: _(None if not available)_  
-  "title": Title of the linked article,  
-  "description": Brief description of the article,  
-  "image": Thumbnail URL or local file path,  
-  "url": URL in the message.
+    * **"title"**: Title of the linked article,  
+    * **"description"**: Brief description of the article,  
+    * **"image"**: Thumbnail URL or local file path,  
+    * **"url"**: URL in the message.
 
 ### Command
-**Type**: MsgType.Command
+**Type**: MsgType.Command  
 **Additional Parameters**: attributes
 
 This message is sent when a message from **slave** channel provides action options to the user. E.g.: Friend request, money transfer, etc.
 
-> **Attention**  
-Only slave channel can send a command message to the master channel, master channel CANNOT send command messages.
+!!! attention
+    Only slave channel can send a command message to the master channel, master channel CANNOT send command messages.
 
 `text` should include all necessary information for the user understand the situation and take action.
 
