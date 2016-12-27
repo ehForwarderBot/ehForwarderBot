@@ -210,14 +210,6 @@ class WeChatChannel(EFBChannel):
         def wcLinkGroup(msg):
             self.linkMsg(msg, True)
 
-        @itchat.msg_register(['Sticker'], isFriendChat=True, isMpChat=True)
-        def wcSticker(msg):
-            self.stickerMsg(msg)
-
-        @itchat.msg_register(['Sticker'], isGroupChat=True)
-        def wcStickerGroup(msg):
-            self.stickerMsg(msg, True)
-
         @itchat.msg_register(['Picture'], isFriendChat=True, isMpChat=True)
         def wcPicture(msg):
             self.pictureMsg(msg)
@@ -352,19 +344,9 @@ class WeChatChannel(EFBChannel):
         return mobj
 
     @incomeMsgMeta
-    def stickerMsg(self, msg, isGroupChat=False):
-        mobj = EFBMsg(self)
-        mobj.type = MsgType.Sticker
-        mobj.path, mime = self.save_file(msg, mobj.type)
-        mobj.text = None
-        mobj.file = open(mobj.path, "rb")
-        mobj.mime = mime
-        return mobj
-
-    @incomeMsgMeta
     def pictureMsg(self, msg, isGroupChat=False):
         mobj = EFBMsg(self)
-        mobj.type = MsgType.Image
+        mobj.type = MsgType.Image if msg['MsgType'] == 3 else MsgType.Sticker
         mobj.path, mime = self.save_file(msg, mobj.type)
         mobj.text = None
         mobj.file = open(mobj.path, "rb")
@@ -565,7 +547,7 @@ class WeChatChannel(EFBChannel):
            desc="Set alias for a contact in WeChat. You may not set alias to a group or a MPS contact.\n"
                 "Usage:\n"
                 "    {function_name} [-r] id [alias]\n"
-                "    id: Chad ID (You may obtain it from \"Show chat list\" function.\n"
+                "    id: Chat ID (You may obtain it from \"Show chat list\" function.\n"
                 "    alias: Alias to be set. Omit to remove.\n"
                 "    -r: Force refresh")
     def set_alias(self, param=""):

@@ -61,9 +61,14 @@ and all other required by Pillow.
   Please remove the `itchat.pkl` file in the EFB root directory, and restart EFB for QR code scanning.
 * **Can I log in 2 WeChat accounts concurrently?**  
   No. The feature is not yet available to EWS.
+* **How stable is EWS?**  
+  EWS relies on the upstream project [ItChat](https://github.com/littlecodersh/ItChat) and WeChat Web protocol. According to [ItChat FAQ](https://itchat.readthedocs.io/zh/latest/FAQ/): the connection can be stable for months, provided you:
+  * have a stable internet connection,
+  * **keep your WeChat account accessible on a mobile device, (Android, iOS, etc).**
 
 ## Known issues
 * Random disconnection may occur occasionally due to the limit of protocol.
+* Copyright protected sticker sets are not available to Web WeChat, leading to an empty sticker file to be delivered.
 * Chat linking may be unstable sometime due to the limit of API.
 
 !!! note "Technical detail"

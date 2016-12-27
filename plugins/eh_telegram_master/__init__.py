@@ -190,7 +190,7 @@ class TelegramChannel(EFBChannel):
 
             # Generate chat text template & Decide type target
             tg_dest = config.eh_telegram_master['admins'][0]
-            self.logger.debug("%s, process_msg_step_1", xid)
+            self.logger.debug("%s, process_msg_step_1, tg_dest=%s", xid, tg_dest)
             if msg.source == MsgSource.Group:
                 msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "%s (%s)" % (
                     msg.member['alias'], msg.member['name'])
@@ -277,14 +277,20 @@ class TelegramChannel(EFBChannel):
                 if os.stat(msg.path).st_size == 0:
                     os.remove(msg.path)
                     return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s received. (MS03)" % msg.type))
-                pydub.AudioSegment.from_file(msg.file).export("%s.ogg" % msg.path, format="ogg", codec="libopus")
-                ogg_file = open("%s.ogg" % msg.path, 'rb')
-                if not msg.text:
-                    msg.text = "🔉"
-                tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text)
+                msg.text = msg.text or ''
+                self.logger.debug("%s, process_msg_step_4_1, no_conversion = %s", xid, self._flag("no_conversion", False))
+                if self._flag("no_conversion", False):
+                    self.logger.debug("%s, process_msg_step_4_2, mime = %s", xid, msg.mime)
+                    if msg.mime == "audio/mpeg":
+                        tg_msg = self.bot.bot.sendAudio(tg_dest, msg.file, caption=msg_template % msg.text)
+                    else:
+                        tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
+                else:
+                    pydub.AudioSegment.from_file(msg.file).export("%s.ogg" % msg.path, format="ogg", codec="libopus")
+                    ogg_file = open("%s.ogg" % msg.path, 'rb')
+                    tg_msg = self.bot.bot.sendVoice(tg_dest, ogg_file, caption=msg_template % msg.text)
+                    os.remove("%s.ogg" % msg.path)
                 os.remove(msg.path)
-                os.remove("%s.ogg" % msg.path)
-                self.bot.bot.sendVoice(tg_dest, ogg_file, reply_to_message_id=tg_msg.message_id)
             elif msg.type == MsgType.Location:
                 self.logger.info("---\nsending venue\nlat: %s, long: %s\ntitle: %s\naddr: %s", msg.attributes['latitude'], msg.attributes['longitude'], msg.text, msg_template % "")
                 tg_msg = self.bot.bot.sendVenue(tg_dest, latitude=msg.attributes['latitude'],
@@ -417,30 +423,30 @@ class TelegramChannel(EFBChannel):
             bot: Telegram Bot instance
             update: Message update
         """
-        user_id = update.message.from_user.id
-        # if message sent from a group
-        if not update.message.chat.id == update.message.from_user.id:
-            init_msg = bot.sendMessage(user_id, "Processing...")
-            try:
-                cid = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id)).slave_cid
-                return self.link_chat_confirm(bot, init_msg.from_chat.id, init_msg.message_id, cid)
-            except:
-                return bot.editMessageText(chat_id=update.message.chat.id,
-                                           message_id=init_msg.message_id,
-                                           text="No chat is found linked with this group. "
-                                                "Please send /link privately to link a chat.")
-
-        # if message ir replied to an existing one
-        if update.message.reply_to_message:
-            init_msg = bot.sendMessage(user_id, "Processing...")
-            try:
-                cid = db.get_chat_log(update.message.reply_to_message.message_id).slave_origin_uid
-                return self.link_chat_confirm(bot, init_msg.from_chat.id, init_msg.message_id, cid)
-            except:
-                return bot.editMessageText(chat_id=update.message.chat.id,
-                                           message_id=init_msg.message_id,
-                                           text="No chat is found linked with this group. "
-                                                "Please send /link privately to link a chat.")
+        # user_id = update.message.from_user.id
+        # # if message sent from a group
+        # if not update.message.chat.id == update.message.from_user.id:
+        #     init_msg = bot.sendMessage(user_id, "Processing...")
+        #     try:
+        #         cid = "uid " + db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
+        #         return self.link_chat_confirm(bot, init_msg.chat.id, init_msg.message_id, cid)
+        #     except:
+        #         return bot.editMessageText(chat_id=init_msg.chat.id,
+        #                                    message_id=init_msg.message_id,
+        #                                    text="No chat is found linked with this group. "
+        #                                         "Please send /link privately to link a chat.")
+        #
+        # # if message ir replied to an existing one
+        # if update.message.reply_to_message:
+        #     init_msg = bot.sendMessage(user_id, "Processing...")
+        #     try:
+        #         cid = "uid " + db.get_chat_log(update.message.reply_to_message.message_id).slave_origin_uid
+        #         return self.link_chat_confirm(bot, init_msg.chat.id, init_msg.message_id, cid)
+        #     except:
+        #         return bot.editMessageText(chat_id=init_msg.chat.id,
+        #                                    message_id=init_msg.message_id,
+        #                                    text="No chat is found linked with this group. "
+        #                                         "Please send /link privately to link a chat.")
 
         self.link_chat_gen_list(bot, update.message.chat.id)
 
@@ -485,15 +491,19 @@ class TelegramChannel(EFBChannel):
             return bot.editMessageText(text=txt,
                                        chat_id=tg_chat_id,
                                        message_id=tg_msg_id)
-        if callback_uid[:4] != "chat":
-            txt = "Invalid parameter. (%s)" % callback_uid
+        if callback_uid.split()[0] == "uid":
+            chat_uid = callback_uid.split()[1]
+
+        elif callback_uid[:4] != "chat":
+            txt = "Invalid parameter (%s). (IP01)" % callback_uid
             self.msg_status.pop(tg_msg_id, None)
             self.msg_storage.pop(tg_msg_id, None)
             return bot.editMessageText(text=txt,
                                        chat_id=tg_chat_id,
                                        message_id=tg_msg_id)
-        callback_uid = int(callback_uid.split()[1])
-        chat = self.msg_storage[tg_msg_id]['chats'][callback_uid]
+        else:
+            callback_uid = int(callback_uid.split()[1])
+            chat = self.msg_storage[tg_msg_id]['chats'][callback_uid]
         chat_uid = "%s.%s" % (chat['channel_id'], chat['chat_uid'])
         chat_display_name = chat['chat_name'] if chat['chat_name'] == chat['chat_alias'] else "%s(%s)" % (chat['chat_alias'], chat['chat_name'])
         chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name'])
@@ -548,7 +558,7 @@ class TelegramChannel(EFBChannel):
         self.msg_storage.pop(tg_msg_id, None)
         if cmd == "unlink":
             db.remove_chat_assoc(slave_uid=chat_uid)
-            txt = "Chat '%s' has been unlinked." % (chat_display_name)
+            txt = "Chat '%s' is now unlinked." % (chat_display_name)
             return bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
         txt = "Command '%s' (%s) is not recognised, please try again" % (cmd, callback_uid)
         bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
@@ -853,11 +863,11 @@ class TelegramChannel(EFBChannel):
     def start(self, bot, update, args=[]):
         if update.message.from_user.id != update.message.chat.id:  # from group
             chat_uid = args[0]
-            chat_display_name = args[1]
+            chat_display_name = ' '.join(args[1:])
             slave_channel, slave_chat_uid = chat_uid.split('.', 1)
             if slave_channel in self.slaves and chat_uid in self.msg_status:
                 db.add_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id), slave_uid=chat_uid)
-                txt = "Chat '%s' has been associated." % chat_display_name
+                txt = "Chat '%s' is now linked." % chat_display_name
                 bot.sendMessage(update.message.chat.id, text=txt)
                 bot.editMessageText(chat_id=update.message.from_user.id,
                                     message_id=self.msg_status[chat_uid],
@@ -955,3 +965,6 @@ class TelegramChannel(EFBChannel):
         self.logger.warn('ERRORRR! Update %s caused error %s' % (update, error))
         import pprint
         pprint.pprint(error)
+
+    def _flag(self, key, value):
+        return config.eh_telegram_master.get('flags', dict()).get(key, value)

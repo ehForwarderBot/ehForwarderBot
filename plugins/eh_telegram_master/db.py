@@ -87,9 +87,9 @@ def remove_chat_assoc(master_uid=None, slave_uid=None):
         if bool(master_uid) == bool(slave_uid):
             raise ValueError("Only one parameter is to be provided.")
         elif master_uid:
-            return ChatAssoc.delete().where(ChatAssoc.master_uid == master_uid)
+            return ChatAssoc.delete().where(ChatAssoc.master_uid == master_uid).execute()
         elif slave_uid:
-            return ChatAssoc.delete().where(ChatAssoc.slave_uid == slave_uid)
+            return ChatAssoc.delete().where(ChatAssoc.slave_uid == slave_uid).execute()
     except DoesNotExist:
         return 0
 

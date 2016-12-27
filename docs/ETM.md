@@ -74,6 +74,15 @@ No extra action required during start up.
 ## Usage
 At the beginning, messages from all senders will be sent to the user directly, that means every message  will be mixed in the same conversation. By linking a chat, you can redirect messages from a specific sender to an empty group for a more organized conversation.
 
+In a nutshell, ETM offers the following commands, you can also send it to BotFather for the command list.
+
+```
+link - Link a remote chat to a group.
+chat - Generate a chat head.
+recog - Recognize a speech by replying to it.
+extra - Access extra functionalities.
+```
+
 !!! note "Notice"  
     In case of multiple admins are assigned, they may all send message on your behalf, but only the 0th admin can receive direct message from the bot.
 
@@ -95,11 +104,13 @@ At the beginning, messages from all senders will be sent to the user directly, t
 You can send message as you do in a normal Telegram chat.
 
 What is supported:
+
 * Send/forward message in all supported types
 * Direct reply to a message
 * Send message with inline bot in supported types
 
 What is NOT supported:
+
 * @ reference
 * Markdown/HTML formatting
 * Messages with unsupported types
@@ -108,9 +119,6 @@ What is NOT supported:
 To send a message to a non-linked chat, you should "direct reply" to a message or a "chat head" that is sent from your recipient. Those messages should appear only in the bot conversation.
 
 In a non-linked chat, direct reply will not be delivered to the remote channel, everything else is supported as it does in a linked chat.
-
-!!! tip
-    When direct replying to voice messages, always reply to the message preceding to it, or the message with the name of sender. Do not reply to the message itself.
 
 #### Chat head
 If you want to send a message to a non-linked chat which has not yet sent you a message, you can ask ETM to generate a "chat head". Chat head works similarly to an incoming message, you can reply to it to send messages to your recipient.
@@ -164,3 +172,20 @@ sv-SE | - | Swedish
 
 ## Known issues
 * In rare cases, some messages may take 20 to 35 minutes to be delivered to user. (Upstream library [python-telegram-bot#364](https://github.com/python-telegram-bot/python-telegram-bot/issues/364))
+
+## Experimental flags
+The following flags are experimental features, may change, break, or disappear at any time. Use at your own risk.
+
+Flags can be enabled in the `flags` key of the configuration dict, e.g.:
+
+```python
+eh_telegram_master = {
+    # ...
+    "flags": {
+        "flag_name": "flag_value"
+    }
+}
+```
+
+* `no_conversion` _(bool)_  [Default: False]
+  Disable audio conversion, send all audio file as is, and let Telegram to handle it.
