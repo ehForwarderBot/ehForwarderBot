@@ -28,7 +28,7 @@ ffmpeg
 and all other required by Pillow.
 
 ### Configuration
-* Create a bot with [@BotFather](https://telegram.me/botfather). [Related tutorial](https://core.telegram.org/bots#6-botfather).
+* Create a bot with [@BotFather](https://telegram.me/botfather). ([Related tutorial](https://core.telegram.org/bots#6-botfather).)
 * Set `/setjoingroups` to `Enable`, `/setprivacy` to `Disable`.
 * Copy `eh_telegram_master` to "plugins" directory,  
   _May not be necessary as it's a built-in plugin of EFB_
@@ -68,8 +68,8 @@ No extra action required during start up.
 * Sticker
 * Document
 * Video
-* Audio (Voice as Audio)
-* Location (Venue as Location)
+* Audio (and Voice)
+* Location (and Venue)
 
 ## Usage
 At the beginning, messages from all senders will be sent to the user directly, that means every message  will be mixed in the same conversation. By linking a chat, you can redirect messages from a specific sender to an empty group for a more organized conversation.
@@ -189,3 +189,6 @@ eh_telegram_master = {
 
 * `no_conversion` _(bool)_  [Default: False]
   Disable audio conversion, send all audio file as is, and let Telegram to handle it.
+* `join_msg_threshold_secs` _(int)_ [Default: 15]  
+  Threshold in seconds for message joining. Messages sent from the same person from the same chat between the threshold time will be joined together.  
+  _Only works in linked chats._

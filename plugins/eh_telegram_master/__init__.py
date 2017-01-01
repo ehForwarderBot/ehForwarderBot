@@ -73,7 +73,6 @@ class TelegramChannel(EFBChannel):
 
     # Constants
     INLINE_CHAT_PER_PAGE = 10
-    MSG_COMBINE_THRESHOLD_SECS = 15
 
     def __init__(self, queue, slaves):
         """
@@ -225,7 +224,7 @@ class TelegramChannel(EFBChannel):
                             append_last_msg = str(last_msg.slave_origin_uid) == "%s.%s" % (msg.channel_id, msg.origin['uid'])
                             if msg.source == MsgSource.Group:
                                 append_last_msg &= str(last_msg.slave_member_uid) == str(msg.member['uid'])
-                            append_last_msg &= datetime.datetime.now() - last_msg.time <= datetime.timedelta(seconds=self.MSG_COMBINE_THRESHOLD_SECS)
+                            append_last_msg &= datetime.datetime.now() - last_msg.time <= datetime.timedelta(seconds=self._flag('join_msg_threshold_secs', 15))
                         else:
                             append_last_msg = False
                     else:
@@ -423,31 +422,6 @@ class TelegramChannel(EFBChannel):
             bot: Telegram Bot instance
             update: Message update
         """
-        # user_id = update.message.from_user.id
-        # # if message sent from a group
-        # if not update.message.chat.id == update.message.from_user.id:
-        #     init_msg = bot.sendMessage(user_id, "Processing...")
-        #     try:
-        #         cid = "uid " + db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
-        #         return self.link_chat_confirm(bot, init_msg.chat.id, init_msg.message_id, cid)
-        #     except:
-        #         return bot.editMessageText(chat_id=init_msg.chat.id,
-        #                                    message_id=init_msg.message_id,
-        #                                    text="No chat is found linked with this group. "
-        #                                         "Please send /link privately to link a chat.")
-        #
-        # # if message ir replied to an existing one
-        # if update.message.reply_to_message:
-        #     init_msg = bot.sendMessage(user_id, "Processing...")
-        #     try:
-        #         cid = "uid " + db.get_chat_log(update.message.reply_to_message.message_id).slave_origin_uid
-        #         return self.link_chat_confirm(bot, init_msg.chat.id, init_msg.message_id, cid)
-        #     except:
-        #         return bot.editMessageText(chat_id=init_msg.chat.id,
-        #                                    message_id=init_msg.message_id,
-        #                                    text="No chat is found linked with this group. "
-        #                                         "Please send /link privately to link a chat.")
-
         self.link_chat_gen_list(bot, update.message.chat.id)
 
     def link_chat_gen_list(self, bot, chat_id, message_id=None, offset=0):
@@ -491,19 +465,16 @@ class TelegramChannel(EFBChannel):
             return bot.editMessageText(text=txt,
                                        chat_id=tg_chat_id,
                                        message_id=tg_msg_id)
-        if callback_uid.split()[0] == "uid":
-            chat_uid = callback_uid.split()[1]
-
-        elif callback_uid[:4] != "chat":
+        if callback_uid[:4] != "chat":
             txt = "Invalid parameter (%s). (IP01)" % callback_uid
             self.msg_status.pop(tg_msg_id, None)
             self.msg_storage.pop(tg_msg_id, None)
             return bot.editMessageText(text=txt,
                                        chat_id=tg_chat_id,
                                        message_id=tg_msg_id)
-        else:
-            callback_uid = int(callback_uid.split()[1])
-            chat = self.msg_storage[tg_msg_id]['chats'][callback_uid]
+
+        callback_uid = int(callback_uid.split()[1])
+        chat = self.msg_storage[tg_msg_id]['chats'][callback_uid]
         chat_uid = "%s.%s" % (chat['channel_id'], chat['chat_uid'])
         chat_display_name = chat['chat_name'] if chat['chat_name'] == chat['chat_alias'] else "%s(%s)" % (chat['chat_alias'], chat['chat_name'])
         chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name'])
@@ -698,6 +669,14 @@ class TelegramChannel(EFBChannel):
         bot.sendMessage(update.message.chat.id, msg, parse_mode="HTML")
 
     def extra_call(self, bot, update, groupdict=None):
+        """
+        Call an extra function from slave channel.
+
+        Args:
+            bot: Telegram Bot instance
+            update: Message update
+            groupdict: Parameters offered by the message
+        """
         if int(groupdict['id']) >= len(self.slaves):
             return self._reply_error(bot, update, "Invalid slave channel ID. (XC01)")
         ch = self.slaves[sorted(self.slaves)[int(groupdict['id'])]]
@@ -710,6 +689,13 @@ class TelegramChannel(EFBChannel):
         bot.editMessageText(text=header+result, chat_id=update.message.chat.id, message_id=msg.message_id)
 
     def msg(self, bot, update):
+        """
+        Process, wrap and deliver messages from user.
+
+        Args:
+            bot: Telegram Bot instance
+            update: Message update
+        """
         self.logger.debug("----\nMsg from tg user:\n%s", update.message.to_dict())
         target = None
         if update.message.chat.id != update.message.from_user.id:  # from group
@@ -842,6 +828,17 @@ class TelegramChannel(EFBChannel):
             return self._reply_error(bot, update, "Message type not supported. (MN01)")
 
     def _download_file(self, tg_msg, file_id, msg_type):
+        """
+        Download media file from telegram platform.
+
+        Args:
+            tg_msg: Telegram message instance
+            file_id: File ID
+            msg_type: Type of message
+
+        Returns:
+            tuple of str[2]: Full path of the file, MIME type
+        """
         path = os.path.join("storage", self.channel_id)
         if not os.path.exists(path):
             os.makedirs(path)
@@ -856,11 +853,30 @@ class TelegramChannel(EFBChannel):
         return fullpath, mime
 
     def _download_gif(self, tg_msg, file_id, msg_type):
+        """
+        Download and convert GIF image.
+
+        Args:
+            tg_msg: Telegram message instance
+            file_id: File ID
+            msg_type: Type of message
+
+        Returns:
+            tuple of str[2]: Full path of the file, MIME type
+        """
         fullpath, mime = self._download_file(tg_msg, file_id, msg_type)
         VideoFileClip(fullpath).write_gif(fullpath + ".gif")
         return fullpath + ".gif", "image/gif"
 
     def start(self, bot, update, args=[]):
+        """
+        Process bot command `/start`.
+
+        Args:
+            bot: Telegram Bot instance
+            update: Message update
+            args: Arguments from message
+        """
         if update.message.from_user.id != update.message.chat.id:  # from group
             chat_uid = args[0]
             chat_display_name = ' '.join(args[1:])
@@ -879,6 +895,15 @@ class TelegramChannel(EFBChannel):
             bot.sendMessage(update.message.from_user.id, txt)
 
     def recognize_speech(self, bot, update, args=[]):
+        """
+        Recognise voice message. Triggered by `/recog`.
+
+        Args:
+            bot: Telegram Bot instance
+            update: Message update
+            args: Arguments from message
+        """
+
         class speechNotImplemented:
             lang_list = []
 
@@ -889,11 +914,11 @@ class TelegramChannel(EFBChannel):
                 return ["Not enabled or error in configuration."]
 
         if not getattr(update.message, "reply_to_message", None):
-            txt = "/recog [lang_code]\nReply to a voice with this command to recognised a voice.\nExamples:\n/recog\n/recog zh\n/recog en\n(RS01)"
+            txt = "/recog [lang_code]\nReply to a voice with this command to recognize it.\nExamples:\n/recog\n/recog zh\n/recog en\n(RS01)"
             return self._reply_error(bot, update, txt)
         if not getattr(update.message.reply_to_message, "voice"):
             return self._reply_error(bot, update,
-                                     "Reply only to a voice with this command to recognised a voice. (RS02)")
+                                     "Reply only to a voice with this command to recognize it. (RS02)")
         try:
             baidu_speech = speech.BaiduSpeech(config.eh_telegram_master['baidu_speech_api'])
         except:
@@ -946,6 +971,9 @@ class TelegramChannel(EFBChannel):
         os.remove(path)
 
     def poll(self):
+        """
+        Message polling process.
+        """
         self.bot.start_polling(network_delay=10, timeout=10)
         while True:
             try:
@@ -961,10 +989,22 @@ class TelegramChannel(EFBChannel):
                 self.poll()
 
     def error(self, bot, update, error):
-        """ Print error to console """
+        """
+        Print error to console, Triggered by python-telegram-bot error callback.
+        """
         self.logger.warn('ERRORRR! Update %s caused error %s' % (update, error))
         import pprint
         pprint.pprint(error)
 
     def _flag(self, key, value):
+        """
+        Retrieve value for experimental flags.
+
+        Args:
+            key: Key of the flag.
+            value: Default/fallback value.
+
+        Returns:
+            Value for the flag.
+        """
         return config.eh_telegram_master.get('flags', dict()).get(key, value)
