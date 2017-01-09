@@ -2,8 +2,8 @@ moviepy
 peewee
 pydub
 requests
-python_telegram_bot ~= 5
+python_telegram_bot>=5.0,<=6.0
 xmltodict
 Pillow
 python_magic
-itchat ~= 1.2
+itchat>=1.2<=1.3
