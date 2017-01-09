@@ -86,7 +86,7 @@ LOG = "EFB.log"
 
 if getattr(args, "V", None):
     print("EH Forwarder Bot\n"
-          "Version: Be")
+          "Version: %s" % __version__)
 else:
     logging.getLogger('requests').setLevel(logging.CRITICAL)
     logging.getLogger('urllib3').setLevel(logging.CRITICAL)

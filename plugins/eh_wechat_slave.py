@@ -489,7 +489,7 @@ class WeChatChannel(EFBChannel):
             elif not msg.mime == "image/jpeg":  # Convert Image format
                 img = Image.open(msg.path)
                 bg = Image.new("RGB", img.size, (255, 255, 255))
-                bg.paste(img, img)
+                bg.paste(img)
                 bg.save("%s.jpg" % msg.path)
                 msg.path = "%s.jpg" % msg.path
                 self.logger.info('Image converted to JPEG: %s', msg.path)
