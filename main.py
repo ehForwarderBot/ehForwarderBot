@@ -5,7 +5,7 @@ import logging
 import argparse
 from daemon import Daemon
 
-__version__ = "1.1 build 20170110"
+__version__ = "1.2 build 20170110"
 
 parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible chat tunnel framework which allows "
                                              "users to contact people from other chat platforms, and ultimately "
@@ -74,6 +74,7 @@ def poll():
     master_thread.start()
     for i in slave_threads:
         slave_threads[i].start()
+    master_thread.join()
 
 
 class EFBDaemon(Daemon):
