@@ -443,7 +443,9 @@ class WeChatChannel(EFBChannel):
         filename = "%s_%s_%s" % (msg_type, msg['NewMsgId'], int(time.time()))
         fullpath = os.path.join(path, filename)
         msg['Text'](fullpath)
-        mime = magic.from_file(fullpath, mime=True).decode()
+        mime = magic.from_file(fullpath, mime=True)
+        if type(mime) is bytes:
+            mime = mime.decode()
         ext = "jpg" if mime == "image/jpeg" else mimetypes.guess_extension(mime)
         os.rename(fullpath, "%s.%s" % (fullpath, ext))
         fullpath = "%s.%s" % (fullpath, ext)

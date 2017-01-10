@@ -846,7 +846,9 @@ class TelegramChannel(EFBChannel):
         fname = "%s_%s_%s_%s" % (msg_type, tg_msg.chat.id, tg_msg.message_id, int(time.time()))
         fullpath = os.path.join(path, fname)
         f.download(fullpath)
-        mime = magic.from_file(fullpath, mime=True).decode()
+        mime = magic.from_file(fullpath, mime=True)
+        if type(mime) is bytes:
+            mime = mime.decode()
         ext = mimetypes.guess_extension(mime)
         os.rename(fullpath, "%s.%s" % (fullpath, ext))
         fullpath = "%s.%s" % (fullpath, ext)
