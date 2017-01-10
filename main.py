@@ -3,7 +3,7 @@ import queue
 import threading
 import logging
 import argparse
-from daemon import Daemon
+from daemon import runner
 
 __version__ = "1.2 build 20170110"
 
@@ -77,12 +77,15 @@ def poll():
     master_thread.join()
 
 
-class EFBDaemon(Daemon):
-    def __init__(self, pidfile, run):
-        super().__init__(pidfile)
+class EFBDaemon:
+    def __init__(self, run):
+        self.stdin_path = '/dev/null'
+        self.stdout_path = '/dev/tty'
+        self.stderr_path = '/dev/tty'
+        self.pidfile_path = '/tmp/efb.pid'
+        self.pidfile_timeout = 5
         self.run = run
 
-PID = "/tmp/efb.pid"
 LOG = "EFB.log"
 
 if getattr(args, "V", None):
@@ -105,17 +108,18 @@ else:
         set_log_file(LOG)
 
     if getattr(args, "d", None):
-        d = EFBDaemon(PID, poll)
+        dobj = EFBDaemon(poll)
+        d = runner.DaemonRunner(dobj)
         set_log_file(LOG)
         if args.d == "start":
             init()
-            d.start()
+            d._start()
         elif args.d == "stop":
-            d.stop()
+            d._stop()
         elif args.d == "restart":
-            d.stop()
+            d._stop()
             init()
-            d.start()
+            d._start()
     else:
         init()
         poll()
