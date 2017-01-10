@@ -21,23 +21,11 @@ import errno
 import os
 import signal
 import sys
-import warnings
+import lockfile
 
-from daemon import DaemonContext
-from daemon import _chain_exception_from_existing_exception_context
-
-try:
-    # Python 3 standard library.
-    ProcessLookupError
-except NameError:
-    # No such class in Python 2.
-    ProcessLookupError = NotImplemented
-
-__metaclass__ = type
-
-warnings.warn(
-    "The ‘runner’ module is not a supported API for this library.",
-    PendingDeprecationWarning)
+from daemon import pidfile
+from daemon.daemon import DaemonContext
+from daemon.daemon import _chain_exception_from_existing_exception_context
 
 
 class DaemonRunnerError(Exception):
@@ -104,13 +92,11 @@ class DaemonRunner:
               started.
 
             """
-        self.parse_args()
         self.app = app
         self.daemon_context = DaemonContext()
         self.daemon_context.stdin = open(app.stdin_path, 'rt')
         self.daemon_context.stdout = open(app.stdout_path, 'w+t')
-        self.daemon_context.stderr = open(
-            app.stderr_path, 'w+t', buffering=0)
+        self.daemon_context.stderr = open(app.stderr_path, 'w+t')
 
         self.pidfile = None
         if app.pidfile_path is not None:
@@ -134,32 +120,6 @@ class DaemonRunner:
         emit_message(message)
         sys.exit(usage_exit_code)
 
-    def parse_args(self, argv=None):
-        """ Parse command-line arguments.
-
-            :param argv: The command-line arguments used to invoke the
-                program, as a sequence of strings.
-
-            :return: ``None``.
-
-            The parser expects the first argument as the program name, the
-            second argument as the action to perform.
-
-            If the parser fails to parse the arguments, emit a usage
-            message and exit the program.
-
-            """
-        if argv is None:
-            argv = sys.argv
-
-        min_args = 2
-        if len(argv) < min_args:
-            self._usage_exit(argv)
-
-        self.action = unicode(argv[1])
-        if self.action not in self.action_funcs:
-            self._usage_exit(argv)
-
     def _start(self):
         """ Open the daemon context and run the application.
 
@@ -173,7 +133,7 @@ class DaemonRunner:
 
         try:
             self.daemon_context.open()
-        except lockfile.AlreadyLocked:
+        except:
             error = DaemonRunnerStartFailureError(
                 "PID file {pidfile.path!r} already locked".format(
                     pidfile=self.pidfile))
@@ -277,7 +237,7 @@ def emit_message(message, stream=None):
 
 def make_pidlockfile(path, acquire_timeout):
     """ Make a PIDLockFile instance with the given filesystem path. """
-    if not isinstance(path, basestring):
+    if not isinstance(path, str):
         error = ValueError("Not a filesystem path: {path!r}".format(
             path=path))
         raise error
@@ -317,8 +277,8 @@ def is_pidfile_stale(pidfile):
     return result
 
 
-    # Local variables:
-    # coding: utf-8
-    # mode: python
-    # End:
-    # vim: fileencoding=utf-8 filetype=python :
+# Local variables:
+# coding: utf-8
+# mode: python
+# End:
+# vim: fileencoding=utf-8 filetype=python :
