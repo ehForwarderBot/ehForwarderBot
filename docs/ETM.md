@@ -86,7 +86,7 @@ extra - Access extra functionalities.
 !!! note "Notice"  
     In case of multiple admins are assigned, they may all send message on your behalf, but only the 0th admin can receive direct message from the bot.
 
-### `/link`: Link a chat
+### Link a chat
 1. Create a new group, invite your bot to the group
 2. Send `/link` directly to the bot, then select your preferred slave chat.
 3. Tap "Link" and select your new group.  
@@ -120,39 +120,17 @@ To send a message to a non-linked chat, you should "direct reply" to a message o
 
 In a non-linked chat, direct reply will not be delivered to the remote channel, everything else is supported as it does in a linked chat.
 
-#### `/chat`: Chat head
+#### Chat head
 If you want to send a message to a non-linked chat which has not yet sent you a message, you can ask ETM to generate a "chat head". Chat head works similarly to an incoming message, you can reply to it to send messages to your recipient.
 
 Send `/chat` to the bot, and choose a chat from the list. When you see "Reply to this message to send to <chat name> from <channel>", it's ready to go.
 
-!!! tip "Advanced feature: Filtering"
-    If you have just too much chats, and being too tired for keep tapping `Next >`, or maybe you just want to find a way to filter out what you're looking for, now ETM has equipped `/chat` and `/list` with filtering feature. Attach your keyword behind, and you can get a filtered result.
-
-    E.g.: `/chat Eana` will give you all chats has the word "Eana".
-
-!!! note "Technical Details"
-    The filter query is in fact a regular expression matching. We used Python's `re.search` with flags `re.DOTALL | re.IGNORECASE` in this case, i.e.: `.` matches everything including line breaks, and the query is NOT case-sensitive. Each comparison is done against a specially crafted string which allows you to filter multiple criteria.
-
-        Channel: Dummy Channel
-        Name: John Doe
-        Alias: Jonny
-        ID: john_doe
-        Type: User
-
-    > _Type can be either "User" or "Group"_
-
-    Examples:
-
-    * Look for all WeChat groups: `Channel: WeChat.*Type: Group`
-    * Look for everyone who has an alias `Name: (.*?)\nAlias: (?!\1)`
-    * Look for all entries contain "John" and "Jonny" in any order: `(?=.*John)(?=.*Jonny)"`
-
-### `/extra`: External commands from slave channels ("extra functions")
+### External commands from slave channels ("extra functions")
 Some slave channels may provide commands that allows you to remotely control those accounts, and achieve extra functionalities, those commands are called "extra functions". To view the lis of available extra functions, send `/extra` to the bot, you will receive a list of commands available, together with their usages.
 
 Those commands are named like "`/<number>_<command_name>`", and can be called like a Linux/unix CLI utility. (of course, please don't expect piping, etc to be supported)
 
-### `/recog`: Speech recognition
+### Bonus: Speech recognition
 If you have entered a speech recognition service API keys, you can use it to convert speech in voice messages into text.
 
 Reply any voice messages in a conversation with the bot, with the command `/recog`, and the bot will try to convert it to text using those speech recognition services enabled.
@@ -214,5 +192,3 @@ eh_telegram_master = {
 * `join_msg_threshold_secs` _(int)_ [Default: 15]  
   Threshold in seconds for message joining. Messages sent from the same person from the same chat between the threshold time will be joined together.  
   _Only works in linked chats._
-* `chats_per_page` _(int)_ [Default: 10]  
-  Number of chats shown in when choosing for `/chat` and `/link` command. An overly large value may lead to malfunction of such commands.

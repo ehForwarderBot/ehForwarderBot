@@ -3,9 +3,9 @@ import queue
 import threading
 import logging
 import argparse
-from pydaemon import DaemonRunner
+from daemon import Daemon
 
-__version__ = "1.2 build 20170110"
+__version__ = "1.1 build 20170109"
 
 parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible chat tunnel framework which allows "
                                              "users to contact people from other chat platforms, and ultimately "
@@ -74,18 +74,14 @@ def poll():
     master_thread.start()
     for i in slave_threads:
         slave_threads[i].start()
-    master_thread.join()
 
 
-class EFBDaemon:
-    def __init__(self, run):
-        self.stdin_path = '/dev/null'
-        self.stdout_path = '/dev/null'
-        self.stderr_path = '/dev/null'
-        self.pidfile_path = '/tmp/efb.pid'
-        self.pidfile_timeout = 5
+class EFBDaemon(Daemon):
+    def __init__(self, pidfile, run):
+        super().__init__(pidfile)
         self.run = run
 
+PID = "/tmp/efb.pid"
 LOG = "EFB.log"
 
 if getattr(args, "V", None):
@@ -108,18 +104,17 @@ else:
         set_log_file(LOG)
 
     if getattr(args, "d", None):
-        dobj = EFBDaemon(poll)
-        d = DaemonRunner(dobj)
+        d = EFBDaemon(PID, poll)
         set_log_file(LOG)
         if args.d == "start":
             init()
-            d._start()
+            d.start()
         elif args.d == "stop":
-            d._stop()
+            d.stop()
         elif args.d == "restart":
-            d._stop()
+            d.stop()
             init()
-            d._start()
+            d.start()
     else:
         init()
         poll()

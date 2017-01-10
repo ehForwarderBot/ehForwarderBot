@@ -9,7 +9,6 @@ import logging
 import time
 import magic
 import os
-import re
 import mimetypes
 import pydub
 import threading
@@ -72,6 +71,9 @@ class TelegramChannel(EFBChannel):
     msg_storage = {}
     me = None
 
+    # Constants
+    INLINE_CHAT_PER_PAGE = 10
+
     def __init__(self, queue, slaves):
         """
         Initialization.
@@ -90,8 +92,8 @@ class TelegramChannel(EFBChannel):
         self.logger = logging.getLogger("plugins.%s.TelegramChannel" % self.channel_id)
         self.me = self.bot.bot.get_me()
         self.bot.dispatcher.add_handler(WhitelistHandler(config.eh_telegram_master['admins']))
-        self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("link", self.link_chat_show_list, pass_args=True))
-        self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("chat", self.start_chat_list, pass_args=True))
+        self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("link", self.link_chat_show_list))
+        self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("chat", self.start_chat_list))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("recog", self.recognize_speech, pass_args=True))
         self.bot.dispatcher.add_handler(telegram.ext.CallbackQueryHandler(self.callback_query_dispatcher))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("start", self.start, pass_args=True))
@@ -327,7 +329,7 @@ class TelegramChannel(EFBChannel):
         except Exception as e:
             self.logger.error(repr(e) + traceback.format_exc())
 
-    def slave_chats_pagination(self, message_id, offset=0, filter=""):
+    def slave_chats_pagination(self, message_id, offset=0):
         """
         Generate a list of (list of) `InlineKeyboardButton`s of chats in slave channels,
         based on the status of message located by `message_id` and the paging from
@@ -354,9 +356,6 @@ class TelegramChannel(EFBChannel):
             channels = self.msg_storage[message_id]['channels']
             count = self.msg_storage[message_id]['count']
         else:
-            rfilter = re.compile(filter, re.DOTALL | re.IGNORECASE)
-            if filter:
-                self.logger.debug("Filter string: %s", filter)
             chats = []
             channels = {}
             for slave_id in self.slaves:
@@ -376,10 +375,7 @@ class TelegramChannel(EFBChannel):
                         "chat_uid": chat['uid'],
                         "type": chat['type']
                     }
-                    entry_string = "Channel: %s\nName: %s\nAlias: %s\nID: %s\nType: %s" \
-                        % (c['channel_name'], c['chat_name'], c['chat_alias'], c['chat_uid'], c['type'])
-                    if not filter or rfilter.search(entry_string):
-                        chats.append(c)
+                    chats.append(c)
             count = len(chats)
             self.msg_storage[message_id] = {
                 "offset": offset,
@@ -393,8 +389,8 @@ class TelegramChannel(EFBChannel):
 
         # Build inline button list
         chat_btn_list = []
-        chats_per_page = self._flag("chats_per_page", 10)
-        for i in range(offset, min(offset + chats_per_page, count)):
+
+        for i in range(offset, min(offset + self.INLINE_CHAT_PER_PAGE, count)):
             chat = chats[i]
             linked = utils.Emojis.LINK_EMOJI if bool(db.get_chat_assoc(slave_uid="%s.%s" % (chat['channel_id'], chat['chat_uid']))) else ""
             chat_type = utils.Emojis.get_source_emoji(chat['type'])
@@ -406,18 +402,18 @@ class TelegramChannel(EFBChannel):
         # Pagination
         page_number_row = []
 
-        if offset - chats_per_page >= 0:
+        if offset - self.INLINE_CHAT_PER_PAGE >= 0:
             page_number_row.append(telegram.InlineKeyboardButton("< Prev", callback_data="offset %s" % (
-                offset - chats_per_page)))
+                offset - self.INLINE_CHAT_PER_PAGE)))
         page_number_row.append(telegram.InlineKeyboardButton("Cancel", callback_data=Flags.CANCEL_PROCESS))
-        if offset + chats_per_page < count:
+        if offset + self.INLINE_CHAT_PER_PAGE < count:
             page_number_row.append(telegram.InlineKeyboardButton("Next >", callback_data="offset %s" % (
-                offset + chats_per_page)))
+                offset + self.INLINE_CHAT_PER_PAGE)))
         chat_btn_list.append(page_number_row)
 
         return legend, chat_btn_list
 
-    def link_chat_show_list(self, bot, update, args=None):
+    def link_chat_show_list(self, bot, update):
         """
         Show the list of available chats for linking.
         Triggered by `/link`.
@@ -426,10 +422,9 @@ class TelegramChannel(EFBChannel):
             bot: Telegram Bot instance
             update: Message update
         """
-        args = args or []
-        self.link_chat_gen_list(bot, update.message.chat.id, filter=" ".join(args))
+        self.link_chat_gen_list(bot, update.message.chat.id)
 
-    def link_chat_gen_list(self, bot, chat_id, message_id=None, offset=0, filter=""):
+    def link_chat_gen_list(self, bot, chat_id, message_id=None, offset=0):
         """
         Generate the list for chat linking, and update it to a message.
 
@@ -443,7 +438,7 @@ class TelegramChannel(EFBChannel):
             message_id = bot.sendMessage(chat_id, "Processing...").message_id
 
         msg_text = "Please choose the chat you want to link with ...\n\nLegend:\n"
-        legend, chat_btn_list = self.slave_chats_pagination(message_id, offset, filter=filter)
+        legend, chat_btn_list = self.slave_chats_pagination(message_id, offset)
         for i in legend:
             msg_text += "%s\n" % i
 
@@ -527,20 +522,19 @@ class TelegramChannel(EFBChannel):
         cmd, chat_lid = callback_uid.split()
         chat = self.msg_storage[tg_msg_id]['chats'][int(chat_lid)]
         chat_uid = "%s.%s" % (chat['channel_id'], chat['chat_uid'])
-        chat_display_name = chat['chat_name'] if chat['chat_name'] == chat['chat_alias'] else "%s (%s)" % (
+        chat_display_name = chat['chat_name'] if chat['chat_name'] == chat['chat_alias'] else "%s(%s)" % (
             chat['chat_alias'], chat['chat_name'])
-        chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name']) \
-                            if chat['channel_name'] else "'%s'" % chat_display_name
+        chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name'])
         self.msg_status.pop(tg_msg_id, None)
         self.msg_storage.pop(tg_msg_id, None)
         if cmd == "unlink":
             db.remove_chat_assoc(slave_uid=chat_uid)
-            txt = "Chat %s is unlinked." % (chat_display_name)
+            txt = "Chat '%s' is now unlinked." % (chat_display_name)
             return bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
         txt = "Command '%s' (%s) is not recognised, please try again" % (cmd, callback_uid)
         bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
 
-    def start_chat_list(self, bot, update, args=None):
+    def start_chat_list(self, bot, update):
         """
         Send a list to for chat list generation.
         Triggered by `/list`.
@@ -548,13 +542,11 @@ class TelegramChannel(EFBChannel):
         Args:
             bot: Telegram Bot instance
             update: Message update
-            args: Arguments from the command message
         """
-        args = args or []
-        msg_id = self.chat_head_req_generate(bot, update.message.from_user.id, filter=" ".join(args))
+        msg_id = self.chat_head_req_generate(bot, update.message.from_user.id)
         self.msg_status[msg_id] = Flags.START_CHOOSE_CHAT
 
-    def chat_head_req_generate(self, bot, chat_id, message_id=None, offset=0, filter=""):
+    def chat_head_req_generate(self, bot, chat_id, message_id=None, offset=0):
         """
         Generate the list for chat head, and update it to a message.
 
@@ -563,12 +555,11 @@ class TelegramChannel(EFBChannel):
             chat_id: Chat ID
             message_id: ID of message to be updated, None to send a new message.
             offset: Offset for pagination.
-            filter: Regex String used as a filter.
         """
         if not message_id:
             message_id = bot.sendMessage(chat_id, text="Processing...").message_id
 
-        legend, chat_btn_list = self.slave_chats_pagination(message_id, offset, filter=filter)
+        legend, chat_btn_list = self.slave_chats_pagination(message_id, offset)
         msg_text = "Choose a chat you want to start with...\n\nLegend:\n"
         for i in legend:
             msg_text += "%s\n" % i
@@ -694,7 +685,7 @@ class TelegramChannel(EFBChannel):
             return self._reply_error(bot, update, "Command not found in selected channel. (XC02)")
         header = "%s %s: %s\n-------\n" % (ch.channel_emoji, ch.channel_name, fns[groupdict['command']].name)
         msg = bot.sendMessage(update.message.chat.id, header+"Please wait...")
-        result = fns[groupdict['command']](" ".join(update.message.text.split(' ', 1)[1:]))
+        result = fns[groupdict['command']]("".join(update.message.text.split(' ', 1)[1:]))
         bot.editMessageText(text=header+result, chat_id=update.message.chat.id, message_id=msg.message_id)
 
     def msg(self, bot, update):
@@ -895,26 +886,14 @@ class TelegramChannel(EFBChannel):
             if slave_channel in self.slaves and chat_uid in self.msg_status:
                 db.add_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id), slave_uid=chat_uid)
                 txt = "Chat '%s' is now linked." % chat_display_name
-                self.msg_status[self.msg_status[chat_uid]] = Flags.EXEC_LINK
-                self.msg_storage[self.msg_status[chat_uid]] = {"chats": [{
-                    "channel_id": slave_channel,
-                    "channel_name": "",
-                    "channel_emoji": "",
-                    "chat_uid": slave_chat_uid,
-                    "chat_name": chat_display_name,
-                    "chat_alias": chat_display_name,
-                    "type": ""
-                }]}
                 bot.sendMessage(update.message.chat.id, text=txt)
                 bot.editMessageText(chat_id=update.message.from_user.id,
                                     message_id=self.msg_status[chat_uid],
-                                    text=txt,
-                                    reply_markup=telegram.InlineKeyboardMarkup(
-                                        [[telegram.InlineKeyboardButton("Unlink", callback_data="unlink 0")]]))
+                                    text=txt)
+                self.msg_status.pop(self.msg_status[chat_uid], False)
                 self.msg_status.pop(chat_uid, False)
         else:
-            txt = "Welcome to EH Forwarder Bot: EFB Telegram Master Channel.\n\n" \
-                  "To learn more, please visit https://github.com/blueset/ehForwarderBot ."
+            txt = "Welcome to EH Forwarder Bot: EFB Telegram Master Channel.\n\nTo learn more, please visit https://github.com/blueset/ehForwarderBot ."
             bot.sendMessage(update.message.from_user.id, txt)
 
     def recognize_speech(self, bot, update, args=[]):
@@ -937,8 +916,7 @@ class TelegramChannel(EFBChannel):
                 return ["Not enabled or error in configuration."]
 
         if not getattr(update.message, "reply_to_message", None):
-            txt = "/recog [lang_code]\nReply to a voice with this command to recognize it.\n" \
-                  "mples:\n/recog\n/recog zh\n/recog en\n(RS01)"
+            txt = "/recog [lang_code]\nReply to a voice with this command to recognize it.\nExamples:\n/recog\n/recog zh\n/recog en\n(RS01)"
             return self._reply_error(bot, update, txt)
         if not getattr(update.message.reply_to_message, "voice"):
             return self._reply_error(bot, update,
@@ -1016,7 +994,7 @@ class TelegramChannel(EFBChannel):
         """
         Print error to console, Triggered by python-telegram-bot error callback.
         """
-        self.logger.warning('ERRORRR! Update %s caused error %s' % (update, error))
+        self.logger.warn('ERRORRR! Update %s caused error %s' % (update, error))
         import pprint
         pprint.pprint(error)
 

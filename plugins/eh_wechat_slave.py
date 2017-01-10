@@ -3,7 +3,6 @@ import re
 import xmltodict
 import logging
 import os
-import io
 import time
 import magic
 import mimetypes
@@ -65,25 +64,13 @@ class WeChatChannel(EFBChannel):
 
     def __init__(self, queue):
         super().__init__(queue)
-        itchat.auto_login(enableCmdQR=2, hotReload=True, exitCallback=self.exit_callback, qrCallback=self.console_qr_code)
+        itchat.auto_login(enableCmdQR=2, hotReload=True, exitCallback=self.exit_callback)
         self.logger = logging.getLogger("plugins.eh_wechat_slave.WeChatChannel")
         self.logger.info("Inited!!!\n---")
 
     #
     # Utilities
     #
-
-    def console_qr_code(self, uuid, status, qrcode):
-        print("\x1b[2J")
-        img = Image.open(io.BytesIO(qrcode)).convert("1")
-        img = img.resize((img.size[0] // 10, img.size[1] // 10))
-        for i in range(img.size[0]):
-            for j in range(img.size[1]):
-                    if img.getpixel((i, j)) > 0:
-                        print("\x1b[7m  \x1b[0m", end="")
-                    else:
-                        print("\x1b[49m  \x1b[0m", end="")
-            print("")
 
     def exit_callback(self):
         msg = EFBMsg(self)
