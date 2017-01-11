@@ -6,8 +6,10 @@
 
     client tool for daemon-manager server.
 
+    Modified by Eana Hufwe for EH Forwarder Bot.
+
     :copyright: (c) 2012 by Du Jiong.
-    :license: BSD, see LICENSE for more details.
+    :license: BSD
 '''
 
 import sys
@@ -106,8 +108,8 @@ class Daemon(object):
                 if cmdline is None or cmdline != self_cmdline:
                     break
                 time.sleep(0.05)
-            # if cmdline is None:
-            #     raise OSError('daemon exit')
+            if not self.is_alive():
+                raise OSError('daemon exit')
             self.proc_cmdline = cmdline
             return pid
 
@@ -138,7 +140,7 @@ class DM(object):
         if not os.path.exists(self.home):
             os.mkdir(self.home)
         elif os.path.isfile(self.home):
-            raise OSError('daemon-manager\'s home directory can\'t be created')
+            raise OSError('Failed to create directory for Daemon Manager')
 
     def get_daemons(self, name=None, group=None):
         if name:
@@ -233,14 +235,14 @@ class DM(object):
                         raise e
             print("Done.")
         else:
-            print('no daemons to kill')
+            print('Daemon is not running.')
 
     @file_lock
     def restart(self, name=None, group=None, cmd=None,
                 quiet=False, sigkill=False):
         daemons = self.get_daemons(name, group)
         if len(daemons) > 0:
-            notify = '%d daemon to restart' % len(daemons)
+            notify = 'Restarting EFB daemon (%d)' % len(daemons)
             if quiet is False:
                 notify += 'are you sure? [Y/n]'
                 yn = raw_input(notify)
@@ -269,7 +271,7 @@ class DM(object):
                 f.write(pickle.dumps(dm))
                 f.close()
         else:
-            print('no daemons to restart')
+            print('Daemon is not running.')
 
 def help():
     print("EFB Daemon Process\n"
@@ -285,7 +287,7 @@ def transcript(path, reset=False):
 
     l = ["Output is saved to '%s', showing output now." % path,
          "Press ^C (Control+C on Mac, Ctrl+C otherwise) to hide."]
-    w = max(len(i) for i in l)
+    w = int(max(len(i) for i in l))
     for i in l:
         print("\x1b[0;37;41m   %s  \x1b[0m" % i.ljust(w))
     print()
@@ -293,11 +295,15 @@ def transcript(path, reset=False):
         subprocess.call(["tail", "-f", path])
     except KeyboardInterrupt:
         pass
+    except ProcessLookupError:
+        pass
+
 
 def main():
     transcript_path = "EFB.log"
-    if len(sys.argv) < 1:
+    if len(sys.argv) < 2:
         help()
+        exit()
     dm = DM()
     efb_args = " ".join(sys.argv[2:])
     if sys.argv[1] == "start":

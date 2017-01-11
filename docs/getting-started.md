@@ -61,10 +61,10 @@ Some channels, regardless of its type, may require you to provide some details f
 For more details about how to configure your channel, please consult the respective documentation of the channels.
 
 ## Get it up and running
-Most of the time, you can just run `python3 main.py -d start`  and it should be ready to go.
+Most of the time, you can just run `python3 daemon.py start` and it should be ready to go.
 
 !!! tip "Run it as a normal process"
-    Besides, you can still use the classic `python3 main.py` to launch EFB. If you want to keep it running in the background when accessing the machine via SSH, you can use tools like `screen` to prevent it from being terminated during disconnection.
+    Besides, you can still use the classic `python3 main.py` to launch EFB. If you want to keep it running in the background when daemon process is not working on your machine, you can use tools like `screen` or `nohup` to prevent it from being terminated during disconnection.
 
 However, some channels may require one-time credentials (e.g. Dynamic QR code scanning for WeChat Web Protocol). When you run the module, you may be required to take some actions before the bot goes online.
 
