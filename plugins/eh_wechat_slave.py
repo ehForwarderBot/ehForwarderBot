@@ -62,28 +62,31 @@ class WeChatChannel(EFBChannel):
     channel_id = "eh_wechat_slave"
     channel_type = ChannelType.Slave
     users = {}
+    logger = logging.getLogger("plugins.eh_wechat_slave.WeChatChannel")
 
     def __init__(self, queue):
         super().__init__(queue)
         itchat.auto_login(enableCmdQR=2, hotReload=True, exitCallback=self.exit_callback, qrCallback=self.console_qr_code)
-        self.logger = logging.getLogger("plugins.eh_wechat_slave.WeChatChannel")
-        self.logger.info("Inited!!!\n---")
+        self.logger.info("EWS Inited!!!\n---")
+        itchat.set_logging(showOnCmd=False)
 
     #
     # Utilities
     #
 
     def console_qr_code(self, uuid, status, qrcode):
-        print("\x1b[2J")
+        QR = "WeChat: Scan QR code with WeChat to continue.\n\n"
+        time.sleep(0.5)
         img = Image.open(io.BytesIO(qrcode)).convert("1")
         img = img.resize((img.size[0] // 10, img.size[1] // 10))
         for i in range(img.size[0]):
             for j in range(img.size[1]):
                     if img.getpixel((i, j)) > 0:
-                        print("\x1b[7m  \x1b[0m", end="")
+                        QR += "\x1b[7m  \x1b[0m"
                     else:
-                        print("\x1b[49m  \x1b[0m", end="")
-            print("")
+                        QR += "\x1b[49m  \x1b[0m"
+            QR += "\n"
+        self.logger.critical(QR)
 
     def exit_callback(self):
         msg = EFBMsg(self)

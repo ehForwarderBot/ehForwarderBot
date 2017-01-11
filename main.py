@@ -3,7 +3,6 @@ import queue
 import threading
 import logging
 import argparse
-from daemon import Daemon
 
 __version__ = "1.1 build 20170110"
 
@@ -16,8 +15,6 @@ parser.add_argument("-v", default=0, action="count",
 parser.add_argument("-V", "--version", action="version",
                     help="Show version number and exit.",
                     version="EFB Forwarder Bot %s" % __version__)
-parser.add_argument("-d", choices=["start", "stop", "restart"],
-                    help="Run as a daemon.")
 parser.add_argument("-l", "--log",
                     help="Set log file path.")
 
@@ -38,7 +35,7 @@ def set_log_file(fn):
         fn (str): File name
     """
     fh = logging.FileHandler(fn, 'a')
-    f = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s \n %(message)s')
+    f = logging.Formatter('%(asctime)s: %(name)s [%(levelname)s]\n    %(message)s')
     fh.setFormatter(f)
     l = logging.getLogger()
     for hdlr in l.handlers[:]:
@@ -76,11 +73,6 @@ def poll():
         slave_threads[i].start()
 
 
-class EFBDaemon(Daemon):
-    def __init__(self, pidfile, run):
-        super().__init__(pidfile)
-        self.run = run
-
 PID = "/tmp/efb.pid"
 LOG = "EFB.log"
 
@@ -88,33 +80,20 @@ if getattr(args, "V", None):
     print("EH Forwarder Bot\n"
           "Version: %s" % __version__)
 else:
+    if args.v == 0:
+        level = logging.ERROR
+    elif args.v == 1:
+        level = logging.INFO
+    else:
+        level = logging.DEBUG
+    logging.basicConfig(format='%(asctime)s: %(name)s [%(levelname)s]\n    %(message)s', level=level)
     logging.getLogger('requests').setLevel(logging.CRITICAL)
     logging.getLogger('urllib3').setLevel(logging.CRITICAL)
     logging.getLogger('telegram.bot').setLevel(logging.CRITICAL)
-    if args.v == 0:
-        logging.basicConfig(level=logging.ERROR)
-    elif args.v == 1:
-        logging.basicConfig(level=logging.INFO)
-    elif args.v >= 2:
-        logging.basicConfig(level=logging.DEBUG)
-        logging.basicConfig(level=logging.DEBUG)
 
     if getattr(args, "log", None):
         LOG = args.log
         set_log_file(LOG)
 
-    if getattr(args, "d", None):
-        d = EFBDaemon(PID, poll)
-        set_log_file(LOG)
-        if args.d == "start":
-            init()
-            d.start()
-        elif args.d == "stop":
-            d.stop()
-        elif args.d == "restart":
-            d.stop()
-            init()
-            d.start()
-    else:
-        init()
-        poll()
+    init()
+    poll()
