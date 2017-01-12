@@ -65,6 +65,11 @@ class WeChatChannel(EFBChannel):
     users = {}
     logger = logging.getLogger("plugins.eh_wechat_slave.WeChatChannel")
 
+    SYSTEM_USERNAMES = ["filehelper", "newsapp", "fmessage", "weibo", "qqmail", "fmessage", "tmessage", "qmessage",
+                         "qqsync", "floatbottle", "lbsapp", "shakeapp", "medianote", "qqfriend", "readerapp",
+                         "blogapp", "facebookapp", "masssendapp", "meishiapp", "feedsapp", "voip", "blogappweixin",
+                         "weixin"]
+
     def __init__(self, queue):
         super().__init__(queue)
         itchat.auto_login(enableCmdQR=2, hotReload=True, exitCallback=self.exit_callback, qrCallback=self.console_qr_code)
@@ -115,8 +120,8 @@ class WeChatChannel(EFBChannel):
         Returns:
             str|bool: Unique ID of the chat. `False` if not found.
         """
-        if UserName == "filehelper":
-            return "filehelper"
+        if UserName in self.SYSTEM_USERNAMES:
+            return UserName
         if not (UserName or NickName):
             self.logger.error('No name provided.')
             return False
@@ -139,8 +144,8 @@ class WeChatChannel(EFBChannel):
         Returns:
             str|bool: `UserName` of the chosen chat. `False` if not found.
         """
-        if uid == "filehelper":
-            return "filehelper"
+        if uid in self.SYSTEM_USERNAMES:
+            return uid
         r = self.search_user(uid=uid, refresh=refresh)
         if r:
             return r[0]['UserName']
