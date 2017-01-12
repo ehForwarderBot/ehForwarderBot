@@ -500,25 +500,24 @@ class WeChatChannel(EFBChannel):
             return r
         elif msg.type in [MsgType.Image, MsgType.Sticker]:
             self.logger.info("Image/Sticker %s", msg.type)
-            if msg.mime == "image/gif":
+            if msg.mime in ["image/gif", "image/jpeg"]:
                 r = itchat.send_image(msg.path, UserName)
                 os.remove(msg.path)
                 return r
-            elif not msg.mime == "image/jpeg":  # Convert Image format
+            else:  # Convert Image format
                 img = Image.open(msg.path)
-                bg = Image.new("RGB", img.size, (255, 255, 255))
-                try:
-                    bg.paste(img, img)
-                except ValueError:
-                    bg.paste(img)
-                bg.save("%s.jpg" % msg.path)
-                msg.path = "%s.jpg" % msg.path
-                self.logger.info('Image converted to JPEG: %s', msg.path)
+                alpha = img.split()[3]
+                img = img.convert('RGB').convert('P', palette=Image.ADAPTIVE, colors=255)
+                mask = Image.eval(alpha, lambda a: 255 if a <=128 else 0)
+                img.paste(255, mask)
+                img.save("%s.gif" % msg.path, transparency=255)
+                msg.path = "%s.gif" % msg.path
+                self.logger.info('Image converted to GIF: %s', msg.path)
             self.logger.info('Sending Image...')
             r = itchat.send_image(msg.path, UserName)
             self.logger.info('Image sent with result %s', r)
             os.remove(msg.path)
-            if not msg.mime == "image/jpeg":
+            if not msg.mime == "image/gif":
                 os.remove(msg.path[:-4])
             return r
         elif msg.type in [MsgType.File, MsgType.Video]:
