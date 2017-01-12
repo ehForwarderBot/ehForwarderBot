@@ -4,7 +4,7 @@ import threading
 import logging
 import argparse
 
-__version__ = "1.2 build 20170111"
+__version__ = "1.2 build 20170112"
 
 parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible chat tunnel framework which allows "
                                              "users to contact people from other chat platforms, and ultimately "

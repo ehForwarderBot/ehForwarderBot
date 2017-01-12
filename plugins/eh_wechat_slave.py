@@ -506,9 +506,12 @@ class WeChatChannel(EFBChannel):
                 return r
             else:  # Convert Image format
                 img = Image.open(msg.path)
-                alpha = img.split()[3]
+                try:
+                    alpha = img.split()[3]
+                    mask = Image.eval(alpha, lambda a: 255 if a <= 128 else 0)
+                except IndexError:
+                    mask = Image.eval(img.split()[0], lambda a: 0)
                 img = img.convert('RGB').convert('P', palette=Image.ADAPTIVE, colors=255)
-                mask = Image.eval(alpha, lambda a: 255 if a <=128 else 0)
                 img.paste(255, mask)
                 img.save("%s.gif" % msg.path, transparency=255)
                 msg.path = "%s.gif" % msg.path
