@@ -876,7 +876,7 @@ class TelegramChannel(EFBChannel):
             tuple of str[2]: Full path of the file, MIME type
         """
         fullpath, mime = self._download_file(tg_msg, file_id, msg_type)
-        VideoFileClip(fullpath).write_gif(fullpath + ".gif")
+        VideoFileClip(fullpath).write_gif(fullpath + ".gif", program="ffmpeg")
         return fullpath + ".gif", "image/gif"
 
     def start(self, bot, update, args=[]):
