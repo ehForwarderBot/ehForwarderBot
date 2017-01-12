@@ -7,6 +7,7 @@ import io
 import time
 import magic
 import mimetypes
+import config
 from PIL import Image
 from binascii import crc32
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
@@ -119,6 +120,8 @@ class WeChatChannel(EFBChannel):
         if not (UserName or NickName):
             self.logger.error('No name provided.')
             return False
+        if NickName:
+            return str(NickName.encode("utf-8"))
         r = self.search_user(UserName=UserName, name=NickName)
         if r:
             return str(crc32(r[0]['NickName'].encode("utf-8")))
@@ -619,9 +622,10 @@ class WeChatChannel(EFBChannel):
             return "Error occurred during the process. (AF01)"
 
     def get_chats(self, group=True, user=True):
+        refresh = self._flag("refresh_friends", False)
         r = []
         if user:
-            t = itchat.get_friends(True) + itchat.get_mps(True)
+            t = itchat.get_friends(refresh) + itchat.get_mps(refresh)
             t[0]['NickName'] = "File Helper"
             t[0]['UserName'] = "filehelper"
             t[0]['RemarkName'] = ""
@@ -631,11 +635,11 @@ class WeChatChannel(EFBChannel):
                     'channel_id': self.channel_id,
                     'name': i['NickName'],
                     'alias': i['RemarkName'] or i['NickName'],
-                    'uid': self.get_uid(UserName=i['UserName']),
+                    'uid': self.get_uid(NickName=i['NickName']),
                     'type': MsgSource.User
                 })
         if group:
-            t = itchat.get_chatrooms(True)
+            t = itchat.get_chatrooms(refresh)
             for i in t:
                 r.append({
                     'channel_name': self.channel_name,
@@ -649,3 +653,16 @@ class WeChatChannel(EFBChannel):
 
     def get_itchat(self):
         return itchat
+
+    def _flag(self, key, value):
+        """
+        Retrieve value for experimental flags.
+
+        Args:
+            key: Key of the flag.
+            value: Default/fallback value.
+
+        Returns:
+            Value for the flag.
+        """
+        return getattr(config, "eh_wechat_slave", dict()).get('flags', dict()).get(key, value)

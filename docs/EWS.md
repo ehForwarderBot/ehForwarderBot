@@ -55,6 +55,7 @@ and all other required by Pillow.
 ### Command messages, Extra Functions
 * Add "Card" as friend or accept friend request
 * Change "alias" of friends
+* Get friend list and force refresh
 
 ## FAQ
 * **How do I log in to another WeChat Account?**  
@@ -76,3 +77,20 @@ and all other required by Pillow.
 
     * Chat is no longer traceable when its name is changed.
     * Conflict and mis-delivery may happen when 2 users share the same name.
+
+
+## Experimental flags
+The following flags are experimental features, may change, break, or disappear at any time. Use at your own risk.
+
+Flags can be enabled in the `flags` key of the configuration dict, e.g.:
+
+```python
+eh_wechat_slave = {
+    "flags": {
+        "flag_name": "flag_value"
+    }
+}
+```
+
+* `refresh_friends` _(bool)_  [Default: False]
+  Always refresh chat lists when asked. (Except from the extra function.)
