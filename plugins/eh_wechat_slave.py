@@ -81,17 +81,31 @@ class WeChatChannel(EFBChannel):
     #
 
     def console_qr_code(self, uuid, status, qrcode):
-        QR = "WeChat: Scan QR code with WeChat to continue.\n\n"
-        time.sleep(0.5)
-        img = Image.open(io.BytesIO(qrcode)).convert("1")
-        img = img.resize((img.size[0] // 10, img.size[1] // 10))
-        for i in range(img.size[0]):
-            for j in range(img.size[1]):
-                    if img.getpixel((i, j)) > 0:
-                        QR += "\x1b[7m  \x1b[0m"
-                    else:
-                        QR += "\x1b[49m  \x1b[0m"
+        if status == 201:
+            QR = 'Tap "Confirm" to continue.'
+        elif status == 200:
+            QR = "Successfully authorized."
+        else:
+            # 0: First QR code
+            # 408: Updated QR code
+            QR = "WeChat: Scan QR code with WeChat to continue. (%s, %s)\n" % (uuid, status)
+            if status == 408:
+                QR += "Previous code expired. Please scan the new one.\n"
             QR += "\n"
+            time.sleep(0.5)
+            img = Image.open(io.BytesIO(qrcode)).convert("1")
+            img = img.resize((img.size[0] // 10, img.size[1] // 10))
+            for i in range(img.size[0]):
+                for j in range(img.size[1]):
+                        if img.getpixel((i, j)) > 0:
+                            QR += "\x1b[7m  \x1b[0m"
+                        else:
+                            QR += "\x1b[49m  \x1b[0m"
+                QR += "\n"
+            QR += "\nIf you cannot read the QR code above, " \
+                  "Please generate a QR code with any tool with the following URL:\n" \
+                  "https://login.weixin.qq.com/l/" + uuid
+
         self.logger.critical(QR)
 
     def exit_callback(self):
@@ -126,7 +140,7 @@ class WeChatChannel(EFBChannel):
             self.logger.error('No name provided.')
             return False
         if NickName:
-            return str(NickName.encode("utf-8"))
+            return str(crc32(NickName.encode("utf-8")))
         r = self.search_user(UserName=UserName, name=NickName)
         if r:
             return str(crc32(r[0]['NickName'].encode("utf-8")))
