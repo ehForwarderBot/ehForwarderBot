@@ -5,6 +5,7 @@ import config
 import datetime
 import utils
 import urllib
+import html
 import logging
 import time
 import magic
@@ -215,7 +216,8 @@ class TelegramChannel(EFBChannel):
             # Type dispatching
             self.logger.debug("%s, process_msg_step_2", xid)
             append_last_msg = False
-            if msg.type in [MsgType.Text, MsgType.Link]:
+            if msg.type == MsgType.Text:
+                parse_mode = "HTML" if self._flag("text_as_html", False) else None
                 if tg_chat_assoced:
                     last_msg = db.get_last_msg_from_chat(tg_dest)
                     if last_msg:
@@ -236,12 +238,19 @@ class TelegramChannel(EFBChannel):
                     msg.text = "%s\n%s" % (last_msg.text, msg.text)
                     tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest,
                                                           message_id=last_msg.master_msg_id.split(".", 1)[1],
-                                                          text=msg_template % msg.text)
+                                                          text=msg_template % msg.text,
+                                                          parse_mode=parse_mode)
                 else:
                     self.logger.debug("%s, process_msg_step_3_0_3", xid)
-                    tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text)
+                    tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text, parse_mode=parse_mode)
                     self.logger.debug("%s, process_msg_step_3_0_4, tg_msg = %s", xid, tg_msg)
                 self.logger.debug("%s, process_msg_step_3_1", xid)
+            elif msg.type == MsgType.Link:
+                self.logger.info("Link msg:\n%s\n%s\n%s", msg.attributes["url"], msg.attributes["title"], msg.attributes['description'])
+                text = "🔗 <a href=\"%s\">%s</a>\n%s" % (urllib.parse.quote(msg.attributes["url"], safe="?=&#:/"),
+                                                         html.escape(msg.attributes["title"]),
+                                                         html.escape(msg.attributes["description"]))
+                tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text, parse_mode="HTML")
             elif msg.type in [MsgType.Image, MsgType.Sticker]:
                 self.logger.debug("%s, process_msg_step_3_2", xid)
                 self.logger.info("Received %s \nPath: %s\nSize: %s\nMIME: %s", msg.type, msg.path,

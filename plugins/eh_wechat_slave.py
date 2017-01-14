@@ -143,7 +143,9 @@ class WeChatChannel(EFBChannel):
 
         Args:
             UserName (str): WeChat `UserName` of the chat.
-            NickName (str): Display Name (`NickName`) of the chat.
+            NickName (str): Name (`NickName`) of the chat.
+            alias (str): Alias ("Display Name" or "Remark Name") of the user
+            Uin: WeChat Unique Identifier.
 
         Returns:
             str|bool: Unique ID of the chat. `False` if not found.
@@ -671,17 +673,17 @@ class WeChatChannel(EFBChannel):
         members_all = 0
         for i in itchat.get_chatrooms(True):
             groups_all += 1
-            if i['Uin']:
+            if i.get("Uin", None):
                 groups_uin += 1
             if not i.get('MemberList', ''):
                 i = itchat.update_chatroom(i.get('UserName', ''))
             for j in i['MemberList']:
                 members_all += 1
-                if j['Uin']:
+                if j.get("Uin", None):
                     members_uin += 1
 
         users = itchat.get_friends(True) + itchat.get_mps(True)
-        users_uin = len([i for i in users if i['Uin']])
+        users_uin = len([i for i in users if i.get("Uin", None)])
         users_all = len(users)
 
         return "`Uin` rate checkup.\n\n" \
@@ -717,7 +719,7 @@ class WeChatChannel(EFBChannel):
                     'channel_id': self.channel_id,
                     'name': i['NickName'],
                     'alias': i['RemarkName'] or i['NickName'],
-                    'uid': self.get_uid(user_dict=i),
+                    'uid': self.get_uid(NickName=i['NickName'], alias=i.get("RemarkName", None), Uin=i.get("Uin", None)),
                     'type': MsgSource.User
                 })
         if group:
@@ -728,7 +730,7 @@ class WeChatChannel(EFBChannel):
                     'channel_id': self.channel_id,
                     'name': i['NickName'],
                     'alias': i['RemarkName'] or i['NickName'] or None,
-                    'uid': self.get_uid(user_dict=i),
+                    'uid': self.get_uid(NickName=i['NickName'], alias=i.get("RemarkName", None), Uin=i.get("Uin", None)),
                     'type': MsgSource.Group
                 })
         return r
