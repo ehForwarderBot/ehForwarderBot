@@ -680,7 +680,7 @@ class TelegramChannel(EFBChannel):
             if xfns:
                 for j in xfns:
                     fn_name = "/%s_%s" % (n, j)
-                    msg += "\n\n%s <i>(%s)</i>\n%s" % (fn_name, xfns[j].name, xfns[j].desc.format(function_name=fn_name))
+                    msg += "\n\n%s <b>(%s)</b>\n%s" % (fn_name, xfns[j].name, xfns[j].desc.format(function_name=fn_name))
             else:
                 msg += "No command found."
         bot.sendMessage(update.message.chat.id, msg, parse_mode="HTML")

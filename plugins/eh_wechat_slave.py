@@ -17,26 +17,39 @@ from channelExceptions import EFBMessageTypeNotSupported
 def incomeMsgMeta(func):
     def wcFunc(self, msg, isGroupChat=False):
         mobj = func(self, msg, isGroupChat)
-        FromUser = self.search_user(UserName=msg['FromUserName'])[0] or {"NickName": "User error. (UE01)", "Alias": "User error. (UE01)"}
+        self = msg['FromUserName'] == itchat.get_friends()[0]['UserName']
+        if self:
+            msg['FromUserName'] = msg['ToUserName']
+            mobj.text = "You: " + mobj.text
+        FromUser = self.search_user(UserName=msg['FromUserName'])[0] or {"NickName": "User error. (UE01)", "RemarkName": "User error. (UE01)"}
         if isGroupChat:
             member = self.search_user(UserName=msg['FromUserName'], ActualUserName=msg['ActualUserName'])[0]['MemberList'][0]
             mobj.source = MsgSource.Group
             mobj.origin = {
                 'name': FromUser['NickName'],
                 'alias': FromUser['RemarkName'] or FromUser['NickName'],
-                'uid': self.get_uid(UserName=msg['FromUserName'])
+                'uid': self.get_uid(UserName=msg.get('FromUserName', None),
+                                    NickName=FromUser.get('NickName', None),
+                                    alias=FromUser.get('RemarkName', None),
+                                    uid=FromUser.get('Uin', None))
             }
             mobj.member = {
                 'name': member['NickName'],
                 'alias': member['DisplayName'],
-                'uid': self.get_uid(UserName=msg['ActualUserName'])
+                'uid': self.get_uid(UserName=msg.get('ActualUserName', None),
+                                    NickName=member.get('NickName', None),
+                                    alias=member.get('DisplayName', None),
+                                    uid=member.get('Uin', None))
             }
         else:
             mobj.source = MsgSource.User
             mobj.origin = {
                 'name': FromUser['NickName'],
                 'alias': FromUser['RemarkName'] or FromUser['NickName'],
-                'uid': self.get_uid(UserName=msg['FromUserName'])
+                'uid': self.get_uid(UserName=msg.get('FromUserName', None),
+                                    NickName=FromUser.get('NickName', None),
+                                    alias=FromUser.get('RemarkName', None),
+                                    uid=FromUser.get('Uin', None))
             }
         mobj.destination = {
             'name': itchat.get_friends()[0]['NickName'],
@@ -81,6 +94,7 @@ class WeChatChannel(EFBChannel):
     #
 
     def console_qr_code(self, uuid, status, qrcode):
+        status = int(status)
         if status == 201:
             QR = 'Tap "Confirm" to continue.'
         elif status == 200:
@@ -118,11 +132,11 @@ class WeChatChannel(EFBChannel):
             'uid': -1
         }
 
-        msg.text = "WeChat system logged out the user."
+        msg.text = "WeChat server logged out the user."
 
         self.queue.put(msg)
 
-    def get_uid(self, UserName=None, NickName=None):
+    def get_uid(self, UserName=None, NickName=None, alias=None, Uin=None):
         """
         Get unique identifier of a chat, by UserName or NickName.
         Fill in `UserName` or `NickName`.
@@ -136,16 +150,18 @@ class WeChatChannel(EFBChannel):
         """
         if UserName in self.SYSTEM_USERNAMES:
             return UserName
-        if not (UserName or NickName):
+        if not (UserName or NickName or alias or Uin):
             self.logger.error('No name provided.')
             return False
-        if NickName:
-            return str(crc32(NickName.encode("utf-8")))
-        r = self.search_user(UserName=UserName, name=NickName)
-        if r:
-            return str(crc32(r[0]['NickName'].encode("utf-8")))
-        else:
-            return False
+        fallback_order = self._flag("uid_order", ["NickName"])
+        data = {"nickname": NickName, "alias": alias, "uin": Uin}
+        if UserName and not (NickName or alias or Uin):
+            r = self.search_user(UserName=UserName)
+            data = {"nickname": r[0]['NickName'], "alias": r[0]["RemarkName"], "uin": r[0]["Uin"]}
+        for i in fallback_order:
+            if data[i.lower()]:
+                return str(crc32(data[i.lower()].encode("utf-8")))
+        return str(crc32(data[fallback_order[-1]].encode("utf-8")))
 
     def get_UserName(self, uid, refresh=False):
         """
@@ -165,7 +181,7 @@ class WeChatChannel(EFBChannel):
             return r[0]['UserName']
         return False
 
-    def search_user(self, UserName=None, uid=None, wid=None, name=None, ActualUserName=None, refresh=False):
+    def search_user(self, UserName=None, uid=None, uin=None, name=None, ActualUserName=None, refresh=False):
         """
         Search for a WeChat "User" (a user, a group/chat room or an MPS account,
         by `UserName`, unique ID, WeChat ID, name/alias, and/or group member `UserName`.
@@ -178,7 +194,7 @@ class WeChatChannel(EFBChannel):
         Args:
             UserName (str): UserName of a "User"
             uid (str): Unique ID generated by the channel
-            wid (str): WeChat ID.
+            uin (str): WeChat Unique Identifier.
             name (str): Name or Alias
             ActualUserName (str): UserName of a group member, used only when a group is matched.
             refresh (bool): Refresh the user list, False by default.
@@ -189,43 +205,57 @@ class WeChatChannel(EFBChannel):
         result = []
         UserName = None if UserName is None else str(UserName)
         uid = None if uid is None else str(uid)
-        wid = None if wid is None else str(wid)
+        uin = None if uin is None else str(uin)
         name = None if name is None else str(name)
         ActualUserName = None if ActualUserName is None else str(ActualUserName)
+        fallback_order = self._flag("uid_order", ["NickName"])
 
-        if all(i is None for i in [UserName, uid, wid, name]):
-            raise ValueError("At least one of [UserName, uid, wid, name] should be given.")
+        if all(i is None for i in [UserName, uid, uin, name]):
+            raise ValueError("At least one of [UserName, uid, uin, name] should be provided.")
 
         for i in itchat.get_friends(refresh) + itchat.get_mps(refresh):
-
-            if str(crc32(i.get('NickName', '').encode("utf-8"))) == uid or \
-               str(i.get('UserName', '')) == UserName or \
-               str(i.get('Uin', '')) == uid or \
+            data = {"nickname": i.get('NickName', None),
+                    "alias": i.get("RemarkName", None),
+                    "uin": i.get("Uin", None)}
+            for j in fallback_order:
+                if str(crc32(data[j.lower()].encode("utf-8"))) == uid:
+                    result.append(j.copy())
+            if str(i.get('UserName', '')) == UserName or \
                str(i.get('AttrStatus', '')) == uid or \
-               str(i.get('Alias', '')) == wid or \
+               str(i.get('Uin', '')) == uin or \
                str(i.get('NickName', '')) == name or \
                str(i.get('DisplayName', '')) == name:
                 result.append(i.copy())
         for i in itchat.get_chatrooms(refresh):
             if not i.get('MemberList', ''):
                 i = itchat.update_chatroom(i.get('UserName', ''))
-            if str(crc32(i.get('NickName', '').encode("utf-8"))) == uid or \
-               str(i.get('Uin', '')) == uid or \
-               str(i.get('Alias', '')) == wid or \
+            data = {"nickname": i.get('NickName', None),
+                    "alias": i.get("RemarkName", None),
+                    "uin": i.get("Uin", None)}
+            for j in fallback_order:
+                if str(crc32(data[j.lower()].encode("utf-8"))) == uid:
+                    result.append(j.copy())
+            if str(i.get('Uin', '')) == uin or \
                str(i.get('NickName', '')) == name or \
                str(i.get('DisplayName', '')) == name or \
                str(i.get('UserName', '')) == UserName:
                 result.append(i.copy())
                 result[-1]['MemberList'] = []
                 if ActualUserName:
-                    for j in itchat.search_chatrooms(userName=i['UserName'])['MemberList']:
+                    for j in i['MemberList']:
+                        data = {"nickname": j.get('NickName', None),
+                                "alias": j.get("DisplayName", None),
+                                "uin": j.get("Uin", None)}
+                        for k in fallback_order:
+                            if str(crc32(data[k.lower()].encode("utf-8"))) == uid:
+                                result.append(k.copy())
                         if str(j['UserName']) == ActualUserName or \
                            str(j['AttrStatus']) == uid or \
                            str(j['NickName']) == name or \
                            str(j['DisplayName']) == name:
                             result[-1]['MemberList'].append(j)
         if not result and not refresh:
-            return self.search_user(UserName, uid, wid, name, ActualUserName, refresh=True)
+            return self.search_user(UserName, uid, uin, name, ActualUserName, refresh=True)
         return result
 
     def poll(self):
@@ -455,7 +485,9 @@ class WeChatChannel(EFBChannel):
                "ID: {Alias}\n"
                "Signature: {Signature}\n"
                "Gender: {Sex}")
-        txt = txt.format(**{**msg['Text'], **msg['Text']['userInfo']})
+        tdict = msg['Text'].copy()
+        tdict.update(msg['Text']['userInfo'])
+        txt = txt.format(**tdict)
         mobj.text = txt
         mobj.type = MsgType.Command
         mobj.attributes = {
@@ -629,13 +661,44 @@ class WeChatChannel(EFBChannel):
         else:
             return "Chat \"%s\" has removed its alias." % l[cid]["NickName"]
 
+    @extra(name="\"Uin\" rate.",
+           desc="For debug purpose only.\n"
+                "Usage: {function_name}")
+    def uin_rate(self, param=""):
+        groups_uin = 0
+        groups_all = 0
+        members_uin = 0
+        members_all = 0
+        for i in itchat.get_chatrooms(True):
+            groups_all += 1
+            if i['Uin']:
+                groups_uin += 1
+            if not i.get('MemberList', ''):
+                i = itchat.update_chatroom(i.get('UserName', ''))
+            for j in i['MemberList']:
+                members_all += 1
+                if j['Uin']:
+                    members_uin += 1
+
+        users = itchat.get_friends(True) + itchat.get_mps(True)
+        users_uin = len([i for i in users if i['Uin']])
+        users_all = len(users)
+
+        return "`Uin` rate checkup.\n\n" \
+               "Users + MPS: %s/%s (%.2f%%)\n" \
+               "Groups: %s/%s (%.2f%%)\n" \
+               "Group Members: %s/%s (%.2f%%)" % \
+               (users_uin, users_all, 100 * users_uin / users_all,
+                groups_uin, groups_all, 100 * groups_uin / groups_all,
+                members_uin, members_all, 100 * members_uin / members_all)
+
     # Command functions
 
-    def add_friend(self, userName=None, status=2, ticket="", userInfo={}):
-        if not userName:
+    def add_friend(self, UserName=None, status=2, ticket="", UserInfo={}):
+        if not UserName:
             return "Username is empty. (UE01)"
         try:
-            itchat.add_friend(userName, status, ticket, userInfo)
+            itchat.add_friend(UserName, status, ticket, UserInfo)
             return "Success."
         except:
             return "Error occurred during the process. (AF01)"
@@ -654,7 +717,7 @@ class WeChatChannel(EFBChannel):
                     'channel_id': self.channel_id,
                     'name': i['NickName'],
                     'alias': i['RemarkName'] or i['NickName'],
-                    'uid': self.get_uid(NickName=i['NickName']),
+                    'uid': self.get_uid(user_dict=i),
                     'type': MsgSource.User
                 })
         if group:
@@ -665,7 +728,7 @@ class WeChatChannel(EFBChannel):
                     'channel_id': self.channel_id,
                     'name': i['NickName'],
                     'alias': i['RemarkName'] or i['NickName'] or None,
-                    'uid': self.get_uid(NickName=i['NickName']),
+                    'uid': self.get_uid(user_dict=i),
                     'type': MsgSource.Group
                 })
         return r

@@ -1,6 +1,6 @@
 # EH Forwarder Bot
 
-![Python ≥ 3.5](https://img.shields.io/badge/Python-≥_3.5-blue.svg) [![Gitter](https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg)](https://gitter.im/blueset/ehForwarderBot)
+![Python 3.x](https://img.shields.io/badge/Python-3.x-blue.svg) [![Gitter](https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg)](https://gitter.im/blueset/ehForwarderBot)
 [![Telegram support group](https://img.shields.io/badge/Chat-on%20Telegram-blue.svg)](https://telegram.me/efbsupport)
 [![license](https://img.shields.io/github/license/blueset/ehforwarderbot.svg)](LICENSE)
 
@@ -35,9 +35,6 @@ _Codename_ **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework whi
 
 ## Feel like contributing?
 Anyone is welcomed to raise an issue or submit a pull request, just remember to read through and understand the [contribution guideline](CONTRIBUTING.md) before you do so.
-
-## Special thanks
-* @clairvoyantegg for documentation refine.
 
 ## License
 EFB framework is licensed under [GNU General Public License 3.0](https://www.gnu.org/licenses/gpl-3.0.txt).
