@@ -1,37 +1,52 @@
-import itchat
-import re
-import xmltodict
-import logging
-import os
 import io
-import time
-import magic
+import logging
 import mimetypes
-import config
-from PIL import Image
+import os
+import re
+import time
 from binascii import crc32
+
+import itchat
+import magic
+import xmltodict
+from PIL import Image
+
+import config
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
-from utils import extra
 from channelExceptions import EFBMessageTypeNotSupported
+from utils import extra
+
 
 def incomeMsgMeta(func):
     def wcFunc(self, msg, isGroupChat=False):
+        logger = logging.getLogger("plugins.eh_wechat_slave.incomeMsgMeta")
         mobj = func(self, msg, isGroupChat)
-        self = msg['FromUserName'] == itchat.get_friends()[0]['UserName']
-        if self:
-            msg['FromUserName'] = msg['ToUserName']
-            mobj.text = "You: " + mobj.text
-        FromUser = self.search_user(UserName=msg['FromUserName'])[0] or {"NickName": "User error. (UE01)", "RemarkName": "User error. (UE01)"}
+        me = msg['FromUserName'] == itchat.get_friends()[0]['UserName']
+        logger.debug("me, %s", me)
+        if me:
+            msg['FromUserName'], msg['ToUserName'] = msg['ToUserName'], msg['FromUserName']
+        FromUser = self.search_user(UserName=msg['FromUserName']) or \
+                   [{"NickName": "User error. (UE01)", "RemarkName": "User error. (UE01)", "Uin": 0}]
+        FromUser = FromUser[0]
+        logger.debug("From user, %s", FromUser)
         if isGroupChat:
-            member = self.search_user(UserName=msg['FromUserName'], ActualUserName=msg['ActualUserName'])[0]['MemberList'][0]
+            logger.debug("groupchat")
+            if me:
+                msg['ActualUserName'] = msg['ToUserName']
+                member = {"NickName": itchat.get_friends()[0]['NickName'], "DisplayName": "You", "Uin": itchat.get_friends()[0]['Uin']}
+            else:
+                logger.debug("search_user")
+                member = self.search_user(UserName=msg['FromUserName'], ActualUserName=msg['ActualUserName'])[0]['MemberList'][0]
+                logger.debug("search_user.done")
             mobj.source = MsgSource.Group
+            logger.debug("Group. member: %s", member)
             mobj.origin = {
                 'name': FromUser['NickName'],
                 'alias': FromUser['RemarkName'] or FromUser['NickName'],
                 'uid': self.get_uid(UserName=msg.get('FromUserName', None),
                                     NickName=FromUser.get('NickName', None),
                                     alias=FromUser.get('RemarkName', None),
-                                    uid=FromUser.get('Uin', None))
+                                    Uin=FromUser.get('Uin', None))
             }
             mobj.member = {
                 'name': member['NickName'],
@@ -39,9 +54,12 @@ def incomeMsgMeta(func):
                 'uid': self.get_uid(UserName=msg.get('ActualUserName', None),
                                     NickName=member.get('NickName', None),
                                     alias=member.get('DisplayName', None),
-                                    uid=member.get('Uin', None))
+                                    Uin=member.get('Uin', None))
             }
+            logger.debug("origin: %s\nmember: %s\n", mobj.origin, mobj.member)
         else:
+            if me:
+                mobj.text = "You: " + mobj.text
             mobj.source = MsgSource.User
             mobj.origin = {
                 'name': FromUser['NickName'],
@@ -49,14 +67,14 @@ def incomeMsgMeta(func):
                 'uid': self.get_uid(UserName=msg.get('FromUserName', None),
                                     NickName=FromUser.get('NickName', None),
                                     alias=FromUser.get('RemarkName', None),
-                                    uid=FromUser.get('Uin', None))
+                                    Uin=FromUser.get('Uin', None))
             }
         mobj.destination = {
             'name': itchat.get_friends()[0]['NickName'],
             'alias': itchat.get_friends()[0]['NickName'],
             'uid': self.get_uid(UserName=msg['ToUserName'])
         }
-        logger = logging.getLogger("plugins.eh_wechat_slave.%s" % __name__)
+        logger.debug("dest: %s", mobj.destination)
         logger.info("WeChat incoming message:\nType: %s\nText: %s\nUserName: %s\nuid: %s\nname: %s" %
                     (mobj.type, msg['Text'], msg['FromUserName'], mobj.origin['uid'], mobj.origin['name']))
         self.queue.put(mobj)
@@ -159,6 +177,9 @@ class WeChatChannel(EFBChannel):
         data = {"nickname": NickName, "alias": alias, "uin": Uin}
         if UserName and not (NickName or alias or Uin):
             r = self.search_user(UserName=UserName)
+            if not r:
+                self.logger.debug("get_uid, return False")
+                return False
             data = {"nickname": r[0]['NickName'], "alias": r[0]["RemarkName"], "uin": r[0]["Uin"]}
         for i in fallback_order:
             if data[i.lower()]:
@@ -221,7 +242,7 @@ class WeChatChannel(EFBChannel):
                     "uin": i.get("Uin", None)}
             for j in fallback_order:
                 if str(crc32(data[j.lower()].encode("utf-8"))) == uid:
-                    result.append(j.copy())
+                    result.append(i.copy())
             if str(i.get('UserName', '')) == UserName or \
                str(i.get('AttrStatus', '')) == uid or \
                str(i.get('Uin', '')) == uin or \

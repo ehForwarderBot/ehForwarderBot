@@ -250,7 +250,7 @@ class TelegramChannel(EFBChannel):
                 text = "🔗 <a href=\"%s\">%s</a>\n%s" % (urllib.parse.quote(msg.attributes["url"], safe="?=&#:/"),
                                                          html.escape(msg.attributes["title"]),
                                                          html.escape(msg.attributes["description"]))
-                tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text, parse_mode="HTML")
+                tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % text, parse_mode="HTML")
             elif msg.type in [MsgType.Image, MsgType.Sticker]:
                 self.logger.debug("%s, process_msg_step_3_2", xid)
                 self.logger.info("Received %s \nPath: %s\nSize: %s\nMIME: %s", msg.type, msg.path,
@@ -266,7 +266,10 @@ class TelegramChannel(EFBChannel):
                 if msg.mime == "image/gif":
                     tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
                 else:
-                    tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template % msg.text)
+                    try:
+                        tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template % msg.text)
+                    except telegram.error.BadRequest:
+                        tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
                 os.remove(msg.path)
                 self.logger.debug("%s, process_msg_step_3_3", xid)
             elif msg.type == MsgType.File:

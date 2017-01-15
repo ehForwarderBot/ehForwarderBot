@@ -97,6 +97,6 @@ eh_wechat_slave = {
 * `uid_order` _(list of str)_ [Default: `["NickName"]`]  
   Fallback order of resolving `uid` from WeChat user info. Highest priority goes to index 0. The list **MUST** be non empty with only values below, and the last element associate to a rather stable and available value for most chats, if not all of them.  
   Available values: _(U, G, M means the value is available to users, groups, and group members respectively)_
-  * `"NickName"`: [UGM] Name of the user/group
-  * `"alias"`: [UM] Alias of the user
-  * `"uin"`: [UG] WeChat Unique Identifier for all chats, **Not always available**.
+    * `"NickName"`: [UGM] Name of the user/group
+    * `"alias"`: [UM] Alias of the user
+    * `"uin"`: [UG] WeChat Unique Identifier for all chats, **Not always available**.
