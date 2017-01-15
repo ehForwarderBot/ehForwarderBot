@@ -38,6 +38,7 @@ class EFBChannel:
     channel_id = "emptyChannel"
     channel_type = ChannelType.Slave
     queue = None
+    supported_message_types = set()
 
     def __init__(self, queue):
         self.queue = queue

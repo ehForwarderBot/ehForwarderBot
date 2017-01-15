@@ -9,4 +9,7 @@ Raised by a slave channel when the recipient channel is not found when a message
 Raised when an incoming message is in a type not supported by the recipient channel. Applicable to both master and slave channels.
 
 ## `EFBMessageNotFound`
-Raised when a message is trying to "direct reply" to another message which couldn't be found. 
+Raised when a message is trying to "direct reply" to another message which couldn't be found.
+
+## `EFBMessageError`
+Raised when a message is failed to send for any other reason.

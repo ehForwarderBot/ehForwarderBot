@@ -18,7 +18,7 @@ import traceback
 from . import db, speech
 from .whitelisthandler import WhitelistHandler
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
-from channelExceptions import EFBChatNotFound, EFBMessageTypeNotSupported
+from channelExceptions import EFBChatNotFound, EFBMessageTypeNotSupported, EFBMessageError
 from .msgType import get_msg_type, TGMsgType
 from moviepy.editor import VideoFileClip
 
@@ -65,6 +65,9 @@ class TelegramChannel(EFBChannel):
     channel_emoji = "✈"
     channel_id = "eh_telegram_master"
     channel_type = ChannelType.Master
+    supported_message_types = {MsgType.Text, MsgType.File, MsgType.Audio,
+                               MsgType.Command, MsgType.Image, MsgType.Link, MsgType.Location,
+                               MsgType.Sticker, MsgType.Video}
 
     # Data
     slaves = None
@@ -72,6 +75,19 @@ class TelegramChannel(EFBChannel):
     msg_status = {}
     msg_storage = {}
     me = None
+
+    # Constants
+    TYPE_DICT = {
+        TGMsgType.Text: MsgType.Text,
+        TGMsgType.Audio: MsgType.Audio,
+        TGMsgType.Document: MsgType.File,
+        TGMsgType.Photo: MsgType.Image,
+        TGMsgType.Sticker: MsgType.Sticker,
+        TGMsgType.Video: MsgType.Video,
+        TGMsgType.Voice: MsgType.Audio,
+        TGMsgType.Location: MsgType.Location,
+        TGMsgType.Venue: MsgType.Location,
+    }
 
     def __init__(self, queue, slaves):
         """
@@ -269,7 +285,7 @@ class TelegramChannel(EFBChannel):
                     os.remove(msg.path)
                     return self.bot.bot.sendMessage(tg_dest, msg_template % ("Error: Empty %s received. (MS01)" % msg.type))
                 if not msg.text:
-                    if MsgType.Image:
+                    if msg.type == MsgType.Image:
                         msg.text = "sent a picture."
                     elif msg.type == MsgType.Sticker:
                         msg.text = "sent a sticker."
@@ -342,7 +358,8 @@ class TelegramChannel(EFBChannel):
                            "slave_origin_uid": "%s.%s" % (msg.channel_id, msg.origin['uid']),
                            "slave_origin_display_name": msg.origin['alias'],
                            "slave_member_uid": msg.member['uid'],
-                           "slave_member_display_name": msg.member['alias']}
+                           "slave_member_display_name": msg.member['alias'],
+                           "slave_message_uid": msg.uid}
                 if tg_chat_assoced and append_last_msg:
                     msg_log['update'] = True
                 db.add_msg_log(**msg_log)
@@ -801,6 +818,14 @@ class TelegramChannel(EFBChannel):
             # Type specific stuff
             self.logger.debug("Msg type: %s", mtype)
 
+            if self.TYPE_DICT.get(mtype, None):
+                m.type = self.TYPE_DICT[mtype]
+            else:
+                raise EFBMessageTypeNotSupported()
+
+            if m.type not in self.slaves[channel].supported_message_types:
+                raise EFBMessageTypeNotSupported()
+
             if mtype == TGMsgType.Text:
                 m.type = MsgType.Text
                 m.text = update.message.text
@@ -812,12 +837,12 @@ class TelegramChannel(EFBChannel):
                 m.file = open(m.path, "rb")
             elif mtype == TGMsgType.Sticker:
                 m.type = MsgType.Sticker
-                m.text = update.message.sticker.emoji
+                m.text = ""
                 tg_file_id = update.message.sticker.file_id
                 m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
                 m.file = open(m.path, "rb")
             elif mtype == TGMsgType.Document:
-                m.text = update.message.document.file_name
+                m.text = update.message.document.file_name + "\n" + update.message.caption
                 tg_file_id = update.message.document.file_id
                 self.logger.debug("tg: Document file received")
                 if update.message.document.mime_type == "video/mp4":
@@ -830,18 +855,18 @@ class TelegramChannel(EFBChannel):
                 m.file = open(m.path, "rb")
             elif mtype == TGMsgType.Video:
                 m.type = MsgType.Video
-                m.text = update.message.document.file_name
+                m.text = update.message.caption
                 tg_file_id = update.message.document.file_id
                 m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
                 m.file = open(m.path, "rb")
             elif mtype == TGMsgType.Audio:
                 m.type = MsgType.Audio
-                m.text = "%s - %s" % (update.message.audio.title, update.message.audio.perfomer)
+                m.text = "%s - %s\n%s" % (update.message.audio.title, update.message.audio.perfomer, update.message.caption)
                 tg_file_id = update.message.audio.file_id
                 m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
             elif mtype == TGMsgType.Voice:
                 m.type = MsgType.Audio
-                m.text = ""
+                m.text = update.message.caption
                 tg_file_id = update.message.voice.file_id
                 m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
             elif mtype == TGMsgType.Location:
@@ -866,6 +891,8 @@ class TelegramChannel(EFBChannel):
             return self._reply_error(bot, update, "Internal error: Chat not found in channel. (CN01)")
         except EFBMessageTypeNotSupported:
             return self._reply_error(bot, update, "Message type not supported. (MN01)")
+        except EFBMessageError as e:
+            return self._reply_error(bot, update, "Message is not sent. (MN01)\n\n%s" % str(e))
 
     def _download_file(self, tg_msg, file_id, msg_type):
         """

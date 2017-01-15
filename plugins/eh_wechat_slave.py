@@ -13,7 +13,7 @@ from PIL import Image
 
 import config
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
-from channelExceptions import EFBMessageTypeNotSupported
+from channelExceptions import EFBMessageTypeNotSupported, EFBMessageError
 from utils import extra
 
 
@@ -94,6 +94,7 @@ class WeChatChannel(EFBChannel):
     channel_emoji = "💬"
     channel_id = "eh_wechat_slave"
     channel_type = ChannelType.Slave
+    supported_message_types = {MsgType.Text, MsgType.Sticker, MsgType.Image, MsgType.File, MsgType.Video, MsgType.Link}
     users = {}
     logger = logging.getLogger("plugins.eh_wechat_slave.WeChatChannel")
 
@@ -575,20 +576,18 @@ class WeChatChannel(EFBChannel):
                          "Type: %s\n"
                          "Text: %s"
                          % (msg.destination['uid'], UserName, msg.destination['name'], msg.type, msg.text))
-        if msg.type == MsgType.Text:
+        if msg.type in [MsgType.Text, MsgType.Link]:
             if msg.target:
                 if msg.target['type'] == TargetType.Member:
                     msg.text = "@%s\u2005 %s" % (msg.target['target'].member['alias'], msg.text)
                 elif msg.target['type'] == TargetType.Message:
                     msg.text = "@%s\u2005 「%s」\n\n%s" % (msg.target['target'].member['alias'], msg.target['target'].text, msg.text)
             r = itchat.send(msg.text, UserName)
-            return r
         elif msg.type in [MsgType.Image, MsgType.Sticker]:
             self.logger.info("Image/Sticker %s", msg.type)
             if msg.mime in ["image/gif", "image/jpeg"]:
                 r = itchat.send_image(msg.path, UserName)
                 os.remove(msg.path)
-                return r
             else:  # Convert Image format
                 img = Image.open(msg.path)
                 try:
@@ -601,20 +600,28 @@ class WeChatChannel(EFBChannel):
                 img.save("%s.gif" % msg.path, transparency=255)
                 msg.path = "%s.gif" % msg.path
                 self.logger.info('Image converted to GIF: %s', msg.path)
-            self.logger.info('Sending Image...')
-            r = itchat.send_image(msg.path, UserName)
+                self.logger.info('Sending Image...')
+                r = itchat.send_image(msg.path, UserName)
+                if msg.text:
+                    itchat.send_msg(msg.text, UserName)
             self.logger.info('Image sent with result %s', r)
             os.remove(msg.path)
             if not msg.mime == "image/gif":
                 os.remove(msg.path[:-4])
-            return r
         elif msg.type in [MsgType.File, MsgType.Video]:
             self.logger.info("Sending file to WeChat\nFileName: %s\nPath: %s", msg.text, msg.path)
             r = itchat.send_file(msg.path, UserName)
+            if msg.text:
+                itchat.send_msg(msg.text, UserName)
             os.remove(msg.path)
-            return r
         else:
             raise EFBMessageTypeNotSupported()
+
+        if r.get('BaseResponse', []).get('Ret', -1) != 0:
+            raise EFBMessageError(str(r))
+        else:
+            msg.uid = r.get("MsgId", None)
+            return msg
 
     # Extra functions
 
