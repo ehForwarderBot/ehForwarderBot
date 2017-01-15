@@ -435,11 +435,16 @@ class WeChatChannel(EFBChannel):
         mobj.attributes = {
             "title": data['msg']['appmsg']['title'],
             "description": data['msg']['appmsg']['des'],
-            "image": None,
+            "image": data['msg']['appmsg']['thumburl'],
             "url": data['msg']['appmsg']['url']
         }
         # format text
-        mobj.text = "🔗 %s\n%s\n\n%s" % (mobj.attributes['title'], mobj.attributes['description'], mobj.attributes['url'])
+        mobj.text = ""
+        if self._flag("extra_links_on_message", False):
+            extra_link = data.get('msg', {}).get('appmsg', {}).get('mmreader', {}).get('category', {}).get('item', [])
+            if type(extra_link) is list and len(extra_link):
+                for i in extra_link:
+                    mobj.text += "🔗 %s\n%s\n%s\n🖼 %s\n\n" % (i['title'], i['digest'], i['url'], i['cover'])
         mobj.type = MsgType.Link
         return mobj
 

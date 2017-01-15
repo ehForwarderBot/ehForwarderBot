@@ -178,7 +178,7 @@ Location messages.
 
 Shared links.
 
-* `text`: Structured text with at least the URL in the message.
+* `text`: Any extra information for the link.
 * `attributes`: a `dict` with 4 items: _(None if not available)_  
     * **"title"**: Title of the linked article,  
     * **"description"**: Brief description of the article,  
