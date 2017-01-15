@@ -1,6 +1,6 @@
 # EFB WeChat Slave Channel
 
-EFB WeChat Slave Channel is a slave channel for EFB based on [ItChat](https://github.com/littlecodersh/ItChat) and WeChat Web <span style="font-size: 0.5em;">(rev.eng.)</span> API.
+EFB WeChat Slave (EWS) is a slave channel for EFB based on [ItChat](https://github.com/littlecodersh/ItChat) and WeChat Web <span style="font-size: 0.5em;">(rev.eng.)</span> API.
 
 ## Specs
 * Unique name: `eh_wechat_slave`

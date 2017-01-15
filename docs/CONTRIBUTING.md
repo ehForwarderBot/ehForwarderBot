@@ -20,6 +20,7 @@ If you need help, or want to talk to the authors, feel free to chat with us at o
 * **Describe the behavior you observed after following the steps** and point out what exactly is the problem with that behavior.
 * **Explain which behavior you expected to see instead and why.**
 * **If the problem wasn't triggered by a specific action**, describe what you were doing before the problem happened and share more information using the guidelines below.
+* **Provide log related to the issue.** Use `python3 main.py -vv` to start the logging process, and submit the entire log from the first step you performed.
 
 Provide more context by answering these questions:
 

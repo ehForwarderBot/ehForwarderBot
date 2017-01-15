@@ -21,12 +21,13 @@ def incomeMsgMeta(func):
     def wcFunc(self, msg, isGroupChat=False):
         logger = logging.getLogger("plugins.eh_wechat_slave.incomeMsgMeta")
         mobj = func(self, msg, isGroupChat)
+        mobj.uid = msg.get("MsgId", time.time())
         me = msg['FromUserName'] == itchat.get_friends()[0]['UserName']
         logger.debug("me, %s", me)
         if me:
             msg['FromUserName'], msg['ToUserName'] = msg['ToUserName'], msg['FromUserName']
         FromUser = self.search_user(UserName=msg['FromUserName']) or \
-                   [{"NickName": "User error. (UE01)", "RemarkName": "User error. (UE01)", "Uin": 0}]
+                   [{"NickName": "Chat not found. (UE01)", "RemarkName": "Chat not found. (UE01)", "Uin": 0}]
         FromUser = FromUser[0]
         logger.debug("From user, %s", FromUser)
         if isGroupChat:
@@ -236,6 +237,13 @@ class WeChatChannel(EFBChannel):
         if all(i is None for i in [UserName, uid, uin, name]):
             raise ValueError("At least one of [UserName, uid, uin, name] should be provided.")
 
+        if UserName in self.SYSTEM_USERNAMES or uin in self.SYSTEM_USERNAMES:
+            sys_chat_id = UserName or uin
+            return [{"UserName": sys_chat_id,
+                     "NickName": "System (%s)" % sys_chat_id,
+                     "RemarkName": "System (%s)" % sys_chat_id,
+                     "Uin": sys_chat_id}]
+
         for i in itchat.get_friends(refresh) + itchat.get_mps(refresh):
             data = {"nickname": i.get('NickName', None),
                     "alias": i.get("RemarkName", None),
@@ -257,7 +265,7 @@ class WeChatChannel(EFBChannel):
                     "uin": i.get("Uin", None)}
             for j in fallback_order:
                 if str(crc32(data[j.lower()].encode("utf-8"))) == uid:
-                    result.append(j.copy())
+                    result.append(i.copy())
             if str(i.get('Uin', '')) == uin or \
                str(i.get('NickName', '')) == name or \
                str(i.get('DisplayName', '')) == name or \
@@ -719,7 +727,7 @@ class WeChatChannel(EFBChannel):
 
     def add_friend(self, UserName=None, status=2, ticket="", UserInfo={}):
         if not UserName:
-            return "Username is empty. (UE01)"
+            return "Username is empty. (UE02)"
         try:
             itchat.add_friend(UserName, status, ticket, UserInfo)
             return "Success."
@@ -734,13 +742,14 @@ class WeChatChannel(EFBChannel):
             t[0]['NickName'] = "File Helper"
             t[0]['UserName'] = "filehelper"
             t[0]['RemarkName'] = ""
+            t[0]['Uin'] = "filehelper"
             for i in t:
                 r.append({
                     'channel_name': self.channel_name,
                     'channel_id': self.channel_id,
                     'name': i['NickName'],
                     'alias': i['RemarkName'] or i['NickName'],
-                    'uid': self.get_uid(NickName=i['NickName'], alias=i.get("RemarkName", None), Uin=i.get("Uin", None)),
+                    'uid': self.get_uid(UserName=i['UserName'], NickName=i['NickName'], alias=i.get("RemarkName", None), Uin=i.get("Uin", None)),
                     'type': MsgSource.User
                 })
         if group:
