@@ -114,6 +114,7 @@ class TelegramChannel(EFBChannel):
         self.bot.dispatcher.add_handler(telegram.ext.CallbackQueryHandler(self.callback_query_dispatcher))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("start", self.start, pass_args=True))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("extra", self.extra_help))
+        self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("unlink_all", self.unlink_all))
         self.bot.dispatcher.add_handler(
             telegram.ext.RegexHandler(r"^/(?P<id>[0-9]+)_(?P<command>[a-z0-9_-]+)", self.extra_call,
                                       pass_groupdict=True))
@@ -202,13 +203,17 @@ class TelegramChannel(EFBChannel):
             tg_chats = db.get_chat_assoc(slave_uid=chat_uid) or False
             tg_chat = None
             multi_slaves = False
+
             if tg_chats:
                 tg_chat = tg_chats[0]
                 slaves = db.get_chat_assoc(master_uid=tg_chat) or False
-                if slaves and len(slaves) > 1: multi_slaves = True
-            msg_prefix = ""
+                if slaves and len(slaves) > 1:
+                    multi_slaves = True
+
+            msg_prefix = ""  # For group member name
             tg_chat_assoced = False
-            if not msg.source == MsgSource.Group:
+
+            if msg.source != MsgSource.Group:
                 msg.member = {"uid": -1, "name": "", "alias": ""}
 
             # Generate chat text template & Decide type target
@@ -217,10 +222,12 @@ class TelegramChannel(EFBChannel):
             if msg.source == MsgSource.Group:
                 msg_prefix = msg.member['name'] if msg.member['name'] == msg.member['alias'] or not msg.member['name'] \
                     else "%s (%s)" % (msg.member['alias'], msg.member['name'])
+
             if tg_chat:  # if this chat is linked
                 tg_dest = int(tg_chat.split('.')[1])
                 tg_chat_assoced = True
-            if tg_chat and not multi_slaves:
+
+            if tg_chat and not multi_slaves:  # if singly linked
                 if msg_prefix:  # if group message
                     msg_template = "%s:\n%s" % (msg_prefix, "%s")
                 else:
@@ -618,6 +625,21 @@ class TelegramChannel(EFBChannel):
         txt = "Command '%s' (%s) is not recognised, please try again" % (cmd, callback_uid)
         bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
 
+    def unlink_all(self, bot, update):
+        if update.message.chat.id == update.message.from_user.id:
+            return bot.sendMessage(update.message.chat.id, "Send `/unlink_all` to a group to unlink all remote chats "
+                                                           "from it.",
+                                   parse_mode=telegram.ParseMode.MARKDOWN,
+                                   reply_to_message_id=update.message.message_id)
+        assocs = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
+        if len(assoc) < 1:
+            return bot.sendMessage(update.message.chat.id, "No chat is linked to the group.",
+                                   reply_to_message_id=update.message.message_id)
+        else:
+            db.remove_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
+            return bot.sendMessage(update.message.chat.id, "All chats has been unlinked from this group. (%s)" % len(assocs),
+                                   reply_to_message_id=update.message.message_id)
+
     def start_chat_list(self, bot, update, args=None):
         """
         Send a list to for chat list generation.
@@ -789,32 +811,67 @@ class TelegramChannel(EFBChannel):
         self.logger.debug("----\nMsg from tg user:\n%s", update.message.to_dict())
         target = None
         multi_slaves = False
+
         if update.message.chat.id != update.message.from_user.id:  # from group
             assocs = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
             assoc = None
-            if len(assocs) == 1 : assoc = assocs[0]
-            elif len(assocs) > 1 : multi_slaves = True
-        if getattr(update.message, "reply_to_message", None) and assoc and not multi_slaves:
-            try:
-                targetlog = db.get_msg_log(
-                    "%s.%s" % (update.message.reply_to_message.chat.id, update.message.reply_to_message.message_id))
-                target = targetlog.slave_origin_uid
-                targetChannel, targetUid = target.split('.', 2)
-            except:
-                return self._reply_error(bot, update, "Unknown recipient (UC03).")
-        elif assoc and not multi_slaves: pass
-        elif ((update.message.chat.id == update.message.from_user.id) or multi_slaves) and getattr(update.message, "reply_to_message",
-                                                                                 None):  # reply to user
-            assoc = db.get_msg_log("%s.%s" % (
-                update.message.reply_to_message.chat.id, update.message.reply_to_message.message_id)).slave_origin_uid
-        else:
-            return self._reply_error(bot, update, "Unknown recipient (UC01).")
-        if not assoc:
-            return self._reply_error(bot, update, "Unknown recipient (UC02).")
+            if len(assocs) == 1:
+                assoc = assocs[0]
+            elif len(assocs) > 1:
+                multi_slaves = True
+
+        reply_to = bool(getattr(update.message, "reply_to_message", None))
+        private_chat = update.message.chat.id == update.message.from_user.id
+
+        if private_chat:
+            if reply_to:
+                try:
+                    assoc = db.get_msg_log("%s.%s" % (
+                        update.message.reply_to_message.chat.id,
+                        update.message.reply_to_message.message_id)).slave_origin_uid
+                except:
+                    return self._reply_error(bot, update,
+                                             "Message is not found in database. Please try with another one. (UC03)")
+            else:
+                return self._reply_error(bot, update,
+                                         "Please reply to a incoming message. (UC04)")
+        else:  # group chat
+            if multi_slaves:
+                if reply_to:
+                    try:
+                        assoc = db.get_msg_log("%s.%s" % (
+                            update.message.reply_to_message.chat.id,
+                            update.message.reply_to_message.message_id)).slave_origin_uid
+                    except:
+                        return self._reply_error(bot, update,
+                                                 "Message is not found in database. "
+                                                 "Please try with another one. (UC05)")
+                else:
+                    return self._reply_error(bot, update,
+                                             "This group is linked to multiple remote chats. "
+                                             "Please reply to a incoming message. "
+                                             "To unlink all remote chats, please send /unlink_all . (UC06)")
+            elif assoc:
+                if reply_to:
+                    try:
+                        targetlog = db.get_msg_log(
+                            "%s.%s" % (
+                            update.message.reply_to_message.chat.id, update.message.reply_to_message.message_id))
+                        target = targetlog.slave_origin_uid
+                        targetChannel, targetUid = target.split('.', 1)
+                    except:
+                        return self._reply_error(bot, update,
+                                                 "Message is not found in database. "
+                                                 "Please try with another message. (UC07)")
+            else:
+                return self._reply_error(bot, update,
+                                         "This group is not linked to any chat. (UC06)")
+
         self.logger.debug("Destination chat = %s", assoc)
         channel, uid = assoc.split('.', 2)
         if channel not in self.slaves:
             return self._reply_error(bot, update, "Internal error: Channel not found.")
+
         try:
             m = EFBMsg(self)
             m.uid = "%s.%s" % (update.message.chat.id, update.message.message_id)

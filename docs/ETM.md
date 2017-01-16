@@ -78,6 +78,7 @@ In a nutshell, ETM offers the following commands, you can also send it to BotFat
 
 ```
 link - Link a remote chat to a group.
+unlink_all - Unlink all remote chats from a group.
 chat - Generate a chat head.
 recog - Recognize a speech by replying to it.
 extra - Access extra functionalities.
