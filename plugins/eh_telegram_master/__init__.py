@@ -100,11 +100,11 @@ class TelegramChannel(EFBChannel):
         super().__init__(queue)
         self.slaves = slaves
         try:
-            self.bot = telegram.ext.Updater(config.eh_telegram_master['token'])
+            self.bot = telegram.ext.Updater(getattr(config, self.channel_id)['token'])
         except (AttributeError, KeyError):
             raise ValueError("Token is not properly defined. Please define it in `config.py`.")
         mimetypes.init()
-        self.admins = config.eh_telegram_master['admins']
+        self.admins = getattr(config, self.channel_id)['admins']
         self.logger = logging.getLogger("plugins.%s.TelegramChannel" % self.channel_id)
         self.me = self.bot.bot.get_me()
         self.bot.dispatcher.add_handler(WhitelistHandler(self.admins))
@@ -206,11 +206,11 @@ class TelegramChannel(EFBChannel):
                 msg.member = {"uid": -1, "name": "", "alias": ""}
 
             # Generate chat text template & Decide type target
-            tg_dest = config.eh_telegram_master['admins'][0]
+            tg_dest = getattr(config, self.channel_id)['admins'][0]
             self.logger.debug("%s, process_msg_step_1, tg_dest=%s", xid, tg_dest)
             if msg.source == MsgSource.Group:
-                msg_prefix = msg.member['alias'] if msg.member['name'] == msg.member['alias'] else "%s (%s)" % (
-                    msg.member['alias'], msg.member['name'])
+                msg_prefix = msg.member['name'] if msg.member['name'] == msg.member['alias'] or not msg.member['name'] \
+                    else "%s (%s)" % (msg.member['alias'], msg.member['name'])
             if tg_chat:  # if this chat is linked
                 tg_dest = int(tg_chat.split('.')[1])
                 tg_chat_assoced = True
@@ -220,13 +220,13 @@ class TelegramChannel(EFBChannel):
                     msg_template = "%s"
             elif msg.source == MsgSource.User:
                 emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
-                name_prefix = msg.origin["alias"] if msg.origin["alias"] == msg.origin["name"] else "%s (%s)" % (
-                    msg.origin["alias"], msg.origin["name"])
+                name_prefix = msg.origin["name"] if msg.origin["alias"] == msg.origin["name"] or not msg.origin['alias'] \
+                    else "%s (%s)" % (msg.origin["alias"], msg.origin["name"])
                 msg_template = "%s %s:\n%s" % (emoji_prefix, name_prefix, "%s")
             elif msg.source == MsgSource.Group:
                 emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
-                name_prefix = msg.origin["alias"] if msg.origin["alias"] == msg.origin["name"] else "%s (%s)" % (
-                    msg.origin["alias"], msg.origin["name"])
+                name_prefix = msg.origin["name"] if msg.origin["alias"] == msg.origin["name"] or not msg.origin['alias'] \
+                    else "%s (%s)" % (msg.origin["alias"], msg.origin["name"])
                 msg_template = "%s %s [%s]:\n%s" % (emoji_prefix, msg_prefix, name_prefix, "%s")
             elif msg.source == MsgSource.System:
                 msg_template = "System Message: %s"
@@ -283,9 +283,9 @@ class TelegramChannel(EFBChannel):
                 try:
                     tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % text, parse_mode="HTML")
                 except telegram.error.BadRequest:
-                    text = "🔗 %s\n%s\n\n%s" % (html.escape(msg.attributes["title"]),
-                                                html.escape(msg.attributes["description"]),
-                                                urllib.parse.quote(msg.attributes["url"], safe="?=&#:/"))
+                    text = "🔗 %s\n%s\n\n%s" % (html.escape(msg.attributes["title"] or ""),
+                                                html.escape(msg.attributes["description"] or ""),
+                                                urllib.parse.quote(msg.attributes["url"] or "", safe="?=&#:/"))
                     if msg.text:
                         text += "\n\n" + msg.text
                     tg_msg = self.bot.bot.sendMessage(tg_dest, text=msg_template % msg.text)
@@ -1028,11 +1028,11 @@ class TelegramChannel(EFBChannel):
             return self._reply_error(bot, update,
                                      "Reply only to a voice with this command to recognize it. (RS02)")
         try:
-            baidu_speech = speech.BaiduSpeech(config.eh_telegram_master['baidu_speech_api'])
+            baidu_speech = speech.BaiduSpeech(getattr(config, self.channel_id)['baidu_speech_api'])
         except:
             baidu_speech = speechNotImplemented()
         try:
-            bing_speech = speech.BingSpeech(config.eh_telegram_master['bing_speech_api'])
+            bing_speech = speech.BingSpeech(getattr(config, self.channel_id)['bing_speech_api'])
         except:
             bing_speech = speechNotImplemented()
         if len(args) > 0 and (args[0][:2] not in ['zh', 'en', 'ja'] and args[0] not in bing_speech.lang_list):
@@ -1115,4 +1115,4 @@ class TelegramChannel(EFBChannel):
         Returns:
             Value for the flag.
         """
-        return config.eh_telegram_master.get('flags', dict()).get(key, value)
+        return getattr(config, self.channel_id).get('flags', dict()).get(key, value)

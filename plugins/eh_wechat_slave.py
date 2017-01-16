@@ -4,6 +4,7 @@ import mimetypes
 import os
 import re
 import time
+import html
 from binascii import crc32
 
 import itchat
@@ -19,7 +20,7 @@ from utils import extra
 
 def incomeMsgMeta(func):
     def wcFunc(self, msg, isGroupChat=False):
-        logger = logging.getLogger("plugins.eh_wechat_slave.incomeMsgMeta")
+        logger = logging.getLogger("plugins.%s.incomeMsgMeta" % self.channel_id)
         mobj = func(self, msg, isGroupChat)
         mobj.uid = msg.get("MsgId", time.time())
         me = msg['FromUserName'] == itchat.get_friends()[0]['UserName']
@@ -45,16 +46,16 @@ def incomeMsgMeta(func):
                 'name': FromUser['NickName'],
                 'alias': FromUser['RemarkName'] or FromUser['NickName'],
                 'uid': self.get_uid(UserName=msg.get('FromUserName', None),
-                                    NickName=FromUser.get('NickName', None),
-                                    alias=FromUser.get('RemarkName', None),
+                                    NickName=html.unescape(FromUser.get('NickName', "s")),
+                                    alias=html.unescape(FromUser.get('RemarkName', "s")),
                                     Uin=FromUser.get('Uin', None))
             }
             mobj.member = {
                 'name': member['NickName'],
                 'alias': member['DisplayName'],
                 'uid': self.get_uid(UserName=msg.get('ActualUserName', None),
-                                    NickName=member.get('NickName', None),
-                                    alias=member.get('DisplayName', None),
+                                    NickName=html.unescape(member.get('NickName', "")),
+                                    alias=html.unescape(member.get('DisplayName', "")),
                                     Uin=member.get('Uin', None))
             }
             logger.debug("origin: %s\nmember: %s\n", mobj.origin, mobj.member)
@@ -66,8 +67,8 @@ def incomeMsgMeta(func):
                 'name': FromUser['NickName'],
                 'alias': FromUser['RemarkName'] or FromUser['NickName'],
                 'uid': self.get_uid(UserName=msg.get('FromUserName', None),
-                                    NickName=FromUser.get('NickName', None),
-                                    alias=FromUser.get('RemarkName', None),
+                                    NickName=html.unescape(FromUser.get('NickName', "")),
+                                    alias=html.unescape(FromUser.get('RemarkName', "")),
                                     Uin=FromUser.get('Uin', None))
             }
         mobj.destination = {
@@ -96,7 +97,7 @@ class WeChatChannel(EFBChannel):
     channel_type = ChannelType.Slave
     supported_message_types = {MsgType.Text, MsgType.Sticker, MsgType.Image, MsgType.File, MsgType.Video, MsgType.Link}
     users = {}
-    logger = logging.getLogger("plugins.eh_wechat_slave.WeChatChannel")
+    logger = logging.getLogger("plugins.%s.WeChatChannel" % channel_id)
 
     SYSTEM_USERNAMES = ["filehelper", "newsapp", "fmessage", "weibo", "qqmail", "fmessage", "tmessage", "qmessage",
                          "qqsync", "floatbottle", "lbsapp", "shakeapp", "medianote", "qqfriend", "readerapp",
@@ -105,7 +106,11 @@ class WeChatChannel(EFBChannel):
 
     def __init__(self, queue):
         super().__init__(queue)
-        itchat.auto_login(enableCmdQR=2, hotReload=True, exitCallback=self.exit_callback, qrCallback=self.console_qr_code)
+        itchat.auto_login(enableCmdQR=2,
+                          hotReload=True,
+                          statusStorageDir="storage/%s.pkl" % self.channel_id,
+                          exitCallback=self.exit_callback,
+                          qrCallback=self.console_qr_code)
         self.logger.info("EWS Inited!!!\n---")
         itchat.set_logging(showOnCmd=False)
 
@@ -186,7 +191,7 @@ class WeChatChannel(EFBChannel):
         for i in fallback_order:
             if data[i.lower()]:
                 return str(crc32(data[i.lower()].encode("utf-8")))
-        return str(crc32(data[fallback_order[-1]].encode("utf-8")))
+        return str(crc32(data[fallback_order[-1].lower()].encode("utf-8")))
 
     def get_UserName(self, uid, refresh=False):
         """
@@ -609,10 +614,13 @@ class WeChatChannel(EFBChannel):
                 r = itchat.send_image(msg.path, UserName)
                 if msg.text:
                     itchat.send_msg(msg.text, UserName)
+                os.remove(msg.path)
             self.logger.info('Image sent with result %s', r)
-            os.remove(msg.path)
             if not msg.mime == "image/gif":
-                os.remove(msg.path[:-4])
+                try:
+                    os.remove('.'.join(msg.path.split('.')[:-1]))
+                except FileNotFoundError:
+                    pass
         elif msg.type in [MsgType.File, MsgType.Video]:
             self.logger.info("Sending file to WeChat\nFileName: %s\nPath: %s", msg.text, msg.path)
             r = itchat.send_file(msg.path, UserName)
@@ -791,4 +799,4 @@ class WeChatChannel(EFBChannel):
         Returns:
             Value for the flag.
         """
-        return getattr(config, "eh_wechat_slave", dict()).get('flags', dict()).get(key, value)
+        return getattr(config, self.channel_id, dict()).get('flags', dict()).get(key, value)
