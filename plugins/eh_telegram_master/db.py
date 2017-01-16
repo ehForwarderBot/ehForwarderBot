@@ -64,12 +64,12 @@ def _migrate(i):
 def add_chat_assoc(master_uid, slave_uid):
     """
     Add chat associations (chat links).
+    One Master channel with many Slave channel.
 
     Args:
         master_uid (str): Master channel UID ("%(chat_id)s")
         slave_uid (str): Slave channel UID ("%(channel_id)s.%(chat_id)s")
     """
-    remove_chat_assoc(master_uid=master_uid)
     remove_chat_assoc(slave_uid=slave_uid)
     return ChatAssoc.create(master_uid=master_uid, slave_uid=slave_uid)
 
@@ -104,15 +104,19 @@ def get_chat_assoc(master_uid=None, slave_uid=None):
         slave_uid (str): Slave channel UID ("%(channel_id)s.%(chat_id)s")
 
     Returns:
-        str: The counterpart ID.
+        list: The counterpart ID.
     """
     try:
         if bool(master_uid) == bool(slave_uid):
             raise ValueError("Only one parameter is to be provided.")
         elif master_uid:
-            return ChatAssoc.get(ChatAssoc.master_uid == master_uid).slave_uid
+            slaves = ChatAssoc.select().where(ChatAssoc.master_uid == master_uid)
+            if len(slaves)>0: return [i.slave_uid for i in slaves]
+            else: return None
         elif slave_uid:
-            return ChatAssoc.get(ChatAssoc.slave_uid == slave_uid).master_uid
+            masters = ChatAssoc.select().where(ChatAssoc.slave_uid== slave_uid)
+            if len(masters)>0: return [i.master_uid for i in masters]
+            else: return None
     except DoesNotExist:
         return None
 

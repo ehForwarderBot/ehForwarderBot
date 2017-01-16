@@ -199,7 +199,13 @@ class TelegramChannel(EFBChannel):
             self.logger.debug("%s, Msg text: %s", xid, msg.text)
             self.logger.debug("%s, process_msg_step_0", xid)
             chat_uid = "%s.%s" % (msg.channel_id, msg.origin['uid'])
-            tg_chat = db.get_chat_assoc(slave_uid=chat_uid) or False
+            tg_chats = db.get_chat_assoc(slave_uid=chat_uid) or False
+            tg_chat = None
+            multi_slaves = False
+            if tg_chats:
+                tg_chat = tg_chats[0]
+                slaves = db.get_chat_assoc(master_uid=tg_chat) or False
+                if slaves and len(slaves) > 1: multi_slaves = True
             msg_prefix = ""
             tg_chat_assoced = False
             if not msg.source == MsgSource.Group:
@@ -214,6 +220,7 @@ class TelegramChannel(EFBChannel):
             if tg_chat:  # if this chat is linked
                 tg_dest = int(tg_chat.split('.')[1])
                 tg_chat_assoced = True
+            if tg_chat and not multi_slaves:
                 if msg_prefix:  # if group message
                     msg_template = "%s:\n%s" % (msg_prefix, "%s")
                 else:
@@ -781,17 +788,22 @@ class TelegramChannel(EFBChannel):
         """
         self.logger.debug("----\nMsg from tg user:\n%s", update.message.to_dict())
         target = None
+        multi_slaves = False
         if update.message.chat.id != update.message.from_user.id:  # from group
-            assoc = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
-            if getattr(update.message, "reply_to_message", None):
-                try:
-                    targetlog = db.get_msg_log(
-                        "%s.%s" % (update.message.reply_to_message.chat.id, update.message.reply_to_message.message_id))
-                    target = targetlog.slave_origin_uid
-                    targetChannel, targetUid = target.split('.', 2)
-                except:
-                    return self._reply_error(bot, update, "Unknown recipient (UC03).")
-        elif (update.message.chat.id == update.message.from_user.id) and getattr(update.message, "reply_to_message",
+            assocs = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
+            assoc = None
+            if len(assocs) == 1 : assoc = assocs[0]
+            elif len(assocs) > 1 : multi_slaves = True
+        if getattr(update.message, "reply_to_message", None) and assoc and not multi_slaves:
+            try:
+                targetlog = db.get_msg_log(
+                    "%s.%s" % (update.message.reply_to_message.chat.id, update.message.reply_to_message.message_id))
+                target = targetlog.slave_origin_uid
+                targetChannel, targetUid = target.split('.', 2)
+            except:
+                return self._reply_error(bot, update, "Unknown recipient (UC03).")
+        elif assoc and not multi_slaves: pass
+        elif ((update.message.chat.id == update.message.from_user.id) or multi_slaves) and getattr(update.message, "reply_to_message",
                                                                                  None):  # reply to user
             assoc = db.get_msg_log("%s.%s" % (
                 update.message.reply_to_message.chat.id, update.message.reply_to_message.message_id)).slave_origin_uid
