@@ -100,6 +100,8 @@ extra - Access extra functionalities.
     * Can read all messages send from the related remote chat;
     * May NOT send message on your behalf.
 
+Also, you can send `/unlink_all` to a group to unlink all remote chats from it.
+
 ### Send a message
 #### Send to a linked chat
 You can send message as you do in a normal Telegram chat.
