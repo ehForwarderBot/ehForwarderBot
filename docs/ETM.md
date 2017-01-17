@@ -222,3 +222,5 @@ eh_telegram_master = {
   Number of chats shown in when choosing for `/chat` and `/link` command. An overly large value may lead to malfunction of such commands.
 * `text_as_html` _(bool)_ [Default: `False`]  
   Parse all text messages as Telegram HTML. Tags supported: `a`, `b`, `strong`, `i`, `em`, `code`, `pre`.
+* `multiple_slave_chats` _(bool)_  [Default: `False`]  
+  Link more than one remote chat to one Telegram group. Send and reply as you do with an unlinked chat.

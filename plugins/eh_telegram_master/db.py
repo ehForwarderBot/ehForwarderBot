@@ -61,7 +61,7 @@ def _migrate(i):
         return False
 
 
-def add_chat_assoc(master_uid, slave_uid):
+def add_chat_assoc(master_uid, slave_uid, multiple_slave=False):
     """
     Add chat associations (chat links).
     One Master channel with many Slave channel.
@@ -70,6 +70,8 @@ def add_chat_assoc(master_uid, slave_uid):
         master_uid (str): Master channel UID ("%(chat_id)s")
         slave_uid (str): Slave channel UID ("%(channel_id)s.%(chat_id)s")
     """
+    if not multiple_slave:
+        remove_chat_assoc(master_uid=master_uid)
     remove_chat_assoc(slave_uid=slave_uid)
     return ChatAssoc.create(master_uid=master_uid, slave_uid=slave_uid)
 
@@ -197,7 +199,7 @@ def get_msg_log(master_msg_id):
     """Get message log by message ID.
 
     Args:
-        master_msg_id (str): Telegram msessage ID ("%(chat_id)s.%(msg_id)s")
+        master_msg_id (str): Telegram message ID ("%(chat_id)s.%(msg_id)s")
 
     Returns:
         MsgLog|None: The queried entry, None if not exist.

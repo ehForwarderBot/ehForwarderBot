@@ -1049,7 +1049,9 @@ class TelegramChannel(EFBChannel):
             chat_display_name = data["chat_display_name"]
             slave_channel, slave_chat_uid = chat_uid.split('.', 1)
             if slave_channel in self.slaves:
-                db.add_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id), slave_uid=chat_uid)
+                db.add_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id),
+                                  slave_uid=chat_uid,
+                                  multiple_slave=self._flag("multiple_slave_chats", False))
                 txt = "Chat '%s' is now linked." % chat_display_name
                 unlink_btn = telegram.InlineKeyboardMarkup(
                     [[telegram.InlineKeyboardButton("Unlink", callback_data="unlink 0")]])
