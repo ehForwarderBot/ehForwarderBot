@@ -409,7 +409,7 @@ class TelegramChannel(EFBChannel):
         `offset` value.
 
         Args:
-            storage_id (int): Message_stroage ID for generating the buttons list.
+            storage_id (str): Message_storage ID for generating the buttons list.
             offset (int): Offset for pagination
 
         Returns:
@@ -632,7 +632,7 @@ class TelegramChannel(EFBChannel):
                                    parse_mode=telegram.ParseMode.MARKDOWN,
                                    reply_to_message_id=update.message.message_id)
         assocs = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
-        if len(assoc) < 1:
+        if len(assocs) < 1:
             return bot.sendMessage(update.message.chat.id, "No chat is linked to the group.",
                                    reply_to_message_id=update.message.message_id)
         else:
@@ -811,10 +811,10 @@ class TelegramChannel(EFBChannel):
         self.logger.debug("----\nMsg from tg user:\n%s", update.message.to_dict())
         target = None
         multi_slaves = False
+        assoc = None
 
         if update.message.chat.id != update.message.from_user.id:  # from group
             assocs = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
-            assoc = None
             if len(assocs) == 1:
                 assoc = assocs[0]
             elif len(assocs) > 1:
@@ -834,7 +834,7 @@ class TelegramChannel(EFBChannel):
                                              "Message is not found in database. Please try with another one. (UC03)")
             else:
                 return self._reply_error(bot, update,
-                                         "Please reply to a incoming message. (UC04)")
+                                         "Please reply to an incoming message. (UC04)")
         else:  # group chat
             if multi_slaves:
                 if reply_to:
@@ -849,14 +849,14 @@ class TelegramChannel(EFBChannel):
                 else:
                     return self._reply_error(bot, update,
                                              "This group is linked to multiple remote chats. "
-                                             "Please reply to a incoming message. "
+                                             "Please reply to an incoming message. "
                                              "To unlink all remote chats, please send /unlink_all . (UC06)")
             elif assoc:
                 if reply_to:
                     try:
                         targetlog = db.get_msg_log(
                             "%s.%s" % (
-                            update.message.reply_to_message.chat.id, update.message.reply_to_message.message_id))
+                                update.message.reply_to_message.chat.id, update.message.reply_to_message.message_id))
                         target = targetlog.slave_origin_uid
                         targetChannel, targetUid = target.split('.', 1)
                     except:
@@ -958,7 +958,7 @@ class TelegramChannel(EFBChannel):
             elif mtype == TGMsgType.Audio:
                 m.type = MsgType.Audio
                 m.text = "%s - %s\n%s" % (
-                update.message.audio.title, update.message.audio.perfomer, update.message.caption)
+                    update.message.audio.title, update.message.audio.perfomer, update.message.caption)
                 tg_file_id = update.message.audio.file_id
                 m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
             elif mtype == TGMsgType.Voice:
@@ -1170,8 +1170,6 @@ class TelegramChannel(EFBChannel):
         Print error to console, Triggered by python-telegram-bot error callback.
         """
         self.logger.warning('ERRORRR! Update %s caused error %s' % (update, error))
-        import pprint
-        pprint.pprint(error)
 
     def _flag(self, key, value):
         """
