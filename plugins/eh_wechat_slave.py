@@ -14,7 +14,7 @@ from PIL import Image
 
 import config
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
-from channelExceptions import EFBMessageTypeNotSupported, EFBMessageError
+from channelExceptions import EFBMessageTypeNotSupported, EFBMessageError, EFBChatNotFound
 from utils import extra
 
 
@@ -209,7 +209,7 @@ class WeChatChannel(EFBChannel):
         r = self.search_user(uid=uid, refresh=refresh)
         if r:
             return r[0]['UserName']
-        return False
+        return None
 
     def search_user(self, UserName=None, uid=None, uin=None, name=None, ActualUserName=None, refresh=False):
         """
@@ -580,6 +580,8 @@ class WeChatChannel(EFBChannel):
             EFBMessageTypeNotSupported: Raised when message type is not supported by the channel.
         """
         UserName = self.get_UserName(msg.destination['uid'])
+        if UserName is None or UserName == False:
+            raise EFBChatNotFound
         self.logger.info("Sending message to WeChat:\n"
                          "Target-------\n"
                          "uid: %s\n"

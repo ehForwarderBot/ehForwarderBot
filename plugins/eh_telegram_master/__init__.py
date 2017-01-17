@@ -985,7 +985,7 @@ class TelegramChannel(EFBChannel):
 
             self.slaves[channel].send_message(m)
         except EFBChatNotFound:
-            return self._reply_error(bot, update, "Internal error: Chat not found in channel. (CN01)")
+            return self._reply_error(bot, update, "Chat is not reachable from the slave channel. (CN01)")
         except EFBMessageTypeNotSupported:
             return self._reply_error(bot, update, "Message type not supported. (MN01)")
         except EFBMessageError as e:
