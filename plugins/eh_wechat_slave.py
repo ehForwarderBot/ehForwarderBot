@@ -595,13 +595,30 @@ class WeChatChannel(EFBChannel):
                 if msg.target['type'] == TargetType.Member:
                     msg.text = "@%s\u2005 %s" % (msg.target['target'].member['alias'], msg.text)
                 elif msg.target['type'] == TargetType.Message:
-                    msg.text = "@%s\u2005 「%s」\n\n%s" % (msg.target['target'].member['alias'], msg.target['target'].text, msg.text)
+                    maxl = self._flag("max_quote_length", -1)
+                    qt_txt = "%s" % msg.target['target'].text
+                    if maxl > 0:
+                        tgt_text = qt_txt[:maxl]
+                        if len(qt_txt) >= maxl:
+                            tgt_text += "…"
+                        tgt_text = "「%s」" % tgt_text
+                    elif maxl < 0:
+                        tgt_text = "「%s」" % qt_txt
+                    else:
+                        tgt_text = ""
+                    msg.text = "@%s\u2005 %s\n\n%s" % (msg.target['target'].member['alias'], tgt_text, msg.text)
             r = itchat.send(msg.text, UserName)
         elif msg.type in [MsgType.Image, MsgType.Sticker]:
-            self.logger.info("Image/Sticker %s", msg.type)
+            self.logger.info("Image/Sticker %s, %s", msg.type, msg.path)
             if msg.mime in ["image/gif", "image/jpeg"]:
-                r = itchat.send_image(msg.path, UserName)
-                os.remove(msg.path)
+                try:
+                    if os.path.getsize(msg.path) > 5*2**20:
+                        raise EFBMessageError("Image sent is too large. (IS01)")
+                    self.logger.debug("Sending %s (image) to ItChat.", msg.path)
+                    r = itchat.send_image(msg.path, UserName)
+                    os.remove(msg.path)
+                except FileNotFoundError:
+                    pass
             else:  # Convert Image format
                 img = Image.open(msg.path)
                 try:
@@ -614,7 +631,7 @@ class WeChatChannel(EFBChannel):
                 img.save("%s.gif" % msg.path, transparency=255)
                 msg.path = "%s.gif" % msg.path
                 self.logger.info('Image converted to GIF: %s', msg.path)
-                self.logger.info('Sending Image...')
+                self.logger.debug("Sending %s (image) to ItChat.", msg.path)
                 r = itchat.send_image(msg.path, UserName)
                 if msg.text:
                     itchat.send_msg(msg.text, UserName)

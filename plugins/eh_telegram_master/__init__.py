@@ -200,13 +200,13 @@ class TelegramChannel(EFBChannel):
             self.logger.debug("%s, Msg text: %s", xid, msg.text)
             self.logger.debug("%s, process_msg_step_0", xid)
             chat_uid = "%s.%s" % (msg.channel_id, msg.origin['uid'])
-            tg_chats = db.get_chat_assoc(slave_uid=chat_uid) or False
+            tg_chats = db.get_chat_assoc(slave_uid=chat_uid)
             tg_chat = None
             multi_slaves = False
 
             if tg_chats:
                 tg_chat = tg_chats[0]
-                slaves = db.get_chat_assoc(master_uid=tg_chat) or False
+                slaves = db.get_chat_assoc(master_uid=tg_chat)
                 if slaves and len(slaves) > 1:
                     multi_slaves = True
 
