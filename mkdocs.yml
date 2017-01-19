@@ -16,6 +16,7 @@ pages:
     - 'Official plugins':
         - 'EFB Telegram Master': 'ETM.md'
         - 'EFB WeChat Slave': 'EWS.md'
+    - 'Support EFB': 'donations.md'
 theme: readthedocs
 repo_url: 'https://github.com/blueset/ehforwarderbot'
 markdown_extensions:

@@ -1,9 +1,11 @@
 # EH Forwarder Bot
 
-![Python 3.x](https://img.shields.io/badge/Python-3.x-blue.svg) [![Gitter](https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg)](https://gitter.im/blueset/ehForwarderBot)
+![Python 3.x](https://img.shields.io/badge/Python-3.x-blue.svg)
+[![Gitter](https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg)](https://gitter.im/blueset/ehForwarderBot)
 [![Telegram support group](https://img.shields.io/badge/Chat-on%20Telegram-blue.svg)](https://telegram.me/efbsupport)
 [![Docs: Stable version](https://readthedocs.org/projects/ehforwarderbot/badge/?version=latest)](https://ehforwarderbot.readthedocs.io/en/latest/)
 [![Docs: Development version version](https://readthedocs.org/projects/ehforwarderbot/badge/?version=dev)](https://ehforwarderbot.readthedocs.io/en/dev/)
+[![tag](https://img.shields.io/github/tag/blueset/ehforwarderbot.svg)](https://github.com/blueset/ehForwarderBot/releases)
 
 ![EFB](https://images.1a23.com/upload/images/SPET.png)
 

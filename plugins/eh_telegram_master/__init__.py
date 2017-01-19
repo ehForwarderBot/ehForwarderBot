@@ -309,35 +309,37 @@ class TelegramChannel(EFBChannel):
                                  os.stat(msg.path).st_size, msg.mime)
                 if os.stat(msg.path).st_size == 0:
                     os.remove(msg.path)
-                    return self.bot.bot.sendMessage(tg_dest,
+                    tg_msg = self.bot.bot.sendMessage(tg_dest,
                                                     msg_template % ("Error: Empty %s received. (MS01)" % msg.type))
-                if not msg.text:
-                    if msg.type == MsgType.Image:
-                        msg.text = "sent a picture."
-                    elif msg.type == MsgType.Sticker:
-                        msg.text = "sent a sticker."
-                if msg.mime == "image/gif":
-                    tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
                 else:
-                    try:
-                        tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template % msg.text)
-                    except telegram.error.BadRequest:
+                    if not msg.text:
+                        if msg.type == MsgType.Image:
+                            msg.text = "sent a picture."
+                        elif msg.type == MsgType.Sticker:
+                            msg.text = "sent a sticker."
+                    if msg.mime == "image/gif":
                         tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
-                os.remove(msg.path)
+                    else:
+                        try:
+                            tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template % msg.text)
+                        except telegram.error.BadRequest:
+                            tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
+                    os.remove(msg.path)
                 self.logger.debug("%s, process_msg_step_3_3", xid)
             elif msg.type == MsgType.File:
                 if os.stat(msg.path).st_size == 0:
                     os.remove(msg.path)
-                    return self.bot.bot.sendMessage(tg_dest,
+                    tg_msg = self.bot.bot.sendMessage(tg_dest,
                                                     msg_template % ("Error: Empty %s received. (MS02)" % msg.type))
-                if not msg.text:
-                    file_name = os.path.basename(msg.path)
-                    msg.text = "sent a file."
                 else:
-                    file_name = msg.text
-                tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text,
-                                                   filename=file_name)
-                os.remove(msg.path)
+                    if not msg.text:
+                        file_name = os.path.basename(msg.path)
+                        msg.text = "sent a file."
+                    else:
+                        file_name = msg.text
+                    tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text,
+                                                       filename=file_name)
+                    os.remove(msg.path)
             elif msg.type == MsgType.Audio:
                 if os.stat(msg.path).st_size == 0:
                     os.remove(msg.path)
@@ -387,7 +389,7 @@ class TelegramChannel(EFBChannel):
             self.logger.debug("%s, process_msg_step_4", xid)
             if msg.source in (MsgSource.User, MsgSource.Group):
                 msg_log = {"master_msg_id": "%s.%s" % (tg_msg.chat.id, tg_msg.message_id),
-                           "text": msg.text,
+                           "text": msg.text or "Sent a %s." % msg.type,
                            "msg_type": msg.type,
                            "sent_to": "Master",
                            "slave_origin_uid": "%s.%s" % (msg.channel_id, msg.origin['uid']),
@@ -1169,9 +1171,20 @@ class TelegramChannel(EFBChannel):
 
     def error(self, bot, update, error):
         """
-        Print error to console, Triggered by python-telegram-bot error callback.
+        Print error to console, and send error message to first admin.
+        Triggered by python-telegram-bot error callback.
         """
-        self.logger.warning('ERRORRR! Update %s caused error %s' % (update, error))
+        if "Conflict: terminated by other long poll or webhook (409)" in str(error):
+            msg = 'Please immediately turn off all EFB instances.\nAnother bot instance or web-hook detected.'
+            self.logger.error(msg)
+            bot.sendMessage(getattr(config, self.channel_id)['admins'][0], msg)
+        else:
+            bot.sendMessage(getattr(config, self.channel_id)['admins'][0],
+                            "EFB Telegram Master channel encountered error <code>%s</code> "
+                            "caused by update <code>%s</code>.\n\n"
+                            "Report issue: <a href=\"https://github.com/blueset/ehForwarderBot/issues/new\">GitHub Issue Page</a>" %
+                            (html.escape(error), html.escape(update)))
+            self.logger.error('ERROR! Update %s caused error %s' % (update, error))
 
     def _flag(self, key, value):
         """
