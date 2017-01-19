@@ -1,6 +1,6 @@
 # EFB WeChat Slave Channel
 
-EFB WeChat Slave Channel is a slave channel for EFB based on [ItChat](https://github.com/littlecodersh/ItChat) and WeChat Web <span style="font-size: 0.5em;">(rev.eng.)</span> API.
+EFB WeChat Slave (EWS) is a slave channel for EFB based on [ItChat](https://github.com/littlecodersh/ItChat) and WeChat Web <span style="font-size: 0.5em;">(rev.eng.)</span> API.
 
 ## Specs
 * Unique name: `eh_wechat_slave`
@@ -92,5 +92,15 @@ eh_wechat_slave = {
 }
 ```
 
-* `refresh_friends` _(bool)_  [Default: False]
+* `refresh_friends` _(bool)_  [Default: `False`]  
   Always refresh chat lists when asked. (Except from the extra function.)
+* `uid_order` _(list of str)_  [Default: `["NickName"]`]  
+  Fallback order of resolving `uid` from WeChat user info. Highest priority goes to index 0. The list **MUST** be non empty with only values below, and the last element associate to a rather stable and available value for most chats, if not all of them.  
+  Available values: _(U, G, M means the value is available to users, groups, and group members respectively)_
+    * `"NickName"`: [UGM] Name of the user/group
+    * `"alias"`: [UM] Alias of the user
+    * `"uin"`: [UG] WeChat Unique Identifier for all chats, **Not always available**.
+* `extra_links_on_message` _(bool)_  [Default: `False`]  
+  List out all other messages (more than first one) for link messages with more than one link from MPS accounts.
+* `max_quote_length` _(int)_  [Default: `-1`]  
+  Maximum length of text for quotation messages. Set to 0 to fully disable quotation. Set to -1 to always quote full message.

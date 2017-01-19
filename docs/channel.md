@@ -23,6 +23,9 @@ Type of the channel, choose between
 * `ChannelType.Master`
 * `ChannelType.Slave`
 
+**supported_message_types** (`set` of `MsgType` constant)  
+A list of supported message types to send **to** the channel.
+
 **queue** (queue.Queue)  
 Global message queue initialized by the parental `__init__` method. This queue is used to deliver messages from slave channels to the master channel.
 
@@ -58,6 +61,10 @@ Raises:
 * `EFBChatNotFound`
 * `EFBMessageNotFound`
 * `EFBMessageTypeNotSupported`
+* `EFBMessageError`
+
+Returns:  
+The original EFBMsg object `msg` with `uid` property defined.
 
 **get_chats(self)** _(for slave channels)_
 Returns a `list` of `dict`s for available chats in the channel. Each `dict` should be like:

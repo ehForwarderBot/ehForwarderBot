@@ -61,15 +61,17 @@ def _migrate(i):
         return False
 
 
-def add_chat_assoc(master_uid, slave_uid):
+def add_chat_assoc(master_uid, slave_uid, multiple_slave=False):
     """
     Add chat associations (chat links).
+    One Master channel with many Slave channel.
 
     Args:
         master_uid (str): Master channel UID ("%(chat_id)s")
         slave_uid (str): Slave channel UID ("%(channel_id)s.%(chat_id)s")
     """
-    remove_chat_assoc(master_uid=master_uid)
+    if not multiple_slave:
+        remove_chat_assoc(master_uid=master_uid)
     remove_chat_assoc(slave_uid=slave_uid)
     return ChatAssoc.create(master_uid=master_uid, slave_uid=slave_uid)
 
@@ -104,17 +106,25 @@ def get_chat_assoc(master_uid=None, slave_uid=None):
         slave_uid (str): Slave channel UID ("%(channel_id)s.%(chat_id)s")
 
     Returns:
-        str: The counterpart ID.
+        list: The counterpart ID.
     """
     try:
         if bool(master_uid) == bool(slave_uid):
             raise ValueError("Only one parameter is to be provided.")
         elif master_uid:
-            return ChatAssoc.get(ChatAssoc.master_uid == master_uid).slave_uid
+            slaves = ChatAssoc.select().where(ChatAssoc.master_uid == master_uid)
+            if len(slaves) > 0:
+                return [i.slave_uid for i in slaves]
+            else:
+                return []
         elif slave_uid:
-            return ChatAssoc.get(ChatAssoc.slave_uid == slave_uid).master_uid
+            masters = ChatAssoc.select().where(ChatAssoc.slave_uid == slave_uid)
+            if len(masters) > 0:
+                return [i.master_uid for i in masters]
+            else:
+                return []
     except DoesNotExist:
-        return None
+        return []
 
 
 def get_last_msg_from_chat(chat_id):
@@ -163,6 +173,7 @@ def add_msg_log(**kwargs):
     slave_origin_display_name = kwargs.get('slave_origin_display_name', None)
     slave_member_uid = kwargs.get('slave_member_uid', None)
     slave_member_display_name = kwargs.get('slave_member_display_name', None)
+    slave_message_uid = kwargs.get('slave_message_uid', None)
     update = kwargs.get('update', False)
     if update:
         msg_log = MsgLog.get(MsgLog.master_msg_id == master_msg_id)
@@ -173,10 +184,12 @@ def add_msg_log(**kwargs):
         msg_log.slave_origin_display_name = slave_origin_display_name
         msg_log.slave_member_uid = slave_member_uid
         msg_log.slave_member_display_name = slave_member_display_name
+        # msg_log.slave_message_uid = slave_message_uid
         msg_log.save()
         return msg_log
     else:
         return MsgLog.create(master_msg_id=master_msg_id,
+                             # slave_message_uid=slave_message_uid
                              text=text,
                              slave_origin_uid=slave_origin_uid,
                              msg_type=msg_type,
@@ -190,7 +203,7 @@ def get_msg_log(master_msg_id):
     """Get message log by message ID.
 
     Args:
-        master_msg_id (str): Telegram msessage ID ("%(chat_id)s.%(msg_id)s")
+        master_msg_id (str): Telegram message ID ("%(chat_id)s.%(msg_id)s")
 
     Returns:
         MsgLog|None: The queried entry, None if not exist.

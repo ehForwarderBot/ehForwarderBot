@@ -78,6 +78,7 @@ In a nutshell, ETM offers the following commands, you can also send it to BotFat
 
 ```
 link - Link a remote chat to a group.
+unlink_all - Unlink all remote chats from a group.
 chat - Generate a chat head.
 recog - Recognize a speech by replying to it.
 extra - Access extra functionalities.
@@ -98,6 +99,8 @@ extra - Access extra functionalities.
 
     * Can read all messages send from the related remote chat;
     * May NOT send message on your behalf.
+
+Also, you can send `/unlink_all` to a group to unlink all remote chats from it.
 
 ### Send a message
 #### Send to a linked chat
@@ -193,7 +196,8 @@ it-IT | - | Italian
 sv-SE | - | Swedish
 
 ## Known issues
-* In rare cases, some messages may take 20 to 35 minutes to be delivered to user. (Upstream library [python-telegram-bot#364](https://github.com/python-telegram-bot/python-telegram-bot/issues/364))
+* In rare cases, some messages may take 20 to 35 minutes to be delivered to user. (Upstream library [python-telegram-bot#364](https://github.com/python-telegram-bot/python-telegram-bot/issues/364), said to be fixed in version 6.)
+* Too often invitation of the bot to groups will trigger Telegram's anti-spam mechanism. If you see "Could not add user, please try again later", you really need to "try again later". No joking.
 
 ## Experimental flags
 The following flags are experimental features, may change, break, or disappear at any time. Use at your own risk.
@@ -209,10 +213,14 @@ eh_telegram_master = {
 }
 ```
 
-* `no_conversion` _(bool)_  [Default: False]
+* `no_conversion` _(bool)_  [Default: `False`]
   Disable audio conversion, send all audio file as is, and let Telegram to handle it.
-* `join_msg_threshold_secs` _(int)_ [Default: 15]  
+* `join_msg_threshold_secs` _(int)_ [Default: `15`]  
   Threshold in seconds for message joining. Messages sent from the same person from the same chat between the threshold time will be joined together.  
   _Only works in linked chats._
-* `chats_per_page` _(int)_ [Default: 10]  
+* `chats_per_page` _(int)_ [Default: `10`]  
   Number of chats shown in when choosing for `/chat` and `/link` command. An overly large value may lead to malfunction of such commands.
+* `text_as_html` _(bool)_ [Default: `False`]  
+  Parse all text messages as Telegram HTML. Tags supported: `a`, `b`, `strong`, `i`, `em`, `code`, `pre`.
+* `multiple_slave_chats` _(bool)_  [Default: `False`]  
+  Link more than one remote chat to one Telegram group. Send and reply as you do with an unlinked chat.

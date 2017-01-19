@@ -17,7 +17,6 @@ import os
 from datetime import datetime
 from functools import partial
 import time
-import argparse
 import signal
 import fcntl
 import subprocess
@@ -27,9 +26,8 @@ try:
 except ImportError:
     import pickle
 
-if sys.version_info.major == 3:
-    raw_input = input
-
+if sys.version_info.major < 3:
+    raise Exception("Python 3.x is required. Your version is %s." % sys.version)
 
 user_home = os.path.expanduser('~')
 dm_home = os.path.join(user_home, '.dm')
@@ -220,7 +218,7 @@ class DM(object):
             notify = 'Stopping EFB Daemon (%d)\n' % len(daemons)
             if quiet is False:
                 notify += 'are you sure? [Y/n]'
-                yn = raw_input(notify)
+                yn = input(notify)
             else:
                 yn = 'Y'
                 print(notify)
@@ -245,7 +243,7 @@ class DM(object):
             notify = 'Restarting EFB daemon (%d)' % len(daemons)
             if quiet is False:
                 notify += 'are you sure? [Y/n]'
-                yn = raw_input(notify)
+                yn = input(notify)
             else:
                 yn = 'Y'
                 print(notify)
@@ -277,7 +275,7 @@ def help():
     print("EFB Daemon Process\n"
           "Usage: %s {start|stop|restart|status|transcript|help} [args_to_EFB]\n\n" % sys.argv[0] +
           "EFB help:")
-    subprocess.call(["python3", "main.py", "-h"])
+    subprocess.call([sys.executable, "main.py", "-h"])
 
 
 def transcript(path, reset=False):
@@ -289,7 +287,7 @@ def transcript(path, reset=False):
          "Press ^C (Control+C on Mac, Ctrl+C otherwise) to hide."]
     w = int(max(len(i) for i in l))
     for i in l:
-        print("\x1b[0;37;41m   %s  \x1b[0m" % i.ljust(w))
+        print("\x1b[0;37;46m   %s  \x1b[0m" % i.ljust(w))
     print()
     try:
         subprocess.call(["tail", "-f", path])
@@ -307,7 +305,7 @@ def main():
     dm = DM()
     efb_args = " ".join(sys.argv[2:])
     if sys.argv[1] == "start":
-        dm.run(cmdline=" ".join(("python3 main.py", efb_args)),
+        dm.run(cmdline=" ".join((sys.executable + " main.py", efb_args)),
                name="EFB",
                logfile="EFB.log")
         transcript(transcript_path, True)
@@ -318,7 +316,7 @@ def main():
     elif sys.argv[1] == "restart":
         kwargs = {"name": "EFB", "quiet": True, "sigkill": True}
         if len(sys.argv) > 2:
-            kwargs["cmd"] = " ".join(("python3 main.py", efb_args))
+            kwargs["cmd"] = " ".join((sys.executable + " main.py", efb_args))
         dm.restart(**kwargs)
         transcript(transcript_path, True)
     elif sys.argv[1] == "transcript":

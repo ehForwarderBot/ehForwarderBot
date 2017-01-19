@@ -1,49 +1,82 @@
-import itchat
-import re
-import xmltodict
-import logging
-import os
 import io
-import time
-import magic
+import logging
 import mimetypes
-import config
-from PIL import Image
+import os
+import re
+import time
+import html
 from binascii import crc32
+
+import itchat
+import magic
+import xmltodict
+from PIL import Image
+
+import config
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
+from channelExceptions import EFBMessageTypeNotSupported, EFBMessageError, EFBChatNotFound
 from utils import extra
-from channelExceptions import EFBMessageTypeNotSupported
+
 
 def incomeMsgMeta(func):
     def wcFunc(self, msg, isGroupChat=False):
+        logger = logging.getLogger("plugins.%s.incomeMsgMeta" % self.channel_id)
         mobj = func(self, msg, isGroupChat)
-        FromUser = self.search_user(UserName=msg['FromUserName'])[0] or {"NickName": "User error. (UE01)", "Alias": "User error. (UE01)"}
+        mobj.uid = msg.get("MsgId", time.time())
+        me = msg['FromUserName'] == itchat.get_friends()[0]['UserName']
+        logger.debug("me, %s", me)
+        if me:
+            msg['FromUserName'], msg['ToUserName'] = msg['ToUserName'], msg['FromUserName']
+        FromUser = self.search_user(UserName=msg['FromUserName']) or \
+                   [{"NickName": "Chat not found. (UE01)", "RemarkName": "Chat not found. (UE01)", "Uin": 0}]
+        FromUser = FromUser[0]
+        logger.debug("From user, %s", FromUser)
         if isGroupChat:
-            member = self.search_user(UserName=msg['FromUserName'], ActualUserName=msg['ActualUserName'])[0]['MemberList'][0]
+            logger.debug("groupchat")
+            if me:
+                msg['ActualUserName'] = msg['ToUserName']
+                member = {"NickName": itchat.get_friends()[0]['NickName'], "DisplayName": "You", "Uin": itchat.get_friends()[0]['Uin']}
+            else:
+                logger.debug("search_user")
+                member = self.search_user(UserName=msg['FromUserName'], ActualUserName=msg['ActualUserName'])[0]['MemberList'][0]
+                logger.debug("search_user.done")
             mobj.source = MsgSource.Group
+            logger.debug("Group. member: %s", member)
             mobj.origin = {
                 'name': FromUser['NickName'],
                 'alias': FromUser['RemarkName'] or FromUser['NickName'],
-                'uid': self.get_uid(UserName=msg['FromUserName'])
+                'uid': self.get_uid(UserName=msg.get('FromUserName', None),
+                                    NickName=html.unescape(FromUser.get('NickName', "s")),
+                                    alias=html.unescape(FromUser.get('RemarkName', "s")),
+                                    Uin=FromUser.get('Uin', None))
             }
             mobj.member = {
                 'name': member['NickName'],
                 'alias': member['DisplayName'],
-                'uid': self.get_uid(UserName=msg['ActualUserName'])
+                'uid': self.get_uid(UserName=msg.get('ActualUserName', None),
+                                    NickName=html.unescape(member.get('NickName', "")),
+                                    alias=html.unescape(member.get('DisplayName', "")),
+                                    Uin=member.get('Uin', None))
             }
+            logger.debug("origin: %s\nmember: %s\n", mobj.origin, mobj.member)
         else:
+            if me:
+                mobj.text = "You: " + mobj.text
             mobj.source = MsgSource.User
             mobj.origin = {
                 'name': FromUser['NickName'],
                 'alias': FromUser['RemarkName'] or FromUser['NickName'],
-                'uid': self.get_uid(UserName=msg['FromUserName'])
+                'uid': self.get_uid(UserName=msg.get('FromUserName', None),
+                                    NickName=html.unescape(FromUser.get('NickName', "")),
+                                    alias=html.unescape(FromUser.get('RemarkName', "")),
+                                    Uin=FromUser.get('Uin', None))
             }
         mobj.destination = {
             'name': itchat.get_friends()[0]['NickName'],
             'alias': itchat.get_friends()[0]['NickName'],
             'uid': self.get_uid(UserName=msg['ToUserName'])
         }
-        logger = logging.getLogger("plugins.eh_wechat_slave.%s" % __name__)
+        logger.debug("dest: %s", mobj.destination)
         logger.info("WeChat incoming message:\nType: %s\nText: %s\nUserName: %s\nuid: %s\nname: %s" %
                     (mobj.type, msg['Text'], msg['FromUserName'], mobj.origin['uid'], mobj.origin['name']))
         self.queue.put(mobj)
@@ -62,8 +95,9 @@ class WeChatChannel(EFBChannel):
     channel_emoji = "💬"
     channel_id = "eh_wechat_slave"
     channel_type = ChannelType.Slave
+    supported_message_types = {MsgType.Text, MsgType.Sticker, MsgType.Image, MsgType.File, MsgType.Video, MsgType.Link}
     users = {}
-    logger = logging.getLogger("plugins.eh_wechat_slave.WeChatChannel")
+    logger = logging.getLogger("plugins.%s.WeChatChannel" % channel_id)
 
     SYSTEM_USERNAMES = ["filehelper", "newsapp", "fmessage", "weibo", "qqmail", "fmessage", "tmessage", "qmessage",
                          "qqsync", "floatbottle", "lbsapp", "shakeapp", "medianote", "qqfriend", "readerapp",
@@ -72,7 +106,11 @@ class WeChatChannel(EFBChannel):
 
     def __init__(self, queue):
         super().__init__(queue)
-        itchat.auto_login(enableCmdQR=2, hotReload=True, exitCallback=self.exit_callback, qrCallback=self.console_qr_code)
+        itchat.auto_login(enableCmdQR=2,
+                          hotReload=True,
+                          statusStorageDir="storage/%s.pkl" % self.channel_id,
+                          exitCallback=self.exit_callback,
+                          qrCallback=self.console_qr_code)
         self.logger.info("EWS Inited!!!\n---")
         itchat.set_logging(showOnCmd=False)
 
@@ -81,6 +119,7 @@ class WeChatChannel(EFBChannel):
     #
 
     def console_qr_code(self, uuid, status, qrcode):
+        status = int(status)
         if status == 201:
             QR = 'Tap "Confirm" to continue.'
         elif status == 200:
@@ -118,34 +157,41 @@ class WeChatChannel(EFBChannel):
             'uid': -1
         }
 
-        msg.text = "WeChat system logged out the user."
+        msg.text = "WeChat server logged out the user."
 
         self.queue.put(msg)
 
-    def get_uid(self, UserName=None, NickName=None):
+    def get_uid(self, UserName=None, NickName=None, alias=None, Uin=None):
         """
         Get unique identifier of a chat, by UserName or NickName.
         Fill in `UserName` or `NickName`.
 
         Args:
             UserName (str): WeChat `UserName` of the chat.
-            NickName (str): Display Name (`NickName`) of the chat.
+            NickName (str): Name (`NickName`) of the chat.
+            alias (str): Alias ("Display Name" or "Remark Name") of the user
+            Uin: WeChat Unique Identifier.
 
         Returns:
             str|bool: Unique ID of the chat. `False` if not found.
         """
         if UserName in self.SYSTEM_USERNAMES:
             return UserName
-        if not (UserName or NickName):
+        if not (UserName or NickName or alias or Uin):
             self.logger.error('No name provided.')
             return False
-        if NickName:
-            return str(crc32(NickName.encode("utf-8")))
-        r = self.search_user(UserName=UserName, name=NickName)
-        if r:
-            return str(crc32(r[0]['NickName'].encode("utf-8")))
-        else:
-            return False
+        fallback_order = self._flag("uid_order", ["NickName"])
+        data = {"nickname": NickName, "alias": alias, "uin": Uin}
+        if UserName and not (NickName or alias or Uin):
+            r = self.search_user(UserName=UserName)
+            if not r:
+                self.logger.debug("get_uid, return False")
+                return False
+            data = {"nickname": r[0]['NickName'], "alias": r[0]["RemarkName"], "uin": r[0]["Uin"]}
+        for i in fallback_order:
+            if data[i.lower()]:
+                return str(crc32(data[i.lower()].encode("utf-8")))
+        return str(crc32(data[fallback_order[-1].lower()].encode("utf-8")))
 
     def get_UserName(self, uid, refresh=False):
         """
@@ -163,9 +209,9 @@ class WeChatChannel(EFBChannel):
         r = self.search_user(uid=uid, refresh=refresh)
         if r:
             return r[0]['UserName']
-        return False
+        return None
 
-    def search_user(self, UserName=None, uid=None, wid=None, name=None, ActualUserName=None, refresh=False):
+    def search_user(self, UserName=None, uid=None, uin=None, name=None, ActualUserName=None, refresh=False):
         """
         Search for a WeChat "User" (a user, a group/chat room or an MPS account,
         by `UserName`, unique ID, WeChat ID, name/alias, and/or group member `UserName`.
@@ -178,7 +224,7 @@ class WeChatChannel(EFBChannel):
         Args:
             UserName (str): UserName of a "User"
             uid (str): Unique ID generated by the channel
-            wid (str): WeChat ID.
+            uin (str): WeChat Unique Identifier.
             name (str): Name or Alias
             ActualUserName (str): UserName of a group member, used only when a group is matched.
             refresh (bool): Refresh the user list, False by default.
@@ -189,43 +235,66 @@ class WeChatChannel(EFBChannel):
         result = []
         UserName = None if UserName is None else str(UserName)
         uid = None if uid is None else str(uid)
-        wid = None if wid is None else str(wid)
+        uin = None if uin is None else str(uin)
         name = None if name is None else str(name)
         ActualUserName = None if ActualUserName is None else str(ActualUserName)
+        fallback_order = self._flag("uid_order", ["NickName"])
 
-        if all(i is None for i in [UserName, uid, wid, name]):
-            raise ValueError("At least one of [UserName, uid, wid, name] should be given.")
+        if all(i is None for i in [UserName, uid, uin, name]):
+            raise ValueError("At least one of [UserName, uid, uin, name] should be provided.")
+
+        if UserName in self.SYSTEM_USERNAMES or uin in self.SYSTEM_USERNAMES:
+            sys_chat_id = UserName or uin
+            return [{"UserName": sys_chat_id,
+                     "NickName": "System (%s)" % sys_chat_id,
+                     "RemarkName": "System (%s)" % sys_chat_id,
+                     "Uin": sys_chat_id}]
 
         for i in itchat.get_friends(refresh) + itchat.get_mps(refresh):
-
-            if str(crc32(i.get('NickName', '').encode("utf-8"))) == uid or \
-               str(i.get('UserName', '')) == UserName or \
-               str(i.get('Uin', '')) == uid or \
+            data = {"nickname": i.get('NickName', None),
+                    "alias": i.get("RemarkName", None),
+                    "uin": i.get("Uin", None)}
+            for j in fallback_order:
+                if str(crc32(data[j.lower()].encode("utf-8"))) == uid:
+                    result.append(i.copy())
+            if str(i.get('UserName', '')) == UserName or \
                str(i.get('AttrStatus', '')) == uid or \
-               str(i.get('Alias', '')) == wid or \
+               str(i.get('Uin', '')) == uin or \
                str(i.get('NickName', '')) == name or \
                str(i.get('DisplayName', '')) == name:
                 result.append(i.copy())
         for i in itchat.get_chatrooms(refresh):
+            if not i['UserName'].startswith('@@'):
+                continue
             if not i.get('MemberList', ''):
                 i = itchat.update_chatroom(i.get('UserName', ''))
-            if str(crc32(i.get('NickName', '').encode("utf-8"))) == uid or \
-               str(i.get('Uin', '')) == uid or \
-               str(i.get('Alias', '')) == wid or \
+            data = {"nickname": i.get('NickName', None),
+                    "alias": i.get("RemarkName", None),
+                    "uin": i.get("Uin", None)}
+            for j in fallback_order:
+                if str(crc32(data[j.lower()].encode("utf-8"))) == uid:
+                    result.append(i.copy())
+            if str(i.get('Uin', '')) == uin or \
                str(i.get('NickName', '')) == name or \
                str(i.get('DisplayName', '')) == name or \
                str(i.get('UserName', '')) == UserName:
                 result.append(i.copy())
                 result[-1]['MemberList'] = []
                 if ActualUserName:
-                    for j in itchat.search_chatrooms(userName=i['UserName'])['MemberList']:
+                    for j in i['MemberList']:
+                        data = {"nickname": j.get('NickName', None),
+                                "alias": j.get("DisplayName", None),
+                                "uin": j.get("Uin", None)}
+                        for k in fallback_order:
+                            if str(crc32(data[k.lower()].encode("utf-8"))) == uid:
+                                result.append(k.copy())
                         if str(j['UserName']) == ActualUserName or \
                            str(j['AttrStatus']) == uid or \
                            str(j['NickName']) == name or \
                            str(j['DisplayName']) == name:
                             result[-1]['MemberList'].append(j)
         if not result and not refresh:
-            return self.search_user(UserName, uid, wid, name, ActualUserName, refresh=True)
+            return self.search_user(UserName, uid, uin, name, ActualUserName, refresh=True)
         return result
 
     def poll(self):
@@ -373,11 +442,16 @@ class WeChatChannel(EFBChannel):
         mobj.attributes = {
             "title": data['msg']['appmsg']['title'],
             "description": data['msg']['appmsg']['des'],
-            "image": None,
+            "image": data['msg']['appmsg']['thumburl'],
             "url": data['msg']['appmsg']['url']
         }
         # format text
-        mobj.text = "🔗 %s\n%s\n\n%s" % (mobj.attributes['title'], mobj.attributes['description'], mobj.attributes['url'])
+        mobj.text = ""
+        if self._flag("extra_links_on_message", False):
+            extra_link = data.get('msg', {}).get('appmsg', {}).get('mmreader', {}).get('category', {}).get('item', [])
+            if type(extra_link) is list and len(extra_link):
+                for i in extra_link:
+                    mobj.text += "🔗 %s\n%s\n%s\n🖼 %s\n\n" % (i['title'], i['digest'], i['url'], i['cover'])
         mobj.type = MsgType.Link
         return mobj
 
@@ -455,7 +529,9 @@ class WeChatChannel(EFBChannel):
                "ID: {Alias}\n"
                "Signature: {Signature}\n"
                "Gender: {Sex}")
-        txt = txt.format(**{**msg['Text'], **msg['Text']['userInfo']})
+        tdict = msg['Text'].copy()
+        tdict.update(msg['Text']['userInfo'])
+        txt = txt.format(**tdict)
         mobj.text = txt
         mobj.type = MsgType.Command
         mobj.attributes = {
@@ -504,6 +580,8 @@ class WeChatChannel(EFBChannel):
             EFBMessageTypeNotSupported: Raised when message type is not supported by the channel.
         """
         UserName = self.get_UserName(msg.destination['uid'])
+        if UserName is None or UserName == False:
+            raise EFBChatNotFound
         self.logger.info("Sending message to WeChat:\n"
                          "Target-------\n"
                          "uid: %s\n"
@@ -512,20 +590,35 @@ class WeChatChannel(EFBChannel):
                          "Type: %s\n"
                          "Text: %s"
                          % (msg.destination['uid'], UserName, msg.destination['name'], msg.type, msg.text))
-        if msg.type == MsgType.Text:
+        if msg.type in [MsgType.Text, MsgType.Link]:
             if msg.target:
                 if msg.target['type'] == TargetType.Member:
                     msg.text = "@%s\u2005 %s" % (msg.target['target'].member['alias'], msg.text)
                 elif msg.target['type'] == TargetType.Message:
-                    msg.text = "@%s\u2005 「%s」\n\n%s" % (msg.target['target'].member['alias'], msg.target['target'].text, msg.text)
+                    maxl = self._flag("max_quote_length", -1)
+                    qt_txt = "%s" % msg.target['target'].text
+                    if maxl > 0:
+                        tgt_text = qt_txt[:maxl]
+                        if len(qt_txt) >= maxl:
+                            tgt_text += "…"
+                        tgt_text = "「%s」" % tgt_text
+                    elif maxl < 0:
+                        tgt_text = "「%s」" % qt_txt
+                    else:
+                        tgt_text = ""
+                    msg.text = "@%s\u2005 %s\n\n%s" % (msg.target['target'].member['alias'], tgt_text, msg.text)
             r = itchat.send(msg.text, UserName)
-            return r
         elif msg.type in [MsgType.Image, MsgType.Sticker]:
-            self.logger.info("Image/Sticker %s", msg.type)
+            self.logger.info("Image/Sticker %s, %s", msg.type, msg.path)
             if msg.mime in ["image/gif", "image/jpeg"]:
-                r = itchat.send_image(msg.path, UserName)
-                os.remove(msg.path)
-                return r
+                try:
+                    if os.path.getsize(msg.path) > 5*2**20:
+                        raise EFBMessageError("Image sent is too large. (IS01)")
+                    self.logger.debug("Sending %s (image) to ItChat.", msg.path)
+                    r = itchat.send_image(msg.path, UserName)
+                    os.remove(msg.path)
+                except FileNotFoundError:
+                    pass
             else:  # Convert Image format
                 img = Image.open(msg.path)
                 try:
@@ -538,20 +631,31 @@ class WeChatChannel(EFBChannel):
                 img.save("%s.gif" % msg.path, transparency=255)
                 msg.path = "%s.gif" % msg.path
                 self.logger.info('Image converted to GIF: %s', msg.path)
-            self.logger.info('Sending Image...')
-            r = itchat.send_image(msg.path, UserName)
+                self.logger.debug("Sending %s (image) to ItChat.", msg.path)
+                r = itchat.send_image(msg.path, UserName)
+                if msg.text:
+                    itchat.send_msg(msg.text, UserName)
+                os.remove(msg.path)
             self.logger.info('Image sent with result %s', r)
-            os.remove(msg.path)
             if not msg.mime == "image/gif":
-                os.remove(msg.path[:-4])
-            return r
+                try:
+                    os.remove('.'.join(msg.path.split('.')[:-1]))
+                except FileNotFoundError:
+                    pass
         elif msg.type in [MsgType.File, MsgType.Video]:
             self.logger.info("Sending file to WeChat\nFileName: %s\nPath: %s", msg.text, msg.path)
             r = itchat.send_file(msg.path, UserName)
+            if msg.text:
+                itchat.send_msg(msg.text, UserName)
             os.remove(msg.path)
-            return r
         else:
             raise EFBMessageTypeNotSupported()
+
+        if r.get('BaseResponse', []).get('Ret', -1) != 0:
+            raise EFBMessageError(str(r))
+        else:
+            msg.uid = r.get("MsgId", None)
+            return msg
 
     # Extra functions
 
@@ -572,6 +676,8 @@ class WeChatChannel(EFBChannel):
             l[-1]['Type'] = "User"
 
         for i in itchat.get_chatrooms(refresh):
+            if not i['UserName'].startswith('@@'):
+                continue
             l.append(i)
             l[-1]['Type'] = "Group"
 
@@ -629,13 +735,44 @@ class WeChatChannel(EFBChannel):
         else:
             return "Chat \"%s\" has removed its alias." % l[cid]["NickName"]
 
+    @extra(name="\"Uin\" rate.",
+           desc="For debug purpose only.\n"
+                "Usage: {function_name}")
+    def uin_rate(self, param=""):
+        groups_uin = 0
+        groups_all = 0
+        members_uin = 0
+        members_all = 0
+        for i in itchat.get_chatrooms(True):
+            groups_all += 1
+            if i.get("Uin", None):
+                groups_uin += 1
+            if not i.get('MemberList', ''):
+                i = itchat.update_chatroom(i.get('UserName', ''))
+            for j in i['MemberList']:
+                members_all += 1
+                if j.get("Uin", None):
+                    members_uin += 1
+
+        users = itchat.get_friends(True) + itchat.get_mps(True)
+        users_uin = len([i for i in users if i.get("Uin", None)])
+        users_all = len(users)
+
+        return "`Uin` rate checkup.\n\n" \
+               "Users + MPS: %s/%s (%.2f%%)\n" \
+               "Groups: %s/%s (%.2f%%)\n" \
+               "Group Members: %s/%s (%.2f%%)" % \
+               (users_uin, users_all, 100 * users_uin / users_all,
+                groups_uin, groups_all, 100 * groups_uin / groups_all,
+                members_uin, members_all, 100 * members_uin / members_all)
+
     # Command functions
 
-    def add_friend(self, userName=None, status=2, ticket="", userInfo={}):
-        if not userName:
-            return "Username is empty. (UE01)"
+    def add_friend(self, UserName=None, status=2, ticket="", UserInfo={}):
+        if not UserName:
+            return "Username is empty. (UE02)"
         try:
-            itchat.add_friend(userName, status, ticket, userInfo)
+            itchat.add_friend(UserName, status, ticket, UserInfo)
             return "Success."
         except:
             return "Error occurred during the process. (AF01)"
@@ -648,24 +785,27 @@ class WeChatChannel(EFBChannel):
             t[0]['NickName'] = "File Helper"
             t[0]['UserName'] = "filehelper"
             t[0]['RemarkName'] = ""
+            t[0]['Uin'] = "filehelper"
             for i in t:
                 r.append({
                     'channel_name': self.channel_name,
                     'channel_id': self.channel_id,
                     'name': i['NickName'],
                     'alias': i['RemarkName'] or i['NickName'],
-                    'uid': self.get_uid(NickName=i['NickName']),
+                    'uid': self.get_uid(UserName=i['UserName'], NickName=i['NickName'], alias=i.get("RemarkName", None), Uin=i.get("Uin", None)),
                     'type': MsgSource.User
                 })
         if group:
             t = itchat.get_chatrooms(refresh)
             for i in t:
+                if not i['UserName'].startswith('@@'):
+                    continue
                 r.append({
                     'channel_name': self.channel_name,
                     'channel_id': self.channel_id,
                     'name': i['NickName'],
                     'alias': i['RemarkName'] or i['NickName'] or None,
-                    'uid': self.get_uid(NickName=i['NickName']),
+                    'uid': self.get_uid(NickName=i['NickName'], alias=i.get("RemarkName", None), Uin=i.get("Uin", None)),
                     'type': MsgSource.Group
                 })
         return r
@@ -684,4 +824,4 @@ class WeChatChannel(EFBChannel):
         Returns:
             Value for the flag.
         """
-        return getattr(config, "eh_wechat_slave", dict()).get('flags', dict()).get(key, value)
+        return getattr(config, self.channel_id, dict()).get('flags', dict()).get(key, value)

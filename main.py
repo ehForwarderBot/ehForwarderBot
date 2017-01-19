@@ -3,8 +3,12 @@ import queue
 import threading
 import logging
 import argparse
+import sys
 
-__version__ = "1.2 build 20170112"
+if sys.version_info.major < 3:
+    raise Exception("Python 3.x is required. Your version is %s." % sys.version)
+
+__version__ = "1.3 build 20170119"
 
 parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible chat tunnel framework which allows "
                                              "users to contact people from other chat platforms, and ultimately "
@@ -52,13 +56,19 @@ def init():
     q = queue.Queue()
     # Initialize Plug-ins Library
     # (Load libraries and modules and init them with Queue `q`)
+    l = logging.getLogger("ehForwarderBot")
     slaves = {}
     for i in config.slave_channels:
+        l.critical("\x1b[0;37;46m Initializing slave %s... \x1b[0m" % i)
         obj = getattr(__import__(i[0], fromlist=i[1]), i[1])
         slaves[obj.channel_id] = obj(q)
+        l.critical("\x1b[0;37;42m Slave channel %s (%s) initialized. \x1b[0m" % (obj.channel_name, obj.channel_id))
+    l.critical("\x1b[0;37;46m Initializing master %s... \x1b[0m" % config.master_channel)
     master = getattr(__import__(config.master_channel[0], fromlist=config.master_channel[1]), config.master_channel[1])(
         q, slaves)
+    l.critical("\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m" % (master.channel_name, master.channel_id))
 
+    l.critical("\x1b[0;37;42m All channels initialized. \x1b[0m")
     master_thread = threading.Thread(target=master.poll)
     slave_threads = {key: threading.Thread(target=slaves[key].poll) for key in slaves}
 

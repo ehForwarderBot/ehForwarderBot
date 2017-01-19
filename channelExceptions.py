@@ -8,3 +8,7 @@ class EFBMessageNotFound(Exception):
 
 class EFBMessageTypeNotSupported(Exception):
     pass
+
+
+class EFBMessageError(Exception):
+    pass
