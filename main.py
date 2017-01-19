@@ -59,11 +59,11 @@ def init():
     l = logging.getLogger("ehForwarderBot")
     slaves = {}
     for i in config.slave_channels:
-        l.critical("\x1b[0;37;46m Initializing slave %s... \x1b[0m" % i)
+        l.critical("\x1b[0;37;46m Initializing slave %s... \x1b[0m" % str(i))
         obj = getattr(__import__(i[0], fromlist=i[1]), i[1])
         slaves[obj.channel_id] = obj(q)
         l.critical("\x1b[0;37;42m Slave channel %s (%s) initialized. \x1b[0m" % (obj.channel_name, obj.channel_id))
-    l.critical("\x1b[0;37;46m Initializing master %s... \x1b[0m" % config.master_channel)
+    l.critical("\x1b[0;37;46m Initializing master %s... \x1b[0m" % str(config.master_channel))
     master = getattr(__import__(config.master_channel[0], fromlist=config.master_channel[1]), config.master_channel[1])(
         q, slaves)
     l.critical("\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m" % (master.channel_name, master.channel_id))
