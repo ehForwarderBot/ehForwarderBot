@@ -23,7 +23,7 @@ def incomeMsgMeta(func):
         logger = logging.getLogger("plugins.%s.incomeMsgMeta" % self.channel_id)
         mobj = func(self, msg, isGroupChat)
         mobj.uid = msg.get("MsgId", time.time())
-        me = msg['FromUserName'] == itchat.get_friends()[0]['UserName']
+        me = msg['FromUserName'] == self.itchat.get_friends()[0]['UserName']
         logger.debug("me, %s", me)
         if me:
             msg['FromUserName'], msg['ToUserName'] = msg['ToUserName'], msg['FromUserName']
@@ -35,7 +35,7 @@ def incomeMsgMeta(func):
             logger.debug("groupchat")
             if me:
                 msg['ActualUserName'] = msg['ToUserName']
-                member = {"NickName": itchat.get_friends()[0]['NickName'], "DisplayName": "You", "Uin": itchat.get_friends()[0]['Uin']}
+                member = {"NickName": self.itchat.get_friends()[0]['NickName'], "DisplayName": "You", "Uin": self.itchat.get_friends()[0]['Uin']}
             else:
                 logger.debug("search_user")
                 member = self.search_user(UserName=msg['FromUserName'], ActualUserName=msg['ActualUserName'])[0]['MemberList'][0]
@@ -72,8 +72,8 @@ def incomeMsgMeta(func):
                                     Uin=FromUser.get('Uin', None))
             }
         mobj.destination = {
-            'name': itchat.get_friends()[0]['NickName'],
-            'alias': itchat.get_friends()[0]['NickName'],
+            'name': self.itchat.get_friends()[0]['NickName'],
+            'alias': self.itchat.get_friends()[0]['NickName'],
             'uid': self.get_uid(UserName=msg['ToUserName'])
         }
         logger.debug("dest: %s", mobj.destination)
@@ -106,13 +106,14 @@ class WeChatChannel(EFBChannel):
 
     def __init__(self, queue):
         super().__init__(queue)
-        itchat.auto_login(enableCmdQR=2,
-                          hotReload=True,
-                          statusStorageDir="storage/%s.pkl" % self.channel_id,
-                          exitCallback=self.exit_callback,
-                          qrCallback=self.console_qr_code)
-        self.logger.info("EWS Inited!!!\n---")
+        self.itchat = itchat.new_instance()
         itchat.set_logging(showOnCmd=False)
+        self.itchat.auto_login(enableCmdQR=2,
+                               hotReload=True,
+                               statusStorageDir="storage/%s.pkl" % self.channel_id,
+                               exitCallback=self.exit_callback,
+                               qrCallback=self.console_qr_code)
+        self.logger.info("EWS Inited!!!\n---")
 
     #
     # Utilities
@@ -250,7 +251,7 @@ class WeChatChannel(EFBChannel):
                      "RemarkName": "System (%s)" % sys_chat_id,
                      "Uin": sys_chat_id}]
 
-        for i in itchat.get_friends(refresh) + itchat.get_mps(refresh):
+        for i in self.itchat.get_friends(refresh) + self.itchat.get_mps(refresh):
             data = {"nickname": i.get('NickName', None),
                     "alias": i.get("RemarkName", None),
                     "uin": i.get("Uin", None)}
@@ -263,11 +264,11 @@ class WeChatChannel(EFBChannel):
                str(i.get('NickName', '')) == name or \
                str(i.get('DisplayName', '')) == name:
                 result.append(i.copy())
-        for i in itchat.get_chatrooms(refresh):
+        for i in self.itchat.get_chatrooms(refresh):
             if not i['UserName'].startswith('@@'):
                 continue
             if not i.get('MemberList', ''):
-                i = itchat.update_chatroom(i.get('UserName', ''))
+                i = self.itchat.update_chatroom(i.get('UserName', ''))
             data = {"nickname": i.get('NickName', None),
                     "alias": i.get("RemarkName", None),
                     "uin": i.get("Uin", None)}
@@ -298,94 +299,94 @@ class WeChatChannel(EFBChannel):
         return result
 
     def poll(self):
-        self.usersdata = itchat.get_friends(True) + itchat.get_chatrooms()
+        self.usersdata = self.itchat.get_friends(True) + self.itchat.get_chatrooms()
 
-        @itchat.msg_register(['Text'], isFriendChat=True, isMpChat=True)
+        @self.itchat.msg_register(['Text'], isFriendChat=True, isMpChat=True)
         def wcText(msg):
             self.textMsg(msg)
 
-        @itchat.msg_register(['Text'], isGroupChat=True)
+        @self.itchat.msg_register(['Text'], isGroupChat=True)
         def wcTextGroup(msg):
             self.logger.info("text Msg from group %s", msg['Text'])
             self.textMsg(msg, True)
 
-        @itchat.msg_register(['Sharing'], isFriendChat=True, isMpChat=True)
+        @self.itchat.msg_register(['Sharing'], isFriendChat=True, isMpChat=True)
         def wcLink(msg):
             self.linkMsg(msg)
 
-        @itchat.msg_register(['Sharing'], isGroupChat=True)
+        @self.itchat.msg_register(['Sharing'], isGroupChat=True)
         def wcLinkGroup(msg):
             self.linkMsg(msg, True)
 
-        @itchat.msg_register(['Picture'], isFriendChat=True, isMpChat=True)
+        @self.itchat.msg_register(['Picture'], isFriendChat=True, isMpChat=True)
         def wcPicture(msg):
             self.pictureMsg(msg)
 
-        @itchat.msg_register(['Picture'], isGroupChat=True)
+        @self.itchat.msg_register(['Picture'], isGroupChat=True)
         def wcPictureGroup(msg):
             self.pictureMsg(msg, True)
 
-        @itchat.msg_register(['Attachment'], isFriendChat=True, isMpChat=True)
+        @self.itchat.msg_register(['Attachment'], isFriendChat=True, isMpChat=True)
         def wcFile(msg):
             self.fileMsg(msg)
 
-        @itchat.msg_register(['Attachment'], isGroupChat=True)
+        @self.itchat.msg_register(['Attachment'], isGroupChat=True)
         def wcFileGroup(msg):
             self.fileMsg(msg, True)
 
-        @itchat.msg_register(['Recording'], isFriendChat=True, isMpChat=True)
+        @self.itchat.msg_register(['Recording'], isFriendChat=True, isMpChat=True)
         def wcRecording(msg):
             self.voiceMsg(msg)
 
-        @itchat.msg_register(['Recording'], isGroupChat=True)
+        @self.itchat.msg_register(['Recording'], isGroupChat=True)
         def wcRecordingGroup(msg):
             self.voiceMsg(msg, True)
 
-        @itchat.msg_register(['Map'], isFriendChat=True, isMpChat=True)
+        @self.itchat.msg_register(['Map'], isFriendChat=True, isMpChat=True)
         def wcLocation(msg):
             self.locationMsg(msg)
 
-        @itchat.msg_register(['Map'], isGroupChat=True)
+        @self.itchat.msg_register(['Map'], isGroupChat=True)
         def wcLocationGroup(msg):
             self.locationMsg(msg, True)
 
-        @itchat.msg_register(['Video'], isFriendChat=True, isMpChat=True)
+        @self.itchat.msg_register(['Video'], isFriendChat=True, isMpChat=True)
         def wcVideo(msg):
             self.videoMsg(msg)
 
-        @itchat.msg_register(['Video'], isGroupChat=True)
+        @self.itchat.msg_register(['Video'], isGroupChat=True)
         def wcVideoGroup(msg):
             self.videoMsg(msg, True)
 
-        @itchat.msg_register(['Card'], isFriendChat=True, isMpChat=True)
+        @self.itchat.msg_register(['Card'], isFriendChat=True, isMpChat=True)
         def wcCard(msg):
             self.cardMsg(msg)
 
-        @itchat.msg_register(['Card'], isGroupChat=True)
+        @self.itchat.msg_register(['Card'], isGroupChat=True)
         def wcCardGroup(msg):
             self.cardMsg(msg, True)
 
-        @itchat.msg_register(['Friends'], isFriendChat=True, isMpChat=True)
+        @self.itchat.msg_register(['Friends'], isFriendChat=True, isMpChat=True)
         def wcFriends(msg):
             self.friendMsg(msg)
 
-        @itchat.msg_register(['Friends'], isGroupChat=True)
+        @self.itchat.msg_register(['Friends'], isGroupChat=True)
         def wcFriendsGroup(msg):
             self.friendMsg(msg, True)
 
-        @itchat.msg_register(['Useless', 'Note'], isFriendChat=True, isMpChat=True)
+        @self.itchat.msg_register(['Useless', 'Note'], isFriendChat=True, isMpChat=True)
         def wcSystem(msg):
             self.systemMsg(msg)
 
-        @itchat.msg_register(['Useless', 'Note'], isGroupChat=True)
+        @self.itchat.msg_register(['Useless', 'Note'], isGroupChat=True)
         def wcSystemGroup(msg):
             self.systemMsg(msg, True)
 
-        @itchat.msg_register(["System"])
+        @self.itchat.msg_register(["System"])
         def wcSysLog(msg):
             self.logger.debug("WeChat \"System\" message:\n%s", repr(msg))
 
-        itchat.run()
+        self.itchat.run()
         # while True:
         #     if not itchat.client().status:
         #         msg = EFBMsg(self)
@@ -435,7 +436,7 @@ class WeChatChannel(EFBChannel):
         # initiate object
         mobj = EFBMsg(self)
         # parse XML
-        itchat.utils.emoji_formatter(msg, 'Content')
+        self.itchat.utils.emoji_formatter(msg, 'Content')
         xmldata = msg['Content']
         data = xmltodict.parse(xmldata)
         # set attributes
@@ -607,7 +608,7 @@ class WeChatChannel(EFBChannel):
                     else:
                         tgt_text = ""
                     msg.text = "@%s\u2005 %s\n\n%s" % (msg.target['target'].member['alias'], tgt_text, msg.text)
-            r = itchat.send(msg.text, UserName)
+            r = self.itchat.send(msg.text, UserName)
         elif msg.type in [MsgType.Image, MsgType.Sticker]:
             self.logger.info("Image/Sticker %s, %s", msg.type, msg.path)
             if msg.mime in ["image/gif", "image/jpeg"]:
@@ -615,7 +616,7 @@ class WeChatChannel(EFBChannel):
                     if os.path.getsize(msg.path) > 5*2**20:
                         raise EFBMessageError("Image sent is too large. (IS01)")
                     self.logger.debug("Sending %s (image) to ItChat.", msg.path)
-                    r = itchat.send_image(msg.path, UserName)
+                    r = self.itchat.send_image(msg.path, UserName)
                     os.remove(msg.path)
                 except FileNotFoundError:
                     pass
@@ -632,9 +633,9 @@ class WeChatChannel(EFBChannel):
                 msg.path = "%s.gif" % msg.path
                 self.logger.info('Image converted to GIF: %s', msg.path)
                 self.logger.debug("Sending %s (image) to ItChat.", msg.path)
-                r = itchat.send_image(msg.path, UserName)
+                r = self.itchat.send_image(msg.path, UserName)
                 if msg.text:
-                    itchat.send_msg(msg.text, UserName)
+                    self.itchat.send_msg(msg.text, UserName)
                 os.remove(msg.path)
             self.logger.info('Image sent with result %s', r)
             if not msg.mime == "image/gif":
@@ -644,9 +645,9 @@ class WeChatChannel(EFBChannel):
                     pass
         elif msg.type in [MsgType.File, MsgType.Video]:
             self.logger.info("Sending file to WeChat\nFileName: %s\nPath: %s", msg.text, msg.path)
-            r = itchat.send_file(msg.path, UserName)
+            r = self.itchat.send_file(msg.path, UserName)
             if msg.text:
-                itchat.send_msg(msg.text, UserName)
+                self.itchat.send_msg(msg.text, UserName)
             os.remove(msg.path)
         else:
             raise EFBMessageTypeNotSupported()
@@ -671,17 +672,17 @@ class WeChatChannel(EFBChannel):
             else:
                 return "Invalid command: %s." % param
         l = []
-        for i in itchat.get_friends(refresh)[1:]:
+        for i in self.itchat.get_friends(refresh)[1:]:
             l.append(i)
             l[-1]['Type'] = "User"
 
-        for i in itchat.get_chatrooms(refresh):
+        for i in self.itchat.get_chatrooms(refresh):
             if not i['UserName'].startswith('@@'):
                 continue
             l.append(i)
             l[-1]['Type'] = "Group"
 
-        for i in itchat.get_mps(refresh):
+        for i in self.itchat.get_mps(refresh):
             l.append(i)
             l[-1]['Type'] = "MPS"
 
@@ -721,7 +722,7 @@ class WeChatChannel(EFBChannel):
         else:
             cid = int(cid)
 
-        l = itchat.get_friends(refresh)[1:]
+        l = self.itchat.get_friends(refresh)[1:]
 
         if cid < 0:
             return "ID must between 0 and %s inclusive, %s given." % (len(l) - 1, cid)
@@ -729,7 +730,7 @@ class WeChatChannel(EFBChannel):
         if cid >= len(l):
             return "You may not set alias to a group or a MPS contact."
 
-        itchat.set_alias(l[cid]['UserName'], alias)
+        self.itchat.set_alias(l[cid]['UserName'], alias)
         if alias:
             return "Chat \"%s\" is set with alias \"%s\"." % (l[cid]["NickName"], alias)
         else:
@@ -743,18 +744,18 @@ class WeChatChannel(EFBChannel):
         groups_all = 0
         members_uin = 0
         members_all = 0
-        for i in itchat.get_chatrooms(True):
+        for i in self.itchat.get_chatrooms(True):
             groups_all += 1
             if i.get("Uin", None):
                 groups_uin += 1
             if not i.get('MemberList', ''):
-                i = itchat.update_chatroom(i.get('UserName', ''))
+                i = self.itchat.update_chatroom(i.get('UserName', ''))
             for j in i['MemberList']:
                 members_all += 1
                 if j.get("Uin", None):
                     members_uin += 1
 
-        users = itchat.get_friends(True) + itchat.get_mps(True)
+        users = self.itchat.get_friends(True) + self.itchat.get_mps(True)
         users_uin = len([i for i in users if i.get("Uin", None)])
         users_all = len(users)
 
@@ -772,7 +773,7 @@ class WeChatChannel(EFBChannel):
         if not UserName:
             return "Username is empty. (UE02)"
         try:
-            itchat.add_friend(UserName, status, ticket, UserInfo)
+            self.itchat.add_friend(UserName, status, ticket, UserInfo)
             return "Success."
         except:
             return "Error occurred during the process. (AF01)"
@@ -781,7 +782,7 @@ class WeChatChannel(EFBChannel):
         refresh = self._flag("refresh_friends", False)
         r = []
         if user:
-            t = itchat.get_friends(refresh) + itchat.get_mps(refresh)
+            t = self.itchat.get_friends(refresh) + self.itchat.get_mps(refresh)
             t[0]['NickName'] = "File Helper"
             t[0]['UserName'] = "filehelper"
             t[0]['RemarkName'] = ""
@@ -796,7 +797,7 @@ class WeChatChannel(EFBChannel):
                     'type': MsgSource.User
                 })
         if group:
-            t = itchat.get_chatrooms(refresh)
+            t = self.itchat.get_chatrooms(refresh)
             for i in t:
                 if not i['UserName'].startswith('@@'):
                     continue
@@ -811,7 +812,7 @@ class WeChatChannel(EFBChannel):
         return r
 
     def get_itchat(self):
-        return itchat
+        return self.itchat
 
     def _flag(self, key, value):
         """
