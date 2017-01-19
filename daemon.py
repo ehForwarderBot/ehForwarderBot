@@ -275,7 +275,7 @@ def help():
     print("EFB Daemon Process\n"
           "Usage: %s {start|stop|restart|status|transcript|help} [args_to_EFB]\n\n" % sys.argv[0] +
           "EFB help:")
-    subprocess.call(["python3", "main.py", "-h"])
+    subprocess.call([sys.executable, "main.py", "-h"])
 
 
 def transcript(path, reset=False):
@@ -287,7 +287,7 @@ def transcript(path, reset=False):
          "Press ^C (Control+C on Mac, Ctrl+C otherwise) to hide."]
     w = int(max(len(i) for i in l))
     for i in l:
-        print("\x1b[0;37;41m   %s  \x1b[0m" % i.ljust(w))
+        print("\x1b[0;37;46m   %s  \x1b[0m" % i.ljust(w))
     print()
     try:
         subprocess.call(["tail", "-f", path])

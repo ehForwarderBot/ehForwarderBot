@@ -3,7 +3,9 @@
 ![Python 3.x](https://img.shields.io/badge/Python-3.x-blue.svg)
 [![Gitter](https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg)](https://gitter.im/blueset/ehForwarderBot)
 [![Telegram support group](https://img.shields.io/badge/Chat-on%20Telegram-blue.svg)](https://telegram.me/efbsupport)
-[![license](https://img.shields.io/github/license/blueset/ehforwarderbot.svg)](LICENSE)
+[![Docs: Stable version](https://readthedocs.org/projects/ehforwarderbot/badge/?version=latest)](https://ehforwarderbot.readthedocs.io/en/latest/)
+[![Docs: Development version version](https://readthedocs.org/projects/ehforwarderbot/badge/?version=dev)](https://ehforwarderbot.readthedocs.io/en/dev/)
+[![tag](https://img.shields.io/github/tag/blueset/ehforwarderbot.svg)](https://github.com/blueset/ehForwarderBot/releases)
 
 
 ![EFB](https://images.1a23.com/upload/images/SPET.png)
@@ -25,6 +27,10 @@ _Codename_ **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework whi
 
 ## Feel like contributing?
 Anyone is welcomed to raise an issue or submit a pull request, just remember to read through and understand the [contribution guideline](CONTRIBUTING.md) before you do so.
+
+## Related articles
+* [EFB How-to: Send and Receive Messages from WeChat on Telegram (zh-CN)](https://blog.1a23.com/2017/01/09/EFB-How-to-Send-and-Receive-Messages-from-WeChat-on-Telegram-zh-CN/)  
+  _(安装并使用 EFB：在 Telegram 收发微信消息)_
 
 ## License
 EFB framework is licensed under [GNU General Public License 3.0](https://www.gnu.org/licenses/gpl-3.0.txt).
