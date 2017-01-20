@@ -42,7 +42,7 @@ Args:
 * `slaves` (dict): All enabled slave channel objects. Format: `"channel_id": channel_object`.
 
 **poll(self)** _(for both types)_  
-Message polling from your chat platform should be done in this method. When all channels are initialized, `poll` from all enabled channels are called in separated threads, and run concurrently.
+Message polling from your chat platform should be done in this method. When all channels are initialized, `poll` from all enabled channels are called in separated threads, and run concurrently. While polling for messages, the channel should always check for `self.stop_polling` (bool). When the user gracefully stops EFB, `self.stop_polling` will turn to `True`, and immediately the channel should stop polling and clean up everything necessary.
 
 Method of getting messages which requires extra set up by the user or which may reduce compatibility, including Webhooks, shall be avoided or used as an alternative method.
 

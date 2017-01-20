@@ -28,7 +28,8 @@ def incomeMsgMeta(func):
         if me:
             msg['FromUserName'], msg['ToUserName'] = msg['ToUserName'], msg['FromUserName']
         FromUser = self.search_user(UserName=msg['FromUserName']) or \
-                   [{"NickName": "Chat not found. (UE01)", "RemarkName": "Chat not found. (UE01)", "Uin": 0}]
+                       self.search_user(UserName=msg['FromUserName'], refresh=True) or \
+                       [{"NickName": "Chat not found. (UE01)", "RemarkName": "Chat not found. (UE01)", "Uin": 0}]
         FromUser = FromUser[0]
         logger.debug("From user, %s", FromUser)
         if isGroupChat:
@@ -386,23 +387,12 @@ class WeChatChannel(EFBChannel):
         def wcSysLog(msg):
             self.logger.debug("WeChat \"System\" message:\n%s", repr(msg))
 
-        self.itchat.run()
-        # while True:
-        #     if not itchat.client().status:
-        #         msg = EFBMsg(self)
-        #         msg.type = MsgType.Text
-        #         msg.source = MsgType.System
-        #         msg.origin = {
-        #             "name": "EFB System",
-        #             "alias": "EFB System",
-        #             "uid": None
-        #         }
-        #         mobj.destination = {
-        #             'name': itchat.client().storageClass.nickName,
-        #             'alias': itchat.client().storageClass.nickName,
-        #             'uid': self.get_uid(NickName=itchat.client().storageClass.userName)
-        #         }
-        #         msg.text = "Logged out unexpectedly."
+        while self.itchat.alive and not self.stop_polling:
+            self.itchat.configured_reply()
+
+        if self.itchat.useHotReload:
+            self.itchat.dump_login_status()
+        self.itchat.alive = False
 
     @incomeMsgMeta
     def textMsg(self, msg, isGroupChat=False):

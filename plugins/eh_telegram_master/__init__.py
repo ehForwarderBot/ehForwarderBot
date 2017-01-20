@@ -1157,6 +1157,9 @@ class TelegramChannel(EFBChannel):
         """
         self.bot.start_polling(network_delay=10, timeout=10)
         while True:
+            if self.stop_polling:
+                self.bot.stop()
+                break
             try:
                 m = self.queue.get()
                 self.logger.info("Got message from queue\nType: %s\nText: %s\n----" % (m.type, m.text))

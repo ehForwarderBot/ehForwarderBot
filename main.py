@@ -4,11 +4,13 @@ import threading
 import logging
 import argparse
 import sys
+import signal
+from channel import EFBChannel
 
 if sys.version_info.major < 3:
     raise Exception("Python 3.x is required. Your version is %s." % sys.version)
 
-__version__ = "1.3.2"
+__version__ = "1.3.2-dev.1"
 
 parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible chat tunnel framework which allows "
                                              "users to contact people from other chat platforms, and ultimately "
@@ -25,10 +27,18 @@ parser.add_argument("-l", "--log",
 args = parser.parse_args()
 
 q = None
-slaves = None
+slaves = []
 master = None
 master_thread = None
 slave_threads = None
+
+
+def stop_gracefully():
+    if isinstance(master, EFBChannel):
+        master.stop_polling = True
+    for i in slaves:
+        if isinstance(slaves[i], EFBChannel):
+            slaves[i].stop_polling = True
 
 
 def set_log_file(fn):
@@ -100,6 +110,9 @@ else:
     logging.getLogger('requests').setLevel(logging.CRITICAL)
     logging.getLogger('urllib3').setLevel(logging.CRITICAL)
     logging.getLogger('telegram.bot').setLevel(logging.CRITICAL)
+
+    signal.signal(signal.SIGINT, stop_gracefully)
+    signal.signal(signal.SIGTERM, stop_gracefully)
 
     if getattr(args, "log", None):
         LOG = args.log

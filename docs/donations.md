@@ -10,3 +10,4 @@ You can donate to me via any of the following methods.
 
 ## Supporters
 * 绵绵: CNY 10.00
+* tolves&jiamin: CNY 40.00
