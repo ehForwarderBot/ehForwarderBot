@@ -104,3 +104,8 @@ eh_wechat_slave = {
   List out all other messages (more than first one) for link messages with more than one link from MPS accounts.
 * `max_quote_length` _(int)_  [Default: `-1`]  
   Maximum length of text for quotation messages. Set to 0 to fully disable quotation. Set to -1 to always quote full message.
+* `qr_target` _(string)_ [Default: `"console"`]
+  The target channel which should receive a QR code to login the Wechat account.
+  Available values:
+    * `"console"`: the command line interface
+    * `"master"`: the master channel

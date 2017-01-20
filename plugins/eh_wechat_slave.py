@@ -100,6 +100,8 @@ class WeChatChannel(EFBChannel):
     supported_message_types = {MsgType.Text, MsgType.Sticker, MsgType.Image, MsgType.File, MsgType.Video, MsgType.Link}
     users = {}
     logger = logging.getLogger("plugins.%s.WeChatChannel" % channel_id)
+    qr_callback = ""
+    qr_uuid = ""
 
     SYSTEM_USERNAMES = ["filehelper", "newsapp", "fmessage", "weibo", "qqmail", "fmessage", "tmessage", "qmessage",
                          "qqsync", "floatbottle", "lbsapp", "shakeapp", "medianote", "qqfriend", "readerapp",
@@ -110,11 +112,14 @@ class WeChatChannel(EFBChannel):
         super().__init__(queue)
         self.itchat = itchat.new_instance()
         itchat.set_logging(showOnCmd=False)
-        self.itchat.auto_login(enableCmdQR=2,
-                               hotReload=True,
-                               statusStorageDir="storage/%s.pkl" % self.channel_id,
-                               exitCallback=self.exit_callback,
-                               qrCallback=self.console_qr_code)
+        self.itchat_msg_register()
+
+        qr_target = self._flag("qr_target", "console")
+        if qr_target == "master":
+            self.qr_callback = "master_qr_code"
+        else:
+            self.qr_callback = "console_qr_code"
+
         self.logger.info("EWS Inited!!!\n---")
 
     #
@@ -147,8 +152,30 @@ class WeChatChannel(EFBChannel):
             QR += "\nIf you cannot read the QR code above, " \
                   "Please generate a QR code with any tool with the following URL:\n" \
                   "https://login.weixin.qq.com/l/" + uuid
-
         self.logger.critical(QR)
+
+    def master_qr_code(self, uuid, status, qrcode):
+        if uuid != self.qr_uuid:
+            path = os.path.join("storage", self.channel_id)
+            if not os.path.exists(path):
+                os.makedirs(path)
+            path = os.path.join(path, 'QR.jpg')
+            with open(path, 'wb') as f:
+                f.write(qrcode)
+            msg = EFBMsg(self)
+            msg.type = MsgType.Image
+            msg.source = MsgSource.System
+            msg.origin = {
+                'name': 'WeChat System Message',
+                'alias': 'WeChat System Message',
+                'uid': -1
+            }
+            msg.text = '[%s] Scan this QR code to login your account' % self.channel_id
+            msg.path = path
+            msg.file = open(path, 'rb')
+            msg.mime = 'image/jpeg'
+            self.queue.put(msg)
+            self.qr_uuid = uuid
 
     def exit_callback(self):
         msg = EFBMsg(self)
@@ -159,10 +186,10 @@ class WeChatChannel(EFBChannel):
             'alias': 'WeChat System Message',
             'uid': -1
         }
-
         msg.text = "WeChat server logged out the user."
-
         self.queue.put(msg)
+        # start polling again
+        self.poll()
 
     def get_uid(self, UserName=None, NickName=None, alias=None, Uin=None):
         """
@@ -301,8 +328,22 @@ class WeChatChannel(EFBChannel):
         return result
 
     def poll(self):
+        self.itchat.auto_login(enableCmdQR=2,
+                               hotReload=True,
+                               statusStorageDir="storage/%s.pkl" % self.channel_id,
+                               exitCallback=self.exit_callback,
+                               qrCallback=getattr(self, self.qr_callback))
         self.usersdata = self.itchat.get_friends(True) + self.itchat.get_chatrooms()
 
+        while self.itchat.alive and not self.stop_polling:
+            self.itchat.configured_reply()
+
+        if self.itchat.useHotReload:
+            self.itchat.dump_login_status()
+
+        self.logger.debug("%s (%s) gracefully stopped.", self.channel_name, self.channel_id)
+
+    def itchat_msg_register(self):
         @self.itchat.msg_register(['Text'], isFriendChat=True, isMpChat=True)
         def wcText(msg):
             self.textMsg(msg)
@@ -387,14 +428,6 @@ class WeChatChannel(EFBChannel):
         @self.itchat.msg_register(["System"])
         def wcSysLog(msg):
             self.logger.debug("WeChat \"System\" message:\n%s", repr(msg))
-
-        while self.itchat.alive and not self.stop_polling:
-            self.itchat.configured_reply()
-
-        if self.itchat.useHotReload:
-            self.itchat.dump_login_status()
-
-        self.logger.debug("%s (%s) gracefully stopped.", self.channel_name, self.channel_id)
 
     @incomeMsgMeta
     def textMsg(self, msg, isGroupChat=False):
