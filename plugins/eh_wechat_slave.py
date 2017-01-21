@@ -61,7 +61,8 @@ def incomeMsgMeta(func):
             }
             logger.debug("origin: %s\nmember: %s\n", mobj.origin, mobj.member)
         else:
-            if me and mobj.text:
+            if me:
+                mobj.text = mobj.text or ""
                 mobj.text = "You: " + mobj.text
             mobj.source = MsgSource.User
             mobj.origin = {
@@ -196,7 +197,7 @@ class WeChatChannel(EFBChannel):
         Encode uid by a predefined order in configuration.
 
         Args:
-            data (dict): a dictionary containing UserName, NickName and Uin
+            data (dict): a dict with keys `{"nickname", "alias", "uin"}`
 
         Returns:
             str: Encoded uid
@@ -254,7 +255,6 @@ class WeChatChannel(EFBChannel):
         uin = None if uin is None else str(uin)
         name = None if name is None else str(name)
         ActualUserName = None if ActualUserName is None else str(ActualUserName)
-        fallback_order = self._flag("uid_order", ["NickName"])
 
         if all(i is None for i in [UserName, uid, uin, name]):
             raise ValueError("At least one of [UserName, uid, uin, name] should be provided.")
