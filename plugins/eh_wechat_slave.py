@@ -428,7 +428,7 @@ class WeChatChannel(EFBChannel):
         # initiate object
         mobj = EFBMsg(self)
         # parse XML
-        self.itchat.utils.emoji_formatter(msg, 'Content')
+        itchat.utils.emoji_formatter(msg, 'Content')
         xmldata = msg['Content']
         data = xmltodict.parse(xmldata)
         # set attributes

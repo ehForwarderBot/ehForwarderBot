@@ -1157,14 +1157,19 @@ class TelegramChannel(EFBChannel):
         """
         Message polling process.
         """
+        def monitor_stop_polling(self):
+            while True:
+                if self.stop_polling:
+                    logging.getLogger("monitor_stop_polling").debug("Gracefully stopping %s (%s).", self.channel_name, self.channel_id)
+                    self.queue.put(None)
+                    return
+        threading.Thread(target=monitor_stop_polling, args=(self,), daemon=True).run()
         self.bot.start_polling(network_delay=10, timeout=10)
         while True:
-            if self.stop_polling:
-                self.bot.stop()
-                self.logger.debug("%s (%s) gracefully stopped.", self.channel_name, self.channel_id)
-                break
             try:
                 m = self.queue.get()
+                if m is None:
+                    break
                 self.logger.info("Got message from queue\nType: %s\nText: %s\n----" % (m.type, m.text))
                 threading.Thread(target=self.process_msg, args=(m,)).start()
                 self.queue.task_done()
@@ -1174,6 +1179,10 @@ class TelegramChannel(EFBChannel):
                 self.logger.error(repr(e))
                 self.bot.stop()
                 self.poll()
+
+        self.logger.debug("Gracefully stopping %s (%s).", self.channel_name, self.channel_id)
+        self.bot.stop()
+        self.logger.debug("%s (%s) gracefully stopped.", self.channel_name, self.channel_id)
 
     def error(self, bot, update, error):
         """
