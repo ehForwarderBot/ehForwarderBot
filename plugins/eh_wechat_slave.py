@@ -60,7 +60,7 @@ def incomeMsgMeta(func):
             }
             logger.debug("origin: %s\nmember: %s\n", mobj.origin, mobj.member)
         else:
-            if me:
+            if me and mobj.text:
                 mobj.text = "You: " + mobj.text
             mobj.source = MsgSource.User
             mobj.origin = {
