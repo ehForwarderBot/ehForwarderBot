@@ -438,6 +438,11 @@ class WeChatChannel(EFBChannel):
             "image": data['msg']['appmsg']['thumburl'],
             "url": data['msg']['appmsg']['url']
         }
+        if mobj.attributes['url'] is None:
+            txt = mobj.attributes['title'] or ''
+            txt += mobj.attributes['description'] or ''
+            msg['Text'] = txt
+            return self.textMsg(msg, isGroupChat)
         # format text
         mobj.text = ""
         if self._flag("extra_links_on_message", False):

@@ -75,6 +75,7 @@ class TelegramChannel(EFBChannel):
     msg_status = {}
     msg_storage = {}
     me = None
+    _stop_polling = False
 
     # Constants
     TYPE_DICT = {
@@ -136,7 +137,8 @@ class TelegramChannel(EFBChannel):
     # Written by Mark Tolonen
     # http://stackoverflow.com/a/13738452/1989455
 
-    def _utf8_lead_byte(self, b):
+    @staticmethod
+    def _utf8_lead_byte(b):
         """A UTF-8 intermediate byte starts with the bits 10xxxxxx."""
         return (b & 0xC0) != 0x80
 
@@ -156,7 +158,7 @@ class TelegramChannel(EFBChannel):
         Dispatch a callback query based on the message session status.
 
         Args:
-            bot (telegram.bot): bot
+            bot (telegram.bot.Bot): bot
             update (telegram.Update): update
         """
         # Get essential information about the query
@@ -1157,13 +1159,6 @@ class TelegramChannel(EFBChannel):
         """
         Message polling process.
         """
-        def monitor_stop_polling(self):
-            while True:
-                if self.stop_polling:
-                    logging.getLogger("monitor_stop_polling").debug("Gracefully stopping %s (%s).", self.channel_name, self.channel_id)
-                    self.queue.put(None)
-                    return
-        threading.Thread(target=monitor_stop_polling, args=(self,), daemon=True).start()
         self.bot.start_polling(network_delay=10, timeout=10)
         while True:
             try:
@@ -1213,3 +1208,14 @@ class TelegramChannel(EFBChannel):
             Value for the flag.
         """
         return getattr(config, self.channel_id).get('flags', dict()).get(key, value)
+
+    @property
+    def stop_polling(self):
+        return self._stop_polling
+
+    @stop_polling.setter
+    def stop_polling(self, val):
+        if val:
+            self.queue.put(None)
+        self._stop_polling = val
+
