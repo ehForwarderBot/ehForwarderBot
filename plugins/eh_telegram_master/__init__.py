@@ -126,7 +126,8 @@ class TelegramChannel(EFBChannel):
             telegram.ext.Filters.venue |
             telegram.ext.Filters.location |
             telegram.ext.Filters.audio |
-            telegram.ext.Filters.voice,
+            telegram.ext.Filters.voice |
+            telegram.ext.Filters.video,
             self.msg
         ))
         self.bot.dispatcher.add_error_handler(self.error)
@@ -218,9 +219,10 @@ class TelegramChannel(EFBChannel):
 
             # Generate chat text template & Decide type target
             tg_dest = getattr(config, self.channel_id)['admins'][0]
-            self.logger.debug("%s, process_msg_step_1, tg_dest=%s", xid, tg_dest)
+            self.logger.debug("%s, process_msg_step_1, tg_dest=%s, msg.origin=%s", xid, tg_dest, str(msg.origin))
             if msg.source == MsgSource.Group:
-                msg_prefix = msg.member['name'] if msg.member['name'] == msg.member['alias'] or not msg.member['name'] \
+                self.logger.debug("msg.member: %s", str(msg.member))
+                msg_prefix = msg.member['name'] if msg.member['name'] == msg.member['alias'] or not msg.member['alias'] \
                     else "%s (%s)" % (msg.member['alias'], msg.member['name'])
 
             if tg_chat:  # if this chat is linked
@@ -476,7 +478,7 @@ class TelegramChannel(EFBChannel):
             linked = utils.Emojis.LINK_EMOJI if bool(
                 db.get_chat_assoc(slave_uid="%s.%s" % (chat['channel_id'], chat['chat_uid']))) else ""
             chat_type = utils.Emojis.get_source_emoji(chat['type'])
-            chat_name = chat['chat_alias'] if chat['chat_name'] == chat['chat_alias'] else "%s(%s)" % (
+            chat_name = chat['chat_alias'] if chat['chat_name'] == chat['chat_alias'] else "%s (%s)" % (
             chat['chat_alias'], chat['chat_name'])
             button_text = "%s%s: %s %s" % (chat['channel_emoji'], chat_type, chat_name, linked)
             button_callback = "chat %s" % i
@@ -560,7 +562,7 @@ class TelegramChannel(EFBChannel):
         callback_uid = int(callback_uid.split()[1])
         chat = self.msg_storage["%s.%s" % (tg_chat_id, tg_msg_id)]['chats'][callback_uid]
         chat_uid = "%s.%s" % (chat['channel_id'], chat['chat_uid'])
-        chat_display_name = chat['chat_name'] if chat['chat_name'] == chat['chat_alias'] else "%s(%s)" % (
+        chat_display_name = chat['chat_name'] if chat['chat_name'] == chat['chat_alias'] else "%s (%s)" % (
         chat['chat_alias'], chat['chat_name'])
         chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name'])
 
@@ -711,7 +713,7 @@ class TelegramChannel(EFBChannel):
         callback_uid = int(callback_uid.split()[1])
         chat = self.msg_storage["%s.%s" % (tg_chat_id, tg_msg_id)]['chats'][callback_uid]
         chat_uid = "%s.%s" % (chat['channel_id'], chat['chat_uid'])
-        chat_display_name = chat['chat_name'] if chat['chat_name'] == chat['chat_alias'] else "%s(%s)" % (
+        chat_display_name = chat['chat_name'] if chat['chat_name'] == chat['chat_alias'] else "%s (%s)" % (
             chat['chat_alias'], chat['chat_name'])
         chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name'])
         self.msg_status.pop("%s.%s" % (tg_chat_id, tg_msg_id), None)
@@ -954,7 +956,7 @@ class TelegramChannel(EFBChannel):
             elif mtype == TGMsgType.Video:
                 m.type = MsgType.Video
                 m.text = update.message.caption
-                tg_file_id = update.message.document.file_id
+                tg_file_id = update.message.video.file_id
                 m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
                 m.file = open(m.path, "rb")
             elif mtype == TGMsgType.Audio:
@@ -1015,7 +1017,7 @@ class TelegramChannel(EFBChannel):
         mime = magic.from_file(fullpath, mime=True)
         if type(mime) is bytes:
             mime = mime.decode()
-        ext = mimetypes.guess_extension(mime)
+        ext = mimetypes.guess_extension(mime).split(".")[-1]
         os.rename(fullpath, "%s.%s" % (fullpath, ext))
         fullpath = "%s.%s" % (fullpath, ext)
         return fullpath, mime
@@ -1159,6 +1161,7 @@ class TelegramChannel(EFBChannel):
         while True:
             if self.stop_polling:
                 self.bot.stop()
+                self.logger.debug("%s (%s) gracefully stopped.", self.channel_name, self.channel_id)
                 break
             try:
                 m = self.queue.get()

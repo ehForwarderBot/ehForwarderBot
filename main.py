@@ -10,14 +10,14 @@ from channel import EFBChannel
 if sys.version_info.major < 3:
     raise Exception("Python 3.x is required. Your version is %s." % sys.version)
 
-__version__ = "1.3.2-dev.2"
+__version__ = "1.3.2-dev.3"
 
 parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible chat tunnel framework which allows "
                                              "users to contact people from other chat platforms, and ultimately "
                                              "remotely control their accounts in other platforms.",
                                  epilog="Support: https://github.com/blueset/ehForwarderBot")
 parser.add_argument("-v", default=0, action="count",
-                    help="Increase verbosity.")
+                    help="Increase verbosity. -vv at most.")
 parser.add_argument("-V", "--version", action="version",
                     help="Show version number and exit.",
                     version="EFB Forwarder Bot %s" % __version__)
@@ -33,12 +33,15 @@ master_thread = None
 slave_threads = None
 
 
-def stop_gracefully():
+def stop_gracefully(*args, **kwargs):
+    l = logging.getLogger("ehForwarderBot")
     if isinstance(master, EFBChannel):
         master.stop_polling = True
+        l.debug("Stop signal sent to master: %s" % master.channel_name)
     for i in slaves:
         if isinstance(slaves[i], EFBChannel):
             slaves[i].stop_polling = True
+            l.debug("Stop signal sent to slave: %s" % slaves[i].channel_name)
 
 
 def set_log_file(fn):

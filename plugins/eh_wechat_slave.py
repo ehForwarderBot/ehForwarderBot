@@ -44,16 +44,16 @@ def incomeMsgMeta(func):
             mobj.source = MsgSource.Group
             logger.debug("Group. member: %s", member)
             mobj.origin = {
-                'name': FromUser['NickName'],
-                'alias': FromUser['RemarkName'] or FromUser['NickName'],
+                'name': html.unescape(FromUser['NickName']),
+                'alias': html.unescape(FromUser['RemarkName'] or FromUser['NickName']),
                 'uid': self.get_uid(UserName=msg.get('FromUserName', None),
                                     NickName=html.unescape(FromUser.get('NickName', "s")),
                                     alias=html.unescape(FromUser.get('RemarkName', "s")),
                                     Uin=FromUser.get('Uin', None))
             }
             mobj.member = {
-                'name': member['NickName'],
-                'alias': member['DisplayName'],
+                'name': html.unescape(member['NickName']),
+                'alias': html.unescape(member['DisplayName']),
                 'uid': self.get_uid(UserName=msg.get('ActualUserName', None),
                                     NickName=html.unescape(member.get('NickName', "")),
                                     alias=html.unescape(member.get('DisplayName', "")),
@@ -66,8 +66,8 @@ def incomeMsgMeta(func):
                 mobj.text = "You: " + mobj.text
             mobj.source = MsgSource.User
             mobj.origin = {
-                'name': FromUser['NickName'],
-                'alias': FromUser['RemarkName'] or FromUser['NickName'],
+                'name': html.unescape(FromUser['NickName']),
+                'alias': html.unescape(FromUser['RemarkName'] or FromUser['NickName']),
                 'uid': self.get_uid(UserName=msg.get('FromUserName', None),
                                     NickName=html.unescape(FromUser.get('NickName', "")),
                                     alias=html.unescape(FromUser.get('RemarkName', "")),
@@ -393,7 +393,8 @@ class WeChatChannel(EFBChannel):
 
         if self.itchat.useHotReload:
             self.itchat.dump_login_status()
-        self.itchat.alive = False
+
+        self.logger.debug("%s (%s) gracefully stopped.", self.channel_name, self.channel_id)
 
     @incomeMsgMeta
     def textMsg(self, msg, isGroupChat=False):
@@ -552,7 +553,7 @@ class WeChatChannel(EFBChannel):
         mime = magic.from_file(fullpath, mime=True)
         if type(mime) is bytes:
             mime = mime.decode()
-        ext = "jpg" if mime == "image/jpeg" else mimetypes.guess_extension(mime)
+        ext = "jpg" if mime == "image/jpeg" else mimetypes.guess_extension(mime).split(".")[-1]
         os.rename(fullpath, "%s.%s" % (fullpath, ext))
         fullpath = "%s.%s" % (fullpath, ext)
         self.logger.info("File saved from WeChat\nFull path: %s\nMIME: %s", fullpath, mime)
@@ -572,7 +573,7 @@ class WeChatChannel(EFBChannel):
             EFBMessageTypeNotSupported: Raised when message type is not supported by the channel.
         """
         UserName = self.get_UserName(msg.destination['uid'])
-        if UserName is None or UserName == False:
+        if UserName is None or UserName is False:
             raise EFBChatNotFound
         self.logger.info("Sending message to WeChat:\n"
                          "Target-------\n"
@@ -634,9 +635,15 @@ class WeChatChannel(EFBChannel):
                     os.remove('.'.join(msg.path.split('.')[:-1]))
                 except FileNotFoundError:
                     pass
-        elif msg.type in [MsgType.File, MsgType.Video]:
+        elif msg.type == MsgType.File:
             self.logger.info("Sending file to WeChat\nFileName: %s\nPath: %s", msg.text, msg.path)
             r = self.itchat.send_file(msg.path, UserName)
+            if msg.text:
+                self.itchat.send_msg(msg.text, UserName)
+            os.remove(msg.path)
+        elif msg.type == MsgType.Video:
+            self.logger.info("Sending video to WeChat\nFileName: %s\nPath: %s", msg.text, msg.path)
+            r = self.itchat.send_video(msg.path, UserName)
             if msg.text:
                 self.itchat.send_msg(msg.text, UserName)
             os.remove(msg.path)
