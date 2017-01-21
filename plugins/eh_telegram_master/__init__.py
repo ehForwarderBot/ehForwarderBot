@@ -1163,7 +1163,7 @@ class TelegramChannel(EFBChannel):
                     logging.getLogger("monitor_stop_polling").debug("Gracefully stopping %s (%s).", self.channel_name, self.channel_id)
                     self.queue.put(None)
                     return
-        threading.Thread(target=monitor_stop_polling, args=(self,), daemon=True).run()
+        threading.Thread(target=monitor_stop_polling, args=(self,), daemon=True).start()
         self.bot.start_polling(network_delay=10, timeout=10)
         while True:
             try:
