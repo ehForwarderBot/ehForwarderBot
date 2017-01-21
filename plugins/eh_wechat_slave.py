@@ -61,7 +61,7 @@ def incomeMsgMeta(func):
             }
             logger.debug("origin: %s\nmember: %s\n", mobj.origin, mobj.member)
         else:
-            if me:
+            if me and mobj.text:
                 mobj.text = "You: " + mobj.text
             mobj.source = MsgSource.User
             mobj.origin = {
@@ -182,7 +182,6 @@ class WeChatChannel(EFBChannel):
         if not (UserName or NickName or alias or Uin):
             self.logger.error('No name provided.')
             return False
-        fallback_order = self._flag("uid_order", ["NickName"])
         data = {"nickname": NickName, "alias": alias, "uin": Uin}
         if UserName and not (NickName or alias or Uin):
             r = self.search_user(UserName=UserName)
@@ -190,10 +189,25 @@ class WeChatChannel(EFBChannel):
                 self.logger.debug("get_uid, return False")
                 return False
             data = {"nickname": r[0]['NickName'], "alias": r[0]["RemarkName"], "uin": r[0]["Uin"]}
+        return self.encode_uid(data)
+
+    def encode_uid(self, data):
+        """
+        Encode uid by a predefined order in configuration.
+
+        Args:
+            data (dict): a dictionary containing UserName, NickName and Uin
+
+        Returns:
+            str: Encoded uid
+        """
+        fallback_order = self._flag("uid_order", ["NickName"])
+        uid = data[fallback_order[-1].lower()]
         for i in fallback_order:
             if data[i.lower()]:
-                return str(crc32(data[i.lower()].encode("utf-8")))
-        return str(crc32(data[fallback_order[-1].lower()].encode("utf-8")))
+                uid = data[i.lower()]
+                break
+        return str(crc32(str(uid).encode("utf-8")))
 
     def get_UserName(self, uid, refresh=False):
         """
@@ -256,10 +270,8 @@ class WeChatChannel(EFBChannel):
             data = {"nickname": i.get('NickName', None),
                     "alias": i.get("RemarkName", None),
                     "uin": i.get("Uin", None)}
-            for j in fallback_order:
-                if str(crc32(data[j.lower()].encode("utf-8"))) == uid:
-                    result.append(i.copy())
-            if str(i.get('UserName', '')) == UserName or \
+            if self.encode_uid(data) == uid or \
+               str(i.get('UserName', '')) == UserName or \
                str(i.get('AttrStatus', '')) == uid or \
                str(i.get('Uin', '')) == uin or \
                str(i.get('NickName', '')) == name or \
@@ -273,10 +285,8 @@ class WeChatChannel(EFBChannel):
             data = {"nickname": i.get('NickName', None),
                     "alias": i.get("RemarkName", None),
                     "uin": i.get("Uin", None)}
-            for j in fallback_order:
-                if str(crc32(data[j.lower()].encode("utf-8"))) == uid:
-                    result.append(i.copy())
-            if str(i.get('Uin', '')) == uin or \
+            if self.encode_uid(data) == uid or \
+               str(i.get('Uin', '')) == uin or \
                str(i.get('NickName', '')) == name or \
                str(i.get('DisplayName', '')) == name or \
                str(i.get('UserName', '')) == UserName:
@@ -284,16 +294,7 @@ class WeChatChannel(EFBChannel):
                 result[-1]['MemberList'] = []
                 if ActualUserName:
                     for j in i['MemberList']:
-                        data = {"nickname": j.get('NickName', None),
-                                "alias": j.get("DisplayName", None),
-                                "uin": j.get("Uin", None)}
-                        for k in fallback_order:
-                            if str(crc32(data[k.lower()].encode("utf-8"))) == uid:
-                                result.append(k.copy())
-                        if str(j['UserName']) == ActualUserName or \
-                           str(j['AttrStatus']) == uid or \
-                           str(j['NickName']) == name or \
-                           str(j['DisplayName']) == name:
+                        if str(j['UserName']) == ActualUserName:
                             result[-1]['MemberList'].append(j)
         if not result and not refresh:
             return self.search_user(UserName, uid, uin, name, ActualUserName, refresh=True)

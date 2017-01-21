@@ -290,8 +290,8 @@ class TelegramChannel(EFBChannel):
                 self.logger.debug("%s, process_msg_step_3_1", xid)
             elif msg.type == MsgType.Link:
                 text = "🔗 <a href=\"%s\">%s</a>\n%s" % (urllib.parse.quote(msg.attributes["url"], safe="?=&#:/"),
-                                                         html.escape(msg.attributes["title"]),
-                                                         html.escape(msg.attributes["description"]))
+                                                         html.escape(msg.attributes["title"] or msg.attributes["url"]),
+                                                         html.escape(msg.attributes["description"] or ""))
                 if msg.text:
                     text += "\n\n" + msg.text
                 try:
