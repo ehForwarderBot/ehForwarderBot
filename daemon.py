@@ -287,7 +287,7 @@ def transcript(path, reset=False):
          "Press ^C (Control+C on Mac, Ctrl+C otherwise) to hide."]
     w = int(max(len(i) for i in l))
     for i in l:
-        print("\x1b[0;37;46m   %s  \x1b[0m" % i.ljust(w))
+        print("\x1b[1;37;44m   %s  \x1b[0m" % i.ljust(w))
     print()
     try:
         subprocess.call(["tail", "-f", path])

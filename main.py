@@ -20,7 +20,7 @@ parser.add_argument("-v", default=0, action="count",
                     help="Increase verbosity. -vv at most.")
 parser.add_argument("-V", "--version", action="version",
                     help="Show version number and exit.",
-                    version="EFB Forwarder Bot %s" % __version__)
+                    version="EH Forwarder Bot %s" % __version__)
 parser.add_argument("-l", "--log",
                     help="Set log file path.")
 
@@ -86,7 +86,7 @@ def init():
         q, slaves)
     l.critical("\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m" % (master.channel_name, master.channel_id))
 
-    l.critical("\x1b[0;37;42m All channels initialized. \x1b[0m")
+    l.critical("\x1b[1;37;42m All channels initialized. \x1b[0m")
     master_thread = threading.Thread(target=master.poll)
     slave_threads = {key: threading.Thread(target=slaves[key].poll) for key in slaves}
 
