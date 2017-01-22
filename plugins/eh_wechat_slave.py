@@ -98,11 +98,12 @@ class WeChatChannel(EFBChannel):
     channel_emoji = "💬"
     channel_id = "eh_wechat_slave"
     channel_type = ChannelType.Slave
+
     supported_message_types = {MsgType.Text, MsgType.Sticker, MsgType.Image, MsgType.File, MsgType.Video, MsgType.Link}
-    users = {}
     logger = logging.getLogger("plugins.%s.WeChatChannel" % channel_id)
-    qr_callback = ""
     qr_uuid = ""
+    done_reauth = threading.Event()
+    _stop_polling = False
 
     SYSTEM_USERNAMES = ["filehelper", "newsapp", "fmessage", "weibo", "qqmail", "fmessage", "tmessage", "qmessage",
                          "qqsync", "floatbottle", "lbsapp", "shakeapp", "medianote", "qqfriend", "readerapp",
@@ -115,11 +116,11 @@ class WeChatChannel(EFBChannel):
         itchat.set_logging(showOnCmd=False)
         self.itchat_msg_register()
 
-        qr_target = self._flag("qr_target", "console")
-        if qr_target == "master":
-            self.qr_callback = "master_qr_code"
-        else:
-            self.qr_callback = "console_qr_code"
+        self.itchat.auto_login(enableCmdQR=2,
+                               hotReload=True,
+                               statusStorageDir="storage/%s.pkl" % self.channel_id,
+                               exitCallback=self.exit_callback,
+                               qrCallback=self.console_qr_code)
 
         self.logger.info("EWS Inited!!!\n---")
 
@@ -131,9 +132,11 @@ class WeChatChannel(EFBChannel):
         status = int(status)
         if status == 201:
             QR = 'Tap "Confirm" to continue.'
+            return self.logger.critical(QR)
         elif status == 200:
             QR = "Successfully authorized."
-        else:
+            return self.logger.critical(QR)
+        elif uuid != self.qr_uuid:
             # 0: First QR code
             # 408: Updated QR code
             QR = "WeChat: Scan QR code with WeChat to continue. (%s, %s)\n" % (uuid, status)
@@ -151,30 +154,41 @@ class WeChatChannel(EFBChannel):
                             QR += "\x1b[49m  \x1b[0m"
                 QR += "\n"
             QR += "\nIf you cannot read the QR code above, " \
-                  "Please generate a QR code with any tool with the following URL:\n" \
+                  "Please generate a QR code with any tool utsing the following URL:\n" \
                   "https://login.weixin.qq.com/l/" + uuid
-        self.logger.critical(QR)
+            return self.logger.critical(QR)
+        self.qr_uuid = uuid
 
     def master_qr_code(self, uuid, status, qrcode):
-        if uuid != self.qr_uuid:
+        status = int(status)
+        msg = EFBMsg(self)
+        msg.type = MsgType.Text
+        msg.source = MsgSource.System
+        msg.origin = {
+            'name': '%s Auth' % self.channel_name,
+            'alias': '%s Auth' % self.channel_name,
+            'uid': -1
+        }
+        if status == 201:
+            msg.type = MsgType.Text
+            msg.text = 'Tap "Confirm" to continue.'
+        elif status == 200:
+            msg.type = MsgType.Text
+            msg.text = "Successfully authenticated."
+        elif uuid != self.qr_uuid:
+            msg.type = MsgType.Image
             path = os.path.join("storage", self.channel_id)
             if not os.path.exists(path):
                 os.makedirs(path)
-            path = os.path.join(path, 'QR.jpg')
+            path = os.path.join(path, 'QR-%s.jpg' % int(time.time()))
+            self.logger.debug("master_qr_code file path: %s", path)
             with open(path, 'wb') as f:
                 f.write(qrcode)
-            msg = EFBMsg(self)
-            msg.type = MsgType.Image
-            msg.source = MsgSource.System
-            msg.origin = {
-                'name': 'WeChat System Message',
-                'alias': 'WeChat System Message',
-                'uid': -1
-            }
-            msg.text = '[%s] Scan this QR code to login your account' % self.channel_id
+            msg.text = 'Scan this QR Code with WeChat to continue.'
             msg.path = path
             msg.file = open(path, 'rb')
             msg.mime = 'image/jpeg'
+        if status in (200, 201) or uuid != self.qr_uuid:
             self.queue.put(msg)
             self.qr_uuid = uuid
 
@@ -182,25 +196,31 @@ class WeChatChannel(EFBChannel):
         msg = EFBMsg(self)
         msg.source = MsgSource.System
         msg.origin = {
-            'name': 'WeChat System Message',
-            'alias': 'WeChat System Message',
+            'name': '%s System' % self.channel_name,
+            'alias': '%s System' % self.channel_name,
             'uid': -1
         }
         msg.text = "WeChat server logged out the user."
-        if self.qr_callback == "console_qr_code":
-            msg.type = MsgType.Text
-        else:
+        msg.type = MsgType.Text
+        on_log_out = self._flag("on_log_out", "command")
+        on_log_out = on_log_out if on_log_out in ("command", "idle", "reauth") else "command"
+        if on_log_out == "command":
             msg.type = MsgType.Command
             msg.attributes = {
                 "commands": [
                     {
-                        "name": "Login again",
-                        "callable": "start_polling_thread",
+                        "name": "Log in",
+                        "callable": "reauth",
                         "args": [],
-                        "kwargs": {}
+                        "kwargs": {"command": True}
                     }
                 ]
             }
+        elif on_log_out == "reauth":
+            if self._flag("qr_reload", "master_qr_code") == "console_qr_code":
+                msg.text += "\nPlease visit your console or log for QR code and further instructions."
+            self.reauth()
+
         self.queue.put(msg)
 
     def get_uid(self, UserName=None, NickName=None, alias=None, Uin=None):
@@ -340,15 +360,12 @@ class WeChatChannel(EFBChannel):
         return result
 
     def poll(self):
-        self.itchat.auto_login(enableCmdQR=2,
-                               hotReload=True,
-                               statusStorageDir="storage/%s.pkl" % self.channel_id,
-                               exitCallback=self.exit_callback,
-                               qrCallback=getattr(self, self.qr_callback))
-        self.usersdata = self.itchat.get_friends(True) + self.itchat.get_chatrooms()
-
-        while self.itchat.alive and not self.stop_polling:
-            self.itchat.configured_reply()
+        while not self.stop_polling:
+            if self.itchat.alive:
+                self.itchat.configured_reply()
+            else:
+                self.done_reauth.wait()
+                self.done_reauth.clear()
 
         if self.itchat.useHotReload:
             self.itchat.dump_login_status()
@@ -817,10 +834,22 @@ class WeChatChannel(EFBChannel):
 
     # Command functions
 
-    def start_polling_thread(self):
-        thread = threading.Thread(target=self.poll)
-        thread.start()
-        return "Reconnecting..."
+    def reauth(self, command=False):
+        msg = "Starting authentication."
+        qr_reload = self._flag("qr_reload", "master_qr_code")
+        if command and qr_reload == "console_qr_code":
+            msg += "\nPlease visit your console or log for QR code and further instructions."
+
+        def reauth_thread(self, qr_reload):
+            qr_callback = getattr(self, qr_reload, self.master_qr_code)
+            self.itchat.auto_login(enableCmdQR=2,
+                                   hotReload=True,
+                                   statusStorageDir="storage/%s.pkl" % self.channel_id,
+                                   exitCallback=self.exit_callback,
+                                   qrCallback=qr_callback)
+            self.done_reauth.set()
+        threading.Thread(target=reauth_thread, args=(self, qr_reload)).start()
+        return msg
 
     def add_friend(self, UserName=None, status=2, ticket="", UserInfo={}):
         if not UserName:
@@ -879,3 +908,15 @@ class WeChatChannel(EFBChannel):
             Value for the flag.
         """
         return getattr(config, self.channel_id, dict()).get('flags', dict()).get(key, value)
+
+
+    @property
+    def stop_polling(self):
+        return self._stop_polling
+
+    @stop_polling.setter
+    def stop_polling(self, val):
+        val = bool(val)
+        if val and not self.itchat.alive:
+            self.done_reauth.set()
+        self._stop_polling = val

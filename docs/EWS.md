@@ -104,8 +104,16 @@ eh_wechat_slave = {
   List out all other messages (more than first one) for link messages with more than one link from MPS accounts.
 * `max_quote_length` _(int)_  [Default: `-1`]  
   Maximum length of text for quotation messages. Set to 0 to fully disable quotation. Set to -1 to always quote full message.
-* `qr_target` _(string)_ [Default: `"console"`]
-  The target channel which should receive a QR code to login the Wechat account.
+* `qr_reload` _(str)_  [Default: `"master_qr_code"`]  
+  Method to display QR code during reauthentication.  
   Available values:
-    * `"console"`: the command line interface
-    * `"master"`: the master channel
+    * `"console_qr_code"`: QR code is printed to the console or log, depend on the logger setting.
+    * `"master_qr_code"`: QR code is sent to the master channel as system message.
+  !!! note
+      The QR code refreshes every 5 to 10 seconds, be aware that sending system messages may lead to flood of message in your conversation.
+* `on_log_out` _(str)_  [Default: `"command"`]  
+  Behavior when WeChat server logs out the user.  
+    Available values:
+    * `"idle"`: Notify the user, then do nothing.
+    * `"reauth"`: Notify the user, then immediately start reauthentication.
+    * `"command"`: Notify the user, then send the user a command message to trigger reauthentication process.
