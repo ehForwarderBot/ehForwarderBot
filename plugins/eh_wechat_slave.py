@@ -3,6 +3,7 @@ import logging
 import mimetypes
 import os
 import re
+import threading
 import time
 import html
 from binascii import crc32
@@ -179,7 +180,6 @@ class WeChatChannel(EFBChannel):
 
     def exit_callback(self):
         msg = EFBMsg(self)
-        msg.type = MsgType.Text
         msg.source = MsgSource.System
         msg.origin = {
             'name': 'WeChat System Message',
@@ -187,9 +187,21 @@ class WeChatChannel(EFBChannel):
             'uid': -1
         }
         msg.text = "WeChat server logged out the user."
+        if self.qr_callback == "console_qr_code":
+            msg.type = MsgType.Text
+        else:
+            msg.type = MsgType.Command
+            msg.attributes = {
+                "commands": [
+                    {
+                        "name": "Login again",
+                        "callable": "start_polling_thread",
+                        "args": [],
+                        "kwargs": {}
+                    }
+                ]
+            }
         self.queue.put(msg)
-        # start polling again
-        self.poll()
 
     def get_uid(self, UserName=None, NickName=None, alias=None, Uin=None):
         """
@@ -804,6 +816,11 @@ class WeChatChannel(EFBChannel):
                 members_uin, members_all, 100 * members_uin / members_all)
 
     # Command functions
+
+    def start_polling_thread(self):
+        thread = threading.Thread(target=self.poll)
+        thread.start()
+        return "Reconnecting..."
 
     def add_friend(self, UserName=None, status=2, ticket="", UserInfo={}):
         if not UserName:
