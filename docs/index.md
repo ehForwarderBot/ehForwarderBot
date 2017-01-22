@@ -6,6 +6,8 @@
 [![Docs: Stable version](https://readthedocs.org/projects/ehforwarderbot/badge/?version=latest)](https://ehforwarderbot.readthedocs.io/en/latest/)
 [![Docs: Development version version](https://readthedocs.org/projects/ehforwarderbot/badge/?version=dev)](https://ehforwarderbot.readthedocs.io/en/dev/)
 [![tag](https://img.shields.io/github/tag/blueset/ehforwarderbot.svg)](https://github.com/blueset/ehForwarderBot/releases)
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/blueset/ehforwarderbot.svg)](http://isitmaintained.com/project/blueset/ehforwarderbot "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/blueset/ehforwarderbot.svg)](http://isitmaintained.com/project/blueset/ehforwarderbot "Percentage of issues still open")
 
 ![EFB](https://images.1a23.com/upload/images/SPET.png)
 

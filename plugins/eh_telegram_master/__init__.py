@@ -1193,7 +1193,7 @@ class TelegramChannel(EFBChannel):
                             "EFB Telegram Master channel encountered error <code>%s</code> "
                             "caused by update <code>%s</code>.\n\n"
                             "Report issue: <a href=\"https://github.com/blueset/ehForwarderBot/issues/new\">GitHub Issue Page</a>" %
-                            (html.escape(error), html.escape(update)))
+                            (html.escape(str(error)), html.escape(str(update))))
             self.logger.error('ERROR! Update %s caused error %s' % (update, error))
 
     def _flag(self, key, value):
