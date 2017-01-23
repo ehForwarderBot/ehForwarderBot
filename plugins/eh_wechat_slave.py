@@ -115,13 +115,12 @@ class WeChatChannel(EFBChannel):
         self.itchat = itchat.new_instance()
         itchat.set_logging(showOnCmd=False)
         self.itchat_msg_register()
-
         self.itchat.auto_login(enableCmdQR=2,
                                hotReload=True,
                                statusStorageDir="storage/%s.pkl" % self.channel_id,
                                exitCallback=self.exit_callback,
                                qrCallback=self.console_qr_code)
-
+        mimetypes.init(files=["mimetypes"])
         self.logger.info("EWS Inited!!!\n---")
 
     #
@@ -666,7 +665,11 @@ class WeChatChannel(EFBChannel):
                         tgt_text = "「%s」" % qt_txt
                     else:
                         tgt_text = ""
-                    msg.text = "@%s\u2005 %s\n\n%s" % (msg.target['target'].member['alias'], tgt_text, msg.text)
+                    if UserName.startswith("@@"):
+                        tgt_alias = "@%s\u2005 " % msg.target['target'].member['alias']
+                    else:
+                        tgt_alias = ""
+                    msg.text = "%s%s\n\n%s" % (tgt_alias, tgt_text, msg.text)
             r = self.itchat.send(msg.text, UserName)
         elif msg.type in [MsgType.Image, MsgType.Sticker]:
             self.logger.info("Image/Sticker %s, %s", msg.type, msg.path)
