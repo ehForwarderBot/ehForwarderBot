@@ -63,7 +63,7 @@ class EFBChannel:
     def send_message(self, *args, **kwargs):
         return "Not implemented"
 
-    def poll(self, *args, **kwargs):
+    def poll(self, exit_event, *args, **kwargs):
         return "Not implemented"
 
     def get_chats(self, *args, **kwargs):

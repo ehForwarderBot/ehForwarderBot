@@ -1156,12 +1156,12 @@ class TelegramChannel(EFBChannel):
                         parse_mode=telegram.ParseMode.MARKDOWN)
         os.remove(path)
 
-    def poll(self, stop_event):
+    def poll(self, exit_event):
         """
         Message polling process.
         """
         self.bot.start_polling(network_delay=10, timeout=10)
-        while not stop_event.wait(0.1):
+        while not exit_event.wait(0.1):
             try:
                 m = self.queue.get(False)
                 self.logger.info("Got message from queue\nType: %s\nText: %s\n----" % (m.type, m.text))
@@ -1174,7 +1174,7 @@ class TelegramChannel(EFBChannel):
                 self.logger.error("Error occurred during message polling")
                 self.logger.error(repr(e))
                 self.bot.stop()
-                self.poll(stop_event)
+                self.poll(exit_event)
 
         self.logger.debug("Gracefully stopping %s (%s).", self.channel_name, self.channel_id)
         self.bot.stop()

@@ -5,7 +5,6 @@ import logging
 import argparse
 import sys
 import signal
-from channel import EFBChannel
 
 if sys.version_info.major < 3:
     raise Exception("Python 3.x is required. Your version is %s." % sys.version)
@@ -40,7 +39,6 @@ def stop_gracefully(*args, **kwargs):
     """
     Stop the program gracefully
     """
-    global master_thread, slave_threads, exit_event
     exit_event.set()
     master_thread.join()
     map(threading.Thread.join, slave_threads)
