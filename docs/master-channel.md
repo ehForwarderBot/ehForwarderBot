@@ -5,13 +5,14 @@ Master channel in EFB directly communicates with the user through a chat platfor
 ## Initialization and polling
 Similarly to slave channels, master channels also need to initialize and poll for messages from the chat platform.
 
-All log-in and initializing process are done `__init__(self, queue, slaves)` method, where:
+All log-in and initializing process are done `__init__(self, queue, mutex, slaves)` method, where:
 * `queue` is the message queue (`queue.Queue`) from slave channels.
+* `mutex` is the global interaction lock (`threading.Lock`). Locked when the channel is having critical interaction with user, including reauthorization.
 * `slaves` is the dict of all enabled channels, where the keys are channel UIDs, and values point to the channel objects.
 
 `super().__init__(queue)` should be called in the beginning. The "super" `__init__` method assigns the message `queue` to `self.queue`.
 
-If your platform requires extra interaction before polling, it should be done in the `__init__` method.
+If your platform requires extra interaction before polling, it should be done in the `__init__` method. When you have to interact with the user for critical issues including reauthentication, you should lock `self.mutex` while doing so to avoid conflicting interactions.
 
 !!! note
     Try to avoid user interaction as far as possible, if there is a way to login the platform using any fixed credentials, please avoid using dynamical verification.
@@ -100,4 +101,3 @@ Similar to command message methods, all "extra function" methods also returns a 
 
 ## Media processing
 Please refer to the "Media processing" section in [Walk through](workflow.md) for details.
- 

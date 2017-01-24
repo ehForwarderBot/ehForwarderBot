@@ -41,8 +41,16 @@ class EFBChannel:
     supported_message_types = set()
     stop_polling = False
 
-    def __init__(self, queue):
+    def __init__(self, queue, mutex):
+        """
+        Initialize a channel.
+
+        Args:
+            queue (queue.Queue): Global message queue.
+            mutex (threading.Lock): Global interaction thread lock.
+        """
         self.queue = queue
+        self.mutex = mutex
 
     def get_extra_functions(self):
         """Get a list of extra functions
@@ -59,13 +67,28 @@ class EFBChannel:
                 methods[mName] = m
         return methods
 
-    def send_message(self, *args, **kwargs):
+    def send_message(self, msg):
+        """
+        Send message to slave channels.
+
+        Args:
+            msg (EFBMsg): Message object to be sent.
+
+        Returns:
+            EFBMsg: The same message object with message ID.
+        """
         return "Not implemented"
 
     def poll(self, *args, **kwargs):
         return "Not implemented"
 
-    def get_chats(self, *args, **kwargs):
+    def get_chats(self):
+        """
+        Return a list of available chats in the channel.
+
+        Returns:
+            list of dict: a list of available chats in the channel.
+        """
         return "Not implemented"
 
 

@@ -32,13 +32,14 @@ Global message queue initialized by the parental `__init__` method. This queue i
 ## Methods
 Methods below are required to be implemented for respective channel types noted, unless otherwise stated.
 
-**__init__(self, queue)** _(for slave channels)_  
-**__init__(self, queue, slaves)** _(for master channels)_  
+**__init__(self, queue, mutex)** _(for slave channels)_  
+**__init__(self, queue, mutex, slaves)** _(for master channels)_  
 Initialize the channel with in this method. `super().__init__(queue)` must always be called in the beginning.
 
 Args:
 
 * `queue` (queue.Queue): Global message queue, used for message delivery from slave channels to the master channel.
+* `mutex` (threading.Lock): Global interaction lock. Locked when the channel is having critical interaction with user, including reauthorization.
 * `slaves` (dict): All enabled slave channel objects. Format: `"channel_id": channel_object`.
 
 **poll(self)** _(for both types)_  

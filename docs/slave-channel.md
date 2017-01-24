@@ -22,11 +22,13 @@ In the beginning, each channel is initialized with the common queue, namely a Py
 
 A few methods are required to be implemented for every slave channel.
 
-### `__init__(self, queue)`
-`super().__init__(queue)` should be called in the beginning. The "super" `__init__` method assigns the message `queue` to `self.queue`. Any other authorization steps are recommended to be done in this method.
+### `__init__(self, queue, mutex)`
+`super().__init__(queue, mutex)` should be called in the beginning. The "super" `__init__` method assigns the message `queue` and `mutex` to their respective places. Any other authorization steps are recommended to be done in this method.
 
 !!! note
     Try to avoid user interaction as far as possible, if there is a way to login the platform using any fixed credentials, please avoid using dynamical verification.
+
+When you have to interact with the user for critical issues including reauthentication, you should lock `self.mutex` while doing so to avoid conflicting interactions.
 
 If your platform requires the user to provide any tokens (API key, secret, username, password, etc), you may ask your user to save those information to `config.py`, in a `dict` variable named with your channel unique ID. You can import it with `import config`, and call it with `config.<channel_id>`.
 

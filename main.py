@@ -10,7 +10,7 @@ from channel import EFBChannel
 if sys.version_info.major < 3:
     raise Exception("Python 3.x is required. Your version is %s." % sys.version)
 
-__version__ = "1.3.2-dev.reauth.1"
+__version__ = "1.3.2-dev.reauth.2"
 
 parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible chat tunnel framework which allows "
                                              "users to contact people from other chat platforms, and ultimately "
@@ -27,6 +27,7 @@ parser.add_argument("-l", "--log",
 args = parser.parse_args()
 
 q = None
+mutex = None
 slaves = []
 master = None
 master_thread = None
@@ -69,9 +70,10 @@ def init():
     """
     Initialize all channels.
     """
-    global q, slaves, master, master_thread, slave_threads
-    # Init Queue
+    global q, slaves, master, master_thread, slave_threads, mutex
+    # Init Queue, thread lock
     q = queue.Queue()
+    mutex = threading.Lock()
     # Initialize Plug-ins Library
     # (Load libraries and modules and init them with Queue `q`)
     l = logging.getLogger("ehForwarderBot")
@@ -79,11 +81,11 @@ def init():
     for i in config.slave_channels:
         l.critical("\x1b[0;37;46m Initializing slave %s... \x1b[0m" % str(i))
         obj = getattr(__import__(i[0], fromlist=i[1]), i[1])
-        slaves[obj.channel_id] = obj(q)
+        slaves[obj.channel_id] = obj(q, mutex)
         l.critical("\x1b[0;37;42m Slave channel %s (%s) initialized. \x1b[0m" % (obj.channel_name, obj.channel_id))
     l.critical("\x1b[0;37;46m Initializing master %s... \x1b[0m" % str(config.master_channel))
     master = getattr(__import__(config.master_channel[0], fromlist=config.master_channel[1]), config.master_channel[1])(
-        q, slaves)
+        q, mutex, slaves)
     l.critical("\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m" % (master.channel_name, master.channel_id))
 
     l.critical("\x1b[1;37;42m All channels initialized. \x1b[0m")

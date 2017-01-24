@@ -90,7 +90,7 @@ class TelegramChannel(EFBChannel):
         TGMsgType.Venue: MsgType.Location,
     }
 
-    def __init__(self, queue, slaves):
+    def __init__(self, queue, mutex, slaves):
         """
         Initialization.
 
@@ -98,7 +98,7 @@ class TelegramChannel(EFBChannel):
             queue (queue.Queue): global message queue
             slaves (dict): Dictionary of slaves
         """
-        super().__init__(queue)
+        super().__init__(queue, mutex)
         self.slaves = slaves
         try:
             self.bot = telegram.ext.Updater(getattr(config, self.channel_id)['token'])

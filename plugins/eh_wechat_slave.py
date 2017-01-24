@@ -110,16 +110,17 @@ class WeChatChannel(EFBChannel):
                          "blogapp", "facebookapp", "masssendapp", "meishiapp", "feedsapp", "voip", "blogappweixin",
                          "weixin"]
 
-    def __init__(self, queue):
-        super().__init__(queue)
+    def __init__(self, queue, mutex):
+        super().__init__(queue, mutex)
         self.itchat = itchat.new_instance()
         itchat.set_logging(showOnCmd=False)
         self.itchat_msg_register()
-        self.itchat.auto_login(enableCmdQR=2,
-                               hotReload=True,
-                               statusStorageDir="storage/%s.pkl" % self.channel_id,
-                               exitCallback=self.exit_callback,
-                               qrCallback=self.console_qr_code)
+        with mutex:
+            self.itchat.auto_login(enableCmdQR=2,
+                                   hotReload=True,
+                                   statusStorageDir="storage/%s.pkl" % self.channel_id,
+                                   exitCallback=self.exit_callback,
+                                   qrCallback=self.console_qr_code)
         mimetypes.init(files=["mimetypes"])
         self.logger.info("EWS Inited!!!\n---")
 
@@ -192,6 +193,8 @@ class WeChatChannel(EFBChannel):
             self.qr_uuid = uuid
 
     def exit_callback(self):
+        if self.stop_polling:
+            return
         msg = EFBMsg(self)
         msg.source = MsgSource.System
         msg.origin = {
@@ -367,8 +370,9 @@ class WeChatChannel(EFBChannel):
                 self.done_reauth.clear()
 
         if self.itchat.useHotReload:
-            self.itchat.dump_login_status()
+            self.itchat.dump_login_status("storage/%s.pkl" % self.channel_id)
 
+        self.itchat.alive = False
         self.logger.debug("%s (%s) gracefully stopped.", self.channel_name, self.channel_id)
 
     def itchat_msg_register(self):
@@ -838,19 +842,20 @@ class WeChatChannel(EFBChannel):
     # Command functions
 
     def reauth(self, command=False):
-        msg = "Starting authentication."
+        msg = "Starting authentication..."
         qr_reload = self._flag("qr_reload", "master_qr_code")
         if command and qr_reload == "console_qr_code":
             msg += "\nPlease visit your console or log for QR code and further instructions."
 
         def reauth_thread(self, qr_reload):
             qr_callback = getattr(self, qr_reload, self.master_qr_code)
-            self.itchat.auto_login(enableCmdQR=2,
-                                   hotReload=True,
-                                   statusStorageDir="storage/%s.pkl" % self.channel_id,
-                                   exitCallback=self.exit_callback,
-                                   qrCallback=qr_callback)
-            self.done_reauth.set()
+            with self.mutex:
+                self.itchat.auto_login(enableCmdQR=2,
+                                       hotReload=True,
+                                       statusStorageDir="storage/%s.pkl" % self.channel_id,
+                                       exitCallback=self.exit_callback,
+                                       qrCallback=qr_callback)
+                self.done_reauth.set()
         threading.Thread(target=reauth_thread, args=(self, qr_reload)).start()
         return msg
 
