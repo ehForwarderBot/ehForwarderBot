@@ -339,7 +339,7 @@ class WeChatChannel(EFBChannel):
             return self.search_user(UserName, uid, uin, name, ActualUserName, refresh=True)
         return result
 
-    def poll(self):
+    def poll(self, exit_event):
         self.itchat.auto_login(enableCmdQR=2,
                                hotReload=True,
                                statusStorageDir="storage/%s.pkl" % self.channel_id,
@@ -347,11 +347,11 @@ class WeChatChannel(EFBChannel):
                                qrCallback=getattr(self, self.qr_callback))
         self.usersdata = self.itchat.get_friends(True) + self.itchat.get_chatrooms()
 
-        while self.itchat.alive and not self.stop_polling:
+        while self.itchat.alive and not exit_event.wait(0.1):
             self.itchat.configured_reply()
 
         if self.itchat.useHotReload:
-            self.itchat.dump_login_status()
+            self.itchat.dump_login_status("storage/%s.pkl" % self.channel_id)
 
         self.logger.debug("%s (%s) gracefully stopped.", self.channel_name, self.channel_id)
 

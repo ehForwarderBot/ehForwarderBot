@@ -32,20 +32,17 @@ master = None
 master_thread = None
 slave_threads = None
 
+exit_event = None
+
 
 def stop_gracefully(*args, **kwargs):
-    l = logging.getLogger("ehForwarderBot")
-    if isinstance(master, EFBChannel):
-        master.stop_polling = True
-        l.debug("Stop signal sent to master: %s" % master.channel_name)
-        while master_thread.is_alive():
-            pass
-    for i in slaves:
-        if isinstance(slaves[i], EFBChannel):
-            slaves[i].stop_polling = True
-            l.debug("Stop signal sent to slave: %s" % slaves[i].channel_name)
-            while slave_threads[i].is_alive():
-                pass
+    """
+    Stop the program gracefully
+    """
+    global master_thread, slave_threads, exit_event
+    exit_event.set()
+    master_thread.join()
+    map(threading.Thread.join, slave_threads)
     sys.exit(0)
 
 
@@ -69,9 +66,11 @@ def init():
     """
     Initialize all channels.
     """
-    global q, slaves, master, master_thread, slave_threads
+    global q, slaves, master, master_thread, slave_threads, exit_event
     # Init Queue
     q = queue.Queue()
+    # Init thread-safe variables
+    exit_event = threading.Event()
     # Initialize Plug-ins Library
     # (Load libraries and modules and init them with Queue `q`)
     l = logging.getLogger("ehForwarderBot")
@@ -87,8 +86,8 @@ def init():
     l.critical("\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m" % (master.channel_name, master.channel_id))
 
     l.critical("\x1b[1;37;42m All channels initialized. \x1b[0m")
-    master_thread = threading.Thread(target=master.poll)
-    slave_threads = {key: threading.Thread(target=slaves[key].poll) for key in slaves}
+    master_thread = threading.Thread(target=master.poll, args=(exit_event,))
+    slave_threads = {key: threading.Thread(target=slaves[key].poll, args=(exit_event,)) for key in slaves}
 
 
 def poll():

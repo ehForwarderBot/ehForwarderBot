@@ -13,6 +13,7 @@ import os
 import re
 import mimetypes
 import pydub
+import queue
 import threading
 import traceback
 from . import db, speech
@@ -75,7 +76,6 @@ class TelegramChannel(EFBChannel):
     msg_status = {}
     msg_storage = {}
     me = None
-    _stop_polling = False
 
     # Constants
     TYPE_DICT = {
@@ -1155,25 +1155,25 @@ class TelegramChannel(EFBChannel):
                         parse_mode=telegram.ParseMode.MARKDOWN)
         os.remove(path)
 
-    def poll(self):
+    def poll(self, stop_event):
         """
         Message polling process.
         """
         self.bot.start_polling(network_delay=10, timeout=10)
-        while True:
+        while not stop_event.wait(0.1):
             try:
-                m = self.queue.get()
-                if m is None:
-                    break
+                m = self.queue.get(False)
                 self.logger.info("Got message from queue\nType: %s\nText: %s\n----" % (m.type, m.text))
                 threading.Thread(target=self.process_msg, args=(m,)).start()
                 self.queue.task_done()
                 self.logger.info("Msg sent to TG, task_done marked.")
+            except queue.Empty:
+                pass
             except Exception as e:
                 self.logger.error("Error occurred during message polling")
                 self.logger.error(repr(e))
                 self.bot.stop()
-                self.poll()
+                self.poll(stop_event)
 
         self.logger.debug("Gracefully stopping %s (%s).", self.channel_name, self.channel_id)
         self.bot.stop()
@@ -1208,14 +1208,3 @@ class TelegramChannel(EFBChannel):
             Value for the flag.
         """
         return getattr(config, self.channel_id).get('flags', dict()).get(key, value)
-
-    @property
-    def stop_polling(self):
-        return self._stop_polling
-
-    @stop_polling.setter
-    def stop_polling(self, val):
-        if val:
-            self.queue.put(None)
-        self._stop_polling = val
-

@@ -39,7 +39,6 @@ class EFBChannel:
     channel_type = ChannelType.Slave
     queue = None
     supported_message_types = set()
-    stop_polling = False
 
     def __init__(self, queue):
         self.queue = queue
