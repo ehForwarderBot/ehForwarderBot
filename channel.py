@@ -38,10 +38,12 @@ class EFBChannel:
     channel_id = "emptyChannel"
     channel_type = ChannelType.Slave
     queue = None
+    auth_mutex = None
     supported_message_types = set()
 
-    def __init__(self, queue):
+    def __init__(self, queue, auth_mutex):
         self.queue = queue
+        self.auth_mutex = auth_mutex
 
     def get_extra_functions(self):
         """Get a list of extra functions

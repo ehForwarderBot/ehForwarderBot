@@ -32,6 +32,7 @@ master = None
 master_thread = None
 slave_threads = None
 
+auth_mutex = None
 exit_event = None
 
 
@@ -66,10 +67,11 @@ def init():
     """
     Initialize all channels.
     """
-    global q, slaves, master, master_thread, slave_threads, exit_event
+    global q, slaves, master, master_thread, slave_threads, auth_mutex, exit_event
     # Init Queue
     q = queue.Queue()
     # Init thread-safe variables
+    auth_mutex = threading.Lock()
     exit_event = threading.Event()
     # Initialize Plug-ins Library
     # (Load libraries and modules and init them with Queue `q`)
@@ -78,11 +80,11 @@ def init():
     for i in config.slave_channels:
         l.critical("\x1b[0;37;46m Initializing slave %s... \x1b[0m" % str(i))
         obj = getattr(__import__(i[0], fromlist=i[1]), i[1])
-        slaves[obj.channel_id] = obj(q)
+        slaves[obj.channel_id] = obj(q, auth_mutex)
         l.critical("\x1b[0;37;42m Slave channel %s (%s) initialized. \x1b[0m" % (obj.channel_name, obj.channel_id))
     l.critical("\x1b[0;37;46m Initializing master %s... \x1b[0m" % str(config.master_channel))
     master = getattr(__import__(config.master_channel[0], fromlist=config.master_channel[1]), config.master_channel[1])(
-        q, slaves)
+        q, auth_mutex, slaves)
     l.critical("\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m" % (master.channel_name, master.channel_id))
 
     l.critical("\x1b[1;37;42m All channels initialized. \x1b[0m")

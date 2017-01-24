@@ -109,8 +109,8 @@ class WeChatChannel(EFBChannel):
                          "blogapp", "facebookapp", "masssendapp", "meishiapp", "feedsapp", "voip", "blogappweixin",
                          "weixin"]
 
-    def __init__(self, queue):
-        super().__init__(queue)
+    def __init__(self, queue, auth_mutex):
+        super().__init__(queue, auth_mutex)
         self.itchat = itchat.new_instance()
         itchat.set_logging(showOnCmd=False)
         self.itchat_msg_register()
@@ -340,11 +340,12 @@ class WeChatChannel(EFBChannel):
         return result
 
     def poll(self, exit_event):
-        self.itchat.auto_login(enableCmdQR=2,
-                               hotReload=True,
-                               statusStorageDir="storage/%s.pkl" % self.channel_id,
-                               exitCallback=self.exit_callback,
-                               qrCallback=getattr(self, self.qr_callback))
+        with self.auth_mutex:
+            self.itchat.auto_login(enableCmdQR=2,
+                                   hotReload=True,
+                                   statusStorageDir="storage/%s.pkl" % self.channel_id,
+                                   exitCallback=self.exit_callback,
+                                   qrCallback=getattr(self, self.qr_callback))
         self.usersdata = self.itchat.get_friends(True) + self.itchat.get_chatrooms()
 
         while self.itchat.alive and not exit_event.wait(0.1):
