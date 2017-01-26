@@ -8,7 +8,7 @@
 [![tag](https://img.shields.io/github/tag/blueset/ehforwarderbot.svg)](https://github.com/blueset/ehForwarderBot/releases)
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/blueset/ehforwarderbot.svg)](http://isitmaintained.com/project/blueset/ehforwarderbot "Average time to resolve an issue")
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/blueset/ehforwarderbot.svg)](http://isitmaintained.com/project/blueset/ehforwarderbot "Percentage of issues still open")
-
+[![Codacy grade](https://img.shields.io/codacy/grade/3b2555f9134844e3b01b00700bc43eeb.svg)](https://www.codacy.com/app/blueset/ehForwarderBot)
 
 ![EFB](https://images.1a23.com/upload/images/SPET.png)
 
