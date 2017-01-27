@@ -1196,11 +1196,18 @@ class TelegramChannel(EFBChannel):
             self.logger.error(msg)
             bot.send_message(getattr(config, self.channel_id)['admins'][0], msg)
         else:
-            bot.send_message(getattr(config, self.channel_id)['admins'][0],
-                            "EFB Telegram Master channel encountered error <code>%s</code> "
-                            "caused by update <code>%s</code>.\n\n"
-                            "Report issue: <a href=\"https://github.com/blueset/ehForwarderBot/issues/new\">GitHub Issue Page</a>" %
-                            (html.escape(str(error)), html.escape(str(update))))
+            try:
+                bot.send_message(getattr(config, self.channel_id)['admins'][0],
+                                "EFB Telegram Master channel encountered error <code>%s</code> "
+                                "caused by update <code>%s</code>.\n\n"
+                                "Report issue: <a href=\"https://github.com/blueset/ehForwarderBot/issues/new\">GitHub Issue Page</a>" %
+                                (html.escape(str(error)), html.escape(str(update))), parse_mode="HTML")
+            except:
+                bot.send_message(getattr(config, self.channel_id)['admins'][0],
+                                 "EFB Telegram Master channel encountered error\n%s\n"
+                                 "caused by update\n%s\n\n"
+                                 "Report issue: https://github.com/blueset/ehForwarderBot/issues/new" %
+                                 (html.escape(str(error)), html.escape(str(update))))
             self.logger.error('ERROR! Update %s caused error %s' % (update, error))
 
     def _flag(self, key, value):

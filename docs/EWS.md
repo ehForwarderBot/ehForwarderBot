@@ -40,6 +40,8 @@ and all other required by Pillow.
     * Text
     * Image (Sticker sent as Image)
     * File
+    * Video
+    * Audio (as file)
 * FROM WeChat
     * Text
     * Image

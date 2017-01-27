@@ -99,7 +99,8 @@ class WeChatChannel(EFBChannel):
     channel_id = "eh_wechat_slave"
     channel_type = ChannelType.Slave
 
-    supported_message_types = {MsgType.Text, MsgType.Sticker, MsgType.Image, MsgType.File, MsgType.Video, MsgType.Link}
+    supported_message_types = {MsgType.Text, MsgType.Sticker, MsgType.Image,
+                               MsgType.File, MsgType.Video, MsgType.Link, MsgType.Audio}
     logger = logging.getLogger("plugins.%s.WeChatChannel" % channel_id)
     qr_uuid = ""
     done_reauth = threading.Event()
@@ -709,8 +710,8 @@ class WeChatChannel(EFBChannel):
                     os.remove('.'.join(msg.path.split('.')[:-1]))
                 except FileNotFoundError:
                     pass
-        elif msg.type == MsgType.File:
-            self.logger.info("Sending file to WeChat\nFileName: %s\nPath: %s", msg.text, msg.path)
+        elif msg.type in (MsgType.File, MsgType.Audio):
+            self.logger.info("Sending %s to WeChat\nFileName: %s\nPath: %s", msg.type, msg.text, msg.path)
             r = self.itchat.send_file(msg.path, UserName)
             if msg.text:
                 self.itchat.send_msg(msg.text, UserName)
@@ -916,7 +917,6 @@ class WeChatChannel(EFBChannel):
             Value for the flag.
         """
         return getattr(config, self.channel_id, dict()).get('flags', dict()).get(key, value)
-
 
     @property
     def stop_polling(self):
