@@ -42,8 +42,9 @@ _Codename_ **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework whi
 Anyone is welcomed to raise an issue or submit a pull request, just remember to read through and understand the [contribution guideline](CONTRIBUTING.md) before you do so.
 
 ## Related articles
-* [EFB How-to: Send and Receive Messages from WeChat on Telegram (zh-CN)](https://blog.1a23.com/2017/01/09/EFB-How-to-Send-and-Receive-Messages-from-WeChat-on-Telegram-zh-CN/)  
-  _(安装并使用 EFB：在 Telegram 收发微信消息)_
+* [Idea: Group Chat Tunneling (Sync) with EH Forwarder Bot](https://blog.1a23.com/2017/01/28/Idea-Group-Chat-Tunneling-Sync-with-EH-Forwarder-Bot/)
+* [EFB How-to: Send and Receive Messages from WeChat on Telegram (zh-CN)](https://blog.1a23.com/2017/01/09/EFB-How-to-Send-and-Receive-Messages-from-WeChat-on-Telegram-zh-CN/) (Out-dated)  
+  _(安装并使用 EFB：在 Telegram 收发微信消息，已过时)_
 
 ## License
 EFB framework is licensed under [GNU General Public License 3.0](https://www.gnu.org/licenses/gpl-3.0.txt).

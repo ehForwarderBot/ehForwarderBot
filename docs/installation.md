@@ -43,43 +43,6 @@ sudo apt-get install libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblc
 sudo apt-get install libmagic-dev ffmpeg
 ```
 
-#### CentOS
-
-Install libmagic by
-
-```bash
-yum install file-devel
-```
-
-Install Python 3.5
-
-```bash
-sudo yum -y update
-sudo yum -y install yum-utils
-sudo yum -y groupinstall development
-sudo yum -y install https://centos7.iuscommunity.org/ius-release.rpm
-yum -y install python35u-3.5.2
-yum -y install python35u-pip
-yum -y install python35u-devel
-```
-
-And you can add alias to `~/.bashrc` (or `~/.zshrc`), then `source ~/.bashrc`:
-
-```bash
-alias python3="python3.5"
-alias pip3="pip3.5"
-```
-
- Install ffmpeg:
-
-```bash
-sudo yum install epel-release -y
-sudo yum update -y
-sudo rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
-sudo rpm -Uvh http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm
-sudo yum install ffmpeg ffmpeg-devel -y
-```
-
 ## Python dependencies
 
 Refer to `requirements.txt`, or [Channels Repository](channels-repository.md) for more details.
