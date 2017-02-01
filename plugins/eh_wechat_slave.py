@@ -363,7 +363,7 @@ class WeChatChannel(EFBChannel):
         return result
 
     def poll(self):
-        itchat.set_logYging(loggingLevel=logging.DEBUG)
+        itchat.set_logging(loggingLevel=logging.DEBUG)
         while not self.stop_polling:
             if self.itchat.alive:
                 self.itchat.configured_reply()
