@@ -363,6 +363,7 @@ class WeChatChannel(EFBChannel):
         return result
 
     def poll(self):
+        itchat.set_logYging(loggingLevel=logging.DEBUG)
         while not self.stop_polling:
             if self.itchat.alive:
                 self.itchat.configured_reply()
@@ -874,11 +875,14 @@ class WeChatChannel(EFBChannel):
         r = []
         if user:
             t = self.itchat.get_friends(refresh) + self.itchat.get_mps(refresh)
+            t = [dict()] + t
             t[0]['NickName'] = "File Helper"
             t[0]['UserName'] = "filehelper"
             t[0]['RemarkName'] = ""
             t[0]['Uin'] = "filehelper"
             for i in t:
+                if i['UserName'] == self.itchat.storageClass.userName:
+                    continue
                 r.append({
                     'channel_name': self.channel_name,
                     'channel_id': self.channel_id,
