@@ -24,7 +24,7 @@ def incomeMsgMeta(func):
         logger = logging.getLogger("plugins.%s.incomeMsgMeta" % self.channel_id)
         mobj = func(self, msg, isGroupChat)
         mobj.uid = msg.get("MsgId", time.time())
-        me = msg['FromUserName'] == self.itchat.get_friends()[0]['UserName']
+        me = msg['FromUserName'] == self.itchat.loginInfo['User']['UserName']
         logger.debug("me, %s", me)
         if me:
             msg['FromUserName'], msg['ToUserName'] = msg['ToUserName'], msg['FromUserName']
@@ -37,7 +37,7 @@ def incomeMsgMeta(func):
             logger.debug("groupchat")
             if me:
                 msg['ActualUserName'] = msg['ToUserName']
-                member = {"NickName": self.itchat.get_friends()[0]['NickName'], "DisplayName": "You", "Uin": self.itchat.get_friends()[0]['Uin']}
+                member = {"NickName": self.itchat.loginInfo['User']['NickName'], "DisplayName": "You", "Uin": self.itchat.loginInfo['User']['Uin']}
             else:
                 logger.debug("search_user")
                 member = self.search_user(UserName=msg['FromUserName'], ActualUserName=msg['ActualUserName'])[0]['MemberList'][0]
@@ -75,8 +75,8 @@ def incomeMsgMeta(func):
                                     Uin=FromUser.get('Uin', None))
             }
         mobj.destination = {
-            'name': self.itchat.get_friends()[0]['NickName'],
-            'alias': self.itchat.get_friends()[0]['NickName'],
+            'name': self.itchat.loginInfo['User']['NickName'],
+            'alias': self.itchat.loginInfo['User']['NickName'],
             'uid': self.get_uid(UserName=msg['ToUserName'])
         }
         logger.debug("dest: %s", mobj.destination)
@@ -746,7 +746,7 @@ class WeChatChannel(EFBChannel):
             else:
                 return "Invalid command: %s." % param
         l = []
-        for i in self.itchat.get_friends(refresh)[1:]:
+        for i in self.itchat.get_friends(refresh):
             l.append(i)
             l[-1]['Type'] = "User"
 
@@ -881,7 +881,7 @@ class WeChatChannel(EFBChannel):
             t[0]['RemarkName'] = ""
             t[0]['Uin'] = "filehelper"
             for i in t:
-                if i['UserName'] == self.itchat.storageClass.userName:
+                if i['UserName'] == self.itchat.loginInfo['User']['UserName']:
                     continue
                 r.append({
                     'channel_name': self.channel_name,
