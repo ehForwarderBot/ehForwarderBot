@@ -676,7 +676,7 @@ class WeChatChannel(EFBChannel):
                     else:
                         tgt_alias = ""
                     msg.text = "%s%s\n\n%s" % (tgt_alias, tgt_text, msg.text)
-            r = self.itchat.send(msg.text, UserName)
+            r = self._itchat_send_msg(msg.text, UserName)
         elif msg.type in [MsgType.Image, MsgType.Sticker]:
             self.logger.info("Image/Sticker %s, %s", msg.type, msg.path)
             if msg.mime in ["image/gif", "image/jpeg"]:
@@ -684,7 +684,7 @@ class WeChatChannel(EFBChannel):
                     if os.path.getsize(msg.path) > 5*2**20:
                         raise EFBMessageError("Image sent is too large. (IS01)")
                     self.logger.debug("Sending %s (image) to ItChat.", msg.path)
-                    r = self.itchat.send_image(msg.path, UserName)
+                    r = self._itchat_send_image(msg.path, UserName)
                     os.remove(msg.path)
                 except FileNotFoundError:
                     pass
@@ -701,9 +701,9 @@ class WeChatChannel(EFBChannel):
                 msg.path = "%s.gif" % msg.path
                 self.logger.info('Image converted to GIF: %s', msg.path)
                 self.logger.debug("Sending %s (image) to ItChat.", msg.path)
-                r = self.itchat.send_image(msg.path, UserName)
+                r = self._itchat_send_image(msg.path, UserName)
                 if msg.text:
-                    self.itchat.send_msg(msg.text, UserName)
+                    self._itchat_send_msg(msg.text, UserName)
                 os.remove(msg.path)
             self.logger.info('Image sent with result %s', r)
             if not msg.mime == "image/gif":
@@ -713,15 +713,15 @@ class WeChatChannel(EFBChannel):
                     pass
         elif msg.type in (MsgType.File, MsgType.Audio):
             self.logger.info("Sending %s to WeChat\nFileName: %s\nPath: %s", msg.type, msg.text, msg.path)
-            r = self.itchat.send_file(msg.path, UserName)
+            r = self._itchat_send_file(msg.path, UserName)
             if msg.text:
-                self.itchat.send_msg(msg.text, UserName)
+                self._itchat_send_msg(msg.text, UserName)
             os.remove(msg.path)
         elif msg.type == MsgType.Video:
             self.logger.info("Sending video to WeChat\nFileName: %s\nPath: %s", msg.text, msg.path)
-            r = self.itchat.send_video(msg.path, UserName)
+            r = self._itchat_send_video(msg.path, UserName)
             if msg.text:
-                self.itchat.send_msg(msg.text, UserName)
+                self._itchat_send_msg(msg.text, UserName)
             os.remove(msg.path)
         else:
             raise EFBMessageTypeNotSupported()
@@ -932,3 +932,27 @@ class WeChatChannel(EFBChannel):
         if val and not self.itchat.alive:
             self.done_reauth.set()
         self._stop_polling = val
+
+    def _itchat_send_msg(*args, **kwargs):
+        try:
+            self.itchat.send_msg(*args, **kwargs)
+        except Exception as e:
+            raise EFBMessageError(repr(e))
+
+    def _itchat_send_file(*args, **kwargs):
+        try:
+            self.itchat.send_file(*args, **kwargs)
+        except Exception as e:
+            raise EFBMessageError(repr(e))
+
+    def _itchat_send_image(*args, **kwargs):
+        try:
+            self.itchat.send_image(*args, **kwargs)
+        except Exception as e:
+            raise EFBMessageError(repr(e))
+
+    def _itchat_send_video(*args, **kwargs):
+        try:
+            self.itchat.send_video(*args, **kwargs)
+        except Exception as e:
+            raise EFBMessageError(repr(e))
