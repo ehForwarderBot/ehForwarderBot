@@ -933,25 +933,25 @@ class WeChatChannel(EFBChannel):
             self.done_reauth.set()
         self._stop_polling = val
 
-    def _itchat_send_msg(*args, **kwargs):
+    def _itchat_send_msg(self, *args, **kwargs):
         try:
             self.itchat.send_msg(*args, **kwargs)
         except Exception as e:
             raise EFBMessageError(repr(e))
 
-    def _itchat_send_file(*args, **kwargs):
+    def _itchat_send_file(self, *args, **kwargs):
         try:
             self.itchat.send_file(*args, **kwargs)
         except Exception as e:
             raise EFBMessageError(repr(e))
 
-    def _itchat_send_image(*args, **kwargs):
+    def _itchat_send_image(self, *args, **kwargs):
         try:
             self.itchat.send_image(*args, **kwargs)
         except Exception as e:
             raise EFBMessageError(repr(e))
 
-    def _itchat_send_video(*args, **kwargs):
+    def _itchat_send_video(self, *args, **kwargs):
         try:
             self.itchat.send_video(*args, **kwargs)
         except Exception as e:
