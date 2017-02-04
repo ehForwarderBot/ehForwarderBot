@@ -114,7 +114,7 @@ class WeChatChannel(EFBChannel):
     def __init__(self, queue, mutex):
         super().__init__(queue, mutex)
         self.itchat = itchat.new_instance()
-        itchat.set_logging(showOnCmd=False)
+        itchat.set_logging(loggingLevel=logging.getLogger().level, showOnCmd=False)
         self.itchat_msg_register()
         with mutex:
             self.itchat.auto_login(enableCmdQR=2,
@@ -363,7 +363,6 @@ class WeChatChannel(EFBChannel):
         return result
 
     def poll(self):
-        itchat.set_logging(loggingLevel=logging.DEBUG)
         while not self.stop_polling:
             if self.itchat.alive:
                 self.itchat.configured_reply()
