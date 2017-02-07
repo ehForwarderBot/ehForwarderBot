@@ -725,7 +725,7 @@ class WeChatChannel(EFBChannel):
         else:
             raise EFBMessageTypeNotSupported()
 
-        if r.get('BaseResponse', []).get('Ret', -1) != 0:
+        if type(r) is dict and r.get('BaseResponse', []).get('Ret', -1) != 0:
             raise EFBMessageError(str(r))
         else:
             msg.uid = r.get("MsgId", None)
