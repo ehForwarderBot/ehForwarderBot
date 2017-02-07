@@ -624,7 +624,10 @@ class WeChatChannel(EFBChannel):
         mime = magic.from_file(fullpath, mime=True)
         if type(mime) is bytes:
             mime = mime.decode()
-        ext = "jpg" if mime == "image/jpeg" else mimetypes.guess_extension(mime).split(".")[-1]
+        guess_ext = mimetypes.guess_extension(mime).split(".")[-1] or "unknown"
+        if guess_ext == "unknown":
+            self.logger.warning("File %s with mime %s has no matching extensions.", fullpath, mime)
+        ext = "jpg" if mime == "image/jpeg" else guess_ext
         os.rename(fullpath, "%s.%s" % (fullpath, ext))
         fullpath = "%s.%s" % (fullpath, ext)
         self.logger.info("File saved from WeChat\nFull path: %s\nMIME: %s", fullpath, mime)
@@ -725,7 +728,7 @@ class WeChatChannel(EFBChannel):
         else:
             raise EFBMessageTypeNotSupported()
 
-        if type(r) is dict and r.get('BaseResponse', []).get('Ret', -1) != 0:
+        if type(r) is dict and r.get('BaseResponse', dict()).get('Ret', -1) != 0:
             raise EFBMessageError(str(r))
         else:
             msg.uid = r.get("MsgId", None)
@@ -934,24 +937,24 @@ class WeChatChannel(EFBChannel):
 
     def _itchat_send_msg(self, *args, **kwargs):
         try:
-            self.itchat.send_msg(*args, **kwargs)
+            return self.itchat.send_msg(*args, **kwargs)
         except Exception as e:
             raise EFBMessageError(repr(e))
 
     def _itchat_send_file(self, *args, **kwargs):
         try:
-            self.itchat.send_file(*args, **kwargs)
+            return self.itchat.send_file(*args, **kwargs)
         except Exception as e:
             raise EFBMessageError(repr(e))
 
     def _itchat_send_image(self, *args, **kwargs):
         try:
-            self.itchat.send_image(*args, **kwargs)
+            return self.itchat.send_image(*args, **kwargs)
         except Exception as e:
             raise EFBMessageError(repr(e))
 
     def _itchat_send_video(self, *args, **kwargs):
         try:
-            self.itchat.send_video(*args, **kwargs)
+            return self.itchat.send_video(*args, **kwargs)
         except Exception as e:
             raise EFBMessageError(repr(e))

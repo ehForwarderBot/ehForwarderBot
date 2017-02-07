@@ -10,12 +10,12 @@ from channel import EFBChannel
 if sys.version_info.major < 3:
     raise Exception("Python 3.x is required. Your version is %s." % sys.version)
 
-__version__ = "1.4.4-dev.5"
+__version__ = "1.4.4-dev.6"
 
 parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible chat tunnel framework which allows "
                                              "users to contact people from other chat platforms, and ultimately "
                                              "remotely control their accounts in other platforms.",
-                                 epilog="Support: https://github.com/blueset/ehForwarderBot")
+                                 epilog="GitHub: https://github.com/blueset/ehForwarderBot")
 parser.add_argument("-v", default=0, action="count",
                     help="Increase verbosity. -vv at most.")
 parser.add_argument("-V", "--version", action="version",

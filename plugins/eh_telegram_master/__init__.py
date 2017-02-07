@@ -1166,7 +1166,7 @@ class TelegramChannel(EFBChannel):
         """
         Message polling process.
         """
-        self.bot.start_polling(network_delay=10, timeout=10)
+        self.bot.start_polling(timeout=10)
         while True:
             try:
                 m = self.queue.get()
