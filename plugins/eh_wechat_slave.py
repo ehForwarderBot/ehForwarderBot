@@ -624,10 +624,10 @@ class WeChatChannel(EFBChannel):
         mime = magic.from_file(fullpath, mime=True)
         if type(mime) is bytes:
             mime = mime.decode()
-        guess_ext = mimetypes.guess_extension(mime).split(".")[-1] or "unknown"
+        guess_ext = mimetypes.guess_extension(mime) or ".unknown"
         if guess_ext == "unknown":
             self.logger.warning("File %s with mime %s has no matching extensions.", fullpath, mime)
-        ext = "jpg" if mime == "image/jpeg" else guess_ext
+        ext = "jpg" if mime == "image/jpeg" else guess_ext[1:]
         os.rename(fullpath, "%s.%s" % (fullpath, ext))
         fullpath = "%s.%s" % (fullpath, ext)
         self.logger.info("File saved from WeChat\nFull path: %s\nMIME: %s", fullpath, mime)
