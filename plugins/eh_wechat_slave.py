@@ -155,8 +155,8 @@ class WeChatChannel(EFBChannel):
                             QR += "\x1b[49m  \x1b[0m"
                 QR += "\n"
             QR += "\nIf you cannot read the QR code above, " \
-                  "Please generate a QR code with any tool utsing the following URL:\n" \
-                  "https://login.weixin.qq.com/l/" + uuid
+                  "Please open the following URL:\n" \
+                  "https://login.weixin.qq.com/qrcode/" + uuid
             return self.logger.critical(QR)
         self.qr_uuid = uuid
 
