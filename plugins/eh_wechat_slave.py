@@ -535,6 +535,7 @@ class WeChatChannel(EFBChannel):
         mobj.type = MsgType.File
         mobj.path, mobj.mime = self.save_file(msg, mobj.type)
         mobj.text = msg['FileName']
+        mobj.filename = msg['FileName'] or None
         mobj.file = open(mobj.path, "rb")
         return mobj
 
@@ -625,10 +626,10 @@ class WeChatChannel(EFBChannel):
         if type(mime) is bytes:
             mime = mime.decode()
         guess_ext = mimetypes.guess_extension(mime) or ".unknown"
-        if guess_ext == "unknown":
+        if guess_ext == ".unknown":
             self.logger.warning("File %s with mime %s has no matching extensions.", fullpath, mime)
-        ext = "jpg" if mime == "image/jpeg" else guess_ext[1:]
-        os.rename(fullpath, "%s.%s" % (fullpath, ext))
+        ext = ".jpeg" if mime == "image/jpeg" else guess_ext
+        os.rename(fullpath, "%s%s" % (fullpath, ext))
         fullpath = "%s.%s" % (fullpath, ext)
         self.logger.info("File saved from WeChat\nFull path: %s\nMIME: %s", fullpath, mime)
         return fullpath, mime
@@ -714,8 +715,8 @@ class WeChatChannel(EFBChannel):
                 except FileNotFoundError:
                     pass
         elif msg.type in (MsgType.File, MsgType.Audio):
-            self.logger.info("Sending %s to WeChat\nFileName: %s\nPath: %s", msg.type, msg.text, msg.path)
-            r = self._itchat_send_file(msg.path, UserName)
+            self.logger.info("Sending %s to WeChat\nFileName: %s\nPath: %s\nFilename: %s", msg.type, msg.text, msg.path, msg.filename)
+            r = self._itchat_send_file(msg.path, UserName, filename=msg.filename)
             if msg.text:
                 self._itchat_send_msg(msg.text, UserName)
             os.remove(msg.path)

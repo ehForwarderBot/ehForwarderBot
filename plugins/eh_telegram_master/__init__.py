@@ -339,11 +339,11 @@ class TelegramChannel(EFBChannel):
                     tg_msg = self.bot.bot.send_message(tg_dest,
                                                     msg_template % ("Error: Empty %s received. (MS02)" % msg.type))
                 else:
-                    if not msg.text:
+                    if not msg.filename:
                         file_name = os.path.basename(msg.path)
                         msg.text = "sent a file."
                     else:
-                        file_name = msg.text
+                        file_name = msg.filename
                     tg_msg = self.bot.bot.send_document(tg_dest, msg.file, caption=msg_template % msg.text,
                                                        filename=file_name)
                     os.remove(msg.path)
@@ -955,12 +955,14 @@ class TelegramChannel(EFBChannel):
                 tg_file_id = update.message.document.file_id
                 self.logger.debug("tg: Document file received")
                 if update.message.document.mime_type == "video/mp4":
-                    self.logger.debug("tg: GIF received")
+                    self.logger.debug("tg: Telegram GIF received")
                     m.type = MsgType.Image
                     m.path, m.mime = self._download_gif(update.message, tg_file_id, m.type)
                 else:
                     m.type = MsgType.File
                     m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
+                    m.mime = update.message.document.mime_type or m.mime
+                    m.filename = getattr(update.message.document, "file_name", None) or None
                 m.file = open(m.path, "rb")
             elif mtype == TGMsgType.Video:
                 m.type = MsgType.Video
@@ -1026,8 +1028,11 @@ class TelegramChannel(EFBChannel):
         mime = magic.from_file(fullpath, mime=True)
         if type(mime) is bytes:
             mime = mime.decode()
-        ext = mimetypes.guess_extension(mime).split(".")[-1]
-        os.rename(fullpath, "%s.%s" % (fullpath, ext))
+        guess_ext = mimetypes.guess_extension(mime) or ".unknown"
+        if guess_ext == ".unknown":
+            self.logger.warning("File %s with mime %s has no matching extensions.", fullpath, mime)
+        ext = ".jpeg" if mime == "image/jpeg" else guess_ext
+        os.rename(fullpath, "%s%s" % (fullpath, ext))
         fullpath = "%s.%s" % (fullpath, ext)
         return fullpath, mime
 

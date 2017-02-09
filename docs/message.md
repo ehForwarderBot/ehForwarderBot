@@ -130,33 +130,34 @@ Picture type, may include GIF images. Stickers are not included. `text` for capt
 * `path`: Relative path to the image, e.g. `storage/my_slave_channel/picture_1234567890.png`
 * `mime`: MIME type string of the file, e.g. `image/png`
 * `file`: File object of the image, done by `open(msg.path, 'rb')`
+* `filename` (_optional_): Original filename, `None` if not available.
 
 > Definition for `path`, `mime`, `file` is similar for other multimedia files.
 
 ### Stickers
 **Type**: MsgType.Sticker  
-**Additional Parameters**: path, mime, file
+**Additional Parameters**: path, mime, file, filename
 
 Sticker messages.
 Specification for `path`, `mime`, `file` refer to `MsgType.Image`.
 
 ### Audio/Music/Voice
 **Type**: MsgType.Audio  
-**Additional Parameters**: path, mime, file
+**Additional Parameters**: path, mime, file, filename
 
 Audio message, including music file and voice message.
 Specification for `path`, `mime`, `file` refer to `MsgType.Image`.
 
 ### Video
 **Type**: MsgType.Video  
-**Additional Parameters**: path, mime, file
+**Additional Parameters**: path, mime, file, filename
 
 Video message.
 Specification for `path`, `mime`, `file` refer to `MsgType.Image`.
 
 ### File
 **Type**: MsgType.File  
-**Additional Parameters**: path, mime, file
+**Additional Parameters**: path, mime, file, filename
 
 File message.
 Specification for `path`, `mime`, `file` refer to `MsgType.Image`.
