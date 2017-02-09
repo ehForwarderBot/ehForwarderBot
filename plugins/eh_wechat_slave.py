@@ -20,21 +20,26 @@ from utils import extra
 
 
 def incomeMsgMeta(func):
-    def wcFunc(self, msg, isGroupChat=False):
+    def wcFunc(self, *args, **kwargs):
+        msg = args[0]
+        isGroupChat = kwargs.get("isGroupChat", False)
         logger = logging.getLogger("plugins.%s.incomeMsgMeta" % self.channel_id)
-        mobj = func(self, msg, isGroupChat)
+        logger.debug("Raw message: %s" % repr(msg))
+        mobj = func(self, *args, **kwargs)
+        if mobj is None:
+            return
         mobj.uid = msg.get("MsgId", time.time())
         me = msg['FromUserName'] == self.itchat.loginInfo['User']['UserName']
         logger.debug("me, %s", me)
         if me:
             msg['FromUserName'], msg['ToUserName'] = msg['ToUserName'], msg['FromUserName']
         FromUser = self.search_user(UserName=msg['FromUserName']) or \
-                       self.search_user(UserName=msg['FromUserName'], refresh=True) or \
-                       [{"NickName": "Chat not found. (UE01)", "RemarkName": "Chat not found. (UE01)", "Uin": 0}]
+                   self.search_user(UserName=msg['FromUserName'], refresh=True) or \
+                                    [{"NickName": "Chat not found. (UE01)", "RemarkName": "Chat not found. (UE01)", "Uin": 0}]
         FromUser = FromUser[0]
         logger.debug("From user, %s", FromUser)
         if isGroupChat:
-            logger.debug("groupchat")
+            logger.debug("Group chat")
             if me:
                 msg['ActualUserName'] = msg['ToUserName']
                 member = {"NickName": self.itchat.loginInfo['User']['NickName'], "DisplayName": "You", "Uin": self.itchat.loginInfo['User']['Uin']}
@@ -464,9 +469,12 @@ class WeChatChannel(EFBChannel):
 
     @incomeMsgMeta
     def textMsg(self, msg, isGroupChat=False):
-        self.logger.info("TextMsg!!!\n---")
+        if msg['FromUserName'] == "newsapp" and msg['Content'].startswith("<mmreader>"):
+            self.newsapp_msg(msg)
+            return
         if msg['Text'].startswith("http://weixin.qq.com/cgi-bin/redirectforward?args="):
-            return self.locationMsg(msg, isGroupChat)
+            self.locationMsg(msg, isGroupChat)
+            return
         mobj = EFBMsg(self)
         mobj.text = msg['Text']
         mobj.type = MsgType.Text
@@ -495,8 +503,8 @@ class WeChatChannel(EFBChannel):
         mobj = EFBMsg(self)
         # parse XML
         itchat.utils.emoji_formatter(msg, 'Content')
-        xmldata = msg['Content']
-        data = xmltodict.parse(xmldata)
+        xml_data = msg['Content']
+        data = xmltodict.parse(xml_data)
         # set attributes
         mobj.attributes = {
             "title": data['msg']['appmsg']['title'],
@@ -515,9 +523,33 @@ class WeChatChannel(EFBChannel):
             extra_link = data.get('msg', {}).get('appmsg', {}).get('mmreader', {}).get('category', {}).get('item', [])
             if type(extra_link) is list and len(extra_link):
                 for i in extra_link:
-                    mobj.text += "🔗 %s\n%s\n%s\n🖼 %s\n\n" % (i['title'], i['digest'], i['url'], i['cover'])
+                    # mobj.text += "🔗 %s\n%s\n%s\n🖼 %s\n\n" % (i['title'], i['digest'], i['url'], i['cover'])
+                    self.raw_linkMsg(msg, i['title'], i['digest'], i['cover'], i['url'])
+                    return
         mobj.type = MsgType.Link
         return mobj
+
+    @incomeMsgMeta
+    def raw_linkMsg(self, msg, title, description, image, url):
+        mobj = EFBMsg(self)
+        mobj.type = MsgType.Link
+        mobj.attributes = {
+            "title": title,
+            "description": description,
+            "image": image,
+            "url": url
+        }
+
+        return mobj
+
+    def newsapp_msg(self, msg):
+        data = xmltodict.parse(msg['Content'])
+        news = data.get('mmreader', {}).get('category', {}).get('newitem', [])
+        if news:
+            self.raw_linkMsg(msg, news[0]['title'], news[0]['digest'], news[0]['cover'], news[0]['shorturl'])
+            if self._flag("extra_links_on_message", False):
+                for i in news[1:]:
+                    self.raw_linkMsg(msg, i['title'], i['digest'], i['cover'], i['shorturl'])
 
     @incomeMsgMeta
     def pictureMsg(self, msg, isGroupChat=False):
@@ -630,7 +662,7 @@ class WeChatChannel(EFBChannel):
             self.logger.warning("File %s with mime %s has no matching extensions.", fullpath, mime)
         ext = ".jpeg" if mime == "image/jpeg" else guess_ext
         os.rename(fullpath, "%s%s" % (fullpath, ext))
-        fullpath = "%s.%s" % (fullpath, ext)
+        fullpath = "%s%s" % (fullpath, ext)
         self.logger.info("File saved from WeChat\nFull path: %s\nMIME: %s", fullpath, mime)
         return fullpath, mime
 
@@ -716,9 +748,9 @@ class WeChatChannel(EFBChannel):
                     pass
         elif msg.type in (MsgType.File, MsgType.Audio):
             self.logger.info("Sending %s to WeChat\nFileName: %s\nPath: %s\nFilename: %s", msg.type, msg.text, msg.path, msg.filename)
-            r = self._itchat_send_file(msg.path, UserName, filename=msg.filename)
+            r = self._itchat_send_file(msg.path, toUserName=UserName, filename=msg.filename)
             if msg.text:
-                self._itchat_send_msg(msg.text, UserName)
+                self._itchat_send_msg(msg.text, toUserName=UserName)
             os.remove(msg.path)
         elif msg.type == MsgType.Video:
             self.logger.info("Sending video to WeChat\nFileName: %s\nPath: %s", msg.text, msg.path)
@@ -943,8 +975,46 @@ class WeChatChannel(EFBChannel):
             raise EFBMessageError(repr(e))
 
     def _itchat_send_file(self, *args, **kwargs):
+        def _itchat_send_fn(self, fileDir, toUserName=None, mediaId=None, filename=None):
+            from itchat.returnvalues import ReturnValue
+            from itchat import config
+            import os, time, json
+            if toUserName is None: toUserName = self.storageClass.userName
+            if mediaId is None:
+                r = self.upload_file(fileDir)
+                if r:
+                    mediaId = r['MediaId']
+                else:
+                    return r
+            fn = filename or os.path.basename(fileDir)
+            url = '%s/webwxsendappmsg?fun=async&f=json' % self.loginInfo['url']
+            data = {
+                'BaseRequest': self.loginInfo['BaseRequest'],
+                'Msg': {
+                    'Type': 6,
+                    'Content': ("<appmsg appid='wxeb7ec651dd0aefa9' sdkver=''><title>%s</title>" % fn +
+                                "<des></des><action></action><type>6</type><content></content><url></url><lowurl></lowurl>" +
+                                "<appattach><totallen>%s</totallen><attachid>%s</attachid>" % (
+                                    str(os.path.getsize(fileDir)), mediaId) +
+                                "<fileext>%s</fileext></appattach><extinfo></extinfo></appmsg>" % fn[1].replace('.', '')),
+                    'FromUserName': self.storageClass.userName,
+                    'ToUserName': toUserName,
+                    'LocalID': int(time.time() * 1e4),
+                    'ClientMsgId': int(time.time() * 1e4), },
+                'Scene': 0, }
+            headers = {
+                'User-Agent': config.USER_AGENT,
+                'Content-Type': 'application/json;charset=UTF-8', }
+            r = self.s.post(url, headers=headers,
+                            data=json.dumps(data, ensure_ascii=False).encode('utf8'))
+            return ReturnValue(rawResponse=r)
+
         try:
-            return self.itchat.send_file(*args, **kwargs)
+            fn = kwargs.get("filename", None)
+            if fn is not None:
+                return _itchat_send_fn(self.itchat, *args, **kwargs)
+            else:
+                return self.itchat.send_file(*args, **kwargs)
         except Exception as e:
             raise EFBMessageError(repr(e))
 

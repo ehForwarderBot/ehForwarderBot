@@ -103,7 +103,7 @@ eh_wechat_slave = {
     * `"alias"`: [UM] Alias of the user
     * `"uin"`: [UG] WeChat Unique Identifier for all chats, **Not always available**.
 * `extra_links_on_message` _(bool)_  [Default: `False`]  
-  List out all other messages (more than first one) for link messages with more than one link from MPS accounts.
+  Send all links from MPS messages with multiple links as individual messages. Only the first link is sent by default.
 * `max_quote_length` _(int)_  [Default: `-1`]  
   Maximum length of text for quotation messages. Set to 0 to fully disable quotation. Set to -1 to always quote full message.
 * `qr_reload` _(str)_  [Default: `"master_qr_code"`]  

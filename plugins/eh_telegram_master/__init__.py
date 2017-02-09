@@ -951,7 +951,7 @@ class TelegramChannel(EFBChannel):
                 m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
                 m.file = open(m.path, "rb")
             elif mtype == TGMsgType.Document:
-                m.text = update.message.document.file_name + "\n" + update.message.caption
+                m.text = update.message.caption
                 tg_file_id = update.message.document.file_id
                 self.logger.debug("tg: Document file received")
                 if update.message.document.mime_type == "video/mp4":
@@ -1033,7 +1033,7 @@ class TelegramChannel(EFBChannel):
             self.logger.warning("File %s with mime %s has no matching extensions.", fullpath, mime)
         ext = ".jpeg" if mime == "image/jpeg" else guess_ext
         os.rename(fullpath, "%s%s" % (fullpath, ext))
-        fullpath = "%s.%s" % (fullpath, ext)
+        fullpath = "%s%s" % (fullpath, ext)
         return fullpath, mime
 
     def _download_gif(self, tg_msg, file_id, msg_type):

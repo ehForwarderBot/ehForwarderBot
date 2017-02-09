@@ -242,8 +242,8 @@ class EFBMsg:
         'uid': 'Destination UID',
     }
     target = None
-    uid = "Message UID"
-    text = "Message"
+    uid = None
+    text = ""
     url = None
     path = None
     file = None
