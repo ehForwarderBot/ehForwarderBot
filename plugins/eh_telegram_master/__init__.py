@@ -345,7 +345,7 @@ class TelegramChannel(EFBChannel):
                     else:
                         file_name = msg.filename
                     tg_msg = self.bot.bot.send_document(tg_dest, msg.file, caption=msg_template % msg.text,
-                                                       filename=file_name)
+                                                        filename=file_name)
                     os.remove(msg.path)
             elif msg.type == MsgType.Audio:
                 if os.stat(msg.path).st_size == 0:

@@ -22,9 +22,10 @@ from utils import extra
 def incomeMsgMeta(func):
     def wcFunc(self, *args, **kwargs):
         msg = args[0]
-        isGroupChat = kwargs.get("isGroupChat", False)
+        isGroupChat = args[1] if len(args) > 2 else kwargs.get("isGroupChat", False)
         logger = logging.getLogger("plugins.%s.incomeMsgMeta" % self.channel_id)
         logger.debug("Raw message: %s" % repr(msg))
+        logger.debug("income_msg_meta:\n    args: %s\n    kwargs: %s", args, kwargs)
         mobj = func(self, *args, **kwargs)
         if mobj is None:
             return
@@ -389,7 +390,7 @@ class WeChatChannel(EFBChannel):
         @self.itchat.msg_register(['Text'], isGroupChat=True)
         def wcTextGroup(msg):
             self.logger.info("text Msg from group %s", msg['Text'])
-            self.textMsg(msg, True)
+            self.textMsg(msg, isGroupChat=True)
 
         @self.itchat.msg_register(['Sharing'], isFriendChat=True, isMpChat=True)
         def wcLink(msg):
@@ -397,7 +398,7 @@ class WeChatChannel(EFBChannel):
 
         @self.itchat.msg_register(['Sharing'], isGroupChat=True)
         def wcLinkGroup(msg):
-            self.linkMsg(msg, True)
+            self.linkMsg(msg, isGroupChat=True)
 
         @self.itchat.msg_register(['Picture'], isFriendChat=True, isMpChat=True)
         def wcPicture(msg):
@@ -405,7 +406,7 @@ class WeChatChannel(EFBChannel):
 
         @self.itchat.msg_register(['Picture'], isGroupChat=True)
         def wcPictureGroup(msg):
-            self.pictureMsg(msg, True)
+            self.pictureMsg(msg, isGroupChat=True)
 
         @self.itchat.msg_register(['Attachment'], isFriendChat=True, isMpChat=True)
         def wcFile(msg):
@@ -413,7 +414,7 @@ class WeChatChannel(EFBChannel):
 
         @self.itchat.msg_register(['Attachment'], isGroupChat=True)
         def wcFileGroup(msg):
-            self.fileMsg(msg, True)
+            self.fileMsg(msg, isGroupChat=True)
 
         @self.itchat.msg_register(['Recording'], isFriendChat=True, isMpChat=True)
         def wcRecording(msg):
@@ -421,7 +422,7 @@ class WeChatChannel(EFBChannel):
 
         @self.itchat.msg_register(['Recording'], isGroupChat=True)
         def wcRecordingGroup(msg):
-            self.voiceMsg(msg, True)
+            self.voiceMsg(msg, isGroupChat=True)
 
         @self.itchat.msg_register(['Map'], isFriendChat=True, isMpChat=True)
         def wcLocation(msg):
@@ -429,7 +430,7 @@ class WeChatChannel(EFBChannel):
 
         @self.itchat.msg_register(['Map'], isGroupChat=True)
         def wcLocationGroup(msg):
-            self.locationMsg(msg, True)
+            self.locationMsg(msg, isGroupChat=True)
 
         @self.itchat.msg_register(['Video'], isFriendChat=True, isMpChat=True)
         def wcVideo(msg):
@@ -437,7 +438,7 @@ class WeChatChannel(EFBChannel):
 
         @self.itchat.msg_register(['Video'], isGroupChat=True)
         def wcVideoGroup(msg):
-            self.videoMsg(msg, True)
+            self.videoMsg(msg, isGroupChat=True)
 
         @self.itchat.msg_register(['Card'], isFriendChat=True, isMpChat=True)
         def wcCard(msg):
@@ -445,7 +446,7 @@ class WeChatChannel(EFBChannel):
 
         @self.itchat.msg_register(['Card'], isGroupChat=True)
         def wcCardGroup(msg):
-            self.cardMsg(msg, True)
+            self.cardMsg(msg, isGroupChat=True)
 
         @self.itchat.msg_register(['Friends'], isFriendChat=True, isMpChat=True)
         def wcFriends(msg):
@@ -453,7 +454,7 @@ class WeChatChannel(EFBChannel):
 
         @self.itchat.msg_register(['Friends'], isGroupChat=True)
         def wcFriendsGroup(msg):
-            self.friendMsg(msg, True)
+            self.friendMsg(msg, isGroupChat=True)
 
         @self.itchat.msg_register(['Useless', 'Note'], isFriendChat=True, isMpChat=True)
         def wcSystem(msg):
@@ -461,7 +462,7 @@ class WeChatChannel(EFBChannel):
 
         @self.itchat.msg_register(['Useless', 'Note'], isGroupChat=True)
         def wcSystemGroup(msg):
-            self.systemMsg(msg, True)
+            self.systemMsg(msg, isGroupChat=True)
 
         @self.itchat.msg_register(["System"])
         def wcSysLog(msg):
@@ -470,7 +471,7 @@ class WeChatChannel(EFBChannel):
     @incomeMsgMeta
     def textMsg(self, msg, isGroupChat=False):
         if msg['FromUserName'] == "newsapp" and msg['Content'].startswith("<mmreader>"):
-            self.newsapp_msg(msg)
+            self.newsapp_msg(msg, isGroupChat)
             return
         if msg['Text'].startswith("http://weixin.qq.com/cgi-bin/redirectforward?args="):
             self.locationMsg(msg, isGroupChat)
@@ -831,7 +832,7 @@ class WeChatChannel(EFBChannel):
         else:
             cid = int(cid)
 
-        l = self.itchat.get_friends(refresh)[1:]
+        l = self.itchat.get_friends(refresh)
 
         if cid < 0:
             return "ID must between 0 and %s inclusive, %s given." % (len(l) - 1, cid)

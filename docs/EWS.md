@@ -101,7 +101,8 @@ eh_wechat_slave = {
   Available values: _(U, G, M means the value is available to users, groups, and group members respectively)_
     * `"NickName"`: [UGM] Name of the user/group
     * `"alias"`: [UM] Alias of the user
-    * `"uin"`: [UG] WeChat Unique Identifier for all chats, **Not always available**.
+    * `"uin"`: [UG] WeChat Unique Identifier for all chats, **Not always available**.  
+      Only recommended for those with Uin rate higher than 90% in most cases.
 * `extra_links_on_message` _(bool)_  [Default: `False`]  
   Send all links from MPS messages with multiple links as individual messages. Only the first link is sent by default.
 * `max_quote_length` _(int)_  [Default: `-1`]  
