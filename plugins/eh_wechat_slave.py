@@ -418,7 +418,7 @@ class WeChatChannel(EFBChannel):
         return mobj
 
     @wechat_msg_meta
-    def wechat_location_msg(self, msg, isGroupChat):
+    def wechat_location_msg(self, msg):
         mobj = EFBMsg(self)
         mobj.text = msg['Content'].split('\n')[0][:-1]
         loc = re.search("=-?([0-9.]+),-?([0-9.]+)", msg['Url']).groups()
@@ -450,13 +450,12 @@ class WeChatChannel(EFBChannel):
         # format text
         # mobj.text = ""
         extra_link = data.get('msg', {}).get('appmsg', {}).get('mmreader', {}).get('category', {}).get('item', [])
-        if type(extra_link) is not list:
+        if not isinstance(extra_link, list):
             extra_link = [extra_link]
         if self._flag("first_link_only", False):
             extra_link = extra_link[:1]
-        if type(extra_link) is list and len(extra_link):
-            for i in extra_link:
-                self.wechat_raw_link_msg(msg, i['title'], i['digest'], i['cover'], i['url'])
+        for i in extra_link:
+            self.wechat_raw_link_msg(msg, i['title'], i['digest'], i['cover'], i['url'])
         return
 
     @wechat_msg_meta
@@ -584,7 +583,7 @@ class WeChatChannel(EFBChannel):
         fullpath = os.path.join(path, filename)
         msg['Text'](fullpath)
         mime = magic.from_file(fullpath, mime=True)
-        if type(mime) is bytes:
+        if isinstance(mime, bytes):
             mime = mime.decode()
         guess_ext = mimetypes.guess_extension(mime) or ".unknown"
         if guess_ext == ".unknown":
@@ -691,7 +690,7 @@ class WeChatChannel(EFBChannel):
         else:
             raise EFBMessageTypeNotSupported()
 
-        if type(r) is dict and r.get('BaseResponse', dict()).get('Ret', -1) != 0:
+        if isinstance(r, dict) and r.get('BaseResponse', dict()).get('Ret', -1) != 0:
             raise EFBMessageError(str(r))
         else:
             msg.uid = r.get("MsgId", None)
