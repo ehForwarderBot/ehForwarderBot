@@ -27,8 +27,8 @@ and all other required by Pillow.
 
 ### Configuration
 * Copy `eh_wechat_slave.py` to "plugins" directory  
-  _May not be necessary as it's a built-in plugin of EFB_
-* Append `("plugins.we_wechat_slave", "WeChatChannel")` to `slave_chanels` dict in `config.py`
+  _May not be necessary as it's bundled in EFB_
+* Append `("plugins.we_wechat_slave", "WeChatChannel")` to `slave_chanels` list in `config.py`
 * No other configuration is required
 
 ### Start up
@@ -61,7 +61,7 @@ and all other required by Pillow.
 
 ## FAQ
 * **How do I log in to another WeChat Account?**  
-  Please remove the `itchat.pkl` file in the EFB root directory, and restart EFB for QR code scanning.
+  Please remove the `storage/eh_wechat_slave.pkl` file in the EFB root directory, and restart EFB for QR code scanning.
 * **Can I log in 2 WeChat accounts concurrently?**  
   No. The feature is not yet available to EWS.
 * **How stable is EWS?**  
@@ -102,9 +102,9 @@ eh_wechat_slave = {
     * `"NickName"`: [UGM] Name of the user/group
     * `"alias"`: [UM] Alias of the user
     * `"uin"`: [UG] WeChat Unique Identifier for all chats, **Not always available**.  
-      Only recommended for those with Uin rate higher than 90% in most cases.
-* `extra_links_on_message` _(bool)_  [Default: `False`]  
-  Send all links from MPS messages with multiple links as individual messages. Only the first link is sent by default.
+      Only recommended for those with "Uin rate" higher than 90% in most cases. Check Uin rate with the `check_uin` command.
+* `first_link_only` _(bool)_  [Default: `False`]  
+  Send only the first links from MPS messages with multiple links. Each link is sent as separate message by default.
 * `max_quote_length` _(int)_  [Default: `-1`]  
   Maximum length of text for quotation messages. Set to 0 to fully disable quotation. Set to -1 to always quote full message.
 * `qr_reload` _(str)_  [Default: `"master_qr_code"`]  

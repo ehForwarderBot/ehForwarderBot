@@ -19,14 +19,12 @@ from channelExceptions import EFBMessageTypeNotSupported, EFBMessageError, EFBCh
 from utils import extra
 
 
-def incomeMsgMeta(func):
-    def wcFunc(self, *args, **kwargs):
-        msg = args[0]
-        isGroupChat = args[1] if len(args) > 2 else kwargs.get("isGroupChat", False)
-        logger = logging.getLogger("plugins.%s.incomeMsgMeta" % self.channel_id)
+def wechat_msg_meta(func):
+    def wrap_func(self, msg, *args, **kwargs):
+        isGroupChat = str(msg['FromUserName']).startswith("@@")
+        logger = logging.getLogger("plugins.%s.wechat_msg_meta" % self.channel_id)
         logger.debug("Raw message: %s" % repr(msg))
-        logger.debug("income_msg_meta:\n    args: %s\n    kwargs: %s", args, kwargs)
-        mobj = func(self, *args, **kwargs)
+        mobj = func(self, msg, *args, **kwargs)
         if mobj is None:
             return
         mobj.uid = msg.get("MsgId", time.time())
@@ -36,14 +34,15 @@ def incomeMsgMeta(func):
             msg['FromUserName'], msg['ToUserName'] = msg['ToUserName'], msg['FromUserName']
         FromUser = self.search_user(UserName=msg['FromUserName']) or \
                    self.search_user(UserName=msg['FromUserName'], refresh=True) or \
-                                    [{"NickName": "Chat not found. (UE01)", "RemarkName": "Chat not found. (UE01)", "Uin": 0}]
+                   [{"NickName": "Chat not found. (UE01)", "RemarkName": "Chat not found. (UE01)", "Uin": 0}]
         FromUser = FromUser[0]
         logger.debug("From user, %s", FromUser)
         if isGroupChat:
             logger.debug("Group chat")
             if me:
                 msg['ActualUserName'] = msg['ToUserName']
-                member = {"NickName": self.itchat.loginInfo['User']['NickName'], "DisplayName": "You", "Uin": self.itchat.loginInfo['User']['Uin']}
+                member = {"NickName": self.itchat.loginInfo['User']['NickName'], "DisplayName": "You",
+                          "Uin": self.itchat.loginInfo['User']['Uin']}
             else:
                 logger.debug("search_user")
                 member = self.search_user(UserName=msg['FromUserName'], ActualUserName=msg['ActualUserName'])[0]['MemberList'][0]
@@ -90,7 +89,7 @@ def incomeMsgMeta(func):
                     (mobj.type, msg['Text'], msg['FromUserName'], mobj.origin['uid'], mobj.origin['name']))
         self.queue.put(mobj)
 
-    return wcFunc
+    return wrap_func
 
 
 class WeChatChannel(EFBChannel):
@@ -113,9 +112,9 @@ class WeChatChannel(EFBChannel):
     _stop_polling = False
 
     SYSTEM_USERNAMES = ["filehelper", "newsapp", "fmessage", "weibo", "qqmail", "fmessage", "tmessage", "qmessage",
-                         "qqsync", "floatbottle", "lbsapp", "shakeapp", "medianote", "qqfriend", "readerapp",
-                         "blogapp", "facebookapp", "masssendapp", "meishiapp", "feedsapp", "voip", "blogappweixin",
-                         "weixin"]
+                        "qqsync", "floatbottle", "lbsapp", "shakeapp", "medianote", "qqfriend", "readerapp",
+                        "blogapp", "facebookapp", "masssendapp", "meishiapp", "feedsapp", "voip", "blogappweixin",
+                        "weixin"]
 
     def __init__(self, queue, mutex):
         super().__init__(queue, mutex)
@@ -155,10 +154,10 @@ class WeChatChannel(EFBChannel):
             img = img.resize((img.size[0] // 10, img.size[1] // 10))
             for i in range(img.size[0]):
                 for j in range(img.size[1]):
-                        if img.getpixel((i, j)) > 0:
-                            QR += "\x1b[7m  \x1b[0m"
-                        else:
-                            QR += "\x1b[49m  \x1b[0m"
+                    if img.getpixel((i, j)) > 0:
+                        QR += "\x1b[7m  \x1b[0m"
+                    else:
+                        QR += "\x1b[49m  \x1b[0m"
                 QR += "\n"
             QR += "\nIf you cannot read the QR code above, " \
                   "please visit the following URL:\n" \
@@ -298,7 +297,7 @@ class WeChatChannel(EFBChannel):
 
     def search_user(self, UserName=None, uid=None, uin=None, name=None, ActualUserName=None, refresh=False):
         """
-        Search for a WeChat "User" (a user, a group/chat room or an MPS account,
+        Search for a WeChat "User" (a user, a group/chat room or an MP account,
         by `UserName`, unique ID, WeChat ID, name/alias, and/or group member `UserName`.
 
         At least one of `UserName`, `uid`, `wid`, or `name` should be provided.
@@ -339,11 +338,11 @@ class WeChatChannel(EFBChannel):
                     "alias": i.get("RemarkName", None),
                     "uin": i.get("Uin", None)}
             if self.encode_uid(data) == uid or \
-               str(i.get('UserName', '')) == UserName or \
-               str(i.get('AttrStatus', '')) == uid or \
-               str(i.get('Uin', '')) == uin or \
-               str(i.get('NickName', '')) == name or \
-               str(i.get('DisplayName', '')) == name:
+                            str(i.get('UserName', '')) == UserName or \
+                            str(i.get('AttrStatus', '')) == uid or \
+                            str(i.get('Uin', '')) == uin or \
+                            str(i.get('NickName', '')) == name or \
+                            str(i.get('DisplayName', '')) == name:
                 result.append(i.copy())
         for i in self.itchat.get_chatrooms(refresh):
             if not i['UserName'].startswith('@@'):
@@ -354,10 +353,10 @@ class WeChatChannel(EFBChannel):
                     "alias": i.get("RemarkName", None),
                     "uin": i.get("Uin", None)}
             if self.encode_uid(data) == uid or \
-               str(i.get('Uin', '')) == uin or \
-               str(i.get('NickName', '')) == name or \
-               str(i.get('DisplayName', '')) == name or \
-               str(i.get('UserName', '')) == UserName:
+                            str(i.get('Uin', '')) == uin or \
+                            str(i.get('NickName', '')) == name or \
+                            str(i.get('DisplayName', '')) == name or \
+                            str(i.get('UserName', '')) == UserName:
                 result.append(i.copy())
                 result[-1]['MemberList'] = []
                 if ActualUserName:
@@ -383,113 +382,43 @@ class WeChatChannel(EFBChannel):
         self.logger.debug("%s (%s) gracefully stopped.", self.channel_name, self.channel_id)
 
     def itchat_msg_register(self):
-        @self.itchat.msg_register(['Text'], isFriendChat=True, isMpChat=True)
-        def wcText(msg):
-            self.textMsg(msg)
+        self.itchat.msg_register(['Text'], isFriendChat=True, isMpChat=True, isGroupChat=True)(self.wechat_text_msg)
+        self.itchat.msg_register(['Sharing'], isFriendChat=True, isMpChat=True, isGroupChat=True)(self.wechat_link_msg)
+        self.itchat.msg_register(['Picture'], isFriendChat=True, isMpChat=True, isGroupChat=True)(self.wechat_picture_msg)
+        self.itchat.msg_register(['Attachment'], isFriendChat=True, isMpChat=True, isGroupChat=True)(self.wechat_file_msg)
+        self.itchat.msg_register(['Recording'], isFriendChat=True, isMpChat=True, isGroupChat=True)(self.wechat_voice_msg)
+        self.itchat.msg_register(['Map'], isFriendChat=True, isMpChat=True, isGroupChat=True)(self.wechat_location_msg)
+        self.itchat.msg_register(['Video'], isFriendChat=True, isMpChat=True, isGroupChat=True)(self.wechat_video_msg)
+        self.itchat.msg_register(['Card'], isFriendChat=True, isMpChat=True, isGroupChat=True)(self.wechat_card_msg)
+        self.itchat.msg_register(['Friends'], isFriendChat=True, isMpChat=True, isGroupChat=True)(self.wechat_friend_msg)
+        self.itchat.msg_register(['Useless', 'Note'], isFriendChat=True, isMpChat=True, isGroupChat=True)(self.wechat_system_msg)
 
-        @self.itchat.msg_register(['Text'], isGroupChat=True)
-        def wcTextGroup(msg):
-            self.logger.info("text Msg from group %s", msg['Text'])
-            self.textMsg(msg, isGroupChat=True)
-
-        @self.itchat.msg_register(['Sharing'], isFriendChat=True, isMpChat=True)
-        def wcLink(msg):
-            self.linkMsg(msg)
-
-        @self.itchat.msg_register(['Sharing'], isGroupChat=True)
-        def wcLinkGroup(msg):
-            self.linkMsg(msg, isGroupChat=True)
-
-        @self.itchat.msg_register(['Picture'], isFriendChat=True, isMpChat=True)
-        def wcPicture(msg):
-            self.pictureMsg(msg)
-
-        @self.itchat.msg_register(['Picture'], isGroupChat=True)
-        def wcPictureGroup(msg):
-            self.pictureMsg(msg, isGroupChat=True)
-
-        @self.itchat.msg_register(['Attachment'], isFriendChat=True, isMpChat=True)
-        def wcFile(msg):
-            self.fileMsg(msg)
-
-        @self.itchat.msg_register(['Attachment'], isGroupChat=True)
-        def wcFileGroup(msg):
-            self.fileMsg(msg, isGroupChat=True)
-
-        @self.itchat.msg_register(['Recording'], isFriendChat=True, isMpChat=True)
-        def wcRecording(msg):
-            self.voiceMsg(msg)
-
-        @self.itchat.msg_register(['Recording'], isGroupChat=True)
-        def wcRecordingGroup(msg):
-            self.voiceMsg(msg, isGroupChat=True)
-
-        @self.itchat.msg_register(['Map'], isFriendChat=True, isMpChat=True)
-        def wcLocation(msg):
-            self.locationMsg(msg)
-
-        @self.itchat.msg_register(['Map'], isGroupChat=True)
-        def wcLocationGroup(msg):
-            self.locationMsg(msg, isGroupChat=True)
-
-        @self.itchat.msg_register(['Video'], isFriendChat=True, isMpChat=True)
-        def wcVideo(msg):
-            self.videoMsg(msg)
-
-        @self.itchat.msg_register(['Video'], isGroupChat=True)
-        def wcVideoGroup(msg):
-            self.videoMsg(msg, isGroupChat=True)
-
-        @self.itchat.msg_register(['Card'], isFriendChat=True, isMpChat=True)
-        def wcCard(msg):
-            self.cardMsg(msg)
-
-        @self.itchat.msg_register(['Card'], isGroupChat=True)
-        def wcCardGroup(msg):
-            self.cardMsg(msg, isGroupChat=True)
-
-        @self.itchat.msg_register(['Friends'], isFriendChat=True, isMpChat=True)
-        def wcFriends(msg):
-            self.friendMsg(msg)
-
-        @self.itchat.msg_register(['Friends'], isGroupChat=True)
-        def wcFriendsGroup(msg):
-            self.friendMsg(msg, isGroupChat=True)
-
-        @self.itchat.msg_register(['Useless', 'Note'], isFriendChat=True, isMpChat=True)
-        def wcSystem(msg):
-            self.systemMsg(msg)
-
-        @self.itchat.msg_register(['Useless', 'Note'], isGroupChat=True)
-        def wcSystemGroup(msg):
-            self.systemMsg(msg, isGroupChat=True)
-
-        @self.itchat.msg_register(["System"])
-        def wcSysLog(msg):
+        @self.itchat.msg_register(["System"], isFriendChat=True, isMpChat=True, isGroupChat=True)
+        def wc_msg_system_log(msg):
             self.logger.debug("WeChat \"System\" message:\n%s", repr(msg))
 
-    @incomeMsgMeta
-    def textMsg(self, msg, isGroupChat=False):
+    @wechat_msg_meta
+    def wechat_text_msg(self, msg):
         if msg['FromUserName'] == "newsapp" and msg['Content'].startswith("<mmreader>"):
-            self.newsapp_msg(msg, isGroupChat)
+            self.wechat_newsapp_msg(msg)
             return
         if msg['Text'].startswith("http://weixin.qq.com/cgi-bin/redirectforward?args="):
-            self.locationMsg(msg, isGroupChat)
+            self.wechat_location_msg(msg)
             return
         mobj = EFBMsg(self)
         mobj.text = msg['Text']
         mobj.type = MsgType.Text
         return mobj
 
-    @incomeMsgMeta
-    def systemMsg(self, msg, isGroupChat=False):
+    @wechat_msg_meta
+    def wechat_system_msg(self, msg):
         mobj = EFBMsg(self)
         mobj.text = "System message: %s" % msg['Text']
         mobj.type = MsgType.Text
         return mobj
 
-    @incomeMsgMeta
-    def locationMsg(self, msg, isGroupChat):
+    @wechat_msg_meta
+    def wechat_location_msg(self, msg, isGroupChat):
         mobj = EFBMsg(self)
         mobj.text = msg['Content'].split('\n')[0][:-1]
         loc = re.search("=-?([0-9.]+),-?([0-9.]+)", msg['Url']).groups()
@@ -497,8 +426,8 @@ class WeChatChannel(EFBChannel):
         mobj.type = MsgType.Location
         return mobj
 
-    @incomeMsgMeta
-    def linkMsg(self, msg, isGroupChat=False):
+    @wechat_msg_meta
+    def wechat_link_msg(self, msg):
         self.logger.info("---\nNew Link msg, %s", msg)
         # initiate object
         mobj = EFBMsg(self)
@@ -517,21 +446,19 @@ class WeChatChannel(EFBChannel):
             txt = mobj.attributes['title'] or ''
             txt += mobj.attributes['description'] or ''
             msg['Text'] = txt
-            return self.textMsg(msg, isGroupChat)
+            return self.wechat_text_msg(msg)
         # format text
         mobj.text = ""
-        if self._flag("extra_links_on_message", False):
+        if not self._flag("first_link_only", False):
             extra_link = data.get('msg', {}).get('appmsg', {}).get('mmreader', {}).get('category', {}).get('item', [])
             if type(extra_link) is list and len(extra_link):
                 for i in extra_link:
-                    # mobj.text += "🔗 %s\n%s\n%s\n🖼 %s\n\n" % (i['title'], i['digest'], i['url'], i['cover'])
-                    self.raw_linkMsg(msg, i['title'], i['digest'], i['cover'], i['url'])
-                    return
+                    self.wechat_raw_link_msg(msg, i['title'], i['digest'], i['cover'], i['url'])
         mobj.type = MsgType.Link
         return mobj
 
-    @incomeMsgMeta
-    def raw_linkMsg(self, msg, title, description, image, url):
+    @wechat_msg_meta
+    def wechat_raw_link_msg(self, msg, title, description, image, url):
         mobj = EFBMsg(self)
         mobj.type = MsgType.Link
         mobj.attributes = {
@@ -543,17 +470,17 @@ class WeChatChannel(EFBChannel):
 
         return mobj
 
-    def newsapp_msg(self, msg):
+    def wechat_newsapp_msg(self, msg):
         data = xmltodict.parse(msg['Content'])
         news = data.get('mmreader', {}).get('category', {}).get('newitem', [])
         if news:
-            self.raw_linkMsg(msg, news[0]['title'], news[0]['digest'], news[0]['cover'], news[0]['shorturl'])
+            self.wechat_raw_link_msg(msg, news[0]['title'], news[0]['digest'], news[0]['cover'], news[0]['shorturl'])
             if self._flag("extra_links_on_message", False):
                 for i in news[1:]:
-                    self.raw_linkMsg(msg, i['title'], i['digest'], i['cover'], i['shorturl'])
+                    self.wechat_raw_link_msg(msg, i['title'], i['digest'], i['cover'], i['shorturl'])
 
-    @incomeMsgMeta
-    def pictureMsg(self, msg, isGroupChat=False):
+    @wechat_msg_meta
+    def wechat_picture_msg(self, msg):
         mobj = EFBMsg(self)
         mobj.type = MsgType.Image if msg['MsgType'] == 3 else MsgType.Sticker
         mobj.path, mime = self.save_file(msg, mobj.type)
@@ -562,8 +489,8 @@ class WeChatChannel(EFBChannel):
         mobj.mime = mime
         return mobj
 
-    @incomeMsgMeta
-    def fileMsg(self, msg, isGroupChat=False):
+    @wechat_msg_meta
+    def wechat_file_msg(self, msg):
         mobj = EFBMsg(self)
         mobj.type = MsgType.File
         mobj.path, mobj.mime = self.save_file(msg, mobj.type)
@@ -572,8 +499,8 @@ class WeChatChannel(EFBChannel):
         mobj.file = open(mobj.path, "rb")
         return mobj
 
-    @incomeMsgMeta
-    def voiceMsg(self, msg, isGroupChat=False):
+    @wechat_msg_meta
+    def wechat_voice_msg(self, msg):
         mobj = EFBMsg(self)
         mobj.type = MsgType.Audio
         mobj.path, mobj.mime = self.save_file(msg, mobj.type)
@@ -581,8 +508,8 @@ class WeChatChannel(EFBChannel):
         mobj.file = open(mobj.path, "rb")
         return mobj
 
-    @incomeMsgMeta
-    def videoMsg(self, msg, isGroupChat=False):
+    @wechat_msg_meta
+    def wechat_video_msg(self, msg):
         mobj = EFBMsg(self)
         mobj.path, mobj.mime = self.save_file(msg, MsgType.Video)
         mobj.type = MsgType.Video
@@ -590,8 +517,8 @@ class WeChatChannel(EFBChannel):
         mobj.file = open(mobj.path, "rb")
         return mobj
 
-    @incomeMsgMeta
-    def cardMsg(self, msg, isGroupChat=False):
+    @wechat_msg_meta
+    def wechat_card_msg(self, msg):
         mobj = EFBMsg(self)
         txt = ("Name card: {NickName}\n"
                "From: {Province}, {City}\n"
@@ -618,8 +545,8 @@ class WeChatChannel(EFBChannel):
         }
         return mobj
 
-    @incomeMsgMeta
-    def friendMsg(self, msg, isGroupChat=False):
+    @wechat_msg_meta
+    def wechat_friend_msg(self, msg):
         mobj = EFBMsg(self)
         txt = ("Friend request: {NickName}\n"
                "From: {Province}, {City}\n"
@@ -717,7 +644,7 @@ class WeChatChannel(EFBChannel):
             self.logger.info("Image/Sticker %s, %s", msg.type, msg.path)
             if msg.mime in ["image/gif", "image/jpeg"]:
                 try:
-                    if os.path.getsize(msg.path) > 5*2**20:
+                    if os.path.getsize(msg.path) > 5 * 2 ** 20:
                         raise EFBMessageError("Image sent is too large. (IS01)")
                     self.logger.debug("Sending %s (image) to ItChat.", msg.path)
                     r = self._itchat_send_image(msg.path, UserName)
@@ -748,7 +675,8 @@ class WeChatChannel(EFBChannel):
                 except FileNotFoundError:
                     pass
         elif msg.type in (MsgType.File, MsgType.Audio):
-            self.logger.info("Sending %s to WeChat\nFileName: %s\nPath: %s\nFilename: %s", msg.type, msg.text, msg.path, msg.filename)
+            self.logger.info("Sending %s to WeChat\nFileName: %s\nPath: %s\nFilename: %s", msg.type, msg.text, msg.path,
+                             msg.filename)
             r = self._itchat_send_file(msg.path, toUserName=UserName, filename=msg.filename)
             if msg.text:
                 self._itchat_send_msg(msg.text, toUserName=UserName)
@@ -794,7 +722,7 @@ class WeChatChannel(EFBChannel):
 
         for i in self.itchat.get_mps(refresh):
             l.append(i)
-            l[-1]['Type'] = "MPS"
+            l[-1]['Type'] = "MP"
 
         msg = "List of chats:\n"
         for n, i in enumerate(l):
@@ -806,7 +734,7 @@ class WeChatChannel(EFBChannel):
         return msg
 
     @extra(name="Set alias",
-           desc="Set alias for a contact in WeChat. You may not set alias to a group or a MPS contact.\n"
+           desc="Set alias for a contact in WeChat. You may not set alias to a group or a MP contact.\n"
                 "Usage:\n"
                 "    {function_name} [-r] id [alias]\n"
                 "    id: Chat ID (You may obtain it from \"Show chat list\" function.\n"
@@ -838,7 +766,7 @@ class WeChatChannel(EFBChannel):
             return "ID must between 0 and %s inclusive, %s given." % (len(l) - 1, cid)
 
         if cid >= len(l):
-            return "You may not set alias to a group or a MPS contact."
+            return "You may not set alias to a group or a MP contact."
 
         self.itchat.set_alias(l[cid]['UserName'], alias)
         if alias:
@@ -870,7 +798,7 @@ class WeChatChannel(EFBChannel):
         users_all = len(users)
 
         return "`Uin` rate checkup.\n\n" \
-               "Users + MPS: %s/%s (%.2f%%)\n" \
+               "Users + MP: %s/%s (%.2f%%)\n" \
                "Groups: %s/%s (%.2f%%)\n" \
                "Group Members: %s/%s (%.2f%%)" % \
                (users_uin, users_all, 100 * users_uin / users_all,
@@ -894,6 +822,7 @@ class WeChatChannel(EFBChannel):
                                        exitCallback=self.exit_callback,
                                        qrCallback=qr_callback)
                 self.done_reauth.set()
+
         threading.Thread(target=reauth_thread, args=(self, qr_reload)).start()
         return msg
 
@@ -924,7 +853,8 @@ class WeChatChannel(EFBChannel):
                     'channel_id': self.channel_id,
                     'name': i['NickName'],
                     'alias': i['RemarkName'] or i['NickName'],
-                    'uid': self.get_uid(UserName=i['UserName'], NickName=i['NickName'], alias=i.get("RemarkName", None), Uin=i.get("Uin", None)),
+                    'uid': self.get_uid(UserName=i['UserName'], NickName=i['NickName'], alias=i.get("RemarkName", None),
+                                        Uin=i.get("Uin", None)),
                     'type': MsgSource.User
                 })
         if group:
@@ -937,7 +867,8 @@ class WeChatChannel(EFBChannel):
                     'channel_id': self.channel_id,
                     'name': i['NickName'],
                     'alias': i['RemarkName'] or i['NickName'] or None,
-                    'uid': self.get_uid(NickName=i['NickName'], alias=i.get("RemarkName", None), Uin=i.get("Uin", None)),
+                    'uid': self.get_uid(NickName=i['NickName'], alias=i.get("RemarkName", None),
+                                        Uin=i.get("Uin", None)),
                     'type': MsgSource.Group
                 })
         return r
@@ -997,7 +928,8 @@ class WeChatChannel(EFBChannel):
                                 "<des></des><action></action><type>6</type><content></content><url></url><lowurl></lowurl>" +
                                 "<appattach><totallen>%s</totallen><attachid>%s</attachid>" % (
                                     str(os.path.getsize(fileDir)), mediaId) +
-                                "<fileext>%s</fileext></appattach><extinfo></extinfo></appmsg>" % fn[1].replace('.', '')),
+                                "<fileext>%s</fileext></appattach><extinfo></extinfo></appmsg>" % fn[1].replace('.',
+                                                                                                                '')),
                     'FromUserName': self.storageClass.userName,
                     'ToUserName': toUserName,
                     'LocalID': int(time.time() * 1e4),

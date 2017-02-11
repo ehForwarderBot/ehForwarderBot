@@ -251,6 +251,8 @@ class TelegramChannel(EFBChannel):
                 name_prefix = msg.origin["name"] if msg.origin["alias"] == msg.origin["name"] or not msg.origin['alias'] \
                     else "%s (%s)" % (msg.origin["alias"], msg.origin["name"])
                 msg_template = "%s %s:\n%s" % (emoji_prefix, name_prefix, "%s")
+            else:
+                msg_template = "Unknown message source (%s)\n%s" % (msg.source, "%s")
 
             # Type dispatching
             self.logger.debug("%s, process_msg_step_2", xid)
@@ -261,8 +263,7 @@ class TelegramChannel(EFBChannel):
                     last_msg = db.get_last_msg_from_chat(tg_dest)
                     if last_msg:
                         if last_msg.msg_type == "Text":
-                            append_last_msg = str(last_msg.slave_origin_uid) == "%s.%s" % (
-                            msg.channel_id, msg.origin['uid'])
+                            append_last_msg = str(last_msg.slave_origin_uid) == "%s.%s" % (msg.channel_id, msg.origin['uid'])
                             if msg.source == MsgSource.Group:
                                 append_last_msg &= str(last_msg.slave_member_uid) == str(msg.member['uid'])
                             append_last_msg &= datetime.datetime.now() - last_msg.time <= datetime.timedelta(
@@ -273,8 +274,7 @@ class TelegramChannel(EFBChannel):
                         append_last_msg = False
                     self.logger.debug("Text: Append last msg: %s", append_last_msg)
                 self.logger.debug("%s, process_msg_step_3_0, tg_dest = %s, tg_chat_assoced = %s, append_last_msg = %s",
-                                  xid,
-                                  tg_dest, tg_chat_assoced, append_last_msg)
+                                  xid, tg_dest, tg_chat_assoced, append_last_msg)
                 if tg_chat_assoced and append_last_msg:
                     self.logger.debug("%s, process_msg_step_3_0_1", xid)
                     msg.text = "%s\n%s" % (last_msg.text, msg.text)
@@ -296,9 +296,13 @@ class TelegramChannel(EFBChannel):
                     self.logger.debug("%s, process_msg_step_3_0_4, tg_msg = %s", xid, tg_msg)
                 self.logger.debug("%s, process_msg_step_3_1", xid)
             elif msg.type == MsgType.Link:
-                text = "🔗 <a href=\"%s\">%s</a>\n%s" % (urllib.parse.quote(msg.attributes["url"], safe="?=&#:/"),
-                                                         html.escape(msg.attributes["title"] or msg.attributes["url"]),
-                                                         html.escape(msg.attributes["description"] or ""))
+                thumbnail = urllib.parse.quote(msg.attributes["image"] or "", safe="?=&#:/")
+                thumbnail = "<a href=\"%s\">🔗</a>" if thumbnail else "🔗"
+                text = "%s <a href=\"%s\">%s</a>\n%s" % \
+                       (thumbnail,
+                        urllib.parse.quote(msg.attributes["url"], safe="?=&#:/"),
+                        html.escape(msg.attributes["title"] or msg.attributes["url"]),
+                        html.escape(msg.attributes["description"] or ""))
                 if msg.text:
                     text += "\n\n" + msg.text
                 try:

@@ -183,7 +183,7 @@ Shared links.
 * `attributes`: a `dict` with 4 items: _(None if not available)_  
     * **"title"**: Title of the linked article,  
     * **"description"**: Brief description of the article,  
-    * **"image"**: Thumbnail URL or local file path,  
+    * **"image"**: Thumbnail URL,  
     * **"url"**: URL in the message.
 
 ### Command
