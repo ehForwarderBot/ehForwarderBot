@@ -428,34 +428,36 @@ class WeChatChannel(EFBChannel):
 
     @wechat_msg_meta
     def wechat_link_msg(self, msg):
-        self.logger.info("---\nNew Link msg, %s", msg)
-        # initiate object
-        mobj = EFBMsg(self)
+        # self.logger.info("---\nNew Link msg, %s", msg)
+        # # initiate object
+        # mobj = EFBMsg(self)
         # parse XML
         itchat.utils.emoji_formatter(msg, 'Content')
         xml_data = msg['Content']
         data = xmltodict.parse(xml_data)
-        # set attributes
-        mobj.attributes = {
-            "title": data['msg']['appmsg']['title'],
-            "description": data['msg']['appmsg']['des'],
-            "image": data['msg']['appmsg']['thumburl'],
-            "url": data['msg']['appmsg']['url']
-        }
-        if mobj.attributes['url'] is None:
-            txt = mobj.attributes['title'] or ''
-            txt += mobj.attributes['description'] or ''
-            msg['Text'] = txt
-            return self.wechat_text_msg(msg)
+        # # set attributes
+        # mobj.attributes = {
+        #     "title": data['msg']['appmsg']['title'],
+        #     "description": data['msg']['appmsg']['des'],
+        #     "image": data['msg']['appmsg']['thumburl'],
+        #     "url": data['msg']['appmsg']['url']
+        # }
+        # if mobj.attributes['url'] is None:
+        #     txt = mobj.attributes['title'] or ''
+        #     txt += mobj.attributes['description'] or ''
+        #     msg['Text'] = txt
+        #     return self.wechat_text_msg(msg)
         # format text
-        mobj.text = ""
-        if not self._flag("first_link_only", False):
-            extra_link = data.get('msg', {}).get('appmsg', {}).get('mmreader', {}).get('category', {}).get('item', [])
-            if type(extra_link) is list and len(extra_link):
-                for i in extra_link:
-                    self.wechat_raw_link_msg(msg, i['title'], i['digest'], i['cover'], i['url'])
-        mobj.type = MsgType.Link
-        return mobj
+        # mobj.text = ""
+        extra_link = data.get('msg', {}).get('appmsg', {}).get('mmreader', {}).get('category', {}).get('item', [])
+        if type(extra_link) is not list:
+            extra_link = [extra_link]
+        if self._flag("first_link_only", False):
+            extra_link = extra_link[:1]
+        if type(extra_link) is list and len(extra_link):
+            for i in extra_link:
+                self.wechat_raw_link_msg(msg, i['title'], i['digest'], i['cover'], i['url'])
+        return
 
     @wechat_msg_meta
     def wechat_raw_link_msg(self, msg, title, description, image, url):
@@ -467,7 +469,6 @@ class WeChatChannel(EFBChannel):
             "image": image,
             "url": url
         }
-
         return mobj
 
     def wechat_newsapp_msg(self, msg):

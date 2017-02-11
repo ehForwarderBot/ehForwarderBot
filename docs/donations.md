@@ -13,3 +13,5 @@ You can donate to me via any of the following methods.
 * 绵绵: CNY 10.00
 * tolves&jiamin: CNY 40.00
 * DrayChou: CNY 2.33
+* Fwolf: CNY 6.60
+* 毒薬: CNY 8.88

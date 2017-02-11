@@ -297,7 +297,7 @@ class TelegramChannel(EFBChannel):
                 self.logger.debug("%s, process_msg_step_3_1", xid)
             elif msg.type == MsgType.Link:
                 thumbnail = urllib.parse.quote(msg.attributes["image"] or "", safe="?=&#:/")
-                thumbnail = "<a href=\"%s\">🔗</a>" if thumbnail else "🔗"
+                thumbnail = "<a href=\"%s\">🔗</a>" % thumbnail if thumbnail else "🔗"
                 text = "%s <a href=\"%s\">%s</a>\n%s" % \
                        (thumbnail,
                         urllib.parse.quote(msg.attributes["url"], safe="?=&#:/"),
@@ -1175,7 +1175,7 @@ class TelegramChannel(EFBChannel):
         """
         Message polling process.
         """
-        self.bot.start_polling(timeout=10)
+        self.polling_from_tg()
         while True:
             try:
                 m = self.queue.get()
@@ -1194,6 +1194,12 @@ class TelegramChannel(EFBChannel):
         self.logger.debug("Gracefully stopping %s (%s).", self.channel_name, self.channel_id)
         self.bot.stop()
         self.logger.debug("%s (%s) gracefully stopped.", self.channel_name, self.channel_id)
+
+    def polling_from_tg(self):
+        """
+        Poll message from Telegram Bot API. Can be used to extend
+        """
+        self.bot.start_polling(timeout=10)
 
     def error(self, bot, update, error):
         """
