@@ -1095,7 +1095,7 @@ class TelegramChannel(EFBChannel):
                   "To learn more, please visit https://github.com/blueset/ehForwarderBot ."
             bot.send_message(update.message.from_user.id, txt)
 
-    def help(self, update):
+    def help(self, bot, update):
         txt = "EFB Telegram Master Channel\n" \
               "/link\n" \
               "    Link a remote chat to an empty Telegram group.\n" \
