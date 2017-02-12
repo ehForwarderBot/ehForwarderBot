@@ -808,7 +808,7 @@ class WeChatChannel(EFBChannel):
     @extra(name="Force log out",
            desc="Force log out WeChat session.\n"
                 "Usage: {function_name}")
-    def force_log_out:
+    def force_log_out(self, param=""):
         self.itchat.logout()
 
     # Command functions
