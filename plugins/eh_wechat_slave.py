@@ -111,11 +111,6 @@ class WeChatChannel(EFBChannel):
     done_reauth = threading.Event()
     _stop_polling = False
 
-    SYSTEM_USERNAMES = ["filehelper", "newsapp", "fmessage", "weibo", "qqmail", "fmessage", "tmessage", "qmessage",
-                        "qqsync", "floatbottle", "lbsapp", "shakeapp", "medianote", "qqfriend", "readerapp",
-                        "blogapp", "facebookapp", "masssendapp", "meishiapp", "feedsapp", "voip", "blogappweixin",
-                        "weixin"]
-
     def __init__(self, queue, mutex):
         super().__init__(queue, mutex)
         self.itchat = itchat.new_instance()
@@ -245,7 +240,7 @@ class WeChatChannel(EFBChannel):
         Returns:
             str|bool: Unique ID of the chat. `False` if not found.
         """
-        if UserName in self.SYSTEM_USERNAMES:
+        if not UserName.startswith("@"):
             return UserName
         if not (UserName or NickName or alias or Uin):
             self.logger.error('No name provided.')
@@ -288,7 +283,7 @@ class WeChatChannel(EFBChannel):
         Returns:
             str|bool: `UserName` of the chosen chat. `False` if not found.
         """
-        if uid in self.SYSTEM_USERNAMES:
+        if uid and str(uid).isalpha():
             return uid
         r = self.search_user(uid=uid, refresh=refresh)
         if r:
@@ -326,7 +321,7 @@ class WeChatChannel(EFBChannel):
         if all(i is None for i in [UserName, uid, uin, name]):
             raise ValueError("At least one of [UserName, uid, uin, name] should be provided.")
 
-        if UserName in self.SYSTEM_USERNAMES or uin in self.SYSTEM_USERNAMES:
+        if not UserName.startswith("@") or (uin and str(uin).isalpha()):
             sys_chat_id = UserName or uin
             return [{"UserName": sys_chat_id,
                      "NickName": "System (%s)" % sys_chat_id,
@@ -436,12 +431,12 @@ class WeChatChannel(EFBChannel):
         xml_data = msg['Content']
         data = xmltodict.parse(xml_data)
         # # set attributes
-        # mobj.attributes = {
-        #     "title": data['msg']['appmsg']['title'],
-        #     "description": data['msg']['appmsg']['des'],
-        #     "image": data['msg']['appmsg']['thumburl'],
-        #     "url": data['msg']['appmsg']['url']
-        # }
+        base_data = [
+            data.get('msg', {}).get('appmsg', {}).get('title', None),
+            data.get('msg', {}).get('appmsg', {}).get('des', None),
+            data.get('msg', {}).get('appmsg', {}).get('thumburl', None),
+            data.get('msg', {}).get('appmsg', {}).get('url', None)
+        ]
         # if mobj.attributes['url'] is None:
         #     txt = mobj.attributes['title'] or ''
         #     txt += mobj.attributes['description'] or ''
@@ -456,6 +451,8 @@ class WeChatChannel(EFBChannel):
             extra_link = extra_link[:1]
         for i in extra_link:
             self.wechat_raw_link_msg(msg, i['title'], i['digest'], i['cover'], i['url'])
+        else:
+            self.wechat_raw_link_msg(msg, *base_data)
         return
 
     @wechat_msg_meta
@@ -665,9 +662,9 @@ class WeChatChannel(EFBChannel):
                 self.logger.info('Image converted to GIF: %s', msg.path)
                 self.logger.debug("Sending %s (image) to ItChat.", msg.path)
                 r = self._itchat_send_image(msg.path, UserName)
-                if msg.text:
-                    self._itchat_send_msg(msg.text, UserName)
                 os.remove(msg.path)
+            if msg.text:
+                self._itchat_send_msg(msg.text, UserName)
             self.logger.info('Image sent with result %s', r)
             if not msg.mime == "image/gif":
                 try:
