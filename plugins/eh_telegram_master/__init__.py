@@ -115,6 +115,7 @@ class TelegramChannel(EFBChannel):
         self.bot.dispatcher.add_handler(telegram.ext.CallbackQueryHandler(self.callback_query_dispatcher))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("start", self.start, pass_args=True))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("extra", self.extra_help))
+        self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("help", self.help))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("unlink_all", self.unlink_all))
         self.bot.dispatcher.add_handler(
             telegram.ext.RegexHandler(r"^/(?P<id>[0-9]+)_(?P<command>[a-z0-9_-]+)", self.extra_call,
@@ -1093,6 +1094,26 @@ class TelegramChannel(EFBChannel):
             txt = "Welcome to EH Forwarder Bot: EFB Telegram Master Channel.\n\n" \
                   "To learn more, please visit https://github.com/blueset/ehForwarderBot ."
             bot.send_message(update.message.from_user.id, txt)
+
+    def help(self, update):
+        txt = "EFB Telegram Master Channel\n" \
+              "/link\n" \
+              "    Link a remote chat to an empty Telegram group.\n" \
+              "    Followed by a regular expression to filter results.\n" \
+              "/chat\n" \
+              "    Generate a chat head to start a conversation.\n" \
+              "    Followed by a regular expression to filter results.\n" \
+              "/extra\n" \
+              "    List all extra function from slave channels.\n" \
+              "/unlink_all\n" \
+              "    Unlink all remote chats in this chat.\n" \
+              "/recog\n" \
+              "    Reply to a voice message to convert it to text.\n" \
+              "    Followed by a language code to choose a specific lanugage.\n" \
+              "    You have to enable speech to text in the config file first.\n" \
+              "/help\n" \
+              "    Print this command list."
+        bot.send_message(update.message.from_user.id, txt)
 
     def recognize_speech(self, bot, update, args=[]):
         """

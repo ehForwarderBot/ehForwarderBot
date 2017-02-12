@@ -240,7 +240,7 @@ class WeChatChannel(EFBChannel):
         Returns:
             str|bool: Unique ID of the chat. `False` if not found.
         """
-        if not UserName.startswith("@"):
+        if UserName and not str(UserName).startswith("@"):
             return UserName
         if not (UserName or NickName or alias or Uin):
             self.logger.error('No name provided.')
@@ -321,7 +321,7 @@ class WeChatChannel(EFBChannel):
         if all(i is None for i in [UserName, uid, uin, name]):
             raise ValueError("At least one of [UserName, uid, uin, name] should be provided.")
 
-        if not UserName.startswith("@") or (uin and str(uin).isalpha()):
+        if (UserName and not str(UserName).startswith("@")) or (uin and str(uin).isalpha()):
             sys_chat_id = UserName or uin
             return [{"UserName": sys_chat_id,
                      "NickName": "System (%s)" % sys_chat_id,
@@ -607,6 +607,7 @@ class WeChatChannel(EFBChannel):
         UserName = self.get_UserName(msg.destination['uid'])
         if UserName is None or UserName is False:
             raise EFBChatNotFound
+        r = None
         self.logger.info("Sending message to WeChat:\n"
                          "Target-------\n"
                          "uid: %s\n"
@@ -688,6 +689,8 @@ class WeChatChannel(EFBChannel):
             raise EFBMessageTypeNotSupported()
 
         if isinstance(r, dict) and r.get('BaseResponse', dict()).get('Ret', -1) != 0:
+            if r.get('BaseResponse', dict()).get('Ret', -1) == 1101:
+                self.itchat.logout()
             raise EFBMessageError(str(r))
         else:
             msg.uid = r.get("MsgId", None)
@@ -801,6 +804,12 @@ class WeChatChannel(EFBChannel):
                (users_uin, users_all, 100 * users_uin / users_all,
                 groups_uin, groups_all, 100 * groups_uin / groups_all,
                 members_uin, members_all, 100 * members_uin / members_all)
+
+    @extra(name="Force log out",
+           desc="Force log out WeChat session.\n"
+                "Usage: {function_name}")
+    def force_log_out:
+        self.itchat.logout()
 
     # Command functions
 
