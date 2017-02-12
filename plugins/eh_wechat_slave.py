@@ -451,7 +451,7 @@ class WeChatChannel(EFBChannel):
             extra_link = extra_link[:1]
         for i in extra_link:
             self.wechat_raw_link_msg(msg, i['title'], i['digest'], i['cover'], i['url'])
-        else:
+        if not extra_link:
             self.wechat_raw_link_msg(msg, *base_data)
         return
 
