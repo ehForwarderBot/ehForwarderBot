@@ -388,7 +388,7 @@ class TelegramChannel(EFBChannel):
                     return self.bot.bot.send_message(tg_dest, msg_template % ("Error: Empty %s recieved" % msg.type))
                 if not msg.text:
                     msg.text = "sent a video."
-                tg_msg = self.bot.bot.sendVideo(tg_dest, video=msg.file, caption=msg_template % msg.text)
+                tg_msg = self.bot.bot.sendVideo(tg_dest, msg.file, caption=msg_template % msg.text)
                 os.remove(msg.path)
             elif msg.type == MsgType.Command:
                 buttons = []
@@ -946,46 +946,40 @@ class TelegramChannel(EFBChannel):
             elif mtype == TGMsgType.Photo:
                 m.type = MsgType.Image
                 m.text = update.message.caption
-                tg_file_id = update.message.photo[-1].file_id
-                m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
+                m.path, m.mime = self._download_file(update.message, update.message.photo[-1], m.type)
                 m.file = open(m.path, "rb")
             elif mtype == TGMsgType.Sticker:
                 m.type = MsgType.Sticker
                 m.text = ""
-                tg_file_id = update.message.sticker.file_id
-                m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
+                m.path, m.mime = self._download_file(update.message, update.message.sticker, m.type)
                 m.file = open(m.path, "rb")
             elif mtype == TGMsgType.Document:
                 m.text = update.message.caption
-                tg_file_id = update.message.document.file_id
                 self.logger.debug("tg: Document file received")
+                m.filename = getattr(update.message.document, "file_name", None) or None
                 if update.message.document.mime_type == "video/mp4":
                     self.logger.debug("tg: Telegram GIF received")
                     m.type = MsgType.Image
-                    m.path, m.mime = self._download_gif(update.message, tg_file_id, m.type)
+                    m.path, m.mime = self._download_gif(update.message, update.message.document, m.type)
                 else:
                     m.type = MsgType.File
-                    m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
+                    m.path, m.mime = self._download_file(update.message, update.message.document, m.type)
                     m.mime = update.message.document.mime_type or m.mime
-                    m.filename = getattr(update.message.document, "file_name", None) or None
                 m.file = open(m.path, "rb")
             elif mtype == TGMsgType.Video:
                 m.type = MsgType.Video
                 m.text = update.message.caption
-                tg_file_id = update.message.video.file_id
-                m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
+                m.path, m.mime = self._download_file(update.message, update.message.video, m.type)
                 m.file = open(m.path, "rb")
             elif mtype == TGMsgType.Audio:
                 m.type = MsgType.Audio
                 m.text = "%s - %s\n%s" % (
                     update.message.audio.title, update.message.audio.perfomer, update.message.caption)
-                tg_file_id = update.message.audio.file_id
-                m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
+                m.path, m.mime = self._download_file(update.message, update.message.audio, m.type)
             elif mtype == TGMsgType.Voice:
                 m.type = MsgType.Audio
                 m.text = update.message.caption
-                tg_file_id = update.message.voice.file_id
-                m.path, m.mime = self._download_file(update.message, tg_file_id, m.type)
+                m.path, m.mime = self._download_file(update.message, update.message.voice, m.type)
             elif mtype == TGMsgType.Location:
                 m.type = MsgType.Location
                 m.text = "Location"
@@ -1011,13 +1005,13 @@ class TelegramChannel(EFBChannel):
         except EFBMessageError as e:
             return self._reply_error(bot, update, "Message is not sent. (MN01)\n\n%s" % str(e))
 
-    def _download_file(self, tg_msg, file_id, msg_type):
+    def _download_file(self, tg_msg, file_obj, msg_type):
         """
         Download media file from telegram platform.
 
         Args:
             tg_msg: Telegram message instance
-            file_id: File ID
+            file_obj: File object
             msg_type: Type of message
 
         Returns:
@@ -1026,11 +1020,15 @@ class TelegramChannel(EFBChannel):
         path = os.path.join("storage", self.channel_id)
         if not os.path.exists(path):
             os.makedirs(path)
+        size = getattr(file_obj, "file_size", None)
+        file_id = file_obj.file_id
+        if size and size > 20 * 1024 ** 2:
+            raise EFBMessageError("Attachment is too large. Maximum 20 MB. (AT01)")
         f = self.bot.bot.getFile(file_id)
         fname = "%s_%s_%s_%s" % (msg_type, tg_msg.chat.id, tg_msg.message_id, int(time.time()))
         fullpath = os.path.join(path, fname)
         f.download(fullpath)
-        mime = magic.from_file(fullpath, mime=True)
+        mime = getattr(file_obj, "mime_type", magic.from_file(fullpath, mime=True))
         if type(mime) is bytes:
             mime = mime.decode()
         guess_ext = mimetypes.guess_extension(mime) or ".unknown"
@@ -1234,10 +1232,10 @@ class TelegramChannel(EFBChannel):
         else:
             try:
                 bot.send_message(getattr(config, self.channel_id)['admins'][0],
-                                "EFB Telegram Master channel encountered error <code>%s</code> "
-                                "caused by update <code>%s</code>.\n\n"
-                                "Report issue: <a href=\"https://github.com/blueset/ehForwarderBot/issues/new\">GitHub Issue Page</a>" %
-                                (html.escape(str(error)), html.escape(str(update))), parse_mode="HTML")
+                                 "EFB Telegram Master channel encountered error <code>%s</code> "
+                                 "caused by update <code>%s</code>.\n\n"
+                                 "Report issue: <a href=\"https://github.com/blueset/ehForwarderBot/issues/new\">GitHub Issue Page</a>" %
+                                 (html.escape(str(error)), html.escape(str(update))), parse_mode="HTML")
             except:
                 bot.send_message(getattr(config, self.channel_id)['admins'][0],
                                  "EFB Telegram Master channel encountered error\n%s\n"
