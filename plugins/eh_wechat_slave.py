@@ -41,7 +41,8 @@ def wechat_msg_meta(func):
             logger.debug("Group chat")
             if me:
                 msg['ActualUserName'] = msg['ToUserName']
-                member = {"NickName": self.itchat.loginInfo['User']['NickName'], "DisplayName": "You",
+                member = {"NickName": self._wechat_html_unescape(self.itchat.loginInfo['User']['NickName']),
+                          "DisplayName": "You",
                           "Uin": self.itchat.loginInfo['User']['Uin']}
             else:
                 logger.debug("search_user")
@@ -53,16 +54,16 @@ def wechat_msg_meta(func):
                 'name': html.unescape(FromUser['NickName']),
                 'alias': html.unescape(FromUser['RemarkName'] or FromUser['NickName']),
                 'uid': self.get_uid(UserName=msg.get('FromUserName', None),
-                                    NickName=html.unescape(FromUser.get('NickName', "s")),
-                                    alias=html.unescape(FromUser.get('RemarkName', "s")),
+                                    NickName=self._wechat_html_unescape(FromUser.get('NickName', "s")),
+                                    alias=self._wechat_html_unescape(FromUser.get('RemarkName', "s")),
                                     Uin=FromUser.get('Uin', None))
             }
             mobj.member = {
-                'name': html.unescape(member['NickName']),
-                'alias': html.unescape(member['DisplayName']),
+                'name': self._wechat_html_unescape(member['NickName']),
+                'alias': self._wechat_html_unescape(member['DisplayName']),
                 'uid': self.get_uid(UserName=msg.get('ActualUserName', None),
-                                    NickName=html.unescape(member.get('NickName', "")),
-                                    alias=html.unescape(member.get('DisplayName', "")),
+                                    NickName=self._wechat_html_unescape(member.get('NickName', "")),
+                                    alias=self._wechat_html_unescape(member.get('DisplayName', "")),
                                     Uin=member.get('Uin', None))
             }
             logger.debug("origin: %s\nmember: %s\n", mobj.origin, mobj.member)
@@ -72,16 +73,16 @@ def wechat_msg_meta(func):
                 mobj.text = "You: " + mobj.text
             mobj.source = MsgSource.User
             mobj.origin = {
-                'name': html.unescape(FromUser['NickName']),
-                'alias': html.unescape(FromUser['RemarkName'] or FromUser['NickName']),
+                'name': self._wechat_html_unescape(FromUser['NickName']),
+                'alias': self._wechat_html_unescape(FromUser['RemarkName'] or FromUser['NickName']),
                 'uid': self.get_uid(UserName=msg.get('FromUserName', None),
-                                    NickName=html.unescape(FromUser.get('NickName', "")),
-                                    alias=html.unescape(FromUser.get('RemarkName', "")),
+                                    NickName=self._wechat_html_unescape(FromUser.get('NickName', "")),
+                                    alias=self._wechat_html_unescape(FromUser.get('RemarkName', "")),
                                     Uin=FromUser.get('Uin', None))
             }
         mobj.destination = {
-            'name': self.itchat.loginInfo['User']['NickName'],
-            'alias': self.itchat.loginInfo['User']['NickName'],
+            'name': self._wechat_html_unescape(self.itchat.loginInfo['User']['NickName']),
+            'alias': self._wechat_html_unescape(self.itchat.loginInfo['User']['NickName']),
             'uid': self.get_uid(UserName=msg['ToUserName'])
         }
         logger.debug("dest: %s", mobj.destination)
@@ -329,8 +330,8 @@ class WeChatChannel(EFBChannel):
                      "Uin": sys_chat_id}]
 
         for i in self.itchat.get_friends(refresh) + self.itchat.get_mps(refresh):
-            data = {"nickname": i.get('NickName', None),
-                    "alias": i.get("RemarkName", None),
+            data = {"nickname": self._wechat_html_unescape(i.get('NickName', None)),
+                    "alias": self._wechat_html_unescape(i.get("RemarkName", None)),
                     "uin": i.get("Uin", None)}
             if self.encode_uid(data) == uid or \
                             str(i.get('UserName', '')) == UserName or \
@@ -338,25 +339,31 @@ class WeChatChannel(EFBChannel):
                             str(i.get('Uin', '')) == uin or \
                             str(i.get('NickName', '')) == name or \
                             str(i.get('DisplayName', '')) == name:
+                i['NickName'] = self._wechat_html_unescape(i.get('NickName', ''))
+                i['DisplayName'] = self._wechat_html_unescape(i.get('DisplayName', ''))
                 result.append(i.copy())
         for i in self.itchat.get_chatrooms(refresh):
             if not i['UserName'].startswith('@@'):
                 continue
             if not i.get('MemberList', ''):
                 i = self.itchat.update_chatroom(i.get('UserName', ''))
-            data = {"nickname": i.get('NickName', None),
-                    "alias": i.get("RemarkName", None),
+            data = {"nickname": self._wechat_html_unescape(i.get('NickName', None)),
+                    "alias": self._wechat_html_unescape(i.get("RemarkName", None)),
                     "uin": i.get("Uin", None)}
             if self.encode_uid(data) == uid or \
                             str(i.get('Uin', '')) == uin or \
                             str(i.get('NickName', '')) == name or \
                             str(i.get('DisplayName', '')) == name or \
                             str(i.get('UserName', '')) == UserName:
+                i['NickName'] = self._wechat_html_unescape(i.get('NickName', ''))
+                i['DisplayName'] = self._wechat_html_unescape(i.get('DisplayName', ''))
                 result.append(i.copy())
                 result[-1]['MemberList'] = []
                 if ActualUserName:
                     for j in i['MemberList']:
                         if str(j['UserName']) == ActualUserName:
+                            j['NickName'] = self._wechat_html_unescape(j.get('NickName', ''))
+                            j['DisplayName'] = self._wechat_html_unescape(j.get('DisplayName', ''))
                             result[-1]['MemberList'].append(j)
         if not result and not refresh:
             return self.search_user(UserName, uid, uin, name, ActualUserName, refresh=True)
@@ -726,8 +733,8 @@ class WeChatChannel(EFBChannel):
 
         msg = "List of chats:\n"
         for n, i in enumerate(l):
-            alias = i.get('RemarkName', '') or i.get('DisplayName', '')
-            name = i.get('NickName', '')
+            alias = self._wechat_html_unescape(i.get('RemarkName', '') or i.get('DisplayName', ''))
+            name = self._wechat_html_unescape(i.get('NickName', ''))
             x = "%s (%s)" % (alias, name) if alias else name
             msg += "\n%s: [%s] %s" % (n, x, i['Type'])
 
@@ -857,9 +864,11 @@ class WeChatChannel(EFBChannel):
                 r.append({
                     'channel_name': self.channel_name,
                     'channel_id': self.channel_id,
-                    'name': i['NickName'],
-                    'alias': i['RemarkName'] or i['NickName'],
-                    'uid': self.get_uid(UserName=i['UserName'], NickName=i['NickName'], alias=i.get("RemarkName", None),
+                    'name': self._wechat_html_unescape(i['NickName']),
+                    'alias': self._wechat_html_unescape(i['RemarkName'] or i['NickName']),
+                    'uid': self.get_uid(UserName=i['UserName'],
+                                        NickName=self._wechat_html_unescape(i['NickName']),
+                                        alias=self._wechat_html_unescape(i.get("RemarkName", None)),
                                         Uin=i.get("Uin", None)),
                     'type': MsgSource.User
                 })
@@ -871,9 +880,11 @@ class WeChatChannel(EFBChannel):
                 r.append({
                     'channel_name': self.channel_name,
                     'channel_id': self.channel_id,
-                    'name': i['NickName'],
-                    'alias': i['RemarkName'] or i['NickName'] or None,
-                    'uid': self.get_uid(NickName=i['NickName'], alias=i.get("RemarkName", None),
+                    'name': self._wechat_html_unescape(i['NickName']),
+                    'alias': self._wechat_html_unescape(i['RemarkName'] or i['NickName']),
+                    'uid': self.get_uid(UserName=i['UserName'],
+                                        NickName=self._wechat_html_unescape(i['NickName']),
+                                        alias=self._wechat_html_unescape(i.get("RemarkName", None)),
                                         Uin=i.get("Uin", None)),
                     'type': MsgSource.Group
                 })
@@ -968,3 +979,18 @@ class WeChatChannel(EFBChannel):
             return self.itchat.send_video(*args, **kwargs)
         except Exception as e:
             raise EFBMessageError(repr(e))
+
+    @staticmethod
+    def _wechat_html_unescape(content):
+        """
+        Unescape a WeChat HTML string.
+
+        Args:
+            content (str): String to be formatted
+
+        Returns:
+            str: Unescaped string.
+        """
+        d = {"Content": content}
+        itchat.utils.msg_formatter(d, "Content")
+        return d['Content']

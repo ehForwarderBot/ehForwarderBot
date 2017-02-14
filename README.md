@@ -19,13 +19,8 @@ _Codename_ **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework whi
 ## Media coverage
 * [Appinn: Send and Receive messages from WeChat on Telegram](http://www.appinn.com/eh-forwarder-bot/)  
   _(EH Forwarder Bot – 在 Telegram 收发「微信」消息)_
-
-## Glossary
-* **Channel**: A class that communicates with a chat platform, also known as a plugin.
-* **EFB**: abbreviation for EH Forwarder Bot, this project.
-* **Master channel**: A channel linked to the platform which directly interact with the user.
-* **Plugin**: See "channel".
-* **Slave channel**: A channel linked to the platform which is controlled by the user through EFB framework.
+* [Livc: Telegram — the true definition of IM](https://livc.io/177)
+  _(Telegram——真正定义即时通讯)_
 
 ## Feel like contributing?
 Anyone is welcomed to raise an issue or submit a pull request, just remember to read through and understand the [contribution guideline](CONTRIBUTING.md) before you do so.

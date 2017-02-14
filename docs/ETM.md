@@ -77,6 +77,7 @@ At the beginning, messages from all senders will be sent to the user directly, t
 In a nutshell, ETM offers the following commands, you can also send it to BotFather for the command list.
 
 ```
+help - Show commands list.
 link - Link a remote chat to a group.
 unlink_all - Unlink all remote chats from a group.
 chat - Generate a chat head.
