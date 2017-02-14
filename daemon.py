@@ -14,6 +14,8 @@
 
 import sys
 import os
+import inspect
+from binascii import crc32
 from datetime import datetime
 from functools import partial
 import time
@@ -269,7 +271,7 @@ class DM(object):
                 f.write(pickle.dumps(dm))
                 f.close()
         else:
-            print('Daemon is not running.')
+            raise NameError("Daemon is not running.")
 
 def help():
     print("EFB Daemon Process\n"
@@ -299,25 +301,35 @@ def transcript(path, reset=False):
 
 def main():
     transcript_path = "EFB.log"
+    instance_name = str(crc32(os.path.dirname(os.path.abspath(inspect.stack()[0][1]))))
     if len(sys.argv) < 2:
         help()
         exit()
     dm = DM()
     efb_args = " ".join(sys.argv[2:])
+    if len(dm.get_daemons(name="EFB")):
+        print("Old daemon process is killed.")
+        dm.kill(name="EFB", quiet=True, sigkill=True)
     if sys.argv[1] == "start":
         dm.run(cmdline=" ".join((sys.executable + " main.py", efb_args)),
-               name="EFB",
-               logfile="EFB.log")
+               name=instance_name,
+               logfile=transcript_path)
         transcript(transcript_path, True)
     elif sys.argv[1] == "stop":
-        dm.kill(name="EFB", quiet=True, sigkill=True)
+        dm.kill(name=instance_name, quiet=True, sigkill=True)
     elif sys.argv[1] == "status":
-        dm.list(name="EFB")
+        dm.list(name=instance_name)
     elif sys.argv[1] == "restart":
-        kwargs = {"name": "EFB", "quiet": True, "sigkill": True}
+        kwargs = {"name": instance_name, "quiet": True, "sigkill": True}
         if len(sys.argv) > 2:
-            kwargs["cmd"] = " ".join((sys.executable + " main.py", efb_args))
-        dm.restart(**kwargs)
+            kwargs["cmd"] = " ".join((sys.executable, "main.py", efb_args))
+        try:
+            dm.restart(**kwargs)
+        except NameError as e:
+            print(e)
+            dm.run(cmdline=" ".join((sys.executable + " main.py", efb_args)),
+                   name=instance_name,
+                   logfile=transcript_path)
         transcript(transcript_path, True)
     elif sys.argv[1] == "transcript":
         transcript(transcript_path)
