@@ -301,7 +301,7 @@ def transcript(path, reset=False):
 
 def main():
     transcript_path = "EFB.log"
-    instance_name = str(crc32(os.path.dirname(os.path.abspath(inspect.stack()[0][1]))))
+    instance_name = str(crc32(os.path.dirname(os.path.abspath(inspect.stack()[0][1])).encode()))
     if len(sys.argv) < 2:
         help()
         exit()
