@@ -11,6 +11,7 @@ from binascii import crc32
 import itchat
 import magic
 import xmltodict
+from pyqrcode import QRCode
 from PIL import Image
 
 import config
@@ -145,16 +146,8 @@ class WeChatChannel(EFBChannel):
             if status == 408:
                 QR += "Previous code expired. Please scan the new one.\n"
             QR += "\n"
-            time.sleep(0.5)
-            img = Image.open(io.BytesIO(qrcode)).convert("1")
-            img = img.resize((img.size[0] // 10, img.size[1] // 10))
-            for i in range(img.size[0]):
-                for j in range(img.size[1]):
-                    if img.getpixel((i, j)) > 0:
-                        QR += "\x1b[7m  \x1b[0m"
-                    else:
-                        QR += "\x1b[49m  \x1b[0m"
-                QR += "\n"
+            qr_url = "https://login.weixin.qq.com/l/" + uuid
+            QR += QRCode(qr_url).terminal()
             QR += "\nIf you cannot read the QR code above, " \
                   "please visit the following URL:\n" \
                   "https://login.weixin.qq.com/qrcode/" + uuid
@@ -184,8 +177,8 @@ class WeChatChannel(EFBChannel):
                 os.makedirs(path)
             path = os.path.join(path, 'QR-%s.jpg' % int(time.time()))
             self.logger.debug("master_qr_code file path: %s", path)
-            with open(path, 'wb') as f:
-                f.write(qrcode)
+            qr_url = "https://login.weixin.qq.com/l/" + uuid
+            QRCode(qr_url).png(path, scale=10)
             msg.text = 'Scan this QR Code with WeChat to continue.'
             msg.path = path
             msg.file = open(path, 'rb')
