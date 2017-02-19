@@ -953,11 +953,7 @@ class WeChatChannel(EFBChannel):
             return ReturnValue(rawResponse=r)
 
         try:
-            fn = kwargs.get("filename", None)
-            if fn is not None:
-                return _itchat_send_fn(self.itchat, *args, **kwargs)
-            else:
-                return self.itchat.send_file(*args, **kwargs)
+            _itchat_send_fn(self.itchat, *args, **kwargs)
         except Exception as e:
             raise EFBMessageError(repr(e))
 

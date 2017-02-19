@@ -974,7 +974,7 @@ class TelegramChannel(EFBChannel):
             elif mtype == TGMsgType.Audio:
                 m.type = MsgType.Audio
                 m.text = "%s - %s\n%s" % (
-                    update.message.audio.title, update.message.audio.perfomer, update.message.caption)
+                    update.message.audio.title, update.message.audio.performer, update.message.caption)
                 m.path, m.mime = self._download_file(update.message, update.message.audio, m.type)
             elif mtype == TGMsgType.Voice:
                 m.type = MsgType.Audio
