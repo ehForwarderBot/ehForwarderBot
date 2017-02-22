@@ -93,6 +93,12 @@ class TelegramChannel(EFBChannel):
         TGMsgType.Location: MsgType.Location,
         TGMsgType.Venue: MsgType.Location,
     }
+    MUTE_CHAT_ID = "{chat_id}.muted"
+    CHAT_MODE_EMOJI = {
+        "linked": "🔗",
+        "muted": "🔇",
+        "multi_linked": "🖇️"
+    }
 
     def __init__(self, queue, mutex, slaves):
         """
@@ -137,6 +143,7 @@ class TelegramChannel(EFBChannel):
             self.msg
         ))
         self.bot.dispatcher.add_error_handler(self.error)
+        self.MUTE_CHAT_ID = self.MUTE_CHAT_ID.format(chat_id=self.channel_id)
 
     # Truncate string by bytes
     # Written by Mark Tolonen
@@ -209,6 +216,12 @@ class TelegramChannel(EFBChannel):
             self.logger.debug("%s, process_msg_step_0", xid)
             chat_uid = "%s.%s" % (msg.channel_id, msg.origin['uid'])
             tg_chats = db.get_chat_assoc(slave_uid=chat_uid)
+
+            if self.MUTE_CHAT_ID in tg_chats:
+                self.logger.info("Received message from muted source: %s (%s)\n[%s] %s",
+                                 msg.origin['name'], chat_uid, msg.type, msg.text)
+                return
+
             tg_chat = None
             multi_slaves = False
 
@@ -431,6 +444,7 @@ class TelegramChannel(EFBChannel):
         `offset` value.
 
         Args:
+            filter: Regular expression filter for chat details
             storage_id (str): Message_storage ID for generating the buttons list.
             offset (int): Offset for pagination
 
@@ -441,9 +455,11 @@ class TelegramChannel(EFBChannel):
                 `chat_btn_list` is a list which can be fit into `telegram.InlineKeyboardMarkup`.
         """
         legend = [
-            "%s: Linked" % utils.Emojis.LINK_EMOJI,
+            "%s: Linked" % self.CHAT_MODE_EMOJI['linked'],
+            "%s: Multi-linked" % self.CHAT_MODE_EMOJI['multi_linked'],
+            "%s: Muted" % self.CHAT_MODE_EMOJI['muted'],
             "%s: User" % utils.Emojis.USER_EMOJI,
-            "%s: Group" % utils.Emojis.GROUP_EMOJI
+            "%s: Group" % utils.Emojis.GROUP_EMOJI,
         ]
 
         if self.msg_storage.get(storage_id, None):
@@ -464,6 +480,8 @@ class TelegramChannel(EFBChannel):
                     "channel_emoji": slave.channel_emoji
                 }
                 for chat in slave_chats:
+                    chat_assoc = db.get_chat_assoc(slave_uid="%s.%s" % (chat['channel_id'], chat['chat_uid']))
+                    muted = self.MUTE_CHAT_ID in chat_assoc
                     c = {
                         "channel_id": slave.channel_id,
                         "channel_name": slave.channel_name,
@@ -471,10 +489,22 @@ class TelegramChannel(EFBChannel):
                         "chat_name": chat['name'],
                         "chat_alias": chat['alias'],
                         "chat_uid": chat['uid'],
-                        "type": chat['type']
+                        "type": chat['type'],
+                        "muted": muted,
+                        "linked": not muted and len(chat_assoc),
+                        "multi_linked": len(chat_assoc) > 1
                     }
-                    entry_string = "Channel: %s\nName: %s\nAlias: %s\nID: %s\nType: %s" \
-                                   % (c['channel_name'], c['chat_name'], c['chat_alias'], c['chat_uid'], c['type'])
+                    mode = []
+                    if c['muted']: mode.append("Muted")
+                    if c['linked']: mode.append("Linked")
+                    if c['multi_linked']: mode.append("Multiply linked")
+                    entry_string = "Channel: %s\nName: %s\nAlias: %s\nID: %s\nType: %s\nMode: %s" \
+                                   % (c['channel_name'],
+                                      c['chat_name'],
+                                      c['chat_alias'],
+                                      c['chat_uid'],
+                                      c['type'],
+                                      mode)
                     if not filter or rfilter.search(entry_string):
                         chats.append(c)
             count = len(chats)
@@ -493,12 +523,18 @@ class TelegramChannel(EFBChannel):
         chats_per_page = self._flag("chats_per_page", 10)
         for i in range(offset, min(offset + chats_per_page, count)):
             chat = chats[i]
-            linked = utils.Emojis.LINK_EMOJI if bool(
-                db.get_chat_assoc(slave_uid="%s.%s" % (chat['channel_id'], chat['chat_uid']))) else ""
+            if c['muted']:
+                mode = self.CHAT_MODE_EMOJI['muted']
+            elif c['multi_linked']:
+                mode = self.CHAT_MODE_EMOJI['multi_linked']
+            elif c['linked']:
+                mode = self.CHAT_MODE_EMOJI['linked']
+            else:
+                mode = ""
             chat_type = utils.Emojis.get_source_emoji(chat['type'])
             chat_name = chat['chat_alias'] if chat['chat_name'] == chat['chat_alias'] else "%s (%s)" % (
             chat['chat_alias'], chat['chat_name'])
-            button_text = "%s%s: %s %s" % (chat['channel_emoji'], chat_type, chat_name, linked)
+            button_text = "%s%s%s: %s" % (chat['channel_emoji'], chat_type, mode, chat_name)
             button_callback = "chat %s" % i
             chat_btn_list.append([telegram.InlineKeyboardButton(button_text, callback_data=button_callback)])
 
@@ -584,7 +620,8 @@ class TelegramChannel(EFBChannel):
         chat['chat_alias'], chat['chat_name'])
         chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name'])
 
-        linked = bool(db.get_chat_assoc(slave_uid=chat_uid))
+        linked = db.get_chat_assoc(slave_uid=chat_uid)
+        muted = self.MUTE_CHAT_ID in linked
         self.msg_status["%s.%s" % (tg_chat_id, tg_msg_id)] = Flags.EXEC_LINK
         self.msg_storage["%s.%s" % (tg_chat_id, tg_msg_id)] = {
             "chat_uid": chat_uid,
@@ -594,16 +631,22 @@ class TelegramChannel(EFBChannel):
             "tg_msg_id": tg_msg_id
         }
         txt = "You've selected chat %s." % chat_display_name
-        if linked:
+        if muted:
+            txt += "\nThis chat is currently muted."
+        elif linked:
             txt += "\nThis chat has already linked to Telegram."
         txt += "\nWhat would you like to do?"
 
         link_url = "https://telegram.me/%s?startgroup=%s" % (
             self.me.username, urllib.parse.quote(self.b64en("%s.%s" % (tg_chat_id, tg_msg_id))))
         self.logger.debug("Telegram start trigger for linking chat: %s", link_url)
-        if linked:
+        if linked and not muted:
             btn_list = [telegram.InlineKeyboardButton("Relink", url=link_url),
-                        telegram.InlineKeyboardButton("Unlink", callback_data="unlink 0")]
+                        telegram.InlineKeyboardButton("Mute", url="mute 0"),
+                        telegram.InlineKeyboardButton("Restore", callback_data="unlink 0")]
+        elif muted:
+            btn_list = [telegram.InlineKeyboardButton("Link", url=link_url),
+                        telegram.InlineKeyboardButton("Unmute", callback_data="unlink 0")]
         else:
             btn_list = [telegram.InlineKeyboardButton("Link", url=link_url)]
         btn_list.append(telegram.InlineKeyboardButton("Cancel", callback_data=Flags.CANCEL_PROCESS))
@@ -642,7 +685,12 @@ class TelegramChannel(EFBChannel):
         self.msg_storage.pop("%s.%s" % (tg_chat_id, tg_msg_id), None)
         if cmd == "unlink":
             db.remove_chat_assoc(slave_uid=chat_uid)
-            txt = "Chat %s is unlinked." % (chat_display_name)
+            txt = "Chat %s is restored." % chat_display_name
+            return bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
+        if cmd == "mute":
+            db.remove_chat_assoc(slave_uid=chat_uid)
+            db.add_chat_assoc(slave_uid=chat_uid, master_uid=self.MUTE_CHAT_ID)
+            txt = "Chat %s is now muted." % chat_display_name
             return bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
         txt = "Command '%s' (%s) is not recognised, please try again" % (cmd, callback_uid)
         bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
@@ -1077,6 +1125,8 @@ class TelegramChannel(EFBChannel):
             chat_display_name = data["chat_display_name"]
             slave_channel, slave_chat_uid = chat_uid.split('.', 1)
             if slave_channel in self.slaves:
+                if self.MUTE_CHAT_ID in db.get_chat_assoc(slave_uid=chat_uid):
+                    db.remove_chat_assoc(slave_uid=chat_uid)
                 db.add_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id),
                                   slave_uid=chat_uid,
                                   multiple_slave=self._flag("multiple_slave_chats", False))
