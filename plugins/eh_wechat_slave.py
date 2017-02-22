@@ -961,7 +961,7 @@ class WeChatChannel(EFBChannel):
             return ReturnValue(rawResponse=r)
 
         try:
-            _itchat_send_fn(self.itchat, *args, **kwargs)
+            return _itchat_send_fn(self.itchat, *args, **kwargs)
         except Exception as e:
             raise EFBMessageError(repr(e))
 
