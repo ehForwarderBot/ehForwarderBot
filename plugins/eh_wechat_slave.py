@@ -458,13 +458,19 @@ class WeChatChannel(EFBChannel):
     @wechat_msg_meta
     def wechat_raw_link_msg(self, msg, title, description, image, url):
         mobj = EFBMsg(self)
-        mobj.type = MsgType.Link
-        mobj.attributes = {
-            "title": title,
-            "description": description,
-            "image": image,
-            "url": url
-        }
+        if url:
+            mobj.type = MsgType.Link
+            mobj.attributes = {
+                "title": title,
+                "description": description,
+                "image": image,
+                "url": url
+            }
+        else:
+            mobj.type = MsgType.Text
+            mobj.text = "%s\n%s" % (title, description)
+            if image:
+                mobj.text += "\n\n%s" % image
         return mobj
 
     def wechat_newsapp_msg(self, msg):
@@ -795,7 +801,9 @@ class WeChatChannel(EFBChannel):
 
         users = self.itchat.get_friends(True) + self.itchat.get_mps(True)
         users_uin = len([i for i in users if i.get("Uin", None)])
-        users_all = len(users)
+        users_all = len(users) or 1
+        groups_all = groups_all or 1
+        members_all = members_all or 1
 
         return "`Uin` rate checkup.\n\n" \
                "Users + MP: %s/%s (%.2f%%)\n" \
