@@ -17,6 +17,7 @@ import mimetypes
 import pydub
 import threading
 import traceback
+import base64
 from . import db, speech
 from .whitelisthandler import WhitelistHandler
 from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
@@ -598,7 +599,7 @@ class TelegramChannel(EFBChannel):
         txt += "\nWhat would you like to do?"
 
         link_url = "https://telegram.me/%s?startgroup=%s" % (
-            self.me.username, urllib.parse.quote("%s.%s" % (tg_chat_id, tg_msg_id)))
+            self.me.username, urllib.parse.quote(self.b64en("%s.%s" % (tg_chat_id, tg_msg_id))))
         self.logger.debug("Telegram start trigger for linking chat: %s", link_url)
         if linked:
             btn_list = [telegram.InlineKeyboardButton("Relink", url=link_url),
@@ -1068,7 +1069,10 @@ class TelegramChannel(EFBChannel):
             args: Arguments from message
         """
         if update.message.from_user.id != update.message.chat.id:  # from group
-            data = self.msg_storage[args[0]]
+            try:
+                data = self.msg_storage[self.b64de(args[0])]
+            except KeyError:
+                update.message.reply_text("Session expired or unknown parameter. (SE02)")
             chat_uid = data["chat_uid"]
             chat_display_name = data["chat_display_name"]
             slave_channel, slave_chat_uid = chat_uid.split('.', 1)
@@ -1307,3 +1311,10 @@ class TelegramChannel(EFBChannel):
             self.queue.put(None)
         self._stop_polling = val
 
+    @staticmethod
+    def b64en(s):
+        return base64.b64encode(s.encode()).decode()
+
+    @staticmethod
+    def b64de(s):
+        return base64.b64decode(s).decode()
