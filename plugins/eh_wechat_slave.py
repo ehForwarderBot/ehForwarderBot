@@ -1,7 +1,8 @@
-import io
+import base64
 import logging
 import mimetypes
 import os
+import io
 import re
 import threading
 import time
@@ -147,7 +148,13 @@ class WeChatChannel(EFBChannel):
                 QR += "Previous code expired. Please scan the new one.\n"
             QR += "\n"
             qr_url = "https://login.weixin.qq.com/l/" + uuid
-            QR += QRCode(qr_url).terminal()
+            qr_obj = QRCode(qr_url)
+            if self._flag("imgcat_qr", False):
+                qr_file = io.BytesIO()
+                qr_obj.png(qr_file, scale=10)
+                QR += self.imgcat(qr_file, "%s_QR_%s.png" % (self.channel_id, uuid))
+            else:
+                QR += qr_obj.terminal()
             QR += "\nIf you cannot read the QR code above, " \
                   "please visit the following URL:\n" \
                   "https://login.weixin.qq.com/qrcode/" + uuid
@@ -991,3 +998,23 @@ class WeChatChannel(EFBChannel):
         d = {"Content": content}
         itchat.utils.msg_formatter(d, "Content")
         return d['Content']
+
+    @staticmethod
+    def imgcat(f, fn):
+        def print_osc():
+            if str(os.environ.get("TERM", "")).startswith("screen"):
+                return "\x1bPtmux;\x1b\x1b]"
+            else:
+                return "\x1b]"
+        def print_st():
+            if str(os.environ.get("TERM", "")).startswith("screen"):
+                return "\x07\x1b\\"
+            else:
+                return "\x07"
+        res = print_osc()
+        res += "1337;File=name="
+        res += base64.b64encode(fn.encode()).decode()
+        res += ";inline=1:"
+        res += base64.b64encode(f.getvalue()).decode()
+        res += print_st()
+        return res
