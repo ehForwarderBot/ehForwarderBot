@@ -480,7 +480,7 @@ class TelegramChannel(EFBChannel):
                     "channel_emoji": slave.channel_emoji
                 }
                 for chat in slave_chats:
-                    chat_assoc = db.get_chat_assoc(slave_uid="%s.%s" % (chat['channel_id'], chat['chat_uid']))
+                    chat_assoc = db.get_chat_assoc(slave_uid="%s.%s" % (slave.channel_id, chat['uid']))
                     muted = self.MUTE_CHAT_ID in chat_assoc
                     c = {
                         "channel_id": slave.channel_id,
@@ -642,13 +642,14 @@ class TelegramChannel(EFBChannel):
         self.logger.debug("Telegram start trigger for linking chat: %s", link_url)
         if linked and not muted:
             btn_list = [telegram.InlineKeyboardButton("Relink", url=link_url),
-                        telegram.InlineKeyboardButton("Mute", url="mute 0"),
+                        telegram.InlineKeyboardButton("Mute", callback_data="mute 0"),
                         telegram.InlineKeyboardButton("Restore", callback_data="unlink 0")]
         elif muted:
             btn_list = [telegram.InlineKeyboardButton("Link", url=link_url),
                         telegram.InlineKeyboardButton("Unmute", callback_data="unlink 0")]
         else:
-            btn_list = [telegram.InlineKeyboardButton("Link", url=link_url)]
+            btn_list = [telegram.InlineKeyboardButton("Link", url=link_url),
+                        telegram.InlineKeyboardButton("Mute", callback_data="mute 0")]
         btn_list.append(telegram.InlineKeyboardButton("Cancel", callback_data=Flags.CANCEL_PROCESS))
 
         bot.editMessageText(text=txt,
@@ -1120,7 +1121,7 @@ class TelegramChannel(EFBChannel):
             try:
                 data = self.msg_storage[self.b64de(args[0])]
             except KeyError:
-                update.message.reply_text("Session expired or unknown parameter. (SE02)")
+                return update.message.reply_text("Session expired or unknown parameter. (SE02)")
             chat_uid = data["chat_uid"]
             chat_display_name = data["chat_display_name"]
             slave_channel, slave_chat_uid = chat_uid.split('.', 1)
