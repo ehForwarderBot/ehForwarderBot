@@ -818,6 +818,7 @@ class WeChatChannel(EFBChannel):
                 "Usage: {function_name}")
     def force_log_out(self, param=""):
         self.itchat.logout()
+        return "Done."
 
     # Command functions
 
