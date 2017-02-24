@@ -1155,7 +1155,7 @@ class TelegramChannel(EFBChannel):
             return self._reply_error(bot, update, "Language is not supported. Try with zh, ja or en. (RS03)")
         if update.message.reply_to_message.voice.duration > 60:
             return self._reply_error(bot, update, "Only voice shorter than 60s is supported. (RS04)")
-        path, mime = self._download_file(update.message, update.message.reply_to_message.voice.file_id, MsgType.Audio)
+        path, mime = self._download_file(update.message, update.message.reply_to_message.voice, MsgType.Audio)
 
         results = {}
         if len(args) == 0:
