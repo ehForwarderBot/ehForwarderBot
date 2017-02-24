@@ -532,11 +532,11 @@ class TelegramChannel(EFBChannel):
         chats_per_page = self._flag("chats_per_page", 10)
         for i in range(offset, min(offset + chats_per_page, count)):
             chat = chats[i]
-            if c['muted']:
+            if chat['muted']:
                 mode = self.CHAT_MODE_EMOJI['muted']
-            elif c['multi_linked']:
+            elif chat['multi_linked']:
                 mode = self.CHAT_MODE_EMOJI['multi_linked']
-            elif c['linked']:
+            elif chat['linked']:
                 mode = self.CHAT_MODE_EMOJI['linked']
             else:
                 mode = ""
@@ -700,7 +700,7 @@ class TelegramChannel(EFBChannel):
             return bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
         if cmd == "mute":
             db.remove_chat_assoc(slave_uid=chat_uid)
-            db.add_chat_assoc(slave_uid=chat_uid, master_uid=self.MUTE_CHAT_ID)
+            db.add_chat_assoc(slave_uid=chat_uid, master_uid=self.MUTE_CHAT_ID, multiple_slave=True)
             txt = "Chat %s is now muted." % chat_display_name
             return bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
         txt = "Command '%s' (%s) is not recognised, please try again" % (cmd, callback_uid)
@@ -1176,7 +1176,7 @@ class TelegramChannel(EFBChannel):
               "    Unlink all remote chats in this chat.\n" \
               "/recog\n" \
               "    Reply to a voice message to convert it to text.\n" \
-              "    Followed by a language code to choose a specific lanugage.\n" \
+              "    Followed by a language code to choose a specific language.\n" \
               "    You have to enable speech to text in the config file first.\n" \
               "/help\n" \
               "    Print this command list."
