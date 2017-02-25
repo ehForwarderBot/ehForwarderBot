@@ -142,10 +142,10 @@ Send `/chat` to the bot, and choose a chat from the list. When you see "Reply to
         Alias: Jonny
         ID: john_doe
         Type: User
-        Status: Linked, Multi-linked
+        Status: Linked
 
     > _Type can be either "User" or "Group"_  
-    > _Status can be zero or more in: "Linked", "Multi-linked", "Muted"_
+    > _Status can be empty or either "Linked" or "Muted"_
 
     Examples:
 

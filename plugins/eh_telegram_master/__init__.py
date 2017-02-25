@@ -465,7 +465,6 @@ class TelegramChannel(EFBChannel):
         """
         legend = [
             "%s: Linked" % self.CHAT_MODE_EMOJI['linked'],
-            "%s: Multi-linked" % self.CHAT_MODE_EMOJI['multi_linked'],
             "%s: Muted" % self.CHAT_MODE_EMOJI['muted'],
             "%s: User" % utils.Emojis.USER_EMOJI,
             "%s: Group" % utils.Emojis.GROUP_EMOJI,
@@ -500,13 +499,11 @@ class TelegramChannel(EFBChannel):
                         "chat_uid": chat['uid'],
                         "type": chat['type'],
                         "muted": muted,
-                        "linked": not muted and len(chat_assoc),
-                        "multi_linked": len(chat_assoc) > 1
+                        "linked": not muted and len(chat_assoc)
                     }
                     mode = []
                     if c['muted']: mode.append("Muted")
                     if c['linked']: mode.append("Linked")
-                    if c['multi_linked']: mode.append("Multiply linked")
                     entry_string = "Channel: %s\nName: %s\nAlias: %s\nID: %s\nType: %s\nMode: %s" \
                                    % (c['channel_name'],
                                       c['chat_name'],
@@ -534,8 +531,6 @@ class TelegramChannel(EFBChannel):
             chat = chats[i]
             if chat['muted']:
                 mode = self.CHAT_MODE_EMOJI['muted']
-            elif chat['multi_linked']:
-                mode = self.CHAT_MODE_EMOJI['multi_linked']
             elif chat['linked']:
                 mode = self.CHAT_MODE_EMOJI['linked']
             else:
