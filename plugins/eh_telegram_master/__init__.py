@@ -446,16 +446,17 @@ class TelegramChannel(EFBChannel):
         except Exception as e:
             self.logger.error(repr(e) + traceback.format_exc())
 
-    def slave_chats_pagination(self, storage_id, offset=0, filter=""):
+    def slave_chats_pagination(self, chat_id, message_id, offset=0, filter=""):
         """
         Generate a list of (list of) `InlineKeyboardButton`s of chats in slave channels,
         based on the status of message located by `storage_id` and the paging from
         `offset` value.
 
         Args:
-            filter: Regular expression filter for chat details
-            storage_id (str): Message_storage ID for generating the buttons list.
+            chat_id (str): Chat ID for sending the buttons list
+            message_id (str): Message ID to show the buttons list
             offset (int): Offset for pagination
+            filter (str): Regular expression filter for chat details
 
         Returns:
             tuple (str, list of list of InlineKeyboardButton):
@@ -470,6 +471,11 @@ class TelegramChannel(EFBChannel):
             "%s: User" % utils.Emojis.USER_EMOJI,
             "%s: Group" % utils.Emojis.GROUP_EMOJI,
         ]
+        storage_id = "%s.%s" % (chat_id, message_id)
+        if chat_id in self.admins:
+            master_uid = None
+        else:
+            master_uid = "%s.%s" % (self.channel_id, chat_id)
 
         if self.msg_storage.get(storage_id, None):
             chats = self.msg_storage[storage_id]['chats']
@@ -490,6 +496,8 @@ class TelegramChannel(EFBChannel):
                 }
                 for chat in slave_chats:
                     chat_assoc = db.get_chat_assoc(slave_uid="%s.%s" % (slave.channel_id, chat['uid']))
+                    if master_uid and master_uid not in chat_assoc:
+                        continue
                     muted = self.MUTE_CHAT_ID in chat_assoc
                     c = {
                         "channel_id": slave.channel_id,
@@ -571,7 +579,7 @@ class TelegramChannel(EFBChannel):
             update: Message update
         """
         args = args or []
-        self.link_chat_gen_list(bot, self.admins[0], filter=" ".join(args))
+        self.link_chat_gen_list(bot, update.message.chat.id, filter=" ".join(args))
 
     def link_chat_gen_list(self, bot, chat_id, message_id=None, offset=0, filter=""):
         """
@@ -588,7 +596,7 @@ class TelegramChannel(EFBChannel):
         bot.send_chat_action(chat_id, telegram.ChatAction.TYPING)
 
         msg_text = "Please choose the chat you want to link with ...\n\nLegend:\n"
-        legend, chat_btn_list = self.slave_chats_pagination("%s.%s" % (chat_id, message_id), offset, filter=filter)
+        legend, chat_btn_list = self.slave_chats_pagination(chat_id, message_id, offset, filter=filter)
         for i in legend:
             msg_text += "%s\n" % i
 
@@ -732,8 +740,8 @@ class TelegramChannel(EFBChannel):
             args: Arguments from the command message
         """
         args = args or []
-        msg_id = self.chat_head_req_generate(bot, self.admins[0], filter=" ".join(args))
-        self.msg_status["%s.%s" % (self.admins[0], msg_id)] = Flags.START_CHOOSE_CHAT
+        msg_id = self.chat_head_req_generate(bot, update.message.chat.id, filter=" ".join(args))
+        self.msg_status["%s.%s" % (update.message.chat.id, msg_id)] = Flags.START_CHOOSE_CHAT
 
     def chat_head_req_generate(self, bot, chat_id, message_id=None, offset=0, filter=""):
         """
@@ -750,7 +758,7 @@ class TelegramChannel(EFBChannel):
             message_id = bot.send_message(chat_id, text="Processing...").message_id
         bot.send_chat_action(chat_id, telegram.ChatAction.TYPING)
 
-        legend, chat_btn_list = self.slave_chats_pagination("%s.%s" % (chat_id, message_id), offset, filter=filter)
+        legend, chat_btn_list = self.slave_chats_pagination(chat_id, message_id, offset, filter=filter)
         msg_text = "Choose a chat you want to start with...\n\nLegend:\n"
         for i in legend:
             msg_text += "%s\n" % i
