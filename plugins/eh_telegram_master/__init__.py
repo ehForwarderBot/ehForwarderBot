@@ -443,7 +443,7 @@ class TelegramChannel(EFBChannel):
                            "slave_origin_display_name": msg.origin['alias'],
                            "slave_member_uid": msg.member['uid'],
                            "slave_member_display_name": msg.member['alias'],
-                           "slave_message_uid": msg.uid}
+                           "slave_message_id": msg.uid}
                 if tg_chat_assoced and append_last_msg:
                     msg_log['update'] = True
                 db.add_msg_log(**msg_log)
@@ -597,7 +597,7 @@ class TelegramChannel(EFBChannel):
                                    slave_chat_alias=i['chat_alias'],
                                    slave_chat_type=i['type'])
 
-    def _make_chat_dict(self, channel, chat, rfilter):
+    def _make_chat_dict(self, channel, chat, rfilter=None):
         """
         Check the chat against a regex filter and return the full
         info dict if it matches, None otherwise.
@@ -859,7 +859,7 @@ class TelegramChannel(EFBChannel):
                     d = self._db_slave_chat_info_as_dict(channel_id, chat_id)
                     if not d:
                         d = self.slaves[channel_id].get_chat(chat_id)
-                        self._db_update_slave_chats_cache([self._make_chat_dict(self.slaves[channel_id], d)])
+                        self._db_update_slave_chats_cache([self._make_chat_dict(self.slaves[channel_id], d, None)])
                     msg += "\n- {channel_emoji}{chat_type_emoji} {channel_name}: {chat_name}".format(
                         channel_emoji=self.slaves[channel_id].channel_emoji,
                         chat_type_emoji=utils.Emojis.get_source_emoji(d['type']),
@@ -1075,16 +1075,11 @@ class TelegramChannel(EFBChannel):
             update: Message update
         """
         self.logger.debug("----\nMsg from tg user:\n%s", update.message.to_dict())
-        target = None
         multi_slaves = False
-        assoc = None
-        slave_msg = None
 
         if update.message.chat.id != update.message.from_user.id:  # from group
             assocs = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
-            if len(assocs) == 1:
-                assoc = assocs[0]
-            elif len(assocs) > 1:
+            if len(assocs) > 1:
                 multi_slaves = True
 
         reply_to = bool(getattr(update.message, "reply_to_message", None))
@@ -1092,7 +1087,7 @@ class TelegramChannel(EFBChannel):
 
         if (private_chat or multi_slaves) and not reply_to:
             candidates = db.get_recent_slave_chats(update.message.chat.id) or\
-                         db.get_chat_assoc(master_uid=update.messaeg.chat.id)[:5]
+                         db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))[:5]
             if candidates:
                 tg_err_msg = update.message.reply_text("Error: No recipient specified.\n"
                                                        "Please reply to a previous message.", quote=True)
