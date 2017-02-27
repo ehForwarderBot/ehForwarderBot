@@ -80,6 +80,7 @@ In a nutshell, ETM offers the following commands, you can also send it to BotFat
 help - Show commands list.
 link - Link a remote chat to a group.
 unlink_all - Unlink all remote chats from a group.
+info - Display information of the current Telegram chat.
 chat - Generate a chat head.
 recog - Recognize a speech by replying to it.
 extra - Access extra functionalities.
@@ -225,5 +226,5 @@ eh_telegram_master = {
   Number of chats shown in when choosing for `/chat` and `/link` command. An overly large value may lead to malfunction of such commands.
 * `text_as_html` _(bool)_ [Default: `False`]  
   Parse all text messages as Telegram HTML. Tags supported: `a`, `b`, `strong`, `i`, `em`, `code`, `pre`.
-* `multiple_slave_chats` _(bool)_  [Default: `False`]  
-  Link more than one remote chat to one Telegram group. Send and reply as you do with an unlinked chat.
+* `multiple_slave_chats` _(bool)_  [Default: `True`]  
+  Link more than one remote chat to one Telegram group. Send and reply as you do with an unlinked chat. Disable to link remote chats and Telegram group one-to-one.

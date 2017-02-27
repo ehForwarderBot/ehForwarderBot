@@ -645,7 +645,7 @@ class WeChatChannel(EFBChannel):
                         tgt_text = "「%s」" % qt_txt
                     else:
                         tgt_text = ""
-                    if UserName.startswith("@@"):
+                    if UserName.startswith("@@") and msg.target['target'].member:
                         tgt_alias = "@%s\u2005 " % msg.target['target'].member['alias']
                     else:
                         tgt_alias = ""
@@ -706,7 +706,7 @@ class WeChatChannel(EFBChannel):
                 self.itchat.logout()
             raise EFBMessageError(str(r))
         else:
-            msg.uid = r.get("MsgId", None)
+            msg.uid = r.get("MsgID", None)
             return msg
 
     # Extra functions
@@ -857,7 +857,9 @@ class WeChatChannel(EFBChannel):
         except:
             return "Error occurred during the process. (AF01)"
 
-    def get_chats(self, group=True, user=True):
+    def get_chats(self):
+        group = True
+        user = True
         refresh = self._flag("refresh_friends", False)
         r = []
         if user:
@@ -898,6 +900,25 @@ class WeChatChannel(EFBChannel):
                     'type': MsgSource.Group
                 })
         return r
+
+    def get_chat(self, chat_id):
+        i = self.search_user(uid=chat_id)
+        if i:
+            i = i[0]
+        else:
+            raise KeyError("Chat not found.")
+
+        return {
+            'channel_name': self.channel_name,
+            'channel_id': self.channel_id,
+            'name': self._wechat_html_unescape(i['NickName']),
+            'alias': self._wechat_html_unescape(i['RemarkName'] or i['NickName']),
+            'uid': self.get_uid(UserName=i['UserName'],
+                                NickName=self._wechat_html_unescape(i['NickName']),
+                                alias=self._wechat_html_unescape(i.get("RemarkName", None)),
+                                Uin=i.get("Uin", None)),
+            'type': MsgSource.Group if i['UserName'].startswith("@@") else MsgSource.User
+        }
 
     def get_itchat(self):
         return self.itchat
