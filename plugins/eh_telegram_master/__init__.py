@@ -498,7 +498,7 @@ class TelegramChannel(EFBChannel):
             channels = self.msg_storage[storage_id]['channels']
             count = self.msg_storage[storage_id]['count']
         else:
-            rfilter = filter or re.compile(filter, re.DOTALL | re.IGNORECASE)
+            rfilter = filter and re.compile(filter, re.DOTALL | re.IGNORECASE)
             if filter:
                 self.logger.debug("Filter string: %s", filter)
             chats = []
