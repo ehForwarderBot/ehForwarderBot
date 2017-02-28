@@ -256,26 +256,26 @@ class TelegramChannel(EFBChannel):
 
             if tg_chat and not multi_slaves:  # if singly linked
                 if msg_prefix:  # if group message
-                    msg_template = "%s:\n%s" % (msg_prefix, "%s")
+                    msg_template = "%s:\n%s" % (msg_prefix, "{msg}")
                 else:
-                    msg_template = "%s"
+                    msg_template = "{msg}"
             elif msg.source == MsgSource.User:
                 emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
                 name_prefix = msg.origin["name"] if msg.origin["alias"] == msg.origin["name"] or not msg.origin['alias'] \
                     else "%s (%s)" % (msg.origin["alias"], msg.origin["name"])
-                msg_template = "%s %s:\n%s" % (emoji_prefix, name_prefix, "%s")
+                msg_template = "%s %s:\n%s" % (emoji_prefix, name_prefix, "{msg}")
             elif msg.source == MsgSource.Group:
                 emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
                 name_prefix = msg.origin["name"] if msg.origin["alias"] == msg.origin["name"] or not msg.origin['alias'] \
                     else "%s (%s)" % (msg.origin["alias"], msg.origin["name"])
-                msg_template = "%s %s [%s]:\n%s" % (emoji_prefix, msg_prefix, name_prefix, "%s")
+                msg_template = "%s %s [%s]:\n%s" % (emoji_prefix, msg_prefix, name_prefix, "{msg}")
             elif msg.source == MsgSource.System:
                 emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
                 name_prefix = msg.origin["name"] if msg.origin["alias"] == msg.origin["name"] or not msg.origin['alias'] \
                     else "%s (%s)" % (msg.origin["alias"], msg.origin["name"])
-                msg_template = "%s %s:\n%s" % (emoji_prefix, name_prefix, "%s")
+                msg_template = "%s %s:\n%s" % (emoji_prefix, name_prefix, "{msg}")
             else:
-                msg_template = "Unknown message source (%s)\n%s" % (msg.source, "%s")
+                msg_template = "Unknown message source (%s)\n%s" % (msg.source, "{msg}")
 
             # Type dispatching
             self.logger.debug("%s, process_msg_step_2", xid)
@@ -305,18 +305,20 @@ class TelegramChannel(EFBChannel):
                     try:
                         tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest,
                                                               message_id=last_msg.master_msg_id.split(".", 1)[1],
-                                                              text=msg_template % msg.text,
+                                                              text=msg_template.format(msg=msg.text),
                                                               parse_mode=parse_mode)
                     except telegram.error.BadRequest:
                         tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest,
                                                               message_id=last_msg.master_msg_id.split(".", 1)[1],
-                                                              text=msg_template % msg.text)
+                                                              text=msg_template.format(msg=msg.text))
                 else:
                     self.logger.debug("%s, process_msg_step_3_0_3", xid)
                     try:
-                        tg_msg = self.bot.bot.send_message(tg_dest, text=msg_template % msg.text, parse_mode=parse_mode)
+                        tg_msg = self.bot.bot.send_message(tg_dest,
+                                                           text=msg_template.format(msg=msg.text),
+                                                           parse_mode=parse_mode)
                     except telegram.error.BadRequest:
-                        tg_msg = self.bot.bot.send_message(tg_dest, text=msg_template % msg.text)
+                        tg_msg = self.bot.bot.send_message(tg_dest, text=msg_template.format(msg=msg.text))
                     self.logger.debug("%s, process_msg_step_3_0_4, tg_msg = %s", xid, tg_msg)
                 self.logger.debug("%s, process_msg_step_3_1", xid)
             elif msg.type == MsgType.Link:
@@ -331,14 +333,14 @@ class TelegramChannel(EFBChannel):
                 if msg.text:
                     text += "\n\n" + msg.text
                 try:
-                    tg_msg = self.bot.bot.send_message(tg_dest, text=msg_template % text, parse_mode="HTML")
+                    tg_msg = self.bot.bot.send_message(tg_dest, text=msg_template.format(msg=text, parse_mode="HTML"))
                 except telegram.error.BadRequest:
                     text = "🔗 %s\n%s\n\n%s" % (html.escape(msg.attributes["title"] or ""),
                                                 html.escape(msg.attributes["description"] or ""),
                                                 urllib.parse.quote(msg.attributes["url"] or "", safe="?=&#:/"))
                     if msg.text:
                         text += "\n\n" + msg.text
-                    tg_msg = self.bot.bot.send_message(tg_dest, text=msg_template % msg.text)
+                    tg_msg = self.bot.bot.send_message(tg_dest, text=msg_template.format(msg=msg.text))
             elif msg.type in [MsgType.Image, MsgType.Sticker]:
                 self.bot.bot.send_chat_action(tg_dest, telegram.ChatAction.UPLOAD_PHOTO)
                 self.logger.debug("%s, process_msg_step_3_2", xid)
@@ -347,7 +349,7 @@ class TelegramChannel(EFBChannel):
                 if os.stat(msg.path).st_size == 0:
                     os.remove(msg.path)
                     tg_msg = self.bot.bot.send_message(tg_dest,
-                                                    msg_template % ("Error: Empty %s received. (MS01)" % msg.type))
+                                                    msg_template.format(msg=("Error: Empty %s received. (MS01)" % msg.type)))
                 else:
                     if not msg.text:
                         if msg.type == MsgType.Image:
@@ -355,12 +357,12 @@ class TelegramChannel(EFBChannel):
                         elif msg.type == MsgType.Sticker:
                             msg.text = "sent a sticker."
                     if msg.mime == "image/gif":
-                        tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
+                        tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template.format(msg=msg.text))
                     else:
                         try:
-                            tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template % msg.text)
+                            tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template.format(msg=msg.text))
                         except telegram.error.BadRequest:
-                            tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
+                            tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template.format(msg=msg.text))
                     os.remove(msg.path)
                 self.logger.debug("%s, process_msg_step_3_3", xid)
             elif msg.type == MsgType.File:
@@ -368,14 +370,14 @@ class TelegramChannel(EFBChannel):
                 if os.stat(msg.path).st_size == 0:
                     os.remove(msg.path)
                     tg_msg = self.bot.bot.send_message(tg_dest,
-                                                    msg_template % ("Error: Empty %s received. (MS02)" % msg.type))
+                                                    msg_template.format(msg=("Error: Empty %s received. (MS02)" % msg.type)))
                 else:
                     if not msg.filename:
                         file_name = os.path.basename(msg.path)
                         msg.text = "sent a file."
                     else:
                         file_name = msg.filename
-                    tg_msg = self.bot.bot.send_document(tg_dest, msg.file, caption=msg_template % msg.text,
+                    tg_msg = self.bot.bot.send_document(tg_dest, msg.file, caption=msg_template.format(msg=msg.text),
                                                         filename=file_name)
                     os.remove(msg.path)
             elif msg.type == MsgType.Audio:
@@ -383,56 +385,55 @@ class TelegramChannel(EFBChannel):
                 if os.stat(msg.path).st_size == 0:
                     os.remove(msg.path)
                     return self.bot.bot.send_message(tg_dest,
-                                                    msg_template % ("Error: Empty %s received. (MS03)" % msg.type))
+                                                    msg_template.format(msg=("Error: Empty %s received. (MS03)" % msg.type)))
                 msg.text = msg.text or ''
                 self.logger.debug("%s, process_msg_step_4_1, no_conversion = %s", xid,
                                   self._flag("no_conversion", False))
                 if self._flag("no_conversion", False):
                     self.logger.debug("%s, process_msg_step_4_2, mime = %s", xid, msg.mime)
                     if msg.mime == "audio/mpeg":
-                        tg_msg = self.bot.bot.sendAudio(tg_dest, msg.file, caption=msg_template % msg.text)
+                        tg_msg = self.bot.bot.sendAudio(tg_dest, msg.file, caption=msg_template.format(msg=msg.text))
                     else:
-                        tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
+                        tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template.format(msg=msg.text))
                 else:
                     pydub.AudioSegment.from_file(msg.file).export("%s.ogg" % msg.path,
                                                                   format="ogg",
                                                                   codec="libopus",
-                                                                  bitrate="65536",
-                                                                  parameters=["-vbr", "on", "-compression_level", "10"])
+                                                                  bitrate="65536")
                     ogg_file = open("%s.ogg" % msg.path, 'rb')
-                    tg_msg = self.bot.bot.sendVoice(tg_dest, ogg_file, caption=msg_template % msg.text)
+                    tg_msg = self.bot.bot.sendVoice(tg_dest, ogg_file, caption=msg_template.format(msg=msg.text))
                     os.remove("%s.ogg" % msg.path)
                 os.remove(msg.path)
             elif msg.type == MsgType.Location:
                 self.bot.bot.send_chat_action(tg_dest, telegram.ChatAction.FIND_LOCATION)
                 self.logger.info("---\nsending venue\nlat: %s, long: %s\ntitle: %s\naddr: %s",
-                                 msg.attributes['latitude'], msg.attributes['longitude'], msg.text, msg_template % "")
+                                 msg.attributes['latitude'], msg.attributes['longitude'], msg.text, msg_template.format(msg=""))
                 tg_msg = self.bot.bot.sendVenue(tg_dest, latitude=msg.attributes['latitude'],
                                                 longitude=msg.attributes['longitude'], title=msg.text,
-                                                address=msg_template % "")
+                                                address=msg_template.format(msg=""))
             elif msg.type == MsgType.Video:
                 self.bot.bot.send_chat_action(tg_dest, telegram.ChatAction.UPLOAD_VIDEO)
                 if os.stat(msg.path).st_size == 0:
                     os.remove(msg.path)
-                    return self.bot.bot.send_message(tg_dest, msg_template % ("Error: Empty %s recieved" % msg.type))
+                    return self.bot.bot.send_message(tg_dest, msg_template.format(msg=("Error: Empty %s recieved" % msg.type)))
                 if not msg.text:
                     msg.text = "sent a video."
-                tg_msg = self.bot.bot.sendVideo(tg_dest, msg.file, caption=msg_template % msg.text)
+                tg_msg = self.bot.bot.sendVideo(tg_dest, msg.file, caption=msg_template.format(msg=msg.text))
                 os.remove(msg.path)
             elif msg.type == MsgType.Command:
                 self.bot.bot.send_chat_action(tg_dest, telegram.ChatAction.TYPING)
                 buttons = []
                 for i, ival in enumerate(msg.attributes['commands']):
                     buttons.append([telegram.InlineKeyboardButton(ival['name'], callback_data=str(i))])
-                tg_msg = self.bot.bot.send_message(tg_dest, msg_template % msg.text,
+                tg_msg = self.bot.bot.send_message(tg_dest, msg_template.format(msg=msg.text),
                                                    reply_markup=telegram.InlineKeyboardMarkup(buttons))
                 self.msg_status["%s.%s" % (tg_dest, tg_msg.message_id)] = Flags.COMMAND_PENDING
                 self.msg_storage["%s.%s" % (tg_dest, tg_msg.message_id)] = {"channel": msg.channel_id,
-                                                                            "text": msg_template % msg.text,
+                                                                            "text": msg_template.format(msg=msg.text),
                                                                             "commands": msg.attributes['commands']}
             else:
                 self.bot.bot.send_chat_action(tg_dest, telegram.ChatAction.TYPING)
-                tg_msg = self.bot.bot.send_message(tg_dest, msg_template % "Unsupported incoming message type. (UT01)")
+                tg_msg = self.bot.bot.send_message(tg_dest, msg_template.format(msg="Unsupported incoming message type. (UT01)"))
             self.logger.debug("%s, process_msg_step_4", xid)
             if msg.source in (MsgSource.User, MsgSource.Group):
                 msg_log = {"master_msg_id": "%s.%s" % (tg_msg.chat.id, tg_msg.message_id),

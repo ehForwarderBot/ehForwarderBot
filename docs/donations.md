@@ -15,3 +15,4 @@ You can donate to me via any of the following methods.
 * DrayChou: CNY 2.33
 * Fwolf: CNY 6.60
 * 毒薬: CNY 8.88
+* EFB User: CNY 10.00
