@@ -1273,8 +1273,8 @@ class TelegramChannel(EFBChannel):
 
     @staticmethod
     def b64en(s):
-        return base64.b64encode(s.encode()).decode()
+        return base64.b64encode(s.encode(), b"-_").decode().rstrip("=")
 
     @staticmethod
     def b64de(s):
-        return base64.b64decode(s).decode()
+        return base64.b64decode((s + '=' * (- len(s) % 4)).encode(), b"-_").decode()
