@@ -120,3 +120,5 @@ eh_wechat_slave = {
     * `"idle"`: Notify the user, then do nothing.
     * `"reauth"`: Notify the user, then immediately start reauthentication.
     * `"command"`: Notify the user, then send the user a command message to trigger reauthentication process.
+* `imgcat_qr` _(bool)_  [Default: `False`]  
+  Show QR code with [iTerm2 Image Protocol](https://www.iterm2.com/documentation-images.html). This is only available to iTerm2 Users.

@@ -25,7 +25,7 @@ chmod +rw ./storage
 * __libmagic__
 * __libopus__
 * __ffmpeg__ with libopus support
-* Everything required by `pillow`, including:
+* Everything required by `pillow`, including but not limited to:
     * `libjpeg`, `zlib`, `libwebp`, (`libtiff`, `libfreetype`, `openjpeg`, `tk`, `littlecms`)
 
 ### Install non-Python dependencies
@@ -42,7 +42,7 @@ brew install libmagic
 brew install ffmpeg --with-opus
 ```
 
-#### Debian/Ubuntu/Mint/etc. (with aptitude)
+#### Ubuntu 16.04 with `apt-get`
 
 ```bash
 sudo apt-get install python3-dev python3-setuptools

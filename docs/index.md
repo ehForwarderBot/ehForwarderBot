@@ -30,7 +30,7 @@ _Codename_ **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework whi
 ## Media coverage
 * [Appinn: Send and Receive messages from WeChat on Telegram](http://www.appinn.com/eh-forwarder-bot/)  
   _(EH Forwarder Bot – 在 Telegram 收发「微信」消息)_
-* [Livc: Telegram — the true definition of IM](https://livc.io/177)
+* [Livc: Telegram — the true definition of IM](https://livc.io/177)  
   _(Telegram——真正定义即时通讯)_
 
 ## Glossary

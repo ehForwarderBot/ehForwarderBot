@@ -1,6 +1,8 @@
 # coding=utf-8
 import telegram
 import telegram.ext
+import telegram.error
+import telegram.constants
 import config
 import datetime
 import utils
@@ -34,6 +36,8 @@ class Flags:
     START_CHOOSE_CHAT = 0x21
     # Command
     COMMAND_PENDING = 0x31
+    # Message recipient suggestions
+    SUGGEST_RECIPIENT= 0x32
 
 
 class TelegramChannel(EFBChannel):
@@ -77,6 +81,7 @@ class TelegramChannel(EFBChannel):
     msg_storage = {}
     me = None
     _stop_polling = False
+    timeout_count = 0
 
     # Constants
     TYPE_DICT = {
@@ -89,6 +94,12 @@ class TelegramChannel(EFBChannel):
         TGMsgType.Voice: MsgType.Audio,
         TGMsgType.Location: MsgType.Location,
         TGMsgType.Venue: MsgType.Location,
+    }
+    MUTE_CHAT_ID = "{chat_id}.muted"
+    CHAT_MODE_EMOJI = {
+        "linked": "🔗",
+        "muted": "🔇",
+        "multi_linked": "🖇️"
     }
 
     def __init__(self, queue, mutex, slaves):
@@ -118,6 +129,7 @@ class TelegramChannel(EFBChannel):
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("extra", self.extra_help))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("help", self.help))
         self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("unlink_all", self.unlink_all))
+        self.bot.dispatcher.add_handler(telegram.ext.CommandHandler("info", self.info))
         self.bot.dispatcher.add_handler(
             telegram.ext.RegexHandler(r"^/(?P<id>[0-9]+)_(?P<command>[a-z0-9_-]+)", self.extra_call,
                                       pass_groupdict=True))
@@ -134,6 +146,7 @@ class TelegramChannel(EFBChannel):
             self.msg
         ))
         self.bot.dispatcher.add_error_handler(self.error)
+        self.MUTE_CHAT_ID = self.MUTE_CHAT_ID.format(chat_id=self.channel_id)
 
     # Truncate string by bytes
     # Written by Mark Tolonen
@@ -178,6 +191,8 @@ class TelegramChannel(EFBChannel):
             self.make_chat_head(bot, chat_id, msg_id, text)
         elif msg_status == Flags.COMMAND_PENDING:
             self.command_exec(bot, chat_id, msg_id, text)
+        elif msg_status == Flags.SUGGEST_RECIPIENT:
+            self.suggested_recipient(bot, chat_id, msg_id, text)
         else:
             bot.editMessageText(text="Session expired. Please try again. (SE01)",
                                 chat_id=chat_id,
@@ -206,6 +221,12 @@ class TelegramChannel(EFBChannel):
             self.logger.debug("%s, process_msg_step_0", xid)
             chat_uid = "%s.%s" % (msg.channel_id, msg.origin['uid'])
             tg_chats = db.get_chat_assoc(slave_uid=chat_uid)
+
+            if self.MUTE_CHAT_ID in tg_chats:
+                self.logger.info("Received message from muted source: %s (%s)\n[%s] %s",
+                                 msg.origin['name'], chat_uid, msg.type, msg.text)
+                return
+
             tg_chat = None
             multi_slaves = False
 
@@ -235,31 +256,32 @@ class TelegramChannel(EFBChannel):
 
             if tg_chat and not multi_slaves:  # if singly linked
                 if msg_prefix:  # if group message
-                    msg_template = "%s:\n%s" % (msg_prefix, "%s")
+                    msg_template = "%s:\n" % (msg_prefix)
                 else:
-                    msg_template = "%s"
+                    msg_template = ""
             elif msg.source == MsgSource.User:
                 emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
                 name_prefix = msg.origin["name"] if msg.origin["alias"] == msg.origin["name"] or not msg.origin['alias'] \
                     else "%s (%s)" % (msg.origin["alias"], msg.origin["name"])
-                msg_template = "%s %s:\n%s" % (emoji_prefix, name_prefix, "%s")
+                msg_template = "%s %s:\n" % (emoji_prefix, name_prefix)
             elif msg.source == MsgSource.Group:
                 emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
                 name_prefix = msg.origin["name"] if msg.origin["alias"] == msg.origin["name"] or not msg.origin['alias'] \
                     else "%s (%s)" % (msg.origin["alias"], msg.origin["name"])
-                msg_template = "%s %s [%s]:\n%s" % (emoji_prefix, msg_prefix, name_prefix, "%s")
+                msg_template = "%s %s [%s]:\n" % (emoji_prefix, msg_prefix, name_prefix)
             elif msg.source == MsgSource.System:
                 emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
                 name_prefix = msg.origin["name"] if msg.origin["alias"] == msg.origin["name"] or not msg.origin['alias'] \
                     else "%s (%s)" % (msg.origin["alias"], msg.origin["name"])
-                msg_template = "%s %s:\n%s" % (emoji_prefix, name_prefix, "%s")
+                msg_template = "%s %s:\n" % (emoji_prefix, name_prefix)
             else:
-                msg_template = "Unknown message source (%s)\n%s" % (msg.source, "%s")
+                msg_template = "Unknown message source (%s):\n" % (msg.source)
 
             # Type dispatching
             self.logger.debug("%s, process_msg_step_2", xid)
             append_last_msg = False
             if msg.type == MsgType.Text:
+                self.bot.bot.send_chat_action(tg_dest, telegram.ChatAction.TYPING)
                 parse_mode = "HTML" if self._flag("text_as_html", False) else None
                 if tg_chat_assoced:
                     last_msg = db.get_last_msg_from_chat(tg_dest)
@@ -283,21 +305,24 @@ class TelegramChannel(EFBChannel):
                     try:
                         tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest,
                                                               message_id=last_msg.master_msg_id.split(".", 1)[1],
-                                                              text=msg_template % msg.text,
+                                                              text=msg_template + msg.text,
                                                               parse_mode=parse_mode)
                     except telegram.error.BadRequest:
                         tg_msg = self.bot.bot.editMessageText(chat_id=tg_dest,
                                                               message_id=last_msg.master_msg_id.split(".", 1)[1],
-                                                              text=msg_template % msg.text)
+                                                              text=msg_template + msg.text)
                 else:
                     self.logger.debug("%s, process_msg_step_3_0_3", xid)
                     try:
-                        tg_msg = self.bot.bot.send_message(tg_dest, text=msg_template % msg.text, parse_mode=parse_mode)
+                        tg_msg = self.bot.bot.send_message(tg_dest,
+                                                           text=msg_template + msg.text,
+                                                           parse_mode=parse_mode)
                     except telegram.error.BadRequest:
-                        tg_msg = self.bot.bot.send_message(tg_dest, text=msg_template % msg.text)
+                        tg_msg = self.bot.bot.send_message(tg_dest, text=msg_template + msg.text)
                     self.logger.debug("%s, process_msg_step_3_0_4, tg_msg = %s", xid, tg_msg)
                 self.logger.debug("%s, process_msg_step_3_1", xid)
             elif msg.type == MsgType.Link:
+                self.bot.bot.send_chat_action(tg_dest, telegram.ChatAction.TYPING)
                 thumbnail = urllib.parse.quote(msg.attributes["image"] or "", safe="?=&#:/")
                 thumbnail = "<a href=\"%s\">🔗</a>" % thumbnail if thumbnail else "🔗"
                 text = "%s <a href=\"%s\">%s</a>\n%s" % \
@@ -308,22 +333,25 @@ class TelegramChannel(EFBChannel):
                 if msg.text:
                     text += "\n\n" + msg.text
                 try:
-                    tg_msg = self.bot.bot.send_message(tg_dest, text=msg_template % text, parse_mode="HTML")
+                    tg_msg = self.bot.bot.send_message(tg_dest,
+                                                       text=msg_template + text,
+                                                       parse_mode="HTML")
                 except telegram.error.BadRequest:
                     text = "🔗 %s\n%s\n\n%s" % (html.escape(msg.attributes["title"] or ""),
                                                 html.escape(msg.attributes["description"] or ""),
                                                 urllib.parse.quote(msg.attributes["url"] or "", safe="?=&#:/"))
                     if msg.text:
                         text += "\n\n" + msg.text
-                    tg_msg = self.bot.bot.send_message(tg_dest, text=msg_template % msg.text)
+                    tg_msg = self.bot.bot.send_message(tg_dest, text=msg_template + msg.text)
             elif msg.type in [MsgType.Image, MsgType.Sticker]:
+                self.bot.bot.send_chat_action(tg_dest, telegram.ChatAction.UPLOAD_PHOTO)
                 self.logger.debug("%s, process_msg_step_3_2", xid)
                 self.logger.debug("Received %s\nPath: %s\nMIME: %s", msg.type, msg.path, msg.mime)
                 self.logger.debug("Path: %s\nSize: %s", msg.path, os.stat(msg.path).st_size)
                 if os.stat(msg.path).st_size == 0:
                     os.remove(msg.path)
                     tg_msg = self.bot.bot.send_message(tg_dest,
-                                                    msg_template % ("Error: Empty %s received. (MS01)" % msg.type))
+                                                       msg_template + ("Error: Empty %s received. (MS01)" % msg.type))
                 else:
                     if not msg.text:
                         if msg.type == MsgType.Image:
@@ -331,89 +359,94 @@ class TelegramChannel(EFBChannel):
                         elif msg.type == MsgType.Sticker:
                             msg.text = "sent a sticker."
                     if msg.mime == "image/gif":
-                        tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
+                        tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template + msg.text)
                     else:
                         try:
-                            tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template % msg.text)
+                            tg_msg = self.bot.bot.sendPhoto(tg_dest, msg.file, caption=msg_template + msg.text)
                         except telegram.error.BadRequest:
-                            tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
+                            tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template + msg.text)
                     os.remove(msg.path)
                 self.logger.debug("%s, process_msg_step_3_3", xid)
             elif msg.type == MsgType.File:
+                self.bot.bot.send_chat_action(tg_dest, telegram.ChatAction.UPLOAD_DOCUMENT)
                 if os.stat(msg.path).st_size == 0:
                     os.remove(msg.path)
                     tg_msg = self.bot.bot.send_message(tg_dest,
-                                                    msg_template % ("Error: Empty %s received. (MS02)" % msg.type))
+                                                     msg_template + ("Error: Empty %s received. (MS02)" % msg.type))
                 else:
                     if not msg.filename:
                         file_name = os.path.basename(msg.path)
                         msg.text = "sent a file."
                     else:
                         file_name = msg.filename
-                    tg_msg = self.bot.bot.send_document(tg_dest, msg.file, caption=msg_template % msg.text,
+                    tg_msg = self.bot.bot.send_document(tg_dest, msg.file, caption=msg_template + msg.text,
                                                         filename=file_name)
                     os.remove(msg.path)
             elif msg.type == MsgType.Audio:
+                self.bot.bot.send_chat_action(tg_dest, telegram.ChatAction.RECORD_AUDIO)
                 if os.stat(msg.path).st_size == 0:
                     os.remove(msg.path)
                     return self.bot.bot.send_message(tg_dest,
-                                                    msg_template % ("Error: Empty %s received. (MS03)" % msg.type))
+                                                     msg_template + ("Error: Empty %s received. (MS03)" % msg.type))
                 msg.text = msg.text or ''
                 self.logger.debug("%s, process_msg_step_4_1, no_conversion = %s", xid,
                                   self._flag("no_conversion", False))
                 if self._flag("no_conversion", False):
                     self.logger.debug("%s, process_msg_step_4_2, mime = %s", xid, msg.mime)
                     if msg.mime == "audio/mpeg":
-                        tg_msg = self.bot.bot.sendAudio(tg_dest, msg.file, caption=msg_template % msg.text)
+                        tg_msg = self.bot.bot.sendAudio(tg_dest, msg.file, caption=msg_template + msg.text)
                     else:
-                        tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template % msg.text)
+                        tg_msg = self.bot.bot.sendDocument(tg_dest, msg.file, caption=msg_template + msg.text)
                 else:
                     pydub.AudioSegment.from_file(msg.file).export("%s.ogg" % msg.path,
                                                                   format="ogg",
                                                                   codec="libopus",
-                                                                  bitrate="65536",
-                                                                  parameters=["-vbr", "on", "-compression_level", "10"])
+                                                                  bitrate="65536")
                     ogg_file = open("%s.ogg" % msg.path, 'rb')
-                    tg_msg = self.bot.bot.sendVoice(tg_dest, ogg_file, caption=msg_template % msg.text)
+                    tg_msg = self.bot.bot.sendVoice(tg_dest, ogg_file, caption=msg_template + msg.text)
                     os.remove("%s.ogg" % msg.path)
                 os.remove(msg.path)
             elif msg.type == MsgType.Location:
+                self.bot.bot.send_chat_action(tg_dest, telegram.ChatAction.FIND_LOCATION)
                 self.logger.info("---\nsending venue\nlat: %s, long: %s\ntitle: %s\naddr: %s",
-                                 msg.attributes['latitude'], msg.attributes['longitude'], msg.text, msg_template % "")
+                                 msg.attributes['latitude'], msg.attributes['longitude'], msg.text, msg_template + "")
                 tg_msg = self.bot.bot.sendVenue(tg_dest, latitude=msg.attributes['latitude'],
                                                 longitude=msg.attributes['longitude'], title=msg.text,
-                                                address=msg_template % "")
+                                                address=msg_template + "")
             elif msg.type == MsgType.Video:
+                self.bot.bot.send_chat_action(tg_dest, telegram.ChatAction.UPLOAD_VIDEO)
                 if os.stat(msg.path).st_size == 0:
                     os.remove(msg.path)
-                    return self.bot.bot.send_message(tg_dest, msg_template % ("Error: Empty %s recieved" % msg.type))
+                    return self.bot.bot.send_message(tg_dest, msg_template + ("Error: Empty %s recieved" % msg.type))
                 if not msg.text:
                     msg.text = "sent a video."
-                tg_msg = self.bot.bot.sendVideo(tg_dest, msg.file, caption=msg_template % msg.text)
+                tg_msg = self.bot.bot.sendVideo(tg_dest, msg.file, caption=msg_template + msg.text)
                 os.remove(msg.path)
             elif msg.type == MsgType.Command:
+                self.bot.bot.send_chat_action(tg_dest, telegram.ChatAction.TYPING)
                 buttons = []
                 for i, ival in enumerate(msg.attributes['commands']):
                     buttons.append([telegram.InlineKeyboardButton(ival['name'], callback_data=str(i))])
-                tg_msg = self.bot.bot.send_message(tg_dest, msg_template % msg.text,
+                tg_msg = self.bot.bot.send_message(tg_dest, msg_template + msg.text,
                                                    reply_markup=telegram.InlineKeyboardMarkup(buttons))
                 self.msg_status["%s.%s" % (tg_dest, tg_msg.message_id)] = Flags.COMMAND_PENDING
                 self.msg_storage["%s.%s" % (tg_dest, tg_msg.message_id)] = {"channel": msg.channel_id,
-                                                                            "text": msg_template % msg.text,
+                                                                            "text": msg_template + msg.text,
                                                                             "commands": msg.attributes['commands']}
             else:
-                tg_msg = self.bot.bot.send_message(tg_dest, msg_template % "Unsupported incoming message type. (UT01)")
+                self.bot.bot.send_chat_action(tg_dest, telegram.ChatAction.TYPING)
+                tg_msg = self.bot.bot.send_message(tg_dest, msg_template + "Unsupported incoming message type. (UT01)")
             self.logger.debug("%s, process_msg_step_4", xid)
             if msg.source in (MsgSource.User, MsgSource.Group):
                 msg_log = {"master_msg_id": "%s.%s" % (tg_msg.chat.id, tg_msg.message_id),
                            "text": msg.text or "Sent a %s." % msg.type,
                            "msg_type": msg.type,
-                           "sent_to": "Master",
+                           "sent_to": "master",
                            "slave_origin_uid": "%s.%s" % (msg.channel_id, msg.origin['uid']),
                            "slave_origin_display_name": msg.origin['alias'],
                            "slave_member_uid": msg.member['uid'],
                            "slave_member_display_name": msg.member['alias'],
-                           "slave_message_uid": msg.uid}
+                           "slave_message_id": msg.uid}
                 if tg_chat_assoced and append_last_msg:
                     msg_log['update'] = True
                 db.add_msg_log(**msg_log)
@@ -421,26 +454,46 @@ class TelegramChannel(EFBChannel):
         except Exception as e:
             self.logger.error(repr(e) + traceback.format_exc())
 
-    def slave_chats_pagination(self, storage_id, offset=0, filter=""):
+    @staticmethod
+    def _db_slave_chat_info_as_dict(channel_id, chat_id):
+        d = db.get_slave_chat_info(slave_channel_id=channel_id, slave_chat_uid=chat_id)
+        if d:
+            return {
+                "name": d.slave_chat_name,
+                "alias": d.slave_chat_alias,
+                "uid": d.slave_chat_uid,
+                "type": d.slave_chat_type,
+            }
+
+    def slave_chats_pagination(self, storage_id, offset=0, filter="", fchats=None):
         """
         Generate a list of (list of) `InlineKeyboardButton`s of chats in slave channels,
         based on the status of message located by `storage_id` and the paging from
         `offset` value.
 
         Args:
+            filter: Regular expression filter for chat details
             storage_id (str): Message_storage ID for generating the buttons list.
             offset (int): Offset for pagination
+            fchats (list of str): A list of chats used to generate the pagination list.
+                Each str is in the format of "{channel_id}.{chat_uid}".
 
         Returns:
-            tuple (str, list of list of InlineKeyboardButton):
+            tuple (list of str, list of list of InlineKeyboardButton):
                 A tuple: legend, chat_btn_list
                 `legend` is the legend of all Emoji headings in the entire list.
                 `chat_btn_list` is a list which can be fit into `telegram.InlineKeyboardMarkup`.
         """
+        self.logger.debug("slave_chats_pagination:\nstorage = %s\noffset = %s\nfilter = %s\nfchats = %s",
+                          storage_id,
+                          offset,
+                          filter,
+                          fchats)
         legend = [
-            "%s: Linked" % utils.Emojis.LINK_EMOJI,
+            "%s: Linked" % self.CHAT_MODE_EMOJI['linked'],
+            "%s: Muted" % self.CHAT_MODE_EMOJI['muted'],
             "%s: User" % utils.Emojis.USER_EMOJI,
-            "%s: Group" % utils.Emojis.GROUP_EMOJI
+            "%s: Group" % utils.Emojis.GROUP_EMOJI,
         ]
 
         if self.msg_storage.get(storage_id, None):
@@ -448,32 +501,43 @@ class TelegramChannel(EFBChannel):
             channels = self.msg_storage[storage_id]['channels']
             count = self.msg_storage[storage_id]['count']
         else:
-            rfilter = re.compile(filter, re.DOTALL | re.IGNORECASE)
+            rfilter = filter and re.compile(filter, re.DOTALL | re.IGNORECASE)
             if filter:
                 self.logger.debug("Filter string: %s", filter)
             chats = []
             channels = {}
-            for slave_id in self.slaves:
-                slave = self.slaves[slave_id]
-                slave_chats = slave.get_chats()
-                channels[slave.channel_id] = {
-                    "channel_name": slave.channel_name,
-                    "channel_emoji": slave.channel_emoji
-                }
-                for chat in slave_chats:
-                    c = {
-                        "channel_id": slave.channel_id,
-                        "channel_name": slave.channel_name,
-                        "channel_emoji": slave.channel_emoji,
-                        "chat_name": chat['name'],
-                        "chat_alias": chat['alias'],
-                        "chat_uid": chat['uid'],
-                        "type": chat['type']
-                    }
-                    entry_string = "Channel: %s\nName: %s\nAlias: %s\nID: %s\nType: %s" \
-                                   % (c['channel_name'], c['chat_name'], c['chat_alias'], c['chat_uid'], c['type'])
-                    if not filter or rfilter.search(entry_string):
+            if fchats:
+                slaves = set()
+                for i in fchats:
+                    channel_id, chat_uid = i.split('.', 1)
+                    slaves.add(channel_id)
+                    channel = self.slaves[channel_id]
+                    try:
+                        chat = self._db_slave_chat_info_as_dict(channel_id, chat_uid) or channel.get_chat(chat_uid)
+                    except KeyError:
+                        self.logger.error("slave_chats_pagination with chats list: Chat %s not found.", i)
+                        continue
+                    c = self._make_chat_dict(channel, chat, rfilter)
+                    if c:
                         chats.append(c)
+                for slave_id in self.slaves:
+                    slave = self.slaves[slave_id]
+                    channels[slave.channel_id] = {
+                        "channel_name": slave.channel_name,
+                        "channel_emoji": slave.channel_emoji
+                    }
+            else:
+                for slave_id in self.slaves:
+                    slave = self.slaves[slave_id]
+                    slave_chats = slave.get_chats()
+                    channels[slave.channel_id] = {
+                        "channel_name": slave.channel_name,
+                        "channel_emoji": slave.channel_emoji
+                    }
+                    for chat in slave_chats:
+                        c = self._make_chat_dict(slave, chat, rfilter)
+                        if c:
+                            chats.append(c)
             count = len(chats)
             self.msg_storage[storage_id] = {
                 "offset": offset,
@@ -481,6 +545,8 @@ class TelegramChannel(EFBChannel):
                 "chats": chats.copy(),
                 "channels": channels.copy()
             }
+
+        threading.Thread(target=self._db_update_slave_chats_cache, args=(chats.copy(), )).start()
 
         for ch in channels:
             legend.append("%s: %s" % (channels[ch]['channel_emoji'], channels[ch]['channel_name']))
@@ -490,12 +556,16 @@ class TelegramChannel(EFBChannel):
         chats_per_page = self._flag("chats_per_page", 10)
         for i in range(offset, min(offset + chats_per_page, count)):
             chat = chats[i]
-            linked = utils.Emojis.LINK_EMOJI if bool(
-                db.get_chat_assoc(slave_uid="%s.%s" % (chat['channel_id'], chat['chat_uid']))) else ""
+            if chat['muted']:
+                mode = self.CHAT_MODE_EMOJI['muted']
+            elif chat['linked']:
+                mode = self.CHAT_MODE_EMOJI['linked']
+            else:
+                mode = ""
             chat_type = utils.Emojis.get_source_emoji(chat['type'])
             chat_name = chat['chat_alias'] if chat['chat_name'] == chat['chat_alias'] else "%s (%s)" % (
             chat['chat_alias'], chat['chat_name'])
-            button_text = "%s%s: %s %s" % (chat['channel_emoji'], chat_type, chat_name, linked)
+            button_text = "%s%s%s: %s" % (chat['channel_emoji'], chat_type, mode, chat_name)
             button_callback = "chat %s" % i
             chat_btn_list.append([telegram.InlineKeyboardButton(button_text, callback_data=button_callback)])
 
@@ -513,6 +583,76 @@ class TelegramChannel(EFBChannel):
 
         return legend, chat_btn_list
 
+    def _db_update_slave_chats_cache(self, chats):
+        """
+        Update all slave chats info cache to database. Triggered by retrieving
+        the entire list of chats from all slaves by the method `slave_chats_pagination`.
+
+        Args:
+            chats (list of dict): a list of dicts generated by method `_make_chat_dict`
+        """
+        for i in chats:
+            db.set_slave_chat_info(slave_channel_id=i['channel_id'],
+                                   slave_channel_name=i['channel_name'],
+                                   slave_channel_emoji=i['channel_emoji'],
+                                   slave_chat_uid=i['chat_uid'],
+                                   slave_chat_name=i['chat_name'],
+                                   slave_chat_alias=i['chat_alias'],
+                                   slave_chat_type=i['type'])
+
+    def _make_chat_dict(self, channel, chat, rfilter=None):
+        """
+        Check the chat against a regex filter and return the full
+        info dict if it matches, None otherwise.
+        Args:
+            channel (EFBChannel): The chat channel
+            chat (dict): A standard chat dict
+            rfilter (_sre.SRE_Pattern): The `re.compile` regex pattern. To allow all results,
+                use anything that evaluate to False.
+
+        Returns:
+            dict|None: The "full info" dict or None.
+                Sample:
+                    {
+                        "channel_id": channel.channel_id,
+                        "channel_name": channel.channel_name,
+                        "channel_emoji": channel.channel_emoji,
+                        "chat_name": chat['name'],
+                        "chat_alias": chat['alias'],
+                        "chat_uid": chat['uid'],
+                        "type": chat['type'],
+                        "muted": muted,
+                        "linked": not muted and len(chat_assoc)
+                    }
+        """
+        chat_assoc = db.get_chat_assoc(slave_uid="%s.%s" % (channel.channel_id, chat['uid']))
+        muted = self.MUTE_CHAT_ID in chat_assoc
+        c = {
+            "channel_id": channel.channel_id,
+            "channel_name": channel.channel_name,
+            "channel_emoji": channel.channel_emoji,
+            "chat_name": chat['name'],
+            "chat_alias": chat['alias'],
+            "chat_uid": chat['uid'],
+            "type": chat['type'],
+            "muted": muted,
+            "linked": not muted and len(chat_assoc)
+        }
+        if not rfilter:
+            return c
+        mode = []
+        if c['muted']: mode.append("Muted")
+        if c['linked']: mode.append("Linked")
+        entry_string = "Channel: %s\nName: %s\nAlias: %s\nID: %s\nType: %s\nMode: %s" \
+                       % (c['channel_name'],
+                          c['chat_name'],
+                          c['chat_alias'],
+                          c['chat_uid'],
+                          c['type'],
+                          mode)
+        if rfilter.search(entry_string):
+            return c
+
     def link_chat_show_list(self, bot, update, args=None):
         """
         Show the list of available chats for linking.
@@ -523,9 +663,14 @@ class TelegramChannel(EFBChannel):
             update: Message update
         """
         args = args or []
-        self.link_chat_gen_list(bot, self.admins[0], filter=" ".join(args))
+        if update.message.from_user.id != update.message.chat_id:
+            links = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat_id))
+            if links:
+                return self.link_chat_gen_list(bot, update.message.chat_id, filter=" ".join(args), chats=links)
 
-    def link_chat_gen_list(self, bot, chat_id, message_id=None, offset=0, filter=""):
+        self.link_chat_gen_list(bot, update.message.from_user.id, filter=" ".join(args))
+
+    def link_chat_gen_list(self, bot, chat_id, message_id=None, offset=0, filter="", chats=None):
         """
         Generate the list for chat linking, and update it to a message.
 
@@ -534,12 +679,22 @@ class TelegramChannel(EFBChannel):
             chat_id: Chat ID
             message_id: ID of message to be updated, None to send a new message.
             offset: Offset for pagination.
+            filter (str): Regex expression to filter chats.
+            chats (list of str): Specified chats to link
         """
         if not message_id:
             message_id = bot.send_message(chat_id, "Processing...").message_id
+        bot.send_chat_action(chat_id, telegram.ChatAction.TYPING)
+        if chats:
+            msg_text = "This Telegram group is currently linked with the following remote groups."
+        else:
+            msg_text = "Please choose the chat you want to link with..."
+        msg_text += "\n\nLegend:\n"
 
-        msg_text = "Please choose the chat you want to link with ...\n\nLegend:\n"
-        legend, chat_btn_list = self.slave_chats_pagination("%s.%s" % (chat_id, message_id), offset, filter=filter)
+        legend, chat_btn_list = self.slave_chats_pagination("%s.%s" % (chat_id, message_id),
+                                                            offset,
+                                                            filter=filter,
+                                                            fchats=chats)
         for i in legend:
             msg_text += "%s\n" % i
 
@@ -581,7 +736,8 @@ class TelegramChannel(EFBChannel):
         chat['chat_alias'], chat['chat_name'])
         chat_display_name = "'%s' from '%s %s'" % (chat_display_name, chat['channel_emoji'], chat['channel_name'])
 
-        linked = bool(db.get_chat_assoc(slave_uid=chat_uid))
+        linked = db.get_chat_assoc(slave_uid=chat_uid)
+        muted = self.MUTE_CHAT_ID in linked
         self.msg_status["%s.%s" % (tg_chat_id, tg_msg_id)] = Flags.EXEC_LINK
         self.msg_storage["%s.%s" % (tg_chat_id, tg_msg_id)] = {
             "chat_uid": chat_uid,
@@ -591,18 +747,25 @@ class TelegramChannel(EFBChannel):
             "tg_msg_id": tg_msg_id
         }
         txt = "You've selected chat %s." % chat_display_name
-        if linked:
+        if muted:
+            txt += "\nThis chat is currently muted."
+        elif linked:
             txt += "\nThis chat has already linked to Telegram."
         txt += "\nWhat would you like to do?"
 
         link_url = "https://telegram.me/%s?startgroup=%s" % (
             self.me.username, urllib.parse.quote(self.b64en("%s.%s" % (tg_chat_id, tg_msg_id))))
         self.logger.debug("Telegram start trigger for linking chat: %s", link_url)
-        if linked:
+        if linked and not muted:
             btn_list = [telegram.InlineKeyboardButton("Relink", url=link_url),
-                        telegram.InlineKeyboardButton("Unlink", callback_data="unlink 0")]
+                        telegram.InlineKeyboardButton("Mute", callback_data="mute 0"),
+                        telegram.InlineKeyboardButton("Restore", callback_data="unlink 0")]
+        elif muted:
+            btn_list = [telegram.InlineKeyboardButton("Link", url=link_url),
+                        telegram.InlineKeyboardButton("Unmute", callback_data="unlink 0")]
         else:
-            btn_list = [telegram.InlineKeyboardButton("Link", url=link_url)]
+            btn_list = [telegram.InlineKeyboardButton("Link", url=link_url),
+                        telegram.InlineKeyboardButton("Mute", callback_data="mute 0")]
         btn_list.append(telegram.InlineKeyboardButton("Cancel", callback_data=Flags.CANCEL_PROCESS))
 
         bot.editMessageText(text=txt,
@@ -639,12 +802,25 @@ class TelegramChannel(EFBChannel):
         self.msg_storage.pop("%s.%s" % (tg_chat_id, tg_msg_id), None)
         if cmd == "unlink":
             db.remove_chat_assoc(slave_uid=chat_uid)
-            txt = "Chat %s is unlinked." % (chat_display_name)
+            txt = "Chat %s is restored." % chat_display_name
+            return bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
+        if cmd == "mute":
+            db.remove_chat_assoc(slave_uid=chat_uid)
+            db.add_chat_assoc(slave_uid=chat_uid, master_uid=self.MUTE_CHAT_ID, multiple_slave=True)
+            txt = "Chat %s is now muted." % chat_display_name
             return bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
         txt = "Command '%s' (%s) is not recognised, please try again" % (cmd, callback_uid)
         bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
 
     def unlink_all(self, bot, update):
+        """
+        Unlink all chats linked to the telegram group.
+        Triggered by `/unlink_all`.
+
+        Args:
+            bot: Telegram Bot instance
+            update: Message update
+        """
         if update.message.chat.id == update.message.from_user.id:
             return bot.send_message(update.message.chat.id, "Send `/unlink_all` to a group to unlink all remote chats "
                                                            "from it.",
@@ -659,6 +835,54 @@ class TelegramChannel(EFBChannel):
             return bot.send_message(update.message.chat.id, "All chats has been unlinked from this group. (%s)" % len(assocs),
                                    reply_to_message_id=update.message.message_id)
 
+    def info(self, bot, update):
+        """
+        Show info of the current telegram conversation.
+        Triggered by `/info`.
+
+        Args:
+            bot: Telegram Bot instance
+            update: Message update
+        """
+        if update.message.chat_id == update.message.from_user.id:  # Talking to the bot.
+            msg = "This is EFB Telegram Master Channel, " \
+                  "you currently have %s slave channels activated:" % len(self.slaves)
+            for i in self.slaves:
+                msg += "\n- %s %s (%s)" % (self.slaves[i].channel_emoji,
+                                           self.slaves[i].channel_name,
+                                           i)
+        else:
+            links = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat_id))
+            if links:  # Linked chat
+                msg = "The group {group_name} ({group_id}) is " \
+                      "linked to the following chat(s):".format(group_name=update.message.chat.title,
+                                                                group_id=update.message.chat_id)
+                for i in links:
+                    channel_id, chat_id = i.split('.', 1)
+                    d = self._db_slave_chat_info_as_dict(channel_id, chat_id)
+                    try:
+                        if not d:
+                            d = self.slaves[channel_id].get_chat(chat_id)
+                            self._db_update_slave_chats_cache([self._make_chat_dict(self.slaves[channel_id], d, None)])
+                        msg += "\n- {channel_emoji}{chat_type_emoji} {channel_name}: {chat_name}".format(
+                            channel_emoji=self.slaves[channel_id].channel_emoji,
+                            chat_type_emoji=utils.Emojis.get_source_emoji(d['type']),
+                            channel_name=self.slaves[channel_id].channel_name,
+                            chat_name=d['name'] if not d['alias'] or d['alias'] == d['name'] else "%s (%s)" % (d['alias'], d['name'])
+                        )
+                    except KeyError:
+                        msg += "\n- {channel_emoji} {channel_name}: Unknown chat ({chat_id})".format(
+                            channel_emoji=self.slaves[channel_id].channel_emoji,
+                            channel_name=self.slaves[channel_id].channel_name,
+                            chat_id=chat_id
+                        )
+            else:
+                msg = "The group {group_name} ({group_id}) is not linked to any remote chat. " \
+                      "To link one, use /link.".format(group_name=update.message.chat.title,
+                                                       group_id=update.message.chat_id)
+
+        update.message.reply_text(msg)
+
     def start_chat_list(self, bot, update, args=None):
         """
         Send a list to for chat list generation.
@@ -670,10 +894,17 @@ class TelegramChannel(EFBChannel):
             args: Arguments from the command message
         """
         args = args or []
-        msg_id = self.chat_head_req_generate(bot, self.admins[0], filter=" ".join(args))
-        self.msg_status["%s.%s" % (self.admins[0], msg_id)] = Flags.START_CHOOSE_CHAT
+        chats = None
+        if update.message.from_user.id != update.message.chat_id:
+            chats = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat_id))
+            chats = chats or None
+        if chats:
+            target = update.message.chat_id
+        else:
+            target = update.message.from_user.id
+        self.chat_head_req_generate(bot, target, filter=" ".join(args), chats=chats)
 
-    def chat_head_req_generate(self, bot, chat_id, message_id=None, offset=0, filter=""):
+    def chat_head_req_generate(self, bot, chat_id, message_id=None, offset=0, filter="", chats=None):
         """
         Generate the list for chat head, and update it to a message.
 
@@ -683,19 +914,54 @@ class TelegramChannel(EFBChannel):
             message_id: ID of message to be updated, None to send a new message.
             offset: Offset for pagination.
             filter: Regex String used as a filter.
+            chats: Specified lint of chats to start a chat head.
         """
         if not message_id:
             message_id = bot.send_message(chat_id, text="Processing...").message_id
+        bot.send_chat_action(chat_id, telegram.ChatAction.TYPING)
 
-        legend, chat_btn_list = self.slave_chats_pagination("%s.%s" % (chat_id, message_id), offset, filter=filter)
-        msg_text = "Choose a chat you want to start with...\n\nLegend:\n"
+        if chats and len(chats):
+            if len(chats) == 1:
+                slave_channel_id, slave_chat_id = chats[0].split('.', 1)
+                channel = self.slaves[slave_channel_id]
+                try:
+                    chat = self._db_slave_chat_info_as_dict(slave_channel_id, slave_chat_id) or channel.get_chat(slave_chat_id)
+                    msg_text = "This group is linked to {channel_emoji}{chat_type_emoji} {channel_name}: " \
+                               "{chat_name}. Send a message to this group to deliver it to the chat.\n" \
+                               "Do NOT reply to this system message.".format(
+                                    channel_emoji=channel.channel_emoji,
+                                    chat_type_emoji=utils.Emojis.get_source_emoji(chat['type']),
+                                    channel_name=channel.channel_name,
+                                    chat_name=chat['name'] if not chat['alias'] or chat['alias'] == chat['name'] else "%s (%s)" % (chat['alias'], chat['name'])
+                                )
+                except KeyError:
+                    msg_text = "This group is linked to an unknown chat ({chat_id}) "\
+                               "on channel {channel_emoji} {channel_name}. Possibly you can "\
+                               "no longer reach this chat. Send /unlink_all to unlink all chats "\
+                               "from this group.".format(
+                                    channel_emoji=channel.channel_emoji,
+                                    channel_name=channel.channel_name,
+                                    chat_id=slave_chat_id
+                               )
+                return bot.editMessageText(text=msg_text,
+                                           chat_id=chat_id,
+                                           message_id=message_id)
+            else:
+                msg_text = "This Telegram group is linked to the following chats, " \
+                           "choose one to start a conversation with."
+        else:
+            msg_text = "Choose a chat you want to start a conversation with."
+
+        legend, chat_btn_list = self.slave_chats_pagination("%s.%s" % (chat_id, message_id), offset, filter=filter, fchats=chats)
+
+        msg_text += "\n\nLegend:\n"
         for i in legend:
             msg_text += "%s\n" % i
         bot.editMessageText(text=msg_text,
                             chat_id=chat_id,
                             message_id=message_id,
                             reply_markup=telegram.InlineKeyboardMarkup(chat_btn_list))
-        return message_id
+        self.msg_status["%s.%s" % (chat_id, message_id)] = Flags.START_CHOOSE_CHAT
 
     def make_chat_head(self, bot, tg_chat_id, tg_msg_id, callback_uid):
         """
@@ -737,11 +1003,12 @@ class TelegramChannel(EFBChannel):
         msg_log = {"master_msg_id": "%s.%s" % (tg_chat_id, tg_msg_id),
                    "text": txt,
                    "msg_type": "Text",
-                   "sent_to": "Master",
+                   "sent_to": "master",
                    "slave_origin_uid": chat_uid,
                    "slave_origin_display_name": chat_display_name,
                    "slave_member_uid": None,
-                   "slave_member_display_name": None}
+                   "slave_member_display_name": None,
+                   "slave_message_id": "__chathead__"}
         db.add_msg_log(**msg_log)
         bot.editMessageText(text=txt, chat_id=tg_chat_id, message_id=tg_msg_id)
 
@@ -828,9 +1095,66 @@ class TelegramChannel(EFBChannel):
             update: Message update
         """
         self.logger.debug("----\nMsg from tg user:\n%s", update.message.to_dict())
+        multi_slaves = False
+
+        if update.message.chat.id != update.message.from_user.id:  # from group
+            assocs = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
+            if len(assocs) > 1:
+                multi_slaves = True
+
+        reply_to = bool(getattr(update.message, "reply_to_message", None))
+        private_chat = update.message.chat.id == update.message.from_user.id
+
+        if (private_chat or multi_slaves) and not reply_to:
+            candidates = db.get_recent_slave_chats(update.message.chat.id) or\
+                         db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))[:5]
+            if candidates:
+                tg_err_msg = update.message.reply_text("Error: No recipient specified.\n"
+                                                       "Please reply to a previous message.", quote=True)
+                storage_id = "%s.%s" % (update.message.chat.id, tg_err_msg.message_id)
+                legends, buttons = self.slave_chats_pagination(storage_id, 0, fchats=candidates)
+                tg_err_msg.edit_text("Error: No recipient specified.\n"
+                                     "Please reply to a previous message, "
+                                     "or choose a recipient:\n\nLegend:\n" + "\n".join(legends),
+                                     reply_markup=telegram.InlineKeyboardMarkup(buttons))
+                self.msg_status[storage_id] = Flags.SUGGEST_RECIPIENT
+                self.msg_storage[storage_id]["update"] = update.to_dict()
+            else:
+                update.message.reply_text("Error: No recipient specified.\n"
+                                          "Please reply to a previous message.", quote=True)
+        else:
+            return self.process_telegram_message(bot, update)
+
+    def suggested_recipient(self, bot, chat_id, msg_id, param):
+        storage_id = "%s.%s" % (chat_id, msg_id)
+        if param.startswith("chat "):
+            update = telegram.update.Update.de_json(self.msg_storage[storage_id]["update"], bot)
+            chat = self.msg_storage[storage_id]['chats'][int(param.split(' ', 1)[1])]
+            self.process_telegram_message(bot, update, channel_id=chat['channel_id'], chat_id=chat['chat_uid'])
+            bot.edit_message_text("Delivering the message to %s%s %s: %s." % (chat['channel_emoji'],
+                                                                              utils.Emojis.get_source_emoji(chat['type']),
+                                                                              chat['channel_name'],
+                                                                              chat['chat_name'] if not chat['chat_alias'] or chat['chat_alias'] == chat['chat_name'] else "%s (%s)" % (chat['chat_alias'], chat['chat_name'])),
+                                  chat_id=chat_id,
+                                  message_id=msg_id)
+        elif param == Flags.CANCEL_PROCESS:
+            bot.edit_message_text("Error: No recipient specified.\n"
+                                  "Please reply to a previous message.",
+                                  chat_id=chat_id,
+                                  message_id=msg_id)
+        else:
+            bot.edit_message_text("Error: No recipient specified.\n"
+                                  "Please reply to a previous message.\n\n"
+                                  "Invalid parameter (%s)." % param,
+                                  chat_id=chat_id,
+                                  message_id=msg_id)
+
+    def process_telegram_message(self, bot, update, channel_id=None, chat_id=None, target_msg=None):
+        self.logger.debug("----\nMsg from tg user:\n%s", update.message.to_dict())
         target = None
         multi_slaves = False
         assoc = None
+        slave_msg = None
 
         if update.message.chat.id != update.message.from_user.id:  # from group
             assocs = db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id))
@@ -842,7 +1166,18 @@ class TelegramChannel(EFBChannel):
         reply_to = bool(getattr(update.message, "reply_to_message", None))
         private_chat = update.message.chat.id == update.message.from_user.id
 
-        if private_chat:
+        if channel_id and chat_id:
+            assoc = "%s.%s" % (channel_id, chat_id)
+            if target_msg:
+                try:
+                    targetlog = db.get_msg_log(target_msg)
+                    target = targetlog.slave_origin_uid
+                    targetChannel, targetUid = target.split('.', 1)
+                except:
+                    return self._reply_error(bot, update,
+                                             "Message is not found in database. "
+                                             "Please try with another message. (UC07)")
+        elif private_chat:
             if reply_to:
                 try:
                     assoc = db.get_msg_log("%s.%s" % (
@@ -916,15 +1251,17 @@ class TelegramChannel(EFBChannel):
                     trgtMsg = EFBMsg(self.slaves[targetChannel])
                     trgtMsg.type = MsgType.Text
                     trgtMsg.text = targetlog.text
-                    trgtMsg.member = {
-                        "name": targetlog.slave_member_display_name,
-                        "alias": targetlog.slave_member_display_name,
-                        "uid": targetlog.slave_member_uid
-                    }
+                    trgtMsg.uid = targetlog.slave_message_id
+                    if targetlog.slave_member_uid:
+                        trgtMsg.member = {
+                            "name": targetlog.slave_member_display_name,
+                            "alias": targetlog.slave_member_display_name,
+                            "uid": targetlog.slave_member_uid
+                        }
                     trgtMsg.origin = {
                         "name": targetlog.slave_origin_display_name,
                         "alias": targetlog.slave_origin_display_name,
-                        "uid": targetlog.slave_origin_uid.split('.', 2)[1]
+                        "uid": targetlog.slave_origin_uid.split('.', 1)[1]
                     }
                     m.target = {
                         "type": TargetType.Message,
@@ -998,13 +1335,26 @@ class TelegramChannel(EFBChannel):
             else:
                 return self._reply_error(bot, update, "Message type not supported. (MN02)")
 
-            self.slaves[channel].send_message(m)
+            slave_msg = self.slaves[channel].send_message(m)
         except EFBChatNotFound:
-            return self._reply_error(bot, update, "Chat is not reachable from the slave channel. (CN01)")
+            self._reply_error(bot, update, "Chat is not reachable from the slave channel. (CN01)")
         except EFBMessageTypeNotSupported:
-            return self._reply_error(bot, update, "Message type not supported. (MN01)")
+            self._reply_error(bot, update, "Message type not supported. (MN01)")
         except EFBMessageError as e:
-            return self._reply_error(bot, update, "Message is not sent. (MN01)\n\n%s" % str(e))
+            self._reply_error(bot, update, "Message is not sent. (MN01)\n\n%s" % str(e))
+        finally:
+            msg_log_d = {
+                "master_msg_id": "%s.%s" % (update.message.chat_id, update.message.message_id),
+                "text": m.text,
+                "slave_origin_uid": "%s.%s" % (m.destination['channel'], m.destination['uid']),
+                "slave_origin_display_name": "__chat__",
+                "msg_type": m.type,
+                "sent_to": "slave",
+                "slave_message_id": "__fail__"
+            }
+            if slave_msg:
+                msg_log_d['slave_message_id'] = slave_msg.uid
+            db.add_msg_log(**msg_log_d)
 
     def _download_file(self, tg_msg, file_obj, msg_type):
         """
@@ -1023,7 +1373,7 @@ class TelegramChannel(EFBChannel):
             os.makedirs(path)
         size = getattr(file_obj, "file_size", None)
         file_id = file_obj.file_id
-        if size and size > 20 * 1024 ** 2:
+        if size and size > telegram.constants.MAX_FILESIZE_DOWNLOAD:
             raise EFBMessageError("Attachment is too large. Maximum 20 MB. (AT01)")
         f = self.bot.bot.getFile(file_id)
         fname = "%s_%s_%s_%s" % (msg_type, tg_msg.chat.id, tg_msg.message_id, int(time.time()))
@@ -1069,14 +1419,16 @@ class TelegramChannel(EFBChannel):
             try:
                 data = self.msg_storage[self.b64de(args[0])]
             except KeyError:
-                update.message.reply_text("Session expired or unknown parameter. (SE02)")
+                return update.message.reply_text("Session expired or unknown parameter. (SE02)")
             chat_uid = data["chat_uid"]
             chat_display_name = data["chat_display_name"]
             slave_channel, slave_chat_uid = chat_uid.split('.', 1)
             if slave_channel in self.slaves:
+                if self.MUTE_CHAT_ID in db.get_chat_assoc(slave_uid=chat_uid):
+                    db.remove_chat_assoc(slave_uid=chat_uid)
                 db.add_chat_assoc(master_uid="%s.%s" % (self.channel_id, update.message.chat.id),
                                   slave_uid=chat_uid,
-                                  multiple_slave=self._flag("multiple_slave_chats", False))
+                                  multiple_slave=self._flag("multiple_slave_chats", True))
                 txt = "Chat '%s' is now linked." % chat_display_name
                 unlink_btn = telegram.InlineKeyboardMarkup(
                     [[telegram.InlineKeyboardButton("Unlink", callback_data="unlink 0")]])
@@ -1111,7 +1463,7 @@ class TelegramChannel(EFBChannel):
               "    Unlink all remote chats in this chat.\n" \
               "/recog\n" \
               "    Reply to a voice message to convert it to text.\n" \
-              "    Followed by a language code to choose a specific lanugage.\n" \
+              "    Followed by a language code to choose a specific language.\n" \
               "    You have to enable speech to text in the config file first.\n" \
               "/help\n" \
               "    Print this command list."
@@ -1220,7 +1572,8 @@ class TelegramChannel(EFBChannel):
 
     def polling_from_tg(self):
         """
-        Poll message from Telegram Bot API. Can be used to extend
+        Poll message from Telegram Bot API. Can be used to extend for webhook.
+        This method must NOT be blocking.
         """
         self.bot.start_polling(timeout=10)
 
@@ -1230,10 +1583,45 @@ class TelegramChannel(EFBChannel):
         Triggered by python-telegram-bot error callback.
         """
         if "Conflict: terminated by other long poll or webhook (409)" in str(error):
-            msg = 'Please immediately turn off all EFB instances.\nAnother bot instance or web-hook detected.'
-            self.logger.error(msg)
+            msg = 'Please immediately turn off all EFB instances.\nAnother bot instance or webhook detected.'
+            self.logger.critical(msg)
             bot.send_message(getattr(config, self.channel_id)['admins'][0], msg)
-        else:
+            return
+        try:
+            raise error
+        except telegram.error.Unauthorized:
+            self.logger.error("The bot is not authorised to send update:\n%s\n%s", str(update), str(error))
+        except telegram.error.BadRequest:
+            self.logger.error("Message request is invalid.\n%s\n%s", str(update), str(error))
+            bot.send_message(getattr(config, self.channel_id)['admins'][0],
+                             "Message request is invalid.\n%s\n<code>%s</code>)" %
+                             (html.escape(str(error)), html.escape(str(update))), parse_mode="HTML")
+        except telegram.error.TimedOut:
+            self.timeout_count += 1
+            self.logger.error("Poor internet connection detected.\nError count: %s\n\%s\nUpdate: %s",
+                              self.timeout_count, str(error), str(update))
+            if update is not None and isinstance(getattr(update, "message", None), telegram.Message):
+                update.message.reply_text("This message is not processed due to poor internet environment "
+                                          "of the server.\n"
+                                          "<code>%s</code>" % html.escape(str(error)), quote=True, parse_mode="HTML")
+            if self.timeout_count >= 10:
+                bot.send_message(getattr(config, self.channel_id)['admins'][0],
+                                 "<b>EFB Telegram Master channel</b>\n"
+                                 "You may have a poor internet connection on your server. "
+                                 "Currently %s time-out errors are detected.\n"
+                                 "For more details, please refer to the log." % (self.timeout_count),
+                                 parse_mode="HTML")
+        except telegram.error.ChatMigrated as e:
+            new_id = e.new_chat_id
+            old_id = update.message.chat_id
+            count = 0
+            for i in db.get_chat_assoc(master_uid="%s.%s" % (self.channel_id, old_id)):
+                db.remove_chat_assoc(slave_uid=i)
+                db.add_chat_assoc(master_uid="%s.%s" % (self.channel_id, new_id), slave_uid=i)
+                count += 1
+            bot.send_message(new_id, "Chat migration detected."
+                                     "All remote chats (%s) are now linked to this new group." % count)
+        except:
             try:
                 bot.send_message(getattr(config, self.channel_id)['admins'][0],
                                  "EFB Telegram Master channel encountered error <code>%s</code> "
@@ -1246,7 +1634,8 @@ class TelegramChannel(EFBChannel):
                                  "caused by update\n%s\n\n"
                                  "Report issue: https://github.com/blueset/ehForwarderBot/issues/new" %
                                  (html.escape(str(error)), html.escape(str(update))))
-            self.logger.error('ERROR! Update %s caused error %s' % (update, error))
+            self.logger.error('Unhandled telegram bot error!\n'
+                              'Update %s caused error %s' % (update, error))
 
     def _flag(self, key, value):
         """

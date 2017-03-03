@@ -7,20 +7,15 @@ import os
 class BingSpeech:
     keys = None
     access_token = None
-    full_token = None
     lang_list = ['de-DE', 'zh-TW', 'zh-HK', 'ru-RU', 'es-ES', 'ja-JP', 'ar-EG', 'da-DK', 'en-GB', 'en-IN', 'fi-FI', 'nl-NL', 'en-US', 'pt-BR', 'pt-PT', 'ca-ES', 'fr-FR', 'ko-KR', 'en-NZ', 'nb-NO', 'it-IT', 'fr-CA', 'pl-PL', 'es-MX', 'zh-CN', 'en-AU', 'en-CA', 'sv-SE']
 
     def __init__(self, keys):
         self.keys = keys
-        d = {
-            "grant_type": "client_credentials",
-            "client_id": keys[0],
-            "client_secret": keys[1],
-            "scope": "https://speech.platform.bing.com"
+        h = {
+            "Ocp-Apim-Subscription-Key": keys[0]
         }
-        r = requests.post("https://oxford-speech.cloudapp.net/token/issueToken", data=d).json()
-        self.access_token = r['access_token']
-        self.full_token = r
+        r = requests.post("https://api.cognitive.microsoft.com/sts/v1.0/issueToken", headers=h)
+        self.access_token = r.text
 
     def recognize(self, path, lang="zh-CN"):
         if isinstance(path, str):
@@ -45,7 +40,7 @@ class BingSpeech:
             "locale": lang,
             "device.os": "Telegram",
             "scenarios": "ulm",
-            "instanceid": uuid.uuid3(uuid.NAMESPACE_DNS, 'com.1a23.ehforwarderbot'),
+            "instanceid": uuid.uuid3(uuid.NAMESPACE_DNS, 'com.1a23.eh_telegram_master'),
             "maxnbest": 5
         }
         with open("%s.wav" % path, 'rb') as f:

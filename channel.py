@@ -1,3 +1,5 @@
+from abc import ABCMeta, abstractmethod
+
 # Constants Objects
 
 class MsgType:
@@ -33,6 +35,8 @@ class ChannelType:
 
 
 class EFBChannel:
+    __metaclass__ = ABCMeta
+
     channel_name = "Empty Channel"
     channel_emoji = "?"
     channel_id = "emptyChannel"
@@ -67,6 +71,7 @@ class EFBChannel:
                 methods[mName] = m
         return methods
 
+    @abstractmethod
     def send_message(self, msg):
         """
         Send message to slave channels.
@@ -77,11 +82,13 @@ class EFBChannel:
         Returns:
             EFBMsg: The same message object with message ID.
         """
-        return "Not implemented"
+        raise NotImplementedError()
 
-    def poll(self, *args, **kwargs):
-        return "Not implemented"
+    @abstractmethod
+    def poll(self):
+        raise NotImplementedError()
 
+    @abstractmethod
     def get_chats(self):
         """
         Return a list of available chats in the channel.
@@ -89,8 +96,22 @@ class EFBChannel:
         Returns:
             list of dict: a list of available chats in the channel.
         """
-        return "Not implemented"
+        raise NotImplementedError()
 
+    @abstractmethod
+    def get_chat(self, chat_uid):
+        """
+        Return the standard chat dict of the selected chat.
+        Args:
+            chat_uid (str): UID of the chat.
+
+        Returns:
+            dict: the standard chat dict of the chat.
+        
+        Raises:
+            KeyError: Chat is not found in the channel.
+        """
+        raise NotImplementedError()
 
 class EFBMsg:
     """A message.

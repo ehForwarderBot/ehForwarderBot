@@ -1,7 +1,8 @@
-import io
+import base64
 import logging
 import mimetypes
 import os
+import io
 import re
 import threading
 import time
@@ -147,7 +148,13 @@ class WeChatChannel(EFBChannel):
                 QR += "Previous code expired. Please scan the new one.\n"
             QR += "\n"
             qr_url = "https://login.weixin.qq.com/l/" + uuid
-            QR += QRCode(qr_url).terminal()
+            qr_obj = QRCode(qr_url)
+            if self._flag("imgcat_qr", False):
+                qr_file = io.BytesIO()
+                qr_obj.png(qr_file, scale=10)
+                QR += self.imgcat(qr_file, "%s_QR_%s.png" % (self.channel_id, uuid))
+            else:
+                QR += qr_obj.terminal()
             QR += "\nIf you cannot read the QR code above, " \
                   "please visit the following URL:\n" \
                   "https://login.weixin.qq.com/qrcode/" + uuid
@@ -638,7 +645,7 @@ class WeChatChannel(EFBChannel):
                         tgt_text = "「%s」" % qt_txt
                     else:
                         tgt_text = ""
-                    if UserName.startswith("@@"):
+                    if UserName.startswith("@@") and msg.target['target'].member:
                         tgt_alias = "@%s\u2005 " % msg.target['target'].member['alias']
                     else:
                         tgt_alias = ""
@@ -699,7 +706,7 @@ class WeChatChannel(EFBChannel):
                 self.itchat.logout()
             raise EFBMessageError(str(r))
         else:
-            msg.uid = r.get("MsgId", None)
+            msg.uid = r.get("MsgID", None)
             return msg
 
     # Extra functions
@@ -850,7 +857,9 @@ class WeChatChannel(EFBChannel):
         except:
             return "Error occurred during the process. (AF01)"
 
-    def get_chats(self, group=True, user=True):
+    def get_chats(self):
+        group = True
+        user = True
         refresh = self._flag("refresh_friends", False)
         r = []
         if user:
@@ -891,6 +900,25 @@ class WeChatChannel(EFBChannel):
                     'type': MsgSource.Group
                 })
         return r
+
+    def get_chat(self, chat_id):
+        i = self.search_user(uid=chat_id)
+        if i:
+            i = i[0]
+        else:
+            raise KeyError("Chat not found.")
+
+        return {
+            'channel_name': self.channel_name,
+            'channel_id': self.channel_id,
+            'name': self._wechat_html_unescape(i['NickName']),
+            'alias': self._wechat_html_unescape(i['RemarkName'] or i['NickName']),
+            'uid': self.get_uid(UserName=i['UserName'],
+                                NickName=self._wechat_html_unescape(i['NickName']),
+                                alias=self._wechat_html_unescape(i.get("RemarkName", None)),
+                                Uin=i.get("Uin", None)),
+            'type': MsgSource.Group if i['UserName'].startswith("@@") else MsgSource.User
+        }
 
     def get_itchat(self):
         return self.itchat
@@ -962,7 +990,7 @@ class WeChatChannel(EFBChannel):
             return ReturnValue(rawResponse=r)
 
         try:
-            _itchat_send_fn(self.itchat, *args, **kwargs)
+            return _itchat_send_fn(self.itchat, *args, **kwargs)
         except Exception as e:
             raise EFBMessageError(repr(e))
 
@@ -992,3 +1020,23 @@ class WeChatChannel(EFBChannel):
         d = {"Content": content}
         itchat.utils.msg_formatter(d, "Content")
         return d['Content']
+
+    @staticmethod
+    def imgcat(f, fn):
+        def print_osc():
+            if str(os.environ.get("TERM", "")).startswith("screen"):
+                return "\x1bPtmux;\x1b\x1b]"
+            else:
+                return "\x1b]"
+        def print_st():
+            if str(os.environ.get("TERM", "")).startswith("screen"):
+                return "\x07\x1b\\"
+            else:
+                return "\x07"
+        res = print_osc()
+        res += "1337;File=name="
+        res += base64.b64encode(fn.encode()).decode()
+        res += ";inline=1:"
+        res += base64.b64encode(f.getvalue()).decode()
+        res += print_st()
+        return res
