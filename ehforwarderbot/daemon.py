@@ -22,6 +22,7 @@ import time
 import signal
 import fcntl
 import subprocess
+import argparse
 
 try:
     import cPickle as pickle
@@ -206,7 +207,7 @@ class DM(object):
             if dm.chdir:
                 lines.append('Chdir: %s' % repr(dm.chdir))
             if dm.name:
-                lines.append('Name: %s' % dm.name)
+                lines.append('Profile: %s' % dm.name)
             if dm.group:
                 lines.append('Group: %s' % dm.group)
             lines.append('Start at: "%s"' % dm.time)
@@ -301,15 +302,16 @@ def transcript(path, reset=False):
 
 def main():
     transcript_path = "EFB.log"
-    instance_name = str(crc32(os.path.dirname(os.path.abspath(inspect.stack()[0][1])).encode()))
     if len(sys.argv) < 2:
         help()
         exit()
     dm = DM()
+
+    # instance_name = str(crc32(os.path.dirname(os.path.abspath(inspect.stack()[0][1])).encode()))
+    argp = argparse.ArgumentParser()
+    argp.add_argument("-p", "--profile")
+    instance_name = argp.parse_args(sys.argv[2:])[0].profile or "default"
     efb_args = " ".join(sys.argv[2:])
-    if len(dm.get_daemons(name="EFB")):
-        print("Old daemon process is killed.")
-        dm.kill(name="EFB", quiet=True, sigkill=True)
     if sys.argv[1] == "start":
         dm.run(cmdline=" ".join((sys.executable + " main.py", efb_args)),
                name=instance_name,
@@ -318,7 +320,7 @@ def main():
     elif sys.argv[1] == "stop":
         dm.kill(name=instance_name, quiet=True, sigkill=True)
     elif sys.argv[1] == "status":
-        dm.list(name=instance_name)
+        dm.list()
     elif sys.argv[1] == "restart":
         kwargs = {"name": instance_name, "quiet": True, "sigkill": True}
         if len(sys.argv) > 2:

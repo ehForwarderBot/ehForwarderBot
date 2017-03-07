@@ -1,16 +1,17 @@
-import config
+import os
 import queue
 import threading
 import logging
 import argparse
 import sys
 import signal
-from channel import EFBChannel
+from . import config
+from .channel import EFBChannel
 
 if sys.version_info.major < 3:
     raise Exception("Python 3.x is required. Your version is %s." % sys.version)
 
-__version__ = "1.6.0"
+__version__ = "2.0.0.a1"
 
 parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible chat tunnel framework which allows "
                                              "users to contact people from other chat platforms, and ultimately "
@@ -23,6 +24,8 @@ parser.add_argument("-V", "--version", action="version",
                     version="EH Forwarder Bot %s" % __version__)
 parser.add_argument("-l", "--log",
                     help="Set log file path.")
+parser.add_argument("-p", "--profile",
+                    help="Choose a profile to start with.")
 
 args = parser.parse_args()
 
@@ -34,7 +37,7 @@ master_thread = None
 slave_threads = None
 
 
-def stop_gracefully(*args, **kwargs):
+def stop_gracefully(sig, stack):
     l = logging.getLogger("ehForwarderBot")
     if isinstance(master, EFBChannel):
         master.stop_polling = True
@@ -77,14 +80,17 @@ def init():
     # Initialize Plug-ins Library
     # (Load libraries and modules and init them with Queue `q`)
     l = logging.getLogger("ehForwarderBot")
+
+    conf = config.load_config()
+
     slaves = {}
-    for i in config.slave_channels:
+    for i in conf['slave_channels']:
         l.critical("\x1b[0;37;46m Initializing slave %s... \x1b[0m" % str(i))
         obj = getattr(__import__(i[0], fromlist=i[1]), i[1])
         slaves[obj.channel_id] = obj(q, mutex)
         l.critical("\x1b[0;37;42m Slave channel %s (%s) initialized. \x1b[0m" % (obj.channel_name, obj.channel_id))
-    l.critical("\x1b[0;37;46m Initializing master %s... \x1b[0m" % str(config.master_channel))
-    master = getattr(__import__(config.master_channel[0], fromlist=config.master_channel[1]), config.master_channel[1])(
+    l.critical("\x1b[0;37;46m Initializing master %s... \x1b[0m" % str(conf['master_channel']))
+    master = getattr(__import__(conf['master_channel'][0], fromlist=conf['master_channel'][1]), conf['master_channel'][1])(
         q, mutex, slaves)
     l.critical("\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m" % (master.channel_name, master.channel_id))
 
@@ -117,12 +123,12 @@ else:
     else:
         level = logging.DEBUG
     logging.basicConfig(format='%(asctime)s: %(name)s [%(levelname)s]\n    %(message)s', level=level)
-    logging.getLogger('requests').setLevel(logging.CRITICAL)
-    logging.getLogger('urllib3').setLevel(logging.CRITICAL)
-    logging.getLogger('telegram.bot').setLevel(logging.CRITICAL)
 
     signal.signal(signal.SIGINT, stop_gracefully)
     signal.signal(signal.SIGTERM, stop_gracefully)
+
+    if args.profile:
+        os.environ['EFB_PROFILE'] = str(args.profile)
 
     if getattr(args, "log", None):
         LOG = args.log

@@ -76,7 +76,7 @@ Returns a `list` of `dict`s for available chats in the channel. Each `dict` shou
     "name": "Name of the chat",
     "alias": "Alternative name of the chat (alias, nickname, remark name, contact name, etc)", # None if N/A
     "uid": "Unique ID of the chat",
-    "type": MsgSource.User # or MsgSource.Group
+    "type": ChatType.User # or ChatType.Group
 }
 ```
 

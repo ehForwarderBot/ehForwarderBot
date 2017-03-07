@@ -112,6 +112,11 @@ class TelegramChannel(EFBChannel):
         """
         super().__init__(queue, mutex)
         self.slaves = slaves
+
+        logging.getLogger('requests').setLevel(logging.CRITICAL)
+        logging.getLogger('urllib3').setLevel(logging.CRITICAL)
+        logging.getLogger('telegram.bot').setLevel(logging.CRITICAL)
+
         try:
             self.bot = telegram.ext.Updater(getattr(config, self.channel_id)['token'])
         except (AttributeError, KeyError):

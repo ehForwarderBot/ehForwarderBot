@@ -10,10 +10,10 @@ msg = EFBMsg(self)
 
 ## Basic properties
 * `channel_name`, `channel_emoji`, `channel_id` should be set during the initialization process.
-* `source`: the type of sender of the message, a `MsgSource` object.  
-  Possible values: `MsgSource.User`, `MsgSource.Group`, `MsgSource.System`
+* `source`: the type of sender of the message, a `ChatType` object.
+  Possible values: `ChatType.User`, `ChatType.Group`, `ChatType.System`
 * `type`: Type of message, a `MsgType` object, default to `MsgType.Text`. Will introduce it in later part.
-* `member`: The member in a group who sent the message. A "User dict" or `None`. Only available when `msg.source == MsgSource.Group`.
+* `member`: The member in a group who sent the message. A "User dict" or `None`. Only available when `msg.source == ChatType.Group`.
 * `origin`: The sender, a user or a group who sent the message. A "User dict".
 * `destination`: The destination user/group of the message. A "User dict", `"channel"` property is required, and shall not equal to the `channel_id` of the message.
 * `target`: A "Target dict" or none. Used when the message is reply to or referring to another message or user.

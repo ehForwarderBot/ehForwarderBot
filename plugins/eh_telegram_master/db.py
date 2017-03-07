@@ -266,7 +266,7 @@ def set_slave_chat_info(slave_channel_id=None,
         slave_chat_uid (str): Slave chat UID
         slave_chat_name (str): Slave chat name
         slave_chat_alias (str): Slave chat alias, "" (empty string) if not available
-        slave_chat_type (channel.MsgSource): Slave chat type 
+        slave_chat_type (channel.ChatType): Slave chat type 
 
     Returns:
         SlaveChatInfo: The inserted or updated row

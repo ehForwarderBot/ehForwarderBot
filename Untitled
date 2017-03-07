@@ -1,0 +1,17 @@
+1.6.0: Thanks to the donations from an anonymous EFB user and zong meng.
+
+# Notice
+* ETM: Backup your database (`plugins/eh_telegram_master/tgdata.db`) before upgrading.
+
+# EFB framework
+* New required method for slave channels: `get_chat`
+
+# EFB Telegram Master
+* Add detailed error dispatching mechanism
+* Add mute feature
+* Enhancements on multiple remote chat linking
+* Multiple remote chat linking is now enabled by default. (Flag `multiple_slave_chats` now has a default value of `True`.)
+* New command: `/info` — show information about the current Telegram conversation.
+
+# EFB WeChat Slave
+* New flag: `imgcat_qr` — Render QR code in terminal in [iTerm's Image Protocol](https://www.iterm2.com/documentation-images.html).
