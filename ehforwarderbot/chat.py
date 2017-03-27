@@ -3,6 +3,26 @@ from .constants import ChatType
 
 
 class EFBChat:
+    """
+    EFB Chat object. This is used to represent a chat or a group member. 
+    
+    Attributes:
+        channel_id (str): Unique ID of the channel.
+        channel_emoji (str): Emoji of the channel.
+        channel_name (str): Name of the channel.
+        chat_name (str): Name of the chat.
+        chat_alias (str): Alternative name of the chat, usually set by user.
+        chat_type (:obj:`ehforwarderbot.ChatType`): Type of the chat.
+        chat_uid (str): Unique ID of the chat. This should be unique within the channel.
+        is_chat (bool): Indicate if this object represents a chat. Defaulted to ``True``.
+            This should be set to ``False`` when used on a group member.
+        chat (:obj:`ehforwarderbot.EFBChat` or None): The parent chat of the member. Only
+            available to chat member objects. Defaulted to ``None``.
+        members (list of :obj:`ehforwarderbot.EFBChat`): Provide a list of members
+            in the group. Defaulted to an empty ``list``. You may want to extend this
+            object and implement a ``@property`` method set for loading chats on
+            demand.
+    """
     channel_id = None
     channel_emoji = None
     channel_name = None
@@ -12,19 +32,17 @@ class EFBChat:
     chat_uid = None
     is_chat = True
 
-    _members = []
+    members = []
 
     chat = None
 
-    @property
-    def members(self):
-        return self._members.copy()
-
-    @members.setter
-    def members(self, value):
-        self._members = value.copy()
-
     def __init__(self, channel=None):
+        """
+        Args:
+            channel (:obj:`ehforwarderbot.EFBChannel`, optional):
+                Provide the channel object to fill ``channel_name``,
+                ``channel_emoji``, and ``channel_id`` automatically.
+        """
         if isinstance(channel, EFBChannel):
             self.channel_name = channel.channel_name
             self.channel_emoji = channel.channel_emoji

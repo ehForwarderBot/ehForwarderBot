@@ -1,4 +1,4 @@
 EFBMsg
 ======
-.. autoclass:: ehforwarderbot.message.EFBMsg
+.. autoclass:: ehforwarderbot.EFBMsg
     :members:

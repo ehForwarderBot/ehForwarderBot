@@ -1,6 +1,7 @@
 from abc import ABCMeta, abstractmethod
 from .constants import *
 
+__all__ = ["EFBChannel"]
 
 class EFBChannel:
     """
@@ -12,7 +13,7 @@ class EFBChannel:
         channel_id (str): Unique ID of the channel.
             Recommended format: ``"{author}_{name}_{type}"``, 
             e.g. ``"eh_telegram_master"``.
-        channel_type (:obj:`ehforwarderbot.ChannelType`): Type of the channel.
+        channel_type (:obj:`ehforwarderbot`): Type of the channel.
         queue (queue.Queue): Global message queue.
         mutex (threading.Lock): Global interaction thread lock.
     """
@@ -62,10 +63,10 @@ class EFBChannel:
         Send message to slave channels.
 
         Args:
-            msg (:obj:`ehforwarderbot.message.EFBMsg`): Message object to be sent.
+            msg (:obj:`ehforwarderbot.EFBMsg`): Message object to be sent.
 
         Returns:
-            :obj:`ehforwarderbot.message.EFBMsg`: The same message object with message ID.
+            :obj:`ehforwarderbot.EFBMsg`: The same message object with message ID.
         """
         raise NotImplementedError()
 
@@ -79,7 +80,7 @@ class EFBChannel:
         Return a list of available chats in the channel.
 
         Returns:
-            list[:obj:`ehforwarderbot.chat.EFBChat`]: a list of available chats in the channel.
+            list[:obj:`ehforwarderbot.EFBChat`]: a list of available chats in the channel.
         """
         raise NotImplementedError()
 
@@ -94,7 +95,7 @@ class EFBChannel:
                 only when the selected chat is a group. 
 
         Returns:
-            :obj:`ehforwarderbot.chat.EFBChat`: the standard chat dict of the chat.
+            :obj:`ehforwarderbot.EFBChat`: the standard chat dict of the chat.
         
         Raises:
             KeyError: Chat is not found in the channel.
