@@ -287,7 +287,9 @@ class TelegramChannel(EFBChannel):
                     last_msg = db.get_last_msg_from_chat(tg_dest)
                     if last_msg:
                         if last_msg.msg_type == "Text":
-                            append_last_msg = str(last_msg.slave_origin_uid) == "%s.%s" % (msg.channel_id, msg.origin['uid'])
+                            append_last_msg = str(last_msg.slave_origin_uid) == "%s.%s" % (msg.channel_id, msg.origin['uid']) \
+                                              and str(last_msg.master_msg_id).startswith(str(tg_dest) + ".") \
+                                              and last_msg.sent_to == "master"
                             if msg.source == MsgSource.Group:
                                 append_last_msg &= str(last_msg.slave_member_uid) == str(msg.member['uid'])
                             append_last_msg &= datetime.datetime.now() - last_msg.time <= datetime.timedelta(
