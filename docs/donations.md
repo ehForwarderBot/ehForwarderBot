@@ -23,3 +23,4 @@ You can donate to me via any of the following methods.
 * Anonymous EFB User: CNY 10.00
 * zangev5: CNY 6.66
 * Anonymous EFB User: CNY 25.00
+* W: CNY 16.66
