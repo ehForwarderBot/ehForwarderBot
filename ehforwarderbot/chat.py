@@ -4,8 +4,10 @@ from .constants import ChatType
 
 class EFBChat:
     """
-    EFB Chat object. This is used to represent a chat or a group member. 
-    
+    EFB Chat object. This is used to represent a chat or a group member.
+
+    TODO: Support profile pictures.
+
     Attributes:
         channel_id (str): Unique ID of the channel.
         channel_emoji (str): Emoji of the channel.
@@ -52,8 +54,8 @@ class EFBChat:
         """
         Set the chat as yourself.
         In this context, "yourself" means the user behind the master channel.
-        Every channel should relate this to the corresponding target.  
-        
+        Every channel should relate this to the corresponding target.
+
         Returns:
             EFBChat: This object.
         """
@@ -65,9 +67,9 @@ class EFBChat:
 
     def system(self):
         """
-        Set the chat as a system chat. 
+        Set the chat as a system chat.
         Only set for channel-level and group-level system chats.
-        
+
         Returns:
             EFBChat: This object.
         """
@@ -76,3 +78,14 @@ class EFBChat:
         self.chat_uid = "__system__"
         self.chat_type = ChatType.User
         return self
+
+    @property
+    def is_self(self):
+        """
+        bool: 
+        """
+        return self.chat_uid == "__self__"
+
+    @property
+    def is_system(self):
+        return self.chat_uid == "__system__"

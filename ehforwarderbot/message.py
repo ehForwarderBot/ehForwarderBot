@@ -8,7 +8,7 @@ class EFBMsg:
     """A message.
 
     Attributes:
-        attributes (instance of :obj:`ehforwarderbot.message.EFBMsgAttribute`, optional):
+        attributes (instance of :obj:`ehforwarderbot.message.EFBMsgAttribute`,optional):
             Attributes used for a specific message type.
             Only specific message type requires this attribute. Defaulted to
             ``None``.
@@ -18,8 +18,9 @@ class EFBMsg:
             - Command: :obj:`ehforwarderbot.EFBMsgLocationAttribute`
 
             Note:
-                Do not use object the abstract class :class:`ehforwarderbot.message.EFBMsgAttribute`
-                for ``attributes``, but object of specific class instead.
+                Do NOT use object the abstract class
+                :class:`ehforwarderbot.message.EFBMsgAttribute` for
+                ``attributes``, but object of specific class instead.
 
         channel_emoji (str): Emoji icon for the source channel
         channel_id (str): ID for the source channel
@@ -29,60 +30,16 @@ class EFBMsg:
         member (:obj:`ehforwarderbot.EFBMember`, optional): Author of this msg in a group.
             ``None`` for private messages.
         origin (:obj:`ehforwarderbot.EFBChat`): Sender of the message
-        target (dict): Target (refers to @ messages and "reply to" messages.)
+        target (instance of :obj:`EFBMsgTarget`, optional):
+            Target (refers to @ messages and "reply to" messages.)
+            Two types of target is avaialble:
 
-            There are 3 types of targets: ``Member``, ``Message``, and ``Substitution``
+            - Substitution: :obj:`ehforwarderbot.message.EFBMsgTargetSubstitution`
+            - Message: :obj:`ehforwarderbot.message.EFBMsgTargetMessage`
 
-            TargetType: Member
-                This is for the case where the message is targeting to a specific member in the group.
-                ``target['target']`` here is a `user dict`.
-
-                Example::
-
-                    target = {
-                       'type': TargetType.Member,
-                       'target': {
-                           "name": "Target name",
-                           'alias': 'Target alias',
-                           'uid': 'Target UID',
-                       }
-                    }
-
-
-            TargetType: Message
-                This is for the case where the message is directly replying to another message.
-                ``target['target']`` here is an ``EFBMsg`` object.
-
-                Example::
-
-                    target = {
-                       'type': TargetType.Message,
-                       'target': EFBMsg()
-                    }
-
-            TargetType: Substitution
-                This is for the case when user "@-ed" a list of users in the message.
-                ``target['target']`` here is a dict of correspondence between
-                the string used to refer to the user in the message
-                and a user dict.
-
-                Example::
-
-                    target = {
-                       'type': TargetType.Substitution,
-                       'target': {
-                          '@alice': {
-                              'name': "Alice",
-                              'alias': 'Arisu',
-                              'uid': 123456
-                          },
-                          '@bob': {
-                              'name': "Bob",
-                              'alias': 'Boobu',
-                              'uid': 654321
-                          }
-                       }
-                    }
+            Note:
+                Do NOT use object the abstract class :class:`ehforwarderbot.message.EFBMsgTarget`
+                for ``target``, but object of specific class instead.
 
         text (str): text of the message
         type (:obj:`ehforwarderbot.MsgType`): Type of message
@@ -255,6 +212,9 @@ class EFBMsgTargetMessage(EFBMsgTarget):
     """
     EFB message target - message.
 
+    This is for the case where the message is directly replying to another
+    message.
+
     Attributes:
         message (:obj:`ehforwarderbot.EFBMsg`): The message targeted to.
 
@@ -274,3 +234,43 @@ class EFBMsgTargetMessage(EFBMsgTarget):
 
     def __init__(self, message):
         self.message = message
+
+
+class EFBMsgTargetSubstitution(EFBMsgTarget):
+    """
+    EFB message target - Substitution.
+
+    This is for the case when user "@-ed" a list of users in the message.
+    substitutions here is a dict of correspondence between
+    the string used to refer to the user in the message
+    and a user dict.
+
+    Attributes:
+        substitutions
+            (dict of (tuple[2] of int) : :obj:`ehforwarderbot.EFBChat`):
+            Dictionary of text substitutions targeting to a user or member.
+
+            The key of the dictionary is a tuple of two ``int``s, where first
+            of it is the starting position in the string, and the second is the
+            ending posision defined similar to Python's substring. A tuple of
+            ``(3, 15)` corresponds to ``msg.text[3:15]``.
+            The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``,
+            ``b ∈ (a, l]``, where ``l`` is the length of the message text.
+
+            Value of the dict may be any user of the chat, or a member of a
+            group. Notice that the :obj:`EFBChat` object here must NOT be a
+            group.
+    """
+    substittutions = None
+
+    def __init__(self, substitutions):
+        if not isinstance(substitutions, dict):
+            raise TypeError("Substittutions must be a dict.")
+        for i in substitutions:
+            if not isinstance(substitutions[i], EFBMsg):
+                raise TypeError("Substittution %s is not a message object."
+                                % i)
+            if substitutions[i].is_chat and \
+               substitutions[i].chat_type == ChatType.Group:
+               raise ValueError("Substittution %s is a chat." % i)
+        self.substitutions = substittutions
