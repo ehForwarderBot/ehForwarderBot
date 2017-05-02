@@ -27,4 +27,5 @@ You can donate to me via any of the following methods.
 * dozilla: AUD 2.33
 * AkiraAvA: CNY 66.60
 * Soyer: CNY 7.00
-* 小朝: 6.66
+* 小朝: CNY 6.66
+* Jack: CNY 50.00
