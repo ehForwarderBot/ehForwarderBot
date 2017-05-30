@@ -113,7 +113,11 @@ class TelegramChannel(EFBChannel):
         super().__init__(queue, mutex)
         self.slaves = slaves
         try:
-            self.bot = telegram.ext.Updater(getattr(config, self.channel_id)['token'])
+            if getattr(config, self.channel_id)['proxy']:
+                self.bot = telegram.ext.Updater(token=getattr(config, self.channel_id)['token'],
+                                                request_kwargs={'proxy_url': getattr(config, self.channel_id)['proxy']})
+            else:
+                self.bot = telegram.ext.Updater(token=getattr(config, self.channel_id)['token'])
         except (AttributeError, KeyError):
             raise ValueError("Token is not properly defined. Please define it in `config.py`.")
         mimetypes.init(files=["mimetypes"])
