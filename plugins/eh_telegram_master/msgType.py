@@ -13,7 +13,7 @@ class TGMsgType:
 
 
 def get_msg_type(msg):
-    sys = ['new_chat_member',
+    sys = ['new_chat_members',
            'left_chat_member',
            'new_chat_title',
            'new_chat_photo',
