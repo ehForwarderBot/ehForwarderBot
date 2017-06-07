@@ -29,7 +29,7 @@ def wechat_msg_meta(func):
         mobj = func(self, msg, *args, **kwargs)
         if mobj is None:
             return
-        mobj.uid = msg.get("MsgId", time.time())
+        mobj.uid = msg.get("NewMsgId", time.time())
         me = msg['FromUserName'] == self.itchat.loginInfo['User']['UserName']
         logger.debug("me, %s", me)
         if me:
