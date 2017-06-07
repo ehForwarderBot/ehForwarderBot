@@ -8,7 +8,7 @@ class EFBMsg:
     """A message.
 
     Attributes:
-        attributes (instance of :obj:`ehforwarderbot.message.EFBMsgAttribute`,optional):
+        attributes (instance of :obj:`ehforwarderbot.message.EFBMsgAttribute`, optional):
             Attributes used for a specific message type.
             Only specific message type requires this attribute. Defaulted to
             ``None``.
@@ -32,7 +32,7 @@ class EFBMsg:
         origin (:obj:`ehforwarderbot.EFBChat`): Sender of the message
         target (instance of :obj:`EFBMsgTarget`, optional):
             Target (refers to @ messages and "reply to" messages.)
-            Two types of target is avaialble:
+            Two types of target is available:
 
             - Substitution: :obj:`ehforwarderbot.message.EFBMsgTargetSubstitution`
             - Message: :obj:`ehforwarderbot.message.EFBMsgTargetMessage`
@@ -252,7 +252,7 @@ class EFBMsgTargetSubstitution(EFBMsgTarget):
 
             The key of the dictionary is a tuple of two ``int``s, where first
             of it is the starting position in the string, and the second is the
-            ending posision defined similar to Python's substring. A tuple of
+            ending position defined similar to Python's substring. A tuple of
             ``(3, 15)` corresponds to ``msg.text[3:15]``.
             The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``,
             ``b ∈ (a, l]``, where ``l`` is the length of the message text.
@@ -261,16 +261,16 @@ class EFBMsgTargetSubstitution(EFBMsgTarget):
             group. Notice that the :obj:`EFBChat` object here must NOT be a
             group.
     """
-    substittutions = None
+    substitutions = None
 
     def __init__(self, substitutions):
         if not isinstance(substitutions, dict):
-            raise TypeError("Substittutions must be a dict.")
+            raise TypeError("Substitutions must be a dict.")
         for i in substitutions:
             if not isinstance(substitutions[i], EFBMsg):
-                raise TypeError("Substittution %s is not a message object."
+                raise TypeError("Substitution %s is not a message object."
                                 % i)
             if substitutions[i].is_chat and \
                substitutions[i].chat_type == ChatType.Group:
-               raise ValueError("Substittution %s is a chat." % i)
-        self.substitutions = substittutions
+                raise ValueError("Substitution %s is a chat." % i)
+        self.substitutions = substitutions
