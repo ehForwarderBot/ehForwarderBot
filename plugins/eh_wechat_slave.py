@@ -971,12 +971,14 @@ class WeChatChannel(EFBChannel):
                 'BaseRequest': self.loginInfo['BaseRequest'],
                 'Msg': {
                     'Type': 6,
-                    'Content': ("<appmsg appid='wxeb7ec651dd0aefa9' sdkver=''><title>%s</title>" % fn +
-                                "<des></des><action></action><type>6</type><content></content><url></url><lowurl></lowurl>" +
-                                "<appattach><totallen>%s</totallen><attachid>%s</attachid>" % (
-                                    str(os.path.getsize(fileDir)), mediaId) +
-                                "<fileext>%s</fileext></appattach><extinfo></extinfo></appmsg>" % fn[1].replace('.',
-                                                                                                                '')),
+                    'Content': (
+                        "<appmsg appid='wxeb7ec651dd0aefa9' sdkver=''><title>%s</title>" % fn +
+                        "<des></des><action></action><type>6</type><content></content><url></url><lowurl></lowurl>" +
+                        "<appattach><totallen>%s</totallen><attachid>%s</attachid>" % (
+                            str(os.path.getsize(fileDir)), mediaId) +
+                        "<fileext>%s</fileext></appattach><extinfo></extinfo></appmsg>" %
+                            os.path.splitext(fn)[1].replace('.', '')
+                    ),
                     'FromUserName': self.storageClass.userName,
                     'ToUserName': toUserName,
                     'LocalID': int(time.time() * 1e4),
