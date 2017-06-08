@@ -686,14 +686,14 @@ class WeChatChannel(EFBChannel):
                 except FileNotFoundError:
                     pass
         elif msg.type in (MsgType.File, MsgType.Audio):
-            self.logger.info("Sending %s to WeChat\nFileName: %s\nPath: %s\nFilename: %s", msg.type, msg.text, msg.path,
+            self.logger.info("Sending %s to WeChat\nCaption: %s\nPath: %s\nFilename: %s", msg.type, msg.text, msg.path,
                              msg.filename)
             r = self._itchat_send_file(msg.path, toUserName=UserName, filename=msg.filename)
             if msg.text:
                 self._itchat_send_msg(msg.text, toUserName=UserName)
             os.remove(msg.path)
         elif msg.type == MsgType.Video:
-            self.logger.info("Sending video to WeChat\nFileName: %s\nPath: %s", msg.text, msg.path)
+            self.logger.info("Sending video to WeChat\nCaption: %s\nPath: %s", msg.text, msg.path)
             r = self._itchat_send_video(msg.path, UserName)
             if msg.text:
                 self._itchat_send_msg(msg.text, UserName)
@@ -971,12 +971,14 @@ class WeChatChannel(EFBChannel):
                 'BaseRequest': self.loginInfo['BaseRequest'],
                 'Msg': {
                     'Type': 6,
-                    'Content': ("<appmsg appid='wxeb7ec651dd0aefa9' sdkver=''><title>%s</title>" % fn +
-                                "<des></des><action></action><type>6</type><content></content><url></url><lowurl></lowurl>" +
-                                "<appattach><totallen>%s</totallen><attachid>%s</attachid>" % (
-                                    str(os.path.getsize(fileDir)), mediaId) +
-                                "<fileext>%s</fileext></appattach><extinfo></extinfo></appmsg>" % fn[1].replace('.',
-                                                                                                                '')),
+                    'Content': (
+                        "<appmsg appid='wxeb7ec651dd0aefa9' sdkver=''><title>%s</title>" % fn +
+                        "<des></des><action></action><type>6</type><content></content><url></url><lowurl></lowurl>" +
+                        "<appattach><totallen>%s</totallen><attachid>%s</attachid>" % (
+                            str(os.path.getsize(fileDir)), mediaId) +
+                        "<fileext>%s</fileext></appattach><extinfo></extinfo></appmsg>" %
+                            os.path.splitext(fn)[1].replace('.', '')
+                    ),
                     'FromUserName': self.storageClass.userName,
                     'ToUserName': toUserName,
                     'LocalID': int(time.time() * 1e4),
