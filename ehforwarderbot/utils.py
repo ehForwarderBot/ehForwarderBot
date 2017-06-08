@@ -50,6 +50,7 @@ def extra(name, desc):
         f.__setattr__("name", name)
         f.__setattr__("desc", desc)
         return f
+
     return attr_dec
 
 
@@ -98,7 +99,7 @@ def get_data_path(channel):
 def get_config_path(channel=None, ext="yaml"):
     """
     Get path for configuration file. Defaulted to
-    ``~/.ehforwarderbot/profile_name/channel_id/config.yaml``.
+    ``~/.ehforwarderbot/profiles/profile_name/channel_id/config.yaml``.
     
     This method creates the queried path if not existing. The config file will 
     not be created, however.
@@ -124,7 +125,7 @@ def get_config_path(channel=None, ext="yaml"):
 def get_cache_path(channel):
     """
     Get path for the channel cache directory. Defaulted to
-    ``~/.ehforwarderbot/cache/profile_name/channel_id``.
+    ``~/.ehforwarderbot/.cache/profile_name/channel_id``.
     
     This can be defined by the environment variable ``EFB_CACHE_PATH``.
     When defined, the cache path is directed to 
@@ -143,7 +144,8 @@ def get_cache_path(channel):
     if base_path:
         base_path = os.path.join(base_path, getpass.getuser(), profile, channel, "")
     else:
-        base_path = os.path.expanduser(os.path.join(os.path.expanduser("~/.ehforwarderbot/cache/"), profile, channel, ""))
+        base_path = os.path.expanduser(
+            os.path.join(os.path.expanduser("~/.ehforwarderbot/.cache/"), profile, channel, ""))
     os.makedirs(base_path, exist_ok=True)
     return base_path
 
@@ -156,3 +158,15 @@ def get_current_profile():
         str: Profile name.
     """
     return os.environ.get("EFB_PROFILE", "default")
+
+
+def get_custom_channel_path():
+    """
+    Get the path for custom channels
+
+    Returns:
+        str: The path.
+    """
+    channel_path = os.path.join(get_base_path(), "plugins")
+    os.makedirs(channel_path, exist_ok=True)
+    return channel_path

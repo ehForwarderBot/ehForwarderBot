@@ -38,8 +38,11 @@ EH Forwarder Bot
 
 
 .. toctree::
+   :titlesonly:
 
    API/index
+   getting-started
+   directories
 
 Indices and tables
 ==================

@@ -5,13 +5,14 @@ import logging
 import argparse
 import sys
 import signal
-from . import config
+import pydoc
+from . import config, utils
+from .shared_data import SharedData
+from .__version__ import __version__
 from .channel import EFBChannel
 
 if sys.version_info.major < 3:
     raise Exception("Python 3.x is required. Your version is %s." % sys.version)
-
-__version__ = "2.0.0.a1"
 
 parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible chat tunnel framework which allows "
                                              "users to contact people from other chat platforms, and ultimately "
@@ -29,25 +30,22 @@ parser.add_argument("-p", "--profile",
 
 args = parser.parse_args()
 
-q = None
-mutex = None
-slaves = []
-master = None
+shared_data = None
 master_thread = None
 slave_threads = None
 
 
 def stop_gracefully(sig, stack):
     l = logging.getLogger("ehForwarderBot")
-    if isinstance(master, EFBChannel):
-        master.stop_polling = True
+    if isinstance(shared_data.master, EFBChannel):
+        shared_data.master.stop_polling = True
         l.debug("Stop signal sent to master: %s" % master.channel_name)
         while master_thread.is_alive():
             pass
-    for i in slaves:
-        if isinstance(slaves[i], EFBChannel):
-            slaves[i].stop_polling = True
-            l.debug("Stop signal sent to slave: %s" % slaves[i].channel_name)
+    for i in shared_data.slaves:
+        if isinstance(shared_data.slaves[i], EFBChannel):
+            shared_data.slaves[i].stop_polling = True
+            l.debug("Stop signal sent to slave: %s" % shared_data.slaves[i].channel_name)
             while slave_threads[i].is_alive():
                 pass
     sys.exit(0)
@@ -73,11 +71,17 @@ def init():
     """
     Initialize all channels.
     """
-    global q, slaves, master, master_thread, slave_threads, mutex
-    # Init Queue, thread lock
-    q = queue.Queue()
-    mutex = threading.Lock()
-    # Initialize Plug-ins Library
+    global shared_data, master_thread, slave_threads
+
+    # Init shared data object
+    shared_data = SharedData(args.profile)
+
+    # Include custom channels
+    custom_channel_path = utils.get_custom_channel_path()
+    if custom_channel_path not in sys.path:
+        sys.path.insert(0, custom_channel_path)
+
+    # Initialize all channels
     # (Load libraries and modules and init them with Queue `q`)
     l = logging.getLogger("ehForwarderBot")
 
@@ -86,16 +90,19 @@ def init():
     slaves = {}
     for i in conf['slave_channels']:
         l.critical("\x1b[0;37;46m Initializing slave %s... \x1b[0m" % str(i))
-        obj = getattr(__import__(i[0], fromlist=i[1]), i[1])
-        slaves[obj.channel_id] = obj(q, mutex)
+
+        obj = pydoc.locate(i)
+        shared_data.add_channel(obj(shared_data), is_slave=True)
+
         l.critical("\x1b[0;37;42m Slave channel %s (%s) initialized. \x1b[0m" % (obj.channel_name, obj.channel_id))
+
     l.critical("\x1b[0;37;46m Initializing master %s... \x1b[0m" % str(conf['master_channel']))
-    master = getattr(__import__(conf['master_channel'][0], fromlist=conf['master_channel'][1]), conf['master_channel'][1])(
-        q, mutex, slaves)
-    l.critical("\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m" % (master.channel_name, master.channel_id))
+    shared_data.add_channel(pydoc.locate(conf['master_channel'])(shared_data), is_slave=False)
+    l.critical("\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m" %
+               (shared_data.master.channel_name, shared_data.master.channel_id))
 
     l.critical("\x1b[1;37;42m All channels initialized. \x1b[0m")
-    master_thread = threading.Thread(target=master.poll)
+    master_thread = threading.Thread(target=shared_data.master.poll)
     slave_threads = {key: threading.Thread(target=slaves[key].poll) for key in slaves}
 
 
@@ -107,10 +114,6 @@ def poll():
     master_thread.start()
     for i in slave_threads:
         slave_threads[i].start()
-
-
-PID = "/tmp/efb.pid"
-LOG = "EFB.log"
 
 if getattr(args, "V", None):
     print("EH Forwarder Bot\n"

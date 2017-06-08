@@ -9,6 +9,7 @@ class MsgType:
     Sticker = "Sticker"
     Unsupported = "Unsupported"
     Command = "Command"
+    Status = "Status"
 
 
 class ChatType:

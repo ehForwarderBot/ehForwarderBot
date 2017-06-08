@@ -3,6 +3,7 @@ from .constants import *
 
 __all__ = ["EFBChannel"]
 
+
 class EFBChannel:
     """
     The abstract channel class.
@@ -72,6 +73,9 @@ class EFBChannel:
 
     @abstractmethod
     def poll(self):
+        """
+        Method to poll for messages.
+        """
         raise NotImplementedError()
 
     @abstractmethod

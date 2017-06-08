@@ -1,8 +1,12 @@
 from distutils.core import setup
+
+__version__ = ""
+exec(open('ehforwarderbot/__version__.py').read())
+
 setup(
     name='ehforwarderbot',
     packages=['ehforwarderbot'],
-    version='2.0.0.a1',
+    version=__version__,
     description='An extensible message tunneling chat bot framework.',
     author='Eana Hufwe',
     author_email='ilove@1a23.com',

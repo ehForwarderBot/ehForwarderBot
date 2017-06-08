@@ -16,6 +16,8 @@ class EFBMsg:
             - Link: :obj:`ehforwarderbot.EFBMsgLinkAttribute`
             - Location: :obj:`ehforwarderbot.EFBMsgLocationAttribute`
             - Command: :obj:`ehforwarderbot.EFBMsgLocationAttribute`
+            - Status:
+                - Typing/Sending/etc.: :obj:`ehforwarderbot.EFBMsgTypingAttribute`
 
             Note:
                 Do NOT use object the abstract class
@@ -124,7 +126,7 @@ class EFBMsgLinkAttribute(EFBMsgAttribute):
 
 class EFBMsgLocationAttribute(EFBMsgAttribute):
     """
-    EFB location message attirbute.
+    EFB location message attribute.
 
     Attributes:
         latitude (float): Latitude of the location.
@@ -165,12 +167,18 @@ class EFBMsgCommandAttribute(EFBMsgAttribute):
         self.commands = commands.copy()
 
 
+class EFBMsgTypingAttribute(EFBMsgAttribute):
+
+    def __init__(self, type):
+        self.type = type
+
+
 class EFBMsgCommand:
     """
     EFB command message command.
 
     Attributes:
-        name (str): Human-frindly name of the command.
+        name (str): Human-friendly name of the command.
         callable (str): Callable name of the command.
         args (list): Arguments passed to the funciton.
         kwargs (dict of str: anything): Keyword arguments passed to the function.
