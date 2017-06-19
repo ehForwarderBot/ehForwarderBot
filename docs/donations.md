@@ -9,23 +9,4 @@ You can donate to me via any of the following methods.
 * [![Donate with Patreon](https://img.shields.io/badge/Donate-with%20Patreon-orange.svg)](https://patreon.com/user?u=4886291)
 
 
-## Supporters
-* 绵绵: CNY 10.00
-* tolves&jiamin: CNY 40.00
-* DrayChou: CNY 2.33
-* Fwolf: CNY 6.60
-* 毒薬: CNY 8.88
-* gloomy-ghost: CNY 10.00
-* zong meng: CNY 10.00
-* MinWei: CNY 100.00
-* Anonymous EFB User: CNY 50.00
-* gloomy-ghost: CNY 10.00
-* Anonymous EFB User: CNY 10.00
-* zangev5: CNY 6.66
-* Anonymous EFB User: CNY 25.00
-* W: CNY 16.66
-* dozilla: AUD 2.33
-* AkiraAvA: CNY 66.60
-* Soyer: CNY 7.00
-* 小朝: CNY 6.66
-* Jack: CNY 50.00
+## [Supporters](https://github.com/blueset/ehForwarderBot/wiki/EFB-Supporters)
