@@ -252,7 +252,8 @@ class WeChatChannel(EFBChannel):
             if not r:
                 self.logger.debug("get_uid, return False")
                 return False
-            data = {"nickname": r[0]['NickName'], "alias": r[0]["RemarkName"], "uin": r[0]["Uin"]}
+            data = {"nickname": r[0].get("NickName", ""), "alias": r[0].get("RemarkName", ""),
+                    "uin": r[0].get("Uin", "")}
         return self.encode_uid(data)
 
     def encode_uid(self, data):

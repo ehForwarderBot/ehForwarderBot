@@ -273,6 +273,7 @@ class DM(object):
         else:
             raise NameError("Daemon is not running.")
 
+
 def help():
     print("EFB Daemon Process\n"
           "Usage: %s {start|stop|restart|status|transcript|help} [args_to_EFB]\n\n" % sys.argv[0] +
@@ -314,7 +315,7 @@ def main():
         dm.run(cmdline=" ".join((sys.executable + " main.py", efb_args)),
                name=instance_name,
                logfile=transcript_path)
-        transcript(transcript_path, True)
+        transcript(transcript_path, False)
     elif sys.argv[1] == "stop":
         dm.kill(name=instance_name, quiet=True, sigkill=True)
     elif sys.argv[1] == "status":
@@ -330,7 +331,7 @@ def main():
             dm.run(cmdline=" ".join((sys.executable + " main.py", efb_args)),
                    name=instance_name,
                    logfile=transcript_path)
-        transcript(transcript_path, True)
+        transcript(transcript_path, False)
     elif sys.argv[1] == "transcript":
         transcript(transcript_path)
     else:
