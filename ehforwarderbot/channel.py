@@ -14,9 +14,8 @@ class EFBChannel:
         channel_id (str): Unique ID of the channel.
             Recommended format: ``"{author}_{name}_{type}"``, 
             e.g. ``"eh_telegram_master"``.
-        channel_type (:obj:`ehforwarderbot`): Type of the channel.
-        queue (queue.Queue): Global message queue.
-        mutex (threading.Lock): Global interaction thread lock.
+        channel_type (:obj:`ehforwarderbot.constants.ChannelType`): Type of the channel.
+        coordinator (:obj:`ehforwarderbot.EFBCoordinator`): Channel coordinator.
     """
     __metaclass__ = ABCMeta
 
@@ -24,23 +23,18 @@ class EFBChannel:
     channel_emoji = "?"
     channel_id = "emptyChannel"
     channel_type = ChannelType.Slave
-    queue = None
+    coordinator = None
     supported_message_types = set()
     stop_polling = False
 
-    def __init__(self, queue, mutex, slaves=None):
+    def __init__(self, shared_data):
         """
         Initialize a channel.
 
         Args:
-            queue (queue.Queue): Global message queue.
-            mutex (threading.Lock): Global interaction thread lock.
-            slaves (`obj`:dict:, optional): List of slave channels. Only
-                offered to master channel.
+            shared_data (:obj:`ehforwarderbot.EFBCoordinator`): Shared data.
         """
-        self.queue = queue
-        self.mutex = mutex
-        self.slaves = slaves
+        self.coordinator = shared_data
 
     def get_extra_functions(self):
         """Get a list of extra functions
@@ -61,7 +55,7 @@ class EFBChannel:
     @abstractmethod
     def send_message(self, msg):
         """
-        Send message to slave channels.
+        Send a message to the channel
 
         Args:
             msg (:obj:`ehforwarderbot.EFBMsg`): Message object to be sent.
@@ -84,7 +78,10 @@ class EFBChannel:
         Return a list of available chats in the channel.
 
         Returns:
-            list[:obj:`ehforwarderbot.EFBChat`]: a list of available chats in the channel.
+            list of :obj:`ehforwarderbot.EFBChat`: a list of available chats in the channel.
+        
+        Note:
+            This is not required by Master Channels
         """
         raise NotImplementedError()
 
@@ -105,5 +102,56 @@ class EFBChannel:
             KeyError: Chat is not found in the channel.
             ValueError: ``member_uid`` is provided but chat indicated is
                 not a group.
+        
+        Note:
+            This is not required by Master Channels
+        """
+        raise NotImplementedError()
+
+    @abstractmethod
+    def send_status(self, status):
+        """
+        Return the standard chat dict of the selected chat.
+
+        Args:
+            status (:obj:`ehforwarderbot.EFBStatus`): the status
+
+        Note:
+            This is not required by Slave Channels
+        """
+        raise NotImplementedError()
+
+    @abstractmethod
+    def get_chat_picture(self, chat):
+        """
+        Get the profile picture of a chat.
+        
+        Args:
+            chat (EFBChat): Chat to get picture from.
+
+        Returns:
+            tempfile.NamedTemporaryFile: Opened temporary file object.
+                The object must have appropriate suffix that correspond to 
+                the format of picture sent, and seek to position 0.
+        
+        Raises:
+            ValueError: the chat is not found in the channel.
+            
+        Examples:
+            .. code:: Python
+            
+                if chat.channel_uid != self.channel_uid:
+                    raise ValueError("Incorrect channel")
+                file = tempfile.NamedTemporaryFile(suffix=".png")
+                response = requests.post("https://api.example.com/get_profile_picture/png",
+                                         data={"uid": chat.chat_uid})
+                if response.status_code == 404:
+                    raise ValueError("Chat not found")
+                file.write(response.content)
+                file.seek(0)
+                return file
+                
+        Note:
+            This is not required by Master Channels
         """
         raise NotImplementedError()

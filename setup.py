@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup
 
 __version__ = ""
 exec(open('ehforwarderbot/__version__.py').read())
@@ -24,4 +24,7 @@ setup(
         "Topic :: Software Development :: Libraries :: Application Frameworks",
         "Topic :: Utilities"
     ],
+    install_requires=[
+        "PyYaml"
+    ]
 )

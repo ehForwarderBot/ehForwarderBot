@@ -12,3 +12,7 @@ class EFBMessageTypeNotSupported(Exception):
 
 class EFBMessageError(Exception):
     pass
+
+
+class EFBChannelNotFound(Exception):
+    pass

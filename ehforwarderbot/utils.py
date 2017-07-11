@@ -77,26 +77,26 @@ def get_base_path():
     return base_path
 
 
-def get_data_path(channel):
+def get_data_path(channel_id, profile='default'):
     """
     Get the path for channel data.
     
     This method creates the queried path if not existing.
     
     Args:
-        channel (str): Channel ID
+        channel_id (str): Channel ID
+        profile (str, optional): Profile name. Default: ``'default'``
 
     Returns:
         str: The data path of selected channel.
     """
     base_path = get_base_path()
-    profile = get_current_profile()
-    data_path = os.path.join(base_path, profile, channel, "")
+    data_path = os.path.join(base_path, profile, channel_id, "")
     os.makedirs(data_path, exist_ok=True)
     return data_path
 
 
-def get_config_path(channel=None, ext="yaml"):
+def get_config_path(channel_id=None, ext='yaml', profile='default'):
     """
     Get path for configuration file. Defaulted to
     ``~/.ehforwarderbot/profiles/profile_name/channel_id/config.yaml``.
@@ -105,24 +105,24 @@ def get_config_path(channel=None, ext="yaml"):
     not be created, however.
     
     Args:
-        channel (str): Channel ID.
+        channel_id (str): Channel ID.
         ext (:obj:`str`, optional): Extension name of the config file.
             Defaulted to ``"yaml"``.
+        profile (str, optional): Profile name. Default: ``'default'``
 
     Returns:
         str: The path to the configuration file.
     """
     base_path = get_base_path()
-    profile = get_current_profile()
-    if channel:
-        config_path = get_data_path(channel)
+    if channel_id:
+        config_path = get_data_path(channel_id)
     else:
         config_path = os.path.join(base_path, profile)
     os.makedirs(config_path, exist_ok=True)
     return os.path.join(config_path, "config.%s" % ext)
 
 
-def get_cache_path(channel):
+def get_cache_path(channel, profile='default'):
     """
     Get path for the channel cache directory. Defaulted to
     ``~/.ehforwarderbot/.cache/profile_name/channel_id``.
@@ -135,12 +135,12 @@ def get_cache_path(channel):
     
     Args:
         channel (str): Channel ID.
+        profile (str, optional): Profile name. Default: ``'default'``
 
     Returns:
         str: Cache path.
     """
     base_path = os.environ.get("EFB_CACHE_PATH", None)
-    profile = get_current_profile()
     if base_path:
         base_path = os.path.join(base_path, getpass.getuser(), profile, channel, "")
     else:
@@ -148,16 +148,6 @@ def get_cache_path(channel):
             os.path.join(os.path.expanduser("~/.ehforwarderbot/.cache/"), profile, channel, ""))
     os.makedirs(base_path, exist_ok=True)
     return base_path
-
-
-def get_current_profile():
-    """
-    Get the name of current profile.
-    
-    Returns:
-        str: Profile name.
-    """
-    return os.environ.get("EFB_PROFILE", "default")
 
 
 def get_custom_channel_path():

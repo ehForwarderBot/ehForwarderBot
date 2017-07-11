@@ -51,11 +51,9 @@ class EFBMsg:
         file (file): File object to multimedia file, type "ra". ``None`` if N/A
         mime (str): MIME type of the file. ``None`` if N/A
         filename (str): File name of the multimedia file. ``None`` if N/A
+        edit (bool): Flag this up if the message is edited.
 
     """
-    channel_name = "Empty Channel"
-    channel_emoji = "?"
-    channel_id = "emptyChannel"
     source = ChatType.User
     type = MsgType.Text
     member = None
@@ -71,21 +69,6 @@ class EFBMsg:
     filename = None
     attributes = None
     is_system = False
-
-    def __init__(self, channel=None):
-        """
-        Initialize an EFB message.
-
-        Args:
-            channel (:obj:`ehforwarderbot.EFBChannel`, optional):
-                Sender channel used to initialize the message.
-                This will set the ``channel_name``, ``channel_emoji``, and
-                ``channel_id`` for the message object.
-        """
-        if isinstance(channel, EFBChannel):
-            self.channel_name = channel.channel_name
-            self.channel_emoji = channel.channel_emoji
-            self.channel_id = channel.channel_id
 
 
 class EFBMsgAttribute:
@@ -130,7 +113,7 @@ class EFBMsgLocationAttribute(EFBMsgAttribute):
 
     Attributes:
         latitude (float): Latitude of the location.
-        longitude (float): Longitude of the locaiton.
+        longitude (float): Longitude of the location.
     """
     latitude = 0
     longitude = 0
@@ -139,7 +122,7 @@ class EFBMsgLocationAttribute(EFBMsgAttribute):
         """
         Args:
             latitude (float): Latitude of the location.
-            longitude (float): Longitude of the locaitonself.
+            longitude (float): Longitude of the location.
         """
         self.latitude = latitude
         self.longitude = longitude

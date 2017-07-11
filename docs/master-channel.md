@@ -40,7 +40,7 @@ When messages are dequeued from the global message queue, it should be processed
 ```python
 while True:
     msg = self.queue.get()
-    self.process_msg(msg)
+    self.send_message(msg)
     self.queue.task_done()
 ```
 
