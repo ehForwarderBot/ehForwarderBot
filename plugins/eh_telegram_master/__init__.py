@@ -1606,7 +1606,7 @@ class TelegramChannel(EFBChannel):
                 update.message.reply_text("This message is not processed due to poor internet environment "
                                           "of the server.\n"
                                           "<code>%s</code>" % html.escape(str(error)), quote=True, parse_mode="HTML")
-            if self.timeout_count % 10 == 0:
+            if self.timeout_count % 10 == 0 && self._flag("timeout_notice", True):
                 bot.send_message(getattr(config, self.channel_id)['admins'][0],
                                  "<b>EFB Telegram Master channel</b>\n"
                                  "You may have a poor internet connection on your server. "
