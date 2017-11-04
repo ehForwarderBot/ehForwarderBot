@@ -1,5 +1,8 @@
+from abc import ABC, abstractmethod
+from typing import IO, Dict, Optional, List, Any, Tuple
+
 from .constants import *
-from .channel import EFBChannel
+from .chat import EFBChat
 
 __all__ = ["EFBMsg"]
 
@@ -16,8 +19,7 @@ class EFBMsg:
             - Link: :obj:`ehforwarderbot.EFBMsgLinkAttribute`
             - Location: :obj:`ehforwarderbot.EFBMsgLocationAttribute`
             - Command: :obj:`ehforwarderbot.EFBMsgLocationAttribute`
-            - Status:
-                - Typing/Sending/etc.: :obj:`ehforwarderbot.EFBMsgTypingAttribute`
+            - Status: Typing/Sending files/etc.: :obj:`EFBMsgStatusAttribute`
 
             Note:
                 Do NOT use object the abstract class
@@ -29,7 +31,7 @@ class EFBMsg:
         channel_name (str): Name of the source channel
         destination (:obj:`ehforwarderbot.EFBChat`): Destination (may be a user or a group)
         is_system (bool): Indicate if this message is a system message.
-        member (:obj:`ehforwarderbot.EFBMember`, optional): Author of this msg in a group.
+        member (:obj:`ehforwarderbot.EFBChat`, optional): Author of this msg in a group.
             ``None`` for private messages.
         origin (:obj:`ehforwarderbot.EFBChat`): Sender of the message
         target (instance of :obj:`EFBMsgTarget`, optional):
@@ -52,28 +54,33 @@ class EFBMsg:
         mime (str): MIME type of the file. ``None`` if N/A
         filename (str): File name of the multimedia file. ``None`` if N/A
         edit (bool): Flag this up if the message is edited.
+        vendor_specific (dict): A series of vendor specific attributes attached
 
     """
-    source = ChatType.User
-    type = MsgType.Text
-    member = None
-    origin = None
-    destination = None
-    target = None
-    uid = None
-    text = ""
-    url = None
-    path = None
-    file = None
-    mime = None
-    filename = None
-    attributes = None
-    is_system = False
-
-
-class EFBMsgAttribute:
     def __init__(self):
-        raise TypeError("Do not use the abstract class EFBMsgAttribute")
+        self.source: ChatType = ChatType.User
+        self.type: MsgType = MsgType.Text
+        self.member: Optional[EFBChat] = None
+        self.origin: EFBChat = None
+        self.destination: EFBChat = None
+        self.target: Optional[EFBMsgTarget] = None
+        self.uid: Optional[str] = None
+        self.text: str = ""
+        self.url: Optional[str] = None
+        self.path: Optional[str] = None
+        self.file: Optional[IO[bytes]] = None
+        self.mime: Optional[str] = None
+        self.filename: Optional[str] = None
+        self.attributes: Optional[EFBMsgAttribute] = None
+        self.is_system: bool = False
+        self.edit: bool = False
+        self.vendor_specific: Dict[str, Any] = dict()
+
+
+class EFBMsgAttribute(ABC):
+    @abstractmethod
+    def __init__(self):
+        raise NotImplementedError("Do not use the abstract class EFBMsgAttribute")
 
 
 class EFBMsgLinkAttribute(EFBMsgAttribute):
@@ -86,12 +93,13 @@ class EFBMsgLinkAttribute(EFBMsgAttribute):
         image (str, optional): Image/thumbnail URL of the link.
         url (str): URL of the link.
     """
-    title = ""
-    description = None
-    image = None
-    url = ""
+    title: str = ""
+    description: Optional[str] = None
+    image: Optional[str] = None
+    url: str = ""
 
-    def __init__(self, title=None, description=None, image=None, url=None):
+    def __init__(self, title: str = None, description: Optional[str] = None,
+                 image: Optional[str] = None, url: str = None):
         """
         Args:
             title (str): Title of the link.
@@ -115,10 +123,10 @@ class EFBMsgLocationAttribute(EFBMsgAttribute):
         latitude (float): Latitude of the location.
         longitude (float): Longitude of the location.
     """
-    latitude = 0
-    longitude = 0
+    latitude: float = 0
+    longitude: float = 0
 
-    def __init__(self, latitude, longitude):
+    def __init__(self, latitude: float, longitude: float):
         """
         Args:
             latitude (float): Latitude of the location.
@@ -126,6 +134,48 @@ class EFBMsgLocationAttribute(EFBMsgAttribute):
         """
         self.latitude = latitude
         self.longitude = longitude
+
+
+class EFBMsgCommand:
+    """
+    EFB command message command.
+
+    Attributes:
+        name (str): Human-friendly name of the command.
+        callable (str): Callable name of the command.
+        args (list): Arguments passed to the function.
+        kwargs (dict of str: anything): Keyword arguments passed to the function.
+    """
+    name: str = ""
+    callable: str = ""
+    args: List[Any] = []
+    kwargs: Dict[str, Any] = {}
+
+    def __init__(self, name: str, callable_name: str, args: List[Any]=None, kwargs: Dict[str, Any]=None):
+        """
+        Args:
+            name (str): Human-friendly name of the command.
+            callable_name (str): Callable name of the command.
+            args (list, optional): Arguments passed to the function. Defaulted to empty list;
+            kwargs (dict of str: anything, optional): Keyword arguments passed to the function.
+                Defaulted to empty dict.
+        """
+        if args is None:
+            args = list()
+        if kwargs is None:
+            kwargs = dict()
+        if not isinstance(name, str):
+            raise TypeError("name must be a string.")
+        if not isinstance(callable_name, str):
+            raise TypeError("callable must be a string.")
+        if not isinstance(args, list):
+            raise TypeError("args must be a list.")
+        if not isinstance(kwargs, dict):
+            raise TypeError("kwargs must be a dict.")
+        self.name = name
+        self.callable = callable
+        self.args = args.copy()
+        self.kwargs = kwargs.copy()
 
 
 class EFBMsgCommandAttribute(EFBMsgAttribute):
@@ -138,65 +188,52 @@ class EFBMsgCommandAttribute(EFBMsgAttribute):
         commands (list of :obj:`EFBMsgCommand`): Commands for the message.
     """
 
-    commands = []
+    commands: List[EFBMsgCommand] = []
 
-    def __init__(self, commands):
+    def __init__(self, commands: List[EFBMsgCommand]):
         """
         Args:
             commands (list of :obj:`EFBMsgCommand`): Commands for the message.
         """
-        if not (isinstance(commands, list) and len(commands) > 0 and all(isinstance(i, EFBMsgCommand) for i in commands)):
-            raise ValueError("There must be one or more commands, all of them must be in type EFBMsgCommand.")
+        if not (isinstance(commands, list) and len(commands) > 0 and all(
+                isinstance(i, EFBMsgCommand) for i in commands)):
+            raise ValueError("There must be one or more commands, "
+                             "and all of them must be in type EFBMsgCommand.")
         self.commands = commands.copy()
 
 
-class EFBMsgTypingAttribute(EFBMsgAttribute):
-
-    def __init__(self, type):
-        self.type = type
-
-
-class EFBMsgCommand:
+class EFBMsgStatusAttribute(EFBMsgAttribute):
     """
-    EFB command message command.
+    EFB Message status attribute.
+    Message with type ``Status`` notifies the other end to update a chat-specific
+    status, such as typing, send files, etc.
 
     Attributes:
-        name (str): Human-friendly name of the command.
-        callable (str): Callable name of the command.
-        args (list): Arguments passed to the funciton.
-        kwargs (dict of str: anything): Keyword arguments passed to the function.
+        status_type: Type of status, possible values are defined in the
+            ``EFBMsgStatusAttribute``.
+
+    Constants:
+        TYPING: Used in ``status_type``, represent the status of typing.
+        UPLOADING_FILE: Used in ``status_type``, represent the status of uploading file.
+        UPLOADING_IMAGE: Used in ``status_type``, represent the status of uploading image.
+        UPLOADING_AUDIO: Used in ``status_type``, represent the status of uploading audio.
+        UPLOADING_VIDEO: Used in ``status_type``, represent the status of uploading video.
+
     """
-    name = ""
-    callable = ""
-    args = []
-    kwargs = {}
+    TYPING = "TYPING"
+    UPLOADING_FILE = "UPLOADING_FILE"
+    UPLOADING_IMAGE = "UPLOADING_IMAGE"
+    UPLOADING_AUDIO = "UPLOADING_AUDIO"
+    UPLOADING_VIDEO = "UPLOADING_VIDEO"
 
-    def __init__(self, name, callable, args=[], kwargs={}):
-        """
-        Args:
-            name (str): Human-frindly name of the command.
-            callable (str): Callable name of the command.
-            args (list, optional): Arguments passed to the funciton. Defaulted to empty list;
-            kwargs (dict of str: anything, optional): Keyword arguments passed to the function.
-                Defaulted to empty dict.
-        """
-        if not isinstance(name, str):
-            raise TypeError("name must be a string.")
-        if not isinstance(callable, str):
-            raise TypeError("callable must be a string.")
-        if not isinstance(args, list):
-            raise TypeError("args must be a list.")
-        if not isinstance(kwargs, dict):
-            raise TypeError("kwargs must be a dict.")
-        self.name = name
-        self.callable = callable
-        self.args = args.copy()
-        self.kwargs = kwargs.copy()
+    def __init__(self, status_type):
+        self.status_type = status_type
 
 
-class EFBMsgTarget:
+class EFBMsgTarget(ABC):
+    @abstractmethod
     def __init__(self):
-        raise TypeError("Do not use the abstract class EFBMsgTarget")
+        raise NotImplementedError("Do not use the abstract class EFBMsgTarget")
 
 
 class EFBMsgTargetMessage(EFBMsgTarget):
@@ -221,9 +258,9 @@ class EFBMsgTargetMessage(EFBMsgTarget):
                 - ``type``
                 - ``uid``
     """
-    message = None
+    message: EFBMsg = None
 
-    def __init__(self, message):
+    def __init__(self, message: EFBMsg):
         self.message = message
 
 
@@ -231,8 +268,8 @@ class EFBMsgTargetSubstitution(EFBMsgTarget):
     """
     EFB message target - Substitution.
 
-    This is for the case when user "@-ed" a list of users in the message.
-    substitutions here is a dict of correspondence between
+    This is for the case when user "@-referred" a list of users in the message.
+    Substitutions here is a dict of correspondence between
     the string used to refer to the user in the message
     and a user dict.
 
@@ -252,16 +289,20 @@ class EFBMsgTargetSubstitution(EFBMsgTarget):
             group. Notice that the :obj:`EFBChat` object here must NOT be a
             group.
     """
-    substitutions = None
+    substitutions: Dict[Tuple[int, int], EFBChat] = None
 
-    def __init__(self, substitutions):
+    def __init__(self, substitutions: Dict[Tuple[int, int], EFBChat]):
         if not isinstance(substitutions, dict):
             raise TypeError("Substitutions must be a dict.")
         for i in substitutions:
+            if not isinstance(i, tuple) or not len(i) == 2 or not isinstance(i[0], int) or not isinstance(i[1], int)\
+                    or not i[0] < i[1]:
+                raise TypeError("Substitution %s's index must be a tuple of 2 integers where the first one is less"
+                                "than the second one." % i)
             if not isinstance(substitutions[i], EFBMsg):
                 raise TypeError("Substitution %s is not a message object."
                                 % i)
             if substitutions[i].is_chat and \
-               substitutions[i].chat_type == ChatType.Group:
-                raise ValueError("Substitution %s is a chat." % i)
+                    substitutions[i].chat_type == ChatType.Group:
+                raise ValueError("Substitution %s is not a user." % i)
         self.substitutions = substitutions

@@ -1,7 +1,10 @@
+from abc import abstractmethod, ABC
+
 __all__ = ["EFBChatUpdates", "EFBMemberUpdates"]
 
 
-class EFBStatus:
+class EFBStatus(ABC):
+    @abstractmethod
     def __init__(self):
         raise Exception("Do not use EFBStatus directly.")
 

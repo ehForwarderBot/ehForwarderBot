@@ -1,3 +1,4 @@
+from typing import List
 from .channel import EFBChannel
 from .constants import ChatType
 
@@ -5,8 +6,6 @@ from .constants import ChatType
 class EFBChat:
     """
     EFB Chat object. This is used to represent a chat or a group member.
-
-    TODO: Support profile pictures.
 
     Attributes:
         channel_id (str): Unique ID of the channel.
@@ -25,18 +24,6 @@ class EFBChat:
             object and implement a ``@property`` method set for loading chats on
             demand.
     """
-    channel_id = None
-    channel_emoji = None
-    channel_name = None
-    chat_name = None
-    chat_type = None
-    chat_alias = None
-    chat_uid = None
-    is_chat = True
-
-    members = []
-
-    chat = None
 
     def __init__(self, channel=None):
         """
@@ -46,11 +33,19 @@ class EFBChat:
                 ``channel_emoji``, and ``channel_id`` automatically.
         """
         if isinstance(channel, EFBChannel):
-            self.channel_name = channel.channel_name
-            self.channel_emoji = channel.channel_emoji
-            self.channel_id = channel.channel_id
+            self.channel_name: str = channel.channel_name
+            self.channel_emoji: str = channel.channel_emoji
+            self.channel_id: str = channel.channel_id
 
-    def self(self):
+        self.chat_name: str = None
+        self.chat_type: ChatType = None
+        self.chat_alias: str = None
+        self.chat_uid: str = None
+        self.is_chat: bool = True
+        self.members: List[EFBChat] = []
+        self.chat: EFBChat = None
+
+    def self(self) -> 'EFBChat':
         """
         Set the chat as yourself.
         In this context, "yourself" means the user behind the master channel.
@@ -65,7 +60,7 @@ class EFBChat:
         self.chat_type = ChatType.User
         return self
 
-    def system(self):
+    def system(self) -> 'EFBChat':
         """
         Set the chat as a system chat.
         Only set for channel-level and group-level system chats.
@@ -80,12 +75,9 @@ class EFBChat:
         return self
 
     @property
-    def is_self(self):
-        """
-        bool: 
-        """
+    def is_self(self) -> bool:
         return self.chat_uid == "__self__"
 
     @property
-    def is_system(self):
+    def is_system(self) -> bool:
         return self.chat_uid == "__system__"

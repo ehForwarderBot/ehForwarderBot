@@ -1,6 +1,9 @@
 import getpass
+import logging
 import os
+from typing import Callable
 from .constants import ChatType
+from . import coordinator
 
 
 class Emoji:
@@ -11,7 +14,7 @@ class Emoji:
     LINK_EMOJI = "🔗"
 
     @staticmethod
-    def get_source_emoji(t):
+    def get_source_emoji(t: ChatType) -> str:
         """
         Get the Emoji for the corresponding chat type.
         
@@ -31,7 +34,29 @@ class Emoji:
             return Emoji.UNKNOWN_EMOJI
 
 
-def extra(name, desc):
+class Logging:
+    @staticmethod
+    def critical(name: str, *args, **kwargs):
+        logging.getLogger(name).critical(*args, **kwargs)
+
+    @staticmethod
+    def error(name: str, *args, **kwargs):
+        logging.getLogger(name).error(*args, **kwargs)
+
+    @staticmethod
+    def warning(name: str, *args, **kwargs):
+        logging.getLogger(name).warning(*args, **kwargs)
+
+    @staticmethod
+    def info(name: str, *args, **kwargs):
+        logging.getLogger(name).info(*args, **kwargs)
+
+    @staticmethod
+    def debug(name: str, *args, **kwargs):
+        logging.getLogger(name).debug(*args, **kwargs)
+
+
+def extra(name: str, desc: str) -> Callable:
     """
     Decorator for slave channel's "extra functions" interface.
     
@@ -54,7 +79,7 @@ def extra(name, desc):
     return attr_dec
 
 
-def get_base_path():
+def get_base_path() -> str:
     """
     Get the base data path for EFB. This is defined by the environment
     variable ``EFB_DATA_PATH``.
@@ -77,7 +102,7 @@ def get_base_path():
     return base_path
 
 
-def get_data_path(channel_id, profile='default'):
+def get_data_path(channel_id: str):
     """
     Get the path for channel data.
     
@@ -85,18 +110,18 @@ def get_data_path(channel_id, profile='default'):
     
     Args:
         channel_id (str): Channel ID
-        profile (str, optional): Profile name. Default: ``'default'``
 
     Returns:
         str: The data path of selected channel.
     """
+    profile = coordinator.profile
     base_path = get_base_path()
     data_path = os.path.join(base_path, profile, channel_id, "")
     os.makedirs(data_path, exist_ok=True)
     return data_path
 
 
-def get_config_path(channel_id=None, ext='yaml', profile='default'):
+def get_config_path(channel_id: str=None, ext: str='yaml') -> str:
     """
     Get path for configuration file. Defaulted to
     ``~/.ehforwarderbot/profiles/profile_name/channel_id/config.yaml``.
@@ -108,12 +133,12 @@ def get_config_path(channel_id=None, ext='yaml', profile='default'):
         channel_id (str): Channel ID.
         ext (:obj:`str`, optional): Extension name of the config file.
             Defaulted to ``"yaml"``.
-        profile (str, optional): Profile name. Default: ``'default'``
 
     Returns:
         str: The path to the configuration file.
     """
     base_path = get_base_path()
+    profile = coordinator.profile
     if channel_id:
         config_path = get_data_path(channel_id)
     else:
@@ -122,7 +147,7 @@ def get_config_path(channel_id=None, ext='yaml', profile='default'):
     return os.path.join(config_path, "config.%s" % ext)
 
 
-def get_cache_path(channel, profile='default'):
+def get_cache_path(channel: str) -> str:
     """
     Get path for the channel cache directory. Defaulted to
     ``~/.ehforwarderbot/.cache/profile_name/channel_id``.
@@ -135,11 +160,11 @@ def get_cache_path(channel, profile='default'):
     
     Args:
         channel (str): Channel ID.
-        profile (str, optional): Profile name. Default: ``'default'``
 
     Returns:
         str: Cache path.
     """
+    profile = coordinator.profile
     base_path = os.environ.get("EFB_CACHE_PATH", None)
     if base_path:
         base_path = os.path.join(base_path, getpass.getuser(), profile, channel, "")
@@ -150,7 +175,7 @@ def get_cache_path(channel, profile='default'):
     return base_path
 
 
-def get_custom_channel_path():
+def get_custom_channel_path() -> str:
     """
     Get the path for custom channels
 

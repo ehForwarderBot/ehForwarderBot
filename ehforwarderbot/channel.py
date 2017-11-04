@@ -1,42 +1,39 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
+from tempfile import NamedTemporaryFile
+from typing import Optional, Dict, List, Set, Callable
+
+from .message import EFBMsg
 from .constants import *
+from .status import EFBStatus
+from .chat import EFBChat
 
 __all__ = ["EFBChannel"]
 
 
-class EFBChannel:
+class EFBChannel(ABC):
     """
     The abstract channel class.
     
-    Attributes:
+    Class Attributes:
         channel_name (str): Name of the channel.
         channel_emoji (str): Emoji icon of the channel.
         channel_id (str): Unique ID of the channel.
-            Recommended format: ``"{author}_{name}_{type}"``, 
-            e.g. ``"eh_telegram_master"``.
+            Recommended to use the package ``__name__``.,
+            e.g. ``ehforwarderbot.channels.master.blueset.telegram``.
         channel_type (:obj:`ehforwarderbot.constants.ChannelType`): Type of the channel.
-        coordinator (:obj:`ehforwarderbot.EFBCoordinator`): Channel coordinator.
+        supported_message_types (Set[MsgType]): Types of messages that the channel accepts
+            as incoming messages.
     """
-    __metaclass__ = ABCMeta
 
-    channel_name = "Empty Channel"
-    channel_emoji = "?"
-    channel_id = "emptyChannel"
-    channel_type = ChannelType.Slave
-    coordinator = None
-    supported_message_types = set()
-    stop_polling = False
+    channel_name: str = "Empty channel"
+    channel_emoji: str = "�"
+    channel_id: str = __name__
+    channel_type: ChannelType = None
+    supported_message_types: Set[MsgType] = set()
+    stop_polling: bool = False
+    __version__: str = 'undefined version'
 
-    def __init__(self, shared_data):
-        """
-        Initialize a channel.
-
-        Args:
-            shared_data (:obj:`ehforwarderbot.EFBCoordinator`): Shared data.
-        """
-        self.coordinator = shared_data
-
-    def get_extra_functions(self):
+    def get_extra_functions(self) -> Dict[str, Callable]:
         """Get a list of extra functions
 
         Returns:
@@ -53,7 +50,7 @@ class EFBChannel:
         return methods
 
     @abstractmethod
-    def send_message(self, msg):
+    def send_message(self, msg: EFBMsg) -> EFBMsg:
         """
         Send a message to the channel
 
@@ -73,7 +70,7 @@ class EFBChannel:
         raise NotImplementedError()
 
     @abstractmethod
-    def get_chats(self):
+    def get_chats(self) -> List[EFBChat]:
         """
         Return a list of available chats in the channel.
 
@@ -86,7 +83,7 @@ class EFBChannel:
         raise NotImplementedError()
 
     @abstractmethod
-    def get_chat(self, chat_uid, member_uid=None):
+    def get_chat(self, chat_uid: str, member_uid: Optional[str] = None) -> EFBChat:
         """
         Return the standard chat dict of the selected chat.
         
@@ -109,7 +106,7 @@ class EFBChannel:
         raise NotImplementedError()
 
     @abstractmethod
-    def send_status(self, status):
+    def send_status(self, status: EFBStatus):
         """
         Return the standard chat dict of the selected chat.
 
@@ -117,12 +114,12 @@ class EFBChannel:
             status (:obj:`ehforwarderbot.EFBStatus`): the status
 
         Note:
-            This is not required by Slave Channels
+            This is not applicable to Slave Channels
         """
         raise NotImplementedError()
 
     @abstractmethod
-    def get_chat_picture(self, chat):
+    def get_chat_picture(self, chat: EFBChat) -> NamedTemporaryFile:
         """
         Get the profile picture of a chat.
         
