@@ -37,5 +37,6 @@ eh_telegram_master = {
         "app_id": 0,
         "api_key": "3243f6a8885a308d313198a2e037073",
         "secret_key": "2b7e151628ae082b7e151628ae08"
-    }
+    },
+    "proxy": ""
 }
