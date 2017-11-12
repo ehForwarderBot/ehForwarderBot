@@ -3,8 +3,7 @@ from typing import IO, Dict, Optional, List, Any, Tuple
 
 from .constants import *
 from .chat import EFBChat
-
-__all__ = ["EFBMsg"]
+from .channel import EFBChannel
 
 
 class EFBMsg:
@@ -75,6 +74,8 @@ class EFBMsg:
         self.is_system: bool = False
         self.edit: bool = False
         self.vendor_specific: Dict[str, Any] = dict()
+
+    # TODO: Add __str__
 
 
 class EFBMsgAttribute(ABC):

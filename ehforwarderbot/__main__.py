@@ -8,6 +8,7 @@ import pydoc
 from . import config, utils
 from .__version__ import __version__
 from .channel import EFBChannel
+from .middleware import EFBMiddleware
 from . import coordinator
 
 if sys.version_info < (3, 5):
@@ -20,16 +21,16 @@ parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible 
 
 
 def stop_gracefully(sig, stack):
-    l = logging.getLogger("ehForwarderBot")
+    logger = logging.getLogger(__name__)
     if isinstance(coordinator.master, EFBChannel):
         coordinator.master.stop_polling = True
-        l.debug("Stop signal sent to master: %s" % coordinator.master.channel_name)
+        logger.debug("Stop signal sent to master: %s" % coordinator.master.channel_name)
         while master_thread.is_alive():
             pass
     for i in coordinator.slaves:
         if isinstance(coordinator.slaves[i], EFBChannel):
             coordinator.slaves[i].stop_polling = True
-            l.debug("Stop signal sent to slave: %s" % coordinator.slaves[i].channel_name)
+            logger.debug("Stop signal sent to slave: %s" % coordinator.slaves[i].channel_name)
             while slave_threads[i].is_alive():
                 pass
     sys.exit(0)
@@ -57,6 +58,8 @@ def init():
     """
     global master_thread, slave_threads
 
+    logger = logging.getLogger(__name__)
+
     # Include custom channels
     custom_channel_path = utils.get_custom_channel_path()
     if custom_channel_path not in sys.path:
@@ -69,19 +72,19 @@ def init():
 
     slaves = {}
     for i in conf['slave_channels']:
-        utils.Logging.critical(__name__, "\x1b[0;37;46m Initializing slave %s... \x1b[0m" % str(i))
+        logger.critical(__name__, "\x1b[0;37;46m Initializing slave %s... \x1b[0m" % str(i))
 
         obj = pydoc.locate(i)
         coordinator.add_channel(obj())
 
-        utils.Logging.critical(__name__, "\x1b[0;37;42m Slave channel %s (%s) initialized. \x1b[0m" % (obj.channel_name, obj.channel_id))
+        logger.critical(__name__, "\x1b[0;37;42m Slave channel %s (%s) initialized. \x1b[0m" % (obj.channel_name, obj.channel_id))
 
-    utils.Logging.critical(__name__, "\x1b[0;37;46m Initializing master %s... \x1b[0m" % str(conf['master_channel']))
+    logger.critical(__name__, "\x1b[0;37;46m Initializing master %s... \x1b[0m" % str(conf['master_channel']))
     coordinator.add_channel(pydoc.locate(conf['master_channel'])())
-    utils.Logging.critical(__name__, "\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m" %
+    logger.critical(__name__, "\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m" %
                (coordinator.master.channel_name, coordinator.master.channel_id))
 
-    utils.Logging.critical(__name__, "\x1b[1;37;42m All channels initialized. \x1b[0m")
+    logger.critical(__name__, "\x1b[1;37;42m All channels initialized. \x1b[0m")
     master_thread = threading.Thread(target=coordinator.master.poll)
     slave_threads = {key: threading.Thread(target=slaves[key].poll) for key in slaves}
 
@@ -120,7 +123,18 @@ if __name__ == '__main__':
             conf = config.load_config()
             # Master channel
             master_channel: EFBChannel = pydoc.locate(conf['master_channel'])
-            versions += "\n\nMaster channel:\n    %s (%s) %s" % (master_channel.channel_name, master_channel.channel_id, master_channel.__version__)
+            versions += "\n\nMaster channel:\n    %s (%s) %s" % \
+                        (master_channel.channel_name, master_channel.channel_id, master_channel.__version__)
+            versions += "\n\nSlave channels:"
+            for i in conf['slave_channel']:
+                slave_channel: EFBChannel = pydoc.locate(i)
+                versions += "\n    %s (%s) %s" % \
+                            (slave_channel.channel_name, slave_channel.channel_id, slave_channel.__version__)
+            versions += "\n\nMiddlewares:"
+            for i in conf['middlewares']:
+                middleware: EFBMiddleware = pydoc.locate(i)
+                versions += "\n    %s (%s) %s" % \
+                            (middleware.middleware_name, middleware.middleware_name, middleware.__version__)
         finally:
             print(versions)
     else:
@@ -128,7 +142,7 @@ if __name__ == '__main__':
             level = logging.DEBUG
         else:
             level = logging.ERROR
-        logging.basicConfig(format='%(asctime)s: %(name)s [%(levelname)s]\n    %(message)s', level=level)
+        logging.basicConfig(format='%(asctime)s [%(levelname)s]: %(name)s (%(module)s.%(funcName)s) \n    %(message)s', level=level)
 
         signal.signal(signal.SIGINT, stop_gracefully)
         signal.signal(signal.SIGTERM, stop_gracefully)

@@ -27,7 +27,7 @@ class EFBChannel(ABC):
 
     channel_name: str = "Empty channel"
     channel_emoji: str = "�"
-    channel_id: str = __name__
+    channel_id: str = "efb_empty_channel"
     channel_type: ChannelType = None
     supported_message_types: Set[MsgType] = set()
     stop_polling: bool = False
@@ -152,3 +152,6 @@ class EFBChannel(ABC):
             This is not required by Master Channels
         """
         raise NotImplementedError()
+
+
+

@@ -1,59 +1,7 @@
 import getpass
-import logging
 import os
 from typing import Callable
-from .constants import ChatType
 from . import coordinator
-
-
-class Emoji:
-    GROUP_EMOJI = "👥"
-    USER_EMOJI = "👤"
-    SYSTEM_EMOJI = "💻"
-    UNKNOWN_EMOJI = "❓"
-    LINK_EMOJI = "🔗"
-
-    @staticmethod
-    def get_source_emoji(t: ChatType) -> str:
-        """
-        Get the Emoji for the corresponding chat type.
-        
-        Args:
-            t (ChatType): The chat type.
-
-        Returns:
-            str: Emoji string.
-        """
-        if t == ChatType.User:
-            return Emoji.USER_EMOJI
-        elif t == ChatType.Group:
-            return Emoji.GROUP_EMOJI
-        elif t == ChatType.System:
-            return Emoji.SYSTEM_EMOJI
-        else:
-            return Emoji.UNKNOWN_EMOJI
-
-
-class Logging:
-    @staticmethod
-    def critical(name: str, *args, **kwargs):
-        logging.getLogger(name).critical(*args, **kwargs)
-
-    @staticmethod
-    def error(name: str, *args, **kwargs):
-        logging.getLogger(name).error(*args, **kwargs)
-
-    @staticmethod
-    def warning(name: str, *args, **kwargs):
-        logging.getLogger(name).warning(*args, **kwargs)
-
-    @staticmethod
-    def info(name: str, *args, **kwargs):
-        logging.getLogger(name).info(*args, **kwargs)
-
-    @staticmethod
-    def debug(name: str, *args, **kwargs):
-        logging.getLogger(name).debug(*args, **kwargs)
 
 
 def extra(name: str, desc: str) -> Callable:

@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict, Any
 from .channel import EFBChannel
 from .constants import ChatType
 
@@ -23,6 +23,7 @@ class EFBChat:
             in the group. Defaulted to an empty ``list``. You may want to extend this
             object and implement a ``@property`` method set for loading chats on
             demand.
+        vendor_specific (Dict[str, Any]): Any vendor specific attributes.
     """
 
     def __init__(self, channel=None):
@@ -44,6 +45,7 @@ class EFBChat:
         self.is_chat: bool = True
         self.members: List[EFBChat] = []
         self.chat: EFBChat = None
+        self.vendor_specific: Dict[str, Any] = dict()
 
     def self(self) -> 'EFBChat':
         """
@@ -81,3 +83,5 @@ class EFBChat:
     @property
     def is_system(self) -> bool:
         return self.chat_uid == "__system__"
+
+    # TODO: Add __str__

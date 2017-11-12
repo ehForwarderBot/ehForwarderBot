@@ -1,4 +1,5 @@
 # coding=utf-8
+
 import telegram
 import telegram.ext
 import telegram.error
@@ -18,12 +19,13 @@ import pydub
 import threading
 import traceback
 import base64
+from typing import Optional
+from moviepy.editor import VideoFileClip
+from ehforwarderbot.channel import EFBChannel, EFBMsg, MsgType, ChatType, TargetType, ChannelType
+from ehforwarderbot.exceptions import EFBChatNotFound, EFBMessageTypeNotSupported, EFBMessageError
 from . import db, speech
 from .whitelisthandler import WhitelistHandler
-from channel import EFBChannel, EFBMsg, MsgType, MsgSource, TargetType, ChannelType
-from channelExceptions import EFBChatNotFound, EFBMessageTypeNotSupported, EFBMessageError
 from .msgType import get_msg_type, TGMsgType
-from moviepy.editor import VideoFileClip
 
 
 class Flags:
@@ -64,6 +66,21 @@ class TelegramChannel(EFBChannel):
         }
     }
     """
+
+    def send_message(self, msg: EFBMsg) -> EFBMsg:
+        pass
+
+    def get_chats(self) -> List[EFBChat]:
+        pass
+
+    def get_chat(self, chat_uid: str, member_uid: Optional[str] = None) -> EFBChat:
+        pass
+
+    def send_status(self, status: EFBStatus):
+        pass
+
+    def get_chat_picture(self, chat: EFBChat) -> NamedTemporaryFile:
+        pass
 
     # Meta Info
     channel_name = "Telegram Master"
@@ -244,13 +261,13 @@ class TelegramChannel(EFBChannel):
             msg_prefix = ""  # For group member name
             tg_chat_assoced = False
 
-            if msg.source != MsgSource.Group:
+            if msg.source != ChatType.Group:
                 msg.member = {"uid": -1, "name": "", "alias": ""}
 
             # Generate chat text template & Decide type target
             tg_dest = getattr(config, self.channel_id)['admins'][0]
             self.logger.debug("%s, process_msg_step_1, tg_dest=%s, msg.origin=%s", xid, tg_dest, str(msg.origin))
-            if msg.source == MsgSource.Group:
+            if msg.source == ChatType.Group:
                 self.logger.debug("msg.member: %s", str(msg.member))
                 msg_prefix = msg.member['name'] if msg.member['name'] == msg.member['alias'] or not msg.member['alias'] \
                     else "%s (%s)" % (msg.member['alias'], msg.member['name'])
@@ -264,17 +281,17 @@ class TelegramChannel(EFBChannel):
                     msg_template = "%s:\n" % (msg_prefix)
                 else:
                     msg_template = ""
-            elif msg.source == MsgSource.User:
+            elif msg.source == ChatType.User:
                 emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
                 name_prefix = msg.origin["name"] if msg.origin["alias"] == msg.origin["name"] or not msg.origin['alias'] \
                     else "%s (%s)" % (msg.origin["alias"], msg.origin["name"])
                 msg_template = "%s %s:\n" % (emoji_prefix, name_prefix)
-            elif msg.source == MsgSource.Group:
+            elif msg.source == ChatType.Group:
                 emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
                 name_prefix = msg.origin["name"] if msg.origin["alias"] == msg.origin["name"] or not msg.origin['alias'] \
                     else "%s (%s)" % (msg.origin["alias"], msg.origin["name"])
                 msg_template = "%s %s [%s]:\n" % (emoji_prefix, msg_prefix, name_prefix)
-            elif msg.source == MsgSource.System:
+            elif msg.source == ChatType.System:
                 emoji_prefix = msg.channel_emoji + utils.Emojis.get_source_emoji(msg.source)
                 name_prefix = msg.origin["name"] if msg.origin["alias"] == msg.origin["name"] or not msg.origin['alias'] \
                     else "%s (%s)" % (msg.origin["alias"], msg.origin["name"])
@@ -295,7 +312,7 @@ class TelegramChannel(EFBChannel):
                             append_last_msg = str(last_msg.slave_origin_uid) == "%s.%s" % (msg.channel_id, msg.origin['uid']) \
                                               and str(last_msg.master_msg_id).startswith(str(tg_dest) + ".") \
                                               and last_msg.sent_to == "master"
-                            if msg.source == MsgSource.Group:
+                            if msg.source == ChatType.Group:
                                 append_last_msg &= str(last_msg.slave_member_uid) == str(msg.member['uid'])
                             append_last_msg &= datetime.datetime.now() - last_msg.time <= datetime.timedelta(
                                 seconds=self._flag('join_msg_threshold_secs', 15))
@@ -444,7 +461,7 @@ class TelegramChannel(EFBChannel):
                 self.bot.bot.send_chat_action(tg_dest, telegram.ChatAction.TYPING)
                 tg_msg = self.bot.bot.send_message(tg_dest, msg_template + "Unsupported incoming message type. (UT01)")
             self.logger.debug("%s, process_msg_step_4", xid)
-            if msg.source in (MsgSource.User, MsgSource.Group):
+            if msg.source in (ChatType.User, ChatType.Group):
                 msg_log = {"master_msg_id": "%s.%s" % (tg_msg.chat.id, tg_msg.message_id),
                            "text": msg.text or "Sent a %s." % msg.type,
                            "msg_type": msg.type,

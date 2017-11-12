@@ -14,17 +14,13 @@ class EFBMiddleware(ABC):
     Attributes:
         middleware_id (str): Unique ID of the middleware
         middleware_name (str): Human-readable name of the middleware.
-        coordinator (EFBCoordinator): The global EFB Coordinator.
     """
-    @abstractmethod
-    def __init__(self):
-        """
-        Initialize a middleware.
-        """
-        self.middleware_id: str = self.__name__
-        self.middleware_name: str = "Dummy Middleware"
+    middleware_id: str = __name__
+    middleware_name: str = "Dummy Middleware"
+    __version__: str = 'undefined version'
 
-    def process_message(self, message: EFBMsg) -> Optional[EFBMsg]:
+    @staticmethod
+    def process_message(message: EFBMsg) -> Optional[EFBMsg]:
         """
         Process a message with middleware
 
@@ -36,7 +32,8 @@ class EFBMiddleware(ABC):
         """
         return message
 
-    def process_status(self, status: EFBStatus) -> Optional[EFBStatus]:
+    @staticmethod
+    def process_status(status: EFBStatus) -> Optional[EFBStatus]:
         """
         Process a status update with middleware
 
