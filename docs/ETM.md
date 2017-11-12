@@ -224,6 +224,8 @@ eh_telegram_master = {
   _Only works in linked chats._
 * `chats_per_page` _(int)_ [Default: `10`]  
   Number of chats shown in when choosing for `/chat` and `/link` command. An overly large value may lead to malfunction of such commands.
+* `timeout_notice` _(int)_ [Default: `10`]  
+  Number of how much timeouts should send notice msg. An overly large value may disable this notice.
 * `text_as_html` _(bool)_ [Default: `False`]  
   Parse all text messages as Telegram HTML. Tags supported: `a`, `b`, `strong`, `i`, `em`, `code`, `pre`.
 * `multiple_slave_chats` _(bool)_  [Default: `True`]  
