@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import Optional
 
 from .message import EFBMsg
@@ -19,8 +19,7 @@ class EFBMiddleware(ABC):
     middleware_name: str = "Dummy Middleware"
     __version__: str = 'undefined version'
 
-    @staticmethod
-    def process_message(message: EFBMsg) -> Optional[EFBMsg]:
+    def process_message(self, message: EFBMsg) -> Optional[EFBMsg]:
         """
         Process a message with middleware
 
@@ -32,8 +31,7 @@ class EFBMiddleware(ABC):
         """
         return message
 
-    @staticmethod
-    def process_status(status: EFBStatus) -> Optional[EFBStatus]:
+    def process_status(self, status: EFBStatus) -> Optional[EFBStatus]:
         """
         Process a status update with middleware
 

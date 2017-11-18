@@ -25,14 +25,9 @@ class EFBMsg:
                 :class:`ehforwarderbot.message.EFBMsgAttribute` for
                 ``attributes``, but object of specific class instead.
 
-        channel_emoji (str): Emoji icon for the source channel
-        channel_id (str): ID for the source channel
-        channel_name (str): Name of the source channel
-        destination (:obj:`ehforwarderbot.EFBChat`): Destination (may be a user or a group)
-        is_system (bool): Indicate if this message is a system message.
-        member (:obj:`ehforwarderbot.EFBChat`, optional): Author of this msg in a group.
-            ``None`` for private messages.
-        origin (:obj:`ehforwarderbot.EFBChat`): Sender of the message
+
+        author (:obj:`ehforwarderbot.EFBChat`): Author of this message.
+        chat (:obj:`ehforwarderbot.EFBChat`): Sender of the message
         target (instance of :obj:`EFBMsgTarget`, optional):
             Target (refers to @ messages and "reply to" messages.)
             Two types of target is available:
@@ -46,25 +41,33 @@ class EFBMsg:
 
         text (str): text of the message
         type (:obj:`ehforwarderbot.MsgType`): Type of message
-        uid (str): Unique ID of message
+        uid (str): Unique ID of message.
+            Usually stores the message ID from slave channel.
+            This ID must be unique among all chats in the same channel.
         url (str): URL of multimedia file/Link share. ``None`` if N/A
         path (str): Local path of multimedia file. ``None`` if N/A
         file (file): File object to multimedia file, type "ra". ``None`` if N/A
+            Recommended to use ``NamedTemporaryFile`` object, the file is recommended to be
+            deleted when closed, if not used otherwise.
+            All file object must be rewind back to 0 (``file.seek(0)``) before sending.
         mime (str): MIME type of the file. ``None`` if N/A
         filename (str): File name of the multimedia file. ``None`` if N/A
         edit (bool): Flag this up if the message is edited.
+            .. Notice::
+                Some channels may not support message editing.
+                Some channels may issue a new uid for edited message.
         vendor_specific (dict): A series of vendor specific attributes attached
+        deliver_to: The channel that the message is to be delivered to
 
     """
     def __init__(self):
-        self.source: ChatType = ChatType.User
         self.type: MsgType = MsgType.Text
-        self.member: Optional[EFBChat] = None
-        self.origin: EFBChat = None
-        self.destination: EFBChat = None
+        self.chat: EFBChat = None
+        self.author: EFBChat = None
+        self.text: str = ""
+        self.deliver_to: EFBChannel = None
         self.target: Optional[EFBMsgTarget] = None
         self.uid: Optional[str] = None
-        self.text: str = ""
         self.url: Optional[str] = None
         self.path: Optional[str] = None
         self.file: Optional[IO[bytes]] = None
@@ -252,9 +255,8 @@ class EFBMsgTargetMessage(EFBMsgTarget):
                 - ``channel_id``
                 - ``channel_name``
                 - ``channel_emoji``
-                - ``origin``
-                - ``destination``
-                - ``member`` (if available)
+                - ``chat``
+                - ``author``
                 - ``text``
                 - ``type``
                 - ``uid``

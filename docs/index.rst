@@ -51,14 +51,6 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-Media coverage
-==============
-
-* `Appinn: Send and Receive messages from WeChat on Telegram <http://www.appinn.com/eh-forwarder-bot/>`_ |br|
-  *(EH Forwarder Bot – 在 Telegram 收发「微信」消息)*
-* `Livc: Telegram — the true definition of IM <https://livc.io/177>`_ |br|
-  *(Telegram——真正定义即时通讯)*
-
 Glossary
 ========
 .. glossary::
@@ -90,6 +82,14 @@ Related articles
 * `Idea: Group Chat Tunneling (Sync) with EH Forwarder Bot <https://blog.1a23.com/2017/01/28/Idea-Group-Chat-Tunneling-Sync-with-EH-Forwarder-Bot/>`_
 * `EFB How-to: Send and Receive Messages from WeChat on Telegram (zh-CN) <https://blog.1a23.com/2017/01/09/EFB-How-to-Send-and-Receive-Messages-from-WeChat-on-Telegram-zh-CN/>`_ (Out-dated) |br|
   *(安装并使用 EFB：在 Telegram 收发微信消息，已过时)*
+
+Media coverage
+==============
+
+* `Appinn: Send and Receive messages from WeChat on Telegram <http://www.appinn.com/eh-forwarder-bot/>`_ |br|
+  *(EH Forwarder Bot – 在 Telegram 收发「微信」消息)*
+* `Livc: Telegram — the true definition of IM <https://livc.io/177>`_ |br|
+  *(Telegram——真正定义即时通讯)*
 
 License
 =======

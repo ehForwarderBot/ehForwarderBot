@@ -1,15 +1,16 @@
 from abc import abstractmethod, ABC
-from typing import Tuple, Optional
+from typing import Tuple, Optional, TYPE_CHECKING
 
-from . import EFBChannel
+if TYPE_CHECKING:
+    from . import EFBChannel, EFBMsg
 
-__all__ = ["EFBChatUpdates", "EFBMemberUpdates"]
+__all__ = ["EFBStatus", "EFBChatUpdates", "EFBMemberUpdates", "EFBMessageRemoval"]
 
 
 class EFBStatus(ABC):
     @abstractmethod
     def __init__(self):
-        raise Exception("Do not use EFBStatus directly.")
+        raise NotImplementedError()
 
 
 class EFBChatUpdates(EFBStatus):
@@ -23,7 +24,7 @@ class EFBChatUpdates(EFBStatus):
         removed_chats: Unique ID of removed chats
         modified_chats: Unique ID of modified chats
     """
-    def __init__(self, channel: EFBChannel, new_chats: Optional[Tuple[str]]=tuple(),
+    def __init__(self, channel: 'EFBChannel', new_chats: Optional[Tuple[str]]=tuple(),
                  removed_chats: Optional[Tuple[str]]=tuple(), modified_chats: Optional[Tuple[str]]=tuple()):
         """
         Args:
@@ -32,7 +33,7 @@ class EFBChatUpdates(EFBStatus):
             removed_chats: Unique ID of removed chats
             modified_chats: Unique ID of modified chats
         """
-        self.channel: EFBChannel = channel
+        self.channel: 'EFBChannel' = channel
         self.channel_id: str = channel.channel_id
         self.new_chats: Tuple[str] = new_chats
         self.removed_chats: Tuple[str] = removed_chats
@@ -52,7 +53,7 @@ class EFBMemberUpdates(EFBStatus):
         modified_members: Unique ID of modified members
     """
 
-    def __init__(self, channel: EFBChannel, chat_id: str,
+    def __init__(self, channel: 'EFBChannel', chat_id: str,
                  new_members: Optional[Tuple[str]]=tuple(), removed_members: Optional[Tuple[str]]=tuple(),
                  modified_members: Optional[Tuple[str]]=tuple()):
         """
@@ -63,7 +64,7 @@ class EFBMemberUpdates(EFBStatus):
             removed_members: Unique ID of removed members
             modified_members: Unique ID of modified members
         """
-        self.channel: EFBChannel = channel
+        self.channel: 'EFBChannel' = channel
         self.channel_id: str = channel.channel_id
         self.chat_id: str = chat_id
         self.new_members: Tuple[str] = new_members
@@ -73,18 +74,36 @@ class EFBMemberUpdates(EFBStatus):
 
 class EFBMessageRemoval(EFBStatus):
     """
-    Inform the master channel to remove a certain message.
+    Inform a channel to remove a certain message.
+
+    This is usually known as "delete from everyone", "delete from recipient",
+    "recall a message", or "revoke a message" as well, depends on the IM.
+
+    Some channels may not support removal of messages, and raises a
+    :obj:`EFBOperationNotSupported` exception.
 
     Attributes:
-        channel: Slave channel issuing the status
-        channel_id: ID of the channel
-        chat_id (str): Unique ID of the chat where the message exists
-        message_id (str): Unique ID of the message to remove,
-            must be identical to the message ID used while sending the message.
+        source_channel: Channel issued the status
+        destination_channel: Channel the status is issued to
+        message: Message to remove.
+            This may not be a complete :obj:`EFBMsg` object.
     """
 
-    def __init__(self, channel: EFBChannel, chat_id: str, message_id: str):
-        self.channel: EFBChannel = channel
-        self.channel_id: str = channel.channel_id
-        self.chat_id: str = chat_id
-        self.message_id: str = message_id
+    def __init__(self, source_channel: 'EFBChannel', destination_channel: 'EFBChannel', message: 'EFBMsg'):
+        """
+        Create a message removal status
+
+        Try to provided as much as you can, if not, provide a minimum information
+        in the channel:
+
+        * Slave channel ID and chat ID (``message.chat.channel_id`` and ``message.chat.chat_uid``)
+        * Message unique ID from the slave channel (``message.uid``)
+
+        Args:
+            source_channel: Channel issued the status
+            destination_channel: Channel the status is issued to
+            message: Message to remove.
+        """
+        self.source_channel: 'EFBChannel' = source_channel
+        self.destination_channel: 'EFBChannel' = destination_channel
+        self.message: 'EFBMsg' = message

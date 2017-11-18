@@ -1,4 +1,5 @@
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
+
 from .channel import EFBChannel
 from .constants import ChatType
 
@@ -17,7 +18,7 @@ class EFBChat:
         chat_uid (str): Unique ID of the chat. This should be unique within the channel.
         is_chat (bool): Indicate if this object represents a chat. Defaulted to ``True``.
             This should be set to ``False`` when used on a group member.
-        chat (:obj:`ehforwarderbot.EFBChat` or None): The parent chat of the member. Only
+        group (:obj:`ehforwarderbot.EFBChat` or None): The parent chat of the member. Only
             available to chat member objects. Defaulted to ``None``.
         members (list of :obj:`ehforwarderbot.EFBChat`): Provide a list of members
             in the group. Defaulted to an empty ``list``. You may want to extend this
@@ -44,7 +45,7 @@ class EFBChat:
         self.chat_uid: str = None
         self.is_chat: bool = True
         self.members: List[EFBChat] = []
-        self.chat: EFBChat = None
+        self.group: Optional[EFBChat] = None
         self.vendor_specific: Dict[str, Any] = dict()
 
     def self(self) -> 'EFBChat':

@@ -11,7 +11,7 @@ Attributes:
 """
 
 import threading
-from typing import List, Dict
+from typing import List, Dict, Optional
 
 from . import EFBMsg
 from .channel import EFBChannel
@@ -25,6 +25,9 @@ mutex: threading.Lock = threading.Lock()
 master: EFBChannel = None
 slaves: Dict[str, EFBChannel] = dict()
 middlewares: List[EFBMiddleware] = list()
+
+master_thread: Optional[threading.Thread] = None
+slave_threads: Dict[str, threading.Thread] = dict()
 
 
 def add_channel(channel: EFBChannel):
@@ -58,7 +61,7 @@ def add_middleware(middleware: EFBMiddleware):
         raise TypeError("Middleware instance is expected")
 
 
-def send_message(msg: EFBMsg):
+def send_message(msg: EFBMsg) -> EFBMsg:
     """
     Deliver a message to the destination channel.
 
@@ -75,10 +78,10 @@ def send_message(msg: EFBMsg):
         if msg is None:
             return
 
-    if msg.destination.channel_id == master.channel_id:
-        master.send_message(msg)
-    elif msg.destination.channel_id in slaves:
-        slaves[msg.destination.channel_id].send_message(msg)
+    if msg.deliver_to.channel_id == master.channel_id:
+        return master.send_message(msg)
+    elif msg.deliver_to.channel_id in slaves:
+        return slaves[msg.deliver_to.channel_id].send_message(msg)
     else:
         raise EFBChannelNotFound(msg)
 

@@ -1,11 +1,12 @@
 from abc import ABC, abstractmethod
-from tempfile import NamedTemporaryFile
-from typing import Optional, Dict, List, Set, Callable
-
-from .message import EFBMsg
+from typing import Optional, Dict, List, Set, Callable, IO, TYPE_CHECKING
 from .constants import *
 from .status import EFBStatus
-from .chat import EFBChat
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .chat import EFBChat
+    from .message import EFBMsg
 
 __all__ = ["EFBChannel"]
 
@@ -50,7 +51,7 @@ class EFBChannel(ABC):
         return methods
 
     @abstractmethod
-    def send_message(self, msg: EFBMsg) -> EFBMsg:
+    def send_message(self, msg: 'EFBMsg') -> 'EFBMsg':
         """
         Send a message to the channel
 
@@ -70,7 +71,7 @@ class EFBChannel(ABC):
         raise NotImplementedError()
 
     @abstractmethod
-    def get_chats(self) -> List[EFBChat]:
+    def get_chats(self) -> List['EFBChat']:
         """
         Return a list of available chats in the channel.
 
@@ -83,7 +84,7 @@ class EFBChannel(ABC):
         raise NotImplementedError()
 
     @abstractmethod
-    def get_chat(self, chat_uid: str, member_uid: Optional[str] = None) -> EFBChat:
+    def get_chat(self, chat_uid: str, member_uid: Optional[str] = None) -> 'EFBChat':
         """
         Return the standard chat dict of the selected chat.
         
@@ -119,7 +120,7 @@ class EFBChannel(ABC):
         raise NotImplementedError()
 
     @abstractmethod
-    def get_chat_picture(self, chat: EFBChat) -> NamedTemporaryFile:
+    def get_chat_picture(self, chat: 'EFBChat') -> IO[bytes]:
         """
         Get the profile picture of a chat.
         

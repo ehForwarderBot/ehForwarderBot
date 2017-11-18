@@ -1,11 +1,1 @@
-moviepy
-peewee
-pydub
-requests
-python_telegram_bot>=5.3
-xmltodict
-Pillow
-python_magic
-itchat>=1.2.24
-python-daemon
-pyqrcode
+pyyaml
