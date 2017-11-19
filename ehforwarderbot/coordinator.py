@@ -103,4 +103,4 @@ def send_status(status: EFBStatus):
         if status is None:
             return
 
-    master.send_status(status)
+    status.destination_channel.send_status(status)

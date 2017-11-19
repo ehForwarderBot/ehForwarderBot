@@ -85,4 +85,7 @@ class EFBChat:
     def is_system(self) -> bool:
         return self.chat_uid == "__system__"
 
+    def __eq__(self, other):
+        return self.channel_id == other.channel_id and self.chat_uid == other.chat_uid
+
     # TODO: Add __str__

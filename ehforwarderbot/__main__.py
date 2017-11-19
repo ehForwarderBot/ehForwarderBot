@@ -98,7 +98,7 @@ def poll():
 
 
 if __name__ == '__main__':
-    parser.add_argument("-v",
+    parser.add_argument("-v", action='store_true',
                         help="Enable verbose mode. (Level: Debug)")
     parser.add_argument("-V", "--version", action='store_true',
                         help="Show version number and exit.")

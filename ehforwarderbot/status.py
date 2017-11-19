@@ -10,6 +10,7 @@ __all__ = ["EFBStatus", "EFBChatUpdates", "EFBMemberUpdates", "EFBMessageRemoval
 class EFBStatus(ABC):
     @abstractmethod
     def __init__(self):
+        self.destination_channel: 'EFBChannel' = None
         raise NotImplementedError()
 
 
@@ -38,6 +39,7 @@ class EFBChatUpdates(EFBStatus):
         self.new_chats: Tuple[str] = new_chats
         self.removed_chats: Tuple[str] = removed_chats
         self.modified_chats: Tuple[str] = modified_chats
+        self.destination_channel: 'EFBChannel' = coordinator.master
 
 
 class EFBMemberUpdates(EFBStatus):
@@ -70,6 +72,7 @@ class EFBMemberUpdates(EFBStatus):
         self.new_members: Tuple[str] = new_members
         self.removed_members: Tuple[str] = removed_members
         self.modified_members: Tuple[str] = modified_members
+        self.destination_channel: 'EFBChannel' = coordinator.master
 
 
 class EFBMessageRemoval(EFBStatus):
