@@ -82,6 +82,12 @@ def wechat_msg_meta(func):
                                     alias=self._wechat_html_unescape(FromUser.get('RemarkName', "")),
                                     Uin=FromUser.get('Uin', None))
             }
+        if msg['Type'] == 'Note':
+            logger.debug("System message. Overriding field")
+            if isGroupChat:
+                mobj.member["name"] = "系统消息"
+            else:
+                mobj.origin["name"] = "系统消息"
         mobj.destination = {
             'name': self._wechat_html_unescape(self.itchat.loginInfo['User']['NickName']),
             'alias': self._wechat_html_unescape(self.itchat.loginInfo['User']['NickName']),

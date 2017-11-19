@@ -1,16 +1,17 @@
-import config
-import queue
-import threading
-import logging
 import argparse
-import sys
+import logging
+import queue
 import signal
+import sys
+import threading
+
+import config
 from channel import EFBChannel
 
 if sys.version_info.major < 3:
     raise Exception("Python 3.x is required. Your version is %s." % sys.version)
 
-__version__ = "1.6.5"
+__version__ = "1.6.6"
 
 parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible chat tunnel framework which allows "
                                              "users to contact people from other chat platforms, and ultimately "
@@ -116,7 +117,9 @@ else:
         level = logging.INFO
     else:
         level = logging.DEBUG
-    logging.basicConfig(format='%(asctime)s: %(name)s [%(levelname)s]\n    %(message)s', level=level)
+    logging.basicConfig(format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d]\n     %(message)s',
+                        datefmt='%d-%m-%Y:%H:%M:%S',
+                        level=level)
     logging.getLogger('requests').setLevel(logging.CRITICAL)
     logging.getLogger('urllib3').setLevel(logging.CRITICAL)
     logging.getLogger('telegram.bot').setLevel(logging.CRITICAL)
