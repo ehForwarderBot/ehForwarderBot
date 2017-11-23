@@ -21,7 +21,7 @@ This is an alpha release of EFB version 2 for preview only.
 Documentation is yet incomplete. Framework API may subject to 
 change.
 
-[Documentation](https://ehforwarderbot.readthedocs.io/en/EFB2/).
+[Documentation](https://ehforwarderbot.readthedocs.io/en/efb2/).
 
 ## Feel like contributing?
 Anyone is welcomed to raise an issue or submit a pull request, 
