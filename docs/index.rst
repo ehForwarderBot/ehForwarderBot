@@ -14,7 +14,7 @@ EH Forwarder Bot
    :alt: Docs\: Stable version
    :target: https://ehforwarderbot.readthedocs.io/en/latest/
 .. image:: https://readthedocs.org/projects/ehforwarderbot/badge/?version=dev
-   :alt: Docs: Development version version
+   :alt: Docs\: Development version version
    :target: https://ehforwarderbot.readthedocs.io/en/dev/
 .. image:: https://img.shields.io/github/tag/blueset/ehforwarderbot.svg
    :alt: tag release
@@ -34,15 +34,20 @@ EH Forwarder Bot
    :alt: Banner
 
 
-*Codename* **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework which allows users to contact people from other chat platforms, and ultimately remotely control their accounts in other platforms.
+*Codename* **EH Forwarder Bot** (EFB) is an extensible
+chat tunnel framework which allows users to contact
+people from other chat platforms, and ultimately remotely
+control their accounts in other platforms.
 
 
 .. toctree::
-   :titlesonly:
+    :titlesonly:
 
-   API/index
-   getting-started
-   directories
+    API/index
+    getting-started
+    directories
+    profile
+    guide/index
 
 Indices and tables
 ==================
@@ -65,7 +70,7 @@ Glossary
         A channel linked to the platform which directly interact with the user.
 
     Plugin
-        See "channel".
+        See ":term:`channel`".
 
     Slave Channel
         A channel linked to the platform which is controlled by the user through EFB framework.
@@ -80,23 +85,13 @@ Related articles
 ================
 
 * `Idea: Group Chat Tunneling (Sync) with EH Forwarder Bot <https://blog.1a23.com/2017/01/28/Idea-Group-Chat-Tunneling-Sync-with-EH-Forwarder-Bot/>`_
-* `EFB How-to: Send and Receive Messages from WeChat on Telegram (zh-CN) <https://blog.1a23.com/2017/01/09/EFB-How-to-Send-and-Receive-Messages-from-WeChat-on-Telegram-zh-CN/>`_ (Out-dated) |br|
-  *(安装并使用 EFB：在 Telegram 收发微信消息，已过时)*
-
-Media coverage
-==============
-
-* `Appinn: Send and Receive messages from WeChat on Telegram <http://www.appinn.com/eh-forwarder-bot/>`_ |br|
-  *(EH Forwarder Bot – 在 Telegram 收发「微信」消息)*
-* `Livc: Telegram — the true definition of IM <https://livc.io/177>`_ |br|
-  *(Telegram——真正定义即时通讯)*
 
 License
 =======
 
 EFB framework is licensed under `GNU General Public License 3.0 <https://www.gnu.org/licenses/gpl-3.0.txt>`_.
 
-.. code-block:: none
+.. code-block:: text
 
     EH Forwarder Bot: An extensible chat tunneling bot framework.
     Copyright (C) 2016 Eana Hufwe

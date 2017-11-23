@@ -35,22 +35,6 @@ def stop_gracefully(sig, stack):
     sys.exit(0)
 
 
-def set_log_file(fn):
-    """
-    Set log file path for root logger
-
-    Args:
-        fn (str): File name
-    """
-    fh = logging.FileHandler(fn, 'a')
-    f = logging.Formatter('%(asctime)s: %(name)s [%(levelname)s]\n    %(message)s')
-    fh.setFormatter(f)
-    l = logging.getLogger()
-    for hdlr in l.handlers[:]:
-        l.removeHandler(hdlr)
-    l.addHandler(fh)
-
-
 def init():
     """
     Initialize all channels.
@@ -102,8 +86,6 @@ if __name__ == '__main__':
                         help="Enable verbose mode. (Level: Debug)")
     parser.add_argument("-V", "--version", action='store_true',
                         help="Show version number and exit.")
-    parser.add_argument("-l", "--log",
-                        help="Set log file path.")
     parser.add_argument("-p", "--profile",
                         help="Choose a profile to start with.")
 
@@ -147,10 +129,6 @@ if __name__ == '__main__':
 
         if args.profile:
             coordinator.profile = str(args.profile)
-
-        if getattr(args, "log", None):
-            LOG = args.log
-            set_log_file(LOG)
 
         init()
         poll()

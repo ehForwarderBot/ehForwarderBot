@@ -4,10 +4,10 @@ Coordinator among channels.
 Attributes:
     profile (str): Name of current profile..
     mutex (threading.Lock): Global interaction thread lock.
-    master (ehforwarderbot.EFBChannel): The running master channel object.
-    slaves (dict[str: ehforwarderbot.EFBChannel]): Dictionary of running slave channel object.
+    master (EFBChannel): The running master channel object.
+    slaves (Dict[str, EFBChannel]): Dictionary of running slave channel object.
         Keys are the unique identifier of the dictionary.
-    middlewares (list[EFBMiddleware]): List of middlewares
+    middlewares (List[EFBMiddleware]): List of middlewares
 """
 
 import threading
@@ -67,6 +67,10 @@ def send_message(msg: EFBMsg) -> EFBMsg:
 
     Args:
         msg (EFBMsg): The message
+
+    Returns:
+        The message sent by the destination channel,
+        includes the updated message ID from there.
     """
     global middlewares, master, slaves
     if msg is None:

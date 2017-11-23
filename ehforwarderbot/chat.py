@@ -14,25 +14,27 @@ class EFBChat:
         channel_name (str): Name of the channel.
         chat_name (str): Name of the chat.
         chat_alias (str): Alternative name of the chat, usually set by user.
-        chat_type (:obj:`ehforwarderbot.ChatType`): Type of the chat.
+        chat_type (:obj:`.ChatType`): Type of the chat.
         chat_uid (str): Unique ID of the chat. This should be unique within the channel.
         is_chat (bool): Indicate if this object represents a chat. Defaulted to ``True``.
             This should be set to ``False`` when used on a group member.
-        group (:obj:`ehforwarderbot.EFBChat` or None): The parent chat of the member. Only
+        group (:obj:`.EFBChat` or None): The parent chat of the member. Only
             available to chat member objects. Defaulted to ``None``.
-        members (list of :obj:`ehforwarderbot.EFBChat`): Provide a list of members
+        members (list of :obj:`.EFBChat`): Provide a list of members
             in the group. Defaulted to an empty ``list``. You may want to extend this
             object and implement a ``@property`` method set for loading chats on
             demand.
         vendor_specific (Dict[str, Any]): Any vendor specific attributes.
+        is_self (bool): Indicate if this chat represents the user.
+        is_system (bool): Indicate if this chat represents a system chat/member.
     """
 
-    def __init__(self, channel=None):
+    def __init__(self, channel: Optional[EFBChannel]=None):
         """
         Args:
-            channel (:obj:`ehforwarderbot.EFBChannel`, optional):
-                Provide the channel object to fill ``channel_name``,
-                ``channel_emoji``, and ``channel_id`` automatically.
+            channel (Optional[:obj:`.EFBChannel`]):
+                Provide the channel object to fill :attr:`channel_name`,
+                :attr:`channel_emoji`, and :attr:`channel_id` automatically.
         """
         if isinstance(channel, EFBChannel):
             self.channel_name: str = channel.channel_name

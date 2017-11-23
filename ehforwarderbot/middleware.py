@@ -24,10 +24,10 @@ class EFBMiddleware(ABC):
         Process a message with middleware
 
         Args:
-            message (EFBMsg): Message object to process
+            message (:obj:`.EFBMsg`): Message object to process
 
         Returns:
-            EFBMsg | None: Processed message or None if stopped.
+            Optional[:obj:`.EFBMsg`]: Processed message or None if stopped.
         """
         return message
 
@@ -36,9 +36,9 @@ class EFBMiddleware(ABC):
         Process a status update with middleware
 
         Args:
-            status (EFBStatus): Message object to process
+            status (:obj:`.EFBStatus`): Message object to process
 
         Returns:
-            EFBMsg | None: Processed status or None if stopped.
+            Optional[:obj:`.EFBStatus`]: Processed status or None if stopped.
         """
         return status

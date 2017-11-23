@@ -10,6 +10,7 @@ class MsgType:
     Unsupported = "Unsupported"
     Command = "Command"
     Delete = "Delete"
+    Status = "Status"
 
 
 class ChatType:

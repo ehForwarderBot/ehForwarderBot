@@ -8,6 +8,14 @@ __all__ = ["EFBStatus", "EFBChatUpdates", "EFBMemberUpdates", "EFBMessageRemoval
 
 
 class EFBStatus(ABC):
+    """
+    Abstract class of a status
+
+    Attributes:
+        destination_channel (:obj:`.EFBChannel`): The
+            channel that this status is sent to, usually
+            the master channel.
+    """
     @abstractmethod
     def __init__(self):
         self.destination_channel: 'EFBChannel' = None
@@ -19,20 +27,20 @@ class EFBChatUpdates(EFBStatus):
     Inform the master channel on updates of slave chats.
         
     Attributes:
-        channel: Slave channel that issues the update
+        channel (:obj:`.EFBChannel`): Slave channel that issues the update
         channel_id (str): ID of the issuing channel.
-        new_chats: Unique ID of new chats
-        removed_chats: Unique ID of removed chats
-        modified_chats: Unique ID of modified chats
+        new_chats (Optional[Tuple[str]]): Unique ID of new chats
+        removed_chats (Optional[Tuple[str]]): Unique ID of removed chats
+        modified_chats (Optional[Tuple[str]]): Unique ID of modified chats
     """
     def __init__(self, channel: 'EFBChannel', new_chats: Optional[Tuple[str]]=tuple(),
                  removed_chats: Optional[Tuple[str]]=tuple(), modified_chats: Optional[Tuple[str]]=tuple()):
         """
         Args:
-            channel (ehforwarderbot.EFBChannel): Slave channel that issues the update
-            new_chats: Unique ID of new chats
-            removed_chats: Unique ID of removed chats
-            modified_chats: Unique ID of modified chats
+            channel (:obj:`.EFBChannel`): Slave channel that issues the update
+            new_chats (Optional[Tuple[str]]): Unique ID of new chats
+            removed_chats (Optional[Tuple[str]]): Unique ID of removed chats
+            modified_chats (Optional[Tuple[str]]): Unique ID of modified chats
         """
         self.channel: 'EFBChannel' = channel
         self.channel_id: str = channel.channel_id
@@ -47,12 +55,12 @@ class EFBMemberUpdates(EFBStatus):
     Inform the master channel on updates of members in a slave chat.
 
     Attributes:
-        channel: Slave channel that issues the update
+        channel (:obj:`.EFBChannel`): Slave channel that issues the update
         channel_id (str): ID of the issuing channel.
         chat_id (str): Unique ID of the chat.
-        new_members: Unique ID of new members
-        removed_members: Unique ID of removed members
-        modified_members: Unique ID of modified members
+        new_members (Optional[Tuple[str]]): Unique ID of new members
+        removed_members (Optional[Tuple[str]]): Unique ID of removed members
+        modified_members (Optional[Tuple[str]]): Unique ID of modified members
     """
 
     def __init__(self, channel: 'EFBChannel', chat_id: str,
@@ -60,11 +68,11 @@ class EFBMemberUpdates(EFBStatus):
                  modified_members: Optional[Tuple[str]]=tuple()):
         """
         Args:
-            channel: Slave channel that issues the update
+            channel (:obj:`.EFBChannel`): Slave channel that issues the update
             chat_id (str): Unique ID of the chat.
-            new_members: Unique ID of new members
-            removed_members: Unique ID of removed members
-            modified_members: Unique ID of modified members
+            new_members (Optional[Tuple[str]]): Unique ID of new members
+            removed_members (Optional[Tuple[str]]): Unique ID of removed members
+            modified_members (Optional[Tuple[str]]): Unique ID of modified members
         """
         self.channel: 'EFBChannel' = channel
         self.channel_id: str = channel.channel_id
@@ -83,13 +91,13 @@ class EFBMessageRemoval(EFBStatus):
     "recall a message", or "revoke a message" as well, depends on the IM.
 
     Some channels may not support removal of messages, and raises a
-    :obj:`EFBOperationNotSupported` exception.
+    :obj:`.exceptions.EFBOperationNotSupported` exception.
 
     Attributes:
-        source_channel: Channel issued the status
-        destination_channel: Channel the status is issued to
-        message: Message to remove.
-            This may not be a complete :obj:`EFBMsg` object.
+        source_channel (:obj:`.EFBChannel`): Channel issued the status
+        destination_channel (:obj:`.EFBChannel`): Channel the status is issued to
+        message (:obj:`.EFBMsg`): Message to remove.
+            This may not be a complete :obj:`.EFBMsg` object.
     """
 
     def __init__(self, source_channel: 'EFBChannel', destination_channel: 'EFBChannel', message: 'EFBMsg'):
@@ -99,13 +107,14 @@ class EFBMessageRemoval(EFBStatus):
         Try to provided as much as you can, if not, provide a minimum information
         in the channel:
 
-        * Slave channel ID and chat ID (``message.chat.channel_id`` and ``message.chat.chat_uid``)
-        * Message unique ID from the slave channel (``message.uid``)
+        * Slave channel ID and chat ID (:attr:`message.chat.channel_id <.EFBChat.channel_id>`
+          and :attr:`message.chat.chat_uid <.EFBChat.chat_uid>`)
+        * Message unique ID from the slave channel (:attr:`message.uid <.EFBMsg.uid>`)
 
         Args:
-            source_channel: Channel issued the status
-            destination_channel: Channel the status is issued to
-            message: Message to remove.
+            source_channel (:obj:`.EFBChannel`): Channel issued the status
+            destination_channel (:obj:`.EFBChannel`): Channel the status is issued to
+            message (:obj:`.EFBMsg`): Message to remove.
         """
         self.source_channel: 'EFBChannel' = source_channel
         self.destination_channel: 'EFBChannel' = destination_channel

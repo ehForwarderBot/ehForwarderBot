@@ -2,7 +2,6 @@
 
 import sphinx_rtd_theme
 
-
 # -*- coding: utf-8 -*-
 #
 # EH Forwarder Bot documentation build configuration file, created by
@@ -23,8 +22,8 @@ import sphinx_rtd_theme
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..'))
 
+sys.path.insert(0, os.path.abspath('..'))
 
 # -- General configuration ------------------------------------------------
 
@@ -36,10 +35,10 @@ sys.path.insert(0, os.path.abspath('..'))
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc',
-    'sphinx.ext.todo',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages',
-    'sphinx.ext.napoleon']
+              'sphinx.ext.todo',
+              'sphinx.ext.viewcode',
+              'sphinx.ext.githubpages',
+              'sphinx.ext.napoleon']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -85,7 +84,6 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
-
 # -- Options for HTML output ----------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -106,12 +104,10 @@ html_theme = "sphinx_rtd_theme"
 # html_static_path = ['_static']
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
-
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'ehForwarderBotDoc'
-
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -141,7 +137,6 @@ latex_documents = [
      'Eana Hufwe', 'manual'),
 ]
 
-
 # -- Options for manual page output ---------------------------------------
 
 # One entry per manual page. List of tuples
@@ -150,7 +145,6 @@ man_pages = [
     (master_doc, 'ehforwarderbot', 'EH Forwarder Bot Documentation',
      [author], 1)
 ]
-
 
 # -- Options for Texinfo output -------------------------------------------
 

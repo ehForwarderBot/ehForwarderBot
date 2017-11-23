@@ -15,15 +15,16 @@ class EFBChannel(ABC):
     """
     The abstract channel class.
     
-    Class Attributes:
+    Attributes:
         channel_name (str): Name of the channel.
         channel_emoji (str): Emoji icon of the channel.
-        channel_id (str): Unique ID of the channel.
-            Recommended to use the package ``__name__``.,
+        channel_id (str):
+            Unique ID of the channel.
+            Recommended to use the package ``__name__``.
             e.g. ``ehforwarderbot.channels.master.blueset.telegram``.
-        channel_type (:obj:`ehforwarderbot.constants.ChannelType`): Type of the channel.
-        supported_message_types (Set[MsgType]): Types of messages that the channel accepts
-            as incoming messages.
+        channel_type (:obj:`.ChannelType`): Type of the channel.
+        supported_message_types (Set[:obj:`.MsgType`]):
+            Types of messages that the channel accepts as incoming messages.
     """
 
     channel_name: str = "Empty channel"
@@ -38,7 +39,7 @@ class EFBChannel(ABC):
         """Get a list of extra functions
 
         Returns:
-            dict[str: callable]: A dict of functions marked as extra functions. 
+            Dict[str, Callable]: A dict of functions marked as extra functions.
             Method can be called with ``get_extra_functions()["methodName"]()``.
         """
         if self.channel_type == ChannelType.Master:
@@ -53,13 +54,33 @@ class EFBChannel(ABC):
     @abstractmethod
     def send_message(self, msg: 'EFBMsg') -> 'EFBMsg':
         """
-        Send a message to the channel
+        Send a message to, or edit a sent message in
+        the channel.
 
         Args:
-            msg (:obj:`ehforwarderbot.EFBMsg`): Message object to be sent.
+            msg (:obj:`.EFBMsg`): Message object to be processed.
 
         Returns:
-            :obj:`ehforwarderbot.EFBMsg`: The same message object with message ID.
+            :obj:`.EFBMsg`: The same message object with message
+                ID from the recipient.
+
+        Raises:
+            :exc:`~.exceptions.EFBChatNotFound`: Raised when a chat
+                required is not found.
+            :exc:`~.exceptions.EFBMessageTypeNotSupported`: Raised
+                when the message type sent is not supported by the
+                channel.
+            :exc:`~.exceptions.EFBOperationNotSupported`: Raised
+                when an message edit request is sent, but not
+                supported by the channel.
+            :exc:`~.exceptions.EFBMessageNotFound`: Raised when
+                an existing message indicated is not found.
+                E.g.: The message to be edited, the message referred
+                in the :attr:`msg.target.message <.message.EFBMsgTargetMessage.message>`
+                attribute.
+            :exc:`~.exceptions.EFBMessageError`: Raised when other
+                error occurred while sending or editing the
+                message.
         """
         raise NotImplementedError()
 
@@ -76,7 +97,7 @@ class EFBChannel(ABC):
         Return a list of available chats in the channel.
 
         Returns:
-            list of :obj:`ehforwarderbot.EFBChat`: a list of available chats in the channel.
+            List[.EFBChat]: a list of available chats in the channel.
         
         Note:
             This is not required by Master Channels
@@ -90,17 +111,15 @@ class EFBChannel(ABC):
         
         Args:
             chat_uid (str): UID of the chat.
-            member_uid (:obj:`str`, optional): UID of group member, 
+            member_uid (Optional[str]): UID of group member,
                 only when the selected chat is a group. 
 
         Returns:
-            :obj:`ehforwarderbot.EFBChat`: the standard chat dict of the chat.
-        
+           .EFBChat: the standard chat dict of the chat.
+
         Raises:
-            KeyError: Chat is not found in the channel.
-            ValueError: ``member_uid`` is provided but chat indicated is
-                not a group.
-        
+            :exc:`~.exceptions.EFBChatNotFound`: Raised when a chat
+                required is not found.
         Note:
             This is not required by Master Channels
         """
@@ -112,7 +131,24 @@ class EFBChannel(ABC):
         Return the standard chat dict of the selected chat.
 
         Args:
-            status (:obj:`ehforwarderbot.EFBStatus`): the status
+            status (:obj:`.EFBStatus`): the status
+
+        Raises:
+            :exc:`~.exceptions.EFBChatNotFound`: Raised when a chat
+                required is not found.
+            :exc:`~.exceptions.EFBMessageNotFound`: Raised when
+                an existing message indicated is not found.
+                E.g.: The message to be removed.
+            :exc:`~.exceptions.EFBOperationNotSupported`: Raised
+                when the channel does not support message removal.
+            :exc:`~.exceptions.EFBMessageError`: Raised when other
+                error occurred while removing the message.
+
+                .. note::
+                    Avoid raising exceptions from this method
+                    in Master Channels as it would be hard
+                    for a Slave Channel to process the
+                    exception.
 
         Note:
             This is not applicable to Slave Channels
@@ -122,29 +158,37 @@ class EFBChannel(ABC):
     @abstractmethod
     def get_chat_picture(self, chat: 'EFBChat') -> IO[bytes]:
         """
-        Get the profile picture of a chat.
+        Get the profile picture of a chat. Profile picture is
+        also referred as profile photo, avatar, "head image"
+        sometimes.
         
         Args:
-            chat (EFBChat): Chat to get picture from.
+            chat (.EFBChat): Chat to get picture from.
 
         Returns:
-            tempfile.NamedTemporaryFile: Opened temporary file object.
-                The object must have appropriate suffix that correspond to 
-                the format of picture sent, and seek to position 0.
-        
+            IO[bytes]: Opened temporary file object.
+            The file object must have appropriate extension name
+            that matches to the format of picture sent,
+            and seek to position 0.
+
+            It can be deleted when closed if not required othrewise.
+
         Raises:
-            ValueError: the chat is not found in the channel.
+            :exc:`~.exceptions.EFBChatNotFound`: Raised when a chat
+                required is not found.
+            :exc:`~.exceptions.EFBOperationNotSupported`: Raised
+                when the chat does not offer a profile picture.
             
         Examples:
             .. code:: Python
             
                 if chat.channel_uid != self.channel_uid:
-                    raise ValueError("Incorrect channel")
+                    raise EFBChannelNotFound()
                 file = tempfile.NamedTemporaryFile(suffix=".png")
                 response = requests.post("https://api.example.com/get_profile_picture/png",
                                          data={"uid": chat.chat_uid})
                 if response.status_code == 404:
-                    raise ValueError("Chat not found")
+                    raise EFBChatNotFound()
                 file.write(response.content)
                 file.seek(0)
                 return file

@@ -10,54 +10,56 @@ class EFBMsg:
     """A message.
 
     Attributes:
-        attributes (instance of :obj:`ehforwarderbot.message.EFBMsgAttribute`, optional):
+        attributes (Optional[:obj:`.EFBMsgAttribute`]):
             Attributes used for a specific message type.
             Only specific message type requires this attribute. Defaulted to
             ``None``.
 
-            - Link: :obj:`ehforwarderbot.EFBMsgLinkAttribute`
-            - Location: :obj:`ehforwarderbot.EFBMsgLocationAttribute`
-            - Command: :obj:`ehforwarderbot.EFBMsgLocationAttribute`
-            - Status: Typing/Sending files/etc.: :obj:`EFBMsgStatusAttribute`
+            - Link: :obj:`.EFBMsgLinkAttribute`
+            - Location: :obj:`.EFBMsgLocationAttribute`
+            - Command: :obj:`.EFBMsgLocationAttribute`
+            - Status: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`
 
-            Note:
+            .. Note::
                 Do NOT use object the abstract class
-                :class:`ehforwarderbot.message.EFBMsgAttribute` for
+                :class:`.EFBMsgAttribute` for
                 ``attributes``, but object of specific class instead.
 
 
-        author (:obj:`ehforwarderbot.EFBChat`): Author of this message.
-        chat (:obj:`ehforwarderbot.EFBChat`): Sender of the message
-        target (instance of :obj:`EFBMsgTarget`, optional):
+        author (:obj:`.EFBChat`): Author of this message.
+        chat (:obj:`.EFBChat`): Sender of the message
+        target (Optional[:obj:`EFBMsgTarget`]):
             Target (refers to @ messages and "reply to" messages.)
             Two types of target is available:
 
-            - Substitution: :obj:`ehforwarderbot.message.EFBMsgTargetSubstitution`
-            - Message: :obj:`ehforwarderbot.message.EFBMsgTargetMessage`
+            - Substitution: :obj:`.EFBMsgTargetSubstitution`
+            - Message: :obj:`.EFBMsgTargetMessage`
 
-            Note:
-                Do NOT use object the abstract class :class:`ehforwarderbot.message.EFBMsgTarget`
+            .. Note::
+                Do NOT use object the abstract class :class:`.EFBMsgTarget`
                 for ``target``, but object of specific class instead.
 
         text (str): text of the message
-        type (:obj:`ehforwarderbot.MsgType`): Type of message
+        type (:obj:`.MsgType`): Type of message
         uid (str): Unique ID of message.
             Usually stores the message ID from slave channel.
             This ID must be unique among all chats in the same channel.
         url (str): URL of multimedia file/Link share. ``None`` if N/A
         path (str): Local path of multimedia file. ``None`` if N/A
-        file (file): File object to multimedia file, type "ra". ``None`` if N/A
+        file (IO[bytes]): File object to multimedia file, type "ra". ``None`` if N/A
             Recommended to use ``NamedTemporaryFile`` object, the file is recommended to be
             deleted when closed, if not used otherwise.
             All file object must be rewind back to 0 (``file.seek(0)``) before sending.
         mime (str): MIME type of the file. ``None`` if N/A
         filename (str): File name of the multimedia file. ``None`` if N/A
         edit (bool): Flag this up if the message is edited.
-            .. Notice::
+
+            .. Note::
                 Some channels may not support message editing.
                 Some channels may issue a new uid for edited message.
-        vendor_specific (dict): A series of vendor specific attributes attached
-        deliver_to: The channel that the message is to be delivered to
+
+        vendor_specific (Dict[str, Any]): A series of vendor specific attributes attached
+        deliver_to (:obj:`.EFBChannel`): The channel that the message is to be delivered to
 
     """
     def __init__(self):
@@ -82,6 +84,7 @@ class EFBMsg:
 
 
 class EFBMsgAttribute(ABC):
+    """Abstract class for a message attribute."""
     @abstractmethod
     def __init__(self):
         raise NotImplementedError("Do not use the abstract class EFBMsgAttribute")
@@ -147,21 +150,21 @@ class EFBMsgCommand:
     Attributes:
         name (str): Human-friendly name of the command.
         callable (str): Callable name of the command.
-        args (list): Arguments passed to the function.
-        kwargs (dict of str: anything): Keyword arguments passed to the function.
+        args (List[Any]): Arguments passed to the function.
+        kwargs (Dict[str, Any]): Keyword arguments passed to the function.
     """
     name: str = ""
     callable: str = ""
     args: List[Any] = []
     kwargs: Dict[str, Any] = {}
 
-    def __init__(self, name: str, callable_name: str, args: List[Any]=None, kwargs: Dict[str, Any]=None):
+    def __init__(self, name: str, callable_name: str, args: List[Any]=None, kwargs: Optional[Dict[str, Any]]=None):
         """
         Args:
             name (str): Human-friendly name of the command.
             callable_name (str): Callable name of the command.
-            args (list, optional): Arguments passed to the function. Defaulted to empty list;
-            kwargs (dict of str: anything, optional): Keyword arguments passed to the function.
+            args (Optional[List[Any]]): Arguments passed to the function. Defaulted to empty list;
+            kwargs (Optional[Dict[str, Any]]): Keyword arguments passed to the function.
                 Defaulted to empty dict.
         """
         if args is None:
@@ -215,13 +218,11 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
     Attributes:
         status_type: Type of status, possible values are defined in the
             ``EFBMsgStatusAttribute``.
-
-    Constants:
-        TYPING: Used in ``status_type``, represent the status of typing.
-        UPLOADING_FILE: Used in ``status_type``, represent the status of uploading file.
-        UPLOADING_IMAGE: Used in ``status_type``, represent the status of uploading image.
-        UPLOADING_AUDIO: Used in ``status_type``, represent the status of uploading audio.
-        UPLOADING_VIDEO: Used in ``status_type``, represent the status of uploading video.
+        TYPING: Used in :attr:`status_type`, represent the status of typing.
+        UPLOADING_FILE: Used in :attr:`status_type`, represent the status of uploading file.
+        UPLOADING_IMAGE: Used in :attr:`status_type`, represent the status of uploading image.
+        UPLOADING_AUDIO: Used in :attr:`status_type`, represent the status of uploading audio.
+        UPLOADING_VIDEO: Used in :attr:`status_type`, represent the status of uploading video.
 
     """
     TYPING = "TYPING"
@@ -235,6 +236,7 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
 
 
 class EFBMsgTarget(ABC):
+    """Abstract class for a message target."""
     @abstractmethod
     def __init__(self):
         raise NotImplementedError("Do not use the abstract class EFBMsgTarget")
@@ -248,18 +250,16 @@ class EFBMsgTargetMessage(EFBMsgTarget):
     message.
 
     Attributes:
-        message (:obj:`ehforwarderbot.EFBMsg`): The message targeted to.
+        message (:obj:`.EFBMsg`): The message targeted to.
 
             Note:
                 This message may be a "minimum message", with only required fields:
-                - ``channel_id``
-                - ``channel_name``
-                - ``channel_emoji``
-                - ``chat``
-                - ``author``
-                - ``text``
-                - ``type``
-                - ``uid``
+
+                - :attr:`.EFBMsg.chat`
+                - :attr:`.EFBMsg.author`
+                - :attr:`.EFBMsg.text`
+                - :attr:`.EFBMsg.type`
+                - :attr:`.EFBMsg.uid`
     """
     message: EFBMsg = None
 
@@ -278,10 +278,10 @@ class EFBMsgTargetSubstitution(EFBMsgTarget):
 
     Attributes:
         substitutions
-            (dict of (tuple[2] of int) : :obj:`ehforwarderbot.EFBChat`):
+            Dict[Tuple[int, int], :obj:`.EFBChat`]):
             Dictionary of text substitutions targeting to a user or member.
 
-            The key of the dictionary is a tuple of two ``int``s, where first
+            The key of the dictionary is a tuple of two :obj:`int` s, where first
             of it is the starting position in the string, and the second is the
             ending position defined similar to Python's substring. A tuple of
             ``(3, 15)` corresponds to ``msg.text[3:15]``.

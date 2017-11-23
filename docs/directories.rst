@@ -11,11 +11,14 @@ the user's home directory, ``~/.ehforwarderbot``.  This can be
 overridden with the environment variable ``EFB_DATA_PATH``.
 This path defined here should be **absolute path**.
 
-Besides the data path, you can also customize the path for
-cache/temporary files produced by channels. By default, it's
-stored together with the data: ``~/.ehforwarderbot/cache``.
-It can be overridden with environment variable
-``EFB_CACHE_PATH``.
+.. comment, deprecated
+    EFB cache is deprecated. System temporary file
+    manager is used instead.
+    Besides the data path, you can also customize the path for
+    cache/temporary files produced by channels. By default, it's
+    stored together with the data: ``~/.ehforwarderbot/cache``.
+    It can be overridden with environment variable
+    ``EFB_CACHE_PATH``.
 
 Notice that when either of the path is customised with an
 environment variable, EFB will append the username of
@@ -41,10 +44,6 @@ will introduce about the structure of EFB data directory.
     |  |- profile2                  Alternative profile
     |  |  |- config.yaml
     |  |  |- ...
-    |- cache                        or $EFB_CACHE_PATH/username
-    |  |- default                   Same structure
-    |  |  |- dummy_ch_master
-    |  |  |  |- ...
     |  |- ...
     |- channels                     Place for source code of your own channels
     |  |- random_ch_mod_slave       Channels here have a higher priority while importing

@@ -11,7 +11,7 @@ def extra(name: str, desc: str) -> Callable:
     Args:
         name (str): A human readable name for the function.
         desc (str): A short description and usage of it. Use 
-            `{function_name}` in place of the function name
+            ``{function_name}`` in place of the function name
             in the description.
 
     Returns:
@@ -64,7 +64,7 @@ def get_data_path(channel_id: str):
     """
     profile = coordinator.profile
     base_path = get_base_path()
-    data_path = os.path.join(base_path, profile, channel_id, "")
+    data_path = os.path.join(base_path, 'profiles', profile, channel_id, "")
     os.makedirs(data_path, exist_ok=True)
     return data_path
 
@@ -79,7 +79,7 @@ def get_config_path(channel_id: str=None, ext: str='yaml') -> str:
     
     Args:
         channel_id (str): Channel ID.
-        ext (:obj:`str`, optional): Extension name of the config file.
+        ext (Optional[Str]): Extension name of the config file.
             Defaulted to ``"yaml"``.
 
     Returns:
@@ -90,37 +90,9 @@ def get_config_path(channel_id: str=None, ext: str='yaml') -> str:
     if channel_id:
         config_path = get_data_path(channel_id)
     else:
-        config_path = os.path.join(base_path, profile)
+        config_path = os.path.join(base_path, 'profiles', profile)
     os.makedirs(config_path, exist_ok=True)
     return os.path.join(config_path, "config.%s" % ext)
-
-
-def get_cache_path(channel: str) -> str:
-    """
-    Get path for the channel cache directory. Defaulted to
-    ``~/.ehforwarderbot/.cache/profile_name/channel_id``.
-    
-    This can be defined by the environment variable ``EFB_CACHE_PATH``.
-    When defined, the cache path is directed to 
-    ``$EFB_CACHE_PATH/username/profile_name/channel_id``.
-    
-    This method creates the queried path if not existing.
-    
-    Args:
-        channel (str): Channel ID.
-
-    Returns:
-        str: Cache path.
-    """
-    profile = coordinator.profile
-    base_path = os.environ.get("EFB_CACHE_PATH", None)
-    if base_path:
-        base_path = os.path.join(base_path, getpass.getuser(), profile, channel, "")
-    else:
-        base_path = os.path.expanduser(
-            os.path.join(os.path.expanduser("~/.ehforwarderbot/.cache/"), profile, channel, ""))
-    os.makedirs(base_path, exist_ok=True)
-    return base_path
 
 
 def get_custom_channel_path() -> str:
@@ -130,6 +102,6 @@ def get_custom_channel_path() -> str:
     Returns:
         str: The path.
     """
-    channel_path = os.path.join(get_base_path(), "plugins")
+    channel_path = os.path.join(get_base_path(), "channels")
     os.makedirs(channel_path, exist_ok=True)
     return channel_path
