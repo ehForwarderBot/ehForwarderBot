@@ -2,7 +2,7 @@ name: ehforwarderbot_docs
 channels:
 - conda-forge
 dependencies:
-- python==3.5
+- python==3.6
 - pandoc
 - sphinx>=1.5.1
 - sphinx_rtd_theme
