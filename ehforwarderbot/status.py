@@ -23,7 +23,8 @@ class EFBStatus(ABC):
 
 
 class EFBChatUpdates(EFBStatus):
-    """
+    """EFBChatUpdates(channel: EFBChannel, new_chats: Optional[Tuple[str]]=tuple(), removed_chats: Optional[Tuple[str]]=tuple(), modified_chats: Optional[Tuple[str]]=tuple())
+
     Inform the master channel on updates of slave chats.
         
     Attributes:
@@ -35,7 +36,8 @@ class EFBChatUpdates(EFBStatus):
     """
     def __init__(self, channel: 'EFBChannel', new_chats: Optional[Tuple[str]]=tuple(),
                  removed_chats: Optional[Tuple[str]]=tuple(), modified_chats: Optional[Tuple[str]]=tuple()):
-        """
+        """__init__(channel: EFBChannel, new_chats: Optional[Tuple[str]]=tuple(), removed_chats: Optional[Tuple[str]]=tuple(), modified_chats: Optional[Tuple[str]]=tuple())
+
         Args:
             channel (:obj:`.EFBChannel`): Slave channel that issues the update
             new_chats (Optional[Tuple[str]]): Unique ID of new chats
@@ -51,7 +53,8 @@ class EFBChatUpdates(EFBStatus):
 
 
 class EFBMemberUpdates(EFBStatus):
-    """
+    """EFBMemberUpdates(channel: EFBChannel, chat_id: str, new_members: Optional[Tuple[str]]=tuple(), removed_members: Optional[Tuple[str]]=tuple(), modified_members: Optional[Tuple[str]]=tuple())
+
     Inform the master channel on updates of members in a slave chat.
 
     Attributes:
@@ -66,7 +69,8 @@ class EFBMemberUpdates(EFBStatus):
     def __init__(self, channel: 'EFBChannel', chat_id: str,
                  new_members: Optional[Tuple[str]]=tuple(), removed_members: Optional[Tuple[str]]=tuple(),
                  modified_members: Optional[Tuple[str]]=tuple()):
-        """
+        """__init__(channel: EFBChannel, chat_id: str, new_members: Optional[Tuple[str]]=tuple(), removed_members: Optional[Tuple[str]]=tuple(), modified_members: Optional[Tuple[str]]=tuple())
+
         Args:
             channel (:obj:`.EFBChannel`): Slave channel that issues the update
             chat_id (str): Unique ID of the chat.
@@ -84,7 +88,8 @@ class EFBMemberUpdates(EFBStatus):
 
 
 class EFBMessageRemoval(EFBStatus):
-    """
+    """EFBMessageRemoval(source_channel: EFBChannel, destination_channel: EFBChannel, message: EFBMsg)
+
     Inform a channel to remove a certain message.
 
     This is usually known as "delete from everyone", "delete from recipient",
@@ -101,7 +106,8 @@ class EFBMessageRemoval(EFBStatus):
     """
 
     def __init__(self, source_channel: 'EFBChannel', destination_channel: 'EFBChannel', message: 'EFBMsg'):
-        """
+        """__init__(source_channel: EFBChannel, destination_channel: EFBChannel, message: EFBMsg)
+
         Create a message removal status
 
         Try to provided as much as you can, if not, provide a minimum information
