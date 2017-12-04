@@ -56,25 +56,6 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-Glossary
-========
-.. glossary::
-
-    Channel
-        A class that communicates with a chat platform, also known as a plugin.
-
-    EFB
-        abbreviation for EH Forwarder Bot, this project.
-
-    Master Channel
-        A channel linked to the platform which directly interact with the user.
-
-    Plugin
-        See ":term:`channel`".
-
-    Slave Channel
-        A channel linked to the platform which is controlled by the user through EFB framework.
-
 Feel like contributing?
 =======================
 

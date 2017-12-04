@@ -56,7 +56,7 @@ Choose, install and enable channel
 ----------------------------------
 
 Currently, all channels that submitted to us are recorded in
-the `channel repository <https://github.com/blueset/ehforwarderbot/wiki/channel_repository>`_.
+the `channels repository <https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository>`_.
 You can choose the channels that fits your need the best.
 
 Instructions about installing each channel is available at

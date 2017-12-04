@@ -6,3 +6,8 @@ channels and middlewares for EH Forwarder Bot.
 
 .. toctree::
     walkthrough
+    slave
+    master
+    middleware
+    media_processing
+    packing

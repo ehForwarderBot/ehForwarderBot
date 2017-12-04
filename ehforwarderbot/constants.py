@@ -1,16 +1,47 @@
 class MsgType:
     Text = "Text"
+    """Text message"""
+
     Image = "Image"
+    """Image (picture) message"""
+
     Audio = "Audio"
+    """Audio message. Including music and voice message."""
+
     File = "File"
+    """Messages sent as a file."""
+
     Location = "Location"
+    """Location message."""
+
     Video = "Video"
+    """Video message"""
+
     Link = "Link"
+    """
+    Message that is mainly one specific link, or a
+    text message with one link preview.
+    """
+
     Sticker = "Sticker"
-    Unsupported = "Unsupported"
-    Command = "Command"
-    Delete = "Delete"
+    """
+    Pictures sent with few text caption, usually a 
+    transparent background, and a limited number
+    of options that is usually not from the user's
+    photo gallery.
+    """
+
     Status = "Status"
+    """
+    Status from a user in a chat, usually typing and
+    uploading.
+    """
+
+    Unsupported = "Unsupported"
+    """
+    Any type of message that is not listed above.
+    A text representation is required.
+    """
 
 
 class ChatType:

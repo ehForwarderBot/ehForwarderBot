@@ -17,7 +17,6 @@ class EFBMsg:
 
             - Link: :obj:`.EFBMsgLinkAttribute`
             - Location: :obj:`.EFBMsgLocationAttribute`
-            - Command: :obj:`.EFBMsgLocationAttribute`
             - Status: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`
 
             .. Note::
@@ -28,16 +27,34 @@ class EFBMsg:
 
         author (:obj:`.EFBChat`): Author of this message.
         chat (:obj:`.EFBChat`): Sender of the message
-        target (Optional[:obj:`EFBMsgTarget`]):
-            Target (refers to @ messages and "reply to" messages.)
-            Two types of target is available:
+        commands (Opitonal[:obj:`EFBMsgCommands`]): Commands attached to the message
+        deliver_to (:obj:`.EFBChannel`): The channel that the message is to be delivered to
+        edit (bool): Flag this up if the message is edited.
+        file (IO[bytes]): File object to multimedia file, type "ra". ``None`` if N/A
+            Recommended to use ``NamedTemporaryFile`` object, the file is recommended to be
+            deleted when closed, if not used otherwise.
+            All file object must be rewind back to 0 (``file.seek(0)``) before sending.
+        filename (str): File name of the multimedia file. ``None`` if N/A
+        is_system (bool): Mark as true if this message is a system message.
+        mime (str): MIME type of the file. ``None`` if N/A
+        path (str): Local path of multimedia file. ``None`` if N/A
+        substitutions (Opitonal[:obj:`EFBMsgSubstitutions`]):
+            Substitutions of messages, usually used when
+            the some parts of the text of the message
+            refers to another user or chat.
+        target (Optional[:obj:`EFBMsg`]):
+            Target message (usually for messages that "replies to" 
+            another message).
 
-            - Substitution: :obj:`.EFBMsgTargetSubstitution`
-            - Message: :obj:`.EFBMsgTargetMessage`
+            .. note::
 
-            .. Note::
-                Do NOT use object the abstract class :class:`.EFBMsgTarget`
-                for ``target``, but object of specific class instead.
+                This message may be a "minimum message", with only required fields:
+
+                - :attr:`.EFBMsg.chat`
+                - :attr:`.EFBMsg.author`
+                - :attr:`.EFBMsg.text`
+                - :attr:`.EFBMsg.type`
+                - :attr:`.EFBMsg.uid`
 
         text (str): text of the message
         type (:obj:`.MsgType`): Type of message
@@ -45,39 +62,35 @@ class EFBMsg:
             Usually stores the message ID from slave channel.
             This ID must be unique among all chats in the same channel.
         url (str): URL of multimedia file/Link share. ``None`` if N/A
-        path (str): Local path of multimedia file. ``None`` if N/A
-        file (IO[bytes]): File object to multimedia file, type "ra". ``None`` if N/A
-            Recommended to use ``NamedTemporaryFile`` object, the file is recommended to be
-            deleted when closed, if not used otherwise.
-            All file object must be rewind back to 0 (``file.seek(0)``) before sending.
-        mime (str): MIME type of the file. ``None`` if N/A
-        filename (str): File name of the multimedia file. ``None`` if N/A
-        edit (bool): Flag this up if the message is edited.
 
             .. Note::
                 Some channels may not support message editing.
                 Some channels may issue a new uid for edited message.
 
-        vendor_specific (Dict[str, Any]): A series of vendor specific attributes attached
-        deliver_to (:obj:`.EFBChannel`): The channel that the message is to be delivered to
+        vendor_specific (Dict[str, Any]): 
+            A series of vendor specific attributes attached. This can be
+            used by any other channels or middlewares that is compatible
+            with such information. Note that no guarentee is provided
+            for information in this section.
 
     """
     def __init__(self):
-        self.type: MsgType = MsgType.Text
-        self.chat: EFBChat = None
+        self.attributes: Optional[EFBMsgAttribute] = None
         self.author: EFBChat = None
-        self.text: str = ""
+        self.chat: EFBChat = None
         self.deliver_to: EFBChannel = None
-        self.target: Optional[EFBMsgTarget] = None
+        self.edit: bool = False
+        self.file: Optional[IO[bytes]] = None
+        self.filename: Optional[str] = None
+        self.is_system: bool = False
+        self.mime: Optional[str] = None
+        self.path: Optional[str] = None
+        self.substitutions: Optional[EFBMsgSubstitutions] = None
+        self.target: Optional[EFBMsg] = None
+        self.text: str = ""
+        self.type: MsgType = MsgType.Text
         self.uid: Optional[str] = None
         self.url: Optional[str] = None
-        self.path: Optional[str] = None
-        self.file: Optional[IO[bytes]] = None
-        self.mime: Optional[str] = None
-        self.filename: Optional[str] = None
-        self.attributes: Optional[EFBMsgAttribute] = None
-        self.is_system: bool = False
-        self.edit: bool = False
         self.vendor_specific: Dict[str, Any] = dict()
 
     # TODO: Add __str__
@@ -149,12 +162,12 @@ class EFBMsgCommand:
 
     Attributes:
         name (str): Human-friendly name of the command.
-        callable (str): Callable name of the command.
+        callable_name (str): Callable name of the command.
         args (List[Any]): Arguments passed to the function.
         kwargs (Dict[str, Any]): Keyword arguments passed to the function.
     """
     name: str = ""
-    callable: str = ""
+    callable_name: str = ""
     args: List[Any] = []
     kwargs: Dict[str, Any] = {}
 
@@ -180,15 +193,15 @@ class EFBMsgCommand:
         if not isinstance(kwargs, dict):
             raise TypeError("kwargs must be a dict.")
         self.name = name
-        self.callable = callable
+        self.callable_name = callable_name
         self.args = args.copy()
         self.kwargs = kwargs.copy()
 
 
-class EFBMsgCommandAttribute(EFBMsgAttribute):
+class EFBMsgCommands:
     """
-    EFB command message attribute.
-    Messages with type ``Command`` allow user to take action to
+    EFB message commands.
+    Message commands allow user to take action to
     a specific message, including vote, add friends, etc.
 
     Attributes:
@@ -231,45 +244,20 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
     UPLOADING_AUDIO = "UPLOADING_AUDIO"
     UPLOADING_VIDEO = "UPLOADING_VIDEO"
 
-    def __init__(self, status_type):
+    def __init__(self, status_type, timeout=5000):
+        """
+        Args:
+            status_type: Type of status.
+            timeout (Opional[int]): 
+                Number of milliseconds for this status to expire.
+                Default to 5 seconds.
+        """
         self.status_type = status_type
 
 
-class EFBMsgTarget(ABC):
-    """Abstract class for a message target."""
-    @abstractmethod
-    def __init__(self):
-        raise NotImplementedError("Do not use the abstract class EFBMsgTarget")
-
-
-class EFBMsgTargetMessage(EFBMsgTarget):
+class EFBMsgSubstitutions:
     """
-    EFB message target - message.
-
-    This is for the case where the message is directly replying to another
-    message.
-
-    Attributes:
-        message (:obj:`.EFBMsg`): The message targeted to.
-
-            Note:
-                This message may be a "minimum message", with only required fields:
-
-                - :attr:`.EFBMsg.chat`
-                - :attr:`.EFBMsg.author`
-                - :attr:`.EFBMsg.text`
-                - :attr:`.EFBMsg.type`
-                - :attr:`.EFBMsg.uid`
-    """
-    message: EFBMsg = None
-
-    def __init__(self, message: EFBMsg):
-        self.message = message
-
-
-class EFBMsgTargetSubstitution(EFBMsgTarget):
-    """
-    EFB message target - Substitution.
+    EFB message substitutions.
 
     This is for the case when user "@-referred" a list of users in the message.
     Substitutions here is a dict of correspondence between

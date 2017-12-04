@@ -4,6 +4,9 @@ from .channel import EFBChannel
 from .constants import ChatType
 
 
+__all__ = ['EFBChat']
+
+
 class EFBChat:
     """
     EFB Chat object. This is used to represent a chat or a group member.
@@ -81,10 +84,12 @@ class EFBChat:
 
     @property
     def is_self(self) -> bool:
+        """If this chat represents the user"""
         return self.chat_uid == "__self__"
 
     @property
     def is_system(self) -> bool:
+        """If this chat is a system chat"""
         return self.chat_uid == "__system__"
 
     def __eq__(self, other):
