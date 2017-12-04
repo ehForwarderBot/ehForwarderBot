@@ -22,16 +22,15 @@ parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible 
 def stop_gracefully(sig, stack):
     logger = logging.getLogger(__name__)
     if isinstance(coordinator.master, EFBChannel):
-        coordinator.master.stop_polling = True
+        coordinator.master.stop_polling()
         logger.debug("Stop signal sent to master: %s" % coordinator.master.channel_name)
-        while coordinator.master_thread.is_alive():
-            pass
     for i in coordinator.slaves:
         if isinstance(coordinator.slaves[i], EFBChannel):
-            coordinator.slaves[i].stop_polling = True
+            coordinator.slaves[i].stop_polling()
             logger.debug("Stop signal sent to slave: %s" % coordinator.slaves[i].channel_name)
-            while coordinator.slave_threads[i].is_alive():
-                pass
+    coordinator.master_thread.join()
+    for i in coordinator.slave_threads:
+        i.join()
     sys.exit(0)
 
 

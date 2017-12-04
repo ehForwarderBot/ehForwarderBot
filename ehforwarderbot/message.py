@@ -70,7 +70,7 @@ class EFBMsg:
         vendor_specific (Dict[str, Any]): 
             A series of vendor specific attributes attached. This can be
             used by any other channels or middlewares that is compatible
-            with such information. Note that no guarentee is provided
+            with such information. Note that no guarantee is provided
             for information in this section.
 
     """
@@ -93,7 +93,21 @@ class EFBMsg:
         self.url: Optional[str] = None
         self.vendor_specific: Dict[str, Any] = dict()
 
-    # TODO: Add __str__
+    def __str__(self):
+        return "<EFBMsg, {msg.author}@{msg.chat} [{msg.type}]: {msg.text}; {msg.uid}>".format(msg=self)
+
+    def __repr__(self):
+        return "<EFBMsg, {msg.author}@{msg.chat} [{msg.type}]: " \
+               "{msg.text}; " \
+               "Attributes: {msg.attributes}; " \
+               "Delivering to: {msg.deliver_to}; " \
+               "Edited: {msg.edit}; " \
+               "System message: {msg.is_system}; " \
+               "Substitutions: {msg.substitutions}; " \
+               "Target messages: {msg.target}; " \
+               "UID: {msg.uid};" \
+               "File: {msg.file} ({msg.filename} @ {msg.path}), {msg.mime}; " \
+               "Vendor: {msg.vendor_specific}>".format(msg=self)
 
 
 class EFBMsgAttribute(ABC):
@@ -134,6 +148,10 @@ class EFBMsgLinkAttribute(EFBMsgAttribute):
         self.image = image
         self.url = url
 
+    def __str__(self):
+        return "<EFBMsgLinkAttribute, {attr.title}: {attr.description} " \
+               "({attr.image}) @ {attr.url}>".format(attr=self)
+
 
 class EFBMsgLocationAttribute(EFBMsgAttribute):
     """
@@ -154,6 +172,9 @@ class EFBMsgLocationAttribute(EFBMsgAttribute):
         """
         self.latitude = latitude
         self.longitude = longitude
+
+    def __str__(self):
+        return "<EFBMsgLocationAttribute: {attr.latitude}, {attr.longitude}>".format(attr=self)
 
 
 class EFBMsgCommand:
@@ -197,6 +218,13 @@ class EFBMsgCommand:
         self.args = args.copy()
         self.kwargs = kwargs.copy()
 
+    def __str__(self):
+        return "<EFBMsgCommand: {name}, {callable_name}({params})>".format(
+            name=self.name,
+            callable_name=self.callable_name,
+            params=", ".join(self.args + ["%r=%r" % i for i in self.kwargs.items()])
+        )
+
 
 class EFBMsgCommands:
     """
@@ -221,6 +249,9 @@ class EFBMsgCommands:
                              "and all of them must be in type EFBMsgCommand.")
         self.commands = commands.copy()
 
+    def __str__(self):
+        return str(self.commands)
+
 
 class EFBMsgStatusAttribute(EFBMsgAttribute):
     """
@@ -228,9 +259,14 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
     Message with type ``Status`` notifies the other end to update a chat-specific
     status, such as typing, send files, etc.
 
+
+
     Attributes:
         status_type: Type of status, possible values are defined in the
             ``EFBMsgStatusAttribute``.
+        timeout (Optional[int]):
+                Number of milliseconds for this status to expire.
+                Default to 5 seconds.
         TYPING: Used in :attr:`status_type`, represent the status of typing.
         UPLOADING_FILE: Used in :attr:`status_type`, represent the status of uploading file.
         UPLOADING_IMAGE: Used in :attr:`status_type`, represent the status of uploading image.
@@ -244,15 +280,19 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
     UPLOADING_AUDIO = "UPLOADING_AUDIO"
     UPLOADING_VIDEO = "UPLOADING_VIDEO"
 
-    def __init__(self, status_type, timeout=5000):
+    def __init__(self, status_type, timeout: Optional[int] = 5000):
         """
         Args:
             status_type: Type of status.
-            timeout (Opional[int]): 
+            timeout (Optional[int]):
                 Number of milliseconds for this status to expire.
                 Default to 5 seconds.
         """
         self.status_type = status_type
+        self.timeout = timeout
+
+    def __str__(self):
+        return "<EFBMsgStatusAttribute: {attr.status_type} @ {attr.timeout}ms>".format(attr=self)
 
 
 class EFBMsgSubstitutions:
@@ -297,3 +337,6 @@ class EFBMsgSubstitutions:
                     substitutions[i].chat_type == ChatType.Group:
                 raise ValueError("Substitution %s is not a user." % i)
         self.substitutions = substitutions
+
+    def __str__(self):
+        return str(self.substitutions)

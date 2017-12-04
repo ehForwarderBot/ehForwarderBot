@@ -36,7 +36,6 @@ class EFBChannel(ABC):
     channel_id: str = "efb_empty_channel"
     channel_type: ChannelType = None
     supported_message_types: Set[MsgType] = set()
-    stop_polling: bool = False
     __version__: str = 'undefined version'
 
     def get_extra_functions(self) -> Dict[str, Callable]:
@@ -208,5 +207,15 @@ class EFBChannel(ABC):
         """
         raise NotImplementedError()
 
+    def stop_polling(self):
+        """
+        When EFB framework is asked to stop gracefully,
+        this method is called to each channel object to
+        stop all processes in the channel, save all
+        status if necessary, and terminate polling.
 
-
+        When the channel is ready to stop, the polling
+        function must stop blocking. EFB framework will
+        quit completely when all polling threads end.
+        """
+        raise NotImplementedError()

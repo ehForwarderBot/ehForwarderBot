@@ -95,4 +95,5 @@ class EFBChat:
     def __eq__(self, other):
         return self.channel_id == other.channel_id and self.chat_uid == other.chat_uid
 
-    # TODO: Add __str__
+    def __str__(self):
+        return "<EFBChat: {c.chat_name}, {c.chat_alias} ({c.chat_uid}) @ {c.channel_name}>".format(c=self)

@@ -103,5 +103,5 @@ of your channel will be called with provided arguments.
 Note that all such methods MUST return a ``str`` as a 
 respond to the action from user, and they should NOT raise
 any exception to its caller. Any exceptions occured within 
-should be ``expect``ed and processed.
+should be "expect"ed and processed.
 
