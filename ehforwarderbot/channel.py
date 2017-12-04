@@ -16,8 +16,12 @@ class EFBChannel(ABC):
     The abstract channel class.
     
     Attributes:
-        channel_name (str): Name of the channel.
-        channel_emoji (str): Emoji icon of the channel.
+        channel_name (str):
+            A human-friendly name of the channel.
+        channel_emoji (str):
+            Emoji icon of the channel. Recommended to use a
+            visually-length-one emoji that represents
+            the channel best.
         channel_id (str):
             Unique ID of the channel.
             Recommended to use the package ``__name__``.
@@ -53,7 +57,8 @@ class EFBChannel(ABC):
 
     @abstractmethod
     def send_message(self, msg: 'EFBMsg') -> 'EFBMsg':
-        """
+        """send_message(msg: EFBMsg) -> EFBMsg
+
         Send a message to, or edit a sent message in
         the channel.
 
@@ -61,8 +66,9 @@ class EFBChannel(ABC):
             msg (:obj:`.EFBMsg`): Message object to be processed.
 
         Returns:
-            :obj:`.EFBMsg`: The same message object with message
-                ID from the recipient.
+            :obj:`.EFBMsg`:
+                The same message object with message ID from the
+                recipient.
 
         Raises:
             :exc:`~.exceptions.EFBChatNotFound`: Raised when a chat
@@ -87,13 +93,15 @@ class EFBChannel(ABC):
     @abstractmethod
     def poll(self):
         """
-        Method to poll for messages.
+        Method to poll for messages. This method is called when
+        the framework is initialized. This method should be blocking.
         """
         raise NotImplementedError()
 
     @abstractmethod
     def get_chats(self) -> List['EFBChat']:
-        """
+        """get_chats() -> List[EFBChat]
+
         Return a list of available chats in the channel.
 
         Returns:
@@ -106,7 +114,8 @@ class EFBChannel(ABC):
 
     @abstractmethod
     def get_chat(self, chat_uid: str, member_uid: Optional[str] = None) -> 'EFBChat':
-        """
+        """get_chat(self, chat_uid: str, member_uid: Optional[str] = None) -> EFBChat
+
         Return the standard chat dict of the selected chat.
         
         Args:
@@ -157,7 +166,8 @@ class EFBChannel(ABC):
 
     @abstractmethod
     def get_chat_picture(self, chat: 'EFBChat') -> IO[bytes]:
-        """
+        """get_chat_picture(chat: EFBChat) -> IO[bytes]
+
         Get the profile picture of a chat. Profile picture is
         also referred as profile photo, avatar, "head image"
         sometimes.
@@ -171,7 +181,7 @@ class EFBChannel(ABC):
             that matches to the format of picture sent,
             and seek to position 0.
 
-            It can be deleted when closed if not required othrewise.
+            It can be deleted when closed if not required otherwise.
 
         Raises:
             :exc:`~.exceptions.EFBChatNotFound`: Raised when a chat
