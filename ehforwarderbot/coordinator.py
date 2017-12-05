@@ -61,7 +61,7 @@ def add_middleware(middleware: EFBMiddleware):
         raise TypeError("Middleware instance is expected")
 
 
-def send_message(msg: EFBMsg) -> EFBMsg:
+def send_message(msg: EFBMsg) -> Optional[EFBMsg]:
     """
     Deliver a message to the destination channel.
 
@@ -71,6 +71,7 @@ def send_message(msg: EFBMsg) -> EFBMsg:
     Returns:
         The message sent by the destination channel,
         includes the updated message ID from there.
+        Returns ``None`` if the message is not sent.
     """
     global middlewares, master, slaves
     if msg is None:

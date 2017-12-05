@@ -66,6 +66,14 @@ def init():
                     coordinator.master.channel_name, coordinator.master.channel_id)
 
     logger.critical("\x1b[1;37;42m All channels initialized. \x1b[0m")
+    for i in conf['middlewares']:
+        logger.critical("\x1b[0;37;46m Initializing master %s... \x1b[0m", str(conf['master_channel']))
+        coordinator.add_middleware(pydoc.locate(i)())
+        logger.critical("\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m",
+                        coordinator.master.channel_name, coordinator.master.channel_id)
+
+    logger.critical("\x1b[1;37;42m All channels initialized. \x1b[0m")
+
     coordinator.master_thread = threading.Thread(target=coordinator.master.poll)
     coordinator.slave_threads = {key: threading.Thread(target=coordinator.slaves[key].poll)
                                  for key in coordinator.slaves}

@@ -1,3 +1,4 @@
+import copy
 from typing import List, Dict, Any, Optional
 
 from .channel import EFBChannel
@@ -39,6 +40,9 @@ class EFBChat:
                 Provide the channel object to fill :attr:`channel_name`,
                 :attr:`channel_emoji`, and :attr:`channel_id` automatically.
         """
+        self.channel_name: str = None
+        self.channel_emoji: str = None
+        self.channel_id: str = None
         if isinstance(channel, EFBChannel):
             self.channel_name: str = channel.channel_name
             self.channel_emoji: str = channel.channel_emoji
@@ -92,8 +96,12 @@ class EFBChat:
         """If this chat is a system chat"""
         return self.chat_uid == "__system__"
 
+    def copy(self) -> 'EFBChat':
+        return copy.copy(self)
+
     def __eq__(self, other):
         return self.channel_id == other.channel_id and self.chat_uid == other.chat_uid
 
     def __str__(self):
-        return "<EFBChat: {c.chat_name}, {c.chat_alias} ({c.chat_uid}) @ {c.channel_name}>".format(c=self)
+        return "<EFBChat: {c.chat_name} ({alias}{c.chat_uid}) @ {c.channel_name}>" \
+            .format(c=self, alias=self.chat_alias + ", " if self.chat_alias else "")
