@@ -12,12 +12,12 @@ class MockSlaveChannel(EFBChannel):
 
     channel_name: str = "Mock Slave"
     channel_emoji: str = "➖"
-    channel_id: str = "tests.mocks.master"
+    channel_id: str = "tests.mocks.slave"
     channel_type: ChannelType = ChannelType.Slave
-    supported_message_types: Set[MsgType] = {MsgType.Text, MsgType.Audio}
+    supported_message_types: Set[MsgType] = {MsgType.Text, MsgType.Link}
     __version__: str = '0.0.1'
 
-    logger = getLogger("tests.mocks.master")
+    logger = getLogger(channel_id)
 
     polling = threading.Event()
 
