@@ -78,6 +78,7 @@ class EFBMsg:
         self.attributes: Optional[EFBMsgAttribute] = None
         self.author: EFBChat = None
         self.chat: EFBChat = None
+        self.commands: Optional[EFBMsgCommands] = None
         self.deliver_to: EFBChannel = None
         self.edit: bool = False
         self.file: Optional[IO[bytes]] = None

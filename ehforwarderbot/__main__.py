@@ -4,6 +4,9 @@ import argparse
 import sys
 import signal
 import pydoc
+
+import atexit
+
 from . import config, utils
 from .__version__ import __version__
 from .channel import EFBChannel
@@ -19,7 +22,7 @@ parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible 
                                  epilog="GitHub: https://github.com/blueset/ehForwarderBot")
 
 
-def stop_gracefully(sig, stack):
+def stop_gracefully():
     logger = logging.getLogger(__name__)
     if isinstance(coordinator.master, EFBChannel):
         coordinator.master.stop_polling()
@@ -28,10 +31,11 @@ def stop_gracefully(sig, stack):
         if isinstance(coordinator.slaves[i], EFBChannel):
             coordinator.slaves[i].stop_polling()
             logger.debug("Stop signal sent to slave: %s" % coordinator.slaves[i].channel_name)
-    coordinator.master_thread.join()
-    for i in coordinator.slave_threads:
-        i.join()
-    sys.exit(0)
+    if coordinator.master_thread.is_alive():
+        coordinator.master_thread.join()
+    for i in coordinator.slave_threads.values():
+        if i.is_alive():
+            i.join()
 
 
 def init():
@@ -52,27 +56,28 @@ def init():
     conf = config.load_config()
 
     for i in conf['slave_channels']:
-        logger.critical("\x1b[0;37;46m Initializing slave %s... \x1b[0m", i)
+        logger.log(99, "\x1b[0;37;46m Initializing slave %s... \x1b[0m", i)
 
-        obj = pydoc.locate(i)
-        coordinator.add_channel(obj())
+        cls = pydoc.locate(i)
+        coordinator.add_channel(cls())
 
-        logger.critical("\x1b[0;37;42m Slave channel %s (%s) initialized. \x1b[0m",
-                        obj.channel_name, obj.channel_id)
+        logger.log(99, "\x1b[0;37;42m Slave channel %s (%s) initialized. \x1b[0m",
+                        cls.channel_name, cls.channel_id)
 
-    logger.critical("\x1b[0;37;46m Initializing master %s... \x1b[0m", str(conf['master_channel']))
+    logger.log(99, "\x1b[0;37;46m Initializing master %s... \x1b[0m", str(conf['master_channel']))
     coordinator.add_channel(pydoc.locate(conf['master_channel'])())
-    logger.critical("\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m",
+    logger.log(99, "\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m",
                     coordinator.master.channel_name, coordinator.master.channel_id)
 
-    logger.critical("\x1b[1;37;42m All channels initialized. \x1b[0m")
+    logger.log(99, "\x1b[1;37;42m All channels initialized. \x1b[0m")
     for i in conf['middlewares']:
-        logger.critical("\x1b[0;37;46m Initializing master %s... \x1b[0m", str(conf['master_channel']))
-        coordinator.add_middleware(pydoc.locate(i)())
-        logger.critical("\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m",
-                        coordinator.master.channel_name, coordinator.master.channel_id)
+        logger.log(99, "\x1b[0;37;46m Initializing middleware %s... \x1b[0m", i)
+        cls = pydoc.locate(i)
+        coordinator.add_middleware(cls())
+        logger.log(99, "\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m",
+                        cls.middleware_name, cls.middleware_id)
 
-    logger.critical("\x1b[1;37;42m All channels initialized. \x1b[0m")
+    logger.log(99, "\x1b[1;37;42m All middlewares initialized. \x1b[0m")
 
     coordinator.master_thread = threading.Thread(target=coordinator.master.poll)
     coordinator.slave_threads = {key: threading.Thread(target=coordinator.slaves[key].poll)
@@ -131,8 +136,9 @@ if __name__ == '__main__':
         logging.basicConfig(format='%(asctime)s [%(levelname)s]: %(name)s (%(module)s.%(funcName)s; '
                                    '%(filename)s:%(lineno)d) \n    %(message)s', level=level)
 
-        signal.signal(signal.SIGINT, stop_gracefully)
-        signal.signal(signal.SIGTERM, stop_gracefully)
+        # signal.signal(signal.SIGINT, stop_gracefully)
+        # signal.signal(signal.SIGTERM, stop_gracefully)
+        atexit.register(stop_gracefully)
 
         if args.profile:
             coordinator.profile = str(args.profile)

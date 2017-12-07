@@ -81,7 +81,7 @@ class EFBChannel(ABC):
             :exc:`~.exceptions.EFBMessageNotFound`: Raised when
                 an existing message indicated is not found.
                 E.g.: The message to be edited, the message referred
-                in the :attr:`msg.target.message <.message.EFBMsgTargetMessage.message>`
+                in the :attr:`msg.target <.EFBMsg.target>`
                 attribute.
             :exc:`~.exceptions.EFBMessageError`: Raised when other
                 error occurred while sending or editing the
