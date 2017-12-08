@@ -61,7 +61,6 @@ class EFBMsg:
         uid (str): Unique ID of message.
             Usually stores the message ID from slave channel.
             This ID must be unique among all chats in the same channel.
-        url (str): URL of multimedia file/Link share. ``None`` if N/A
 
             .. Note::
                 Some channels may not support message editing.
@@ -89,9 +88,8 @@ class EFBMsg:
         self.substitutions: Optional[EFBMsgSubstitutions] = None
         self.target: Optional[EFBMsg] = None
         self.text: str = ""
-        self.type: MsgType = MsgType.Text
+        self.type: MsgType = None
         self.uid: Optional[str] = None
-        self.url: Optional[str] = None
         self.vendor_specific: Dict[str, Any] = dict()
 
     def __str__(self):
@@ -110,6 +108,44 @@ class EFBMsg:
                "File: {msg.file} ({msg.filename} @ {msg.path}), {msg.mime}; " \
                "Vendor: {msg.vendor_specific}>".format(msg=self)
 
+    def verify(self):
+        """
+        Verify the validity of message.
+        """
+        if self.author is None or not isinstance(self.author, EFBChat):
+            raise ValueError("Author is not valid.")
+        else:
+            self.author.verify()
+        if self.author is None or not isinstance(self.author, EFBChat):
+            raise ValueError("Chat is not valid.")
+        else:
+            self.author.verify()
+        if self.type is None or not isinstance(self.type, MsgType):
+            raise ValueError("Type is not valid.")
+        if self.deliver_to is None or not isinstance(self.deliver_to, EFBChannel):
+            raise ValueError("Deliver_to is not valid.")
+        if self.type in (MsgType.Audio, MsgType.File, MsgType.Image, MsgType.Sticker, MsgType.Video):
+            if self.file is None or not hasattr(self.file, "read") or not hasattr(self.file, "close"):
+                raise ValueError("File is not valid.")
+            if self.mime is None or not self.mime:
+                raise ValueError("MIME is not valid.")
+            if self.path is None or not self.path:
+                raise ValueError("Path is not valid.")
+        if self.type == MsgType.Location and (self.attributes is None or not isinstance(self.attributes, EFBMsgLocationAttribute)):
+            raise ValueError("Attribute of location message is invalid.")
+        if self.type == MsgType.Link and (self.attributes is None or not isinstance(self.attributes, EFBMsgLinkAttribute)):
+            raise ValueError("Attribute of link message is invalid.")
+        if self.type == MsgType.Status and (self.attributes is None or not isinstance(self.attributes, EFBMsgStatusAttribute)):
+            raise ValueError("Attribute of status message is invalid.")
+
+        if self.attributes:
+            self.attributes.verify()
+
+        if self.commands:
+            self.commands.verify()
+
+        if self.substitutions:
+            self.substitutions.verify()
 
 class EFBMsgAttribute(ABC):
     """Abstract class for a message attribute."""
@@ -117,6 +153,9 @@ class EFBMsgAttribute(ABC):
     def __init__(self):
         raise NotImplementedError("Do not use the abstract class EFBMsgAttribute")
 
+    @abstractmethod
+    def verify(self):
+        raise NotImplementedError()
 
 class EFBMsgLinkAttribute(EFBMsgAttribute):
     """
@@ -153,6 +192,12 @@ class EFBMsgLinkAttribute(EFBMsgAttribute):
         return "<EFBMsgLinkAttribute, {attr.title}: {attr.description} " \
                "({attr.image}) @ {attr.url}>".format(attr=self)
 
+    def verify(self):
+        if self.url is None:
+            raise ValueError("URL does not exist")
+        if self.title is None:
+            raise ValueError("Title does not exist")
+
 
 class EFBMsgLocationAttribute(EFBMsgAttribute):
     """
@@ -176,6 +221,12 @@ class EFBMsgLocationAttribute(EFBMsgAttribute):
 
     def __str__(self):
         return "<EFBMsgLocationAttribute: {attr.latitude}, {attr.longitude}>".format(attr=self)
+
+    def verify(self):
+        if self.latitude is None or isinstance(self.latitude, float):
+            raise ValueError("Latitude is invalid.")
+        if self.latitude is None or isinstance(self.latitude, float):
+            raise ValueError("Longitude is invalid.")
 
 
 class EFBMsgCommand:
@@ -226,6 +277,12 @@ class EFBMsgCommand:
             params=", ".join(self.args + ["%r=%r" % i for i in self.kwargs.items()])
         )
 
+    def verify(self):
+        if not self.name:
+            raise ValueError("Name does not exist.")
+        if not self.callable_name:
+            raise ValueError("Callable does not exist.")
+
 
 class EFBMsgCommands:
     """
@@ -253,6 +310,10 @@ class EFBMsgCommands:
     def __str__(self):
         return str(self.commands)
 
+    def verify(self):
+        for i in self.commands:
+            i.verify()
+
 
 class EFBMsgStatusAttribute(EFBMsgAttribute):
     """
@@ -260,28 +321,40 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
     Message with type ``Status`` notifies the other end to update a chat-specific
     status, such as typing, send files, etc.
 
-
-
     Attributes:
         status_type: Type of status, possible values are defined in the
             ``EFBMsgStatusAttribute``.
         timeout (Optional[int]):
                 Number of milliseconds for this status to expire.
                 Default to 5 seconds.
-        TYPING: Used in :attr:`status_type`, represent the status of typing.
-        UPLOADING_FILE: Used in :attr:`status_type`, represent the status of uploading file.
-        UPLOADING_IMAGE: Used in :attr:`status_type`, represent the status of uploading image.
-        UPLOADING_AUDIO: Used in :attr:`status_type`, represent the status of uploading audio.
-        UPLOADING_VIDEO: Used in :attr:`status_type`, represent the status of uploading video.
-
+        Types: List of status types supported
     """
-    TYPING = "TYPING"
-    UPLOADING_FILE = "UPLOADING_FILE"
-    UPLOADING_IMAGE = "UPLOADING_IMAGE"
-    UPLOADING_AUDIO = "UPLOADING_AUDIO"
-    UPLOADING_VIDEO = "UPLOADING_VIDEO"
+    class Types(Enum):
+        """
+        Attributes:
+            TYPING:
+                Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`,
+                represent the status of typing.
+            UPLOADING_FILE:
+                Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`,
+                represent the status of uploading file.
+            UPLOADING_IMAGE:
+                Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`,
+                represent the status of uploading image.
+            UPLOADING_AUDIO:
+                Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`,
+                represent the status of uploading audio.
+            UPLOADING_VIDEO:
+                Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`,
+                represent the status of uploading video.
+        """
+        TYPING = "TYPING"
+        UPLOADING_FILE = "UPLOADING_FILE"
+        UPLOADING_IMAGE = "UPLOADING_IMAGE"
+        UPLOADING_AUDIO = "UPLOADING_AUDIO"
+        UPLOADING_VIDEO = "UPLOADING_VIDEO"
 
-    def __init__(self, status_type, timeout: Optional[int] = 5000):
+    def __init__(self, status_type: Types, timeout: Optional[int] = 5000):
         """
         Args:
             status_type: Type of status.
@@ -289,11 +362,17 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
                 Number of milliseconds for this status to expire.
                 Default to 5 seconds.
         """
-        self.status_type = status_type
-        self.timeout = timeout
+        self.status_type: self.Types = status_type
+        self.timeout: int = timeout
 
     def __str__(self):
         return "<EFBMsgStatusAttribute: {attr.status_type} @ {attr.timeout}ms>".format(attr=self)
+
+    def verify(self):
+        if self.status_type is None or not isinstance(self.status_type, self.Types):
+            raise ValueError("Status type is invalid.")
+        if not isinstance(self.timeout, int):
+            raise ValueError("Timeout is invalid.")
 
 
 class EFBMsgSubstitutions:
@@ -341,3 +420,9 @@ class EFBMsgSubstitutions:
 
     def __str__(self):
         return str(self.substitutions)
+
+    def verify(self):
+        for i in self.substitutions:
+            if not isinstance(i, tuple) or len(i) != 2 or any(j < 0 for j in i):
+                raise ValueError("Index %i is invalid." % i)
+            self.substitutions[i].verify()

@@ -21,6 +21,10 @@ class EFBStatus(ABC):
         self.destination_channel: 'EFBChannel' = None
         raise NotImplementedError()
 
+    @abstractmethod
+    def verify(self):
+        raise NotImplementedError()
+
 
 class EFBChatUpdates(EFBStatus):
     """EFBChatUpdates(channel: EFBChannel, new_chats: Optional[Tuple[str]]=tuple(), removed_chats: Optional[Tuple[str]]=tuple(), modified_chats: Optional[Tuple[str]]=tuple())
@@ -52,6 +56,10 @@ class EFBChatUpdates(EFBStatus):
     def __str__(self):
         return "<EFBChatUpdates @ {s.channel.channel_name}; New: {s.new_chats}; " \
                "Removed: {s.removed_chats}; Modified: {s.modified_chats}>".format(s=self)
+
+    def verify(self):
+        if self.channel is None or not isinstance(self.channel, EFBChannel):
+            raise ValueError("Channel is not valid.")
 
 
 class EFBMemberUpdates(EFBStatus):
@@ -89,6 +97,10 @@ class EFBMemberUpdates(EFBStatus):
     def __str__(self):
         return "<EFBMemberUpdates: {s.chat_id} @ {s.channel.channel_name}; New: {s.new_chats}; " \
                "Removed: {s.removed_chats}; Modified: {s.modified_chats}>".format(s=self)
+
+    def verify(self):
+        if self.channel is None or not isinstance(self.channel, EFBChannel):
+            raise ValueError("Channel is not valid.")
 
 
 class EFBMessageRemoval(EFBStatus):
@@ -133,3 +145,13 @@ class EFBMessageRemoval(EFBStatus):
     def __str__(self):
         return "<EFBMessageRemoval: {s.message}; {s.source_channel.channel_name} " \
                "-> {s.destination_channel.channel_name}>".format(s=self)
+
+    def verify(self):
+        if self.source_channel is None or not isinstance(self.source_channel, EFBChannel):
+            raise ValueError("Source channel is not valid.")
+        if self.destination_channel is None or not isinstance(self.destination_channel, EFBChannel):
+            raise ValueError("Destination channel is not valid.")
+        if self.message is None or not isinstance(self.message, EFBMsg):
+            raise ValueError("Message channel is not valid.")
+        if not self.message.chat.channel_id or not self.message.chat.chat_uid or not self.message.uid:
+            raise ValueError("Message does not contain the minimum information required")

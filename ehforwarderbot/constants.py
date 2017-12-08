@@ -1,4 +1,7 @@
-class MsgType:
+from enum import Enum
+
+
+class MsgType(Enum):
     Text = "Text"
     """Text message"""
 
@@ -44,18 +47,18 @@ class MsgType:
     """
 
 
-class ChatType:
+class ChatType(Enum):
     User = "User"
     Group = "Group"
     System = "System"
 
 
-class TargetType:
+class TargetType(Enum):
     Member = "Member"
     Message = "Message"
     Substitution = "Substitution"
 
 
-class ChannelType:
+class ChannelType(Enum):
     Master = "Master"
     Slave = "Slave"

@@ -83,6 +83,8 @@ def send_message(msg: EFBMsg) -> Optional[EFBMsg]:
         if msg is None:
             return
 
+    msg.verify()
+
     if msg.deliver_to.channel_id == master.channel_id:
         return master.send_message(msg)
     elif msg.deliver_to.channel_id in slaves:
@@ -107,5 +109,7 @@ def send_status(status: EFBStatus):
         status = i.process_status(status)
         if status is None:
             return
+
+    status.verify()
 
     status.destination_channel.send_status(status)

@@ -99,6 +99,25 @@ class EFBChat:
     def copy(self) -> 'EFBChat':
         return copy.copy(self)
 
+    def verify(self):
+        """
+        Verify the completeness of the data.
+
+        Raises:
+            ValueError: When this chat is invalid.
+        """
+        if any(i is None for i in (self.chat_name, self.chat_type, self.chat_uid,
+                                   self.channel_id, self.channel_emoji, self.channel_name)):
+            raise ValueError("Chat data is incomplete.")
+        if not isinstance(self.chat_type, ChatType):
+            raise ValueError("Invalid chat type.")
+        if self.chat_type == ChatType.Group:
+            if any(not isinstance(i, EFBChat) or not i.chat_type == ChatType.User for i in self.members):
+                raise ValueError("The group has an invalid member.")
+        if self.group is not None and (not isinstance(self.group, EFBChat) or
+                                       not self.group.chat_type == ChatType.Group):
+            raise ValueError("The member is in an invalid group.")
+
     def __eq__(self, other):
         return self.channel_id == other.channel_id and self.chat_uid == other.chat_uid
 
