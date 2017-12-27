@@ -29,7 +29,7 @@ The implementation shall resemble the appearance as far as possible, and in the 
 
 In the extremely ideal case, the master channel agent should:
 
-* Have an independent chat "timeline" for each chat from slave channel, with indication of each slave channel. It should looks similar, if not identical to a normal chat in original platform.
+* Have an independent chat "time line" for each chat from slave channel, with indication of each slave channel. It should looks similar, if not identical to a normal chat in original platform.
 * Identify all members in a group chat.
 * Support all possible static message types (those defined in EFB, PRs are welcomed for extra type support).
 * Utilize advanced features (interactive command, variable messages, etc.) for "commands", "extra functions" and other unique features you can bring for better usability.

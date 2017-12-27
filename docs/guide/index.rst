@@ -10,4 +10,5 @@ channels and middlewares for EH Forwarder Bot.
     master
     middleware
     media_processing
+    storage
     packing

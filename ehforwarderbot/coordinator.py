@@ -21,13 +21,25 @@ from .middleware import EFBMiddleware
 from .status import EFBStatus
 
 profile: str = "default"
+"""Current running profile name"""
+
 mutex: threading.Lock = threading.Lock()
+"""Mutual exclusive lock for user interaction through CLI interface"""
+
 master: EFBChannel = None
+"""The instance of the master channel."""
+
 slaves: Dict[str, EFBChannel] = dict()
+"""Instances of slave channels. Keys are the channel IDs."""
+
 middlewares: List[EFBMiddleware] = list()
+"""Instances of middlewares. Sorted in the order of execution."""
 
 master_thread: Optional[threading.Thread] = None
+"""The thread running poll() of the master channel."""
+
 slave_threads: Dict[str, threading.Thread] = dict()
+"""Threads running poll() from slave channels. Keys are the channel IDs."""
 
 
 def add_channel(channel: EFBChannel):
