@@ -50,6 +50,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ```
 
 ### Advertisement
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/CVTwn6GTn9CjVMHw2HosC9gi/blueset/ehForwarderBot'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/CVTwn6GTn9CjVMHw2HosC9gi/blueset/ehForwarderBot.svg' />
-</a>
+
