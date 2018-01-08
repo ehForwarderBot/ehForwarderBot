@@ -30,3 +30,4 @@ considering the user experience, a master channel should:
 
     An example of an ideal design of a master channel,
     inspired by Telegram Desktop
+

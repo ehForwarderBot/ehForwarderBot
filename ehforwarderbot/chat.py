@@ -33,6 +33,9 @@ class EFBChat:
         is_system (bool): Indicate if this chat represents a system chat/member.
     """
 
+    SELF_ID = "__self__"
+    SYSTEM_ID = "__system__"
+
     def __init__(self, channel: Optional[EFBChannel]=None):
         """
         Args:
@@ -68,7 +71,7 @@ class EFBChat:
         """
         self.chat_name = "You"
         self.chat_alias = None
-        self.chat_uid = "__self__"
+        self.chat_uid = EFBChat.SELF_ID
         self.chat_type = ChatType.User
         return self
 
@@ -82,19 +85,19 @@ class EFBChat:
         """
         self.chat_name = "System"
         self.chat_alias = None
-        self.chat_uid = "__system__"
+        self.chat_uid = EFBChat.SYSTEM_ID
         self.chat_type = ChatType.User
         return self
 
     @property
     def is_self(self) -> bool:
         """If this chat represents the user"""
-        return self.chat_uid == "__self__"
+        return self.chat_uid == EFBChat.SELF_ID
 
     @property
     def is_system(self) -> bool:
         """If this chat is a system chat"""
-        return self.chat_uid == "__system__"
+        return self.chat_uid == EFBChat.SYSTEM_ID
 
     def copy(self) -> 'EFBChat':
         return copy.copy(self)
@@ -106,8 +109,8 @@ class EFBChat:
         Raises:
             ValueError: When this chat is invalid.
         """
-        if any(i is None for i in (self.chat_name, self.chat_type, self.chat_uid,
-                                   self.channel_id, self.channel_emoji, self.channel_name)):
+        if any(i is None for i in (self.chat_uid, self.channel_id)):
+            print(self.chat_uid, self.channel_id)
             raise ValueError("Chat data is incomplete.")
         if not isinstance(self.chat_type, ChatType):
             raise ValueError("Invalid chat type.")

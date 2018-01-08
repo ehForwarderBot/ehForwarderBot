@@ -147,6 +147,7 @@ class EFBMsg:
         if self.substitutions:
             self.substitutions.verify()
 
+
 class EFBMsgAttribute(ABC):
     """Abstract class for a message attribute."""
     @abstractmethod
@@ -156,6 +157,7 @@ class EFBMsgAttribute(ABC):
     @abstractmethod
     def verify(self):
         raise NotImplementedError()
+
 
 class EFBMsgLinkAttribute(EFBMsgAttribute):
     """

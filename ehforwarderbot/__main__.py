@@ -21,6 +21,14 @@ parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible 
                                              "remotely control their accounts in other platforms.",
                                  epilog="GitHub: https://github.com/blueset/ehForwarderBot")
 
+parser.add_argument("-v", action='store_true',
+                    help="Enable verbose mode. (Level: Debug)")
+parser.add_argument("-V", "--version", action='store_true',
+                    help="Show version numbers and exit.")
+parser.add_argument("-p", "--profile",
+                    help="Choose a profile to start with.",
+                    default="default")
+
 
 def stop_gracefully():
     logger = logging.getLogger(__name__)
@@ -31,7 +39,7 @@ def stop_gracefully():
         if isinstance(coordinator.slaves[i], EFBChannel):
             coordinator.slaves[i].stop_polling()
             logger.debug("Stop signal sent to slave: %s" % coordinator.slaves[i].channel_name)
-    if coordinator.master_thread.is_alive():
+    if coordinator.master_thread and coordinator.master_thread.is_alive():
         coordinator.master_thread.join()
     for i in coordinator.slave_threads.values():
         if i.is_alive():
@@ -94,13 +102,6 @@ def poll():
 
 
 if __name__ == '__main__':
-    parser.add_argument("-v", action='store_true',
-                        help="Enable verbose mode. (Level: Debug)")
-    parser.add_argument("-V", "--version", action='store_true',
-                        help="Show version number and exit.")
-    parser.add_argument("-p", "--profile",
-                        help="Choose a profile to start with.")
-
     args = parser.parse_args()
 
     if getattr(args, "version", None):

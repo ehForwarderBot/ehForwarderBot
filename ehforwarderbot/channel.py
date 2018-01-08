@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Optional, Dict, List, Set, Callable, IO, TYPE_CHECKING
 from .constants import *
 from .status import EFBStatus
+from .class_property import classproperty
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -22,10 +23,6 @@ class EFBChannel(ABC):
             Emoji icon of the channel. Recommended to use a
             visually-length-one emoji that represents
             the channel best.
-        channel_id (str):
-            Unique ID of the channel.
-            Recommended to use the package ``__name__``.
-            e.g. ``ehforwarderbot.channels.master.blueset.telegram``.
         channel_type (:obj:`.ChannelType`): Type of the channel.
         supported_message_types (Set[:obj:`.MsgType`]):
             Types of messages that the channel accepts as incoming messages.
@@ -33,10 +30,18 @@ class EFBChannel(ABC):
 
     channel_name: str = "Empty channel"
     channel_emoji: str = "�"
-    channel_id: str = "efb_empty_channel"
     channel_type: ChannelType = None
     supported_message_types: Set[MsgType] = set()
     __version__: str = 'undefined version'
+
+    @classproperty
+    def channel_id(cls):
+        """
+        Unique identifier of the channel.
+        Defaulted to the full qualifying name of the module.
+        E.g.: ``ehforwarderbot.channels.master.example.dummy.DummyChannel``
+        """
+        return cls.__module__ + "." + cls.__name__
 
     def get_extra_functions(self) -> Dict[str, Callable]:
         """Get a list of extra functions
