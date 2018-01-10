@@ -25,7 +25,7 @@ considering the user experience, a master channel should:
 * maintain one thread / timeline per chat, indicating
 
 
-.. image:: ../_static/master-channel-0.png
+.. figure:: ../_static/master-channel-0.png
     :align: center
 
     An example of an ideal design of a master channel,

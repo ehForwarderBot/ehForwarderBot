@@ -147,11 +147,11 @@ Additional information
 
 2. Commands
     .. code-block:: python
-    
+
         message.text = "Carol sent you a friend request."
         message.commands = EFBMsgCommands([
-            EFBCommand(name="Accept", callable_name="accept_friend_request", 
-                       kwargs={"username": "carol_jhonos", "hash": "2a9329bd93f"})，
-            EFBCommand(name="Decline", callable_name="decline_friend_request", 
+            EFBCommand(name="Accept", callable_name="accept_friend_request",
+                       kwargs={"username": "carol_jhonos", "hash": "2a9329bd93f"}),
+            EFBCommand(name="Decline", callable_name="decline_friend_request",
                        kwargs={"username": "carol_jhonos", "hash": "2a9329bd93f"})
         ])

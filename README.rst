@@ -30,37 +30,42 @@ chat tunnel framework which allows users to contact
 people from other chat platforms, and ultimately remotely
 control their accounts in other platforms.
 
+v2.0 Alpha release
+------------------
+This is an alpha release of EFB version 2 for preview only.
+Documentation is yet incomplete. Framework API may subject to
+change.
 
-.. toctree::
-    :titlesonly:
+`Documentation <https://ehforwarderbot.readthedocs.io/en/efb2/>`_.
 
-    API/index
-    getting-started
-    directories
-    profile
-    guide/index
+Getting Started
+---------------
 
-Indices and tables
-==================
+1. Install the framework::
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+    pip3 install ehforwarderbot
+
+2. `Install and enable channels <https://ehforwarderbot.readthedocs.io/en/efb2/getting-started.html>`_
+    from the `Channels repository <https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository>`_.
+
+3. Launch EFB::
+
+    python3 -m ehforwarderbot
 
 Feel like contributing?
-=======================
+-----------------------
 
 Everyone is welcomed to raise an issue or submit a pull request,
 just remember to read through and follow the
 `contribution guideline <CONTRIBUTING.rst>`_ before you do so.
 
 Related articles
-================
+----------------
 
 * `Idea: Group Chat Tunneling (Sync) with EH Forwarder Bot <https://blog.1a23.com/2017/01/28/Idea-Group-Chat-Tunneling-Sync-with-EH-Forwarder-Bot/>`_
 
 License
-=======
+-------
 
 EFB framework is licensed under `GNU General Public License 3.0 <https://www.gnu.org/licenses/gpl-3.0.txt>`_.
 

@@ -21,7 +21,7 @@ parser = argparse.ArgumentParser(description="EH Forwarder Bot is an extensible 
                                              "remotely control their accounts in other platforms.",
                                  epilog="GitHub: https://github.com/blueset/ehForwarderBot")
 
-parser.add_argument("-v", action='store_true',
+parser.add_argument("-v", '--verbose', action='store_true',
                     help="Enable verbose mode. (Level: Debug)")
 parser.add_argument("-V", "--version", action='store_true',
                     help="Show version numbers and exit.")

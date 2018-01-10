@@ -54,7 +54,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'EH Forwarder Bot'
-copyright = '2017, Eana Hufwe'
+copyright = '2017 — 2018, Eana Hufwe'
 author = 'Eana Hufwe'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -81,7 +81,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
-# If true, `todo` and `todoList` produce output, else they produce nothing.
+# If true, `to\do` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
 # -- Options for HTML output ----------------------------------------------

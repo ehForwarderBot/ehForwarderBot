@@ -26,6 +26,10 @@ class EFBChannel(ABC):
         channel_type (:obj:`.ChannelType`): Type of the channel.
         supported_message_types (Set[:obj:`.MsgType`]):
             Types of messages that the channel accepts as incoming messages.
+        channel_id (str):
+            Unique identifier of the channel.
+            Defaulted to the full qualifying name of the module.
+            E.g.: ``ehforwarderbot.channels.master.example.dummy.DummyChannel``
     """
 
     channel_name: str = "Empty channel"
@@ -37,9 +41,7 @@ class EFBChannel(ABC):
     @classproperty
     def channel_id(cls):
         """
-        Unique identifier of the channel.
-        Defaulted to the full qualifying name of the module.
-        E.g.: ``ehforwarderbot.channels.master.example.dummy.DummyChannel``
+
         """
         return cls.__module__ + "." + cls.__name__
 

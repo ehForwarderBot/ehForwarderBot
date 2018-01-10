@@ -377,7 +377,7 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
             raise ValueError("Timeout is invalid.")
 
 
-class EFBMsgSubstitutions:
+class EFBMsgSubstitutions(dict):
     """
     EFB message substitutions.
 
@@ -386,29 +386,28 @@ class EFBMsgSubstitutions:
     the string used to refer to the user in the message
     and a user dict.
 
-    Attributes:
-        substitutions
-            Dict[Tuple[int, int], :obj:`.EFBChat`]):
-            Dictionary of text substitutions targeting to a user or member.
+    Dictionary of text substitutions targeting to a user or member.
 
-            The key of the dictionary is a tuple of two :obj:`int` s, where first
-            of it is the starting position in the string, and the second is the
-            ending position defined similar to Python's substring. A tuple of
-            ``(3, 15)` corresponds to ``msg.text[3:15]``.
-            The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``,
-            ``b ∈ (a, l]``, where ``l`` is the length of the message text.
+    The key of the dictionary is a tuple of two :obj:`int` s, where first
+    of it is the starting position in the string, and the second is the
+    ending position defined similar to Python's substring. A tuple of
+    ``(3, 15)` corresponds to ``msg.text[3:15]``.
+    The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``,
+    ``b ∈ (a, l]``, where ``l`` is the length of the message text.
 
-            Value of the dict may be any user of the chat, or a member of a
-            group. Notice that the :obj:`EFBChat` object here must NOT be a
-            group.
+    Value of the dict may be any user of the chat, or a member of a
+    group. Notice that the :obj:`EFBChat` object here must NOT be a
+    group.
+
+    Type:
+        Dict[Tuple[int, int], :obj:`.EFBChat`]
     """
-    substitutions: Dict[Tuple[int, int], EFBChat] = None
 
     def __init__(self, substitutions: Dict[Tuple[int, int], EFBChat]):
         if not isinstance(substitutions, dict):
             raise TypeError("Substitutions must be a dict.")
         for i in substitutions:
-            if not isinstance(i, tuple) or not len(i) == 2 or not isinstance(i[0], int) or not isinstance(i[1], int)\
+            if not isinstance(i, tuple) or not len(i) == 2 or not isinstance(i[0], int) or not isinstance(i[1], int) \
                     or not i[0] < i[1]:
                 raise TypeError("Substitution %s's index must be a tuple of 2 integers where the first one is less"
                                 "than the second one." % i)
@@ -416,15 +415,18 @@ class EFBMsgSubstitutions:
                 raise TypeError("Substitution %s is not a message object."
                                 % i)
             if substitutions[i].is_chat and \
-                    substitutions[i].chat_type == ChatType.Group:
+                            substitutions[i].chat_type == ChatType.Group:
                 raise ValueError("Substitution %s is not a user." % i)
-        self.substitutions = substitutions
-
-    def __str__(self):
-        return str(self.substitutions)
+        super().__init__(substitutions)
 
     def verify(self):
-        for i in self.substitutions:
-            if not isinstance(i, tuple) or len(i) != 2 or any(j < 0 for j in i):
-                raise ValueError("Index %i is invalid." % i)
-            self.substitutions[i].verify()
+        ranges = sorted(self.keys())
+        if ranges and (ranges[0][0] < 0 or ranges[0][1] < ranges[0][0]):
+            raise ValueError("Index %s is invalid." % ranges[0])
+        for i in range(1, len(ranges)):
+            if ranges[i][0] < 0 or ranges[i][1] < ranges[i][0]:
+                raise ValueError("Index %s is invalid." % ranges[i])
+            if ranges[i][0] < ranges[i - 1][1]:
+                raise ValueError("Index %s overlaps with %s." % (ranges[i], ranges[i - 1]))
+        for i in self.values():
+            i.verify()

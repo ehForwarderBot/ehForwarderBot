@@ -9,7 +9,7 @@ data directory".
 By default, the data directory is user specific, located in
 the user's home directory, ``~/.ehforwarderbot``.  This can be
 overridden with the environment variable ``EFB_DATA_PATH``.
-This path defined here should be **absolute path**.
+This path defined here should be an **absolute path**.
 
 .. comment, deprecated
     EFB cache is deprecated. System temporary file
