@@ -98,7 +98,7 @@ Launch EFB
 
 .. code-block:: shell
 
-    python3 -m ehforwarderbot
+    $ ehforwarderbot
 
 This will launch EFB directly in the current environment. The default
 :doc:`profile` is named ``profile``, to launch EFB in a different

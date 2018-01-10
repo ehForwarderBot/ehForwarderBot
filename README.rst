@@ -49,27 +49,26 @@ Getting Started
 
 3. Launch EFB::
 
-    python3 -m ehforwarderbot
+    $ ehforwarderbot
 
 Feel like contributing?
 -----------------------
 
 Everyone is welcomed to raise an issue or submit a pull request,
 just remember to read through and follow the
-`contribution guideline`_ before you do so.
+contribution guideline before you do so.
 
 Related articles
 ----------------
 
 * `Idea: Group Chat Tunneling (Sync) with EH Forwarder Bot`__
+
 .. __: https://blog.1a23.com/2017/01/28/Idea-Group-Chat-Tunneling-Sync-with-EH-Forwarder-Bot/
 
 License
 -------
 
-EFB framework is licensed under `GNU General Public License 3.0`_.
-
-.. code-block:: text
+EFB framework is licensed under `GNU General Public License 3.0`_::
 
     EH Forwarder Bot: An extensible chat tunneling bot framework.
     Copyright (C) 2016 Eana Hufwe
@@ -87,13 +86,7 @@ EFB framework is licensed under `GNU General Public License 3.0`_.
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
-.. |br| raw:: html
-
-    <br />
-
 .. _Install and enable channels: https://ehforwarderbot.readthedocs.io/en/efb2/getting-started.html
 .. _channels repository: https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository
 .. _Documentation: https://ehforwarderbot.readthedocs.io/en/efb2/
 .. _GNU General Public License 3.0: https://www.gnu.org/licenses/gpl-3.0.txt
-.. _contribution guideline: CONTRIBUTING.rst

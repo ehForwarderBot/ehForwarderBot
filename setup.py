@@ -37,7 +37,7 @@ setup(
     install_requires=[
         "PyYaml"
     ],
-    entry_point={
+    entry_points={
         "console_scripts": ['ehforwarderbot = ehforwarderbot.__main__:main']
     }
 )
