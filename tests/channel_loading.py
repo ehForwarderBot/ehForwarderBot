@@ -40,7 +40,7 @@ class ChannelLoadingTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as f:
             os.environ['EFB_DATA_PATH'] = f
             config_path = ehforwarderbot.utils.get_config_path()
-            modules_path = ehforwarderbot.utils.get_custom_channel_path()
+            modules_path = ehforwarderbot.utils.get_custom_modules_path()
             config = yaml.dump({
                 "master_channel": "master.MockMasterChannel",
                 "slave_channels": ["slave.MockSlaveChannel"],

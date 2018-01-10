@@ -12,11 +12,13 @@ class EFBMiddleware(ABC):
     Middleware class.
 
     Attributes:
-        middleware_id (str): Unique ID of the middleware
+        middleware_id (str):
+            Unique ID of the middleware
+            Convention of IDs is specified in :doc:`guide/packaging
         middleware_name (str): Human-readable name of the middleware.
     """
-    middleware_id: str = __name__
-    middleware_name: str = "Dummy Middleware"
+    middleware_id: str = "efb.empty_middleware"
+    middleware_name: str = "Empty Middleware"
     __version__: str = 'undefined version'
 
     def process_message(self, message: EFBMsg) -> Optional[EFBMsg]:
@@ -27,7 +29,7 @@ class EFBMiddleware(ABC):
             message (:obj:`.EFBMsg`): Message object to process
 
         Returns:
-            Optional[:obj:`.EFBMsg`]: Processed message or None if stopped.
+            Optional[:obj:`.EFBMsg`]: Processed message or None if discarded.
         """
         return message
 
@@ -39,6 +41,6 @@ class EFBMiddleware(ABC):
             status (:obj:`.EFBStatus`): Message object to process
 
         Returns:
-            Optional[:obj:`.EFBStatus`]: Processed status or None if stopped.
+            Optional[:obj:`.EFBStatus`]: Processed status or None if discarded.
         """
         return status

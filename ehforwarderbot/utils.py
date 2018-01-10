@@ -1,7 +1,15 @@
 import getpass
 import os
-from typing import Callable
+import pydoc
+
+import pkg_resources
+from typing import Callable, TYPE_CHECKING, Union
 from . import coordinator
+from .constants import ChannelType
+
+if TYPE_CHECKING:
+    from .channel import EFBChannel
+    from .middleware import EFBMiddleware
 
 
 def extra(name: str, desc: str) -> Callable:
@@ -95,13 +103,36 @@ def get_config_path(channel_id: str=None, ext: str='yaml') -> str:
     return os.path.join(config_path, "config.%s" % ext)
 
 
-def get_custom_channel_path() -> str:
+def get_custom_modules_path() -> str:
     """
     Get the path for custom channels
 
     Returns:
         str: The path.
     """
-    channel_path = os.path.join(get_base_path(), "channels")
+    channel_path = os.path.join(get_base_path(), "modules")
     os.makedirs(channel_path, exist_ok=True)
     return channel_path
+
+
+def locate_module(module_id: str, module_type=None):
+    """
+    Locate module by module ID
+
+    Args:
+        module_id: Module ID
+        module_type: Type of module, one of ``'master'``, ``'slave'`` and ``'middleware'``
+    """
+
+    entry_point = None
+
+    if module_type:
+        entry_point = 'ehforwarderbot.%s' % module_type
+
+    if entry_point:
+        for i in pkg_resources.iter_entry_points(entry_point):
+            if i.name == module_id:
+                return i.load()
+
+    return pydoc.locate(module_id)
+

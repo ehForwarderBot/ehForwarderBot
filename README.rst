@@ -36,7 +36,7 @@ This is an alpha release of EFB version 2 for preview only.
 Documentation is yet incomplete. Framework API may subject to
 change.
 
-`Documentation <https://ehforwarderbot.readthedocs.io/en/efb2/>`_.
+`Documentation`_.
 
 Getting Started
 ---------------
@@ -45,8 +45,7 @@ Getting Started
 
     pip3 install ehforwarderbot
 
-2. `Install and enable channels <https://ehforwarderbot.readthedocs.io/en/efb2/getting-started.html>`_
-    from the `Channels repository <https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository>`_.
+2. `Install and enable channels`_ from the `channels repository`_.
 
 3. Launch EFB::
 
@@ -57,17 +56,18 @@ Feel like contributing?
 
 Everyone is welcomed to raise an issue or submit a pull request,
 just remember to read through and follow the
-`contribution guideline <CONTRIBUTING.rst>`_ before you do so.
+`contribution guideline`_ before you do so.
 
 Related articles
 ----------------
 
-* `Idea: Group Chat Tunneling (Sync) with EH Forwarder Bot <https://blog.1a23.com/2017/01/28/Idea-Group-Chat-Tunneling-Sync-with-EH-Forwarder-Bot/>`_
+* `Idea: Group Chat Tunneling (Sync) with EH Forwarder Bot`__
+.. __: https://blog.1a23.com/2017/01/28/Idea-Group-Chat-Tunneling-Sync-with-EH-Forwarder-Bot/
 
 License
 -------
 
-EFB framework is licensed under `GNU General Public License 3.0 <https://www.gnu.org/licenses/gpl-3.0.txt>`_.
+EFB framework is licensed under `GNU General Public License 3.0`_.
 
 .. code-block:: text
 
@@ -90,4 +90,10 @@ EFB framework is licensed under `GNU General Public License 3.0 <https://www.gnu
 
 .. |br| raw:: html
 
-   <br />
+    <br />
+
+.. _Install and enable channels: https://ehforwarderbot.readthedocs.io/en/efb2/getting-started.html
+.. _channels repository: https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository
+.. _Documentation: https://ehforwarderbot.readthedocs.io/en/efb2/
+.. _GNU General Public License 3.0: https://www.gnu.org/licenses/gpl-3.0.txt
+.. _contribution guideline: CONTRIBUTING.rst

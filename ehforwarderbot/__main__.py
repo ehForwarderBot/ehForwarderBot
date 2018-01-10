@@ -53,11 +53,6 @@ def init():
 
     logger = logging.getLogger(__name__)
 
-    # Include custom channels
-    custom_channel_path = utils.get_custom_channel_path()
-    if custom_channel_path not in sys.path:
-        sys.path.insert(0, custom_channel_path)
-
     # Initialize all channels
     # (Load libraries and modules and init them with Queue `q`)
 
@@ -66,21 +61,21 @@ def init():
     for i in conf['slave_channels']:
         logger.log(99, "\x1b[0;37;46m Initializing slave %s... \x1b[0m", i)
 
-        cls = pydoc.locate(i)
+        cls = utils.locate_module(i, 'slave')
         coordinator.add_channel(cls())
 
         logger.log(99, "\x1b[0;37;42m Slave channel %s (%s) initialized. \x1b[0m",
                         cls.channel_name, cls.channel_id)
 
     logger.log(99, "\x1b[0;37;46m Initializing master %s... \x1b[0m", str(conf['master_channel']))
-    coordinator.add_channel(pydoc.locate(conf['master_channel'])())
+    coordinator.add_channel(utils.locate_module(conf['master_channel'], 'master')())
     logger.log(99, "\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m",
                     coordinator.master.channel_name, coordinator.master.channel_id)
 
     logger.log(99, "\x1b[1;37;42m All channels initialized. \x1b[0m")
     for i in conf['middlewares']:
         logger.log(99, "\x1b[0;37;46m Initializing middleware %s... \x1b[0m", i)
-        cls = pydoc.locate(i)
+        cls = utils.locate_module(i, 'middlewares')
         coordinator.add_middleware(cls())
         logger.log(99, "\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m",
                         cls.middleware_name, cls.middleware_id)
@@ -101,7 +96,7 @@ def poll():
         coordinator.slave_threads[i].start()
 
 
-if __name__ == '__main__':
+def main():
     args = parser.parse_args()
 
     if getattr(args, "version", None):
@@ -112,17 +107,17 @@ if __name__ == '__main__':
         try:
             conf = config.load_config()
             # Master channel
-            master_channel: EFBChannel = pydoc.locate(conf['master_channel'])
+            master_channel: EFBChannel = utils.locate_module(conf['master_channel'], 'master')
             versions += "\n\nMaster channel:\n    %s (%s) %s" % \
                         (master_channel.channel_name, master_channel.channel_id, master_channel.__version__)
             versions += "\n\nSlave channels:"
             for i in conf['slave_channels']:
-                slave_channel: EFBChannel = pydoc.locate(i)
+                slave_channel: EFBChannel = utils.locate_module(i, 'slave')
                 versions += "\n    %s (%s) %s" % \
                             (slave_channel.channel_name, slave_channel.channel_id, slave_channel.__version__)
             versions += "\n\nMiddlewares:"
             for i in conf['middlewares']:
-                middleware: EFBMiddleware = pydoc.locate(i)
+                middleware: EFBMiddleware = utils.locate_module(i, 'middleware')
                 versions += "\n    %s (%s) %s" % \
                             (middleware.middleware_name, middleware.middleware_name, middleware.__version__)
             else:
@@ -146,3 +141,7 @@ if __name__ == '__main__':
 
         init()
         poll()
+
+
+if __name__ == '__main__':
+    main()
