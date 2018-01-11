@@ -13,9 +13,9 @@ EH Forwarder Bot
 .. image:: https://readthedocs.org/projects/ehforwarderbot/badge/?version=latest
    :alt: Documentation
    :target: https://ehforwarderbot.readthedocs.io/en/latest/
-.. image:: https://img.shields.io/github/tag/blueset/ehforwarderbot.svg
-   :alt: tag release
-   :target: https://github.com/blueset/ehForwarderBot/releases
+.. image:: https://img.shields.io/pypi/v/ehforwarderbot.svg
+   :alt: PyPI release
+   :target: https://pypi.org/project/ehforwarderbot/
 .. image:: https://img.shields.io/codacy/grade/3b2555f9134844e3b01b00700bc43eeb.svg
    :alt: Codacy grade
    :target: https://www.codacy.com/app/blueset/ehForwarderBot
@@ -33,9 +33,11 @@ control their accounts in other platforms.
 
 .. toctree::
     :titlesonly:
+    :maxdepth: 1
 
     API/index
     getting-started
+    start
     directories
     profile
     guide/index

@@ -12,3 +12,4 @@ channels and middlewares for EH Forwarder Bot.
     media_processing
     storage
     packaging
+    misc

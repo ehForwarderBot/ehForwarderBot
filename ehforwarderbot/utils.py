@@ -58,26 +58,26 @@ def get_base_path() -> str:
     return base_path
 
 
-def get_data_path(channel_id: str):
+def get_data_path(module_id: str):
     """
-    Get the path for channel data.
+    Get the path for permanent storage of a module.
     
     This method creates the queried path if not existing.
     
     Args:
-        channel_id (str): Channel ID
+        module_id (str): Module ID
 
     Returns:
         str: The data path of selected channel.
     """
     profile = coordinator.profile
     base_path = get_base_path()
-    data_path = os.path.join(base_path, 'profiles', profile, channel_id, "")
+    data_path = os.path.join(base_path, 'profiles', profile, module_id, "")
     os.makedirs(data_path, exist_ok=True)
     return data_path
 
 
-def get_config_path(channel_id: str=None, ext: str='yaml') -> str:
+def get_config_path(module_id: str=None, ext: str= 'yaml') -> str:
     """
     Get path for configuration file. Defaulted to
     ``~/.ehforwarderbot/profiles/profile_name/channel_id/config.yaml``.
@@ -86,7 +86,7 @@ def get_config_path(channel_id: str=None, ext: str='yaml') -> str:
     not be created, however.
     
     Args:
-        channel_id (str): Channel ID.
+        module_id (str): Module ID.
         ext (Optional[Str]): Extension name of the config file.
             Defaulted to ``"yaml"``.
 
@@ -95,8 +95,8 @@ def get_config_path(channel_id: str=None, ext: str='yaml') -> str:
     """
     base_path = get_base_path()
     profile = coordinator.profile
-    if channel_id:
-        config_path = get_data_path(channel_id)
+    if module_id:
+        config_path = get_data_path(module_id)
     else:
         config_path = os.path.join(base_path, 'profiles', profile)
     os.makedirs(config_path, exist_ok=True)

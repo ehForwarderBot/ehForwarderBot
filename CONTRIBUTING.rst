@@ -16,8 +16,14 @@ If you need help, or want to talk to the authors, feel
 free to chat with us at our `Gitter chat`_ or
 `Telegram support group`_.
 
+Before you ask a question, please read and follow `this guide`_
+as far as possible. Without doing so might lead to
+unfriendly or no response from the community, although
+we try to refrain from doing so.
+
 .. _Gitter chat: https://gitter.im/blueset/ehForwarderBot
 .. _Telegram support group: https://telegram.me/efbsupport
+.. _this guide: http://www.catb.org/~esr/faqs/smart-questions.html
 
 Reporting bugs
 --------------
