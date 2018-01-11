@@ -27,13 +27,6 @@ Clone the project to local, and install with the install script.
     cd ehforwarderbot
     python3 setup.py
 
-.. todo: remove this block in final release
-
-.. attention::
-
-    Those instructions are not directly available until a stable
-    release of this version.  If you are already here in the
-    alpha/beta version docs, you should know what to do.
 
 A good network environment
 --------------------------
@@ -77,21 +70,21 @@ running in one profile.
     To enable the following channels:
 
     * Master channel
-        * DemoMaster (``ehforwarderbot.channels.master.foo.demo``)
+        * DemoMaster (``foo.demo_master``)
     * Slave channels
-        * DemoSlave (``ehforwarderbot.channels.slave.foo.demo``)
-        * RandomSlave (``ehforwarderbot.channels.slave.bar.random``)
-        * DummySlave (``ehforwarderbot.channels.slave.bar.dummy``)
+        * DemoSlave (``foo.demo_slave``)
+        * RandomSlave (``bar.random``)
+        * DummySlave (``bar.dummy``)
 
     In the ``config.yaml`` it should have the following lines:
 
     .. code-block:: yaml
 
-        master_channel: ehforwarderbot.channels.master.foo.demo
+        master_channel: foo.demo_master
         slave_channels:
-        - ehforwarderbot.channels.slave.foo.demo
-        - ehforwarderbot.channels.slave.bar.random
-        - ehforwarderbot.channels.slave.bar.dummy
+        - foo.demo_slave
+        - bar.random
+        - bar.dummy
 
 Launch EFB
 ----------

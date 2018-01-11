@@ -35,13 +35,13 @@ control their accounts in other platforms.
     :titlesonly:
     :maxdepth: 1
 
-    API/index
     getting-started
     start
     directories
     profile
     guide/index
     contributing
+    API/index
 
 Indices and tables
 ==================
@@ -88,9 +88,7 @@ EFB framework is licensed under `GNU General Public License 3.0`_.
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-.. |br| raw:: html
-
-   <br />
+:doc:`Donate <donate>`.
 
 .. _Install and enable channels: https://ehforwarderbot.readthedocs.io/en/efb2/getting-started.html
 .. _channels repository: https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository
