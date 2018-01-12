@@ -30,6 +30,11 @@ chat tunnel framework which allows users to contact
 people from other chat platforms, and ultimately remotely
 control their accounts in other platforms.
 
+For tips, tricks and community contributed articles, see
+`project wiki`_.
+
+.. _project wiki: https://github.com/blueset/ehForwarderBot/wiki
+
 v2.0 Alpha release
 ------------------
 This is an alpha release of EFB version 2 for preview only.

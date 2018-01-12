@@ -43,6 +43,11 @@ control their accounts in other platforms.
     contributing
     API/index
 
+For tips, tricks and community contributed articles, see
+`project wiki`_.
+
+.. _project wiki: https://github.com/blueset/ehForwarderBot/wiki
+
 Indices and tables
 ==================
 

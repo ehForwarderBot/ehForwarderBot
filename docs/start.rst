@@ -32,5 +32,3 @@ Options
     This option enables verbose log of EFB and all enabled
     modules. This, together with ``-V``, is particularly
     useful in debugging and issue reporting.
-
-.. todo: how to start, etc.

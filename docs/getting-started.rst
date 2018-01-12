@@ -104,11 +104,11 @@ Launch EFB as a daemon process
 
 Since version 2, EH Forwarder Bot has removed the daemon helper as
 it is unstable to use.  We recommend you to use mature solutions for
-daemon management, such as systemd, upstart, SysV or pm2.
+daemon management, such as systemd_, upstart_, or pm2_.
 
-
-
-.. todo: Insert more daemon managers
+.. _systemd: https://www.freedesktop.org/wiki/Software/systemd/
+.. _upstart: http://upstart.ubuntu.com/
+.. _pm2: http://pm2.keymetrics.io/
 
 .. old_content
     ## Configure your channels
