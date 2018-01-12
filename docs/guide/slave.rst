@@ -63,7 +63,7 @@ functionality of the function, it may be just a simple
 success message, or a long chunk of results.
 
 The callable should not raise any exception to its caller.
-Any exceptions occurred within should be ``expect``ed and
+Any exceptions occurred within should be ``expect``\ ed and
 processed.
 
 Callable name of extra functions has a more strict standard 
@@ -120,7 +120,7 @@ of your channel will be called with provided arguments.
 Note that all such methods MUST return a ``str`` as a 
 respond to the action from user, and they should NOT raise
 any exception to its caller. Any exceptions occurred within
-should be "expect"ed and processed.
+should be ``expect``\ ed and processed.
 
 
 Message delivery

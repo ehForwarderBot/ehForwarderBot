@@ -76,7 +76,7 @@ Type-specific Information
 
 2. Media message
     Information related to edia processing is described
-    in :doc:`guide/media_processing`.
+    in :doc:`/guide/media_processing`.
 
     The example below is for image (picture) messages.
     Audio, file, video, sticker works in the same way.

@@ -4,7 +4,7 @@ Configurations and storage
 Configurations and Permanent Storage
 ------------------------------------
 
-As described in :doc:`directories`, each module has
+As described in :doc:`/directories`, each module has
 been allocated with a folder per profile for configurations
 and other storage. The path can be obtained using
 :meth:`~.ehforwarderbot.utils.get_data_path` with your
