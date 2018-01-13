@@ -22,7 +22,7 @@ setup(
     python_requires='>=3.5',
     keywords=['EFB', 'EH Forwarder Bot', 'Chat tunneling', 'IM', 'messaging', ''],
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Intended Audience :: Developers",
         "Intended Audience :: End Users/Desktop",
