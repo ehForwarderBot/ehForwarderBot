@@ -17,7 +17,7 @@ from .mocks import master, slave, middleware
 class ChannelLoadingTest(unittest.TestCase):
     def setUp(self):
         pass
-    
+
     def test_custom_path_module_loading(self):
         with tempfile.TemporaryDirectory() as f:
             os.environ['EFB_DATA_PATH'] = f
