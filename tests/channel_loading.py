@@ -17,25 +17,7 @@ from .mocks import master, slave, middleware
 class ChannelLoadingTest(unittest.TestCase):
     def setUp(self):
         pass
-
-    def test_installed_module_loading(self):
-        with tempfile.TemporaryDirectory() as f:
-            os.environ['EFB_DATA_PATH'] = f
-            config_path = ehforwarderbot.utils.get_config_path()
-            config = yaml.dump({
-                "master_channel": "tests.mocks.master.MockMasterChannel",
-                "slave_channels": ["tests.mocks.slave.MockSlaveChannel"],
-                "middlewares": ["tests.mocks.middleware.MockMiddleware"]
-            })
-            if not os.path.exists(os.path.dirname(config_path)):
-                os.makedirs(os.path.dirname(config_path))
-            with open(config_path, 'w') as conf_file:
-                conf_file.write(config)
-            ehforwarderbot.__main__.init()
-            self.assertEqual(coordinator.master.channel_id, master.MockMasterChannel.channel_id)
-            self.assertIn(slave.MockSlaveChannel.channel_id, coordinator.slaves)
-            self.assertEqual(coordinator.middlewares[0].middleware_id, middleware.MockMiddleware.middleware_id)
-
+    
     def test_custom_path_module_loading(self):
         with tempfile.TemporaryDirectory() as f:
             os.environ['EFB_DATA_PATH'] = f
