@@ -25,7 +25,7 @@ Clone the project to local, and install with the install script.
 
     git clone https://github.com/blueset/ehforwarderbot
     cd ehforwarderbot
-    python3 setup.py
+    python3 setup.py install
 
 
 A good network environment

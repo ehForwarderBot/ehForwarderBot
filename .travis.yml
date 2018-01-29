@@ -1,0 +1,17 @@
+language: python
+python:
+- 3.5
+- 3.6
+install:
+- pip install -e .
+script: python -m unittest
+deploy:
+  provider: pypi
+  user:
+    secure: Grieyqg2gAQcgyW8vxpqh+3cMD7RkxBKBbgqFvSnIC21OmX1e3kAqZzPsZx5ZLzzVK5h5URsjk+u1RwYwcgxS2a45hAfTvxaeBhNPBRdcI35kLo6+dqxrEQT+H/imZJJZlR7+eqbZO9KnAStPfTzBIxTw/DsxFxQNlXsCRltMZLIVJpM3o5Hk93HJpJa5Vvkn9J+jSSolFpzEqDt+XWZrpv4ocP74PoofQv5H0X9Lxj+7BxtSTCIanboTBIK4kzdhUPsmveMkTx3dVEYV9hO3q2Ntdr1T3MtKOLhx8Ku7vW68wL/cAlFan/B4qzng334XJ9E7+P7m8GdesRajYVOhGuxE5pFY82aHP7ab/3d+JO22sEc0pat0FiCIgWEHrsYN5HD84TzcSic9QgbH4Vf41uFqgX4Y2AvatwzW/96GenILTXEtXVfzr44JNR0dhHtKnpy8aGl3fmGx0sgIApYxfHBFI/ye+XwhE/vg89UqEgSZCw03tVq8ejSK2mr6w51VBOeHMpi16q9M82JJHpwh4Bw0jUUDnnTzitVcPgKhgrLC3u5duUGm6iYuTHclp8+q0mGVq/sEQ5urOWew1D1c2GBqi1mtLoK7DHeHQjxAMoxL5zYGBpIviH3pYpQijwuooW/Vuaj+9FV8Ivsyw250GqyFWIxT3APVMnyv3mi4zM=
+  password:
+    secure: EBngJUUHdWgTqx9CvjSTyHSiOBhoH+EndVhAEIrzczoq+qYNMtjGh1MATBsdEo3gS506dSAWXyNVTHi172q3B6oNVG+dOVzlRNb8wPlJOKpf0BqOgFCIOvsAw/77/AW47WiQ3x7Op7nWY+s4tv/5GJq5YA0JSd9V2lzOlgBtortec3KQhduHOzTFV3PrrRXp2ONDT39cq0FVZn2JERuReIh326X06asCGpghRjrI7Iz27aFoaffncTv8oGPoxiZCm1TRoGEN1BMd02qo+7iRm7s2KhbGn1+q2NM9DLJpMe3dfgs2MPp/nTHZUzLshtCxvqYw5k9grd8SYev2xr43DBcX1AB4KVUpMyTjy/JluifkyWs+g660GQEkdYYj8BRDB4BWNlItTEOFckfRJ7aYDBepRn9uTqSJFqnR5dU9rawmqrV69EVDmsCnkDEN7NAn/+jCDX7ZnsvnBYxp6Dz22/9uUjvWL0YPvI/9Href4ybxtx5GzhpRAJ672bAbCx/KhySzSi5BSfUGlSDyC4hA9M1SIMGQfNge0aZQie6NKm2FvQ1Jhhd4HS/N46GbG9Ho8pkCRfvPmxMKtyiHl7+H+H+BLqCETGkh9zKFr30bbmXFFsINt4VVzKPKodnfaLhZrsMDmZQvxWheosBgLkC7vEaKTeHjQmgjqQclu30q4BU=
+  on:
+    condition: "$TRAVIS_COMMIT_MESSAGE =~ 'Bump version: .*'"
+    all_branches: true
+  distributions: sdist bdist_wheel
