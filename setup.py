@@ -20,7 +20,7 @@ setup(
     url='https://github.com/blueset/ehforwarderbot',
     license='GPLv3',
     python_requires='>=3.5',
-    keywords=['EFB', 'EH Forwarder Bot', 'Chat tunneling', 'IM', 'messaging', ''],
+    keywords=['EFB', 'EH Forwarder Bot', 'Chat tunneling', 'IM', 'messaging'],
     classifiers=[
         "Development Status :: 4 - Beta",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",

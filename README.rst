@@ -53,7 +53,7 @@ Getting Started
 
 3. Launch EFB::
 
-    $ ehforwarderbot
+    ehforwarderbot
 
 Feel like contributing?
 -----------------------

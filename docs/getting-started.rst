@@ -8,24 +8,34 @@ Install EH Forwarder Bot
 
 EH Forwarder Bot can be installed in the following ways:
 
-Install from PIP
-~~~~~~~~~~~~~~~~
+.. note::
+
+    The following instructions may not work properly
+    until a stable release is uploaded. As you are in
+    the beta version documentation, I assume you know
+    what to do.
+
+Install from PyPI
+~~~~~~~~~~~~~~~~~
+
+``pip`` will by default install the latest stable version
+from PyPI, but development versions are available at PyPI
+as well.
 
 .. code-block:: shell
 
     pip3 install ehforwarderbot
 
 
-Install manually
-~~~~~~~~~~~~~~~~
+Install from GitHub
+~~~~~~~~~~~~~~~~~~~
 
-Clone the project to local, and install with the install script.
+This will install the latest commit from GitHub. It might not be
+stable, so proceed with caution.
 
 .. code-block:: shell
 
-    git clone https://github.com/blueset/ehforwarderbot
-    cd ehforwarderbot
-    python3 setup.py install
+    pip install git+https://github.com/blueset/ehforwarderbot.git
 
 
 A good network environment
@@ -91,7 +101,7 @@ Launch EFB
 
 .. code-block:: shell
 
-    $ ehforwarderbot
+    ehforwarderbot
 
 This will launch EFB directly in the current environment. The default
 :doc:`profile` is named ``profile``, to launch EFB in a different
