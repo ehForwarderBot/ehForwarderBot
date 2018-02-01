@@ -30,7 +30,7 @@ class EFBChatUpdates(EFBStatus):
     """EFBChatUpdates(channel: EFBChannel, new_chats: Optional[Tuple[str]]=tuple(), removed_chats: Optional[Tuple[str]]=tuple(), modified_chats: Optional[Tuple[str]]=tuple())
 
     Inform the master channel on updates of slave chats.
-        
+
     Attributes:
         channel (:obj:`.EFBChannel`): Slave channel that issues the update
         new_chats (Optional[Tuple[str]]): Unique ID of new chats

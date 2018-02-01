@@ -2,7 +2,6 @@ import os
 
 import sys
 import yaml
-import pydoc
 from typing import Dict, Any
 from . import utils
 from .channel import EFBChannel

@@ -13,7 +13,7 @@ __all__ = ["EFBChannel"]
 class EFBChannel(ABC):
     """
     The abstract channel class.
-    
+
     Attributes:
         channel_name (str):
             A human-friendly name of the channel.

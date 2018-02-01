@@ -28,7 +28,7 @@ class MsgType(Enum):
 
     Sticker = "Sticker"
     """
-    Pictures sent with few text caption, usually a 
+    Pictures sent with few text caption, usually a
     transparent background, and a limited number
     of options that is usually not from the user's
     photo gallery.

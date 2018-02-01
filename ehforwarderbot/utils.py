@@ -10,7 +10,7 @@ from . import coordinator
 def extra(name: str, desc: str) -> Callable:
     """
     Decorator for slave channel's "extra functions" interface.
-    
+
     Args:
         name (str): A human readable name for the function.
         desc (str): A short description and usage of it. Use
@@ -77,7 +77,7 @@ def get_config_path(module_id: str=None, ext: str= 'yaml') -> str:
     Get path for configuration file. Defaulted to
     ``~/.ehforwarderbot/profiles/profile_name/channel_id/config.yaml``.
     
-    This method creates the queried path if not existing. The config file will 
+    This method creates the queried path if not existing. The config file will
     not be created, however.
     
     Args:
