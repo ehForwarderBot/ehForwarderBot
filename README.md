@@ -12,9 +12,15 @@
 
 ![EFB](https://images.1a23.com/upload/images/SPET.png)
 
+
 _Codename_ **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework which allows users to contact people from other chat platforms, and ultimately remotely control their accounts in other platforms.
 
-[Documentation](https://ehforwarderbot.readthedocs.io/en/latest/).
+Documentation is available at the `docs` folder.
+
+
+## Version 1 is now deprecated 
+
+EH Forwarder Bot version 1 is now deprecated with the replacement of version 2. 
 
 ## Media coverage
 * [Appinn: Send and Receive messages from WeChat on Telegram](http://www.appinn.com/eh-forwarder-bot/)  
