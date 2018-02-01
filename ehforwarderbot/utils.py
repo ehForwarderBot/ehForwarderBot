@@ -3,13 +3,8 @@ import os
 import pydoc
 
 import pkg_resources
-from typing import Callable, TYPE_CHECKING, Union
+from typing import Callable
 from . import coordinator
-from .constants import ChannelType
-
-if TYPE_CHECKING:
-    from .channel import EFBChannel
-    from .middleware import EFBMiddleware
 
 
 def extra(name: str, desc: str) -> Callable:
@@ -18,7 +13,7 @@ def extra(name: str, desc: str) -> Callable:
     
     Args:
         name (str): A human readable name for the function.
-        desc (str): A short description and usage of it. Use 
+        desc (str): A short description and usage of it. Use
             ``{function_name}`` in place of the function name
             in the description.
 
@@ -115,7 +110,7 @@ def get_custom_modules_path() -> str:
     return channel_path
 
 
-def locate_module(module_id: str, module_type=None):
+def locate_module(module_id: str, module_type: str=None):
     """
     Locate module by module ID
 

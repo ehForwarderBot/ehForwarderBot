@@ -2,8 +2,6 @@ from abc import ABC, abstractmethod
 from typing import Optional, Dict, List, Set, Callable, IO, TYPE_CHECKING
 from .constants import *
 from .status import EFBStatus
-from .class_property import classproperty
-from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from .chat import EFBChat
@@ -120,7 +118,7 @@ class EFBChannel(ABC):
         Args:
             chat_uid (str): UID of the chat.
             member_uid (Optional[str]): UID of group member,
-                only when the selected chat is a group. 
+                only when the selected chat is a group.
 
         Returns:
            .EFBChat: the standard chat dict of the chat.

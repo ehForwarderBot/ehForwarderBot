@@ -66,7 +66,7 @@ class EFBMsg:
                 Some channels may not support message editing.
                 Some channels may issue a new uid for edited message.
 
-        vendor_specific (Dict[str, Any]): 
+        vendor_specific (Dict[str, Any]):
             A series of vendor specific attributes attached. This can be
             used by any other channels or middlewares that is compatible
             with such information. Note that no guarantee is provided

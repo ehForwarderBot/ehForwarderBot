@@ -35,11 +35,10 @@ For tips, tricks and community contributed articles, see
 
 .. _project wiki: https://github.com/blueset/ehForwarderBot/wiki
 
-v2.0 Alpha release
+v2.0 beta release
 ------------------
-This is an alpha release of EFB version 2 for preview only.
-Documentation is yet incomplete. Framework API may subject to
-change.
+This is an beta release of EFB version 2 for test only.
+Framework API may subject to change.
 
 `Documentation`_.
 

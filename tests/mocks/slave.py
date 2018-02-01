@@ -1,6 +1,5 @@
 import threading
-from io import FileIO
-from typing import Set, Optional, List, IO
+from typing import Set, Optional, List
 from logging import getLogger
 
 from ehforwarderbot import EFBChannel, EFBMsg, EFBStatus, ChannelType, MsgType, EFBChat, ChatType

@@ -2,16 +2,13 @@ import threading
 import logging
 import argparse
 import sys
-import signal
-import pydoc
-
 import atexit
 
 from . import config, utils
+from . import coordinator
 from .__version__ import __version__
 from .channel import EFBChannel
 from .middleware import EFBMiddleware
-from . import coordinator
 
 if sys.version_info < (3, 5):
     raise Exception("Python 3.5 or higher is required. Your version is %s." % sys.version)
