@@ -35,7 +35,7 @@ stable, so proceed with caution.
 
 .. code-block:: shell
 
-    pip install git+https://github.com/blueset/ehforwarderbot.git
+    pip3 install git+https://github.com/blueset/ehforwarderbot.git
 
 
 A good network environment
