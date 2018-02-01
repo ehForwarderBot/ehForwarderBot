@@ -1,8 +1,8 @@
 EH Forwarder Bot
 ================
 
-.. image:: https://img.shields.io/badge/Python->%3D%203.5-blue.svg
-   :alt: Python >= 3.5
+.. image:: https://img.shields.io/badge/Python->%3D%203.6-blue.svg
+   :alt: Python >= 3.6
    :target: https://www.python.org/
 .. image:: https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg
    :alt: Gitter

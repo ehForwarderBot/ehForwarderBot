@@ -19,7 +19,7 @@ setup(
     author_email='ilove@1a23.com',
     url='https://github.com/blueset/ehforwarderbot',
     license='GPLv3',
-    python_requires='>=3.5',
+    python_requires='>=3.6',
     keywords=['EFB', 'EH Forwarder Bot', 'Chat tunneling', 'IM', 'messaging'],
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -27,7 +27,6 @@ setup(
         "Intended Audience :: Developers",
         "Intended Audience :: End Users/Desktop",
         "Programming Language :: Python :: 3 :: Only",
-        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Topic :: Communications :: Chat",
