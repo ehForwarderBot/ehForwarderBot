@@ -75,7 +75,7 @@ def init():
     logger.log(99, "\x1b[1;37;42m All channels initialized. \x1b[0m")
     for i in conf['middlewares']:
         logger.log(99, "\x1b[0;37;46m Initializing middleware %s... \x1b[0m", i)
-        cls = utils.locate_module(i, 'middlewares')
+        cls = utils.locate_module(i, 'middleware')
         coordinator.add_middleware(cls())
         logger.log(99, "\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m",
                         cls.middleware_name, cls.middleware_id)
@@ -125,12 +125,13 @@ def main():
         finally:
             print(versions)
     else:
-        if getattr(args, "v", None):
+        if getattr(args, "verbose", None):
             level = logging.DEBUG
         else:
             level = logging.ERROR
         logging.basicConfig(format='%(asctime)s [%(levelname)s]: %(name)s (%(module)s.%(funcName)s; '
                                    '%(filename)s:%(lineno)d) \n    %(message)s', level=level)
+        logging.root.setLevel(level)
 
         # signal.signal(signal.SIGINT, stop_gracefully)
         # signal.signal(signal.SIGTERM, stop_gracefully)

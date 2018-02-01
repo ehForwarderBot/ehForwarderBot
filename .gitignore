@@ -117,15 +117,3 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
-
-config.py
-test.py
-test.db
-tgdata.db
-storage/*
-temp*
-itchat.pkl
-.itchat
-
-# Mkdocs
-site/
