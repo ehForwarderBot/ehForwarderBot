@@ -113,10 +113,11 @@ def main():
                 versions += "\n    %s (%s) %s" % \
                             (slave_channel.channel_name, slave_channel.channel_id, slave_channel.__version__)
             versions += "\n\nMiddlewares:"
-            for i in conf['middlewares']:
-                middleware: EFBMiddleware = utils.locate_module(i, 'middleware')
-                versions += "\n    %s (%s) %s" % \
-                            (middleware.middleware_name, middleware.middleware_name, middleware.__version__)
+            if conf['middlewares']:
+                for i in conf['middlewares']:
+                    middleware: EFBMiddleware = utils.locate_module(i, 'middleware')
+                    versions += "\n    %s (%s) %s" % \
+                                (middleware.middleware_name, middleware.middleware_name, middleware.__version__)
             else:
                 versions += "\n    No middleware is enabled."
         finally:

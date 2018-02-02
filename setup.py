@@ -1,5 +1,5 @@
 import sys
-from setuptools import setup
+from setuptools import setup, find_packages
 
 if sys.version_info < (3, 6):
     raise Exception("Python 3.6 or higher is required. Your version is %s." % sys.version)
@@ -11,7 +11,7 @@ exec(open('ehforwarderbot/__version__.py').read())
 
 setup(
     name='ehforwarderbot',
-    packages=['ehforwarderbot'],
+    packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     version=__version__,
     description='An extensible message tunneling chat bot framework.',
     long_description=long_description,
