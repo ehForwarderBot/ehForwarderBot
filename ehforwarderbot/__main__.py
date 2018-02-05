@@ -3,6 +3,8 @@ import logging
 import argparse
 import sys
 import atexit
+import mimetypes
+import pkg_resources
 
 from . import config, utils
 from . import coordinator
@@ -49,6 +51,9 @@ def init():
     """
 
     logger = logging.getLogger(__name__)
+
+    # Initialize mimetypes library
+    mimetypes.init([pkg_resources.resource_filename('ehforwarderbot', 'mimetypes')])
 
     # Initialize all channels
     # (Load libraries and modules and init them with Queue `q`)
