@@ -413,12 +413,11 @@ class EFBMsgSubstitutions(dict):
                     or not i[0] < i[1]:
                 raise TypeError("Substitution %s's index must be a tuple of 2 integers where the first one is less"
                                 "than the second one." % i)
-            if not isinstance(substitutions[i], EFBMsg):
-                raise TypeError("Substitution %s is not a message object."
-                                % i)
+            if not isinstance(substitutions[i], EFBChat):
+                raise TypeError("Substitution %s is not a chat object." % i)
             if substitutions[i].is_chat and \
                             substitutions[i].chat_type == ChatType.Group:
-                raise ValueError("Substitution %s is not a user." % i)
+                raise ValueError("Substitution %s is a group." % i)
         super().__init__(substitutions)
 
     def verify(self):
