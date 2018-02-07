@@ -3,11 +3,11 @@
 from abc import ABC, abstractmethod
 from typing import Optional, Dict, List, Set, Callable, IO, TYPE_CHECKING
 from .constants import *
-from .status import EFBStatus
 
 if TYPE_CHECKING:
     from .chat import EFBChat
     from .message import EFBMsg
+    from .status import EFBStatus
 
 __all__ = ["EFBChannel"]
 
@@ -134,7 +134,7 @@ class EFBChannel(ABC):
         raise NotImplementedError()
 
     @abstractmethod
-    def send_status(self, status: EFBStatus):
+    def send_status(self, status: 'EFBStatus'):
         """
         Return the standard chat dict of the selected chat.
 

@@ -1,10 +1,9 @@
 # coding=utf-8
 
 from abc import abstractmethod, ABC
-from typing import Tuple, Optional, TYPE_CHECKING
+from typing import Tuple, Optional
 
-if TYPE_CHECKING:
-    from . import EFBChannel, EFBMsg
+from . import EFBChannel, EFBMsg
 
 __all__ = ["EFBStatus", "EFBChatUpdates", "EFBMemberUpdates", "EFBMessageRemoval"]
 
