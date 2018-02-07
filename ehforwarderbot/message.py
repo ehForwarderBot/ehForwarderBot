@@ -1,3 +1,5 @@
+# coding=utf-8
+
 from abc import ABC, abstractmethod
 from typing import IO, Dict, Optional, List, Any, Tuple
 

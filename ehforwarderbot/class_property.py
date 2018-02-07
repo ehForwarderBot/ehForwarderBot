@@ -1,3 +1,5 @@
+# coding=utf-8
+
 class ClassPropertyDescriptor(object):
 
     def __init__(self, fget, fset=None):

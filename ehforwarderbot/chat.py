@@ -1,3 +1,5 @@
+# coding=utf-8
+
 import copy
 from typing import List, Dict, Any, Optional
 

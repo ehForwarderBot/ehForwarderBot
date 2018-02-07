@@ -1,3 +1,5 @@
+# coding=utf-8
+
 from abc import ABC, abstractmethod
 from typing import Optional, Dict, List, Set, Callable, IO, TYPE_CHECKING
 from .constants import *

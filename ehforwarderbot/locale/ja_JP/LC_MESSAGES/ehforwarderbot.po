@@ -1,0 +1,95 @@
+#: ehforwarderbot/__main__.py:23
+#, python-brace-format
+msgid "Python 3.6 or higher is required. Your version is {version}."
+msgstr ""
+"Python 3.6 以上のバージョンが必要です。あなたのお使いバージョンは {version} "
+"です。"
+
+#: ehforwarderbot/__main__.py:25
+msgid ""
+"EH Forwarder Bot is an extensible chat tunnel framework which allows users "
+"to contact people from other chat platforms, and ultimately remotely control "
+"their accounts in other platforms."
+msgstr ""
+"EH Forwarder Bot は拡張可能なIMトンネリングフレームワークである。EFB で、ワン"
+"ポイントで様々なIMで他の人と接続できます、そして、いろんなIMアカウントのコン"
+"トロールもワンポイントでできます。"
+
+#: ehforwarderbot/__main__.py:33
+msgid "Enable verbose mode. (Level: Debug)"
+msgstr "詳細モードをオンする（ログレベル：デバグ）。"
+
+#: ehforwarderbot/__main__.py:35
+msgid "Show version numbers and exit."
+msgstr "バージョン情報を表示する。"
+
+#: ehforwarderbot/__main__.py:37
+msgid "Choose a profile to start with."
+msgstr "プロファイルを指定する。"
+
+#: ehforwarderbot/__main__.py:114
+#, python-brace-format
+msgid ""
+"EH Forwarder Bot\n"
+"Version: {version}\n"
+"Python version:\n"
+"{py_version}"
+msgstr ""
+"EH Forwarder Bot\n"
+"バージョン: {version}\n"
+"Python バージョン:\n"
+"{py_version}"
+
+#: ehforwarderbot/__main__.py:122
+#, python-brace-format
+msgid ""
+"\n"
+"\n"
+"Master channel:\n"
+"    {name} ({id}) {version}"
+msgstr ""
+"\n"
+"\n"
+"マスターチャンネル:\n"
+"    {name} ({id}) {version}"
+
+#: ehforwarderbot/__main__.py:126
+msgid ""
+"\n"
+"\n"
+"Slave channel:"
+msgid_plural ""
+"\n"
+"\n"
+"Slave channels:"
+msgstr[0] ""
+"\n"
+"\n"
+"スレーブチャンネル:"
+
+#: ehforwarderbot/__main__.py:129 ehforwarderbot/__main__.py:137
+#, python-brace-format
+msgid ""
+"\n"
+"    {name} ({id}) {version}"
+msgstr ""
+"\n"
+"    {name} ({id}) {version}"
+
+#: ehforwarderbot/__main__.py:133
+msgid ""
+"\n"
+"\n"
+"Middlewares:"
+msgstr ""
+"\n"
+"\n"
+"ミドルウェア:"
+
+#: ehforwarderbot/__main__.py:142
+msgid ""
+"\n"
+"    No middleware is enabled."
+msgstr ""
+"\n"
+"    ミドルウェアなし。"

@@ -1,3 +1,6 @@
+# coding=utf-8
+
+
 class EFBException(Exception):
     """A general class to indicate that the exception is from EFB framework."""
     pass

@@ -1,3 +1,5 @@
+# coding=utf-8
+
 from abc import abstractmethod, ABC
 from typing import Tuple, Optional, TYPE_CHECKING
 
