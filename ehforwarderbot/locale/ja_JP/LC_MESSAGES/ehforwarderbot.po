@@ -1,11 +1,29 @@
-#: ehforwarderbot/__main__.py:23
+msgid ""
+msgstr ""
+"Project-Id-Version: EH Forwarder Bot v2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-07 16:23+0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Eana Hufwe\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: __main__.py:23
 #, python-brace-format
 msgid "Python 3.6 or higher is required. Your version is {version}."
 msgstr ""
 "Python 3.6 以上のバージョンが必要です。あなたのお使いバージョンは {version} "
 "です。"
 
-#: ehforwarderbot/__main__.py:25
+#: __main__.py:25
 msgid ""
 "EH Forwarder Bot is an extensible chat tunnel framework which allows users "
 "to contact people from other chat platforms, and ultimately remotely control "
@@ -15,19 +33,19 @@ msgstr ""
 "ポイントで様々なIMで他の人と接続できます、そして、いろんなIMアカウントのコン"
 "トロールもワンポイントでできます。"
 
-#: ehforwarderbot/__main__.py:33
+#: __main__.py:33
 msgid "Enable verbose mode. (Level: Debug)"
 msgstr "詳細モードをオンする（ログレベル：デバグ）。"
 
-#: ehforwarderbot/__main__.py:35
+#: __main__.py:35
 msgid "Show version numbers and exit."
 msgstr "バージョン情報を表示する。"
 
-#: ehforwarderbot/__main__.py:37
+#: __main__.py:37
 msgid "Choose a profile to start with."
 msgstr "プロファイルを指定する。"
 
-#: ehforwarderbot/__main__.py:114
+#: __main__.py:114
 #, python-brace-format
 msgid ""
 "EH Forwarder Bot\n"
@@ -40,7 +58,7 @@ msgstr ""
 "Python バージョン:\n"
 "{py_version}"
 
-#: ehforwarderbot/__main__.py:122
+#: __main__.py:122
 #, python-brace-format
 msgid ""
 "\n"
@@ -53,7 +71,7 @@ msgstr ""
 "マスターチャンネル:\n"
 "    {name} ({id}) {version}"
 
-#: ehforwarderbot/__main__.py:126
+#: __main__.py:126
 msgid ""
 "\n"
 "\n"
@@ -67,7 +85,7 @@ msgstr[0] ""
 "\n"
 "スレーブチャンネル:"
 
-#: ehforwarderbot/__main__.py:129 ehforwarderbot/__main__.py:137
+#: __main__.py:129 __main__.py:137
 #, python-brace-format
 msgid ""
 "\n"
@@ -76,17 +94,21 @@ msgstr ""
 "\n"
 "    {name} ({id}) {version}"
 
-#: ehforwarderbot/__main__.py:133
+#: __main__.py:133
 msgid ""
 "\n"
 "\n"
+"Middleware:"
+msgid_plural ""
+"\n"
+"\n"
 "Middlewares:"
-msgstr ""
+msgstr[0] ""
 "\n"
 "\n"
 "ミドルウェア:"
 
-#: ehforwarderbot/__main__.py:142
+#: __main__.py:142
 msgid ""
 "\n"
 "    No middleware is enabled."

@@ -43,6 +43,9 @@ master_thread: Optional[threading.Thread] = None
 slave_threads: Dict[str, threading.Thread] = dict()
 """Threads running poll() from slave channels. Keys are the channel IDs."""
 
+translator = None
+"""Internal GNU gettext translator."""
+
 
 def add_channel(channel: EFBChannel):
     """

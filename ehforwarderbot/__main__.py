@@ -16,8 +16,11 @@ from .channel import EFBChannel
 from .middleware import EFBMiddleware
 
 # gettext.install('ehforwarderbot', 'locale')
-gettext.install('ehforwarderbot', pkg_resources.resource_filename('ehforwarderbot', 'locale'),
-                names=("ngettext",))
+coordinator.translator = gettext.translation('ehforwarderbot',
+                                             pkg_resources.resource_filename('ehforwarderbot', 'locale'))
+
+_ = coordinator.translator.gettext
+ngettext = coordinator.translator.ngettext
 
 if sys.version_info < (3, 6):
     raise Exception(_("Python 3.6 or higher is required. Your version is {version}.").format(version=sys.version))
@@ -130,7 +133,7 @@ def main():
                             .format(name=slave_channel.channel_name,
                                     id=slave_channel.channel_id,
                                     version=slave_channel.__version__)
-            versions += _("\n\nMiddlewares:")
+            versions += ngettext("\n\nMiddleware:", "\n\nMiddlewares:", len(conf['middlewares']))
             if conf['middlewares']:
                 for i in conf['middlewares']:
                     middleware: EFBMiddleware = utils.locate_module(i, 'middleware')
