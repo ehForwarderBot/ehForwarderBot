@@ -1,51 +1,78 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: EH Forwarder Bot v2\n"
+"Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-07 16:23+0800\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: Eana Hufwe\n"
+"POT-Creation-Date: 2018-02-08 16:43+0800\n"
+"PO-Revision-Date: 2018-02-08 16:52+0800\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Japanese\n"
 "Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.0.6\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-Basepath: ../../..\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: ja\n"
+"X-Crowdin-File: ehforwarderbot.pot\n"
 
-#: __main__.py:23
+#: ehforwarderbot/__main__.py:27
 #, python-brace-format
 msgid "Python 3.6 or higher is required. Your version is {version}."
-msgstr ""
-"Python 3.6 以上のバージョンが必要です。あなたのお使いバージョンは {version} "
-"です。"
+msgstr "Python 3.6 以上のバージョンが必要です。あなたのお使いバージョンは {version} です。"
 
-#: __main__.py:25
-msgid ""
-"EH Forwarder Bot is an extensible chat tunnel framework which allows users "
-"to contact people from other chat platforms, and ultimately remotely control "
-"their accounts in other platforms."
-msgstr ""
-"EH Forwarder Bot は拡張可能なIMトンネリングフレームワークである。EFB で、ワン"
-"ポイントで様々なIMで他の人と接続できます、そして、いろんなIMアカウントのコン"
-"トロールもワンポイントでできます。"
+#: ehforwarderbot/__main__.py:29
+msgid "EH Forwarder Bot is an extensible chat tunnel framework which allows users to contact people from other chat platforms, and ultimately remotely control their accounts in other platforms."
+msgstr "EH Forwarder Bot は拡張可能なIMトンネリングフレームワークである。EFB で、ワンポイントで様々なIMで他の人と接続できます、そして、いろんなIMアカウントのコントロールもワンポイントでできます。"
 
-#: __main__.py:33
+#: ehforwarderbot/__main__.py:37
 msgid "Enable verbose mode. (Level: Debug)"
-msgstr "詳細モードをオンする（ログレベル：デバグ）。"
+msgstr "詳細モードを有効にします。(レベル: デバッグ)"
 
-#: __main__.py:35
+#: ehforwarderbot/__main__.py:39
 msgid "Show version numbers and exit."
 msgstr "バージョン情報を表示する。"
 
-#: __main__.py:37
+#: ehforwarderbot/__main__.py:41
 msgid "Choose a profile to start with."
 msgstr "プロファイルを指定する。"
 
-#: __main__.py:114
+#: ehforwarderbot/__main__.py:77
+msgid "Initializing slave {}..."
+msgstr "スレーブチャンネル {} を初期化中..."
+
+#: ehforwarderbot/__main__.py:83
+#, python-brace-format
+msgid "Slave channel {name} ({id}) is initialized."
+msgstr "スレーブチャンネル {name} ({id}) を初期化されました。"
+
+#: ehforwarderbot/__main__.py:87
+msgid "Initializing master {}..."
+msgstr "マスターチャンネル {} を初期化中..."
+
+#: ehforwarderbot/__main__.py:90
+#, python-brace-format
+msgid "Master channel {name} ({id}) is initialized."
+msgstr "マスターチャンネル {name} ({id}) を初期化されました。"
+
+#: ehforwarderbot/__main__.py:94
+msgid "All channels initialized."
+msgstr "すべてのチャネルは初期化されました。"
+
+#: ehforwarderbot/__main__.py:96
+msgid "Initializing middleware {}..."
+msgstr "ミドルウェア {} を初期化中..."
+
+#: ehforwarderbot/__main__.py:100
+#, python-brace-format
+msgid "Middleware {name} ({id}) is initialized."
+msgstr "ミドルウェア {name} ({id}) を初期化されました。"
+
+#: ehforwarderbot/__main__.py:102
+msgid "All middlewares are initialized."
+msgstr "すべてのミドルウェアが初期化されました。"
+
+#: ehforwarderbot/__main__.py:122
 #, python-brace-format
 msgid ""
 "EH Forwarder Bot\n"
@@ -58,7 +85,7 @@ msgstr ""
 "Python バージョン:\n"
 "{py_version}"
 
-#: __main__.py:122
+#: ehforwarderbot/__main__.py:130
 #, python-brace-format
 msgid ""
 "\n"
@@ -71,7 +98,7 @@ msgstr ""
 "マスターチャンネル:\n"
 "    {name} ({id}) {version}"
 
-#: __main__.py:126
+#: ehforwarderbot/__main__.py:134
 msgid ""
 "\n"
 "\n"
@@ -85,7 +112,7 @@ msgstr[0] ""
 "\n"
 "スレーブチャンネル:"
 
-#: __main__.py:129 __main__.py:137
+#: ehforwarderbot/__main__.py:137 ehforwarderbot/__main__.py:145
 #, python-brace-format
 msgid ""
 "\n"
@@ -94,7 +121,7 @@ msgstr ""
 "\n"
 "    {name} ({id}) {version}"
 
-#: __main__.py:133
+#: ehforwarderbot/__main__.py:141
 msgid ""
 "\n"
 "\n"
@@ -108,7 +135,7 @@ msgstr[0] ""
 "\n"
 "ミドルウェア:"
 
-#: __main__.py:142
+#: ehforwarderbot/__main__.py:150
 msgid ""
 "\n"
 "    No middleware is enabled."

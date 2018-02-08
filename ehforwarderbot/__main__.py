@@ -17,7 +17,8 @@ from .middleware import EFBMiddleware
 
 # gettext.install('ehforwarderbot', 'locale')
 coordinator.translator = gettext.translation('ehforwarderbot',
-                                             pkg_resources.resource_filename('ehforwarderbot', 'locale'))
+                                             pkg_resources.resource_filename('ehforwarderbot', 'locale'),
+                                             fallback=True)
 
 _ = coordinator.translator.gettext
 ngettext = coordinator.translator.ngettext
@@ -73,28 +74,32 @@ def init():
     conf = config.load_config()
 
     for i in conf['slave_channels']:
-        logger.log(99, "\x1b[0;37;46m Initializing slave %s... \x1b[0m", i)
+        logger.log(99, "\x1b[0;37;46m %s \x1b[0m", _("Initializing slave {}...").format(i))
 
         cls = utils.locate_module(i, 'slave')
         coordinator.add_channel(cls())
 
-        logger.log(99, "\x1b[0;37;42m Slave channel %s (%s) initialized. \x1b[0m",
-                   cls.channel_name, cls.channel_id)
+        logger.log(99, "\x1b[0;37;42m %s \x1b[0m",
+                   _("Slave channel {name} ({id}) is initialized.").format(name=cls.channel_name,
+                                                                        id=cls.channel_id))
 
-    logger.log(99, "\x1b[0;37;46m Initializing master %s... \x1b[0m", str(conf['master_channel']))
+    logger.log(99, "\x1b[0;37;46m %s \x1b[0m",
+               _("Initializing master {}...").format(conf['master_channel']))
     coordinator.add_channel(utils.locate_module(conf['master_channel'], 'master')())
-    logger.log(99, "\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m",
-               coordinator.master.channel_name, coordinator.master.channel_id)
+    logger.log(99, "\x1b[0;37;42m %s \x1b[0m",
+               _("Master channel {name} ({id}) is initialized.")
+               .format(name=coordinator.master.channel_name,
+                       id=coordinator.master.channel_id))
 
-    logger.log(99, "\x1b[1;37;42m All channels initialized. \x1b[0m")
+    logger.log(99, "\x1b[1;37;42m %s \x1b[0m", _("All channels initialized."))
     for i in conf['middlewares']:
-        logger.log(99, "\x1b[0;37;46m Initializing middleware %s... \x1b[0m", i)
+        logger.log(99, "\x1b[0;37;46m %s \x1b[0m", _("Initializing middleware {}...").format(i))
         cls = utils.locate_module(i, 'middleware')
         coordinator.add_middleware(cls())
-        logger.log(99, "\x1b[0;37;42m Master channel %s (%s) initialized. \x1b[0m",
-                   cls.middleware_name, cls.middleware_id)
+        logger.log(99, "\x1b[0;37;42m %s \x1b[0m",
+                   _("Middleware {name} ({id}) is initialized.").format(name=cls.middleware_name, id=cls.middleware_id))
 
-    logger.log(99, "\x1b[1;37;42m All middlewares initialized. \x1b[0m")
+    logger.log(99, "\x1b[1;37;42m %s \x1b[0m", _("All middlewares are initialized."))
 
     coordinator.master_thread = threading.Thread(target=coordinator.master.poll)
     coordinator.slave_threads = {key: threading.Thread(target=coordinator.slaves[key].poll)
