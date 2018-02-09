@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-08 16:43+0800\n"
-"PO-Revision-Date: 2018-02-08 16:52+0800\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2018-02-09 08:09+0800\n"
+"PO-Revision-Date: 2018-02-09 09:05+0800\n"
+"Last-Translator: Eana Hufwe <ilove@1a23.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,12 @@ msgstr "Python 3.6 以上のバージョンが必要です。あなたのお使�
 
 #: ehforwarderbot/__main__.py:29
 msgid "EH Forwarder Bot is an extensible chat tunnel framework which allows users to contact people from other chat platforms, and ultimately remotely control their accounts in other platforms."
-msgstr "EH Forwarder Bot は拡張可能なIMトンネリングフレームワークである。EFB で、ワンポイントで様々なIMで他の人と接続できます、そして、いろんなIMアカウントのコントロールもワンポイントでできます。"
+msgstr ""
+"EH Forwarder Bot は拡張可能な IM トンネリング\n"
+"フレームワークである。EFB で、ワンポイントで\n"
+"様々なIMで他の人と接続できます、そして、いろ\n"
+"んなIMアカウントのコントロールもワンポイント\n"
+"でできます。"
 
 #: ehforwarderbot/__main__.py:37
 msgid "Enable verbose mode. (Level: Debug)"
@@ -86,59 +91,25 @@ msgstr ""
 "{py_version}"
 
 #: ehforwarderbot/__main__.py:130
+msgid "Master channel:"
+msgstr "マスターチャンネル:"
+
+#: ehforwarderbot/__main__.py:130 ehforwarderbot/__main__.py:137
+#: ehforwarderbot/__main__.py:145
 #, python-brace-format
-msgid ""
-"\n"
-"\n"
-"Master channel:\n"
-"    {name} ({id}) {version}"
-msgstr ""
-"\n"
-"\n"
-"マスターチャンネル:\n"
-"    {name} ({id}) {version}"
+msgid "{name} ({id}) {version}"
+msgstr "{name} ({id}) {version}"
 
 #: ehforwarderbot/__main__.py:134
-msgid ""
-"\n"
-"\n"
-"Slave channel:"
-msgid_plural ""
-"\n"
-"\n"
-"Slave channels:"
-msgstr[0] ""
-"\n"
-"\n"
-"スレーブチャンネル:"
-
-#: ehforwarderbot/__main__.py:137 ehforwarderbot/__main__.py:145
-#, python-brace-format
-msgid ""
-"\n"
-"    {name} ({id}) {version}"
-msgstr ""
-"\n"
-"    {name} ({id}) {version}"
+msgid "Slave channel:"
+msgid_plural "Slave channels:"
+msgstr[0] "スレーブチャンネル:"
 
 #: ehforwarderbot/__main__.py:141
-msgid ""
-"\n"
-"\n"
-"Middleware:"
-msgid_plural ""
-"\n"
-"\n"
-"Middlewares:"
-msgstr[0] ""
-"\n"
-"\n"
-"ミドルウェア:"
+msgid "Middleware:"
+msgid_plural "Middlewares:"
+msgstr[0] "ミドルウェア:"
 
 #: ehforwarderbot/__main__.py:150
-msgid ""
-"\n"
-"    No middleware is enabled."
-msgstr ""
-"\n"
-"    ミドルウェアなし。"
+msgid "No middleware is enabled."
+msgstr "ミドルウェアなし。"

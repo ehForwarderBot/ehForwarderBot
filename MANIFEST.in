@@ -1,2 +1,2 @@
 include ehforwarderbot/mimetypes
-recursive-include ehforwarderbot/locale *.mo *.po *.pot
+recursive-include ehforwarderbot/locale *.mo *.po

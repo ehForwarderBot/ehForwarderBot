@@ -127,27 +127,27 @@ def main():
             conf = config.load_config()
             # Master channel
             master_channel: EFBChannel = utils.locate_module(conf['master_channel'], 'master')
-            versions += _("\n\nMaster channel:\n    {name} ({id}) {version}") \
+            versions += "\n\n" + _("Master channel:") + "\n    " + _("{name} ({id}) {version}") \
                 .format(name=master_channel.channel_name,
                         id=master_channel.channel_id,
                         version=master_channel.__version__)
-            versions += ngettext("\n\nSlave channel:", "\n\nSlave channels:", len(conf['slave_channels']))
+            versions += "\n\n" + ngettext("Slave channel:", "Slave channels:", len(conf['slave_channels']))
             for i in conf['slave_channels']:
                 slave_channel: EFBChannel = utils.locate_module(i, 'slave')
-                versions += _("\n    {name} ({id}) {version}") \
+                versions += "\n    " + _("{name} ({id}) {version}") \
                             .format(name=slave_channel.channel_name,
                                     id=slave_channel.channel_id,
                                     version=slave_channel.__version__)
-            versions += ngettext("\n\nMiddleware:", "\n\nMiddlewares:", len(conf['middlewares']))
+            versions += "\n\n" + ngettext("Middleware:", "Middlewares:", len(conf['middlewares']))
             if conf['middlewares']:
                 for i in conf['middlewares']:
                     middleware: EFBMiddleware = utils.locate_module(i, 'middleware')
-                    versions += _("\n    {name} ({id}) {version}") \
+                    versions += "\n    " + _("{name} ({id}) {version}") \
                                 .format(name=middleware.middleware_name,
                                         id=middleware.middleware_name,
                                         version=middleware.__version__)
             else:
-                versions += _("\n    No middleware is enabled.")
+                versions += "\n    " + _("No middleware is enabled.")
         finally:
             print(versions)
     else:
