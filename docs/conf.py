@@ -186,3 +186,7 @@ napoleon_use_admonition_for_references = False
 napoleon_use_ivar = False
 napoleon_use_param = True
 napoleon_use_rtype = True
+
+# Sphinx-intl esttings
+locale_dirs = ['locale/']   # path is example but recommended.
+gettext_compact = False     # optional.

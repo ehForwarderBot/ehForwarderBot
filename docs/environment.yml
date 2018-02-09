@@ -9,4 +9,4 @@ dependencies:
 - pip
 - pip:
   - sphinx-readable-theme
-# - sphinx_rtd_theme
+  - sphinx-intl
