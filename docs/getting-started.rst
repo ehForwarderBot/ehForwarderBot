@@ -55,10 +55,10 @@ details in :doc:`directories`. In short, if you are using the
 default configuration, you need to create ``~/.ehforwarderbot``,
 and give read and write permission to the user running EFB.
 
-Choose, install and enable channel
+Choose, install and enable modules
 ----------------------------------
 
-Currently, all channels that submitted to us are recorded in
+Currently, all modules that was submitted to us are recorded in
 the `channels repository <https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository>`_.
 You can choose the channels that fits your need the best.
 
@@ -72,7 +72,23 @@ Please refer to :doc:`directories` if you have configured otherwise.
 
 Please note that although you can have more than one slaves channels
 running at the same time, you can only have exactly one master channels
-running in one profile.
+running in one profile. Meanwhile, middlewares are completely optional.
+
+Syntax
+~~~~~~
+
+The configuration file is in the YAML syntax. If you are not familiar
+with its syntax, please check its documentations and tutorials for
+details.
+
+* The ID of the master channel enabled is under the key ``master_channel``
+* The ID of slave channels enabled is listed under the key
+  ``slave_channel``. It has to be a list even if just one channel is
+  to be enabled.
+* The ID of middlewares enabled are listed under the key ``middlewares``.
+  It has to be a list even if just one middleware is to be enabled.
+  However, if you don't want to enable any middleware, just omit the section
+  completely.
 
 .. admonition:: Example
     :class: tip
@@ -80,11 +96,14 @@ running in one profile.
     To enable the following channels:
 
     * Master channel
-        * DemoMaster (``foo.demo_master``)
+        * Demo Master (``foo.demo_master``)
     * Slave channels
-        * DemoSlave (``foo.demo_slave``)
-        * RandomSlave (``bar.random``)
-        * DummySlave (``bar.dummy``)
+        * Demo Slave (``foo.demo_slave``)
+        * Random Slave (``bar.random``)
+        * Dummy Slave (``bar.dummy``)
+    * Middlewares
+        * Message Archiver (``foo.msg_archiver``)
+        * Null Middleware (``foo.null``)
 
     In the ``config.yaml`` it should have the following lines:
 
@@ -95,6 +114,9 @@ running in one profile.
         - foo.demo_slave
         - bar.random
         - bar.dummy
+        middlewares:
+        - foo.msg_archiver
+        - foo.null
 
 Launch EFB
 ----------
