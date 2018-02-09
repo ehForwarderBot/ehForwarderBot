@@ -18,3 +18,10 @@ in messages and/or chats, please make your effort to
 document them in your README or documentation, so that
 other developers can refer to it when adapting your
 module.
+
+Threading
+---------
+
+All channels are recommended a separate thread while
+processing a new message, so as to prevent unexpectedly
+long thread blocking.
