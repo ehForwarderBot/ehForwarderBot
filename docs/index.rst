@@ -19,7 +19,7 @@ EH Forwarder Bot
 .. image:: https://img.shields.io/codacy/grade/3b2555f9134844e3b01b00700bc43eeb.svg
    :alt: Codacy grade
    :target: https://www.codacy.com/app/blueset/ehForwarderBot
-.. image:: https://img.shields.io/badge/Translate-Crowdin-orange.svg
+.. image:: https://d322cqt584bo4o.cloudfront.net/ehforwarderbot/localized.svg
    :alt: Translate this project
    :target: https://crowdin.com/project/ehforwarderbot/
 

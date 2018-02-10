@@ -1,0 +1,14 @@
+"preserve_hierarchy": true
+
+files: [
+  {
+    "source" : "/ehForwarderBot/ehforwarderbot/locale/*.pot",
+    "translation" : "/ehForwarderBot/ehforwarderbot/locale/%locale_with_underscore%/LC_MESSAGES/%file_name%.po",
+    "target" : "/%original_file_name%"
+  },
+  {
+    "source" : "/ehForwarderBot/docs/_build/locale/**/*.pot",
+    "translation" : "/ehForwarderBot/docs/locale/%locale_with_underscore%/LC_MESSAGES/**/%file_name%.po",
+    "target" : "/docs/**/%original_file_name%"
+  },
+]
