@@ -1,0 +1,89 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-11 16:37+0800\n"
+"PO-Revision-Date: 2018-02-16 12:19+0300\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.2\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: en\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/API/coordinator.pot\n"
+"Language: tr_TR\n"
+
+#: ../../API/coordinator.rst:2
+msgid "Coordinator"
+msgstr "Koordinatör"
+
+#: ../../../docstring of ehforwarderbot.coordinator:1
+msgid "Coordinator among channels."
+msgstr "Kanallar arası koordinatör."
+
+#: ../../../docstring of ehforwarderbot.coordinator:5
+msgid "*str* -- Name of current profile.."
+msgstr "*str* -- Şuanki profilin adı.."
+
+#: ../../../docstring of ehforwarderbot.coordinator:9
+msgid "*threading.Lock* -- Global interaction thread lock."
+msgstr "*threading.Lock* -- Evrensel etkileşimli iş parçacığı kiliti."
+
+#: ../../../docstring of ehforwarderbot.coordinator:13
+msgid "*EFBChannel* -- The running master channel object."
+msgstr "*EFBChannel* -- Çalışan ana kanal nesnesi."
+
+#: ../../../docstring of ehforwarderbot.coordinator:17
+msgid "*Dict[str, EFBChannel]* -- Dictionary of running slave channel object. Keys are the unique identifier of the dictionary."
+msgstr "*Dict[str, EFBChannel]* -- Çalışan bağımlı kanal nesnesi sözlüğü. Anahtarlar bu sözlüğün benzersiz tanımlayıcısıdır."
+
+#: ../../../docstring of ehforwarderbot.coordinator:22
+msgid "*List[EFBMiddleware]* -- List of middlewares"
+msgstr "*List[EFBMiddleware]* -- Aracı yazılımların listesi"
+
+#: ../../../docstring of ehforwarderbot.coordinator.add_channel:1
+msgid "Register the channel with the coordinator."
+msgstr "Kanalı koordinatör ile kaydet."
+
+#: ../../../docstring of ehforwarderbot.coordinator.add_channel:0
+#: ehforwarderbot.coordinator.add_middleware:0
+#: ehforwarderbot.coordinator.send_message:0
+#: ehforwarderbot.coordinator.send_status:0
+msgid "Parameters"
+msgstr "Değiştirgeler"
+
+#: ../../../docstring of ehforwarderbot.coordinator.add_channel:3
+msgid "Channel to register"
+msgstr "Kaydedilecek kanal"
+
+#: ../../../docstring of ehforwarderbot.coordinator.add_middleware:1
+msgid "Register a middleware with the coordinator."
+msgstr "Aracı yazılımı bir koordinatör ile kaydettir."
+
+#: ../../../docstring of ehforwarderbot.coordinator.add_middleware:3
+msgid "Middleware to register"
+msgstr "Kaydedilecek aracı yazılım"
+
+#: ../../../docstring of ehforwarderbot.coordinator.send_message:1
+#: ehforwarderbot.coordinator.send_status:1
+msgid "Deliver a message to the destination channel."
+msgstr "Hedef kanala bir mesaj gönderin."
+
+#: ../../../docstring of ehforwarderbot.coordinator.send_message:3
+msgid "The message"
+msgstr "Mesaj"
+
+#: ../../../docstring of ehforwarderbot.coordinator.send_message:0
+msgid "Returns"
+msgstr "Geri dönüşler"
+
+#: ../../../docstring of ehforwarderbot.coordinator.send_message:6
+msgid "The message sent by the destination channel, includes the updated message ID from there. Returns ``None`` if the message is not sent."
+msgstr "Hedef kanal tarafından gönderilen mesaj, hedef kanalda güncellenmiş mesaj kimliğini içerir. Eğer mesaj gönderilemezse ``None`` olarak değişir."
+
+#: ../../../docstring of ehforwarderbot.coordinator.send_status:3
+msgid "The status"
+msgstr "Durum"
