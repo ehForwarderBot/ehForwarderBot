@@ -20,3 +20,5 @@ publish:
 	python setup.py sdist bdist_wheel upload --sign --show-response
 
 pre-release: crowdin crowdin-pull
+	git add \*.po
+	git commit -m 'Sync localization files from Crowdin'

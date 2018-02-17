@@ -126,7 +126,7 @@ Launch EFB
     ehforwarderbot
 
 This will launch EFB directly in the current environment. The default
-:doc:`profile` is named ``profile``, to launch EFB in a different
+:doc:`profile` is named ``default``, to launch EFB in a different
 profile, append ``--profile <profile-name>`` to the command.
 
 For more command line options, use ``--help`` option.
