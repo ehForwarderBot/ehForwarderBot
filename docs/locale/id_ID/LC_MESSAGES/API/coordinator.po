@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -18,15 +18,15 @@ msgstr ""
 
 #: ../../API/coordinator.rst:2
 msgid "Coordinator"
-msgstr ""
+msgstr "Koordinator"
 
 #: ../../../docstring of ehforwarderbot.coordinator:1
 msgid "Coordinator among channels."
-msgstr ""
+msgstr "Koordinator antar saluran."
 
 #: ../../../docstring of ehforwarderbot.coordinator:5
 msgid "*str* -- Name of current profile.."
-msgstr ""
+msgstr "*str* -- Nama profil saat ini.."
 
 #: ../../../docstring of ehforwarderbot.coordinator:9
 msgid "*threading.Lock* -- Global interaction thread lock."
@@ -34,7 +34,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.coordinator:13
 msgid "*EFBChannel* -- The running master channel object."
-msgstr ""
+msgstr "*EFBChannel* -- Objek saluran utama yang sedang berjalan."
 
 #: ../../../docstring of ehforwarderbot.coordinator:17
 msgid "*Dict[str, EFBChannel]* -- Dictionary of running slave channel object. Keys are the unique identifier of the dictionary."
@@ -57,7 +57,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.coordinator.add_channel:3
 msgid "Channel to register"
-msgstr ""
+msgstr "Saluran untuk mendaftar"
 
 #: ../../../docstring of ehforwarderbot.coordinator.add_middleware:1
 msgid "Register a middleware with the coordinator."
@@ -70,11 +70,11 @@ msgstr ""
 #: ../../../docstring of ehforwarderbot.coordinator.send_message:1
 #: ../../../docstring of ehforwarderbot.coordinator.send_status:1
 msgid "Deliver a message to the destination channel."
-msgstr ""
+msgstr "Mengirimkan pesan ke saluran tujuan."
 
 #: ../../../docstring of ehforwarderbot.coordinator.send_message:3
 msgid "The message"
-msgstr ""
+msgstr "Pesan"
 
 #: ../../../docstring of ehforwarderbot.coordinator.send_message:0
 msgid "Returns"
@@ -86,5 +86,5 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.coordinator.send_status:3
 msgid "The status"
-msgstr ""
+msgstr "Status"
 

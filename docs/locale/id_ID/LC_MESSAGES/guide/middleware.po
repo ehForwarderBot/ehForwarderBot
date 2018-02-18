@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -22,11 +22,11 @@ msgstr ""
 
 #: ../../guide/middleware.rst:4
 msgid "Middlewares works in between the master channel and slave channels, they look through messages and statuses delivered between channels, passing them on, make changes or discarding them, one after another."
-msgstr ""
+msgstr "Middlewares bekerja di antara saluran utama dan saluran slave, mereka memeriksa melalui pesan dan status yang disampaikan di antara saluran, meneruskannya, membuat perubahan atau membuangnya, satu demi satu."
 
 #: ../../guide/middleware.rst:9
 msgid "Like channels, middlewares will also each have an instance per EFB session, managed by the coordinator. However, they don't have centrally polling threads, which means if a middleware wants to have a polling thread or something similar running in the background, it has to stop the thread using Python's ``atexit`` or otherwise."
-msgstr ""
+msgstr "Seperti saluran, masing-masing middlewares juga memiliki tingkatan per sesi EFB, yang dikelola oleh koordinator. Akan tetapi, mereka tidak memiliki urutan pemungutan suara terpusat, yang berarti jika middleware ingin memiliki urutan pemungutan atau yang serupa berjalan di latar belakang, ia harus menghentikan urutan menggunakan Python ``Atexit`` atau sebaliknya."
 
 #: ../../guide/middleware.rst:17
 msgid "Message and Status Processing"
@@ -42,11 +42,11 @@ msgstr ""
 
 #: ../../guide/middleware.rst:32
 msgid "Other Usages"
-msgstr ""
+msgstr "Penggunaan lainnya"
 
 #: ../../guide/middleware.rst:34
 msgid "Having rather few limitation compare to channels, middlewares are rather easy to write, which allows it to do more than just intercept messages and statuses."
-msgstr ""
+msgstr "Mempunyai batasan yang agak sedikit dibandingkan dengan saluran, middlewares lebih mudah untuk ditulis, yang memungkinkannya melakukan lebih dari sekedar mencegat pesan dan status."
 
 #: ../../guide/middleware.rst:38
 msgid "Some ideas:"
@@ -54,7 +54,7 @@ msgstr ""
 
 #: ../../guide/middleware.rst:40
 msgid "Periodic broadcast to master / slave channels"
-msgstr ""
+msgstr "Penyiaran berulang-ulang ke saluran utama / slave"
 
 #: ../../guide/middleware.rst:41
 msgid "Integration with chat bots"
@@ -66,9 +66,9 @@ msgstr ""
 
 #: ../../guide/middleware.rst:44
 msgid "Share user session from slave channel with other programs"
-msgstr ""
+msgstr "Membagikan sesi pengguna dari saluran slave dengan program lainnya"
 
 #: ../../guide/middleware.rst:46
 msgid "etc..."
-msgstr ""
+msgstr "dll..."
 

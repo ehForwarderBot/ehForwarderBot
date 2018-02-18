@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 22:23+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id_ID\n"
@@ -19,27 +19,27 @@ msgstr ""
 #: ehforwarderbot/__main__.py:27
 #, python-brace-format
 msgid "Python 3.6 or higher is required. Your version is {version}."
-msgstr ""
+msgstr "Python versi 3.6 atau lebih tinggi diperlukan. Versi Anda adalah {version}."
 
 #: ehforwarderbot/__main__.py:29
 msgid "EH Forwarder Bot is an extensible chat tunnel framework which allows users to contact people from other chat platforms, and ultimately remotely control their accounts in other platforms."
-msgstr ""
+msgstr "EH Forwarder Bot adalah kerangka terowongan extensible chat yang memungkinkan pengguna untuk menghubungi orang-orang dari platform obrolan lainnya, dan akhirnya remote kontrol akun mereka di platform lainnya."
 
 #: ehforwarderbot/__main__.py:37
 msgid "Enable verbose mode. (Level: Debug)"
-msgstr ""
+msgstr "Mengaktifkan mode verbose. (Tingkat: Debug)"
 
 #: ehforwarderbot/__main__.py:39
 msgid "Show version numbers and exit."
-msgstr ""
+msgstr "Menunjukkan nomor versi dan keluar."
 
 #: ehforwarderbot/__main__.py:41
 msgid "Choose a profile to start with."
-msgstr ""
+msgstr "Memilih profil untuk memulai dengan."
 
 #: ehforwarderbot/__main__.py:77
 msgid "Initializing slave {}..."
-msgstr ""
+msgstr "{} menginisialisasi budak..."
 
 #: ehforwarderbot/__main__.py:83
 #, python-brace-format
@@ -57,7 +57,7 @@ msgstr ""
 
 #: ehforwarderbot/__main__.py:94
 msgid "All channels initialized."
-msgstr ""
+msgstr "Semua saluran yang diinisialisasi."
 
 #: ehforwarderbot/__main__.py:96
 msgid "Initializing middleware {}..."
@@ -70,7 +70,7 @@ msgstr ""
 
 #: ehforwarderbot/__main__.py:102
 msgid "All middlewares are initialized."
-msgstr ""
+msgstr "Semua middlewares diinisialisasi."
 
 #: ehforwarderbot/__main__.py:122
 #, python-brace-format
@@ -78,11 +78,11 @@ msgid "EH Forwarder Bot\n"
 "Version: {version}\n"
 "Python version:\n"
 "{py_version}"
-msgstr ""
+msgstr "EH Forwarder Bot versi: {version} Python versi:{py_version}"
 
 #: ehforwarderbot/__main__.py:130
 msgid "Master channel:"
-msgstr ""
+msgstr "Saluran Inti:"
 
 #: ehforwarderbot/__main__.py:130 ehforwarderbot/__main__.py:137
 #: ehforwarderbot/__main__.py:145
@@ -102,5 +102,5 @@ msgstr[0] ""
 
 #: ehforwarderbot/__main__.py:150
 msgid "No middleware is enabled."
-msgstr ""
+msgstr "Tidak ada middleware yang diaktifkan."
 

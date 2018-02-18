@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: ../../API/status.rst:2
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: ../../../docstring of ehforwarderbot.EFBStatus:1
 msgid "Abstract class of a status"
@@ -62,11 +62,11 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.status.EFBChatUpdates.__init__:3
 msgid "Unique ID of new chats"
-msgstr ""
+msgstr "ID unik dari obrolan baru"
 
 #: ../../../docstring of ehforwarderbot.status.EFBChatUpdates.__init__:5
 msgid "Unique ID of removed chats"
-msgstr ""
+msgstr "ID unik dari obrolan yang dihapus"
 
 #: ../../../docstring of ehforwarderbot.status.EFBChatUpdates.__init__:7
 msgid "Unique ID of modified chats"
@@ -74,11 +74,11 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates:1
 msgid "Inform the master channel on updates of members in a slave chat."
-msgstr ""
+msgstr "Memberitahukan saluran utama pada pembaruan anggota dalam sebuah obrolan budak."
 
 #: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates:9
 msgid "*str* -- Unique ID of the chat."
-msgstr ""
+msgstr "str* -- ID unik dari obrolan."
 
 #: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates:13
 msgid "*Optional[Tuple[str]]* -- Unique ID of new members"
@@ -98,11 +98,11 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:5
 msgid "Unique ID of new members"
-msgstr ""
+msgstr "ID unik dari anggota baru"
 
 #: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:7
 msgid "Unique ID of removed members"
-msgstr ""
+msgstr "ID unik dari anggota yang dihapus"
 
 #: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:9
 msgid "Unique ID of modified members"
@@ -110,15 +110,15 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval:1
 msgid "Inform a channel to remove a certain message."
-msgstr ""
+msgstr "Memberitahukan sebuah saluran untuk menghapus sebuah pesan tertentu."
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval:3
 msgid "This is usually known as \"delete from everyone\", \"delete from recipient\", \"recall a message\", or \"revoke a message\" as well, depends on the IM."
-msgstr ""
+msgstr "Ini biasanya dikenal sebagai \"hapus dari semua orang\", \"hapus dari penerima\", \"tarik sebuah pesan\", atau \"cabut sebuah pesan\" juga, tergantung pada IM."
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval:6
 msgid "Some channels may not support removal of messages, and raises a :obj:`.exceptions.EFBOperationNotSupported` exception."
-msgstr ""
+msgstr "Beberapa saluran mungkin tidak mendukung penghapusan pesan, dan menimbulkan sebuah :obj:`.exceptions.EFBOperationNotSupported` pengecualian."
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval:11
 msgid ":obj:`.EFBChannel` -- Channel issued the status"
@@ -134,11 +134,11 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:1
 msgid "Create a message removal status"
-msgstr ""
+msgstr "Buat pesan penghapusan status"
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:3
 msgid "Try to provided as much as you can, if not, provide a minimum information in the channel:"
-msgstr ""
+msgstr "Cobalah untuk menyediakan sebanyak yang anda bisa, jika tidak, sediakan informasi minimum pada saluran:"
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:6
 msgid "Slave channel ID and chat ID (:attr:`message.chat.channel_id <.EFBChat.channel_id>` and :attr:`message.chat.chat_uid <.EFBChat.chat_uid>`)"
@@ -154,9 +154,9 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:12
 msgid "Channel the status is issued to"
-msgstr ""
+msgstr "Status saluran dikeluarkan untuk"
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:14
 msgid "Message to remove."
-msgstr ""
+msgstr "Menghapus untuk pesan."
 

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -49,11 +49,11 @@ msgstr ""
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Returns"
-msgstr ""
+msgstr "Kembali"
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:6
 msgid "Processed message or None if discarded."
-msgstr ""
+msgstr "Pesan yang diproses atau Tidak ada jika dibuang."
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
@@ -66,11 +66,11 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:1
 msgid "Process a status update with middleware"
-msgstr ""
+msgstr "Proses memperbarui status dengan middleware"
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:6
 msgid "Processed status or None if discarded."
-msgstr ""
+msgstr "Status yang diproses atau Tidak ada jika dibuang."
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:7
 msgid "Optional[:obj:`.EFBStatus`]"

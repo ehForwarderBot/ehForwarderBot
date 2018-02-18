@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr ""
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:0
 msgid "Parameters"
-msgstr ""
+msgstr "Parameter"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:3
 msgid "A human readable name for the function."
@@ -37,7 +37,7 @@ msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:5
 msgid "A short description and usage of it. Use ``{function_name}`` in place of the function name in the description."
-msgstr ""
+msgstr "Sebuah deskripsi singkat dan kegunaannya. Menggunakan ``{function_name}`` di tempat nama fungsi dalam deskripsi."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:0
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:0
@@ -45,7 +45,7 @@ msgstr ""
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:0
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
 msgid "Returns"
-msgstr ""
+msgstr "Kembali"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:10
 msgid "The decorated method."
@@ -53,16 +53,17 @@ msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:1
 msgid "Get the base data path for EFB. This is defined by the environment variable ``EFB_DATA_PATH``."
-msgstr ""
+msgstr "Mendapatkan jalur basis data untuk EFB. Ini ditentukan oleh variabel lingkungan `` EFB_DATA_PATH``."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:4
 msgid "When ``EFB_DATA_PATH`` is defined, the path is constructed by ``$EFB_DATA_PATH/$USERNAME``. By default, this gives ``~/.ehforwarderbot``."
-msgstr ""
+msgstr "Saat `` EFB_DATA_PATH`` didefinisikan, jalur dibuat oleh \n"
+"``$EFB_DATA_PATH/$USERNAME``. Secara default, ini memberi ``~/.ehforwarderbot``."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:8
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:3
 msgid "This method creates the queried path if not existing."
-msgstr ""
+msgstr "Metode ini menimbulkan jalur tanya jika tidak ada."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:10
 msgid "The base path."
@@ -81,11 +82,11 @@ msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:4
 msgid "This method creates the queried path if not existing. The config file will not be created, however."
-msgstr ""
+msgstr "Metode ini menimbulkan jalur tanya jika tidak ada. File konfigurasi tidak akan dibuat, akan tetapi."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:7
 msgid "Module ID."
-msgstr ""
+msgstr "ID Modul."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:9
 msgid "Extension name of the config file. Defaulted to ``\"yaml\"``."
@@ -110,7 +111,7 @@ msgstr ""
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:5
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:3
 msgid "Module ID"
-msgstr ""
+msgstr "ID Modul"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:8
 msgid "The data path of selected channel."
@@ -118,7 +119,7 @@ msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:1
 msgid "Locate module by module ID"
-msgstr ""
+msgstr "Mencari modul dengan ID modul"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:4
 msgid "Type of module, one of ``'master'``, ``'slave'`` and ``'middleware'``"

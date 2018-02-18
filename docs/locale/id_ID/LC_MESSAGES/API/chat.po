@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: ../../API/chat.rst:2
 msgid "EFBChat"
-msgstr ""
+msgstr "EFBChat"
 
 #: ../../../docstring of ehforwarderbot.EFBChat:1
 msgid "EFB Chat object. This is used to represent a chat or a group member."
@@ -74,7 +74,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBChat:58
 msgid "*bool* -- Indicate if this chat represents a system chat/member."
-msgstr ""
+msgstr "*bool* -- Menunjukkan jika obrolan ini merupakan sistem obrolan/anggota."
 
 #: ../../../docstring of ehforwarderbot.EFBChat.__init__:0
 msgid "Parameters"
@@ -86,7 +86,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBChat.is_self:1
 msgid "If this chat represents the user"
-msgstr ""
+msgstr "Jika obrolan ini mewakili pengguna"
 
 #: ../../../docstring of ehforwarderbot.EFBChat.is_system:1
 msgid "If this chat is a system chat"
@@ -94,7 +94,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBChat.self:1
 msgid "Set the chat as yourself. In this context, \"yourself\" means the user behind the master channel. Every channel should relate this to the corresponding target."
-msgstr ""
+msgstr "Atur obrolan seperti dirimu sendiri. Dalam konteks ini, \"diri sendiri\" berarti pengguna di balik saluran utama. Setiap saluran harus menghubungkan ini dengan target yang sesuai."
 
 #: ../../../docstring of ehforwarderbot.EFBChat.self:0
 #: ../../../docstring of ehforwarderbot.EFBChat.system:0
@@ -117,11 +117,11 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBChat.verify:1
 msgid "Verify the completeness of the data."
-msgstr ""
+msgstr "Mengverifikasi kelengkapan data."
 
 #: ../../../docstring of ehforwarderbot.EFBChat.verify:0
 msgid "raises"
-msgstr ""
+msgstr "meningkatkan"
 
 #: ../../../docstring of ehforwarderbot.EFBChat.verify:3
 msgid ":exc:`ValueError` -- When this chat is invalid."

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: ../../API/exceptions.rst:2
 msgid "Exceptions"
-msgstr ""
+msgstr "Pengecualian"
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBException:1
 msgid "Bases: :class:`Exception`"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBException:1
 msgid "A general class to indicate that the exception is from EFB framework."
-msgstr ""
+msgstr "Kelas umum untuk menunjukkan bahwa pengecualian tersebut berasal dari framework EFB."
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChatNotFound:1
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChannelNotFound:1
@@ -40,11 +40,11 @@ msgstr ""
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChatNotFound:3
 msgid "Can be raised by any method that involves a chat or a message."
-msgstr ""
+msgstr "Bisa dibesarkan dengan metode apapun yang melibatkan obrolan atau pesan."
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChannelNotFound:1
 msgid "Raised by the coordinator when the message sent delivers to a missing channel."
-msgstr ""
+msgstr "Dibesarkan oleh koordinator saat pesan terkirim yang disampaikan ke saluran yang hilang."
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:1
 msgid "Raised by slave channel for any other error occurred when sending a message or a status."

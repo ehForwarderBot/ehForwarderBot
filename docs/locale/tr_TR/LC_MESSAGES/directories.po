@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:34-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: ../../directories.rst:2
 msgid "Directories"
-msgstr ""
+msgstr "Altdizinler"
 
 #: ../../directories.rst:4
 msgid "Since EH Forwarder Bot 2.0, most modules should be installed with the Python Package Manager ``pip``, while configurations and data are stored in the \"EFB data directory\"."
@@ -34,7 +34,7 @@ msgstr ""
 
 #: ../../directories.rst:28
 msgid "Directory structure"
-msgstr ""
+msgstr "Altdizin yapısı"
 
 #: ../../directories.rst:30
 msgid "Using the default configuration as an example, this section will introduce about the structure of EFB data directory."

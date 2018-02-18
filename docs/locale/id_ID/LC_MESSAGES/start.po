@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: ../../start.rst:4
 msgid "EH Forwarder Bot offered 2 ways to launch the framework:"
-msgstr ""
+msgstr "EH Forwarder Bot memberikan 2 cara untuk meluncurkan framework:"
 
 #: ../../start.rst:6
 msgid "``ehforwarderbot``"
@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../start.rst:14
 msgid "Options"
-msgstr ""
+msgstr "Pilihan"
 
 #: ../../start.rst:16
 msgid "``-h``, ``--help``: Show help message"
@@ -58,7 +58,7 @@ msgstr ""
 
 #: ../../start.rst:26
 msgid "This shows version number of Python you are using, the EFB framework, and all channels and middlewares enabled."
-msgstr ""
+msgstr "Ini menunjukkan nomor versi Python yang anda gunakan, framework EFB, dan semua saluran dan middlewares diaktifkan."
 
 #: ../../start.rst:30
 msgid "``-v``, ``--verbose``: Print verbose log"
@@ -66,5 +66,5 @@ msgstr ""
 
 #: ../../start.rst:32
 msgid "This option enables verbose log of EFB and all enabled modules. This, together with ``-V``, is particularly useful in debugging and issue reporting."
-msgstr ""
+msgstr "Pilihan ini akan mengizinkan log verbose dari EFB dan semua modul yang diaktifkan. Ini, bersama dengan `` -V``, sangat berguna dalam debugging dan pelaporan masalah."
 

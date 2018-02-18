@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:34-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +18,11 @@ msgstr ""
 
 #: ../../guide/misc.rst:2
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Diğer"
 
 #: ../../guide/misc.rst:5
 msgid "Logging"
-msgstr ""
+msgstr "Günlük"
 
 #: ../../guide/misc.rst:7
 msgid "In complex modules, you should have detailed logs in DEBUG level and maybe INFO level, and all your log handlers should follow that of the root logger, which is controlled by the framework. This could be helpful when for you to locate issues reported by users."

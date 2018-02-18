@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:34-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +18,11 @@ msgstr ""
 
 #: ../../contributing.rst:3
 msgid "How to contribute"
-msgstr ""
+msgstr "Nasıl katkıda bulunulur"
 
 #: ../../contributing.rst:5
 msgid "First of all, thanks for taking your time to contribute!"
-msgstr ""
+msgstr "Öncelikle, katkıda bulunmak için zaman harcadığınızdan dolayı teşekkürler!"
 
 #: ../../contributing.rst:7
 msgid "Please note that only questions on the framework will be answered here. For issue related with any channels, please contact their respective authors or post in their corresponding repositories."
@@ -34,15 +34,15 @@ msgstr ""
 
 #: ../../contributing.rst:15
 msgid "If you need help, or want to talk to the authors, feel free to chat with us at our `Gitter chat`_ or `Telegram support group`_."
-msgstr ""
+msgstr "Eğer yardıma ihtiyacınız varsa veya yazarlarla konuşmak istiyorsanız, lütfen bizle `Gitter chat`_ veya `Telegram support group`_ üzerinden sohbet etmekten çekinmeyiniz."
 
 #: ../../contributing.rst:23
 msgid "Reporting bugs"
-msgstr ""
+msgstr "Arıza bildirme"
 
 #: ../../contributing.rst:25
 msgid "Before submitting a bug report"
-msgstr ""
+msgstr "Arıza raporunu bildirmeden önce"
 
 #: ../../contributing.rst:26
 msgid "Please ensure if your issue is about the framework itself, not about any channel. Reports about channels should goes to their respective channels."
@@ -62,28 +62,28 @@ msgstr ""
 
 #: ../../contributing.rst:36
 msgid "**Use a clear and descriptive title** for the issue to identify the problem."
-msgstr ""
+msgstr "Konuyla alakalı probleminizi tanımlarken **net ve betimleyici bir başlık kullanın**."
 
 #: ../../contributing.rst:37
 msgid "**Describe the exact steps which reproduce the problem** in as many details as possible."
-msgstr ""
+msgstr "Mümkün olduğunca detaylı olarak **probleme sebep olan adımları tarif ediniz**."
 
 #: ../../contributing.rst:39
 #: ../../contributing.rst:77
 msgid "**Provide specific examples to demonstrate the steps.**"
-msgstr ""
+msgstr "**Adımları göstermek için spesifik örnekler temin ediniz.**"
 
 #: ../../contributing.rst:40
 msgid "**Describe the behavior you observed after following the steps** and point out what exactly is the problem with that behavior."
-msgstr ""
+msgstr "**Adımları takip ettikten sonra gözlemlediğiniz davranışı tarif ediniz** ve bu davranışla ilgili problemin ne olduğunu tam olarak ifade ediniz."
 
 #: ../../contributing.rst:42
 msgid "**Explain which behavior you expected to see instead and why.**"
-msgstr ""
+msgstr "**Bunun yerine nasıl bir davranış görmeyi beklerdiniz ve neden.**"
 
 #: ../../contributing.rst:43
 msgid "**If the problem wasn't triggered by a specific action**, describe what you were doing before the problem happened and share more information using the guidelines below."
-msgstr ""
+msgstr "**eğer problem spesifik bir işlemle tetiklenmemişse**, bu problem olmadan önce ne yaptığınızı betimleyiniz ve alttaki kılavuzu kullanarak daha çok bilgi paylaşın."
 
 #: ../../contributing.rst:46
 msgid "**Provide log related to the issue.** Use the verbose flag to start the logging process, and submit the entire log from the first step you performed."
@@ -95,7 +95,7 @@ msgstr ""
 
 #: ../../contributing.rst:52
 msgid "**Did the problem start happening recently** (e.g. after updating to the latest version) or was this always a problem?"
-msgstr ""
+msgstr "**Bu problem yakın zamanda mı oluşmaya başladı** (örneğin sürümü en sonuncuya güncelledikten sonra) ya da bu problem her zaman var mıydı?"
 
 #: ../../contributing.rst:54
 msgid "**Can you reliably reproduce the issue?** If not, provide details about how often the problem happens and under which conditions it normally happens."
@@ -107,11 +107,11 @@ msgstr ""
 
 #: ../../contributing.rst:60
 msgid "**What version of EFB are you using?** You can get the version by using the flag `-V`."
-msgstr ""
+msgstr "**EFB'nin hangi sürümünü kullanıyorsunuz?** Sürümü `-V` bayrağını kullanarak alabilirsiniz."
 
 #: ../../contributing.rst:62
 msgid "**What's the name and version of the OS you're using?**"
-msgstr ""
+msgstr "**Kullandığınız OS'nin adı ve sürümü nedir?**"
 
 #: ../../contributing.rst:65
 msgid "When submitting your log, please remember to hide your private information."
@@ -135,7 +135,7 @@ msgstr ""
 
 #: ../../contributing.rst:78
 msgid "**Specify the name and version of the OS you're using.**"
-msgstr ""
+msgstr "**Kullandığınız OS'nin adını ve sürümünü belirtiniz.**"
 
 #: ../../contributing.rst:80
 msgid "Adapted from `Atom contribution guide`__ by GitHub Inc."
@@ -151,11 +151,11 @@ msgstr ""
 
 #: ../../contributing.rst:90
 msgid "**What changes have you made?**"
-msgstr ""
+msgstr "**Ne değişiklikler yaptınız?**"
 
 #: ../../contributing.rst:91
 msgid "**What problem have you solved?**"
-msgstr ""
+msgstr "**Hangi problemleri çözdünüz?**"
 
 #: ../../contributing.rst:92
 msgid "**Which issue have you addressed** if applicable."

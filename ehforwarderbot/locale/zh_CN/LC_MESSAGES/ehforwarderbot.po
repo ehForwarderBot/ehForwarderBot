@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 22:23+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:34-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -27,7 +27,7 @@ msgstr "EH Forwarder Bot 是一个可扩展的聊天隧道框架, 允许用户�
 
 #: ehforwarderbot/__main__.py:37
 msgid "Enable verbose mode. (Level: Debug)"
-msgstr ""
+msgstr "启用详细模式。(调试级别)"
 
 #: ehforwarderbot/__main__.py:39
 msgid "Show version numbers and exit."
@@ -35,7 +35,7 @@ msgstr "显示版本号后退出"
 
 #: ehforwarderbot/__main__.py:41
 msgid "Choose a profile to start with."
-msgstr ""
+msgstr "选择一个配置文档以启动EFB。"
 
 #: ehforwarderbot/__main__.py:77
 msgid "Initializing slave {}..."
@@ -85,7 +85,7 @@ msgstr "EH Forward Bot\n"
 
 #: ehforwarderbot/__main__.py:130
 msgid "Master channel:"
-msgstr ""
+msgstr "主端:"
 
 #: ehforwarderbot/__main__.py:130 ehforwarderbot/__main__.py:137
 #: ehforwarderbot/__main__.py:145
@@ -96,14 +96,14 @@ msgstr "{name} ({id}) {version}"
 #: ehforwarderbot/__main__.py:134
 msgid "Slave channel:"
 msgid_plural "Slave channels:"
-msgstr[0] ""
+msgstr[0] "从端:"
 
 #: ehforwarderbot/__main__.py:141
 msgid "Middleware:"
 msgid_plural "Middlewares:"
-msgstr[0] ""
+msgstr[0] "中间件:"
 
 #: ehforwarderbot/__main__.py:150
 msgid "No middleware is enabled."
-msgstr ""
+msgstr "尚未启用任何中间件。"
 

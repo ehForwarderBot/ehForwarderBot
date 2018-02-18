@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:34-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +18,11 @@ msgstr ""
 
 #: ../../guide/packaging.rst:2
 msgid "Packaging and Publish"
-msgstr ""
+msgstr "Derleme ve Yayınlama"
 
 #: ../../guide/packaging.rst:5
 msgid "Publish your module on PyPI"
-msgstr ""
+msgstr "Modülünüzü PyPl üzerinden yayınlayın"
 
 #: ../../guide/packaging.rst:7
 msgid "Publish modules on PyPI is one of the easiest way for users to install your package.  Please refer to related documentation and tutorials about PyPI and pip for publishing packages."
@@ -62,7 +62,7 @@ msgstr ""
 
 #: ../../guide/packaging.rst:41
 msgid "Example"
-msgstr ""
+msgstr "Örnek"
 
 #: ../../guide/packaging.rst:43
 msgid "``setup.py`` script"
@@ -74,7 +74,7 @@ msgstr ""
 
 #: ../../guide/packaging.rst:63
 msgid "Private modules"
-msgstr ""
+msgstr "Özel modüller"
 
 #: ../../guide/packaging.rst:65
 msgid "If you want to extend from, or make changes on existing modules for your own use, you can have your modules in the private modules :doc:`directory <../directories>`."

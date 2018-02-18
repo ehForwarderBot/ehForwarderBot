@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 22:23+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Traditional\n"
 "Language: zh_TW\n"
@@ -19,11 +19,11 @@ msgstr ""
 #: ehforwarderbot/__main__.py:27
 #, python-brace-format
 msgid "Python 3.6 or higher is required. Your version is {version}."
-msgstr ""
+msgstr "需要3.6或者更高的Python版本。你現在的版本是 {version} 。"
 
 #: ehforwarderbot/__main__.py:29
 msgid "EH Forwarder Bot is an extensible chat tunnel framework which allows users to contact people from other chat platforms, and ultimately remotely control their accounts in other platforms."
-msgstr ""
+msgstr "EH Forward Bot是一個可擴展的聊天隧道框架，可允許用戶聯繫其他聊天平台的人，並最終遠程控制他們在其他平台上的帳號。"
 
 #: ehforwarderbot/__main__.py:37
 msgid "Enable verbose mode. (Level: Debug)"

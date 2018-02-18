@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 22:23+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:34-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -23,11 +23,11 @@ msgstr "Python 3.6 veya daha üstü gerekmektedir. Sizin sürümünüz {version}
 
 #: ehforwarderbot/__main__.py:29
 msgid "EH Forwarder Bot is an extensible chat tunnel framework which allows users to contact people from other chat platforms, and ultimately remotely control their accounts in other platforms."
-msgstr ""
+msgstr "EH Forwarder Bot, kullanıcıların öteki sohbet platformlarındaki insanlar ile iletişim kurabilmelerini sağlayan, ve diğer platformlardaki hesaplarını uzaktan kontrol etmelerini sağlayan, genişletilebilir bir sohbet tüneli altyapısıdır."
 
 #: ehforwarderbot/__main__.py:37
 msgid "Enable verbose mode. (Level: Debug)"
-msgstr ""
+msgstr "Ayrıntılı modu etkinleştir. (Düzey: Hata Ayıklama)"
 
 #: ehforwarderbot/__main__.py:39
 msgid "Show version numbers and exit."
@@ -35,42 +35,42 @@ msgstr "Sürüm numaralarını göster ve çıkış yap."
 
 #: ehforwarderbot/__main__.py:41
 msgid "Choose a profile to start with."
-msgstr ""
+msgstr "Başlamak için bir profil seç."
 
 #: ehforwarderbot/__main__.py:77
 msgid "Initializing slave {}..."
-msgstr ""
+msgstr "Bağımlı birim başlatılıyor {}..."
 
 #: ehforwarderbot/__main__.py:83
 #, python-brace-format
 msgid "Slave channel {name} ({id}) is initialized."
-msgstr ""
+msgstr "Bağımlı kanal {name} ({id}) başlatıldı."
 
 #: ehforwarderbot/__main__.py:87
 msgid "Initializing master {}..."
-msgstr ""
+msgstr "Ana birim başlatılıyor {}..."
 
 #: ehforwarderbot/__main__.py:90
 #, python-brace-format
 msgid "Master channel {name} ({id}) is initialized."
-msgstr ""
+msgstr "Ana kanal {name} ({id}) başlatıldı."
 
 #: ehforwarderbot/__main__.py:94
 msgid "All channels initialized."
-msgstr ""
+msgstr "Tüm kanallar başlatıldı."
 
 #: ehforwarderbot/__main__.py:96
 msgid "Initializing middleware {}..."
-msgstr ""
+msgstr "Aracı yazılım başlatılıyor {}..."
 
 #: ehforwarderbot/__main__.py:100
 #, python-brace-format
 msgid "Middleware {name} ({id}) is initialized."
-msgstr ""
+msgstr "Aracı yazılım {name} ({id}) başlatıldı."
 
 #: ehforwarderbot/__main__.py:102
 msgid "All middlewares are initialized."
-msgstr ""
+msgstr "Tüm aracı yazılımlar başlatıldı."
 
 #: ehforwarderbot/__main__.py:122
 #, python-brace-format
@@ -78,31 +78,34 @@ msgid "EH Forwarder Bot\n"
 "Version: {version}\n"
 "Python version:\n"
 "{py_version}"
-msgstr ""
+msgstr "EH Forwarder Bot\n"
+"Versiyonu: {version}\n"
+"Python versiyonu:\n"
+"{py_version}"
 
 #: ehforwarderbot/__main__.py:130
 msgid "Master channel:"
-msgstr ""
+msgstr "Ana kanal:"
 
 #: ehforwarderbot/__main__.py:130 ehforwarderbot/__main__.py:137
 #: ehforwarderbot/__main__.py:145
 #, python-brace-format
 msgid "{name} ({id}) {version}"
-msgstr ""
+msgstr "{name} ({id}) {version}"
 
 #: ehforwarderbot/__main__.py:134
 msgid "Slave channel:"
 msgid_plural "Slave channels:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Bağımlı kanal:"
+msgstr[1] "Bağımlı kanallar:"
 
 #: ehforwarderbot/__main__.py:141
 msgid "Middleware:"
 msgid_plural "Middlewares:"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Aracı yazılım:"
+msgstr[1] "Aracı yazılımlar:"
 
 #: ehforwarderbot/__main__.py:150
 msgid "No middleware is enabled."
-msgstr ""
+msgstr "Hiçbir aracı yazılım aktif değil."
 

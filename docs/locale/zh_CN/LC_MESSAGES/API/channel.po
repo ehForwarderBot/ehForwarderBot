@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:34-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr "*str* -- 信道的唯一 ID。关于 ID 的标准请参考 :doc:`/guide/
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:1
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_status:1
 msgid "Return the standard chat dict of the selected chat."
-msgstr ""
+msgstr "返回所选择聊天的标准聊天字典。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:0
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
@@ -74,7 +74,7 @@ msgstr "返回值"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:9
 msgid "the standard chat dict of the chat."
-msgstr ""
+msgstr "聊天的标准聊天字典。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:0
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
@@ -198,7 +198,7 @@ msgstr ":exc:`~.exceptions.EFBOperationNotSupported` -- 当信道不支持消息
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_status:13
 msgid ":exc:`~.exceptions.EFBMessageError` -- Raised when other error occurred while removing the message."
-msgstr ""
+msgstr ":exc:`~.exceptions.EFBMessageError` -- 当删除消息时有其他错误发生的话会抛出。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_status:17
 msgid "Avoid raising exceptions from this method in Master Channels as it would be hard for a Slave Channel to process the exception."

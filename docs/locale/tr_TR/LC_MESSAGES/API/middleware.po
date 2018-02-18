@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:34-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware:1
 msgid "Middleware class."
-msgstr ""
+msgstr "Aracı yazılım sınıfı."
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware:5
 msgid "*str* -- Unique ID of the middleware Convention of IDs is specified in :doc:`guide/packaging"
@@ -39,7 +39,7 @@ msgstr ""
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Parameters"
-msgstr ""
+msgstr "Parametreler"
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:3
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:3
@@ -49,7 +49,7 @@ msgstr ""
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Returns"
-msgstr ""
+msgstr "Dönüşler"
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:6
 msgid "Processed message or None if discarded."
@@ -58,7 +58,7 @@ msgstr ""
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Return type"
-msgstr ""
+msgstr "Dönüş türü"
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:7
 msgid "Optional[:obj:`.EFBMsg`]"

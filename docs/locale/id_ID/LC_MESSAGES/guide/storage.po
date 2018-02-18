@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -18,15 +18,15 @@ msgstr ""
 
 #: ../../guide/storage.rst:2
 msgid "Configurations and storage"
-msgstr ""
+msgstr "Konfigurasi dan penyimpanan"
 
 #: ../../guide/storage.rst:5
 msgid "Configurations and Permanent Storage"
-msgstr ""
+msgstr "Konfigurasi dan Penyimpanan Permanen"
 
 #: ../../guide/storage.rst:7
 msgid "As described in :doc:`/directories`, each module has been allocated with a folder per profile for configurations and other storage. The path can be obtained using :meth:`~.ehforwarderbot.utils.get_data_path` with your module ID. All such storage is specific to only one profile."
-msgstr ""
+msgstr "Seperti dijelaskan di: doc: `/ directories`, setiap modul telah dialokasikan dengan folder per profil untuk konfigurasi dan penyimpanan lainnya. Jalan dapat diperoleh dengan menggunakan: meth: `~ .ehforwarderbot.utils.get_data_path` dengan ID modul Anda. Semua penyimpanan seperti itu khusus hanya untuk satu profil."
 
 #: ../../guide/storage.rst:14
 msgid "For configurations, we recommend to use ``<module_data_path>/config.yaml``. Similarly, we prepared :meth:`~.ehforwarderbot.utils.get_config_path` to get the path for default config file. Again, you are not forced to use this name or YAML as the format of your config file."
@@ -34,25 +34,25 @@ msgstr "Untuk konfigurasi, kami sarankan untuk menggunakan `` <module_data_path>
 
 #: ../../guide/storage.rst:20
 msgid "Usually in the storage folder lives:"
-msgstr ""
+msgstr "Biasanya di folder penyimpanan tinggal:"
 
 #: ../../guide/storage.rst:22
 msgid "Configuration files"
-msgstr ""
+msgstr "File konfigurasi"
 
 #: ../../guide/storage.rst:23
 msgid "User credentials / Session storage"
-msgstr ""
+msgstr "Kredensial pengguna / penyimpanan sesi"
 
 #: ../../guide/storage.rst:24
 msgid "Databases"
-msgstr ""
+msgstr "Database"
 
 #: ../../guide/storage.rst:27
 msgid "Temporary Storage"
-msgstr ""
+msgstr "Penyimpanan Sementara"
 
 #: ../../guide/storage.rst:29
 msgid "While processing multimedia messages, we inevitably need to store certain files temporarily, either within the channel or across channels. Usually, temporary files can be handled with Python's ``tempfile`` library."
-msgstr ""
+msgstr "Saat memproses pesan multimedia, kita pasti perlu menyimpan file tertentu untuk sementara, baik di dalam saluran maupun di saluran. Biasanya, file sementara bisa ditangani dengan perpustakaan `tempfile` Python."
 

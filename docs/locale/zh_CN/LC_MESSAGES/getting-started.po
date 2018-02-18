@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-17 13:42+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:34-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: ../../getting-started.rst:4
 msgid "A few simple steps to get started with EFB."
-msgstr ""
+msgstr "从一些简单的步骤来开始使用EFB。"
 
 #: ../../getting-started.rst:7
 msgid "Install EH Forwarder Bot"
@@ -34,7 +34,7 @@ msgstr "可以使用以下几种方法来安装 EH Forwarder Bot："
 
 #: ../../getting-started.rst:13
 msgid "The following instructions may not work properly until a stable release is uploaded. As you are in the beta version documentation, I assume you know what to do."
-msgstr ""
+msgstr "在稳定版本发布前，以下选项有可能无法正常工作。因您在阅读beta程序文档，您应已明白该如何对待该如何处理。"
 
 #: ../../getting-started.rst:19
 msgid "Install from PyPI"
@@ -70,7 +70,7 @@ msgstr ""
 
 #: ../../getting-started.rst:59
 msgid "Choose, install and enable modules"
-msgstr ""
+msgstr "选择、安装和启用模块"
 
 #: ../../getting-started.rst:61
 msgid "Currently, all modules that was submitted to us are recorded in the `channels repository <https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository>`_. You can choose the channels that fits your need the best."

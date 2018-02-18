@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -29,11 +29,11 @@ msgstr ""
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Audio:1
 msgid "Audio message. Including music and voice message."
-msgstr ""
+msgstr "Pesan audio. Termasuk musik dan pesan suara."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.File:1
 msgid "Messages sent as a file."
-msgstr ""
+msgstr "Pesan dikirim sebagai sebuah file."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Image:1
 msgid "Image (picture) message"
@@ -49,21 +49,21 @@ msgstr ""
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Status:1
 msgid "Status from a user in a chat, usually typing and uploading."
-msgstr ""
+msgstr "Status dari pengguna dalam obrolan, biasanya mengetik dan mengunggah."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Sticker:1
 msgid "Pictures sent with few text caption, usually a transparent background, and a limited number of options that is usually not from the user's photo gallery."
-msgstr ""
+msgstr "Gambar dikirim dengan beberapa keterangan teks, biasanya berlatar belakang transparan, dan sejumlah pilihan yang terbatas yang biasanya bukan berasal dari galeri foto pengguna."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Text:1
 msgid "Text message"
-msgstr ""
+msgstr "Pesan teks"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Unsupported:1
 msgid "Any type of message that is not listed above. A text representation is required."
-msgstr ""
+msgstr "Apa pun jenis pesan yang tidak tercantum di atas. Sebuah teks representasi diperlukan."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Video:1
 msgid "Video message"
-msgstr ""
+msgstr "Pesan video"
 

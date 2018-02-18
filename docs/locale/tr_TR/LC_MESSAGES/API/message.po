@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"PO-Revision-Date: 2018-02-18 02:34-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +18,11 @@ msgstr ""
 
 #: ../../API/message.rst:2
 msgid "EFBMsg"
-msgstr ""
+msgstr "EFBMsg"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:1
 msgid "A message."
-msgstr ""
+msgstr "Bir mesaj."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:5
 msgid "Optional[:obj:`.EFBMsgAttribute`] -- Attributes used for a specific message type. Only specific message type requires this attribute. Defaulted to ``None``."
@@ -30,15 +30,15 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:9
 msgid "Link: :obj:`.EFBMsgLinkAttribute`"
-msgstr ""
+msgstr "Bağlantı: :obj:`.EFBMsgLinkAttribute`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:10
 msgid "Location: :obj:`.EFBMsgLocationAttribute`"
-msgstr ""
+msgstr "Konum: :obj:`.EFBMsgLocationAttribute`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:11
 msgid "Status: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`"
-msgstr ""
+msgstr "Durum: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:14
 msgid "Do NOT use object the abstract class :class:`.EFBMsgAttribute` for ``attributes``, but object of specific class instead."
@@ -46,23 +46,23 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:20
 msgid ":obj:`.EFBChat` -- Author of this message."
-msgstr ""
+msgstr ":obj:`.EFBChat` -- Mesajın sahibi."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:24
 msgid ":obj:`.EFBChat` -- Sender of the message"
-msgstr ""
+msgstr ":obj:`.EFBChat` -- Mesajı gönderen kişi"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:28
 msgid "Opitonal[:obj:`EFBMsgCommands`] -- Commands attached to the message"
-msgstr ""
+msgstr "Opitonal[:obj:`EFBMsgCommands`] -- Mesaja iliştirilmiş komutlar"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:32
 msgid ":obj:`.EFBChannel` -- The channel that the message is to be delivered to"
-msgstr ""
+msgstr ":obj:`.EFBChannel` -- Mesajın teslim edileceği kanal"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:36
 msgid "*bool* -- Flag this up if the message is edited."
-msgstr ""
+msgstr "*bool* -- Eğer mesaj düzenlenir ise bunu işaretleyin."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:40
 msgid "*IO[bytes]* -- File object to multimedia file, type \"ra\". ``None`` if N/A Recommended to use ``NamedTemporaryFile`` object, the file is recommended to be deleted when closed, if not used otherwise. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
@@ -155,7 +155,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
 msgid "EFB command message command."
-msgstr ""
+msgstr "EFB komut mesajı komutu."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:5
 msgid "*str* -- Human-friendly name of the command."
@@ -179,19 +179,19 @@ msgstr ""
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:0
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:0
 msgid "Parameters"
-msgstr ""
+msgstr "Değiştirgeler"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:1
 msgid "Human-friendly name of the command."
-msgstr ""
+msgstr "Komutun dost canlısı adı."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:3
 msgid "Callable name of the command."
-msgstr ""
+msgstr "Komutun çağrılabilir adı."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:5
 msgid "Arguments passed to the function. Defaulted to empty list;"
-msgstr ""
+msgstr "İşleve geçen bağımsız değişken. Varsayılan olarak boş liste;"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:7
 msgid "Keyword arguments passed to the function. Defaulted to empty dict."
@@ -199,7 +199,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:1
 msgid "EFB message commands. Message commands allow user to take action to a specific message, including vote, add friends, etc."
-msgstr ""
+msgstr "EFB mesaj komutları. Mesaj komutları kullanıcının spesifik bir mesajla harekete geçmesine izin verir, oy vermeyi, arkadaş eklemeyi ve benzerlerini içerir."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:7
 msgid "list of :obj:`EFBMsgCommand` -- Commands for the message."
@@ -237,11 +237,11 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:1
 msgid "Title of the link."
-msgstr ""
+msgstr "Bağlantının başlığı."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:3
 msgid "Description of the link."
-msgstr ""
+msgstr "Bağlantının açıklaması."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:5
 msgid "Image/thumbnail URL of the link."
@@ -249,11 +249,11 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:7
 msgid "URL of the link."
-msgstr ""
+msgstr "Bağlantının URL'si."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
 msgid "EFB location message attribute."
-msgstr ""
+msgstr "EFB konum mesajı özniteliği."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:5
 msgid "*float* -- Latitude of the location."
@@ -285,7 +285,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:17
 msgid "List of status types supported"
-msgstr ""
+msgstr "Desteklenen durum türlerinin listesi"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:1
 msgid "Bases: :class:`enum.Enum`"
@@ -313,7 +313,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:1
 msgid "Type of status."
-msgstr ""
+msgstr "Durumun türü."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:2
 msgid "Number of milliseconds for this status to expire. Default to 5 seconds."
@@ -353,7 +353,7 @@ msgstr ""
 
 #: ../../API/message.rst:14
 msgid "Examples"
-msgstr ""
+msgstr "Örnekler"
 
 #: ../../API/message.rst:17
 msgid "Primer: Defining related chats"
@@ -377,11 +377,11 @@ msgstr ""
 
 #: ../../API/message.rst:75
 msgid "Text message"
-msgstr ""
+msgstr "Metin mesajı"
 
 #: ../../API/message.rst:93
 msgid "Media message"
-msgstr ""
+msgstr "Medya mesajı"
 
 #: ../../API/message.rst:78
 msgid "Information related to edia processing is described in :doc:`/guide/media_processing`."
@@ -400,19 +400,19 @@ msgstr ""
 
 #: ../../API/message.rst:102
 msgid "Location message"
-msgstr ""
+msgstr "Konum mesajı"
 
 #: ../../API/message.rst:116
 msgid "Link message"
-msgstr ""
+msgstr "Bağlantı mesajı"
 
 #: ../../API/message.rst:124
 msgid "Status"
-msgstr ""
+msgstr "Durum"
 
 #: ../../API/message.rst:133
 msgid "Unsupported message"
-msgstr ""
+msgstr "Desteklenmeyen mesaj"
 
 #: ../../API/message.rst:127
 msgid "``text`` attribute is required for this type of message."
@@ -420,13 +420,13 @@ msgstr ""
 
 #: ../../API/message.rst:136
 msgid "Additional information"
-msgstr ""
+msgstr "Ek bilgi"
 
 #: ../../API/message.rst:146
 msgid "Substitution"
-msgstr ""
+msgstr "Değişim"
 
 #: ../../API/message.rst:156
 msgid "Commands"
-msgstr ""
+msgstr "Komutlar"
 
