@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-11 03:48-0500\n"
+"POT-Creation-Date: 2018-02-18 15:04+0800\n"
+"PO-Revision-Date: 2018-02-18 02:11-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: English\n"
 "MIME-Version: 1.0\n"
@@ -149,46 +149,46 @@ msgid "Monitors changes of chats and notify the master channel"
 msgstr ""
 
 #: ../../guide/walkthrough.rst:99
-msgid "If you have some extra features that is not a in the standard EFB Slave Channel model, they can be offered as \"extra functions\"."
+msgid "If you have some extra features that is not a in the standard EFB Slave Channel model, they can be offered as :ref:`slave-additional-features`."
 msgstr ""
 
-#: ../../guide/walkthrough.rst:106
+#: ../../guide/walkthrough.rst:104
 msgid "Master Channels"
 msgstr ""
 
-#: ../../guide/walkthrough.rst:108
+#: ../../guide/walkthrough.rst:106
 msgid "Master channels is relatively more complicated and also more flexible. As it directly faces the user, its user interface should be user-friendly, at least friendly to the targeted users."
 msgstr ""
 
-#: ../../guide/walkthrough.rst:113
+#: ../../guide/walkthrough.rst:111
 msgid "The job of the master channel includes:"
 msgstr ""
 
-#: ../../guide/walkthrough.rst:115
+#: ../../guide/walkthrough.rst:113
 msgid "Receive, process and display messages from slave channels"
 msgstr ""
 
-#: ../../guide/walkthrough.rst:117
+#: ../../guide/walkthrough.rst:115
 msgid "Display a full list of chats from all slave channels"
 msgstr ""
 
-#: ../../guide/walkthrough.rst:118
+#: ../../guide/walkthrough.rst:116
 msgid "Offer an interface for the user to use \"extra functions\" from slave channels."
 msgstr ""
 
-#: ../../guide/walkthrough.rst:120
+#: ../../guide/walkthrough.rst:118
 msgid "Process updates from slave channels."
 msgstr ""
 
-#: ../../guide/walkthrough.rst:121
+#: ../../guide/walkthrough.rst:119
 msgid "Provide a user-friendly interface as far as possible."
 msgstr ""
 
-#: ../../guide/walkthrough.rst:124
+#: ../../guide/walkthrough.rst:122
 msgid "Middlewares"
 msgstr ""
 
-#: ../../guide/walkthrough.rst:126
+#: ../../guide/walkthrough.rst:124
 msgid "Middlewares can monitor and make changes to or nullify messages and statuses delivered between channels. Middlewares are executed in order of registration, one after another. A middleware will always receive the messages processed by the preceding middleware if available. Once a middleware nullify a message or status, it will not be processed any further."
 msgstr ""
 

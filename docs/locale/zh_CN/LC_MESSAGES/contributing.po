@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-11 03:48-0500\n"
+"PO-Revision-Date: 2018-02-18 02:11-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: ../../contributing.rst:5
 msgid "First of all, thanks for taking your time to contribute!"
-msgstr ""
+msgstr "首先，感谢您抽出时间对该项目做出贡献！"
 
 #: ../../contributing.rst:7
 msgid "Please note that only questions on the framework will be answered here. For issue related with any channels, please contact their respective authors or post in their corresponding repositories."
@@ -30,19 +30,19 @@ msgstr ""
 
 #: ../../contributing.rst:12
 msgid "Here is a simple guide on how you can file in an issue, or submit a pull request that is useful and effective."
-msgstr ""
+msgstr "下面是一个简单的指南，介绍如何提交一个简洁明了的问题报告或是功能请求的请求。"
 
 #: ../../contributing.rst:15
 msgid "If you need help, or want to talk to the authors, feel free to chat with us at our `Gitter chat`_ or `Telegram support group`_."
-msgstr ""
+msgstr "如果您有任何问题，或是想与作者交流，欢迎加入我们的 `Gitter 聊天室`_ 或是 `Telegram 群组`_ 。"
 
 #: ../../contributing.rst:23
 msgid "Reporting bugs"
-msgstr ""
+msgstr "反馈 Bug"
 
 #: ../../contributing.rst:25
 msgid "Before submitting a bug report"
-msgstr ""
+msgstr "提交 bug 报告之前"
 
 #: ../../contributing.rst:26
 msgid "Please ensure if your issue is about the framework itself, not about any channel. Reports about channels should goes to their respective channels."
@@ -54,19 +54,19 @@ msgstr ""
 
 #: ../../contributing.rst:30
 msgid "Check the `current issue list`__ to see if it's been reported."
-msgstr ""
+msgstr "检查 `已报告的 Issue 列表`__ 以确保您的问题未被报告过。"
 
 #: ../../contributing.rst:35
 msgid "How Do I Submit A (Good) Bug Report?"
-msgstr ""
+msgstr "如何提交一份（有用的） Bug 报告？"
 
 #: ../../contributing.rst:36
 msgid "**Use a clear and descriptive title** for the issue to identify the problem."
-msgstr ""
+msgstr "**使用一个明确的和描述性的标题** 来描述问题。"
 
 #: ../../contributing.rst:37
 msgid "**Describe the exact steps which reproduce the problem** in as many details as possible."
-msgstr ""
+msgstr "尽可能地给出重现问题的 **详细确切步骤** 。"
 
 #: ../../contributing.rst:39
 #: ../../contributing.rst:77
@@ -83,7 +83,7 @@ msgstr ""
 
 #: ../../contributing.rst:43
 msgid "**If the problem wasn't triggered by a specific action**, describe what you were doing before the problem happened and share more information using the guidelines below."
-msgstr ""
+msgstr "**若问题不是由某个特定操作引起的** ，请描述问题发生前你所进行的操作，并依据以下准则提交尽可能多的信息。"
 
 #: ../../contributing.rst:46
 msgid "**Provide log related to the issue.** Use the verbose flag to start the logging process, and submit the entire log from the first step you performed."
@@ -99,23 +99,23 @@ msgstr ""
 
 #: ../../contributing.rst:54
 msgid "**Can you reliably reproduce the issue?** If not, provide details about how often the problem happens and under which conditions it normally happens."
-msgstr ""
+msgstr "**您能可靠地重现这个问题吗？** 如果不能，请提供详细信息，描述问题发生的大致频率和通常在何种情况下它会发生。"
 
 #: ../../contributing.rst:58
 msgid "Include details about your configuration and environment:"
-msgstr ""
+msgstr "提供您的配置信息及操作环境："
 
 #: ../../contributing.rst:60
 msgid "**What version of EFB are you using?** You can get the version by using the flag `-V`."
-msgstr ""
+msgstr "**您的 EFB 版本号是多少？** 您可以通过 `-V` 来获取版本号。"
 
 #: ../../contributing.rst:62
 msgid "**What's the name and version of the OS you're using?**"
-msgstr ""
+msgstr "**您的操作系统类型及版本号是多少？**"
 
 #: ../../contributing.rst:65
 msgid "When submitting your log, please remember to hide your private information."
-msgstr ""
+msgstr "在您提交报告前，请确保您的个人信息已被全部抹去。"
 
 #: ../../contributing.rst:69
 msgid "Suggesting enhancements"
@@ -123,11 +123,11 @@ msgstr ""
 
 #: ../../contributing.rst:71
 msgid "If you have any suggestions, feel free to raise it up in the issue list. Please try to provide as much details as you can, that includes:"
-msgstr ""
+msgstr "如果您有任何疑问，请在 issue 中提交您的问题。请尽量提供您所掌握的信息，包括："
 
 #: ../../contributing.rst:75
 msgid "**Use a clear and descriptive title** for the issue to identify the suggestion."
-msgstr ""
+msgstr "**使用一个明确的和描述性的标题** 来描述您的建议。"
 
 #: ../../contributing.rst:76
 msgid "**Give details on how the enhancement behave**."
@@ -151,15 +151,15 @@ msgstr ""
 
 #: ../../contributing.rst:90
 msgid "**What changes have you made?**"
-msgstr ""
+msgstr "**您做了什么更改？**"
 
 #: ../../contributing.rst:91
 msgid "**What problem have you solved?**"
-msgstr ""
+msgstr "**您解决了哪一个问题？**"
 
 #: ../../contributing.rst:92
 msgid "**Which issue have you addressed** if applicable."
-msgstr ""
+msgstr "**您涉及了哪一个 issue？** （若适用）。"
 
 #: ../../contributing.rst:94
 msgid "Always write a clear log message for your commits. One-line messages are fine for small changes, but bigger changes needs a detailed description after the one-liner."

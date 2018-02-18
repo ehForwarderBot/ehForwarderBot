@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-11 03:48-0500\n"
+"PO-Revision-Date: 2018-02-18 02:11-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -18,31 +18,31 @@ msgstr ""
 
 #: ../../API/channel.rst:2
 msgid "EFBChannel"
-msgstr ""
+msgstr "EFBChannel"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel:1
 msgid "The abstract channel class."
-msgstr ""
+msgstr "抽象信道类。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel:5
 msgid "*str* -- A human-friendly name of the channel."
-msgstr ""
+msgstr "*str* -- 信道的显示名称。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel:9
 msgid "*str* -- Emoji icon of the channel. Recommended to use a visually-length-one emoji that represents the channel best."
-msgstr ""
+msgstr "*str* -- 信道的 Emoji 图标。建议使用最能代表信道的显示长度为 1 的 Emoji 图标。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel:15
 msgid ":obj:`.ChannelType` -- Type of the channel."
-msgstr ""
+msgstr ":obj:`.ChannelType` -- 信道类型。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel:19
 msgid "Set[:obj:`.MsgType`] -- Types of messages that the channel accepts as incoming messages."
-msgstr ""
+msgstr "Set[:obj:`.MsgType`] -- 信道可接受的传入消息类型。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel:23
 msgid "*str* -- Unique identifier of the channel. Convention of IDs is specified in :doc:`/guide/packaging`"
-msgstr ""
+msgstr "*str* -- 信道的唯一 ID。关于 ID 的标准请参考 :doc:`/guide/packaging`"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:1
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_status:1
@@ -54,15 +54,15 @@ msgstr ""
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:0
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_status:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:3
 msgid "UID of the chat."
-msgstr ""
+msgstr "聊天的唯一 ID（UID）。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:5
 msgid "UID of group member, only when the selected chat is a group."
-msgstr ""
+msgstr "组成员的唯一 ID（UID），仅在所选择的聊天为群聊时必填。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:0
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
@@ -70,7 +70,7 @@ msgstr ""
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_extra_functions:0
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:0
 msgid "Returns"
-msgstr ""
+msgstr "返回值"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:9
 msgid "the standard chat dict of the chat."
@@ -82,119 +82,119 @@ msgstr ""
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_extra_functions:0
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:0
 msgid "Return type"
-msgstr ""
+msgstr "返回类型"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:0
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:0
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_status:0
 msgid "raises"
-msgstr ""
+msgstr "抛出"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:12
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:16
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:11
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_status:6
 msgid ":exc:`~.exceptions.EFBChatNotFound` -- Raised when a chat required is not found."
-msgstr ""
+msgstr ":exc:`~.exceptions.EFBChatNotFound` -- 当请求的会话无法找到时被抛出。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:15
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:36
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chats:6
 msgid "This is not required by Master Channels"
-msgstr ""
+msgstr "主端不需要继承此方法。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:1
 msgid "Get the profile picture of a chat. Profile picture is also referred as profile photo, avatar, \"head image\" sometimes."
-msgstr ""
+msgstr "获取一个会话的头像。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:5
 msgid "Chat to get picture from."
-msgstr ""
+msgstr "需要获取头像的会话。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:8
 msgid "Opened temporary file object. The file object must have appropriate extension name that matches to the format of picture sent, and seek to position 0.  It can be deleted when closed if not required otherwise."
-msgstr ""
+msgstr "已打开的临时文件对象。文件对象必须具有和发送的图片格式相匹配的文件扩展名，并文件指针移动（seek）到 0。如果该文件在消息被处理后不再需要，可以选择在文件被关闭时删除该文件。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:8
 msgid "Opened temporary file object. The file object must have appropriate extension name that matches to the format of picture sent, and seek to position 0."
-msgstr ""
+msgstr "已打开的临时文件对象。文件对象必须具有和发送的图片相匹配的文件扩展名，并文件指针移动（seek）到 0。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:13
 msgid "It can be deleted when closed if not required otherwise."
-msgstr ""
+msgstr "如果该文件在消息被处理后不再需要，可以选择在文件被关闭时删除该文件。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:18
 msgid ":exc:`~.exceptions.EFBOperationNotSupported` -- Raised when the chat does not offer a profile picture."
-msgstr ""
+msgstr ":exc:`~.exceptions.EFBOperationNotSupported` -- 在会话不提供个人信息图片时抛出。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:22
 msgid "Examples"
-msgstr ""
+msgstr "示例"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chats:1
 msgid "Return a list of available chats in the channel."
-msgstr ""
+msgstr "返回信道中可用的会话列表。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chats:3
 msgid "a list of available chats in the channel."
-msgstr ""
+msgstr "信道中可用会话列表。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_extra_functions:1
 msgid "Get a list of extra functions"
-msgstr ""
+msgstr "获取附加功能列表"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_extra_functions:3
 msgid "A dict of functions marked as extra functions. Method can be called with ``get_extra_functions()[\"methodName\"]()``."
-msgstr ""
+msgstr "附加功能方法字典。方法可以通过``get_extra_functions()[\"methodName\"]()``来调用。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.poll:1
 msgid "Method to poll for messages. This method is called when the framework is initialized. This method should be blocking."
-msgstr ""
+msgstr "用来轮询消息的方法。在初始化框架时被调用。此方法应为阻塞型方法。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:1
 msgid "Send a message to, or edit a sent message in the channel."
-msgstr ""
+msgstr "向信道发送消息，或者编辑已发送的消息。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:4
 msgid "Message object to be processed."
-msgstr ""
+msgstr "需要处理的消息对象。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:7
 msgid "The same message object with message ID from the recipient."
-msgstr ""
+msgstr "带有收件方消息 ID 的原消息对象。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:9
 msgid ":obj:`.EFBMsg`"
-msgstr ""
+msgstr ":obj:`.EFBMsg`"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:13
 msgid ":exc:`~.exceptions.EFBMessageTypeNotSupported` -- Raised when the message type sent is not supported by the channel."
-msgstr ""
+msgstr ":exc:`~.exceptions.EFBMessageTypeNotSupported` -- 在发送的消息类型不被信道支持时被抛出。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:16
 msgid ":exc:`~.exceptions.EFBOperationNotSupported` -- Raised when an message edit request is sent, but not supported by the channel."
-msgstr ""
+msgstr ":exc:`~.exceptions.EFBOperationNotSupported` -- 当发送的消息编辑请求不被信道支持时被抛出。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:19
 msgid ":exc:`~.exceptions.EFBMessageNotFound` -- Raised when an existing message indicated is not found. E.g.: The message to be edited, the message referred in the :attr:`msg.target <.EFBMsg.target>` attribute."
-msgstr ""
+msgstr ":exc:`~.exceptions.EFBMessageNotFound` -- 当对象内含的消息不存在时被抛出。例如：要被编辑的消息，在 :attr:`msg.target <.EFBMsg.target>` 属性中引用的消息。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:24
 msgid ":exc:`~.exceptions.EFBMessageError` -- Raised when other error occurred while sending or editing the message."
-msgstr ""
+msgstr ":exc:`~.exceptions.EFBMessageError` -- 当发送或编辑消息出错时被抛出。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_status:3
 msgid "the status"
-msgstr ""
+msgstr "状态"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_status:8
 msgid ":exc:`~.exceptions.EFBMessageNotFound` -- Raised when an existing message indicated is not found. E.g.: The message to be removed."
-msgstr ""
+msgstr ":exc:`~.exceptions.EFBMessageNotFound` -- 当对象内含的消息不存在时被抛出，例如需要删除的消息。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_status:11
 msgid ":exc:`~.exceptions.EFBOperationNotSupported` -- Raised when the channel does not support message removal."
-msgstr ""
+msgstr ":exc:`~.exceptions.EFBOperationNotSupported` -- 当信道不支持消息删除时抛出。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_status:13
 msgid ":exc:`~.exceptions.EFBMessageError` -- Raised when other error occurred while removing the message."
@@ -206,7 +206,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_status:22
 msgid "This is not applicable to Slave Channels"
-msgstr ""
+msgstr "从端不需要继承该方法。"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.stop_polling:1
 msgid "When EFB framework is asked to stop gracefully, this method is called to each channel object to stop all processes in the channel, save all status if necessary, and terminate polling."
@@ -218,11 +218,11 @@ msgstr ""
 
 #: ../../API/channel.rst:8
 msgid "Common operations"
-msgstr ""
+msgstr "通用操作"
 
 #: ../../API/channel.rst:11
 msgid "Sending messages and statuses"
-msgstr ""
+msgstr "发送消息和状态"
 
 #: ../../API/channel.rst:13
 msgid "Sending messages and statuses to other channels is the most common operation of a channel. When the channel has gathered enough information from external sources, it should be further processed and packed into the relative objects, i.e. :obj:`.EFBMsg` and :obj:`.EFBStatus`."

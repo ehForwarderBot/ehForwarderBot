@@ -98,9 +98,7 @@ The job of slave channels is relatively simple.
 
 If you have some extra features that is not a in the
 standard EFB Slave Channel model, they can be offered as
-"extra functions".
-
-.. TODO: link to extra functions in slave channel page
+:ref:`slave-additional-features`.
 
 Master Channels
 ---------------

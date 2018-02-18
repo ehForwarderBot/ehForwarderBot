@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-11 03:48-0500\n"
+"PO-Revision-Date: 2018-02-18 02:11-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +18,11 @@ msgstr ""
 
 #: ../../guide/media_processing.rst:2
 msgid "Media processing"
-msgstr ""
+msgstr "媒体处理"
 
 #: ../../guide/media_processing.rst:5
 msgid "Choosing media formats"
-msgstr ""
+msgstr "选择媒体格式"
 
 #: ../../guide/media_processing.rst:7
 msgid "Both Master and Slave channel can take their charges to convert media files they send or receive. In general: **if a media file received from remote server is not a common format, convert it before deliver it on; if a media file sent to remote server requires to be in a specific format, it should be converted before sending out**. Nevertheless, this is only a guideline on channels' responsibility regarding media processing, and everyone has their own opinion on what is a common format / encoding. Therefore we only recommend this behaviour, but do not force in our code. This is to say that, you still have to take care of the accepted type of media encoding of your corresponding method of presentation, and convert and/or fallback to different type of representation if necessary. After all, the delivery of information is more important."
@@ -30,11 +30,11 @@ msgstr ""
 
 #: ../../guide/media_processing.rst:25
 msgid "Media encoders"
-msgstr ""
+msgstr "媒体编码器"
 
 #: ../../guide/media_processing.rst:27
 msgid "Similarly, we will also not put a strict limit on this as well, but just a recommendation. As you might have already know, there are few mature pure Python media processing libraries, most of them will more or less requires internal or external binary dependencies."
-msgstr ""
+msgstr "类似地，我们不会对它做出明确的限制，我们只是提出建议。或许您已经知道了，目前 Python 平台已有数个成熟的媒体处理库，其中大多数都需要用到内置的或是附加的二进制依赖。"
 
 #: ../../guide/media_processing.rst:33
 msgid "We try to aim to use as few different libraries as we can, as more library to install means more space, install time, and complexity. While processing media files, we recommend to use the following libraries if possible:"
@@ -46,11 +46,11 @@ msgstr ""
 
 #: ../../guide/media_processing.rst:40
 msgid "ffmpeg"
-msgstr ""
+msgstr "ffmpeg"
 
 #: ../../guide/media_processing.rst:43
 msgid "Files in messages"
-msgstr ""
+msgstr "消息中的文件"
 
 #: ../../guide/media_processing.rst:45
 msgid "When a file sent out from a channel, it should be open, sought back to 0 ( ``file.seek(0)`` ) before sending."

@@ -35,38 +35,40 @@ implemented by the slave channel.
 * :meth:`.EFBChannel.send_message`
 * :meth:`.EFBChannel.send_status`
 
-Extra functions
----------------
+.. _slave-additional-features:
+
+Additional features
+-------------------
 
 Slave channels can offer more functions than what EFB
 requires, such as creating groups, search for friends, 
-etc, via *extra functions*.
+etc, via *additional features*.
 
-Such functions are accessed by the user in a CLI-like
-style. An "extra function" method should only take one
+Such features are accessed by the user in a CLI-like
+style. An "additional feature" method should only take one
 string parameter aside from ``self``, and wrap it with 
 :meth:`~ehforwarderbot.utils.extra` decorator. The extra decorator 
-takes 2 arguments: ``name`` — a short name of the function, 
-and ``desc`` — a description of the function and its usage.
+takes 2 arguments: ``name`` — a short name of the feature,
+and ``desc`` — a description of the feature with its usage.
 
-``desc`` should describe what the function does and how
+``desc`` should describe what the feature does and how
 to use it. It's more like the help text for an CLI program. 
-Since method of calling an extra function depends on the 
+Since method of invoking the feature depends on the
 implementation of the master channel, you should use 
-``"{function_name}"`` as the function name in ``desc``, 
+``"{function_name}"`` as its name in ``desc``,
 and master channel will replace it with respective name
 depend on their implementation.
 
 The method should in the end return a string, which will 
 be shown to the user as its result. Depending on the 
-functionality of the function, it may be just a simple 
+functionality of the feature, it may be just a simple
 success message, or a long chunk of results.
 
 The callable should not raise any exception to its caller.
 Any exceptions occurred within should be ``expect``\ ed and
 processed.
 
-Callable name of extra functions has a more strict standard 
+Callable name of such methods has a more strict standard
 than a normal Python 3 identifier name, for compatibility 
 reason. An extra function callable name should:
 

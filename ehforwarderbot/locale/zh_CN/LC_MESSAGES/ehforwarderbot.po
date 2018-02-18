@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 22:23+0800\n"
-"PO-Revision-Date: 2018-02-11 03:48-0500\n"
+"PO-Revision-Date: 2018-02-18 02:11-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -19,11 +19,11 @@ msgstr ""
 #: ehforwarderbot/__main__.py:27
 #, python-brace-format
 msgid "Python 3.6 or higher is required. Your version is {version}."
-msgstr "需要3.6或更高的Python版本。您的版本是 {version} 。"
+msgstr "本程序需要 Python 3.6 或更高版本。您的版本是 {version}。"
 
 #: ehforwarderbot/__main__.py:29
 msgid "EH Forwarder Bot is an extensible chat tunnel framework which allows users to contact people from other chat platforms, and ultimately remotely control their accounts in other platforms."
-msgstr "EH Forwarder Bot 是一个可扩展的聊天隧道框架, 允许用户联系其他聊天平台的人, 并最终远程控制他们在其他平台的帐户。"
+msgstr "EH Forwarder Bot 是一个可扩展的聊天隧道框架, 允许用户联系其他聊天平台的人，并最终远程控制其在其他平台的帐户。"
 
 #: ehforwarderbot/__main__.py:37
 msgid "Enable verbose mode. (Level: Debug)"
@@ -61,12 +61,12 @@ msgstr ""
 
 #: ehforwarderbot/__main__.py:96
 msgid "Initializing middleware {}..."
-msgstr "正在初始化中间件 {} ···"
+msgstr "正在初始化中间件 {}…"
 
 #: ehforwarderbot/__main__.py:100
 #, python-brace-format
 msgid "Middleware {name} ({id}) is initialized."
-msgstr "中间件 {name} ({id}) 已初始化。"
+msgstr "中间件 {name} ({id}) 初始化成功。"
 
 #: ehforwarderbot/__main__.py:102
 msgid "All middlewares are initialized."
@@ -78,8 +78,10 @@ msgid "EH Forwarder Bot\n"
 "Version: {version}\n"
 "Python version:\n"
 "{py_version}"
-msgstr "EH Forward Bot 版本: {version}\n"
-"Python 版本:{py_version}"
+msgstr "EH Forward Bot\n"
+"版本：{version}\n"
+"Python 版本：\n"
+"{py_version}"
 
 #: ehforwarderbot/__main__.py:130
 msgid "Master channel:"

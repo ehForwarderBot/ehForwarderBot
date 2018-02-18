@@ -40,7 +40,7 @@ Some ideas:
 - Periodic broadcast to master / slave channels
 - Integration with chat bots
 - Automated operations on vendor-specific commands /
-  extra functions
+  additional features
 - Share user session from slave channel with other
   programs
 - etc...

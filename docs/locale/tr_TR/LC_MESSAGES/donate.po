@@ -1,0 +1,46 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-09 13:12+0800\n"
+"PO-Revision-Date: 2018-02-18 02:11-0500\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Turkish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: tr\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/donate.pot\n"
+"Language: tr_TR\n"
+
+#: ../../donate.rst:2
+msgid "Donate"
+msgstr "Bağışla"
+
+#: ../../donate.rst:4
+msgid "|Beerpay|"
+msgstr "|Beerpay|"
+
+#: ../../donate.rst:5
+msgid "|Donate with PayPal|"
+msgstr "|PayPal ile bağış yap|"
+
+#: ../../donate.rst:6
+msgid "|Donate with Patreon|"
+msgstr "|Patreon ile bağış yap|"
+
+#: ../../donate.rst:7
+msgid "|Donate with AliPay|"
+msgstr "|AliPay ile bağış yap|"
+
+#: ../../donate.rst:8
+msgid "|Donate with WeChat|"
+msgstr "|WeChat ile bağış yap|"
+
+#: ../../donate.rst:9
+msgid "`Supporters`_"
+msgstr "`Destekçiler`_"
+

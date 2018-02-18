@@ -11,7 +11,7 @@ from . import coordinator
 
 def extra(name: str, desc: str) -> Callable:
     """
-    Decorator for slave channel's "extra functions" interface.
+    Decorator for slave channel's "additional features" interface.
 
     Args:
         name (str): A human readable name for the function.

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-11 03:48-0500\n"
+"PO-Revision-Date: 2018-02-18 02:11-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -18,43 +18,43 @@ msgstr ""
 
 #: ../../start.rst:2
 msgid "Launch the framework"
-msgstr ""
+msgstr "启动框架"
 
 #: ../../start.rst:4
 msgid "EH Forwarder Bot offered 2 ways to launch the framework:"
-msgstr ""
+msgstr "EFB 提供了两种方法来启动框架："
 
 #: ../../start.rst:6
 msgid "``ehforwarderbot``"
-msgstr ""
+msgstr "``ehforwarderbot``"
 
 #: ../../start.rst:7
 msgid "``python3 -m ehforwarderbot``"
-msgstr ""
+msgstr "``python3 -m ehforwarderbot``"
 
 #: ../../start.rst:9
 msgid "Both commands are exactly the same thing, accept the same flags, run the same code. The latter is only a backup in case the former does not work."
-msgstr ""
+msgstr "两个命令的功能及用法完全一致, 运行相同的代码。后者只是一个备份，以防前者不起作用。"
 
 #: ../../start.rst:14
 msgid "Options"
-msgstr ""
+msgstr "选项"
 
 #: ../../start.rst:16
 msgid "``-h``, ``--help``: Show help message"
-msgstr ""
+msgstr "``-h``, ``--help``：显示帮助信息"
 
 #: ../../start.rst:18
 msgid "``-p PROFILE``, ``--profile PROFILE``: Switch :doc:`profile <profile>`"
-msgstr ""
+msgstr "``-p PROFILE``, ``--profile PROFILE``：切换 :doc:`配置文件 <profile>`"
 
 #: ../../start.rst:20
 msgid "From version 2, EFB supports running different instances under the same user, identified by their profiles. The default profile is named ``default``."
-msgstr ""
+msgstr "从 2.0 版本开始，EFB 支持在同一用户下运行多个实例（根据配置文档进行区分）。默认的配置文档名称为 ``default`` 。"
 
 #: ../../start.rst:24
 msgid "``-V``, ``--version``: Print version information"
-msgstr ""
+msgstr "``-V``, ``--version``: 打印版本信息"
 
 #: ../../start.rst:26
 msgid "This shows version number of Python you are using, the EFB framework, and all channels and middlewares enabled."
@@ -62,7 +62,7 @@ msgstr ""
 
 #: ../../start.rst:30
 msgid "``-v``, ``--verbose``: Print verbose log"
-msgstr ""
+msgstr "``-v``, ``--verbose``: 打印详细日志"
 
 #: ../../start.rst:32
 msgid "This option enables verbose log of EFB and all enabled modules. This, together with ``-V``, is particularly useful in debugging and issue reporting."

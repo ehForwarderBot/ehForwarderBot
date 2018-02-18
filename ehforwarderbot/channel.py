@@ -39,10 +39,10 @@ class EFBChannel(ABC):
     __version__: str = 'undefined version'
 
     def get_extra_functions(self) -> Dict[str, Callable]:
-        """Get a list of extra functions
+        """Get a list of additional features
 
         Returns:
-            Dict[str, Callable]: A dict of functions marked as extra functions.
+            Dict[str, Callable]: A dict of methods marked as additional features.
             Method can be called with ``get_extra_functions()["methodName"]()``.
         """
         if self.channel_type == ChannelType.Master:
@@ -115,7 +115,7 @@ class EFBChannel(ABC):
     def get_chat(self, chat_uid: str, member_uid: Optional[str] = None) -> 'EFBChat':
         """get_chat(self, chat_uid: str, member_uid: Optional[str] = None) -> EFBChat
 
-        Return the standard chat dict of the selected chat.
+        Get the chat object from a slave channel.
         
         Args:
             chat_uid (str): UID of the chat.
@@ -123,11 +123,12 @@ class EFBChannel(ABC):
                 only when the selected chat is a group.
 
         Returns:
-           .EFBChat: the standard chat dict of the chat.
+           .EFBChat: The chat found.
 
         Raises:
             :exc:`~.exceptions.EFBChatNotFound`: Raised when a chat
                 required is not found.
+
         Note:
             This is not required by Master Channels
         """
@@ -136,7 +137,7 @@ class EFBChannel(ABC):
     @abstractmethod
     def send_status(self, status: 'EFBStatus'):
         """
-        Return the standard chat dict of the selected chat.
+        Send a status to the channel.
 
         Args:
             status (:obj:`.EFBStatus`): the status

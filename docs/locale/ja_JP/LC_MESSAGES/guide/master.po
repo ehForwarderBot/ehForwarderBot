@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-11 03:48-0500\n"
+"POT-Creation-Date: 2018-02-18 15:04+0800\n"
+"PO-Revision-Date: 2018-02-18 02:11-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgid "support all, if not most, features of messages, including: targeted messa
 msgstr ""
 
 #: ../../guide/master.rst:36
-msgid "be able to call and process \"extra functions\" offered by slave channels."
+msgid "be able to invoke and process \"additional features\" offered by slave channels."
 msgstr ""
 
 #: ../../guide/master.rst:39

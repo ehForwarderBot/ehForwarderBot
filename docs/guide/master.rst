@@ -33,8 +33,8 @@ considering the user experience, a master channel should:
   Master channel should be able to process incoming
   messages with such features, and send messages with
   such features to slave channels if applicable;
-* be able to call and process "extra functions" offered
-  by slave channels.
+* be able to invoke and process "additional features"
+  offered by slave channels.
 
 Optionally, a master channel can also support / identify
 vendor-specified information from certain slave channels.
