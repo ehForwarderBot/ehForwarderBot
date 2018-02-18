@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-18 02:34-0500\n"
+"PO-Revision-Date: 2018-02-18 07:08-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +18,11 @@ msgstr ""
 
 #: ../../guide/middleware.rst:2
 msgid "Middlewares"
-msgstr ""
+msgstr "Özel yazılımlar"
 
 #: ../../guide/middleware.rst:4
 msgid "Middlewares works in between the master channel and slave channels, they look through messages and statuses delivered between channels, passing them on, make changes or discarding them, one after another."
-msgstr ""
+msgstr "Özel yazılımlar ana kanal ve bağımlı kanallar arasında çalışır, kanallar arasında iletilmiş mesajları ve durumları sıra sıra gözden geçirirler, devam etmelerini sağlarlar, değişiklikler yaparlar veya devre dışı bırakırlar."
 
 #: ../../guide/middleware.rst:9
 msgid "Like channels, middlewares will also each have an instance per EFB session, managed by the coordinator. However, they don't have centrally polling threads, which means if a middleware wants to have a polling thread or something similar running in the background, it has to stop the thread using Python's ``atexit`` or otherwise."
@@ -30,7 +30,7 @@ msgstr ""
 
 #: ../../guide/middleware.rst:17
 msgid "Message and Status Processing"
-msgstr ""
+msgstr "Mesaj ve Durum İşleme"
 
 #: ../../guide/middleware.rst:19
 msgid "Each middleware by default has 2 methods, :meth:`~.ehforwarderbot.EFBMiddleware.process_message` which processes message objects, and :meth:`~.ehforwarderbot.EFBMiddleware.process_status` which processes status objects. If they are not overridden, they will not touch on the object and pass it on as is."
@@ -42,15 +42,15 @@ msgstr ""
 
 #: ../../guide/middleware.rst:32
 msgid "Other Usages"
-msgstr ""
+msgstr "Diğer Kullanımlar"
 
 #: ../../guide/middleware.rst:34
 msgid "Having rather few limitation compare to channels, middlewares are rather easy to write, which allows it to do more than just intercept messages and statuses."
-msgstr ""
+msgstr "Kanallara kıyasla birkaç kısıtlamaya sahip olup, mesaj ve durumların sadece kesişmesini sağlamaktan daha çok şey yapmaya izin veren özel yazılımları yazmak nispeten daha kolaydır."
 
 #: ../../guide/middleware.rst:38
 msgid "Some ideas:"
-msgstr ""
+msgstr "Bazı fikirler:"
 
 #: ../../guide/middleware.rst:40
 msgid "Periodic broadcast to master / slave channels"
@@ -58,7 +58,7 @@ msgstr ""
 
 #: ../../guide/middleware.rst:41
 msgid "Integration with chat bots"
-msgstr ""
+msgstr "Sohbet botları ile entegrasyon"
 
 #: ../../guide/middleware.rst:42
 msgid "Automated operations on vendor-specific commands / additional features"
@@ -66,9 +66,9 @@ msgstr ""
 
 #: ../../guide/middleware.rst:44
 msgid "Share user session from slave channel with other programs"
-msgstr ""
+msgstr "Bağımlı kanallardan kullanıcı oturumlarını diğer programlarla paylaşma"
 
 #: ../../guide/middleware.rst:46
 msgid "etc..."
-msgstr ""
+msgstr "vb..."
 

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 02:34-0500\n"
+"PO-Revision-Date: 2018-02-18 07:08-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr ""
 
 #: ../../contributing.rst:35
 msgid "How Do I Submit A (Good) Bug Report?"
-msgstr ""
+msgstr "Nasıl (İyi) Bir Hata Raporu Gönderirim?"
 
 #: ../../contributing.rst:36
 msgid "**Use a clear and descriptive title** for the issue to identify the problem."
@@ -91,7 +91,7 @@ msgstr ""
 
 #: ../../contributing.rst:50
 msgid "Provide more context by answering these questions:"
-msgstr ""
+msgstr "Bu sorulara cevap vererek daha fazla içerik sağlayın:"
 
 #: ../../contributing.rst:52
 msgid "**Did the problem start happening recently** (e.g. after updating to the latest version) or was this always a problem?"
@@ -103,7 +103,7 @@ msgstr ""
 
 #: ../../contributing.rst:58
 msgid "Include details about your configuration and environment:"
-msgstr ""
+msgstr "Konfigürasyonunuz ve ortamınız hakkında ayrıntı ekleyin:"
 
 #: ../../contributing.rst:60
 msgid "**What version of EFB are you using?** You can get the version by using the flag `-V`."
@@ -119,15 +119,15 @@ msgstr ""
 
 #: ../../contributing.rst:69
 msgid "Suggesting enhancements"
-msgstr ""
+msgstr "Geliştirme önerilerinde bulunma"
 
 #: ../../contributing.rst:71
 msgid "If you have any suggestions, feel free to raise it up in the issue list. Please try to provide as much details as you can, that includes:"
-msgstr ""
+msgstr "Eğer önerileriniz varsa, sorun listesinde belirtmekten çekinmeyin. Lütfen mümkün olduğunca çok detay vermeye çalışın, dahil edin:"
 
 #: ../../contributing.rst:75
 msgid "**Use a clear and descriptive title** for the issue to identify the suggestion."
-msgstr ""
+msgstr "Öneriyi tanımlayan konu için **net ve betimleyici bir başlık kullanın**."
 
 #: ../../contributing.rst:76
 msgid "**Give details on how the enhancement behave**."

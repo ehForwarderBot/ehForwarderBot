@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 02:34-0500\n"
+"PO-Revision-Date: 2018-02-18 07:08-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -159,11 +159,11 @@ msgstr "EFB komut mesajı komutu."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:5
 msgid "*str* -- Human-friendly name of the command."
-msgstr ""
+msgstr "*str* -- Komutun insan-canlısı adı."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:9
 msgid "*str* -- Callable name of the command."
-msgstr ""
+msgstr "*str* -- Komutun çağrılabilir adı."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:13
 msgid "*List[Any]* -- Arguments passed to the function."
@@ -207,7 +207,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands.__init__:1
 msgid "Commands for the message."
-msgstr ""
+msgstr "Mesaj için komutlar."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1

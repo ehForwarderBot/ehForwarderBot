@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 02:34-0500\n"
+"PO-Revision-Date: 2018-02-18 07:08-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -18,19 +18,19 @@ msgstr ""
 
 #: ../../guide/media_processing.rst:2
 msgid "Media processing"
-msgstr ""
+msgstr "Ortam işleme"
 
 #: ../../guide/media_processing.rst:5
 msgid "Choosing media formats"
-msgstr ""
+msgstr "Ortam formatı seçme"
 
 #: ../../guide/media_processing.rst:7
 msgid "Both Master and Slave channel can take their charges to convert media files they send or receive. In general: **if a media file received from remote server is not a common format, convert it before deliver it on; if a media file sent to remote server requires to be in a specific format, it should be converted before sending out**. Nevertheless, this is only a guideline on channels' responsibility regarding media processing, and everyone has their own opinion on what is a common format / encoding. Therefore we only recommend this behaviour, but do not force in our code. This is to say that, you still have to take care of the accepted type of media encoding of your corresponding method of presentation, and convert and/or fallback to different type of representation if necessary. After all, the delivery of information is more important."
-msgstr ""
+msgstr "Hem Ana hem de Bağımlı Kanal aldıkları veya gönderdikleri medya dosyalarını dönüştürmede görev alabilirler. **Eğer uzaktan sunucudan alınan medya alışılmış formatta değilse, ulaştırmadan önce dönüştür; eğer uzaktan sunucuya gönderilen medyanın spesifik bir formatta olması gerekiyorsa; gönderilmeden önce dönüştürülmeli**. Yine de, bu, medya işleme hakkında kanalların sorumluluğunu ele alan tek kılavuzdur, ve herkesin ortak formatın / kodlamanın ne olduğu hakkında kendi fikri vardır. Bu nedenle biz bu davranımı sadece öneriyoruz, bizim kodlarımızı kullanmanız için sizi zorlamıyoruz. Başka bir deyişle, yine de gösterim metodunuzun yerini tuttuğu kabul edilmiş medya kodlaması tipini dikkate almalısınız ve eğer gerekiyorsa gösterim türünüzü farklı bir türe çevirmeli ve/veya geri çekmelisiniz. Sonuç olarak, bilginin aktarımı daha önemlidir."
 
 #: ../../guide/media_processing.rst:25
 msgid "Media encoders"
-msgstr ""
+msgstr "Ortam kodlayıcılar"
 
 #: ../../guide/media_processing.rst:27
 msgid "Similarly, we will also not put a strict limit on this as well, but just a recommendation. As you might have already know, there are few mature pure Python media processing libraries, most of them will more or less requires internal or external binary dependencies."
@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../guide/media_processing.rst:33
 msgid "We try to aim to use as few different libraries as we can, as more library to install means more space, install time, and complexity. While processing media files, we recommend to use the following libraries if possible:"
-msgstr ""
+msgstr "Yapabildiğimiz kadar farklı birkaç belgeliği kullanmayı amaçlamayı deniyoruz, çünkü yüklenecek daha çok belgelik demek, daha çok alan, yükleme zamanı ve karışıklık demektir. Medya dosyalarını işlerken, eğer mümkünse aşağıdaki belgelikleri kullanmanızı öneriyoruz:"
 
 #: ../../guide/media_processing.rst:39
 msgid "pillow"
@@ -58,7 +58,7 @@ msgstr ""
 
 #: ../../guide/media_processing.rst:48
 msgid "Files sent should be able to be located somewhere in the file system, better with a appropriate extension name, but not required. All files should also have its MIME type specified in the message object. If the channel is not sure about the correct MIME type, it can try to guess with ``libmagic``, or fallback to ``application/octet-stream``. Always try the best to provide the most suitable MIME type when sending."
-msgstr ""
+msgstr "Gönderilen dosyaların dosya sisteminin içinde bir yerlerde olduğunun belirlenebilmesi gereklidir, uygun bir uzantı isminin olması daha iyidir, fakat şart değildir. Ek olarak, mesaj modelinde tüm dosyalar kendi spesifik MIME tipine sahip olmalıdır. Eğer kanal doğru MIME türünden emin değilse, ``libmagic`` ile tahmin etmeyi deneyebilir, veya ``application/octet-stream``e geri çekilebilir. Gönderirken her zaman en uygun MIME türünü sağlamaya çalışın."
 
 #: ../../guide/media_processing.rst:57
 msgid "For such files, we use ``close`` to signify the end of its lifecycle. If the file is not required by the sender's channel anymore, it can be safely discarded."
@@ -66,5 +66,5 @@ msgstr ""
 
 #: ../../guide/media_processing.rst:61
 msgid "Generally, ``tempfile.NamedTemporaryFile`` should work for ordinary cases."
-msgstr ""
+msgstr "Genel olarak, ``tempfile.NamedTemporaryFile`` olağan durumlar için çalışmalıdır."
 

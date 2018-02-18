@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 02:34-0500\n"
+"PO-Revision-Date: 2018-02-18 07:08-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: ../../start.rst:2
 msgid "Launch the framework"
-msgstr ""
+msgstr "Framework'ü başlat"
 
 #: ../../start.rst:4
 msgid "EH Forwarder Bot offered 2 ways to launch the framework:"

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-18 02:34-0500\n"
+"PO-Revision-Date: 2018-02-18 07:08-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:35
 msgid "Concepts to know"
-msgstr ""
+msgstr "Bilinecek kavramlar"
 
 #: ../../guide/walkthrough.rst:39
 msgid "Module"
@@ -114,7 +114,7 @@ msgstr "İleti"
 
 #: ../../guide/walkthrough.rst:76
 msgid "Messages are delivered strictly between the master channel and a slave channel. It usually carries an information of a certain type."
-msgstr "Mesajlar tam olarak ana kanal ve bağımlı kanallar arasında iletilmektedir. Genellikle kesin bir türde bilgi taşırlar."
+msgstr "Mesajlar tam olarak ana kanal ve bağımlı kanallar arasında iletilmektedir. Genellikle belirli bir türde bilgi taşırlar."
 
 #: ../../guide/walkthrough.rst:80
 msgid "Each message should at least have a unique ID that is distinct within the slave channel related to it. Any edited message should be able to be identified with the same unique ID."
@@ -142,7 +142,7 @@ msgstr "Ana kanala gelen ve ana kanaldan giden iletileri teslim et"
 
 #: ../../guide/walkthrough.rst:96
 msgid "Maintains a list of all available chats, and group members"
-msgstr ""
+msgstr "Tüm mevcut sohbetlerin ve grup üyelerinin listesini tutar"
 
 #: ../../guide/walkthrough.rst:97
 msgid "Monitors changes of chats and notify the master channel"
@@ -178,11 +178,11 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:118
 msgid "Process updates from slave channels."
-msgstr ""
+msgstr "Bağımlı kanallardaki güncellemeleri işle."
 
 #: ../../guide/walkthrough.rst:119
 msgid "Provide a user-friendly interface as far as possible."
-msgstr ""
+msgstr "Mümkün olduğunda kullanıcı-dostu bir arayüz sağla."
 
 #: ../../guide/walkthrough.rst:122
 msgid "Middlewares"
@@ -190,5 +190,5 @@ msgstr "Özel yazılımlar"
 
 #: ../../guide/walkthrough.rst:124
 msgid "Middlewares can monitor and make changes to or nullify messages and statuses delivered between channels. Middlewares are executed in order of registration, one after another. A middleware will always receive the messages processed by the preceding middleware if available. Once a middleware nullify a message or status, it will not be processed any further."
-msgstr ""
+msgstr "Özel yazılımlar kanallar arası teslim edilmiş mesajları ve durumları kontrol edebilir ve üzerlerinde değişiklikler yapabilir veya iptal edebilir. Özel yazılımlar kayıt sırasına göre sıra sıra çalışır. Bir özel yazılım, eğer mevcutsa bir önceki özel yazılım tarafından işlenmiş mesajları alacaktır. Bir özel yazılım bir mesajı veya durumu iptal ederse, o mesaj veya durum daha fazla işlenmeyecektir."
 

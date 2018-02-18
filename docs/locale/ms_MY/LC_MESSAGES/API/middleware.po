@@ -1,0 +1,78 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-11 16:37+0800\n"
+"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Malay\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: ms\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/API/middleware.pot\n"
+"Language: ms_MY\n"
+
+#: ../../API/middleware.rst:2
+msgid "EFBMiddleware"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware:1
+msgid "Middleware class."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware:5
+msgid "*str* -- Unique ID of the middleware Convention of IDs is specified in :doc:`guide/packaging"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware:10
+msgid "*str* -- Human-readable name of the middleware."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:1
+msgid "Process a message with middleware"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:3
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:3
+msgid "Message object to process"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:6
+msgid "Processed message or None if discarded."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:7
+msgid "Optional[:obj:`.EFBMsg`]"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:1
+msgid "Process a status update with middleware"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:6
+msgid "Processed status or None if discarded."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:7
+msgid "Optional[:obj:`.EFBStatus`]"
+msgstr ""
+

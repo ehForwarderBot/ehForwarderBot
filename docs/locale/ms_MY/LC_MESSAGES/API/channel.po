@@ -1,0 +1,246 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-11 16:37+0800\n"
+"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Malay\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: ms\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/API/channel.pot\n"
+"Language: ms_MY\n"
+
+#: ../../API/channel.rst:2
+msgid "EFBChannel"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel:1
+msgid "The abstract channel class."
+msgstr "Abstrak saluran kelas."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel:5
+msgid "*str* -- A human-friendly name of the channel."
+msgstr "* str * - Nama saluran yang mesra manusia."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel:9
+msgid "*str* -- Emoji icon of the channel. Recommended to use a visually-length-one emoji that represents the channel best."
+msgstr "*c* -- suka saluran. Disarankan untuk menggunakan visual yang panjang-satu smiley yang merupakan saluran terbaik."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel:15
+msgid ":obj:`.ChannelType` -- Type of the channel."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel:19
+msgid "Set[:obj:`.MsgType`] -- Types of messages that the channel accepts as incoming messages."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel:23
+msgid "*str* -- Unique identifier of the channel. Convention of IDs is specified in :doc:`/guide/packaging`"
+msgstr "*c* -- Unik identifier saluran. Konvensyen Id dinyatakan dalam :doc:`/panduan/bungkusan`"
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:1
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:1
+msgid "Return the standard chat dict of the selected chat."
+msgstr "Kembali standard chat kamus yang dipilih chat."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:0
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:0
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:3
+msgid "UID of the chat."
+msgstr "UID yang berbual."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:5
+msgid "UID of group member, only when the selected chat is a group."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:0
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chats:0
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_extra_functions:0
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:9
+msgid "the standard chat dict of the chat."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:0
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chats:0
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_extra_functions:0
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:0
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:0
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:0
+msgid "raises"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:12
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:16
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:11
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:6
+msgid ":exc:`~.exceptions.EFBChatNotFound` -- Raised when a chat required is not found."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:15
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:36
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chats:6
+msgid "This is not required by Master Channels"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:1
+msgid "Get the profile picture of a chat. Profile picture is also referred as profile photo, avatar, \"head image\" sometimes."
+msgstr "Dapatkan gambar profil sembang. Gambar profil juga dirujuk sebagai gambar profil, avatar, \"imej kepala\" kadang-kadang."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:5
+msgid "Chat to get picture from."
+msgstr "Sembang untuk mendapatkan gambar dari."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:8
+msgid "Opened temporary file object. The file object must have appropriate extension name that matches to the format of picture sent, and seek to position 0.  It can be deleted when closed if not required otherwise."
+msgstr "Membuka objek fail sementara. Objek fail mesti mempunyai nama pelanjutan yang sesuai yang sesuai dengan format gambar yang dihantar, dan mencari kedudukan 0. Ia boleh dihapuskan apabila ditutup jika tidak diperlukan sebaliknya."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:8
+msgid "Opened temporary file object. The file object must have appropriate extension name that matches to the format of picture sent, and seek to position 0."
+msgstr "Membuka objek fail sementara. Objek fail mesti mempunyai nama pelanjutan yang sesuai yang sesuai dengan format gambar yang dihantar, dan mencari kedudukan 0."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:13
+msgid "It can be deleted when closed if not required otherwise."
+msgstr "Ia boleh dipadamkan apabila ditutup jika tidak diperlukan sebaliknya."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:18
+msgid ":exc:`~.exceptions.EFBOperationNotSupported` -- Raised when the chat does not offer a profile picture."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:22
+msgid "Examples"
+msgstr "Contoh"
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chats:1
+msgid "Return a list of available chats in the channel."
+msgstr "Kembalikan senarai sembang sedia ada dalam saluran."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chats:3
+msgid "a list of available chats in the channel."
+msgstr "senarai sembang sedia ada dalam saluran."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_extra_functions:1
+msgid "Get a list of extra functions"
+msgstr "Dapatkan senarai fungsi tambahan"
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_extra_functions:3
+msgid "A dict of functions marked as extra functions. Method can be called with ``get_extra_functions()[\"methodName\"]()``."
+msgstr "Satu dict fungsi yang ditandakan sebagai fungsi tambahan. Kaedah boleh dipanggil dengan `` get_extra_functions () [\"methodName\"] () ``."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.poll:1
+msgid "Method to poll for messages. This method is called when the framework is initialized. This method should be blocking."
+msgstr "Kaedah untuk membuat tinjauan untuk mesej. Kaedah ini dipanggil apabila rangka kerja diasaskan. Kaedah ini harus dihalang."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:1
+msgid "Send a message to, or edit a sent message in the channel."
+msgstr "Hantar mesej ke, atau edit mesej yang dihantar dalam saluran."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:4
+msgid "Message object to be processed."
+msgstr "Objek mesej diproses."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:7
+msgid "The same message object with message ID from the recipient."
+msgstr "Objek yang sama objek dengan ID mesej dari penerima."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:9
+msgid ":obj:`.EFBMsg`"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:13
+msgid ":exc:`~.exceptions.EFBMessageTypeNotSupported` -- Raised when the message type sent is not supported by the channel."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:16
+msgid ":exc:`~.exceptions.EFBOperationNotSupported` -- Raised when an message edit request is sent, but not supported by the channel."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:19
+msgid ":exc:`~.exceptions.EFBMessageNotFound` -- Raised when an existing message indicated is not found. E.g.: The message to be edited, the message referred in the :attr:`msg.target <.EFBMsg.target>` attribute."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:24
+msgid ":exc:`~.exceptions.EFBMessageError` -- Raised when other error occurred while sending or editing the message."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:3
+msgid "the status"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:8
+msgid ":exc:`~.exceptions.EFBMessageNotFound` -- Raised when an existing message indicated is not found. E.g.: The message to be removed."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:11
+msgid ":exc:`~.exceptions.EFBOperationNotSupported` -- Raised when the channel does not support message removal."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:13
+msgid ":exc:`~.exceptions.EFBMessageError` -- Raised when other error occurred while removing the message."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:17
+msgid "Avoid raising exceptions from this method in Master Channels as it would be hard for a Slave Channel to process the exception."
+msgstr "Elakkan meningkatkan pengecualian dari kaedah ini di Saluran Induk kerana sukar bagi Saluran Slave untuk memproses pengecualian."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:22
+msgid "This is not applicable to Slave Channels"
+msgstr "Ini tidak berkenaan dengan Saluran Slave"
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.stop_polling:1
+msgid "When EFB framework is asked to stop gracefully, this method is called to each channel object to stop all processes in the channel, save all status if necessary, and terminate polling."
+msgstr "Apabila rangka kerja EFB diminta untuk berhenti dengan anggun, kaedah ini dipanggil untuk setiap objek saluran untuk menghentikan semua proses dalam saluran, menyimpan semua status jika perlu, dan menamatkan pengundian."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.stop_polling:6
+msgid "When the channel is ready to stop, the polling function must stop blocking. EFB framework will quit completely when all polling threads end."
+msgstr "Apabila saluran sudah bersedia untuk berhenti, fungsi pengundian mesti berhenti menyekat. Rangka kerja EFB akan berhenti sepenuhnya apabila semua benang pengundian berakhir."
+
+#: ../../API/channel.rst:8
+msgid "Common operations"
+msgstr "Operasi biasa"
+
+#: ../../API/channel.rst:11
+msgid "Sending messages and statuses"
+msgstr "Menghantar mesej dan status"
+
+#: ../../API/channel.rst:13
+msgid "Sending messages and statuses to other channels is the most common operation of a channel. When the channel has gathered enough information from external sources, it should be further processed and packed into the relative objects, i.e. :obj:`.EFBMsg` and :obj:`.EFBStatus`."
+msgstr ""
+
+#: ../../API/channel.rst:19
+msgid "When the related information is packed into their relative objects, it can be sent to the coordinator for the next step."
+msgstr "Apabila maklumat yang berkaitan dibungkus ke objek relatif mereka, ia boleh dihantar kepada penyelaras untuk langkah seterusnya."
+
+#: ../../API/channel.rst:23
+msgid "For now, both :obj:`.EFBMsg` and :obj:`.EFBStatus` has an attribute that indicates that where this object should be delivered to (:attr:`.EFBMsg.deliver_to` and :attr:`.EFBStatus.destination_channel`). This is used by the coordinator when delivering the message."
+msgstr ""
+
+#: ../../API/channel.rst:29
+msgid "For messages, it can be delivered with :meth:`.coordinator.send_message`, and statuses can be delivered with :meth:`.coordinator.send_status`."
+msgstr ""
+
+#: ../../API/channel.rst:32
+msgid "When the object is passed onto the coordinator, it will be further processed by the middleware."
+msgstr ""
+

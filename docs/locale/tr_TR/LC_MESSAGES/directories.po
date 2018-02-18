@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 02:34-0500\n"
+"PO-Revision-Date: 2018-02-18 07:08-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr "Altdizinler"
 
 #: ../../directories.rst:4
 msgid "Since EH Forwarder Bot 2.0, most modules should be installed with the Python Package Manager ``pip``, while configurations and data are stored in the \"EFB data directory\"."
-msgstr ""
+msgstr "Çoğu modüllerin EH Forwarder Bot 2.0 için konfigürasyon ve dataları \"EFB data directory\"de depolanırken, Python Package Manager ``pip`` ile yüklenmesi gerekmektedir."
 
 #: ../../directories.rst:9
 msgid "By default, the data directory is user specific, located in the user's home directory, ``~/.ehforwarderbot``.  This can be overridden with the environment variable ``EFB_DATA_PATH``. This path defined here should be an **absolute path**."

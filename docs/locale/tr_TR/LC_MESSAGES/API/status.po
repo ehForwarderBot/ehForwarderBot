@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 02:34-0500\n"
+"PO-Revision-Date: 2018-02-18 07:08-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -39,15 +39,15 @@ msgstr ":obj:`.EFBChannel` -- Güncelleştirme sorunu olan bağımlı kanal"
 
 #: ../../../docstring of ehforwarderbot.status.EFBChatUpdates:9
 msgid "*Optional[Tuple[str]]* -- Unique ID of new chats"
-msgstr "*Optional[Tuple[str]]* -- Yeni sohbetlerin benzersiz kimlik no"
+msgstr "*Optional[Tuple[str]]* -- Yeni sohbetlerin benzersiz kimliği"
 
 #: ../../../docstring of ehforwarderbot.status.EFBChatUpdates:13
 msgid "*Optional[Tuple[str]]* -- Unique ID of removed chats"
-msgstr "*Optional[Tuple[str]]* -- Kaldırılan sohbetlerin benzersiz kimlik no"
+msgstr "*Optional[Tuple[str]]* -- Kaldırılan sohbetlerin benzersiz kimliği"
 
 #: ../../../docstring of ehforwarderbot.status.EFBChatUpdates:17
 msgid "*Optional[Tuple[str]]* -- Unique ID of modified chats"
-msgstr "*Optional[Tuple[str]]* -- Değiştirilmiş sohbetlerin benzersiz kimlik no"
+msgstr "*Optional[Tuple[str]]* -- Değiştirilmiş sohbetlerin benzersiz kimliği"
 
 #: ../../../docstring of ehforwarderbot.status.EFBChatUpdates.__init__:0
 #: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:0
@@ -74,7 +74,7 @@ msgstr "Değiştirilmiş olan sohbetlerin benzersiz kimliği"
 
 #: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates:1
 msgid "Inform the master channel on updates of members in a slave chat."
-msgstr ""
+msgstr "Bağımlı sohbet üyelerinin güncellemelerini ana kanala bildirin."
 
 #: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates:9
 msgid "*str* -- Unique ID of the chat."
@@ -94,19 +94,19 @@ msgstr "*Optional[Tuple[str]]* -- Değiştirilmiş üyelerin benzersiz kimliği"
 
 #: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:3
 msgid "Unique ID of the chat."
-msgstr ""
+msgstr "Sohbetin benzersiz kimliği."
 
 #: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:5
 msgid "Unique ID of new members"
-msgstr ""
+msgstr "Yeni üyelerin benzersiz kimliği"
 
 #: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:7
 msgid "Unique ID of removed members"
-msgstr ""
+msgstr "Kaldırılan üyelerin benzersiz kimliği"
 
 #: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:9
 msgid "Unique ID of modified members"
-msgstr ""
+msgstr "Değiştirilen üyelerin benzersiz kimliği"
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval:1
 msgid "Inform a channel to remove a certain message."
@@ -122,19 +122,19 @@ msgstr "Bazı kanallar, mesajların kaldırılmasını desteklemeyebilir ve bir 
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval:11
 msgid ":obj:`.EFBChannel` -- Channel issued the status"
-msgstr ""
+msgstr ":obj:`.EFBChannel` --Kanal durumu yayınlandı"
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval:15
 msgid ":obj:`.EFBChannel` -- Channel the status is issued to"
-msgstr ""
+msgstr ":obj:`.EFBChannel` -- Durumun yayınlandığı kanal"
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval:19
 msgid ":obj:`.EFBMsg` -- Message to remove. This may not be a complete :obj:`.EFBMsg` object."
-msgstr ""
+msgstr ":obj:`.EFBMsg` -- Kaldırılacak mesaj. Bu tam olmayabilir. :obj:`.EFBMsg` object."
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:1
 msgid "Create a message removal status"
-msgstr ""
+msgstr "Mesaj kaldırma durumu oluşturma"
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:3
 msgid "Try to provided as much as you can, if not, provide a minimum information in the channel:"
@@ -146,17 +146,17 @@ msgstr "Bağımlı kanal kimliği ve sohbet kimliği (:attr:`message.chat.channe
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:8
 msgid "Message unique ID from the slave channel (:attr:`message.uid <.EFBMsg.uid>`)"
-msgstr ""
+msgstr "Bağımlı kanaldan benzersiz kimlik mesajı (:attr:`message.uid <.EFBMsg.uid>`)"
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:10
 msgid "Channel issued the status"
-msgstr ""
+msgstr "Kanal durumu yayınlandı"
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:12
 msgid "Channel the status is issued to"
-msgstr ""
+msgstr "Durumun yayınlandığı kanal"
 
 #: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:14
 msgid "Message to remove."
-msgstr ""
+msgstr "Kaldırılacak mesaj."
 
