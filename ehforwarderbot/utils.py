@@ -34,11 +34,10 @@ def extra(name: str, desc: str) -> Callable:
 
 def get_base_path() -> str:
     """
-    Get the base data path for EFB. This is defined by the environment
-    variable ``EFB_DATA_PATH``.
+    Get the base data path for EFB. This can be defined by the
+    environment variable ``EFB_DATA_PATH``.
     
-    When ``EFB_DATA_PATH`` is defined, the path is constructed by
-    ``$EFB_DATA_PATH/$USERNAME``. By default, this gives
+    If ``EFB_DATA_PATH`` is not defined, this gives
     ``~/.ehforwarderbot``.
     
     This method creates the queried path if not existing.
