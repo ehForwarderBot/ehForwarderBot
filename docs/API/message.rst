@@ -75,7 +75,7 @@ Type-specific Information
         message.text = "Hello, Wonderland."
 
 2. Media message
-    Information related to edia processing is described
+    Information related to media processing is described
     in :doc:`/guide/media_processing`.
 
     The example below is for image (picture) messages.

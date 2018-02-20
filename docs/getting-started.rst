@@ -90,6 +90,22 @@ details.
   However, if you don't want to enable any middleware, just omit the section
   completely.
 
+To have multiple accounts running simultaneously, you can also appoint an instance
+ID to a module. Instance ID can be defined by the user, and if defined,
+it must has nothing other than letters, numbers and underscores, i.e. in
+regular expressions ``[a-zA-Z0-9_]+``. When an instance ID is not defined,
+the channel will run in the "default" instance with no instance ID.
+
+To indicate the instance ID of an instance, append ``#`` following by the
+instance ID to the module ID. For example, slave channel ``bar.dummy``
+running with instance ID ``alice`` should be defined as ``bar.dummy#alice``.
+If the channel requires configurations, it should be done in the directory
+with the same name (e.g. ``EFB_DATA_PATH/profiles/PROFILE/bar.dummy#alice``),
+so as to isolate instances.
+
+Please avoid having two modules with the same set of module ID and instance ID
+as it may leads to unexpected results.
+
 .. admonition:: Example
     :class: tip
 

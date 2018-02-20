@@ -32,3 +32,11 @@ and statuses can be delivered with :meth:`.coordinator.send_status`.
 When the object is passed onto the coordinator, it will be
 further processed by the middleware.
 
+About Channel ID
+----------------
+
+With the introduction of instance IDs, it is required to use the
+``self.channel_id`` or equivalent instead of any hard-coded
+ID or constants while referring to the channel (e.g. while
+retrieving the path to the configuration files, creating
+chat and message objects, etc).

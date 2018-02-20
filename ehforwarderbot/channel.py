@@ -29,14 +29,31 @@ class EFBChannel(ABC):
         channel_id (str):
             Unique identifier of the channel.
             Convention of IDs is specified in :doc:`/guide/packaging`
+            This ID will be appended with its instance ID when available.
+        instance_id (str):
+            The instance ID if available.
     """
 
     channel_name: str = "Empty channel"
     channel_emoji: str = "�"
     channel_id: str = "efb.empty_channel"
     channel_type: ChannelType = None
+    instance_id: str = None
     supported_message_types: Set[MsgType] = set()
     __version__: str = 'undefined version'
+
+    def __init__(self, instance_id: str = None):
+        """
+        Initialize the channel.
+        Inherited initializer must call the "super init" method
+        at the beginning.
+
+        Args:
+            instance_id: Instance ID of the channel.
+        """
+        self.instance_id = instance_id
+        if instance_id:
+            self.channel_id += f"#{instance_id}"
 
     def get_extra_functions(self) -> Dict[str, Callable]:
         """Get a list of additional features

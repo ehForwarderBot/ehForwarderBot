@@ -101,7 +101,7 @@ def get_config_path(module_id: str=None, ext: str= 'yaml') -> str:
 
 def get_custom_modules_path() -> str:
     """
-    Get the path for custom channels
+    Get the path to custom channels
 
     Returns:
         str: The path.
@@ -124,6 +124,8 @@ def locate_module(module_id: str, module_type: str=None):
 
     if module_type:
         entry_point = 'ehforwarderbot.%s' % module_type
+
+    module_id = module_id.split('#', 1)[0]
 
     if entry_point:
         for i in pkg_resources.iter_entry_points(entry_point):

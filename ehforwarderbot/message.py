@@ -22,14 +22,14 @@ class EFBMsg:
             - Status: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`
 
             .. Note::
-                Do NOT use object the abstract class
+                Do NOT use object of the abstract class
                 :class:`.EFBMsgAttribute` for
                 ``attributes``, but object of specific class instead.
 
 
         author (:obj:`.EFBChat`): Author of this message.
         chat (:obj:`.EFBChat`): Sender of the message
-        commands (Opitonal[:obj:`EFBMsgCommands`]): Commands attached to the message
+        commands (Optional[:obj:`EFBMsgCommands`]): Commands attached to the message
         deliver_to (:obj:`.EFBChannel`): The channel that the message is to be delivered to
         edit (bool): Flag this up if the message is edited.
         file (IO[bytes]): File object to multimedia file, type "ra". ``None`` if N/A
@@ -40,7 +40,7 @@ class EFBMsg:
         is_system (bool): Mark as true if this message is a system message.
         mime (str): MIME type of the file. ``None`` if N/A
         path (str): Local path of multimedia file. ``None`` if N/A
-        substitutions (Opitonal[:obj:`EFBMsgSubstitutions`]):
+        substitutions (Optional[:obj:`EFBMsgSubstitutions`]):
             Substitutions of messages, usually used when
             the some parts of the text of the message
             refers to another user or chat.

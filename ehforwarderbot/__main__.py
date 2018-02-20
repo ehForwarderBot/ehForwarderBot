@@ -77,27 +77,39 @@ def init():
         logger.log(99, "\x1b[0;37;46m %s \x1b[0m", _("Initializing slave {}...").format(i))
 
         cls = utils.locate_module(i, 'slave')
-        coordinator.add_channel(cls())
+        instance_id = i.split('#', 1)[1:]
+        instance_id = (instance_id and instance_id[0]) or None
+        coordinator.add_channel(cls(instance_id=instance_id))
 
         logger.log(99, "\x1b[0;37;42m %s \x1b[0m",
-                   _("Slave channel {name} ({id}) is initialized.").format(name=cls.channel_name,
-                                                                        id=cls.channel_id))
+                   _("Slave channel {name} ({id}) # {instance_id} is initialized.")
+                   .format(name=cls.channel_name, id=cls.channel_id,
+                           instance_id=instance_id))
 
     logger.log(99, "\x1b[0;37;46m %s \x1b[0m",
                _("Initializing master {}...").format(conf['master_channel']))
-    coordinator.add_channel(utils.locate_module(conf['master_channel'], 'master')())
+    instance_id = conf['master_channel'].split('#', 1)[1:]
+    instance_id = (instance_id and instance_id[0]) or None
+    coordinator.add_channel(utils.locate_module(conf['master_channel'], 'master')
+                            (instance_id=instance_id))
     logger.log(99, "\x1b[0;37;42m %s \x1b[0m",
-               _("Master channel {name} ({id}) is initialized.")
+               _("Master channel {name} ({id}) # {instance_id} is initialized.")
                .format(name=coordinator.master.channel_name,
-                       id=coordinator.master.channel_id))
+                       id=coordinator.master.channel_id,
+                       instance_id=instance_id))
 
     logger.log(99, "\x1b[1;37;42m %s \x1b[0m", _("All channels initialized."))
     for i in conf['middlewares']:
         logger.log(99, "\x1b[0;37;46m %s \x1b[0m", _("Initializing middleware {}...").format(i))
         cls = utils.locate_module(i, 'middleware')
-        coordinator.add_middleware(cls())
+
+        instance_id = i.split('#', 1)[1:]
+        instance_id = (instance_id and instance_id[0]) or None
+        coordinator.add_middleware(cls(instance_id=instance_id))
         logger.log(99, "\x1b[0;37;42m %s \x1b[0m",
-                   _("Middleware {name} ({id}) is initialized.").format(name=cls.middleware_name, id=cls.middleware_id))
+                   _("Middleware {name} ({id}) # {instance_id} is initialized.")
+                   .format(name=cls.middleware_name, id=cls.middleware_id,
+                           instance_id=instance_id))
 
     logger.log(99, "\x1b[1;37;42m %s \x1b[0m", _("All middlewares are initialized."))
 
@@ -127,25 +139,34 @@ def main():
             conf = config.load_config()
             # Master channel
             master_channel: EFBChannel = utils.locate_module(conf['master_channel'], 'master')
-            versions += "\n\n" + _("Master channel:") + "\n    " + _("{name} ({id}) {version}") \
+            instance_id = conf['master_channel'].split('#', 1)[1:]
+            instance_id = (instance_id and instance_id[0]) or _("Default profile")
+            versions += "\n\n" + _("Master channel:") + "\n    " + _("{name} ({id}) {version} # {instance_id}") \
                 .format(name=master_channel.channel_name,
                         id=master_channel.channel_id,
-                        version=master_channel.__version__)
+                        version=master_channel.__version__,
+                        instance_id=instance_id)
             versions += "\n\n" + ngettext("Slave channel:", "Slave channels:", len(conf['slave_channels']))
             for i in conf['slave_channels']:
+                instance_id = i.split('#', 1)[1:]
+                instance_id = (instance_id and instance_id[0]) or _("Default profile")
                 slave_channel: EFBChannel = utils.locate_module(i, 'slave')
                 versions += "\n    " + _("{name} ({id}) {version}") \
                             .format(name=slave_channel.channel_name,
                                     id=slave_channel.channel_id,
-                                    version=slave_channel.__version__)
+                                    version=slave_channel.__version__,
+                                    instance_id=instance_id)
             versions += "\n\n" + ngettext("Middleware:", "Middlewares:", len(conf['middlewares']))
             if conf['middlewares']:
                 for i in conf['middlewares']:
+                    instance_id = i.split('#', 1)[1:]
+                    instance_id = (instance_id and instance_id[0]) or _("Default profile")
                     middleware: EFBMiddleware = utils.locate_module(i, 'middleware')
-                    versions += "\n    " + _("{name} ({id}) {version}") \
+                    versions += "\n    " + _("{name} ({id}) {version} # {instance_id}") \
                                 .format(name=middleware.middleware_name,
                                         id=middleware.middleware_name,
-                                        version=middleware.__version__)
+                                        version=middleware.__version__,
+                                        instance_id=instance_id)
             else:
                 versions += "\n    " + _("No middleware is enabled.")
         finally:
