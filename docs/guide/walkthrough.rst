@@ -92,27 +92,26 @@ Slave Channels
 
 The job of slave channels is relatively simple.
 
-1. Deliver messages to and from the master channel
-2. Maintains a list of all available chats, and group members
-3. Monitors changes of chats and notify the master channel
+1. Deliver messages to and from the master channel.
+2. Maintains a list of all available chats, and group members.
+3. Monitors changes of chats and notify the master channel.
 
-If you have some extra features that is not a in the
-standard EFB Slave Channel model, they can be offered as
-:ref:`slave-additional-features`.
+Features that does not fit into the standard EFB Slave Channel
+model can be offered as :ref:`slave-additional-features`.
 
 Master Channels
 ---------------
 
 Master channels is relatively more complicated and also
 more flexible. As it directly faces the user, its user
-interface should be user-friendly, at least friendly
+interface should be user-friendly, or at least friendly
 to the targeted users.
 
 The job of the master channel includes:
 
 1. Receive, process and display messages from slave
-   channels
-2. Display a full list of chats from all slave channels
+   channels.
+2. Display a full list of chats from all slave channels.
 3. Offer an interface for the user to use "extra functions"
    from slave channels.
 4. Process updates from slave channels.
@@ -127,4 +126,5 @@ Middlewares are executed in order of registration, one
 after another. A middleware will always receive the
 messages processed by the preceding middleware if
 available. Once a middleware nullify a message or status,
-it will not be processed any further.
+the message will not be processed and delivered any
+further.

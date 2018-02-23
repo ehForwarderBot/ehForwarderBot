@@ -47,9 +47,10 @@ etc, via *additional features*.
 Such features are accessed by the user in a CLI-like
 style. An "additional feature" method should only take one
 string parameter aside from ``self``, and wrap it with 
-:meth:`~ehforwarderbot.utils.extra` decorator. The extra decorator 
-takes 2 arguments: ``name`` — a short name of the feature,
-and ``desc`` — a description of the feature with its usage.
+:meth:`~ehforwarderbot.utils.extra` decorator. The ``extra``
+decorator takes 2 arguments: ``name`` -- a short name of the
+feature, and ``desc`` -- a description of the feature with
+its usage.
 
 ``desc`` should describe what the feature does and how
 to use it. It's more like the help text for an CLI program. 
@@ -70,11 +71,11 @@ processed.
 
 Callable name of such methods has a more strict standard
 than a normal Python 3 identifier name, for compatibility 
-reason. An extra function callable name should:
+reason. An additional feature callable name should:
 
 * be case sensitive
 * include only upper and lower-case letters, digits, and underscore.
-* starts only with a upper or lower-case letter.
+* does not start with a digit.
 * be in a length between 1 and 20 inclusive
 * *be as short and concise as possible, but keep understandable*
 
@@ -101,12 +102,12 @@ Message commands are usually sent by slave channels so that
 users can respond to certain messages that has specific 
 required actions.
 
-Possible cases when message commands could be useful.
+Possible cases when message commands could be useful:
 
-* Add as friends when a contact card is sent.
-* Accept or decline when a friend request is sent
-* Vote to a voting message
-* Like / thumb up to a message if applicable
+* Add as friends when a contact card is received.
+* Accept or decline when a friend request is received.
+* Vote to a voting message.
+* Like / thumb up to a message if applicable.
 
 A message can be attached with a ``list`` of commands, in 
 which each of them has:

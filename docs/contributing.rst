@@ -5,7 +5,7 @@ How to contribute
 First of all, thanks for taking your time to contribute!
 
 Please note that only questions on the framework will be
-answered here. For issue related with any channels,
+answered here. For issue related with any module,
 please contact their respective authors or post in their
 corresponding repositories.
 
@@ -24,8 +24,8 @@ Reporting bugs
 Before submitting a bug report
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Please ensure if your issue is about the framework itself,
-  not about any channel. Reports about channels should goes
-  to their respective channels.
+  not about any module. Reports about module should be sent to
+  their respective places.
 * Read through the documentation to see if it has covered your question.
 * Check the `current issue list`__ to see if it's been reported.
 

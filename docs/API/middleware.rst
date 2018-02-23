@@ -5,7 +5,7 @@ EFBMiddleware
     :members:
 
 About Middleware ID
-----------------
+-------------------
 
 With the introduction of instance IDs, it is required to use the
 ``self.middleware_id`` or equivalent instead of any hard-coded

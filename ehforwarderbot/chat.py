@@ -28,7 +28,7 @@ class EFBChat:
             available to chat member objects. Defaulted to ``None``.
         members (list of :obj:`.EFBChat`): Provide a list of members
             in the group. Defaulted to an empty ``list``. You may want to extend this
-            object and implement a ``@property`` method set for loading chats on
+            object and implement a ``@property`` method set for loading members on
             demand.
         vendor_specific (Dict[str, Any]): Any vendor specific attributes.
         is_self (bool): Indicate if this chat represents the user.

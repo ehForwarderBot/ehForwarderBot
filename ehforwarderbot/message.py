@@ -28,12 +28,12 @@ class EFBMsg:
 
 
         author (:obj:`.EFBChat`): Author of this message.
-        chat (:obj:`.EFBChat`): Sender of the message
+        chat (:obj:`.EFBChat`): Sender of the message.
         commands (Optional[:obj:`EFBMsgCommands`]): Commands attached to the message
         deliver_to (:obj:`.EFBChannel`): The channel that the message is to be delivered to
         edit (bool): Flag this up if the message is edited.
-        file (IO[bytes]): File object to multimedia file, type "ra". ``None`` if N/A
-            Recommended to use ``NamedTemporaryFile`` object, the file is recommended to be
+        file (IO[bytes]): File object to multimedia file, type "ra". ``None`` if N/A.
+            recommended to use ``NamedTemporaryFile`` object, the file can be
             deleted when closed, if not used otherwise.
             All file object must be rewind back to 0 (``file.seek(0)``) before sending.
         filename (str): File name of the multimedia file. ``None`` if N/A
@@ -95,10 +95,10 @@ class EFBMsg:
         self.vendor_specific: Dict[str, Any] = dict()
 
     def __str__(self):
-        return "<EFBMsg, {msg.author}@{msg.chat} [{msg.type}]: {msg.text}; {msg.uid}>".format(msg=self)
+        return "<EFBMsg, {msg.author}@{msg.chat} [{msg.type.name}]: {msg.text}; {msg.uid}>".format(msg=self)
 
     def __repr__(self):
-        return "<EFBMsg, {msg.author}@{msg.chat} [{msg.type}]: " \
+        return "<EFBMsg, {msg.author}@{msg.chat} [{msg.type.name}]: " \
                "{msg.text}; " \
                "Attributes: {msg.attributes}; " \
                "Delivering to: {msg.deliver_to}; " \
@@ -151,7 +151,7 @@ class EFBMsg:
 
 
 class EFBMsgAttribute(ABC):
-    """Abstract class for a message attribute."""
+    """Abstract class of a message attribute."""
     @abstractmethod
     def __init__(self):
         raise NotImplementedError("Do not use the abstract class EFBMsgAttribute")
@@ -235,7 +235,7 @@ class EFBMsgLocationAttribute(EFBMsgAttribute):
 
 class EFBMsgCommand:
     """
-    EFB command message command.
+    EFB message command.
 
     Attributes:
         name (str): Human-friendly name of the command.
@@ -386,14 +386,14 @@ class EFBMsgSubstitutions(dict):
     This is for the case when user "@-referred" a list of users in the message.
     Substitutions here is a dict of correspondence between
     the string used to refer to the user in the message
-    and a user dict.
+    and a user object.
 
     Dictionary of text substitutions targeting to a user or member.
 
-    The key of the dictionary is a tuple of two :obj:`int` s, where first
+    The key of the dictionary is a tuple of two :obj:`int`\ s, where first
     of it is the starting position in the string, and the second is the
     ending position defined similar to Python's substring. A tuple of
-    ``(3, 15)` corresponds to ``msg.text[3:15]``.
+    ``(3, 15)`` corresponds to ``msg.text[3:15]``.
     The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``,
     ``b ∈ (a, l]``, where ``l`` is the length of the message text.
 

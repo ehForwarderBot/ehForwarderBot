@@ -13,8 +13,8 @@ EFBMsg
 Examples
 --------
 
-Primer: Defining related chats
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Prelude: Defining related chats
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 

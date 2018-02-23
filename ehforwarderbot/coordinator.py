@@ -8,7 +8,7 @@ Attributes:
     mutex (threading.Lock): Global interaction thread lock.
     master (EFBChannel): The running master channel object.
     slaves (Dict[str, EFBChannel]): Dictionary of running slave channel object.
-        Keys are the unique identifier of the dictionary.
+        Keys are the unique identifier of the channel.
     middlewares (List[EFBMiddleware]): List of middlewares
 """
 

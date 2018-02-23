@@ -42,7 +42,7 @@ A good network environment
 --------------------------
 
 Since most of our channels are using polling for message retrieval,
-a good network environment is necessary for the bot to run smoothly.
+a good network environment is necessary for channels to run smoothly.
 A poor network environment may lead to slow response,
 or loss of messages.
 
@@ -109,14 +109,14 @@ as it may leads to unexpected results.
 .. admonition:: Example
     :class: tip
 
-    To enable the following channels:
+    To enable the following modules:
 
     * Master channel
         * Demo Master (``foo.demo_master``)
     * Slave channels
         * Demo Slave (``foo.demo_slave``)
-        * Random Slave (``bar.random``)
         * Dummy Slave (``bar.dummy``)
+        * Dummy Slave (``bar.dummy``) at ``alt`` instance
     * Middlewares
         * Message Archiver (``foo.msg_archiver``)
         * Null Middleware (``foo.null``)
@@ -128,8 +128,8 @@ as it may leads to unexpected results.
         master_channel: foo.demo_master
         slave_channels:
         - foo.demo_slave
-        - bar.random
         - bar.dummy
+        - bar.dummy#alt
         middlewares:
         - foo.msg_archiver
         - foo.null

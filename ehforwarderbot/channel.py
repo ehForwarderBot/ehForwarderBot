@@ -28,7 +28,7 @@ class EFBChannel(ABC):
             Types of messages that the channel accepts as incoming messages.
         channel_id (str):
             Unique identifier of the channel.
-            Convention of IDs is specified in :doc:`/guide/packaging`
+            Convention of IDs is specified in :doc:`/guide/packaging`.
             This ID will be appended with its instance ID when available.
         instance_id (str):
             The instance ID if available.

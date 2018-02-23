@@ -16,7 +16,7 @@ class EFBMiddleware(ABC):
     Attributes:
         middleware_id (str):
             Unique ID of the middleware
-            Convention of IDs is specified in :doc:`guide/packaging`.
+            Convention of IDs is specified in :doc:`/guide/packaging`.
             This ID will be appended with its instance ID when available.
         middleware_name (str): Human-readable name of the middleware.
         instance_id (str):
