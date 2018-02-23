@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -22,19 +22,19 @@ msgstr "Framework'ü başlat"
 
 #: ../../start.rst:4
 msgid "EH Forwarder Bot offered 2 ways to launch the framework:"
-msgstr ""
+msgstr "EH Forwarder Bot, sistemi başlatmak için 2 yol önerdi:"
 
 #: ../../start.rst:6
 msgid "``ehforwarderbot``"
-msgstr ""
+msgstr "``ehforwarderbot``"
 
 #: ../../start.rst:7
 msgid "``python3 -m ehforwarderbot``"
-msgstr ""
+msgstr "``python3 -m ehforwarderbot``"
 
 #: ../../start.rst:9
 msgid "Both commands are exactly the same thing, accept the same flags, run the same code. The latter is only a backup in case the former does not work."
-msgstr ""
+msgstr "Her iki komut da tam olarak aynı şeydir, aynı bayrakları kabul eder, aynı kodu çalıştırır. İkincisi yalnızca ilkinin çalışmaması durumu için bir yedektir."
 
 #: ../../start.rst:14
 msgid "Options"
@@ -46,25 +46,25 @@ msgstr "``-h``, ``--help``: Yardım mesajını göster"
 
 #: ../../start.rst:18
 msgid "``-p PROFILE``, ``--profile PROFILE``: Switch :doc:`profile <profile>`"
-msgstr ""
+msgstr "``-p PROFILE``, ``--profile PROFILE``: Switch :doc:`profil <profile>`"
 
 #: ../../start.rst:20
 msgid "From version 2, EFB supports running different instances under the same user, identified by their profiles. The default profile is named ``default``."
-msgstr ""
+msgstr "Sürüm 2'de EFB, profilleri tarafından tanımlanan aynı kullanıcı altındaki farklı örnekleri çalıştırmayı desteklemektedir. Varsayılan profile ``default`` adı verilir."
 
 #: ../../start.rst:24
 msgid "``-V``, ``--version``: Print version information"
-msgstr ""
+msgstr "``-V``, ``--version``: Sürüm bilgilerini yazdır"
 
 #: ../../start.rst:26
 msgid "This shows version number of Python you are using, the EFB framework, and all channels and middlewares enabled."
-msgstr ""
+msgstr "Bu, kullandığınız Python'un sürüm numarasını, EFB yapısını, tüm kanalları ve özel yazılımları etkinleştirildiğini gösterir."
 
 #: ../../start.rst:30
 msgid "``-v``, ``--verbose``: Print verbose log"
-msgstr ""
+msgstr "``-v``, ``--verbose``: Ayrıntılı günlüğü yazdır"
 
 #: ../../start.rst:32
 msgid "This option enables verbose log of EFB and all enabled modules. This, together with ``-V``, is particularly useful in debugging and issue reporting."
-msgstr ""
+msgstr "Bu seçenek, EFB'nin ve tüm etkin modüllerin ayrıntılı günlüğünü etkinleştirir. Bu ``-V`` ile birlikte, özellikle hata ayıklama ve sorun raporlamada kullanışlıdır."
 

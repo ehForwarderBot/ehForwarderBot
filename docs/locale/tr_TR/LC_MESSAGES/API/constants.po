@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "Sesli mesaj. Müzik ve ses mesajı içerir."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.File:1
 msgid "Messages sent as a file."
-msgstr "Bir dosya olarak gönderilmiş mesajlar."
+msgstr "Dosya olarak yollanmış mesajlar."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Image:1
 msgid "Image (picture) message"
@@ -61,7 +61,7 @@ msgstr "Metin mesajı"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Unsupported:1
 msgid "Any type of message that is not listed above. A text representation is required."
-msgstr "Yukarıda listelenmemiş herhangi bir mesaj türü. Bir metin gösterimi gerektirir."
+msgstr "Yukarıda listelenmeyen her tür mesaj. Metin gösterimi gereklidir."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Video:1
 msgid "Video message"

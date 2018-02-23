@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-17 13:42+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -18,33 +18,33 @@ msgstr ""
 
 #: ../../profile.rst:2
 msgid "Profiles"
-msgstr ""
+msgstr "Perfiles"
 
 #: ../../profile.rst:4
 msgid "Starting from EFB version 2, profiles are introduced to allow users in need to run multiple EFB instances simultaneously without affecting each other."
-msgstr ""
+msgstr "Comenzando desde la versión 2 de EFB, los perfiles fueron introducidos para permitir a los usuarios ejecutar múltiples instancias de EFB simultáneamente sin afectar entre ellas."
 
 #: ../../profile.rst:8
 msgid "Each profile has its own set of configuration files a set of channels that share the same code, but has different data files, so that they can run on their own."
-msgstr ""
+msgstr "Cada perfil tiene su propio conjunto de archivos de configuración y un conjunto de canales que aunque comparten el mismo código tiene diferentes archivos de datos, lo que les permite ejecutarse independientemente los unos de los otros."
 
 #: ../../profile.rst:13
 msgid "Profiles are, by default, specific to users. This means, two users can have profiles in the same name but operates in isolation."
-msgstr ""
+msgstr "Los perfiles por defecto son específicos para cada usuario. Esto quiere decir que, dos usuarios pueden tener dos perfiles con el mismo nombre pero funcionan aisladamente."
 
 #: ../../profile.rst:17
 msgid "The default profile name is called ``default``. To switch to a different profile, specify the profile name in ``--profile`` flag while starting EFB."
-msgstr ""
+msgstr "El nombre de perfil predeterminado es ``default``. Para cambiar a un perfil diferente, especifica el nombre del perfil en la bandera ``--profile`` al empezar EFB."
 
 #: ../../profile.rst:23
 msgid "Start a new profile"
-msgstr ""
+msgstr "Inicia un nuevo perfil"
 
 #: ../../profile.rst:25
 msgid "To create a new profile, you need to create a directory in the :file:`EFB_DATA_PATH/profiles`, and create a new configuration file as described in chapter :doc:`getting-started`."
-msgstr ""
+msgstr "Para crear un nuevo perfil, necesitar crear un directorio en :file:`EFB_DATA_PATH/profiles` y crear un nuevo archivo de configuración como el descrito en el capítulo :doc:`getting-started`."
 
 #: ../../profile.rst:30
 msgid "When everything is configured properly, you are good to go."
-msgstr ""
+msgstr "Cuando toda ha sido configurado correctamente, estás listo para proseguir."
 

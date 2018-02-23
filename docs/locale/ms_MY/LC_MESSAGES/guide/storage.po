@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:36-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +18,11 @@ msgstr ""
 
 #: ../../guide/storage.rst:2
 msgid "Configurations and storage"
-msgstr ""
+msgstr "Konfigurasi dan penyimpanan"
 
 #: ../../guide/storage.rst:5
 msgid "Configurations and Permanent Storage"
-msgstr ""
+msgstr "Konfigurasi dan Simpanan Kekal"
 
 #: ../../guide/storage.rst:7
 msgid "As described in :doc:`/directories`, each module has been allocated with a folder per profile for configurations and other storage. The path can be obtained using :meth:`~.ehforwarderbot.utils.get_data_path` with your module ID. All such storage is specific to only one profile."
@@ -34,15 +34,15 @@ msgstr ""
 
 #: ../../guide/storage.rst:20
 msgid "Usually in the storage folder lives:"
-msgstr ""
+msgstr "Biasanya dalam penyimpanan folder hidup:"
 
 #: ../../guide/storage.rst:22
 msgid "Configuration files"
-msgstr ""
+msgstr "Fail konfigurasi"
 
 #: ../../guide/storage.rst:23
 msgid "User credentials / Session storage"
-msgstr ""
+msgstr "Kelayakan pengguna / Sesi penyimpanan"
 
 #: ../../guide/storage.rst:24
 msgid "Databases"

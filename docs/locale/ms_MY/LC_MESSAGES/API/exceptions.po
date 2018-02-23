@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:36-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBException:1
 msgid "A general class to indicate that the exception is from EFB framework."
-msgstr ""
+msgstr "Umum kelas untuk menunjukkan bahawa kecuali dari dibuat oleh juruterbang, juruterbang rangka."
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChatNotFound:1
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChannelNotFound:1

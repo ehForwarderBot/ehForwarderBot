@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"POT-Creation-Date: 2018-02-20 23:43+1100\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -41,20 +41,32 @@ msgid "Set[:obj:`.MsgType`] -- Types of messages that the channel accepts as inc
 msgstr "Set[:obj:`.MsgType`] -- Kanalın gelen mesajlar olarak kabul ettiği mesaj türleri."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel:23
-msgid "*str* -- Unique identifier of the channel. Convention of IDs is specified in :doc:`/guide/packaging`"
-msgstr "*str* -- Kanalın benzersiz tanımlayıcısı. Kimliğin kuralı :doc:`/guide/packaging` 'da belirtilmiştir"
+msgid "*str* -- Unique identifier of the channel. Convention of IDs is specified in :doc:`/guide/packaging` This ID will be appended with its instance ID when available."
+msgstr "*str* -- Kanalın benzersiz tanımlayıcısı. Kimliklerin Konvansiyonu: :doc:`/guide/packaging` de belirtilmiştir. Bu kimlik, var ise örnek kimliğiyle eklenecektir."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:1
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:1
-msgid "Return the standard chat dict of the selected chat."
-msgstr "Seçilen sohbeti standart sohbet sözlüğüne iade edin."
+#: ../../../docstring of ehforwarderbot.EFBChannel:29
+msgid "*str* -- The instance ID if available."
+msgstr "*str* -- Varsa, örnek kimliğidir."
 
+#: ../../../docstring of ehforwarderbot.EFBChannel.__init__:1
+msgid "Initialize the channel. Inherited initializer must call the \"super init\" method at the beginning."
+msgstr "Kanalı başlat. Devralınan başlatıcı başlangıçta \"süper init\" yöntemini çağırmalıdır."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.__init__:0
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:0
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:0
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_status:0
 msgid "Parameters"
-msgstr "Değiştirgeler"
+msgstr "Parametreler"
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.__init__:5
+msgid "Instance ID of the channel."
+msgstr "Kanalın örnek kimliğidir."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:1
+msgid "Get the chat object from a slave channel."
+msgstr "Sohbet nesnesini slave kanalından alın."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:3
 msgid "UID of the chat."
@@ -73,8 +85,8 @@ msgid "Returns"
 msgstr "Dönüşler"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:9
-msgid "the standard chat dict of the chat."
-msgstr "sohbetin standart sözlüğü."
+msgid "The chat found."
+msgstr "Sohbet bulundu."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:0
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
@@ -134,19 +146,19 @@ msgstr "Örnekler"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chats:1
 msgid "Return a list of available chats in the channel."
-msgstr "Kanalın içerisindeki kullanılabilir sohbetlerin listesini geri dön."
+msgstr "Kanalın içerisindeki kullanılabilir sohbetlerin listesine geri dön."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chats:3
 msgid "a list of available chats in the channel."
 msgstr "kanalın içerisindeki kullanılabilir sohbetlerin listesi."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_extra_functions:1
-msgid "Get a list of extra functions"
-msgstr "Ekstra fonksiyonların bir listesini al"
+msgid "Get a list of additional features"
+msgstr "Ek özelliklerin bir listesini alın"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_extra_functions:3
-msgid "A dict of functions marked as extra functions. Method can be called with ``get_extra_functions()[\"methodName\"]()``."
-msgstr "İlave fonksiyonlar olarak işaretlenen fonksiyonların sözlüğü. Şu yöntem ile çağrılabilir ``get_extra_functions()[\"methodName\"]()``."
+msgid "A dict of methods marked as additional features. Method can be called with ``get_extra_functions()[\"methodName\"]()``."
+msgstr "Ek özellikler olarak işaretlenmiş metotların bir sözlüğü. Yöntem, ``get_extra_functions()[\"methodName\"]()`` ile çağrılabilir."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.poll:1
 msgid "Method to poll for messages. This method is called when the framework is initialized. This method should be blocking."
@@ -158,7 +170,7 @@ msgstr "Kanal içerisinde bir mesaj gönderin veya gönderilen bir mesajı düze
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:4
 msgid "Message object to be processed."
-msgstr "İşlenilecek mesaj nesnesi."
+msgstr "İşlenecek mesaj nesnesi."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:7
 msgid "The same message object with message ID from the recipient."
@@ -183,6 +195,10 @@ msgstr ":exc:`~.exceptions.EFBMessageNotFound` -- Belirtilen mevcut mesaj buluna
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_message:24
 msgid ":exc:`~.exceptions.EFBMessageError` -- Raised when other error occurred while sending or editing the message."
 msgstr ":exc:`~.exceptions.EFBMessageError` -- Mesaj gönderirken veya düzenlerken başka bir hata meydana geldiğinde yükseltilir."
+
+#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:1
+msgid "Send a status to the channel."
+msgstr "Kanala bir durum gönderin."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.send_status:3
 msgid "the status"
@@ -226,7 +242,7 @@ msgstr "Mesajlar ve durumlar gönderiliyor"
 
 #: ../../API/channel.rst:13
 msgid "Sending messages and statuses to other channels is the most common operation of a channel. When the channel has gathered enough information from external sources, it should be further processed and packed into the relative objects, i.e. :obj:`.EFBMsg` and :obj:`.EFBStatus`."
-msgstr "Mesajların ve durumların başka bir kanala gönderilmesi bir kanalın en yaygın işlemidir. Kanal dış kaynaklardan yeteri kadar bilgiyi topladığında, daha fazla işlemeli ve ilgili nesnelere paketlenmelidir, yani :obj:`.EFBMsg` and :obj:`.EFBStatus`."
+msgstr "Mesajların ve durumların başka bir kanala gönderilmesi bir kanalın en yaygın işlemidir. Kanal dış kaynaklardan yeteri kadar bilgiyi topladığında, daha fazla işlemeli ve ilgili nesnelere paketlenmelidir, yani :obj:`.EFBMsg` ve :obj:`.EFBStatus`."
 
 #: ../../API/channel.rst:19
 msgid "When the related information is packed into their relative objects, it can be sent to the coordinator for the next step."
@@ -234,7 +250,7 @@ msgstr "İlgili bilgiler bağlı olduğu nesnelere paketlendiğinde, bir sonraki
 
 #: ../../API/channel.rst:23
 msgid "For now, both :obj:`.EFBMsg` and :obj:`.EFBStatus` has an attribute that indicates that where this object should be delivered to (:attr:`.EFBMsg.deliver_to` and :attr:`.EFBStatus.destination_channel`). This is used by the coordinator when delivering the message."
-msgstr "Şimdilik, hem :obj:`.EFBMsg` hem de :obj:`.EFBStatus` için nereye teslim edileceğini gösteren bir niteliğe sahiptir (:attr:`.EFBMsg.deliver_to` and :attr:`.EFBStatus.destination_channel`). \n"
+msgstr "Şimdilik, hem :obj:`.EFBMsg` hem de :obj:`.EFBStatus` için nereye teslim edileceğini gösteren bir niteliğe sahiptir (:attr:`.EFBMsg.deliver_to` ve :attr:`.EFBStatus.destination_channel`). \n"
 "Bu mesaj teslim edilirken koordinatör tarafından kullanılır."
 
 #: ../../API/channel.rst:29
@@ -244,4 +260,12 @@ msgstr "Mesajlar için, :meth:`.coordinator.send_message` ile teslim edilebilir,
 #: ../../API/channel.rst:32
 msgid "When the object is passed onto the coordinator, it will be further processed by the middleware."
 msgstr "Nesne koordinatöre devredildiğinde, aracı yazılım tarafından ayrıca işlenilecektir."
+
+#: ../../API/channel.rst:36
+msgid "About Channel ID"
+msgstr "Kanal Kimliği Hakkında"
+
+#: ../../API/channel.rst:38
+msgid "With the introduction of instance IDs, it is required to use the ``self.channel_id`` or equivalent instead of any hard-coded ID or constants while referring to the channel (e.g. while retrieving the path to the configuration files, creating chat and message objects, etc)."
+msgstr "Örnek kimliklerin sunulmasıyla birlikte, kanala atıfta bulunulurken sabit kodlanmış kimlik veya sabitler yerine ``self.channel_id`` veya eşdeğeri kullanmak gerekir (örn. Yapılandırma dosyalarına yol açarken sohbet oluştururken ve mesaj nesneleri vb.)."
 

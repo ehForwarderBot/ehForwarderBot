@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Özel yazılımlar ana kanal ve bağımlı kanallar arasında çalışı
 
 #: ../../guide/middleware.rst:9
 msgid "Like channels, middlewares will also each have an instance per EFB session, managed by the coordinator. However, they don't have centrally polling threads, which means if a middleware wants to have a polling thread or something similar running in the background, it has to stop the thread using Python's ``atexit`` or otherwise."
-msgstr ""
+msgstr "Kanallarda olduğu gibi, orta sınıfların da EFB oturumu başına koordinatör tarafından yönetilen bir örneği olacaktır. Bununla birlikte, merkezi sorgulama mesaj dizisine sahip değillerdir, yani, bir ara katman yazılımı, bir sorgulama mesaj dizisi ya da arka planda benzer bir şey çalıştırmak istiyor ise, mesaj dizisi Python'un ``atexit``i kullanarak veya başka bir şekilde durdurmak zorunda kaldıkları anlamına gelir."
 
 #: ../../guide/middleware.rst:17
 msgid "Message and Status Processing"
@@ -34,11 +34,11 @@ msgstr "Mesaj ve Durum İşleme"
 
 #: ../../guide/middleware.rst:19
 msgid "Each middleware by default has 2 methods, :meth:`~.ehforwarderbot.EFBMiddleware.process_message` which processes message objects, and :meth:`~.ehforwarderbot.EFBMiddleware.process_status` which processes status objects. If they are not overridden, they will not touch on the object and pass it on as is."
-msgstr ""
+msgstr "Varsayılan olarak her ara katman yazılımı, 2 yöntem içerir, mesaj nesnelerini işleyen :meth: `~.ehforwarderbot.EFBMiddleware.process_message` ve durum nesnelerini işleyen :meth: `~ .ehforwarderbot.EFBMiddleware.process_status`. Geçersiz kılınmazlarsa, nesneye dokunmaz ve olduğu gibi yayarlar."
 
 #: ../../guide/middleware.rst:24
 msgid "To modify an object, just override the relative method and make changes to it. To discard an object, simply return ``None``. When an object is discarded, it will not be passed further to other middlewares or channels, which means a middleware or a channel should never receive a ``None`` message or status."
-msgstr ""
+msgstr "Bir nesneyi değiştirmek için, yalnızca ilgili yöntemi geçersiz kılın ve değişiklik yapın. Bir nesneyi atmak için, sadece `` Hiçbiri``ne geri dönün. Bir nesne atıldığında, başka orta sınıflara veya kanallara daha fazla geçirilmeyecektir; bu, bir ara katmanın veya bir kanalın hiçbir zaman \"Hiçbiri\" mesajı veya statüsü almaması gerektiği anlamına gelir."
 
 #: ../../guide/middleware.rst:32
 msgid "Other Usages"
@@ -54,7 +54,7 @@ msgstr "Bazı fikirler:"
 
 #: ../../guide/middleware.rst:40
 msgid "Periodic broadcast to master / slave channels"
-msgstr ""
+msgstr "Ana / bağımlı kanallarına periyodik yayın"
 
 #: ../../guide/middleware.rst:41
 msgid "Integration with chat bots"
@@ -62,7 +62,7 @@ msgstr "Sohbet botları ile entegrasyon"
 
 #: ../../guide/middleware.rst:42
 msgid "Automated operations on vendor-specific commands / additional features"
-msgstr ""
+msgstr "Satıcıya özel komutlarla ilgili otomatik işlemler / Ek özellikler"
 
 #: ../../guide/middleware.rst:44
 msgid "Share user session from slave channel with other programs"

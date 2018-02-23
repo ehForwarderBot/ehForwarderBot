@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"POT-Creation-Date: 2018-02-22 10:02+1100\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -37,8 +37,8 @@ msgid "*EFBChannel* -- The running master channel object."
 msgstr "*EFBChannel* -- El objeto del canal maestro en ejecución."
 
 #: ../../../docstring of ehforwarderbot.coordinator:17
-msgid "*Dict[str, EFBChannel]* -- Dictionary of running slave channel object. Keys are the unique identifier of the dictionary."
-msgstr "*Dict[str, EFBChannel]* -- Diccionario del objeto esclavo en ejecución. Las llaves son los únicos identificadores de este diccionario."
+msgid "*Dict[str, EFBChannel]* -- Dictionary of running slave channel object. Keys are the unique identifier of the channel."
+msgstr ""
 
 #: ../../../docstring of ehforwarderbot.coordinator:22
 msgid "*List[EFBMiddleware]* -- List of middlewares"

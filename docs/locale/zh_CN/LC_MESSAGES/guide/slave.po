@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"POT-Creation-Date: 2018-02-23 21:34+1100\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -18,23 +18,23 @@ msgstr ""
 
 #: ../../guide/slave.rst:2
 msgid "Slave channels"
-msgstr ""
+msgstr "从端"
 
 #: ../../guide/slave.rst:4
 msgid "Slave channel is more like a wrap over an API of IM, it encloses messages from the IM into appropriate objects and deliver it to the master channel."
-msgstr ""
+msgstr "从端更像是对即时通讯 API 的封装，它将来自通讯平台的消息封装到对应的对象中并将其传递给主端。"
 
 #: ../../guide/slave.rst:8
 msgid "Although we suggest that slave channel should match with an IM platform, but you may try to model it for anything that can deliver information as messages, and has a limited list of end-points to deliver messages to and from as chats."
-msgstr ""
+msgstr "尽管我们建议从属通道应该和即使通讯平台适配，但你可以尝试适配任何适宜的系统模型：该系统可以将数据以消息方式发送，同时可以有一个有限的用于收发消息的终端列表。"
 
 #: ../../guide/slave.rst:14
 msgid "In most of the cases, slave channels should be identified as one single user from the IM platform, instead of a bot.  We suggest you to use a bot for slave channels only when"
-msgstr ""
+msgstr "在大多数情况下，从端应该被看作为一个来自即时通讯平台的普通用户，而不是一个机器人。我们建议只有在如下情况下为从属通道使用机器人："
 
 #: ../../guide/slave.rst:19
 msgid "the IM platform puts no difference between a user and a bot, or"
-msgstr ""
+msgstr "该平台不对用户和机器人做特别区分，或者"
 
 #: ../../guide/slave.rst:21
 msgid "bots on the IM platform can do exactly same things, if not more, as a user, and bots can be created easier than user account."
@@ -42,165 +42,165 @@ msgstr ""
 
 #: ../../guide/slave.rst:26
 msgid "Methods to be implemented"
-msgstr ""
+msgstr "需要实现的的方法"
 
 #: ../../guide/slave.rst:28
 msgid "Below is a list of methods that are required to be implemented by the slave channel."
-msgstr ""
+msgstr "以下是从端需要实现的方法列表。"
 
 #: ../../guide/slave.rst:31
 msgid ":meth:`.EFBChannel.get_chat_picture`"
-msgstr ""
+msgstr ":meth:`.EFBChannel.get_chat_picture`"
 
 #: ../../guide/slave.rst:32
 msgid ":meth:`.EFBChannel.get_chat`"
-msgstr ""
+msgstr ":meth:`.EFBChannel.get_chat_picture`"
 
 #: ../../guide/slave.rst:33
 msgid ":meth:`.EFBChannel.get_chats`"
-msgstr ""
+msgstr ":meth:`.EFBChannel.get_chats`"
 
 #: ../../guide/slave.rst:34
 msgid ":meth:`.EFBChannel.poll`"
-msgstr ""
+msgstr ":meth:`.EFBChannel.poll`"
 
 #: ../../guide/slave.rst:35
 msgid ":meth:`.EFBChannel.send_message`"
-msgstr ""
+msgstr ":meth:`.EFBChannel.send_message`"
 
 #: ../../guide/slave.rst:36
 msgid ":meth:`.EFBChannel.send_status`"
-msgstr ""
+msgstr ":meth:`.EFBChannel.send_status`"
 
 #: ../../guide/slave.rst:41
 msgid "Additional features"
-msgstr ""
+msgstr "附加功能"
 
 #: ../../guide/slave.rst:43
 msgid "Slave channels can offer more functions than what EFB requires, such as creating groups, search for friends, etc, via *additional features*."
-msgstr ""
+msgstr "通过 *附加功能*，从端能够提供 EFB 没有要求的更多功能，例如创建组群组，搜索好友等。"
 
 #: ../../guide/slave.rst:47
-msgid "Such features are accessed by the user in a CLI-like style. An \"additional feature\" method should only take one string parameter aside from ``self``, and wrap it with :meth:`~ehforwarderbot.utils.extra` decorator. The extra decorator takes 2 arguments: ``name`` — a short name of the feature, and ``desc`` — a description of the feature with its usage."
+msgid "Such features are accessed by the user in a CLI-like style. An \"additional feature\" method should only take one string parameter aside from ``self``, and wrap it with :meth:`~ehforwarderbot.utils.extra` decorator. The ``extra`` decorator takes 2 arguments: ``name`` -- a short name of the feature, and ``desc`` -- a description of the feature with its usage."
 msgstr ""
 
-#: ../../guide/slave.rst:54
+#: ../../guide/slave.rst:55
 msgid "``desc`` should describe what the feature does and how to use it. It's more like the help text for an CLI program. Since method of invoking the feature depends on the implementation of the master channel, you should use ``\"{function_name}\"`` as its name in ``desc``, and master channel will replace it with respective name depend on their implementation."
-msgstr ""
+msgstr "``desc`` 应该描述功能的用途以及用法。它更像是 CLI 程序的帮助文本。由于调用这些功能的方法依赖于主端的实现方式，因此 ``desc`` 中应使用 ``\"{function_name}\"`` 代替用法中的名称，根据实现方式的不同，主通道会使用适合名称来替代它。"
 
-#: ../../guide/slave.rst:62
+#: ../../guide/slave.rst:63
 msgid "The method should in the end return a string, which will be shown to the user as its result. Depending on the functionality of the feature, it may be just a simple success message, or a long chunk of results."
-msgstr ""
+msgstr "方法在结束时应该返回一个字符串，并将被作为结果显示给用户。根据这个特性的具体功能，输出可能只是一个简单的成功消息，或者是一个很长的结果。"
 
-#: ../../guide/slave.rst:67
+#: ../../guide/slave.rst:68
 msgid "The callable should not raise any exception to its caller. Any exceptions occurred within should be ``expect``\\ ed and processed."
-msgstr ""
+msgstr "该函数不应该抛出任何异常。任何发生的异常都应该被 ``expect`` 并处理。"
 
-#: ../../guide/slave.rst:71
-msgid "Callable name of such methods has a more strict standard than a normal Python 3 identifier name, for compatibility reason. An extra function callable name should:"
-msgstr ""
-
-#: ../../guide/slave.rst:75
-msgid "be case sensitive"
+#: ../../guide/slave.rst:72
+msgid "Callable name of such methods has a more strict standard than a normal Python 3 identifier name, for compatibility reason. An additional feature callable name should:"
 msgstr ""
 
 #: ../../guide/slave.rst:76
-msgid "include only upper and lower-case letters, digits, and underscore."
-msgstr ""
+msgid "be case sensitive"
+msgstr "区分大小写"
 
 #: ../../guide/slave.rst:77
-msgid "starts only with a upper or lower-case letter."
-msgstr ""
+msgid "include only upper and lower-case letters, digits, and underscore."
+msgstr "只包含大小写字母，数字，和下划线。"
 
 #: ../../guide/slave.rst:78
-msgid "be in a length between 1 and 20 inclusive"
+msgid "does not start with a digit."
 msgstr ""
 
 #: ../../guide/slave.rst:79
+msgid "be in a length between 1 and 20 inclusive"
+msgstr "长度为 1 到 20字符（含）"
+
+#: ../../guide/slave.rst:80
 msgid "*be as short and concise as possible, but keep understandable*"
-msgstr ""
+msgstr "*越短越精确越好，但是要容易被理解*"
 
-#: ../../guide/slave.rst:81
+#: ../../guide/slave.rst:82
 msgid "In RegEx, it's can be expressed as::"
-msgstr ""
+msgstr "在正则表达式中，它可以被表示为::"
 
-#: ../../guide/slave.rst:85
+#: ../../guide/slave.rst:86
 msgid "Example"
-msgstr ""
+msgstr "范例"
 
-#: ../../guide/slave.rst:98
+#: ../../guide/slave.rst:99
 msgid "Message commands"
-msgstr ""
+msgstr "消息命令"
 
-#: ../../guide/slave.rst:100
+#: ../../guide/slave.rst:101
 msgid "Message commands are usually sent by slave channels so that users can respond to certain messages that has specific required actions."
-msgstr ""
+msgstr "消息命令通常由从端发送，以允许用户对于要求特殊操作的消息做出回应。"
 
-#: ../../guide/slave.rst:104
-msgid "Possible cases when message commands could be useful."
-msgstr ""
-
-#: ../../guide/slave.rst:106
-msgid "Add as friends when a contact card is sent."
+#: ../../guide/slave.rst:105
+msgid "Possible cases when message commands could be useful:"
 msgstr ""
 
 #: ../../guide/slave.rst:107
-msgid "Accept or decline when a friend request is sent"
+msgid "Add as friends when a contact card is received."
 msgstr ""
 
 #: ../../guide/slave.rst:108
-msgid "Vote to a voting message"
+msgid "Accept or decline when a friend request is received."
 msgstr ""
 
 #: ../../guide/slave.rst:109
-msgid "Like / thumb up to a message if applicable"
+msgid "Vote to a voting message."
 msgstr ""
 
-#: ../../guide/slave.rst:111
+#: ../../guide/slave.rst:110
+msgid "Like / thumb up to a message if applicable."
+msgstr ""
+
+#: ../../guide/slave.rst:112
 msgid "A message can be attached with a ``list`` of commands, in which each of them has:"
-msgstr ""
-
-#: ../../guide/slave.rst:114
-msgid "a human-friendly name,"
-msgstr ""
+msgstr "一条消息可以附加到在 ``list`` 之中附加一系列命令，其中的每个命令有："
 
 #: ../../guide/slave.rst:115
-msgid "a callable name,"
-msgstr ""
+msgid "a human-friendly name,"
+msgstr "面向用户的名称，"
 
 #: ../../guide/slave.rst:116
-msgid "a ``list`` of positional arguments (``*args``), and"
-msgstr ""
+msgid "a callable name,"
+msgstr "方法名称，"
 
 #: ../../guide/slave.rst:117
+msgid "a ``list`` of positional arguments (``*args``), and"
+msgstr "位置指定参数 (``*args``) 的 ``list `` 列表，以及"
+
+#: ../../guide/slave.rst:118
 msgid "a ``dict`` of keyword arguments (``**kwargs``)"
-msgstr ""
+msgstr "关键字参数 (``**kwargs``) 的 ``dict`` 字典"
 
-#: ../../guide/slave.rst:119
+#: ../../guide/slave.rst:120
 msgid "When a user clicked the button, the corresponding method of your channel will be called with provided arguments."
-msgstr ""
+msgstr "当用户单击按钮时，将会调用相应的信道方法并传递指定的参数。"
 
-#: ../../guide/slave.rst:122
+#: ../../guide/slave.rst:123
 msgid "Note that all such methods MUST return a ``str`` as a respond to the action from user, and they should NOT raise any exception to its caller. Any exceptions occurred within should be ``expect``\\ ed and processed."
-msgstr ""
+msgstr "注意：作为对用户操作的响应，所有这样的方法必须返回一个 ``str``，且不应抛出任何异常。任何发生的异常都应该被 ``expect`` 并被处理的。"
 
-#: ../../guide/slave.rst:129
+#: ../../guide/slave.rst:130
 msgid "Message delivery"
-msgstr ""
+msgstr "消息传递"
 
-#: ../../guide/slave.rst:131
+#: ../../guide/slave.rst:132
 msgid "Slave channels should deliver all messages that the IM provides, including what the user sent not with this channel. But it should not deliver message sent from the master channel again back to the master channel as a new message."
-msgstr ""
+msgstr "从端应该发送 IM 提供的所有消息，包括用户在该信道之外发送的消息。但是，用户通过主端发出的消息不应再传回主端。"
 
-#: ../../guide/slave.rst:136
+#: ../../guide/slave.rst:137
 msgid "Messages should be delivered regardless of the notification settings user had in the IM platform, but you can:"
-msgstr ""
+msgstr "不论用户在 IM 的的消息通知设置如何，消息都应该被发送。"
 
-#: ../../guide/slave.rst:139
+#: ../../guide/slave.rst:140
 msgid "include notification settings in the ``vendor_specific`` section of the chats or message object, whichever is applicable, and then let middlewares to decide whether to deliver it; or"
-msgstr ""
+msgstr "会话对象或消息对象中取叫适合的一个，在其中 ``vendor_specific`` 部分包含消息通知设置，然后让中间件来决定是否发送它；或者"
 
-#: ../../guide/slave.rst:143
+#: ../../guide/slave.rst:144
 msgid "provide options in the slave channel to ignore certain messages provided by the IM server."
-msgstr ""
+msgstr "在从端中提供选项，以忽略来自 IM 服务器的某些特定消息。"
 

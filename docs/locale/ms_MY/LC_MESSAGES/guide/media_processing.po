@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:36-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +18,11 @@ msgstr ""
 
 #: ../../guide/media_processing.rst:2
 msgid "Media processing"
-msgstr ""
+msgstr "Media memproses"
 
 #: ../../guide/media_processing.rst:5
 msgid "Choosing media formats"
-msgstr ""
+msgstr "Memilih media format"
 
 #: ../../guide/media_processing.rst:7
 msgid "Both Master and Slave channel can take their charges to convert media files they send or receive. In general: **if a media file received from remote server is not a common format, convert it before deliver it on; if a media file sent to remote server requires to be in a specific format, it should be converted before sending out**. Nevertheless, this is only a guideline on channels' responsibility regarding media processing, and everyone has their own opinion on what is a common format / encoding. Therefore we only recommend this behaviour, but do not force in our code. This is to say that, you still have to take care of the accepted type of media encoding of your corresponding method of presentation, and convert and/or fallback to different type of representation if necessary. After all, the delivery of information is more important."
@@ -34,11 +34,11 @@ msgstr ""
 
 #: ../../guide/media_processing.rst:27
 msgid "Similarly, we will also not put a strict limit on this as well, but just a recommendation. As you might have already know, there are few mature pure Python media processing libraries, most of them will more or less requires internal or external binary dependencies."
-msgstr ""
+msgstr "Begitu juga, kita juga akan tidak meletakkan batas ketat pada ini juga, tetapi hanya satu cadangan. Seperti yang anda mungkin sudah tahu, ada beberapa matang tulen Python media memproses perpustakaan, kebanyakan mereka akan lebih atau kurang memerlukan dalam atau luar binari kebergantungan."
 
 #: ../../guide/media_processing.rst:33
 msgid "We try to aim to use as few different libraries as we can, as more library to install means more space, install time, and complexity. While processing media files, we recommend to use the following libraries if possible:"
-msgstr ""
+msgstr "Kami cuba untuk bertujuan untuk menggunakan seperti yang berbeza beberapa perpustakaan seperti yang kita dapat, seperti yang lebih perpustakaan untuk memasang berarti lebih banyak ruang, memasang masa, dan kerumitan. Semasa memproses fail media, kami menyarankan untuk menggunakan berikut perpustakaan jika boleh:"
 
 #: ../../guide/media_processing.rst:39
 msgid "pillow"

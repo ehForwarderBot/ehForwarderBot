@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -18,41 +18,41 @@ msgstr ""
 
 #: ../../guide/storage.rst:2
 msgid "Configurations and storage"
-msgstr ""
+msgstr "Configuraciones y almacenamiento"
 
 #: ../../guide/storage.rst:5
 msgid "Configurations and Permanent Storage"
-msgstr ""
+msgstr "Configuraciones y almacenamiento permanente"
 
 #: ../../guide/storage.rst:7
 msgid "As described in :doc:`/directories`, each module has been allocated with a folder per profile for configurations and other storage. The path can be obtained using :meth:`~.ehforwarderbot.utils.get_data_path` with your module ID. All such storage is specific to only one profile."
-msgstr ""
+msgstr "Como se describe en :doc: `/ directories`, cada módulo ha sido asignado con una carpeta por perfil para configuraciones y otro almacenamiento. La ruta se puede obtener usando :meth:`~.ehforwarderbot.utils.get_data_path` con su ID de módulo. Todo ese almacenamiento es específico para un solo perfil."
 
 #: ../../guide/storage.rst:14
 msgid "For configurations, we recommend to use ``<module_data_path>/config.yaml``. Similarly, we prepared :meth:`~.ehforwarderbot.utils.get_config_path` to get the path for default config file. Again, you are not forced to use this name or YAML as the format of your config file."
-msgstr ""
+msgstr "Para configuraciones, recomendamos usar``<module_data_path>/config.yaml`` . De forma similar, preparamos :meth:`~.ehforwarderbot.utils.get_config_path`para obtener la ruta del archivo de configuración predeterminado. Nuevamente, no está obligado a usar este nombre o YAML como el formato de su archivo de configuración."
 
 #: ../../guide/storage.rst:20
 msgid "Usually in the storage folder lives:"
-msgstr ""
+msgstr "Por lo general, en la carpeta de almacenamiento existen:"
 
 #: ../../guide/storage.rst:22
 msgid "Configuration files"
-msgstr ""
+msgstr "Archivos de configuración"
 
 #: ../../guide/storage.rst:23
 msgid "User credentials / Session storage"
-msgstr ""
+msgstr "Credenciales de usuario / Almacenamiento de sesión"
 
 #: ../../guide/storage.rst:24
 msgid "Databases"
-msgstr ""
+msgstr "Base de datos"
 
 #: ../../guide/storage.rst:27
 msgid "Temporary Storage"
-msgstr ""
+msgstr "Almacenamiento temporal"
 
 #: ../../guide/storage.rst:29
 msgid "While processing multimedia messages, we inevitably need to store certain files temporarily, either within the channel or across channels. Usually, temporary files can be handled with Python's ``tempfile`` library."
-msgstr ""
+msgstr "Al procesar mensajes multimedia, inevitablemente necesitamos almacenar ciertos archivos temporalmente, ya sea dentro del canal o entre canales. Por lo general, los archivos temporales se pueden manejar con la biblioteca `` tempfile`` de Python."
 

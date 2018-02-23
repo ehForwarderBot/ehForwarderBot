@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"POT-Creation-Date: 2018-02-22 10:02+1100\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -18,160 +18,160 @@ msgstr ""
 
 #: ../../API/message.rst:2
 msgid "EFBMsg"
-msgstr ""
+msgstr "EFBMsg"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:1
 msgid "A message."
-msgstr ""
+msgstr "一条消息。"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:5
 msgid "Optional[:obj:`.EFBMsgAttribute`] -- Attributes used for a specific message type. Only specific message type requires this attribute. Defaulted to ``None``."
-msgstr ""
+msgstr "Optional[:obj:`.EFBMsgAttribute`] -- 用于特定消息类型的属性。只有指定的消息类型需要此属性。默认值为``None``。"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:9
 msgid "Link: :obj:`.EFBMsgLinkAttribute`"
-msgstr ""
+msgstr "链接: :obj:`.EFBMsgLinkAttribute`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:10
 msgid "Location: :obj:`.EFBMsgLocationAttribute`"
-msgstr ""
+msgstr "位置: :obj:`.EFBMsgLocationAttribute`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:11
 msgid "Status: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`"
-msgstr ""
+msgstr "状态：正在输入、发送文件等。: :obj:`.EFBMsgStatusAttribute`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:14
-msgid "Do NOT use object the abstract class :class:`.EFBMsgAttribute` for ``attributes``, but object of specific class instead."
+msgid "Do NOT use object of the abstract class :class:`.EFBMsgAttribute` for ``attributes``, but object of specific class instead."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:20
 msgid ":obj:`.EFBChat` -- Author of this message."
-msgstr ""
+msgstr ":obj:`.EFBChat` -- 这条消息的作者。"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:24
-msgid ":obj:`.EFBChat` -- Sender of the message"
+msgid ":obj:`.EFBChat` -- Sender of the message."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:28
-msgid "Opitonal[:obj:`EFBMsgCommands`] -- Commands attached to the message"
+msgid "Optional[:obj:`EFBMsgCommands`] -- Commands attached to the message"
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:32
 msgid ":obj:`.EFBChannel` -- The channel that the message is to be delivered to"
-msgstr ""
+msgstr ":obj:`.EFBChannel` -- 消息将被发送到的信道"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:36
 msgid "*bool* -- Flag this up if the message is edited."
-msgstr ""
+msgstr "*bool* -- 标记已编辑的消息。"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:40
-msgid "*IO[bytes]* -- File object to multimedia file, type \"ra\". ``None`` if N/A Recommended to use ``NamedTemporaryFile`` object, the file is recommended to be deleted when closed, if not used otherwise. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
+msgid "*IO[bytes]* -- File object to multimedia file, type \"ra\". ``None`` if N/A. recommended to use ``NamedTemporaryFile`` object, the file can be deleted when closed, if not used otherwise. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:47
 msgid "*str* -- File name of the multimedia file. ``None`` if N/A"
-msgstr ""
+msgstr "*str* -- 多媒体文件的文件名。如果不适用的话则为 ``None``"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:51
 msgid "*bool* -- Mark as true if this message is a system message."
-msgstr ""
+msgstr "*bool* -- 如果此消息为一个系统消息，则标记为 true。"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:55
 msgid "*str* -- MIME type of the file. ``None`` if N/A"
-msgstr ""
+msgstr "*str* -- 文件的 MIME 类型，如果不适用的话则为 ``None``"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:59
 msgid "*str* -- Local path of multimedia file. ``None`` if N/A"
-msgstr ""
+msgstr "*str* -- 多媒体文件的本地路径。如果不适用的话则值为 ``None``"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:63
-msgid "Opitonal[:obj:`EFBMsgSubstitutions`] -- Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat."
+msgid "Optional[:obj:`EFBMsgSubstitutions`] -- Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:69
 msgid "Optional[:obj:`EFBMsg`] -- Target message (usually for messages that \"replies to\" another message)."
-msgstr ""
+msgstr "Optional[:obj:`EFBMsg`] -- 目标消息（指消息回复中被回复的一条消息）。"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:74
 msgid "This message may be a \"minimum message\", with only required fields:"
-msgstr ""
+msgstr "该消息可能为一个「最小消息对象」，只包含必填字段："
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:76
 msgid ":attr:`.EFBMsg.chat`"
-msgstr ""
+msgstr ":attr:`.EFBMsg.chat`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:77
 msgid ":attr:`.EFBMsg.author`"
-msgstr ""
+msgstr ":attr:`.EFBMsg.author`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:78
 msgid ":attr:`.EFBMsg.text`"
-msgstr ""
+msgstr ":attr:`.EFBMsg.text`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:79
 msgid ":attr:`.EFBMsg.type`"
-msgstr ""
+msgstr ":attr:`.EFBMsg.type`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:80
 msgid ":attr:`.EFBMsg.uid`"
-msgstr ""
+msgstr ":attr:`.EFBMsg.uid`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:84
 msgid "*str* -- text of the message"
-msgstr ""
+msgstr "*str* -- 消息文本"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:88
 msgid ":obj:`.MsgType` -- Type of message"
-msgstr ""
+msgstr ":obj:`.MsgType` -- 消息类型"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:92
 msgid "*str* -- Unique ID of message. Usually stores the message ID from slave channel. This ID must be unique among all chats in the same channel."
-msgstr ""
+msgstr "*str* -- 消息的唯一 ID。通常保存从端的消息 ID。此 ID 必须在同一信道中的所有会话中具有唯一性。"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:97
 msgid "Some channels may not support message editing. Some channels may issue a new uid for edited message."
-msgstr ""
+msgstr "有些信道可能不支持消息编辑。有些信道可能会为编辑的消息发出新的 uid。"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:102
 msgid "*Dict[str, Any]* -- A series of vendor specific attributes attached. This can be used by any other channels or middlewares that is compatible with such information. Note that no guarantee is provided for information in this section."
-msgstr ""
+msgstr "*Dict[str, Any]* -- 附上一系列供应商特定的属性。它可以被任何和兼容的其他信道或中间件使用。注意这部分的信息并不提供任何保证。"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg.verify:1
 msgid "Verify the validity of message."
-msgstr ""
+msgstr "验证消息的有效性。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgAttribute:1
 msgid "Bases: :class:`abc.ABC`"
-msgstr ""
+msgstr "父类: :class:`abc.ABC`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgAttribute:1
-msgid "Abstract class for a message attribute."
+msgid "Abstract class of a message attribute."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:1
 msgid "Bases: :class:`object`"
-msgstr ""
+msgstr "父类: :class:`object`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
-msgid "EFB command message command."
+msgid "EFB message command."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:5
 msgid "*str* -- Human-friendly name of the command."
-msgstr ""
+msgstr "*str* -- 面向用户的命令名称。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:9
 msgid "*str* -- Callable name of the command."
-msgstr ""
+msgstr "*str* -- 命令的方法名称。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:13
 msgid "*List[Any]* -- Arguments passed to the function."
-msgstr ""
+msgstr "*List[Any]* -- 传递给函数的参数。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:17
 msgid "*Dict[str, Any]* -- Keyword arguments passed to the function."
-msgstr ""
+msgstr "*Dict[str, Any]* -- 传递给函数的关键字参数。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:0
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands.__init__:0
@@ -179,254 +179,254 @@ msgstr ""
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:0
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:1
 msgid "Human-friendly name of the command."
-msgstr ""
+msgstr "面向用户的命令名称。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:3
 msgid "Callable name of the command."
-msgstr ""
+msgstr "命令的方法名称。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:5
 msgid "Arguments passed to the function. Defaulted to empty list;"
-msgstr ""
+msgstr "传递给函数的参数。默认为空列表；"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:7
 msgid "Keyword arguments passed to the function. Defaulted to empty dict."
-msgstr ""
+msgstr "传递给函数的关键字参数。默认为空字典。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:1
 msgid "EFB message commands. Message commands allow user to take action to a specific message, including vote, add friends, etc."
-msgstr ""
+msgstr "EFB 消息命令。消息命令允许用户针对某条特定消息进行操作，例如投票，添加朋友等。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:7
 msgid "list of :obj:`EFBMsgCommand` -- Commands for the message."
-msgstr ""
+msgstr ":obj:`EFBMsgCommand` 的列表 -- 消息附带的命令。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands.__init__:1
 msgid "Commands for the message."
-msgstr ""
+msgstr "消息命令。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
 msgid "Bases: :class:`ehforwarderbot.message.EFBMsgAttribute`"
-msgstr ""
+msgstr "父类: :class:`ehforwarderbot.message.EFBMsgAttribute`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
 msgid "EFB link message attribute."
-msgstr ""
+msgstr "EFB 链接消息属性。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:5
 msgid "*str* -- Title of the link."
-msgstr ""
+msgstr "*str* -- 链接标题。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:9
 msgid "*str, optional* -- Description of the link."
-msgstr ""
+msgstr "*str, optional* -- 链接的描述信息。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:13
 msgid "*str, optional* -- Image/thumbnail URL of the link."
-msgstr ""
+msgstr "*str, optional* -- 链接的图像/缩略图。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:17
 msgid "*str* -- URL of the link."
-msgstr ""
+msgstr "*str* -- 链接的 URL。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:1
 msgid "Title of the link."
-msgstr ""
+msgstr "链接标题。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:3
 msgid "Description of the link."
-msgstr ""
+msgstr "链接描述信息。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:5
 msgid "Image/thumbnail URL of the link."
-msgstr ""
+msgstr "链接的图像/缩略图的URL。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:7
 msgid "URL of the link."
-msgstr ""
+msgstr "链接的URL。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
 msgid "EFB location message attribute."
-msgstr ""
+msgstr "EFB 位置信息属性。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:5
 msgid "*float* -- Latitude of the location."
-msgstr ""
+msgstr "*float* -- 位置的纬度。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:9
 msgid "*float* -- Longitude of the location."
-msgstr ""
+msgstr "*float* -- 位置的经度。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:1
 msgid "Latitude of the location."
-msgstr ""
+msgstr "位置的纬度。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:3
 msgid "Longitude of the location."
-msgstr ""
+msgstr "位置的经度。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
 msgid "EFB Message status attribute. Message with type ``Status`` notifies the other end to update a chat-specific status, such as typing, send files, etc."
-msgstr ""
+msgstr "EFB 消息状态属性。包含``Status``类型的消息会通知另一端来更新聊天的特定状态，例如正在输入，发送文件等。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:7
 msgid "Type of status, possible values are defined in the ``EFBMsgStatusAttribute``."
-msgstr ""
+msgstr "状态的类型，仅可以为 ``EFBMsgStatusAttribute`` 中定义的值。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:12
 msgid "*Optional[int]* -- Number of milliseconds for this status to expire. Default to 5 seconds."
-msgstr ""
+msgstr "*Optional[int]* -- 此状态到期的毫秒数。默认值为 5 秒。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:17
 msgid "List of status types supported"
-msgstr ""
+msgstr "支持的状态类型列表"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:1
 msgid "Bases: :class:`enum.Enum`"
-msgstr ""
+msgstr "父类: :class:`enum.Enum`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:3
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of typing."
-msgstr ""
+msgstr "在 :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type` 中使用。代表正在输入状态。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:8
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading file."
-msgstr ""
+msgstr "在 :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type` 中使用。代表正在上传文件状态。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:13
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading image."
-msgstr ""
+msgstr "在 :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type` 中使用，代表上传图像状态。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:18
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading audio."
-msgstr ""
+msgstr "在 :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type` 中使用，代表上传音频状态。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:23
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading video."
-msgstr ""
+msgstr "在 :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type` 中使用，代表上传视频状态。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:1
 msgid "Type of status."
-msgstr ""
+msgstr "状态类型。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:2
 msgid "Number of milliseconds for this status to expire. Default to 5 seconds."
-msgstr ""
+msgstr "此状态到期的毫秒数。默认值为 5 秒。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:1
 msgid "Bases: :class:`dict`"
-msgstr ""
+msgstr "父类: :class:`dict`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:1
 msgid "EFB message substitutions."
-msgstr ""
+msgstr "EFB 消息的替换。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:3
-msgid "This is for the case when user \"@-referred\" a list of users in the message. Substitutions here is a dict of correspondence between the string used to refer to the user in the message and a user dict."
+msgid "This is for the case when user \"@-referred\" a list of users in the message. Substitutions here is a dict of correspondence between the string used to refer to the user in the message and a user object."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:8
 msgid "Dictionary of text substitutions targeting to a user or member."
-msgstr ""
+msgstr "针对用户或成员文本替换的字典。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:10
-msgid "The key of the dictionary is a tuple of two :obj:`int` s, where first of it is the starting position in the string, and the second is the ending position defined similar to Python's substring. A tuple of ``(3, 15)` corresponds to ``msg.text[3:15]``. The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``, ``b ∈ (a, l]``, where ``l`` is the length of the message text."
+msgid "The key of the dictionary is a tuple of two :obj:`int`\\ s, where first of it is the starting position in the string, and the second is the ending position defined similar to Python's substring. A tuple of ``(3, 15)`` corresponds to ``msg.text[3:15]``. The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``, ``b ∈ (a, l]``, where ``l`` is the length of the message text."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:17
 msgid "Value of the dict may be any user of the chat, or a member of a group. Notice that the :obj:`EFBChat` object here must NOT be a group."
-msgstr ""
+msgstr "字典的值可能是聊天中的任何用户，或者群组中的成员。注意这里的 :obj:`EFBChat` 对象不可以赋值为群组。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:21
 msgid "Type:"
-msgstr ""
+msgstr "类型："
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:22
 msgid "Dict[Tuple[int, int], :obj:`.EFBChat`]"
-msgstr ""
+msgstr "Dict[Tuple[int, int], :obj:`.EFBChat`]"
 
 #: ../../API/message.rst:14
 msgid "Examples"
-msgstr ""
+msgstr "示例"
 
 #: ../../API/message.rst:17
-msgid "Primer: Defining related chats"
+msgid "Prelude: Defining related chats"
 msgstr ""
 
 #: ../../API/message.rst:28
 msgid "Initialization and marking chats"
-msgstr ""
+msgstr "初始化和标记会话"
 
 #: ../../API/message.rst:45
 msgid "Marking message references (targeted message)"
-msgstr ""
+msgstr "标记聊天引用（目标消息）"
 
 #: ../../API/message.rst:59
 msgid "Edit a previously sent message"
-msgstr ""
+msgstr "编辑一个先前发送的消息"
 
 #: ../../API/message.rst:69
 msgid "Type-specific Information"
-msgstr ""
+msgstr "和类型相关的信息"
 
 #: ../../API/message.rst:75
 msgid "Text message"
-msgstr ""
+msgstr "文本消息"
 
 #: ../../API/message.rst:93
 msgid "Media message"
-msgstr ""
+msgstr "多媒体消息"
 
 #: ../../API/message.rst:78
-msgid "Information related to edia processing is described in :doc:`/guide/media_processing`."
+msgid "Information related to media processing is described in :doc:`/guide/media_processing`."
 msgstr ""
 
 #: ../../API/message.rst:81
 msgid "The example below is for image (picture) messages. Audio, file, video, sticker works in the same way."
-msgstr ""
+msgstr "下面范例是针对图片消息的。声音，文件，视频，贴纸等类型的与此类同。"
 
 #: ../../API/message.rst:84
 #: ../../API/message.rst:96
 #: ../../API/message.rst:105
 #: ../../API/message.rst:119
 msgid "In non-text messages, the ``text`` attribute is optional."
-msgstr ""
+msgstr "对于非文本消息，``text`` 属性为可选的。"
 
 #: ../../API/message.rst:102
 msgid "Location message"
-msgstr ""
+msgstr "位置消息"
 
 #: ../../API/message.rst:116
 msgid "Link message"
-msgstr ""
+msgstr "链接消息"
 
 #: ../../API/message.rst:124
 msgid "Status"
-msgstr ""
+msgstr "状态"
 
 #: ../../API/message.rst:133
 msgid "Unsupported message"
-msgstr ""
+msgstr "不支持的消息"
 
 #: ../../API/message.rst:127
 msgid "``text`` attribute is required for this type of message."
-msgstr ""
+msgstr "该消息类型的 ``text`` 属性是必须的。"
 
 #: ../../API/message.rst:136
 msgid "Additional information"
-msgstr ""
+msgstr "额外信息"
 
 #: ../../API/message.rst:146
 msgid "Substitution"
-msgstr ""
+msgstr "替代"
 
 #: ../../API/message.rst:156
 msgid "Commands"
-msgstr ""
+msgstr "命令"
 

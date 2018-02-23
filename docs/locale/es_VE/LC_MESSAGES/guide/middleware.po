@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -18,57 +18,57 @@ msgstr ""
 
 #: ../../guide/middleware.rst:2
 msgid "Middlewares"
-msgstr ""
+msgstr "Middlewares"
 
 #: ../../guide/middleware.rst:4
 msgid "Middlewares works in between the master channel and slave channels, they look through messages and statuses delivered between channels, passing them on, make changes or discarding them, one after another."
-msgstr ""
+msgstr "Los middlewares trabajan entre los canales maestros y los canales esclavos. Ellos examinan los mensajes y estados enviados entre cada canal, los pasan entre ellos, les hacen cambios o los descartan."
 
 #: ../../guide/middleware.rst:9
 msgid "Like channels, middlewares will also each have an instance per EFB session, managed by the coordinator. However, they don't have centrally polling threads, which means if a middleware wants to have a polling thread or something similar running in the background, it has to stop the thread using Python's ``atexit`` or otherwise."
-msgstr ""
+msgstr "Como los canales, los middlewares también tienen una instancia por cada sesión EFB. administrada por el coordinador. Sin embargo, ellos no tienen threads de sondeo centrales, lo que significa que si un middleware necesita tener un thread de sondeo o algo similar corriendo en segundo plano, tendrá que detener el thread usando ``atexit`` en Python."
 
 #: ../../guide/middleware.rst:17
 msgid "Message and Status Processing"
-msgstr ""
+msgstr "Procesando el mensaje y el estado"
 
 #: ../../guide/middleware.rst:19
 msgid "Each middleware by default has 2 methods, :meth:`~.ehforwarderbot.EFBMiddleware.process_message` which processes message objects, and :meth:`~.ehforwarderbot.EFBMiddleware.process_status` which processes status objects. If they are not overridden, they will not touch on the object and pass it on as is."
-msgstr ""
+msgstr "Cada middleware tienen 2 métodos de manera predeterminada, :meth:`~.ehforwarderbot.EFBMiddleware.process_message` el cual procesa los objetos mensajes y :meth:`~.ehforwarderbot.EFBMiddleware.process_status` el cual procesa los objetos estado. Si ellos no son anulados , no tocarán el objeto y se pasarán exactamente como se encuentran."
 
 #: ../../guide/middleware.rst:24
 msgid "To modify an object, just override the relative method and make changes to it. To discard an object, simply return ``None``. When an object is discarded, it will not be passed further to other middlewares or channels, which means a middleware or a channel should never receive a ``None`` message or status."
-msgstr ""
+msgstr "Para modificar un objeto, solo sobreescribe un método relativo y haz cambios en él. Para descartar un objeto, simplemente haz que retorne ``None``. Cuando un objeto es descartado, no será enviado a otros middlewares o canales, lo que quiere decir que un middleware o canal nunca debe recibir un mensaje o estado ``None``."
 
 #: ../../guide/middleware.rst:32
 msgid "Other Usages"
-msgstr ""
+msgstr "Otros usos"
 
 #: ../../guide/middleware.rst:34
 msgid "Having rather few limitation compare to channels, middlewares are rather easy to write, which allows it to do more than just intercept messages and statuses."
-msgstr ""
+msgstr "Teniendo un poco más limitaciones en comparación con los canales, los middlewares son más fáciles de escribir, lo que les permite hacer más que simplemente interceptar los mensajes y estados."
 
 #: ../../guide/middleware.rst:38
 msgid "Some ideas:"
-msgstr ""
+msgstr "Algunas ideas:"
 
 #: ../../guide/middleware.rst:40
 msgid "Periodic broadcast to master / slave channels"
-msgstr ""
+msgstr "Emisión periódica a los canales maestros y esclavos"
 
 #: ../../guide/middleware.rst:41
 msgid "Integration with chat bots"
-msgstr ""
+msgstr "Integración a los bots de chats"
 
 #: ../../guide/middleware.rst:42
 msgid "Automated operations on vendor-specific commands / additional features"
-msgstr ""
+msgstr "Operaciones automáticas en los comandos específicos de vendedor o en las funciones adicionales"
 
 #: ../../guide/middleware.rst:44
 msgid "Share user session from slave channel with other programs"
-msgstr ""
+msgstr "Comparte información de la sesión de usuario desde un canal esclavo a otros programas"
 
 #: ../../guide/middleware.rst:46
 msgid "etc..."
-msgstr ""
+msgstr "etc..."
 

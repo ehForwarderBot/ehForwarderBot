@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:35+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -22,11 +22,11 @@ msgstr "EH Forwarder Bot"
 
 #: ../../index.rst:31
 msgid "*Codename* **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework which allows users to contact people from other chat platforms, and ultimately remotely control their accounts in other platforms."
-msgstr ""
+msgstr "*Codename* **EH Forwarder Bot** (EFB), kullanıcıların diğer sohbet platformlarındaki insanlarla iletişim kurmasına ve sonuç olarak hesaplarını diğer platformlarda uzaktan kontrol etmesine olanak tanıyan genişletilebilir bir sohbet tüneli sistemidir."
 
 #: ../../index.rst:49
 msgid "For tips, tricks and community contributed articles, see `project wiki`_."
-msgstr ""
+msgstr "İp uçları, tüyolar ve topluluğun katkı sağladığı makaleler için, bakınız `project wiki`_."
 
 #: ../../index.rst:55
 msgid "Indices and tables"
@@ -34,15 +34,15 @@ msgstr "Dizinler ve tablolar"
 
 #: ../../index.rst:57
 msgid ":ref:`genindex`"
-msgstr ""
+msgstr ":ref:`genindex`"
 
 #: ../../index.rst:58
 msgid ":ref:`modindex`"
-msgstr ""
+msgstr ":ref:`modindex`"
 
 #: ../../index.rst:59
 msgid ":ref:`search`"
-msgstr ""
+msgstr ":ref:`search`"
 
 #: ../../index.rst:62
 msgid "Feel like contributing?"
@@ -50,7 +50,7 @@ msgstr "Katkıda bulunmak istiyor musunuz?"
 
 #: ../../index.rst:64
 msgid "Everyone is welcomed to raise an issue or submit a pull request, just remember to read through and follow the :doc:`contribution guideline <./contributing>` before you do so."
-msgstr ""
+msgstr "Herkes bir konuyu gündeme getirmek ya da bir çekme isteği göndermekten memnuniyet duyar, bunu yapmadan önce :doc:`katılım kılavuzunu<./contributing>` boyunca okumayı ve unutmamayı unutmayın."
 
 #: ../../index.rst:69
 msgid "Related articles"
@@ -66,9 +66,9 @@ msgstr "Lisans"
 
 #: ../../index.rst:78
 msgid "EFB framework is licensed under `GNU General Public License 3.0`_."
-msgstr ""
+msgstr "EFB uygulaması `GNU General Public License 3.0`_ kapsamında lisanslanmıştır."
 
 #: ../../index.rst:99
 msgid ":doc:`Donate <donate>`."
-msgstr ""
+msgstr ":doc:`Bağış <donate>`."
 

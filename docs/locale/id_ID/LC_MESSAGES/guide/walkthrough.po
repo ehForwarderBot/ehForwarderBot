@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"POT-Creation-Date: 2018-02-23 21:34+1100\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:20
 msgid "The channel that delivers messages to and from their relative platform. There should be at lease one slave channel in an EFB Session."
-msgstr ""
+msgstr "Saluran yang mengirimkan pesan ke dan dari platform relatif mereka. Harus ada sewa satu slave channel dalam Sesi EFB."
 
 #: ../../guide/walkthrough.rst:27
 msgid "Coordinator"
@@ -46,11 +46,11 @@ msgstr "Koordinator"
 
 #: ../../guide/walkthrough.rst:25
 msgid "Component of the framework that maintains the instances of channels, and delivers messages between channels."
-msgstr ""
+msgstr "Komponen kerangka kerja yang menyimpan contoh saluran, dan mengirim pesan antar saluran."
 
 #: ../../guide/walkthrough.rst:32
 msgid "Middleware"
-msgstr ""
+msgstr "Peranti tengah"
 
 #: ../../guide/walkthrough.rst:30
 msgid "Module that processes messages and statuses delivered between channels, and make modifications where needed."
@@ -102,7 +102,7 @@ msgstr "Obrolan yang melibatkan lebih dari satu pengguna. Obrolan kelompok harus
 
 #: ../../guide/walkthrough.rst:73
 msgid "System chat"
-msgstr ""
+msgstr "Sistem chatting"
 
 #: ../../guide/walkthrough.rst:69
 msgid "A chat that is a part of the system. Usually used for chats that are either a part of the IM platform, or the channel. Slave channels can use this feature to send system message and notifications to the master channel."
@@ -137,58 +137,58 @@ msgid "The job of slave channels is relatively simple."
 msgstr "Tugas dari saluran budak relatif sederhana."
 
 #: ../../guide/walkthrough.rst:95
-msgid "Deliver messages to and from the master channel"
-msgstr "Menyampaikan pesan ke dan dari saluran inti"
+msgid "Deliver messages to and from the master channel."
+msgstr ""
 
 #: ../../guide/walkthrough.rst:96
-msgid "Maintains a list of all available chats, and group members"
-msgstr "Mengelola sebuah daftar dari semua obrolan yang tersedia, dan anggota kelompok"
+msgid "Maintains a list of all available chats, and group members."
+msgstr ""
 
 #: ../../guide/walkthrough.rst:97
-msgid "Monitors changes of chats and notify the master channel"
+msgid "Monitors changes of chats and notify the master channel."
 msgstr ""
 
 #: ../../guide/walkthrough.rst:99
-msgid "If you have some extra features that is not a in the standard EFB Slave Channel model, they can be offered as :ref:`slave-additional-features`."
+msgid "Features that does not fit into the standard EFB Slave Channel model can be offered as :ref:`slave-additional-features`."
 msgstr ""
 
-#: ../../guide/walkthrough.rst:104
+#: ../../guide/walkthrough.rst:103
 msgid "Master Channels"
+msgstr "Saluran Inti"
+
+#: ../../guide/walkthrough.rst:105
+msgid "Master channels is relatively more complicated and also more flexible. As it directly faces the user, its user interface should be user-friendly, or at least friendly to the targeted users."
 msgstr ""
 
-#: ../../guide/walkthrough.rst:106
-msgid "Master channels is relatively more complicated and also more flexible. As it directly faces the user, its user interface should be user-friendly, at least friendly to the targeted users."
-msgstr "Saluran inti relatif lebih rumit dan juga lebih fleksibel. Karena secara langsung menghadapi pengguna, antarmuka pengguna harus mudah digunakan, setidaknya mudah untuk pengguna yang ditargetkan."
-
-#: ../../guide/walkthrough.rst:111
+#: ../../guide/walkthrough.rst:110
 msgid "The job of the master channel includes:"
 msgstr "Pekerjaan dari saluran inti termasuk:"
 
-#: ../../guide/walkthrough.rst:113
-msgid "Receive, process and display messages from slave channels"
-msgstr "Menerima, memproses dan menampilkan pesan dari saluran budak"
+#: ../../guide/walkthrough.rst:112
+msgid "Receive, process and display messages from slave channels."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:114
+msgid "Display a full list of chats from all slave channels."
+msgstr ""
 
 #: ../../guide/walkthrough.rst:115
-msgid "Display a full list of chats from all slave channels"
-msgstr "Menampilkan sebuah daftar penuh tentang obrolan dari semua saluran budak"
-
-#: ../../guide/walkthrough.rst:116
 msgid "Offer an interface for the user to use \"extra functions\" from slave channels."
 msgstr "Menawarkan sebuah antarmuka kepada pengguna untuk menggunakan \"fungsi tambahan\" dari saluran budak."
 
-#: ../../guide/walkthrough.rst:118
+#: ../../guide/walkthrough.rst:117
 msgid "Process updates from slave channels."
 msgstr "Memproses pembaruan dari saluran budak."
 
-#: ../../guide/walkthrough.rst:119
+#: ../../guide/walkthrough.rst:118
 msgid "Provide a user-friendly interface as far as possible."
 msgstr "Berikan antarmuka yang mudah digunakan sejauh mungkin."
 
-#: ../../guide/walkthrough.rst:122
+#: ../../guide/walkthrough.rst:121
 msgid "Middlewares"
 msgstr ""
 
-#: ../../guide/walkthrough.rst:124
-msgid "Middlewares can monitor and make changes to or nullify messages and statuses delivered between channels. Middlewares are executed in order of registration, one after another. A middleware will always receive the messages processed by the preceding middleware if available. Once a middleware nullify a message or status, it will not be processed any further."
-msgstr "Middleware bisa memantau dan membuat perubahan ke atau menghapus pesan dan status yang dikirimkan antara saluran. Middleware dieksekusi dalam urutan registrasi, satu demi satu. Middleware akan selalu menerima pesan yang diproses oleh middleware sebelumnya jika tersedia. Begitu middleware menghapus pesan atau status, maka tidak akan diproses lagi."
+#: ../../guide/walkthrough.rst:123
+msgid "Middlewares can monitor and make changes to or nullify messages and statuses delivered between channels. Middlewares are executed in order of registration, one after another. A middleware will always receive the messages processed by the preceding middleware if available. Once a middleware nullify a message or status, the message will not be processed and delivered any further."
+msgstr ""
 

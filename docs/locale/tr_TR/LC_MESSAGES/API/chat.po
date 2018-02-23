@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr "EFBCHAT"
 
 #: ../../../docstring of ehforwarderbot.EFBChat:1
 msgid "EFB Chat object. This is used to represent a chat or a group member."
-msgstr "EFB Sohbet nesnesi. Bir sohbeti veya bir grup üyesini gösterimlemek için kullanılır."
+msgstr "EFB Sohbet nesnesi. Bir sohbeti veya bir grup üyesini temsil etmesi için kullanılır."
 
 #: ../../../docstring of ehforwarderbot.EFBChat:5
 msgid "*str* -- Unique ID of the channel."
@@ -78,7 +78,7 @@ msgstr "*bool* -- Eğer bu sohbet bir sistem sohbetini/üyesini temsil ediyor is
 
 #: ../../../docstring of ehforwarderbot.EFBChat.__init__:0
 msgid "Parameters"
-msgstr "Değiştirgeler"
+msgstr "Parametreler"
 
 #: ../../../docstring of ehforwarderbot.EFBChat.__init__:1
 msgid "Provide the channel object to fill :attr:`channel_name`, :attr:`channel_emoji`, and :attr:`channel_id` automatically."

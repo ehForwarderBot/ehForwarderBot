@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr "``-V``, ``--version``: 打印版本信息"
 
 #: ../../start.rst:26
 msgid "This shows version number of Python you are using, the EFB framework, and all channels and middlewares enabled."
-msgstr ""
+msgstr "显示您的 Python、EFB 框架、以及所有已启用的信道和中间件的版本号。"
 
 #: ../../start.rst:30
 msgid "``-v``, ``--verbose``: Print verbose log"
@@ -66,5 +66,5 @@ msgstr "``-v``, ``--verbose``: 打印详细日志"
 
 #: ../../start.rst:32
 msgid "This option enables verbose log of EFB and all enabled modules. This, together with ``-V``, is particularly useful in debugging and issue reporting."
-msgstr "开启该选项会记录EFB及所有已启用的模块的详细日志。该选项与 ``-V`` 一样，对于调试及问题反馈有着极大帮助。"
+msgstr "开启该选项会记录 EFB 及所有已启用的模块的详细日志。该选项与 ``-V`` 一样，对于调试及问题反馈有着极大帮助。"
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"POT-Creation-Date: 2018-02-20 23:43+1100\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -18,26 +18,26 @@ msgstr ""
 
 #: ../../API/utils.rst:2
 msgid "Utilities"
-msgstr ""
+msgstr "Utilidades"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:1
 msgid "Decorator for slave channel's \"additional features\" interface."
-msgstr ""
+msgstr "Decoradores para la interfaz de \"opciones adicionales\" en los canales esclavos."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:0
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:0
 msgid "Parameters"
-msgstr ""
+msgstr "Parámetros"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:3
 msgid "A human readable name for the function."
-msgstr ""
+msgstr "Nombre legible y amigable para la función."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:5
 msgid "A short description and usage of it. Use ``{function_name}`` in place of the function name in the description."
-msgstr ""
+msgstr "Una descripción corta de él y de su uso. Usa ``{function_name}`` en el lugar del nombre de la función dentro de la descripción."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:0
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:0
@@ -45,82 +45,82 @@ msgstr ""
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:0
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
 msgid "Returns"
-msgstr ""
+msgstr "Resultados"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:10
 msgid "The decorated method."
-msgstr ""
+msgstr "El método decorado."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:1
-msgid "Get the base data path for EFB. This is defined by the environment variable ``EFB_DATA_PATH``."
-msgstr ""
+msgid "Get the base data path for EFB. This can be defined by the environment variable ``EFB_DATA_PATH``."
+msgstr "Obtén la ruta base de los datos EFB. Esto puede ser definida en la variable de entorno ``EFB_DATA_PATH``."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:4
-msgid "When ``EFB_DATA_PATH`` is defined, the path is constructed by ``$EFB_DATA_PATH/$USERNAME``. By default, this gives ``~/.ehforwarderbot``."
-msgstr ""
+msgid "If ``EFB_DATA_PATH`` is not defined, this gives ``~/.ehforwarderbot``."
+msgstr "Si ``EFB_DATA_PATH`` no ha sido definida, la ruta por defecto es ``~/.ehforwarderbot``."
 
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:8
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:7
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:3
 msgid "This method creates the queried path if not existing."
-msgstr ""
+msgstr "Este método crea la ruta consultada si ésta no existe."
 
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:10
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:9
 msgid "The base path."
-msgstr ""
+msgstr "La ruta base."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:0
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:0
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
 msgid "Return type"
-msgstr ""
+msgstr "Tipo de dato devuelto"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:1
 msgid "Get path for configuration file. Defaulted to ``~/.ehforwarderbot/profiles/profile_name/channel_id/config.yaml``."
-msgstr ""
+msgstr "Obtén la ruta del archivo de configuración. El valor predeterminado es ``~/.ehforwarderbot/profiles/profile_name/channel_id/config.yaml``."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:4
 msgid "This method creates the queried path if not existing. The config file will not be created, however."
-msgstr ""
+msgstr "Este método crea la ruta consultada si ésta no existe. pero el archivo de configuración no será creado."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:7
 msgid "Module ID."
-msgstr ""
+msgstr "ID del módulo."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:9
 msgid "Extension name of the config file. Defaulted to ``\"yaml\"``."
-msgstr ""
+msgstr "Nombre de la extensión del archivo de configuración. Su valor predeterminado es ``\"yaml\"``."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:13
 msgid "The path to the configuration file."
-msgstr ""
+msgstr "La ruta al archivo de configuración."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:1
-msgid "Get the path for custom channels"
-msgstr ""
+msgid "Get the path to custom channels"
+msgstr "Obtén la ruta de los canales personalizados"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:3
 msgid "The path."
-msgstr ""
+msgstr "La ruta de acceso."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:1
 msgid "Get the path for permanent storage of a module."
-msgstr ""
+msgstr "Obtén la ruta para el módulo de almacenamiento permanente."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:5
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:3
 msgid "Module ID"
-msgstr ""
+msgstr "ID del módulo"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:8
 msgid "The data path of selected channel."
-msgstr ""
+msgstr "La ruta de datos del canal seleccionado."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:1
 msgid "Locate module by module ID"
-msgstr ""
+msgstr "Localizar el módulo utilizando el ID del módulo"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:4
 msgid "Type of module, one of ``'master'``, ``'slave'`` and ``'middleware'``"
-msgstr ""
+msgstr "Tipo de módulo, uno de ``'maestro'``, ``'esclavo'`` y ``'middleware'``"
 

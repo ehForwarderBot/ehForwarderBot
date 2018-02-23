@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -62,27 +62,27 @@ msgstr "sohbet başına ismini, kaynak kanalını ve türünü gösteren bir iş
 
 #: ../../guide/master.rst:27
 msgid "support all, if not most, types of messages defined in the framework, process and deliver messages between the user and slave channels;"
-msgstr ""
+msgstr "Sistemde tanımlanan çoğu türdeki iletileri desteklemek, kullanıcı ve  slave kanalları arasında iletileri işlemek ve iletmek;"
 
 #: ../../guide/master.rst:30
 msgid "support all, if not most, features of messages, including: targeted message reply, chat substitution in text (usually used in @ references), commands, etc. Master channel should be able to process incoming messages with such features, and send messages with such features to slave channels if applicable;"
-msgstr ""
+msgstr "hedeflenen mesaj yanıtı, metinde sohbet yerine koyma (genellikle @ referanslarında kullanılır), komutlar vb. de dahil olmak üzere mesajların tüm özelliklerini, hepsi olmasa bile çoğunu destekler. Ana kanal, gelen mesajları bu gibi özelliklerle işleyebilir olmalıdır ve bu gibi özelliklerle bağımlı kanallara eğer uygulanabilirse mesaj gönderebilir;"
 
 #: ../../guide/master.rst:36
 msgid "be able to invoke and process \"additional features\" offered by slave channels."
-msgstr ""
+msgstr "bağımlı kanallar tarafından sunulan \"ek özellikler\" i çağırıp işleyebilir."
 
 #: ../../guide/master.rst:39
 msgid "Optionally, a master channel can also support / identify vendor-specified information from certain slave channels."
-msgstr ""
+msgstr "İsteğe bağlı olarak, ana kanal, belirli bağımlı kanallardan satıcının belirttiği bilgileri destekleyebilir/tanımlayabilir."
 
 #: ../../guide/master.rst:46
 msgid "An example of an ideal design of a master channel, inspired by Telegram Desktop"
-msgstr ""
+msgstr "Bir ana kanalın ideal tasarımının bir örneği, Telegram Masaüstünden esinlenilmiştir"
 
 #: ../../guide/master.rst:49
 msgid "Depends on your implementation, a master channel may probably needs to maintain a list of chats and messages, for presentation or other purposes."
-msgstr ""
+msgstr "Uygulamanıza bağlı olarak, bir ana kanalın sunum veya diğer amaçlar için büyük olasılıkla sohbet ve mesaj listesini koruması gerekebilir."
 
 #: ../../guide/master.rst:54
 msgid "Message delivery"
@@ -90,5 +90,5 @@ msgstr "Mesaj teslimi"
 
 #: ../../guide/master.rst:56
 msgid "Note that sometimes users may send messages outside of this EFB session, so that slave channels might provide a message has its author marked as \"self\"."
-msgstr ""
+msgstr "Bazen kullanıcılar, bu EFB oturumunun dışına mesaj gönderebilir, böylece slave kanallarının yazarının \"ben\" olarak işaretlediği bir mesaj verebileceğini unutmayın."
 

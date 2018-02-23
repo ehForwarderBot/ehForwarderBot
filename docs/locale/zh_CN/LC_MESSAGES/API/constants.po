@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -18,52 +18,52 @@ msgstr ""
 
 #: ../../API/constants.rst:2
 msgid "Constants"
-msgstr ""
+msgstr "常量"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType:1
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.ChatType:1
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.TargetType:1
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.ChannelType:1
 msgid "An enumeration."
-msgstr ""
+msgstr "枚举。"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Audio:1
 msgid "Audio message. Including music and voice message."
-msgstr ""
+msgstr "声音信息。包括音乐和语音信息。"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.File:1
 msgid "Messages sent as a file."
-msgstr ""
+msgstr "以文件方式发送的消息。"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Image:1
 msgid "Image (picture) message"
-msgstr ""
+msgstr "图片消息"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Link:1
 msgid "Message that is mainly one specific link, or a text message with one link preview."
-msgstr ""
+msgstr "主要由特定链接构成消息，或包含预览链接的文本消息。"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Location:1
 msgid "Location message."
-msgstr ""
+msgstr "位置消息。"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Status:1
 msgid "Status from a user in a chat, usually typing and uploading."
-msgstr ""
+msgstr "会话中用户的状态，通常是正在输入或者上传。"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Sticker:1
 msgid "Pictures sent with few text caption, usually a transparent background, and a limited number of options that is usually not from the user's photo gallery."
-msgstr ""
+msgstr "贴纸、贴图。基本不存在图片标题，通常有透明背景，有限定的选择，而且不是来自用户的相册。"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Text:1
 msgid "Text message"
-msgstr ""
+msgstr "文字消息"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Unsupported:1
 msgid "Any type of message that is not listed above. A text representation is required."
-msgstr ""
+msgstr "没有在上面列出的任何类型的消息。文本表示是必需的。"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Video:1
 msgid "Video message"
-msgstr ""
+msgstr "视频消息"
 

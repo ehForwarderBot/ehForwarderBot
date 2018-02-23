@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"POT-Creation-Date: 2018-02-22 10:02+1100\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: English\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgid "Status: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`"
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:14
-msgid "Do NOT use object the abstract class :class:`.EFBMsgAttribute` for ``attributes``, but object of specific class instead."
+msgid "Do NOT use object of the abstract class :class:`.EFBMsgAttribute` for ``attributes``, but object of specific class instead."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:20
@@ -49,11 +49,11 @@ msgid ":obj:`.EFBChat` -- Author of this message."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:24
-msgid ":obj:`.EFBChat` -- Sender of the message"
+msgid ":obj:`.EFBChat` -- Sender of the message."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:28
-msgid "Opitonal[:obj:`EFBMsgCommands`] -- Commands attached to the message"
+msgid "Optional[:obj:`EFBMsgCommands`] -- Commands attached to the message"
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:32
@@ -65,7 +65,7 @@ msgid "*bool* -- Flag this up if the message is edited."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:40
-msgid "*IO[bytes]* -- File object to multimedia file, type \"ra\". ``None`` if N/A Recommended to use ``NamedTemporaryFile`` object, the file is recommended to be deleted when closed, if not used otherwise. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
+msgid "*IO[bytes]* -- File object to multimedia file, type \"ra\". ``None`` if N/A. recommended to use ``NamedTemporaryFile`` object, the file can be deleted when closed, if not used otherwise. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:47
@@ -85,7 +85,7 @@ msgid "*str* -- Local path of multimedia file. ``None`` if N/A"
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:63
-msgid "Opitonal[:obj:`EFBMsgSubstitutions`] -- Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat."
+msgid "Optional[:obj:`EFBMsgSubstitutions`] -- Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:69
@@ -145,7 +145,7 @@ msgid "Bases: :class:`abc.ABC`"
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgAttribute:1
-msgid "Abstract class for a message attribute."
+msgid "Abstract class of a message attribute."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
@@ -154,7 +154,7 @@ msgid "Bases: :class:`object`"
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
-msgid "EFB command message command."
+msgid "EFB message command."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:5
@@ -328,7 +328,7 @@ msgid "EFB message substitutions."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:3
-msgid "This is for the case when user \"@-referred\" a list of users in the message. Substitutions here is a dict of correspondence between the string used to refer to the user in the message and a user dict."
+msgid "This is for the case when user \"@-referred\" a list of users in the message. Substitutions here is a dict of correspondence between the string used to refer to the user in the message and a user object."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:8
@@ -336,7 +336,7 @@ msgid "Dictionary of text substitutions targeting to a user or member."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:10
-msgid "The key of the dictionary is a tuple of two :obj:`int` s, where first of it is the starting position in the string, and the second is the ending position defined similar to Python's substring. A tuple of ``(3, 15)` corresponds to ``msg.text[3:15]``. The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``, ``b ∈ (a, l]``, where ``l`` is the length of the message text."
+msgid "The key of the dictionary is a tuple of two :obj:`int`\\ s, where first of it is the starting position in the string, and the second is the ending position defined similar to Python's substring. A tuple of ``(3, 15)`` corresponds to ``msg.text[3:15]``. The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``, ``b ∈ (a, l]``, where ``l`` is the length of the message text."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:17
@@ -356,7 +356,7 @@ msgid "Examples"
 msgstr ""
 
 #: ../../API/message.rst:17
-msgid "Primer: Defining related chats"
+msgid "Prelude: Defining related chats"
 msgstr ""
 
 #: ../../API/message.rst:28
@@ -384,7 +384,7 @@ msgid "Media message"
 msgstr ""
 
 #: ../../API/message.rst:78
-msgid "Information related to edia processing is described in :doc:`/guide/media_processing`."
+msgid "Information related to media processing is described in :doc:`/guide/media_processing`."
 msgstr ""
 
 #: ../../API/message.rst:81

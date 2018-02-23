@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -38,19 +38,19 @@ msgstr ""
 
 #: ../../guide/packaging.rst:23
 msgid "EH Forwarder Bot uses `Setuptools' Entry Point feature`__ to discover and manage channels and middlewares. In your ``setup.py`` script or ``.egg-info/entry_points.txt``, specify the group and object as follows:"
-msgstr ""
+msgstr "EH Forwarder Bot 使用 `Setuptools 的 Entry Point 特性`__ 来寻找及管理信道和中间件。在您的 ``setup.py`` 脚本或是 ``.egg-info/entry_points.txt`` 中，可通过如下方法来指定组和对象："
 
 #: ../../guide/packaging.rst:30
 msgid "Group for master channels: ``ehforwarderbot.master``"
-msgstr ""
+msgstr "主端组：``ehforwarderbot.master``"
 
 #: ../../guide/packaging.rst:31
 msgid "Group for slave channels: ``ehforwarderbot.slave``"
-msgstr ""
+msgstr "从端组： ``ehforwarderbot.slave``"
 
 #: ../../guide/packaging.rst:32
 msgid "Group for middlewares: ``ehforwarderbot.middleware``"
-msgstr ""
+msgstr "中间件组：``ehforwarderbot.middleware``"
 
 #: ../../guide/packaging.rst:34
 msgid "Convention for object names is ``<author>.<platform>``, e.g. ``alice.irc``. This should also be your module's ID."
@@ -70,15 +70,15 @@ msgstr "``setup.py`` 脚本"
 
 #: ../../guide/packaging.rst:55
 msgid "``.egg-info/entry_points.txt``"
-msgstr ""
+msgstr "`.egg-info/entry_points.txt``"
 
 #: ../../guide/packaging.rst:63
 msgid "Private modules"
-msgstr ""
+msgstr "私有模块"
 
 #: ../../guide/packaging.rst:65
 msgid "If you want to extend from, or make changes on existing modules for your own use, you can have your modules in the private modules :doc:`directory <../directories>`."
-msgstr ""
+msgstr "如果您想要对现有模块做出更改或是扩展以满足个人使用，您可以将模块放入私有模块 :doc:`目录 <../directories>` 中。"
 
 #: ../../guide/packaging.rst:69
 msgid "For such modules, your channel ID must be the fully-qualifying name of the class. For example, if your class is located at ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``, the channel must have ID ``bob_ric_mod.IRCChannel`` for the framework to recognise it."

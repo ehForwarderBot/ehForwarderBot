@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"POT-Creation-Date: 2018-02-20 23:43+1100\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -52,19 +52,19 @@ msgid "The decorated method."
 msgstr "Dekore edilmiş yöntem."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:1
-msgid "Get the base data path for EFB. This is defined by the environment variable ``EFB_DATA_PATH``."
-msgstr "EFB için temel veri yolunu alın. Bu ortam değişkeni ``EFB_DATA_PATH`` tarafından tanımlanır."
+msgid "Get the base data path for EFB. This can be defined by the environment variable ``EFB_DATA_PATH``."
+msgstr "EFB'nin temel veri yolunu edinin. Bu, çevre değişkeni ``EFB_DATA_PATH`` ile tanımlanabilir."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:4
-msgid "When ``EFB_DATA_PATH`` is defined, the path is constructed by ``$EFB_DATA_PATH/$USERNAME``. By default, this gives ``~/.ehforwarderbot``."
-msgstr "``EFB_DATA_PATH`` tanımlandığı zaman, yol ``$EFB_DATA_PATH/$USERNAME`` tarafından oluşturulur. Varsayılan olarak bu ``~/.ehforwarderbot`` verir."
+msgid "If ``EFB_DATA_PATH`` is not defined, this gives ``~/.ehforwarderbot``."
+msgstr "Eğer `` EFB_DATA_PATH`` tanımlı değilse, varsayılan yol `` ~ /.ehforwarderbot`` dir."
 
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:8
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:7
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:3
 msgid "This method creates the queried path if not existing."
 msgstr "Bu yöntem mevcut değilse sorgulanan yolu oluşturur."
 
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:10
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:9
 msgid "The base path."
 msgstr "Temel yol."
 
@@ -96,8 +96,8 @@ msgid "The path to the configuration file."
 msgstr "Yapılandırma dosyasının yolu."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:1
-msgid "Get the path for custom channels"
-msgstr "Özel kanallar için yol edinin"
+msgid "Get the path to custom channels"
+msgstr "Özel kanallara giden yolu al"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:3
 msgid "The path."

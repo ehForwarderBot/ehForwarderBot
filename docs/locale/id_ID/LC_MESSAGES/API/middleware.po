@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"POT-Creation-Date: 2018-02-20 23:43+1100\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -18,33 +18,46 @@ msgstr ""
 
 #: ../../API/middleware.rst:2
 msgid "EFBMiddleware"
-msgstr ""
+msgstr "EFBMiddleware"
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware:1
 msgid "Middleware class."
-msgstr ""
+msgstr "Kelas Middleware."
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware:5
-msgid "*str* -- Unique ID of the middleware Convention of IDs is specified in :doc:`guide/packaging"
+msgid "*str* -- Unique ID of the middleware Convention of IDs is specified in :doc:`guide/packaging`. This ID will be appended with its instance ID when available."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware:10
+#: ../../../docstring of ehforwarderbot.EFBMiddleware:11
 msgid "*str* -- Human-readable name of the middleware."
+msgstr "* str * - Nama middleware yang dapat dibaca manusia."
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware:15
+msgid "*str* -- The instance ID if available."
+msgstr "*str* -- ID instan jika tersedia."
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.__init__:1
+msgid "Initialize the middleware. Inherited initializer must call the \"super init\" method at the beginning."
+msgstr "Menginisialisasi peranti tengah. Mewarisi penginisialisasi harus memanggil \"super init\" metode di awal."
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.__init__:0
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
+msgid "Parameters"
+msgstr "Parameter"
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.__init__:5
+msgid "Instance ID of the channel."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:1
 msgid "Process a message with middleware"
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
-msgid "Parameters"
-msgstr ""
+msgstr "Proses pesan dengan middleware"
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:3
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:3
 msgid "Message object to process"
-msgstr ""
+msgstr "Objek pesan untuk diproses"
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
@@ -58,11 +71,11 @@ msgstr "Pesan yang diproses atau Tidak ada jika dibuang."
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Return type"
-msgstr ""
+msgstr "Tipe pengembalian"
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:7
 msgid "Optional[:obj:`.EFBMsg`]"
-msgstr ""
+msgstr "Optional [:obj:`.EFBMsg`]"
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:1
 msgid "Process a status update with middleware"
@@ -74,5 +87,13 @@ msgstr "Status yang diproses atau Tidak ada jika dibuang."
 
 #: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:7
 msgid "Optional[:obj:`.EFBStatus`]"
-msgstr ""
+msgstr "Optional[:obj:`.EFBStatus`]"
+
+#: ../../API/middleware.rst:8
+msgid "About Middleware ID"
+msgstr "Tentang Middleware ID"
+
+#: ../../API/middleware.rst:10
+msgid "With the introduction of instance IDs, it is required to use the ``self.middleware_id`` or equivalent instead of any hard-coded ID or constants while referring to the middleware (e.g. while retrieving the path to the configuration files, etc)."
+msgstr "Dengan diperkenalkannya ID instan, diperlukan untuk menggunakan ``self.middleware_id`` atau setara dengan ID kode keras atau konstanta saat mengacu pada peranti tengah (misalnya saat mengambil path pada file konfigurasi, dll.)."
 

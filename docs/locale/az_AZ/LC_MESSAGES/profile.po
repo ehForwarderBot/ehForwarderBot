@@ -1,0 +1,50 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-17 13:42+0800\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Azerbaijani\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: az\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/profile.pot\n"
+"Language: az_AZ\n"
+
+#: ../../profile.rst:2
+msgid "Profiles"
+msgstr ""
+
+#: ../../profile.rst:4
+msgid "Starting from EFB version 2, profiles are introduced to allow users in need to run multiple EFB instances simultaneously without affecting each other."
+msgstr ""
+
+#: ../../profile.rst:8
+msgid "Each profile has its own set of configuration files a set of channels that share the same code, but has different data files, so that they can run on their own."
+msgstr ""
+
+#: ../../profile.rst:13
+msgid "Profiles are, by default, specific to users. This means, two users can have profiles in the same name but operates in isolation."
+msgstr ""
+
+#: ../../profile.rst:17
+msgid "The default profile name is called ``default``. To switch to a different profile, specify the profile name in ``--profile`` flag while starting EFB."
+msgstr ""
+
+#: ../../profile.rst:23
+msgid "Start a new profile"
+msgstr ""
+
+#: ../../profile.rst:25
+msgid "To create a new profile, you need to create a directory in the :file:`EFB_DATA_PATH/profiles`, and create a new configuration file as described in chapter :doc:`getting-started`."
+msgstr ""
+
+#: ../../profile.rst:30
+msgid "When everything is configured properly, you are good to go."
+msgstr ""
+

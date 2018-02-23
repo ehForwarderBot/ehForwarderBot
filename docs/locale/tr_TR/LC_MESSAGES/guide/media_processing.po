@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "Ortam kodlayıcılar"
 
 #: ../../guide/media_processing.rst:27
 msgid "Similarly, we will also not put a strict limit on this as well, but just a recommendation. As you might have already know, there are few mature pure Python media processing libraries, most of them will more or less requires internal or external binary dependencies."
-msgstr ""
+msgstr "Benzer şekilde, bunun için de katı bir sınır koymayacağız, sadece bir öneri. Zaten bildiğiniz gibi, saf Python medya işleme kütüphaneleri azdır, bunların çoğu dahili veya harici ikili bağımlılık gerektirir."
 
 #: ../../guide/media_processing.rst:33
 msgid "We try to aim to use as few different libraries as we can, as more library to install means more space, install time, and complexity. While processing media files, we recommend to use the following libraries if possible:"
@@ -50,11 +50,11 @@ msgstr ""
 
 #: ../../guide/media_processing.rst:43
 msgid "Files in messages"
-msgstr ""
+msgstr "Mesajlardaki dosyalar"
 
 #: ../../guide/media_processing.rst:45
 msgid "When a file sent out from a channel, it should be open, sought back to 0 ( ``file.seek(0)`` ) before sending."
-msgstr ""
+msgstr "Bir kanaldan bir dosya gönderildiği zaman, dosya açılmalıdır, göndermeden önce 0 'a ( ``file.seek(0)`` ) geri döndü."
 
 #: ../../guide/media_processing.rst:48
 msgid "Files sent should be able to be located somewhere in the file system, better with a appropriate extension name, but not required. All files should also have its MIME type specified in the message object. If the channel is not sure about the correct MIME type, it can try to guess with ``libmagic``, or fallback to ``application/octet-stream``. Always try the best to provide the most suitable MIME type when sending."
@@ -62,7 +62,7 @@ msgstr "Gönderilen dosyaların dosya sisteminin içinde bir yerlerde olduğunun
 
 #: ../../guide/media_processing.rst:57
 msgid "For such files, we use ``close`` to signify the end of its lifecycle. If the file is not required by the sender's channel anymore, it can be safely discarded."
-msgstr ""
+msgstr "Bu gibi dosyalar için, biz ömrünün sonunu göstermek için \"kapat\" kelimesini kullandık. Eğer dosya artık gönderenin kanalı tarafından gerekli değilse, güvenli bir şekilde atılabilir."
 
 #: ../../guide/media_processing.rst:61
 msgid "Generally, ``tempfile.NamedTemporaryFile`` should work for ordinary cases."

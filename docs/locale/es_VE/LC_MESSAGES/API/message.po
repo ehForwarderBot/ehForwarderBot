@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"POT-Creation-Date: 2018-02-22 10:02+1100\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -18,160 +18,160 @@ msgstr ""
 
 #: ../../API/message.rst:2
 msgid "EFBMsg"
-msgstr ""
+msgstr "EFBMsg"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:1
 msgid "A message."
-msgstr ""
+msgstr "Un mensaje."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:5
 msgid "Optional[:obj:`.EFBMsgAttribute`] -- Attributes used for a specific message type. Only specific message type requires this attribute. Defaulted to ``None``."
-msgstr ""
+msgstr "Optional[:obj:`.EFBMsgAttribute`] -- Atributos usados para un tipo de mensaje específico. Solo ciertos tipos de mensajes requieren este atributo. Su valor por defecto es ``None``."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:9
 msgid "Link: :obj:`.EFBMsgLinkAttribute`"
-msgstr ""
+msgstr "Link: :obj:`.EFBMsgLinkAttribute`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:10
 msgid "Location: :obj:`.EFBMsgLocationAttribute`"
-msgstr ""
+msgstr "Location: :obj:`.EFBMsgLocationAttribute`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:11
 msgid "Status: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`"
-msgstr ""
+msgstr "Status: Escribir /enviar archivos/etc.: :obj:`.EFBMsgStatusAttribute`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:14
-msgid "Do NOT use object the abstract class :class:`.EFBMsgAttribute` for ``attributes``, but object of specific class instead."
-msgstr ""
+msgid "Do NOT use object of the abstract class :class:`.EFBMsgAttribute` for ``attributes``, but object of specific class instead."
+msgstr "NO uses el objeto de la clase abstracta :class:`.EFBMsgAttribute` para ``attributes``. En su lugar utiliza los objetos de las clases específicas."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:20
 msgid ":obj:`.EFBChat` -- Author of this message."
-msgstr ""
+msgstr ":obj:`.EFBChat` -- Autor del mensaje."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:24
-msgid ":obj:`.EFBChat` -- Sender of the message"
-msgstr ""
+msgid ":obj:`.EFBChat` -- Sender of the message."
+msgstr ":obj:`.EFBChat` -- Remitente del mensaje."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:28
-msgid "Opitonal[:obj:`EFBMsgCommands`] -- Commands attached to the message"
-msgstr ""
+msgid "Optional[:obj:`EFBMsgCommands`] -- Commands attached to the message"
+msgstr "Optional[:obj:`EFBMsgCommands`] -- Comandos adjuntados al mensaje"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:32
 msgid ":obj:`.EFBChannel` -- The channel that the message is to be delivered to"
-msgstr ""
+msgstr ":obj:`.EFBChannel` -- El canal al cual se entregará el mensaje"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:36
 msgid "*bool* -- Flag this up if the message is edited."
-msgstr ""
+msgstr "*bool* -- Habilita esta bandera si el mensaje fue editado."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:40
-msgid "*IO[bytes]* -- File object to multimedia file, type \"ra\". ``None`` if N/A Recommended to use ``NamedTemporaryFile`` object, the file is recommended to be deleted when closed, if not used otherwise. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
-msgstr ""
+msgid "*IO[bytes]* -- File object to multimedia file, type \"ra\". ``None`` if N/A. recommended to use ``NamedTemporaryFile`` object, the file can be deleted when closed, if not used otherwise. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
+msgstr "*IO[bytes]* -- Archivo objeto a archivo multimedia, tipo \"ra\". ``None`` si es N/A. Es recomendado usar un objeto ``NamedTemporaryFile``, el cual al ser cerrado sea eliminado sino será usado nuevamente. Todos los archivos objetos deben ser devueltos a 0 (``file.seek(0)``) antes de enviar."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:47
 msgid "*str* -- File name of the multimedia file. ``None`` if N/A"
-msgstr ""
+msgstr "*str* -- Nombre del archivo multimedia. ``None`` si es N/A"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:51
 msgid "*bool* -- Mark as true if this message is a system message."
-msgstr ""
+msgstr "*bool* -- Habilítala como true si el mensaje es un mensaje de sistema."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:55
 msgid "*str* -- MIME type of the file. ``None`` if N/A"
-msgstr ""
+msgstr "*str* -- tipo MIME del archivo. ``None`` si es N/A"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:59
 msgid "*str* -- Local path of multimedia file. ``None`` if N/A"
-msgstr ""
+msgstr "*str* -- ruta local del archivo multimedia. ``None`` si es N/A"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:63
-msgid "Opitonal[:obj:`EFBMsgSubstitutions`] -- Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat."
-msgstr ""
+msgid "Optional[:obj:`EFBMsgSubstitutions`] -- Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat."
+msgstr "Optional[:obj:`EFBMsgSubstitutions`] -- Substitución de mensajes, se usa usualmente cuando una parte del texto se refiere a otro usuario o chat."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:69
 msgid "Optional[:obj:`EFBMsg`] -- Target message (usually for messages that \"replies to\" another message)."
-msgstr ""
+msgstr "Optional[:obj:`EFBMsg`] -- Mensaje de destino (usado normalmente por mensaje que \"responden a\" otro mensaje)."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:74
 msgid "This message may be a \"minimum message\", with only required fields:"
-msgstr ""
+msgstr "Este mensaje puede ser un \"minimum message\", el cual solo contiene los campos requeridos:"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:76
 msgid ":attr:`.EFBMsg.chat`"
-msgstr ""
+msgstr ":attr:`.EFBMsg.chat`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:77
 msgid ":attr:`.EFBMsg.author`"
-msgstr ""
+msgstr ":attr:`.EFBMsg.author`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:78
 msgid ":attr:`.EFBMsg.text`"
-msgstr ""
+msgstr ":attr:`.EFBMsg.text`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:79
 msgid ":attr:`.EFBMsg.type`"
-msgstr ""
+msgstr ":attr:`.EFBMsg.type`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:80
 msgid ":attr:`.EFBMsg.uid`"
-msgstr ""
+msgstr ":attr:`.EFBMsg.uid`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:84
 msgid "*str* -- text of the message"
-msgstr ""
+msgstr "*str* -- Texto del mensaje"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:88
 msgid ":obj:`.MsgType` -- Type of message"
-msgstr ""
+msgstr ":obj:`.MsgType` -- Tipo del mensaje"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:92
 msgid "*str* -- Unique ID of message. Usually stores the message ID from slave channel. This ID must be unique among all chats in the same channel."
-msgstr ""
+msgstr "*str* -- ID único del mensaje. Es usado usualmente para guardar los ID de los mensajes provenientes del canal esclavo. Este ID debe ser único entre todos los chats dentro del mismo canal."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:97
 msgid "Some channels may not support message editing. Some channels may issue a new uid for edited message."
-msgstr ""
+msgstr "Algunos canales pueden no ser compatibles con la edición de los mensajes. Otros podrían crear un nuevo uid para los mensajes editados."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:102
 msgid "*Dict[str, Any]* -- A series of vendor specific attributes attached. This can be used by any other channels or middlewares that is compatible with such information. Note that no guarantee is provided for information in this section."
-msgstr ""
+msgstr "*Dict[str, Any]* -- Atributos adjuntos específicos de proveedor. Pueden ser usados por cualquier otro canal o \"middlewares\" que sean compatibles con dicha información. Notar que no se proporciona ninguna garantía de información en esta sección."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg.verify:1
 msgid "Verify the validity of message."
-msgstr ""
+msgstr "Verificar la validez del mensaje."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgAttribute:1
 msgid "Bases: :class:`abc.ABC`"
-msgstr ""
+msgstr "Bases: :class:`abc.ABC`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgAttribute:1
-msgid "Abstract class for a message attribute."
+msgid "Abstract class of a message attribute."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:1
 msgid "Bases: :class:`object`"
-msgstr ""
+msgstr "Bases: :class:`object`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
-msgid "EFB command message command."
+msgid "EFB message command."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:5
 msgid "*str* -- Human-friendly name of the command."
-msgstr ""
+msgstr "*str* -- Un nombre legible para el canal."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:9
 msgid "*str* -- Callable name of the command."
-msgstr ""
+msgstr "*str* -- Nombre de invocación del comando."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:13
 msgid "*List[Any]* -- Arguments passed to the function."
-msgstr ""
+msgstr "*List[Any]* -- Argumentos pasados a la función."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:17
 msgid "*Dict[str, Any]* -- Keyword arguments passed to the function."
-msgstr ""
+msgstr "*Dict[str, Any]* -- parámetros de la función pasados como palabras claves."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:0
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands.__init__:0
@@ -179,254 +179,254 @@ msgstr ""
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:0
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:0
 msgid "Parameters"
-msgstr ""
+msgstr "Parámetros"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:1
 msgid "Human-friendly name of the command."
-msgstr ""
+msgstr "Nombre amigable del comando."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:3
 msgid "Callable name of the command."
-msgstr ""
+msgstr "Nombre de invocación del comando."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:5
 msgid "Arguments passed to the function. Defaulted to empty list;"
-msgstr ""
+msgstr "Argumentos pasados a la función. Por defecto es una lista vacía;"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:7
 msgid "Keyword arguments passed to the function. Defaulted to empty dict."
-msgstr ""
+msgstr "Argumentos de la función pasados como palabras claves. Por defecto es un diccionario vacío."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:1
 msgid "EFB message commands. Message commands allow user to take action to a specific message, including vote, add friends, etc."
-msgstr ""
+msgstr "Comandos de mensajes EFB. Los comandos de mensaje permiten al usuario elegir ciertas acciones sobre un mensaje específico. Agregar amigos, Incluir votos, etc."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:7
 msgid "list of :obj:`EFBMsgCommand` -- Commands for the message."
-msgstr ""
+msgstr "list of :obj:`EFBMsgCommand` -- Comandos de mensaje."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands.__init__:1
 msgid "Commands for the message."
-msgstr ""
+msgstr "Comandos de mensaje."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
 msgid "Bases: :class:`ehforwarderbot.message.EFBMsgAttribute`"
-msgstr ""
+msgstr "Bases: :class:`ehforwarderbot.message.EFBMsgAttribute`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
 msgid "EFB link message attribute."
-msgstr ""
+msgstr "Atributo de mensaje de enlace EFB."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:5
 msgid "*str* -- Title of the link."
-msgstr ""
+msgstr "*str* -- Título del enlace."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:9
 msgid "*str, optional* -- Description of the link."
-msgstr ""
+msgstr "*str, optional* -- Descripción del link."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:13
 msgid "*str, optional* -- Image/thumbnail URL of the link."
-msgstr ""
+msgstr "*str, optional* -- URL de Imágen/miniatura del enlace."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:17
 msgid "*str* -- URL of the link."
-msgstr ""
+msgstr "*str* -- URL del enlace."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:1
 msgid "Title of the link."
-msgstr ""
+msgstr "Título del enlace."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:3
 msgid "Description of the link."
-msgstr ""
+msgstr "Descripción del enlace."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:5
 msgid "Image/thumbnail URL of the link."
-msgstr ""
+msgstr "URL de imágen/miniatura del enlace."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:7
 msgid "URL of the link."
-msgstr ""
+msgstr "URL del enlace."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
 msgid "EFB location message attribute."
-msgstr ""
+msgstr "Atributo de mensaje de localización EFB."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:5
 msgid "*float* -- Latitude of the location."
-msgstr ""
+msgstr "*float* -- Latitud de la ubicación en español."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:9
 msgid "*float* -- Longitude of the location."
-msgstr ""
+msgstr "*float* -- Longitud de la localización."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:1
 msgid "Latitude of the location."
-msgstr ""
+msgstr "Latitud de la localización."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:3
 msgid "Longitude of the location."
-msgstr ""
+msgstr "Longitud de la localización."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
 msgid "EFB Message status attribute. Message with type ``Status`` notifies the other end to update a chat-specific status, such as typing, send files, etc."
-msgstr ""
+msgstr "Atributo de estado del mensaje EFB. Mensajes con el tipo ``Status`` notifican a la parte receptora que actualice el estado de un chat-específico, tal como escribiendo, enviando archivos, entre otros."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:7
 msgid "Type of status, possible values are defined in the ``EFBMsgStatusAttribute``."
-msgstr ""
+msgstr "Los tipos de valores posibles en los tipos de estados están definidos en ``EFBMsgStatusAttribute``."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:12
 msgid "*Optional[int]* -- Number of milliseconds for this status to expire. Default to 5 seconds."
-msgstr ""
+msgstr "*Optional[int]* -- Número de milisegundos para que expire el estado. El valor por defecto es de 5 segundos."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:17
 msgid "List of status types supported"
-msgstr ""
+msgstr "Lista del tipo de estados soportados"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:1
 msgid "Bases: :class:`enum.Enum`"
-msgstr ""
+msgstr "Bases: :class:`enum.Enum`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:3
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of typing."
-msgstr ""
+msgstr "Usado en :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, representa el estado \"escribiendo\"."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:8
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading file."
-msgstr ""
+msgstr "Usado en :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, representa el estado de archivo siendo cargado."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:13
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading image."
-msgstr ""
+msgstr "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, representa el estado de la imágen cargandose."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:18
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading audio."
-msgstr ""
+msgstr "Usado en :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, representa el estado del archivo de audio cargandose."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:23
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading video."
-msgstr ""
+msgstr "Usado en :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, representa el estado del video cargandose."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:1
 msgid "Type of status."
-msgstr ""
+msgstr "El tipo de estado."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:2
 msgid "Number of milliseconds for this status to expire. Default to 5 seconds."
-msgstr ""
+msgstr "Número de milisegundos para que el estado expire. El valor por defecto es de 5 segundos."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:1
 msgid "Bases: :class:`dict`"
-msgstr ""
+msgstr "Bases: :class:`dict`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:1
 msgid "EFB message substitutions."
-msgstr ""
+msgstr "Substituciones de mensajes EFB."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:3
-msgid "This is for the case when user \"@-referred\" a list of users in the message. Substitutions here is a dict of correspondence between the string used to refer to the user in the message and a user dict."
+msgid "This is for the case when user \"@-referred\" a list of users in the message. Substitutions here is a dict of correspondence between the string used to refer to the user in the message and a user object."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:8
 msgid "Dictionary of text substitutions targeting to a user or member."
-msgstr ""
+msgstr "Diccionario o substitución de texto dirigido a un usuario o miembro."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:10
-msgid "The key of the dictionary is a tuple of two :obj:`int` s, where first of it is the starting position in the string, and the second is the ending position defined similar to Python's substring. A tuple of ``(3, 15)` corresponds to ``msg.text[3:15]``. The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``, ``b ∈ (a, l]``, where ``l`` is the length of the message text."
+msgid "The key of the dictionary is a tuple of two :obj:`int`\\ s, where first of it is the starting position in the string, and the second is the ending position defined similar to Python's substring. A tuple of ``(3, 15)`` corresponds to ``msg.text[3:15]``. The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``, ``b ∈ (a, l]``, where ``l`` is the length of the message text."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:17
 msgid "Value of the dict may be any user of the chat, or a member of a group. Notice that the :obj:`EFBChat` object here must NOT be a group."
-msgstr ""
+msgstr "El valor del diccionario puede ser cualquier usuario dentro del chat o un miembro de grupo. Nota que el objeto :obj:`EFBChat` usado NO debe ser un grupo."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:21
 msgid "Type:"
-msgstr ""
+msgstr "Tipo:"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:22
 msgid "Dict[Tuple[int, int], :obj:`.EFBChat`]"
-msgstr ""
+msgstr "Dict[Tuple[int, int], :obj:`.EFBChat`]"
 
 #: ../../API/message.rst:14
 msgid "Examples"
-msgstr ""
+msgstr "Ejemplos"
 
 #: ../../API/message.rst:17
-msgid "Primer: Defining related chats"
+msgid "Prelude: Defining related chats"
 msgstr ""
 
 #: ../../API/message.rst:28
 msgid "Initialization and marking chats"
-msgstr ""
+msgstr "Inicialización y marcado de chats"
 
 #: ../../API/message.rst:45
 msgid "Marking message references (targeted message)"
-msgstr ""
+msgstr "Marcado de referencias de mensajes (mensajes destino)"
 
 #: ../../API/message.rst:59
 msgid "Edit a previously sent message"
-msgstr ""
+msgstr "Edita un mensaje enviado previamente"
 
 #: ../../API/message.rst:69
 msgid "Type-specific Information"
-msgstr ""
+msgstr "Información específica del tipo"
 
 #: ../../API/message.rst:75
 msgid "Text message"
-msgstr ""
+msgstr "Mensaje de texto"
 
 #: ../../API/message.rst:93
 msgid "Media message"
-msgstr ""
+msgstr "Mensaje multimedia"
 
 #: ../../API/message.rst:78
-msgid "Information related to edia processing is described in :doc:`/guide/media_processing`."
-msgstr ""
+msgid "Information related to media processing is described in :doc:`/guide/media_processing`."
+msgstr "Información relacionada al procesamiento multimedia descrito en :doc:`/guide/media_processing`."
 
 #: ../../API/message.rst:81
 msgid "The example below is for image (picture) messages. Audio, file, video, sticker works in the same way."
-msgstr ""
+msgstr "El ejemplo siguiente es para mensajes de imágenes (fotos). Audio, archivos, video, y calcomanías (stickers) trabajan de la misma manera."
 
 #: ../../API/message.rst:84
 #: ../../API/message.rst:96
 #: ../../API/message.rst:105
 #: ../../API/message.rst:119
 msgid "In non-text messages, the ``text`` attribute is optional."
-msgstr ""
+msgstr "En mensajes que no son de texto el atributo ``text`` es opcional."
 
 #: ../../API/message.rst:102
 msgid "Location message"
-msgstr ""
+msgstr "Localización del mensaje"
 
 #: ../../API/message.rst:116
 msgid "Link message"
-msgstr ""
+msgstr "Enlace del mensaje"
 
 #: ../../API/message.rst:124
 msgid "Status"
-msgstr ""
+msgstr "Estado"
 
 #: ../../API/message.rst:133
 msgid "Unsupported message"
-msgstr ""
+msgstr "Mensaje no soportado"
 
 #: ../../API/message.rst:127
 msgid "``text`` attribute is required for this type of message."
-msgstr ""
+msgstr "Se requiere el atributo ``text`` para este tipo de mensajes."
 
 #: ../../API/message.rst:136
 msgid "Additional information"
-msgstr ""
+msgstr "Información adicional"
 
 #: ../../API/message.rst:146
 msgid "Substitution"
-msgstr ""
+msgstr "Substitución"
 
 #: ../../API/message.rst:156
 msgid "Commands"
-msgstr ""
+msgstr "Comandos"
 

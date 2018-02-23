@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -18,77 +18,77 @@ msgstr ""
 
 #: ../../guide/master.rst:2
 msgid "Master channels"
-msgstr ""
+msgstr "Canales maestros"
 
 #: ../../guide/master.rst:4
 msgid "Master channels are the interface that directly or indirectly interact with the user. Despite the first master channel of EFB (EFB Telegram Master) is written in a form of Telegram Bot, master channels can be written in many forms, such as:"
-msgstr ""
+msgstr "Los canales maestros son las interfaces que directa o indirectamente interactúan con el usuario. A pesar de que el primer canal maestro de EFB (EFB Telegram Master) esta escrito en la forma de un Bot de Telegram, los canales maestros pueden ser escritos de muchas formas, tales como:"
 
 #: ../../guide/master.rst:10
 msgid "A web app"
-msgstr ""
+msgstr "Una aplicación web"
 
 #: ../../guide/master.rst:11
 msgid "A server that expose APIs to dedicated desktop and mobile clients"
-msgstr ""
+msgstr "Un servidor que expone las API dedicadas a clientes móviles y de escritorio"
 
 #: ../../guide/master.rst:13
 msgid "A chat bot on an existing IM"
-msgstr ""
+msgstr "Un bot de un chat en una IM existente"
 
 #: ../../guide/master.rst:14
 msgid "A server that compiles with a generic IM Protocol"
-msgstr ""
+msgstr "Un servidor que compila con un protocolo genérico IM"
 
 #: ../../guide/master.rst:15
 msgid "A CLI client"
-msgstr ""
+msgstr "Un cliente CLI"
 
 #: ../../guide/master.rst:16
 msgid "Anything else you can think of..."
-msgstr ""
+msgstr "Cualquier otra cosa en la que puedas pensar..."
 
 #: ../../guide/master.rst:19
 msgid "Design guideline"
-msgstr ""
+msgstr "Lineamientos de diseño"
 
 #: ../../guide/master.rst:21
 msgid "When the master channel is implemented on an existing protocol or platform, as far as possible, while considering the user experience, a master channel should:"
-msgstr ""
+msgstr "Cuando el canal maestro es implementado en un protocolo o plataforma existente, él debería cumplir lo más que pueda con los siguientes lineamientos:"
 
 #: ../../guide/master.rst:25
 msgid "maintain one thread per chat, indicating it's name, source channel and type;"
-msgstr ""
+msgstr "mantener un thread por cada chat, indicando su nombre, el canal fuente y el tipo;"
 
 #: ../../guide/master.rst:27
 msgid "support all, if not most, types of messages defined in the framework, process and deliver messages between the user and slave channels;"
-msgstr ""
+msgstr "soportar todos, o al menos la mayoría de los tipos de mensajes definidos en el framework, procesar y entregar los mensajes entre el usuario y los canales esclavos;"
 
 #: ../../guide/master.rst:30
 msgid "support all, if not most, features of messages, including: targeted message reply, chat substitution in text (usually used in @ references), commands, etc. Master channel should be able to process incoming messages with such features, and send messages with such features to slave channels if applicable;"
-msgstr ""
+msgstr "soportar todas, o al menos la mayoría de las características de los mensajes incluyendo: respuesta del mensaje destino, substitución de texto en el chat (usualmente usado en @ references), comandos, etc. El canal maestro deberá ser capaz de procesar menajes entrantes con esas propiedades y además enviar mensajes con dichas propiedades a los canales esclavos si aplica;"
 
 #: ../../guide/master.rst:36
 msgid "be able to invoke and process \"additional features\" offered by slave channels."
-msgstr ""
+msgstr "ser capaz de invocar y procesar \"características adicionales\" ofrecidas por los canales esclavos."
 
 #: ../../guide/master.rst:39
 msgid "Optionally, a master channel can also support / identify vendor-specified information from certain slave channels."
-msgstr ""
+msgstr "Opcionalmente, un canal maestro puede soportar/identificar información específica del proveedor de algunos canales esclavos."
 
 #: ../../guide/master.rst:46
 msgid "An example of an ideal design of a master channel, inspired by Telegram Desktop"
-msgstr ""
+msgstr "Ejemplo del diseño ideal de una canal maestro, inspirado por la aplicación de escritorio de Telegram"
 
 #: ../../guide/master.rst:49
 msgid "Depends on your implementation, a master channel may probably needs to maintain a list of chats and messages, for presentation or other purposes."
-msgstr ""
+msgstr "Dependiendo de la implementación, un canal maestro probablemente necesite mantener una lista de chats y mensajes para presentación u otros propósitos."
 
 #: ../../guide/master.rst:54
 msgid "Message delivery"
-msgstr ""
+msgstr "Entrega de mensajes"
 
 #: ../../guide/master.rst:56
 msgid "Note that sometimes users may send messages outside of this EFB session, so that slave channels might provide a message has its author marked as \"self\"."
-msgstr ""
+msgstr "Nota que algunas veces los usuarios pueden enviar mensajes fuera de esta sesión de EFB, por lo que algunos canales esclavos podrían proporcionar un mensaje en el cual el atributo autor esté marcado como \"self\"."
 

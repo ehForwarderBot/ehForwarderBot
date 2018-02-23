@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:36-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: ../../directories.rst:2
 msgid "Directories"
-msgstr ""
+msgstr "Direktori"
 
 #: ../../directories.rst:4
 msgid "Since EH Forwarder Bot 2.0, most modules should be installed with the Python Package Manager ``pip``, while configurations and data are stored in the \"EFB data directory\"."
@@ -30,13 +30,13 @@ msgstr ""
 
 #: ../../directories.rst:23
 msgid "Notice that when either of the path is customised with an environment variable, EFB will append the username of the user running it to the path."
-msgstr ""
+msgstr "Melihat bahawa apabila salah seorang daripada jalan yang disesuaikan dengan satu persekitaran yang berubah-ubah, dibuat oleh juruterbang, juruterbang akan menambah nama pengguna berjalan ke jalan."
 
 #: ../../directories.rst:28
 msgid "Directory structure"
-msgstr ""
+msgstr "Struktur direktori"
 
 #: ../../directories.rst:30
 msgid "Using the default configuration as an example, this section will introduce about the structure of EFB data directory."
-msgstr ""
+msgstr "Menggunakan konfigurasi lalai sebagai contoh, ini bahagian yang akan memperkenalkan tentang struktur dibuat oleh juruterbang, juruterbang data direktori."
 

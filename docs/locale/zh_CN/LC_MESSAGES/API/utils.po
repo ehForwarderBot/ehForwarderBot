@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"POT-Creation-Date: 2018-02-20 23:43+1100\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr ""
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:3
 msgid "A human readable name for the function."
@@ -52,19 +52,19 @@ msgid "The decorated method."
 msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:1
-msgid "Get the base data path for EFB. This is defined by the environment variable ``EFB_DATA_PATH``."
+msgid "Get the base data path for EFB. This can be defined by the environment variable ``EFB_DATA_PATH``."
 msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:4
-msgid "When ``EFB_DATA_PATH`` is defined, the path is constructed by ``$EFB_DATA_PATH/$USERNAME``. By default, this gives ``~/.ehforwarderbot``."
+msgid "If ``EFB_DATA_PATH`` is not defined, this gives ``~/.ehforwarderbot``."
 msgstr ""
 
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:8
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:7
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:3
 msgid "This method creates the queried path if not existing."
 msgstr ""
 
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:10
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:9
 msgid "The base path."
 msgstr ""
 
@@ -73,7 +73,7 @@ msgstr ""
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:0
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
 msgid "Return type"
-msgstr ""
+msgstr "返回类型"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:1
 msgid "Get path for configuration file. Defaulted to ``~/.ehforwarderbot/profiles/profile_name/channel_id/config.yaml``."
@@ -85,23 +85,23 @@ msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:7
 msgid "Module ID."
-msgstr ""
+msgstr "模块 ID"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:9
 msgid "Extension name of the config file. Defaulted to ``\"yaml\"``."
-msgstr ""
+msgstr "配置文件的扩展名。默认为 ``\"yaml\"``."
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:13
 msgid "The path to the configuration file."
-msgstr ""
+msgstr "配置文件路径。"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:1
-msgid "Get the path for custom channels"
+msgid "Get the path to custom channels"
 msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:3
 msgid "The path."
-msgstr ""
+msgstr "路径。"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:1
 msgid "Get the path for permanent storage of a module."
@@ -122,5 +122,5 @@ msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:4
 msgid "Type of module, one of ``'master'``, ``'slave'`` and ``'middleware'``"
-msgstr ""
+msgstr "模块类型，``'master'``, ``'slave'`` 和 ``'middleware'``之一"
 

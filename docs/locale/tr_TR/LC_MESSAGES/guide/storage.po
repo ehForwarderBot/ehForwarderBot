@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -26,23 +26,23 @@ msgstr "Konfigürasyon ve Kalıcı Depolama"
 
 #: ../../guide/storage.rst:7
 msgid "As described in :doc:`/directories`, each module has been allocated with a folder per profile for configurations and other storage. The path can be obtained using :meth:`~.ehforwarderbot.utils.get_data_path` with your module ID. All such storage is specific to only one profile."
-msgstr ""
+msgstr ":doc: `/directories` bölümünde anlatıldığı gibi, her modül konfigürasyonlar ve diğer depolama için profil başına bir klasör ile ayrılmıştır. Yol, modül kimliğinizle :meth: `~ .ehforwarderbot.utils.get_data_path` kullanılarak elde edilebilir. Bu tür depolama birikimi yalnızca bir profile özeldir."
 
 #: ../../guide/storage.rst:14
 msgid "For configurations, we recommend to use ``<module_data_path>/config.yaml``. Similarly, we prepared :meth:`~.ehforwarderbot.utils.get_config_path` to get the path for default config file. Again, you are not forced to use this name or YAML as the format of your config file."
-msgstr ""
+msgstr "Konfigürasyonlar için, bunu kullanmanızı öneririz ``<module_data_path>/config.yaml``. Benzer olarak, bunu hazırladık :meth:`~.ehforwarderbot.utils.get_config_path`varsayılan konfig. dosyası için yolu alabilmek için. Yine, konfig. dosyanızın formatı için bu ismi veya YAML kullanmak için zorlanmıyorsunuz."
 
 #: ../../guide/storage.rst:20
 msgid "Usually in the storage folder lives:"
-msgstr ""
+msgstr "Genellikle depolama klasöründe bulunur:"
 
 #: ../../guide/storage.rst:22
 msgid "Configuration files"
-msgstr "Konfigürasyon dosyaları"
+msgstr "Yapılandırma dosyaları"
 
 #: ../../guide/storage.rst:23
 msgid "User credentials / Session storage"
-msgstr ""
+msgstr "Kullanıcı kimlik bilgileri / Geçici depolama"
 
 #: ../../guide/storage.rst:24
 msgid "Databases"
@@ -54,5 +54,5 @@ msgstr "Geçici Depolama"
 
 #: ../../guide/storage.rst:29
 msgid "While processing multimedia messages, we inevitably need to store certain files temporarily, either within the channel or across channels. Usually, temporary files can be handled with Python's ``tempfile`` library."
-msgstr ""
+msgstr "Multimedya mesajları işlenirken, kaçınılmaz olarak, belirli dosyaları geçici olarak, kanal içinde veya kanallar arasında saklamalıyız. Genellikle, geçici dosyalar Python'un ``tempfile`` kütüphanesi ile işlenebilir."
 

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -18,53 +18,53 @@ msgstr ""
 
 #: ../../start.rst:2
 msgid "Launch the framework"
-msgstr ""
+msgstr "Iniciar el Framework"
 
 #: ../../start.rst:4
 msgid "EH Forwarder Bot offered 2 ways to launch the framework:"
-msgstr ""
+msgstr "EH Forwarder Bot ofreció 2 formas de iniciar el Framework:"
 
 #: ../../start.rst:6
 msgid "``ehforwarderbot``"
-msgstr ""
+msgstr "``ehforwarderbot``"
 
 #: ../../start.rst:7
 msgid "``python3 -m ehforwarderbot``"
-msgstr ""
+msgstr "``python3 -m ehforwarderbot``"
 
 #: ../../start.rst:9
 msgid "Both commands are exactly the same thing, accept the same flags, run the same code. The latter is only a backup in case the former does not work."
-msgstr ""
+msgstr "Ambos comandos son exactamente lo mismo, acepta los mismos indicadores, ejecuta el mismo código. Este último es solo una copia de seguridad en caso de que el primero no funcione."
 
 #: ../../start.rst:14
 msgid "Options"
-msgstr ""
+msgstr "Opciones"
 
 #: ../../start.rst:16
 msgid "``-h``, ``--help``: Show help message"
-msgstr ""
+msgstr "``-h``, ``--help``: Muestra el mensaje de ayuda"
 
 #: ../../start.rst:18
 msgid "``-p PROFILE``, ``--profile PROFILE``: Switch :doc:`profile <profile>`"
-msgstr ""
+msgstr "``-p PROFILE``, ``--profile PROFILE``: Cambiar :doc:`profile <profile>`"
 
 #: ../../start.rst:20
 msgid "From version 2, EFB supports running different instances under the same user, identified by their profiles. The default profile is named ``default``."
-msgstr ""
+msgstr "A partir de la versión 2, EFB admite ejecutar diferentes instancias bajo el mismo usuario, identificadas por sus perfiles. El perfil predeterminado se llama `` default``."
 
 #: ../../start.rst:24
 msgid "``-V``, ``--version``: Print version information"
-msgstr ""
+msgstr "`-V``,` `--version``: Imprimir información de versión"
 
 #: ../../start.rst:26
 msgid "This shows version number of Python you are using, the EFB framework, and all channels and middlewares enabled."
-msgstr ""
+msgstr "Esto muestra el número de versión de Python que está utilizando, el marco EFB y todos los canales y middleware habilitados."
 
 #: ../../start.rst:30
 msgid "``-v``, ``--verbose``: Print verbose log"
-msgstr ""
+msgstr "`` -v``, `` --verbose``: Imprimir registro detallado"
 
 #: ../../start.rst:32
 msgid "This option enables verbose log of EFB and all enabled modules. This, together with ``-V``, is particularly useful in debugging and issue reporting."
-msgstr ""
+msgstr "Esta opción habilita el registro detallado de EFB y todos los módulos habilitados. Esto, junto con `` -V``, es particularmente útil en la depuración y el informe de problemas."
 

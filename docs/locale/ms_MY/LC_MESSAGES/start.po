@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:36-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +18,11 @@ msgstr ""
 
 #: ../../start.rst:2
 msgid "Launch the framework"
-msgstr ""
+msgstr "Pelancaran rangka"
 
 #: ../../start.rst:4
 msgid "EH Forwarder Bot offered 2 ways to launch the framework:"
-msgstr ""
+msgstr "EH Syarikat Bot yang ditawarkan 2 cara untuk melancarkan rangka:"
 
 #: ../../start.rst:6
 msgid "``ehforwarderbot``"
@@ -34,7 +34,7 @@ msgstr ""
 
 #: ../../start.rst:9
 msgid "Both commands are exactly the same thing, accept the same flags, run the same code. The latter is only a backup in case the former does not work."
-msgstr ""
+msgstr "Kedua-dua perintah adalah hal yang persis sama, menerima sama bendera, lari kod yang sama. Yang kedua adalah hanya sandaran dalam hal bekas tidak bekerja."
 
 #: ../../start.rst:14
 msgid "Options"

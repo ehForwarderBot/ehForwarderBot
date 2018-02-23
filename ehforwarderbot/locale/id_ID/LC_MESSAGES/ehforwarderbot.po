@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-09 22:23+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"POT-Creation-Date: 2018-02-20 23:45+1100\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id_ID\n"
@@ -41,38 +41,38 @@ msgstr "Memilih profil untuk memulai dengan."
 msgid "Initializing slave {}..."
 msgstr "{} menginisialisasi budak..."
 
-#: ehforwarderbot/__main__.py:83
+#: ehforwarderbot/__main__.py:85
 #, python-brace-format
-msgid "Slave channel {name} ({id}) is initialized."
-msgstr ""
-
-#: ehforwarderbot/__main__.py:87
-msgid "Initializing master {}..."
+msgid "Slave channel {name} ({id}) # {instance_id} is initialized."
 msgstr ""
 
 #: ehforwarderbot/__main__.py:90
+msgid "Initializing master {}..."
+msgstr "Menginisialisasi master {}..."
+
+#: ehforwarderbot/__main__.py:96
 #, python-brace-format
-msgid "Master channel {name} ({id}) is initialized."
+msgid "Master channel {name} ({id}) # {instance_id} is initialized."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:94
+#: ehforwarderbot/__main__.py:101
 msgid "All channels initialized."
 msgstr "Semua saluran yang diinisialisasi."
 
-#: ehforwarderbot/__main__.py:96
+#: ehforwarderbot/__main__.py:103
 msgid "Initializing middleware {}..."
-msgstr ""
+msgstr "Menginisialisasi middleware {}..."
 
-#: ehforwarderbot/__main__.py:100
+#: ehforwarderbot/__main__.py:110
 #, python-brace-format
-msgid "Middleware {name} ({id}) is initialized."
+msgid "Middleware {name} ({id}) # {instance_id} is initialized."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:102
+#: ehforwarderbot/__main__.py:114
 msgid "All middlewares are initialized."
 msgstr "Semua middlewares diinisialisasi."
 
-#: ehforwarderbot/__main__.py:122
+#: ehforwarderbot/__main__.py:134
 #, python-brace-format
 msgid "EH Forwarder Bot\n"
 "Version: {version}\n"
@@ -80,27 +80,36 @@ msgid "EH Forwarder Bot\n"
 "{py_version}"
 msgstr "EH Forwarder Bot versi: {version} Python versi:{py_version}"
 
-#: ehforwarderbot/__main__.py:130
+#: ehforwarderbot/__main__.py:143 ehforwarderbot/__main__.py:152
+#: ehforwarderbot/__main__.py:163
+msgid "Default profile"
+msgstr "Profil standar"
+
+#: ehforwarderbot/__main__.py:144
 msgid "Master channel:"
 msgstr "Saluran Inti:"
 
-#: ehforwarderbot/__main__.py:130 ehforwarderbot/__main__.py:137
-#: ehforwarderbot/__main__.py:145
+#: ehforwarderbot/__main__.py:144 ehforwarderbot/__main__.py:165
 #, python-brace-format
-msgid "{name} ({id}) {version}"
+msgid "{name} ({id}) {version} # {instance_id}"
 msgstr ""
 
-#: ehforwarderbot/__main__.py:134
+#: ehforwarderbot/__main__.py:149
 msgid "Slave channel:"
 msgid_plural "Slave channels:"
-msgstr[0] ""
+msgstr[0] "Saluran Slave:"
 
-#: ehforwarderbot/__main__.py:141
+#: ehforwarderbot/__main__.py:154
+#, python-brace-format
+msgid "{name} ({id}) {version}"
+msgstr "{name} ({id}) {version}"
+
+#: ehforwarderbot/__main__.py:159
 msgid "Middleware:"
 msgid_plural "Middlewares:"
-msgstr[0] ""
+msgstr[0] "Middlewares:"
 
-#: ehforwarderbot/__main__.py:150
+#: ehforwarderbot/__main__.py:171
 msgid "No middleware is enabled."
 msgstr "Tidak ada middleware yang diaktifkan."
 

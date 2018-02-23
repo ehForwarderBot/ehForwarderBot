@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,7 @@ msgstr "Ada yang lain yang bisa anda pikirkan..."
 
 #: ../../guide/master.rst:19
 msgid "Design guideline"
-msgstr ""
+msgstr "Pedoman desain"
 
 #: ../../guide/master.rst:21
 msgid "When the master channel is implemented on an existing protocol or platform, as far as possible, while considering the user experience, a master channel should:"
@@ -58,11 +58,11 @@ msgstr "Saat saluran utama diimplementasikan pada protokol atau platform yang ad
 
 #: ../../guide/master.rst:25
 msgid "maintain one thread per chat, indicating it's name, source channel and type;"
-msgstr ""
+msgstr "mempertahankan satu thread per chat, menunjukkan nama, sumber saluran, dan tipenya;"
 
 #: ../../guide/master.rst:27
 msgid "support all, if not most, types of messages defined in the framework, process and deliver messages between the user and slave channels;"
-msgstr ""
+msgstr "mendukung semua, atau paling tidak sebagian besar, jenis pesan yang ditetapkan dalam framework, memproses dan menyampaikan pesan antara pengguna dengan saluran slave;"
 
 #: ../../guide/master.rst:30
 msgid "support all, if not most, features of messages, including: targeted message reply, chat substitution in text (usually used in @ references), commands, etc. Master channel should be able to process incoming messages with such features, and send messages with such features to slave channels if applicable;"
@@ -70,11 +70,11 @@ msgstr "mendukung semua, jika tidak terlalu banyak, fitur pesan, termasuk: balas
 
 #: ../../guide/master.rst:36
 msgid "be able to invoke and process \"additional features\" offered by slave channels."
-msgstr ""
+msgstr "dapat memanggil dan memproses \"fungsi tambahan\" yang ditawarkan oleh saluran slave."
 
 #: ../../guide/master.rst:39
 msgid "Optionally, a master channel can also support / identify vendor-specified information from certain slave channels."
-msgstr ""
+msgstr "Selain itu, saluran utama juga dapat mendukung / mengidentifikasi informasi yang disampaikan oleh vendor dari saluran slave tertentu."
 
 #: ../../guide/master.rst:46
 msgid "An example of an ideal design of a master channel, inspired by Telegram Desktop"

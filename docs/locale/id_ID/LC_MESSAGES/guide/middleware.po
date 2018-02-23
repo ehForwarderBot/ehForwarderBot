@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-18 07:08-0500\n"
+"PO-Revision-Date: 2018-02-23 05:35-0500\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Seperti saluran, masing-masing middlewares juga memiliki tingkatan per s
 
 #: ../../guide/middleware.rst:17
 msgid "Message and Status Processing"
-msgstr ""
+msgstr "Pemrosesan Pesan dan Status"
 
 #: ../../guide/middleware.rst:19
 msgid "Each middleware by default has 2 methods, :meth:`~.ehforwarderbot.EFBMiddleware.process_message` which processes message objects, and :meth:`~.ehforwarderbot.EFBMiddleware.process_status` which processes status objects. If they are not overridden, they will not touch on the object and pass it on as is."
@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../guide/middleware.rst:24
 msgid "To modify an object, just override the relative method and make changes to it. To discard an object, simply return ``None``. When an object is discarded, it will not be passed further to other middlewares or channels, which means a middleware or a channel should never receive a ``None`` message or status."
-msgstr ""
+msgstr "Untuk memodifikasi sebuah objek, hanya gantikan metode relatif dan buatkan perubahan padanya. Untuk membuang sebuah objek, cukup kembali ``None``. Saat sebuah objek dibuang, maka tidak akan diteruskan ke peranti tengah atau saluran lain, yang berarti peranti tengah atau saluran tidak boleh menerima sebuah ``None``. pesan atau status."
 
 #: ../../guide/middleware.rst:32
 msgid "Other Usages"
@@ -50,7 +50,7 @@ msgstr "Mempunyai batasan yang agak sedikit dibandingkan dengan saluran, middlew
 
 #: ../../guide/middleware.rst:38
 msgid "Some ideas:"
-msgstr ""
+msgstr "Beberapa gagasan:"
 
 #: ../../guide/middleware.rst:40
 msgid "Periodic broadcast to master / slave channels"
@@ -58,11 +58,11 @@ msgstr "Penyiaran berulang-ulang ke saluran utama / slave"
 
 #: ../../guide/middleware.rst:41
 msgid "Integration with chat bots"
-msgstr ""
+msgstr "Penggabungan dengan bot saluran"
 
 #: ../../guide/middleware.rst:42
 msgid "Automated operations on vendor-specific commands / additional features"
-msgstr ""
+msgstr "Operasi otomatis pada perintah khusus vendor / fitur tambahan"
 
 #: ../../guide/middleware.rst:44
 msgid "Share user session from slave channel with other programs"
