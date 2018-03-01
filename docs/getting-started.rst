@@ -66,45 +66,13 @@ Instructions about installing each channel is available at
 their respective documentations.
 
 When you have successfully installed a channel, you can enable
-it by listing its Channel ID in the configuration file.
+it by listing its Channel ID in the :doc:`configuration file <config>`.
 The default path is ``~/.ehforwarderbot/profiles/default/config.yaml``.
 Please refer to :doc:`directories` if you have configured otherwise.
 
 Please note that although you can have more than one slaves channels
 running at the same time, you can only have exactly one master channels
 running in one profile. Meanwhile, middlewares are completely optional.
-
-Syntax
-~~~~~~
-
-The configuration file is in the YAML syntax. If you are not familiar
-with its syntax, please check its documentations and tutorials for
-details.
-
-* The ID of the master channel enabled is under the key ``master_channel``
-* The ID of slave channels enabled is listed under the key
-  ``slave_channel``. It has to be a list even if just one channel is
-  to be enabled.
-* The ID of middlewares enabled are listed under the key ``middlewares``.
-  It has to be a list even if just one middleware is to be enabled.
-  However, if you don't want to enable any middleware, just omit the section
-  completely.
-
-To have multiple accounts running simultaneously, you can also appoint an instance
-ID to a module. Instance ID can be defined by the user, and if defined,
-it must has nothing other than letters, numbers and underscores, i.e. in
-regular expressions ``[a-zA-Z0-9_]+``. When an instance ID is not defined,
-the channel will run in the "default" instance with no instance ID.
-
-To indicate the instance ID of an instance, append ``#`` following by the
-instance ID to the module ID. For example, slave channel ``bar.dummy``
-running with instance ID ``alice`` should be defined as ``bar.dummy#alice``.
-If the channel requires configurations, it should be done in the directory
-with the same name (e.g. ``EFB_DATA_PATH/profiles/PROFILE/bar.dummy#alice``),
-so as to isolate instances.
-
-Please avoid having two modules with the same set of module ID and instance ID
-as it may leads to unexpected results.
 
 .. admonition:: Example
     :class: tip
@@ -116,9 +84,7 @@ as it may leads to unexpected results.
     * Slave channels
         * Demo Slave (``foo.demo_slave``)
         * Dummy Slave (``bar.dummy``)
-        * Dummy Slave (``bar.dummy``) at ``alt`` instance
     * Middlewares
-        * Message Archiver (``foo.msg_archiver``)
         * Null Middleware (``foo.null``)
 
     In the ``config.yaml`` it should have the following lines:
@@ -129,9 +95,7 @@ as it may leads to unexpected results.
         slave_channels:
         - foo.demo_slave
         - bar.dummy
-        - bar.dummy#alt
         middlewares:
-        - foo.msg_archiver
         - foo.null
 
 Launch EFB

@@ -39,6 +39,7 @@ control their accounts in other platforms.
     :maxdepth: 1
 
     getting-started
+    config
     start
     directories
     profile
