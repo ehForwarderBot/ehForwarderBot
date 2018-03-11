@@ -24,10 +24,10 @@ details.
 Instance ID
 ~~~~~~~~~~~
 
-To have multiple accounts running simultaneously, you can also appoint an instance
+To have multiple accounts running simultaneously, you can appoint an instance
 ID to a module. Instance ID can be defined by the user, and if defined,
 it must has nothing other than letters, numbers and underscores, i.e. in
-regular expressions ``[a-zA-Z0-9_]+``. When an instance ID is not defined,
+regular expressions ``[a-zA-Z0-9_]+``. When instance ID is not defined,
 the channel will run in the "default" instance with no instance ID.
 
 To indicate the instance ID of an instance, append ``#`` following by the

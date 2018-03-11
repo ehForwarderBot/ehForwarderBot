@@ -151,7 +151,7 @@ def main():
                 instance_id = i.split('#', 1)[1:]
                 instance_id = (instance_id and instance_id[0]) or _("Default profile")
                 slave_channel: EFBChannel = utils.locate_module(i, 'slave')
-                versions += "\n    " + _("{name} ({id}) {version}") \
+                versions += "\n    " + _("{name} ({id}) {version} # {instance_id}") \
                             .format(name=slave_channel.channel_name,
                                     id=slave_channel.channel_id,
                                     version=slave_channel.__version__,

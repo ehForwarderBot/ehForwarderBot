@@ -93,7 +93,7 @@ EFB framework is licensed under `GNU General Public License 3.0`_::
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-.. _Install and enable channels: https://ehforwarderbot.readthedocs.io/en/efb2/getting-started.html
+.. _Install and enable channels: https://ehforwarderbot.readthedocs.io/en/latest/getting-started.html
 .. _channels repository: https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository
 .. _Documentation: https://ehforwarderbot.readthedocs.io/
 .. _GNU General Public License 3.0: https://www.gnu.org/licenses/gpl-3.0.txt

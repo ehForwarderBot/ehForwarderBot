@@ -20,10 +20,6 @@ This path defined here should be an **absolute path**.
     It can be overridden with environment variable
     ``EFB_CACHE_PATH``.
 
-Notice that when either of the path is customised with an
-environment variable, EFB will append the username of
-the user running it to the path.
-
 Directory structure
 -------------------
 

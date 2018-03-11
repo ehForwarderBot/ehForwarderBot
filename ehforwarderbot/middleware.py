@@ -15,7 +15,7 @@ class EFBMiddleware(ABC):
 
     Attributes:
         middleware_id (str):
-            Unique ID of the middleware
+            Unique ID of the middleware.
             Convention of IDs is specified in :doc:`/guide/packaging`.
             This ID will be appended with its instance ID when available.
         middleware_name (str): Human-readable name of the middleware.
@@ -34,7 +34,7 @@ class EFBMiddleware(ABC):
         at the beginning.
 
         Args:
-            instance_id: Instance ID of the channel.
+            instance_id: Instance ID of the middleware.
         """
         self.instance_id = instance_id
         if instance_id:
