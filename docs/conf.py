@@ -192,14 +192,16 @@ locale_dirs = ['locale/']   # path is example but recommended.
 gettext_compact = False     # optional.
 
 
+conversion = {
+    'az': 'az_AZ', 'es': 'es_VE', 'id': 'id_ID',
+    'it': 'it_IT', 'ja': 'ja_JP', 'ms': 'ms_MY',
+    'ro': 'ro_RO', 'tr': 'tr_TR', 'zh': 'zh_CN',
+    'en': 'en_US'
+}
+
+
 # Locale fallback settings
 def locale_fallback_decorator(fun):
-    conversion = {
-        'az': 'az_AZ', 'es': 'es_VE', 'id': 'id_ID',
-        'it': 'it_IT', 'ja': 'ja_JP', 'ms': 'ms_MY',
-        'ro': 'ro_RO', 'tr': 'tr_TR', 'zh': 'zh_CN',
-        'en': 'en_US'
-    }
 
     def wrapper(self, **kwargs):
         self.config.language = conversion.get(self.config.language, self.config.language)
@@ -208,3 +210,9 @@ def locale_fallback_decorator(fun):
 
 
 sphinx.application.Sphinx._init_i18n = locale_fallback_decorator(sphinx.application.Sphinx._init_i18n)
+
+
+def setup(self):
+    self.config.language = conversion.get(self.config.language, self.config.language)
+    self.config.overrides['language'] = conversion.get(self.config.overrides.get('language', None),
+                                               self.config.overrides.get('language', None))
