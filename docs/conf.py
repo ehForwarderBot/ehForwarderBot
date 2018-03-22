@@ -20,7 +20,7 @@
 import os
 import sys
 
-import sphinx.locale
+import sphinx.application
 import sphinx_readable_theme
 
 sys.path.insert(0, os.path.abspath('..'))
@@ -201,11 +201,10 @@ def locale_fallback_decorator(fun):
         'en': 'en_US'
     }
 
-    def wrapper(locale_dirs, language, **kwargs):
-        language = conversion.get(language, language)
-        print("Called the wrapper with", language)
-        return fun(locale_dirs, language, **kwargs)
+    def wrapper(self, **kwargs):
+        self.config.language = conversion.get(self.config.language, self.config.language)
+        return fun(self, **kwargs)
     return wrapper
 
 
-sphinx.locale.init = locale_fallback_decorator(sphinx.locale.init)
+sphinx.application.Sphinx._init_i18n = locale_fallback_decorator(sphinx.application.Sphinx._init_i18n)
