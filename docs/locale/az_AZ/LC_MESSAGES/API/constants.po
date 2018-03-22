@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:41-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Azerbaijani\n"
 "MIME-Version: 1.0\n"
@@ -18,52 +18,52 @@ msgstr ""
 
 #: ../../API/constants.rst:2
 msgid "Constants"
-msgstr ""
+msgstr "Sabit"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType:1
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.ChatType:1
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.TargetType:1
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.ChannelType:1
 msgid "An enumeration."
-msgstr ""
+msgstr "Sadalamaq."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Audio:1
 msgid "Audio message. Including music and voice message."
-msgstr ""
+msgstr "Səs mesajı. Musiqi və səsli mesajlar daxildir."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.File:1
 msgid "Messages sent as a file."
-msgstr ""
+msgstr "Mesaj fayl olaraq göndərildi."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Image:1
 msgid "Image (picture) message"
-msgstr ""
+msgstr "Şəkil (foto) mesaj"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Link:1
 msgid "Message that is mainly one specific link, or a text message with one link preview."
-msgstr ""
+msgstr "Mesajda bir xüsusi link, və ya önbaxış linkli mətn mesajı."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Location:1
 msgid "Location message."
-msgstr ""
+msgstr "Mesajın məkanı."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Status:1
 msgid "Status from a user in a chat, usually typing and uploading."
-msgstr ""
+msgstr "İstifadəçinin çat statusu, adətən yazma və yükləmə."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Sticker:1
 msgid "Pictures sent with few text caption, usually a transparent background, and a limited number of options that is usually not from the user's photo gallery."
-msgstr ""
+msgstr "Bir neçə mətn başlığı ilə göndərilən şəkillər, adətən şəffaf bir fon və istifadəçinin foto qalareyasından deyil, məhdud sayda variantlardan ibarət ola bilər."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Text:1
 msgid "Text message"
-msgstr ""
+msgstr "Mətn mesajı"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Unsupported:1
 msgid "Any type of message that is not listed above. A text representation is required."
-msgstr ""
+msgstr "Yuxarıda göstərilməyən hər hansı bir mesaj növü. Mətn təqdimatı tələb olunur."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Video:1
 msgid "Video message"
-msgstr ""
+msgstr "Video mesaj"
 

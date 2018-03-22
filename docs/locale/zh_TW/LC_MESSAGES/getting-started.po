@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-22 10:02+1100\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"POT-Creation-Date: 2018-03-01 22:12+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -81,110 +81,70 @@ msgid "Instructions about installing each channel is available at their respecti
 msgstr ""
 
 #: ../../getting-started.rst:68
-msgid "When you have successfully installed a channel, you can enable it by listing its Channel ID in the configuration file. The default path is ``~/.ehforwarderbot/profiles/default/config.yaml``. Please refer to :doc:`directories` if you have configured otherwise."
+msgid "When you have successfully installed a channel, you can enable it by listing its Channel ID in the :doc:`configuration file <config>`. The default path is ``~/.ehforwarderbot/profiles/default/config.yaml``. Please refer to :doc:`directories` if you have configured otherwise."
 msgstr ""
 
 #: ../../getting-started.rst:73
 msgid "Please note that although you can have more than one slaves channels running at the same time, you can only have exactly one master channels running in one profile. Meanwhile, middlewares are completely optional."
 msgstr ""
 
-#: ../../getting-started.rst:78
-msgid "Syntax"
-msgstr ""
-
-#: ../../getting-started.rst:80
-msgid "The configuration file is in the YAML syntax. If you are not familiar with its syntax, please check its documentations and tutorials for details."
-msgstr ""
-
-#: ../../getting-started.rst:84
-msgid "The ID of the master channel enabled is under the key ``master_channel``"
-msgstr ""
-
-#: ../../getting-started.rst:85
-msgid "The ID of slave channels enabled is listed under the key ``slave_channel``. It has to be a list even if just one channel is to be enabled."
-msgstr ""
-
-#: ../../getting-started.rst:88
-msgid "The ID of middlewares enabled are listed under the key ``middlewares``. It has to be a list even if just one middleware is to be enabled. However, if you don't want to enable any middleware, just omit the section completely."
-msgstr ""
-
-#: ../../getting-started.rst:93
-msgid "To have multiple accounts running simultaneously, you can also appoint an instance ID to a module. Instance ID can be defined by the user, and if defined, it must has nothing other than letters, numbers and underscores, i.e. in regular expressions ``[a-zA-Z0-9_]+``. When an instance ID is not defined, the channel will run in the \"default\" instance with no instance ID."
-msgstr ""
-
-#: ../../getting-started.rst:99
-msgid "To indicate the instance ID of an instance, append ``#`` following by the instance ID to the module ID. For example, slave channel ``bar.dummy`` running with instance ID ``alice`` should be defined as ``bar.dummy#alice``. If the channel requires configurations, it should be done in the directory with the same name (e.g. ``EFB_DATA_PATH/profiles/PROFILE/bar.dummy#alice``), so as to isolate instances."
-msgstr ""
-
-#: ../../getting-started.rst:106
-msgid "Please avoid having two modules with the same set of module ID and instance ID as it may leads to unexpected results."
-msgstr ""
-
-#: ../../getting-started.rst:109
+#: ../../getting-started.rst:77
 msgid "Example"
 msgstr ""
 
-#: ../../getting-started.rst:112
+#: ../../getting-started.rst:80
 msgid "To enable the following modules:"
 msgstr ""
 
-#: ../../getting-started.rst:114
+#: ../../getting-started.rst:82
 msgid "Master channel"
 msgstr ""
 
-#: ../../getting-started.rst:115
+#: ../../getting-started.rst:83
 msgid "Demo Master (``foo.demo_master``)"
 msgstr ""
 
-#: ../../getting-started.rst:118
+#: ../../getting-started.rst:85
 msgid "Slave channels"
 msgstr ""
 
-#: ../../getting-started.rst:117
+#: ../../getting-started.rst:85
 msgid "Demo Slave (``foo.demo_slave``)"
 msgstr ""
 
-#: ../../getting-started.rst:118
+#: ../../getting-started.rst:86
 msgid "Dummy Slave (``bar.dummy``)"
 msgstr ""
 
-#: ../../getting-started.rst:119
-msgid "Dummy Slave (``bar.dummy``) at ``alt`` instance"
-msgstr ""
-
-#: ../../getting-started.rst:122
+#: ../../getting-started.rst:88
 msgid "Middlewares"
 msgstr ""
 
-#: ../../getting-started.rst:121
-msgid "Message Archiver (``foo.msg_archiver``)"
-msgstr ""
-
-#: ../../getting-started.rst:122
+#: ../../getting-started.rst:88
 msgid "Null Middleware (``foo.null``)"
 msgstr ""
 
-#: ../../getting-started.rst:124
+#: ../../getting-started.rst:90
 msgid "In the ``config.yaml`` it should have the following lines:"
 msgstr ""
 
-#: ../../getting-started.rst:138
+#: ../../getting-started.rst:102
 msgid "Launch EFB"
 msgstr ""
 
-#: ../../getting-started.rst:144
+#: ../../getting-started.rst:108
 msgid "This will launch EFB directly in the current environment. The default :doc:`profile` is named ``default``, to launch EFB in a different profile, append ``--profile <profile-name>`` to the command."
 msgstr ""
 
-#: ../../getting-started.rst:148
+#: ../../getting-started.rst:112
 msgid "For more command line options, use ``--help`` option."
 msgstr ""
 
-#: ../../getting-started.rst:151
+#: ../../getting-started.rst:115
 msgid "Launch EFB as a daemon process"
 msgstr ""
 
-#: ../../getting-started.rst:153
+#: ../../getting-started.rst:117
 msgid "Since version 2, EH Forwarder Bot has removed the daemon helper as it is unstable to use.  We recommend you to use mature solutions for daemon management, such as systemd_, upstart_, or pm2_."
 msgstr ""
 

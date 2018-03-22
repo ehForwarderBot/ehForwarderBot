@@ -1,0 +1,38 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-11 19:57+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Spanish, Argentina\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: es-AR\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/directories.pot\n"
+"Language: es_AR\n"
+
+#: ../../directories.rst:2
+msgid "Directories"
+msgstr ""
+
+#: ../../directories.rst:4
+msgid "Since EH Forwarder Bot 2.0, most modules should be installed with the Python Package Manager ``pip``, while configurations and data are stored in the \"EFB data directory\"."
+msgstr ""
+
+#: ../../directories.rst:9
+msgid "By default, the data directory is user specific, located in the user's home directory, ``~/.ehforwarderbot``.  This can be overridden with the environment variable ``EFB_DATA_PATH``. This path defined here should be an **absolute path**."
+msgstr ""
+
+#: ../../directories.rst:24
+msgid "Directory structure"
+msgstr ""
+
+#: ../../directories.rst:26
+msgid "Using the default configuration as an example, this section will introduce about the structure of EFB data directory."
+msgstr ""
+

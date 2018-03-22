@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-22 10:02+1100\n"
-"PO-Revision-Date: 2018-02-23 05:36-0500\n"
+"PO-Revision-Date: 2018-03-22 07:41-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -241,7 +241,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:3
 msgid "Description of the link."
-msgstr ""
+msgstr "Penerangan pautan."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:5
 msgid "Image/thumbnail URL of the link."
@@ -269,7 +269,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:3
 msgid "Longitude of the location."
-msgstr ""
+msgstr "Bujur lokasi."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
 msgid "EFB Message status attribute. Message with type ``Status`` notifies the other end to update a chat-specific status, such as typing, send files, etc."
@@ -285,7 +285,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:17
 msgid "List of status types supported"
-msgstr ""
+msgstr "Senarai jenis status yang disokong"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:1
 msgid "Bases: :class:`enum.Enum`"
@@ -317,7 +317,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:2
 msgid "Number of milliseconds for this status to expire. Default to 5 seconds."
-msgstr ""
+msgstr "Bilangan milisaat untuk status ini habis tempoh. Lalai hingga 5 saat."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:1
 msgid "Bases: :class:`dict`"
@@ -333,7 +333,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:8
 msgid "Dictionary of text substitutions targeting to a user or member."
-msgstr ""
+msgstr "Kamus penggantian teks yang disasarkan kepada pengguna atau ahli."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:10
 msgid "The key of the dictionary is a tuple of two :obj:`int`\\ s, where first of it is the starting position in the string, and the second is the ending position defined similar to Python's substring. A tuple of ``(3, 15)`` corresponds to ``msg.text[3:15]``. The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``, ``b ∈ (a, l]``, where ``l`` is the length of the message text."
@@ -357,23 +357,23 @@ msgstr ""
 
 #: ../../API/message.rst:17
 msgid "Prelude: Defining related chats"
-msgstr ""
+msgstr "Permulaan: Menentukan sembang yang berkaitan"
 
 #: ../../API/message.rst:28
 msgid "Initialization and marking chats"
-msgstr ""
+msgstr "Inisialisasi dan menandakan sembang"
 
 #: ../../API/message.rst:45
 msgid "Marking message references (targeted message)"
-msgstr ""
+msgstr "Menandakan rujukan mesej (mesej disasarkan)"
 
 #: ../../API/message.rst:59
 msgid "Edit a previously sent message"
-msgstr ""
+msgstr "Mengedit mesej yang dihantar sebelum ini"
 
 #: ../../API/message.rst:69
 msgid "Type-specific Information"
-msgstr ""
+msgstr "Maklumat khusus jenis"
 
 #: ../../API/message.rst:75
 msgid "Text message"
@@ -389,7 +389,7 @@ msgstr ""
 
 #: ../../API/message.rst:81
 msgid "The example below is for image (picture) messages. Audio, file, video, sticker works in the same way."
-msgstr ""
+msgstr "Contoh di bawah adalah untuk mesej imej (gambar). Audio, fail, video, pelekat berfungsi dengan cara yang sama."
 
 #: ../../API/message.rst:84
 #: ../../API/message.rst:96
@@ -400,7 +400,7 @@ msgstr ""
 
 #: ../../API/message.rst:102
 msgid "Location message"
-msgstr ""
+msgstr "Mesej lokasi"
 
 #: ../../API/message.rst:116
 msgid "Link message"
@@ -412,7 +412,7 @@ msgstr ""
 
 #: ../../API/message.rst:133
 msgid "Unsupported message"
-msgstr ""
+msgstr "Mesej tidak disokong"
 
 #: ../../API/message.rst:127
 msgid "``text`` attribute is required for this type of message."

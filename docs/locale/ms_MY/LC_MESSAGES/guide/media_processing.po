@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-23 05:36-0500\n"
+"PO-Revision-Date: 2018-03-22 07:41-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Memilih media format"
 
 #: ../../guide/media_processing.rst:7
 msgid "Both Master and Slave channel can take their charges to convert media files they send or receive. In general: **if a media file received from remote server is not a common format, convert it before deliver it on; if a media file sent to remote server requires to be in a specific format, it should be converted before sending out**. Nevertheless, this is only a guideline on channels' responsibility regarding media processing, and everyone has their own opinion on what is a common format / encoding. Therefore we only recommend this behaviour, but do not force in our code. This is to say that, you still have to take care of the accepted type of media encoding of your corresponding method of presentation, and convert and/or fallback to different type of representation if necessary. After all, the delivery of information is more important."
-msgstr ""
+msgstr "Kedua saluran Master dan Hamba boleh mengambil caj mereka untuk menukar fail media yang mereka hantar atau terima. Umumnya: ** jika fail media yang diterima dari pelayan jauh bukan format biasa, tukarkannya sebelum menyampaikannya; jika fail media dihantar ke pelayan jauh memerlukan dalam format tertentu, ia mesti ditukar sebelum dihantar **. Walau bagaimanapun, ini hanyalah panduan mengenai tanggungjawab saluran mengenai pemprosesan media, dan setiap orang mempunyai pandangan mereka sendiri mengenai format / pengekodan yang sama. Oleh itu kami hanya mengesyorkan tingkah laku ini, tetapi jangan memaksa kod kami. Ini adalah untuk mengatakan bahawa, anda masih perlu menjaga jenis pengekodan media yang diterima mengenai persembahan kaedah yang sepadan, dan menukar dan / atau jatuh ke jenis perwakilan yang berbeza jika perlu. Lagipun, penghantaran maklumat lebih penting."
 
 #: ../../guide/media_processing.rst:25
 msgid "Media encoders"
@@ -58,11 +58,11 @@ msgstr ""
 
 #: ../../guide/media_processing.rst:48
 msgid "Files sent should be able to be located somewhere in the file system, better with a appropriate extension name, but not required. All files should also have its MIME type specified in the message object. If the channel is not sure about the correct MIME type, it can try to guess with ``libmagic``, or fallback to ``application/octet-stream``. Always try the best to provide the most suitable MIME type when sending."
-msgstr ""
+msgstr "Fail yang dihantar mestilah terletak di suatu tempat dalam sistem fail, lebih baik dengan nama pelanjutan yang sesuai, tetapi tidak diperlukan. Semua fail juga harus mempunyai jenis MIME yang ditentukan dalam objek mesej. Jika saluran tidak pasti tentang jenis MIME yang betul, ia boleh cuba meneka dengan `` libmagic``, atau mundur ke `` permohonan / oktet-aliran``. Sentiasa cuba yang terbaik untuk menyediakan jenis MIME yang paling sesuai apabila menghantar."
 
 #: ../../guide/media_processing.rst:57
 msgid "For such files, we use ``close`` to signify the end of its lifecycle. If the file is not required by the sender's channel anymore, it can be safely discarded."
-msgstr ""
+msgstr "Untuk fail sedemikian, kami menggunakan `` tutup`` untuk menandakan berakhirnya kitaran hayatnya. Sekiranya fail itu tidak diperlukan oleh saluran penghantar lagi, ia boleh dibuang dengan selamat."
 
 #: ../../guide/media_processing.rst:61
 msgid "Generally, ``tempfile.NamedTemporaryFile`` should work for ordinary cases."

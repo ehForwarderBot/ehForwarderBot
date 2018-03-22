@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-23 21:34+1100\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "该平台不对用户和机器人做特别区分，或者"
 
 #: ../../guide/slave.rst:21
 msgid "bots on the IM platform can do exactly same things, if not more, as a user, and bots can be created easier than user account."
-msgstr ""
+msgstr "该平台上的机器人可以实现与用户同等或更多的功能，并且机器人相对比一般用户账户更容易创建"
 
 #: ../../guide/slave.rst:26
 msgid "Methods to be implemented"
@@ -82,7 +82,7 @@ msgstr "通过 *附加功能*，从端能够提供 EFB 没有要求的更多功�
 
 #: ../../guide/slave.rst:47
 msgid "Such features are accessed by the user in a CLI-like style. An \"additional feature\" method should only take one string parameter aside from ``self``, and wrap it with :meth:`~ehforwarderbot.utils.extra` decorator. The ``extra`` decorator takes 2 arguments: ``name`` -- a short name of the feature, and ``desc`` -- a description of the feature with its usage."
-msgstr ""
+msgstr "用户可以通过和 CLI 类似的方式来访问这些功能。「附加功能」方法除 ``self`` 之外只能接受一个字符串参数，并使用 :meth:`~ehforwarderbot.utils.extra` 装饰器将其封装。该装饰器接受两个参数：``name`` -- 功能的名称，以及``desc`` -- 功能的描述及其用法。"
 
 #: ../../guide/slave.rst:55
 msgid "``desc`` should describe what the feature does and how to use it. It's more like the help text for an CLI program. Since method of invoking the feature depends on the implementation of the master channel, you should use ``\"{function_name}\"`` as its name in ``desc``, and master channel will replace it with respective name depend on their implementation."
@@ -98,7 +98,7 @@ msgstr "该函数不应该抛出任何异常。任何发生的异常都应该被
 
 #: ../../guide/slave.rst:72
 msgid "Callable name of such methods has a more strict standard than a normal Python 3 identifier name, for compatibility reason. An additional feature callable name should:"
-msgstr ""
+msgstr "出于兼容性考虑，该类功能的方法名称具有比一般 Python 3 标识符名称更严格的限制。附加功能函数的调用名称应："
 
 #: ../../guide/slave.rst:76
 msgid "be case sensitive"
@@ -110,7 +110,7 @@ msgstr "只包含大小写字母，数字，和下划线。"
 
 #: ../../guide/slave.rst:78
 msgid "does not start with a digit."
-msgstr ""
+msgstr "不以数字开头。"
 
 #: ../../guide/slave.rst:79
 msgid "be in a length between 1 and 20 inclusive"
@@ -138,23 +138,23 @@ msgstr "消息命令通常由从端发送，以允许用户对于要求特殊操
 
 #: ../../guide/slave.rst:105
 msgid "Possible cases when message commands could be useful:"
-msgstr ""
+msgstr "消息命令的使用场景示例："
 
 #: ../../guide/slave.rst:107
 msgid "Add as friends when a contact card is received."
-msgstr ""
+msgstr "添加推荐联系人为好友。"
 
 #: ../../guide/slave.rst:108
 msgid "Accept or decline when a friend request is received."
-msgstr ""
+msgstr "接受或拒绝好友请求。"
 
 #: ../../guide/slave.rst:109
 msgid "Vote to a voting message."
-msgstr ""
+msgstr "向投票消息进行投票."
 
 #: ../../guide/slave.rst:110
 msgid "Like / thumb up to a message if applicable."
-msgstr ""
+msgstr "为消息点赞（如果使用）"
 
 #: ../../guide/slave.rst:112
 msgid "A message can be attached with a ``list`` of commands, in which each of them has:"

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"POT-Creation-Date: 2018-03-01 22:12+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -42,11 +42,11 @@ msgstr "*str* -- Name pada obrolan."
 
 #: ../../../docstring of ehforwarderbot.EFBChat:21
 msgid "*str* -- Alternative name of the chat, usually set by user."
-msgstr "*atr* Nama alternatif obrolan, biasanya ditetapkan oleh pengguna."
+msgstr "*str* - - Nama alternatif obrolan, biasanya ditetapkan oleh pengguna."
 
 #: ../../../docstring of ehforwarderbot.EFBChat:25
 msgid ":obj:`.ChatType` -- Type of the chat."
-msgstr ""
+msgstr ":obj:`.ChatType` -- Jenis obrolan."
 
 #: ../../../docstring of ehforwarderbot.EFBChat:29
 msgid "*str* -- Unique ID of the chat. This should be unique within the channel."
@@ -58,11 +58,11 @@ msgstr "*bool* -- Menunjukkan jika objek ini mewakili sebuah obrolan. Defaultkan
 
 #: ../../../docstring of ehforwarderbot.EFBChat:38
 msgid ":obj:`.EFBChat` or None -- The parent chat of the member. Only available to chat member objects. Defaulted to ``None``."
-msgstr ""
+msgstr ":obj:`.EFBChat` atau Tidak -- obrolan induk dari anggota. Hanya tersedia untuk objek obrolan anggota. Gagal ke ``Tidak ada``."
 
 #: ../../../docstring of ehforwarderbot.EFBChat:43
-msgid "list of :obj:`.EFBChat` -- Provide a list of members in the group. Defaulted to an empty ``list``. You may want to extend this object and implement a ``@property`` method set for loading chats on demand."
-msgstr "daftar :obj:`.EFBChat` -- Menyediakan daftar anggota dalam kelompok. Default akan menjadi sebuah ``daftar``kosong. Anda mungkin ingin memperluas objek ini dan menerapkan metode `` @ properti`` yang ditetapkan untuk memuat obrolan sesuai dengan permintaan."
+msgid "list of :obj:`.EFBChat` -- Provide a list of members in the group. Defaulted to an empty ``list``. You may want to extend this object and implement a ``@property`` method set for loading members on demand."
+msgstr "daftar :obj:`.EFBChat` -- Memberikan daftar anggota dalam kelompok. Pengosongan gagal ``daftar``. Anda mungkin ingin memperluas objek dan menerapkan ``@properti`` metode yang ditetapkan untuk memuat anggota pada permintaan."
 
 #: ../../../docstring of ehforwarderbot.EFBChat:50
 msgid "*Dict[str, Any]* -- Any vendor specific attributes."
@@ -109,7 +109,7 @@ msgstr "Objek ini."
 #: ../../../docstring of ehforwarderbot.EFBChat.self:0
 #: ../../../docstring of ehforwarderbot.EFBChat.system:0
 msgid "Return type"
-msgstr ""
+msgstr "Kembali ke jenis"
 
 #: ../../../docstring of ehforwarderbot.EFBChat.system:1
 msgid "Set the chat as a system chat. Only set for channel-level and group-level system chats."

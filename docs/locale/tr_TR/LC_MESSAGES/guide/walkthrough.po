@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-23 21:34+1100\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -138,19 +138,19 @@ msgstr "Bağımlı kanal işi nispeten basittir."
 
 #: ../../guide/walkthrough.rst:95
 msgid "Deliver messages to and from the master channel."
-msgstr ""
+msgstr "Ana kanala ve ana kanala mesaj gönderme."
 
 #: ../../guide/walkthrough.rst:96
 msgid "Maintains a list of all available chats, and group members."
-msgstr ""
+msgstr "Mevcut tüm sohbetlerin ve grup üyelerinin bir listesini korur."
 
 #: ../../guide/walkthrough.rst:97
 msgid "Monitors changes of chats and notify the master channel."
-msgstr ""
+msgstr "Sohbetteki değişiklikleri izler ve ana kanala bildirir"
 
 #: ../../guide/walkthrough.rst:99
 msgid "Features that does not fit into the standard EFB Slave Channel model can be offered as :ref:`slave-additional-features`."
-msgstr ""
+msgstr "Standart EFB Slave Kanal modeline uymayan özellikler :ref:`slave-additional-features`. olarak sunulabilir."
 
 #: ../../guide/walkthrough.rst:103
 msgid "Master Channels"
@@ -158,7 +158,7 @@ msgstr "Ana Kanallar"
 
 #: ../../guide/walkthrough.rst:105
 msgid "Master channels is relatively more complicated and also more flexible. As it directly faces the user, its user interface should be user-friendly, or at least friendly to the targeted users."
-msgstr ""
+msgstr "Ana kanallar nispeten daha karmaşıktır ve aynı zamanda daha esnektir. Kullanıcıya doğrudan baktığından, kullanıcı arayüzü kullanıcı dostu olmalı veya en azından hedeflenen kullanıcılara kolaylık sağlamalıdır."
 
 #: ../../guide/walkthrough.rst:110
 msgid "The job of the master channel includes:"
@@ -166,11 +166,11 @@ msgstr "Ana kanal işi şunları içerir:"
 
 #: ../../guide/walkthrough.rst:112
 msgid "Receive, process and display messages from slave channels."
-msgstr ""
+msgstr "Bağımlı kanallardan gelen mesajları alın, işleyin ve görüntüleyin."
 
 #: ../../guide/walkthrough.rst:114
 msgid "Display a full list of chats from all slave channels."
-msgstr ""
+msgstr "Tüm bağımlı kanallardan gelen sohbetlerin tam listesini görüntüleyin."
 
 #: ../../guide/walkthrough.rst:115
 msgid "Offer an interface for the user to use \"extra functions\" from slave channels."
@@ -190,5 +190,5 @@ msgstr "Özel yazılımlar"
 
 #: ../../guide/walkthrough.rst:123
 msgid "Middlewares can monitor and make changes to or nullify messages and statuses delivered between channels. Middlewares are executed in order of registration, one after another. A middleware will always receive the messages processed by the preceding middleware if available. Once a middleware nullify a message or status, the message will not be processed and delivered any further."
-msgstr ""
+msgstr "Middlewares, kanallar arasında iletilen mesajları ve durumları izleyebilir, değiştirebilir veya geçersiz kılabilir. Middlewares, birbiri ardına, sırayla düzenlenir. Bir ara katman, varsa, önceki ara katman tarafından işlenen iletileri alacaktır. Bir katman, bir mesajı veya durumu geçersiz kıldığında, mesaj işlenmeyecektir ve daha fazla teslim edilmeyecektir."
 

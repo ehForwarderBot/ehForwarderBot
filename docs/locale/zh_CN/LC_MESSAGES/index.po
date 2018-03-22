@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-09 13:35+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"POT-Creation-Date: 2018-03-01 22:12+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -22,53 +22,53 @@ msgstr "EH Forwarder Bot"
 
 #: ../../index.rst:31
 msgid "*Codename* **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework which allows users to contact people from other chat platforms, and ultimately remotely control their accounts in other platforms."
-msgstr ""
+msgstr "*开发代号* **EH Forwarder Bot** (EFB) 是一个可扩展的聊天隧道框架，允许用户联系其他聊天平台的用户，并最终远程控制他们在其他平台上的账户。"
 
-#: ../../index.rst:49
+#: ../../index.rst:50
 msgid "For tips, tricks and community contributed articles, see `project wiki`_."
 msgstr "如需提示、相关技巧及社区文章，请参阅 `项目 Wiki`_。"
 
-#: ../../index.rst:55
+#: ../../index.rst:56
 msgid "Indices and tables"
-msgstr ""
-
-#: ../../index.rst:57
-msgid ":ref:`genindex`"
-msgstr ""
+msgstr "索引和列表"
 
 #: ../../index.rst:58
-msgid ":ref:`modindex`"
-msgstr ""
+msgid ":ref:`genindex`"
+msgstr ":ref:`genindex`"
 
 #: ../../index.rst:59
-msgid ":ref:`search`"
-msgstr ""
+msgid ":ref:`modindex`"
+msgstr ":ref:`modindex`"
 
-#: ../../index.rst:62
+#: ../../index.rst:60
+msgid ":ref:`search`"
+msgstr ":ref:`search`"
+
+#: ../../index.rst:63
 msgid "Feel like contributing?"
 msgstr "想参与贡献吗？"
 
-#: ../../index.rst:64
+#: ../../index.rst:65
 msgid "Everyone is welcomed to raise an issue or submit a pull request, just remember to read through and follow the :doc:`contribution guideline <./contributing>` before you do so."
 msgstr "我们欢迎任何人提出问题或是提交请求，但请务必先阅读并根据 :doc:`贡献指南 <./contributing>` 的提示来进行操作。"
 
-#: ../../index.rst:69
+#: ../../index.rst:70
 msgid "Related articles"
 msgstr "相关文章"
 
-#: ../../index.rst:71
+#: ../../index.rst:72
 msgid "`Idea: Group Chat Tunneling (Sync) with EH Forwarder Bot`__"
-msgstr ""
+msgstr "`设想：使用 EH Forwarder Bot 进行群组消息同步`__"
 
-#: ../../index.rst:76
+#: ../../index.rst:77
 msgid "License"
 msgstr "许可协议"
 
-#: ../../index.rst:78
+#: ../../index.rst:79
 msgid "EFB framework is licensed under `GNU General Public License 3.0`_."
 msgstr "EFB 框架使用 `GNU General Public License 3.0`_ 许可证。"
 
-#: ../../index.rst:99
+#: ../../index.rst:100
 msgid ":doc:`Donate <donate>`."
 msgstr ":doc:`捐赠 <donate>`."
 

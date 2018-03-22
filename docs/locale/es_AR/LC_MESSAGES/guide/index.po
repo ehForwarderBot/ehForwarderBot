@@ -1,0 +1,26 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-09 13:12+0800\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Spanish, Argentina\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: es-AR\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/index.pot\n"
+"Language: es_AR\n"
+
+#: ../../guide/index.rst:2
+msgid "Development guide"
+msgstr ""
+
+#: ../../guide/index.rst:4
+msgid "This is a section that guides you on how to develop channels and middlewares for EH Forwarder Bot."
+msgstr ""
+

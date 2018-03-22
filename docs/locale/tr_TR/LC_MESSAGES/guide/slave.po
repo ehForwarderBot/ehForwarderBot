@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-23 21:34+1100\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -50,27 +50,27 @@ msgstr "Bağımlı kanal tarafından uygulanması gereken yöntemlerin listesi a
 
 #: ../../guide/slave.rst:31
 msgid ":meth:`.EFBChannel.get_chat_picture`"
-msgstr ""
+msgstr ":meth:`.EFBChannel.get_chat_picture`"
 
 #: ../../guide/slave.rst:32
 msgid ":meth:`.EFBChannel.get_chat`"
-msgstr ""
+msgstr ":meth:`.EFBChannel.get_chat_picture`"
 
 #: ../../guide/slave.rst:33
 msgid ":meth:`.EFBChannel.get_chats`"
-msgstr ""
+msgstr ":meth:`.EFBChannel.get_chats`"
 
 #: ../../guide/slave.rst:34
 msgid ":meth:`.EFBChannel.poll`"
-msgstr ""
+msgstr ":meth:`.EFBChannel.poll`"
 
 #: ../../guide/slave.rst:35
 msgid ":meth:`.EFBChannel.send_message`"
-msgstr ""
+msgstr ":meth:`.EFBChannel.send_message`"
 
 #: ../../guide/slave.rst:36
 msgid ":meth:`.EFBChannel.send_status`"
-msgstr ""
+msgstr ":meth:`.EFBChannel.send_status`"
 
 #: ../../guide/slave.rst:41
 msgid "Additional features"
@@ -98,7 +98,7 @@ msgstr ""
 
 #: ../../guide/slave.rst:72
 msgid "Callable name of such methods has a more strict standard than a normal Python 3 identifier name, for compatibility reason. An additional feature callable name should:"
-msgstr ""
+msgstr "Bu gibi yöntemlerin çağrılabilir adı, uyumluluk nedeni ile normal bir Python 3 tanımlayıcı adından daha sıkı bir standarda sahiptir. Ek bir özellik çağrılabilir adı olmalıdır:"
 
 #: ../../guide/slave.rst:76
 msgid "be case sensitive"
@@ -110,7 +110,7 @@ msgstr "yalnız büyük ve küçük harfler, rakamlar ve altçizgi içerir."
 
 #: ../../guide/slave.rst:78
 msgid "does not start with a digit."
-msgstr ""
+msgstr "bir basamakla başlamaz."
 
 #: ../../guide/slave.rst:79
 msgid "be in a length between 1 and 20 inclusive"
@@ -138,15 +138,15 @@ msgstr "Mesaj komutları genellikle bağımlı kanallar tarafından gönderilir,
 
 #: ../../guide/slave.rst:105
 msgid "Possible cases when message commands could be useful:"
-msgstr ""
+msgstr "Mesaj komutlarının yararlı olabileceği olası durumlar:"
 
 #: ../../guide/slave.rst:107
 msgid "Add as friends when a contact card is received."
-msgstr ""
+msgstr "Bir kartvizit alındığında arkadaş olarak ekleyin."
 
 #: ../../guide/slave.rst:108
 msgid "Accept or decline when a friend request is received."
-msgstr ""
+msgstr "Arkadaş talebi alındığında kabul veya reddedin."
 
 #: ../../guide/slave.rst:109
 msgid "Vote to a voting message."

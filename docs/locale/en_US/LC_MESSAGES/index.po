@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-09 13:35+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"POT-Creation-Date: 2018-03-01 22:12+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: English\n"
 "MIME-Version: 1.0\n"
@@ -24,51 +24,51 @@ msgstr ""
 msgid "*Codename* **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework which allows users to contact people from other chat platforms, and ultimately remotely control their accounts in other platforms."
 msgstr ""
 
-#: ../../index.rst:49
+#: ../../index.rst:50
 msgid "For tips, tricks and community contributed articles, see `project wiki`_."
 msgstr ""
 
-#: ../../index.rst:55
+#: ../../index.rst:56
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../index.rst:57
+#: ../../index.rst:58
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../index.rst:58
+#: ../../index.rst:59
 msgid ":ref:`modindex`"
 msgstr ""
 
-#: ../../index.rst:59
+#: ../../index.rst:60
 msgid ":ref:`search`"
 msgstr ""
 
-#: ../../index.rst:62
+#: ../../index.rst:63
 msgid "Feel like contributing?"
 msgstr ""
 
-#: ../../index.rst:64
+#: ../../index.rst:65
 msgid "Everyone is welcomed to raise an issue or submit a pull request, just remember to read through and follow the :doc:`contribution guideline <./contributing>` before you do so."
 msgstr ""
 
-#: ../../index.rst:69
+#: ../../index.rst:70
 msgid "Related articles"
 msgstr ""
 
-#: ../../index.rst:71
+#: ../../index.rst:72
 msgid "`Idea: Group Chat Tunneling (Sync) with EH Forwarder Bot`__"
 msgstr ""
 
-#: ../../index.rst:76
+#: ../../index.rst:77
 msgid "License"
 msgstr ""
 
-#: ../../index.rst:78
+#: ../../index.rst:79
 msgid "EFB framework is licensed under `GNU General Public License 3.0`_."
 msgstr ""
 
-#: ../../index.rst:99
+#: ../../index.rst:100
 msgid ":doc:`Donate <donate>`."
 msgstr ""
 

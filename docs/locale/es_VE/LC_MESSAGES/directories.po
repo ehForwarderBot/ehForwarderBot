@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"POT-Creation-Date: 2018-03-11 19:57+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -28,15 +28,11 @@ msgstr "Desde la versión de EH forwarder bot 2.0 la mayoría de los módulos de
 msgid "By default, the data directory is user specific, located in the user's home directory, ``~/.ehforwarderbot``.  This can be overridden with the environment variable ``EFB_DATA_PATH``. This path defined here should be an **absolute path**."
 msgstr "Por defecto, el directorio de datos es especifíco para cada usuario, esta localizado en el directorio \"home\" del usuario en ``~/.ehforwarderbot``. Esto configuración puede cambiarse sobre escribiendo la variable de entorno ``EFB_DATA_PATH``. La ruta definida allí debe ser una **ruta absoluta** (absolute path)."
 
-#: ../../directories.rst:23
-msgid "Notice that when either of the path is customised with an environment variable, EFB will append the username of the user running it to the path."
-msgstr "Nótese que cuando la ruta es especificada editando la variable de entorno, EFB agregará el nombre del usuario que este ejecutando el proceso a la ruta."
-
-#: ../../directories.rst:28
+#: ../../directories.rst:24
 msgid "Directory structure"
 msgstr "Estructura del directorio"
 
-#: ../../directories.rst:30
+#: ../../directories.rst:26
 msgid "Using the default configuration as an example, this section will introduce about the structure of EFB data directory."
 msgstr "Usando la configuración por defecto como ejemplo, esta sección presentará la estructura del directorio de los datos EFB."
 

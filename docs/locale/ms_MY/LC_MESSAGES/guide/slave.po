@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-23 21:34+1100\n"
-"PO-Revision-Date: 2018-02-23 05:36-0500\n"
+"PO-Revision-Date: 2018-03-22 07:41-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: ../../guide/slave.rst:2
 msgid "Slave channels"
-msgstr ""
+msgstr "Saluran hamba"
 
 #: ../../guide/slave.rst:4
 msgid "Slave channel is more like a wrap over an API of IM, it encloses messages from the IM into appropriate objects and deliver it to the master channel."
@@ -26,7 +26,7 @@ msgstr ""
 
 #: ../../guide/slave.rst:8
 msgid "Although we suggest that slave channel should match with an IM platform, but you may try to model it for anything that can deliver information as messages, and has a limited list of end-points to deliver messages to and from as chats."
-msgstr ""
+msgstr "Walaupun kami mencadangkan bahawa saluran hamba sepadan dengan platform IM, tetapi anda boleh cuba memodelinya untuk apa saja yang dapat menyampaikan maklumat sebagai mesej, dan mempunyai senarai akhir yang terhad untuk menyampaikan mesej ke dan dari sebagai sembang."
 
 #: ../../guide/slave.rst:14
 msgid "In most of the cases, slave channels should be identified as one single user from the IM platform, instead of a bot.  We suggest you to use a bot for slave channels only when"
@@ -46,7 +46,7 @@ msgstr "Kaedah untuk dilaksanakan"
 
 #: ../../guide/slave.rst:28
 msgid "Below is a list of methods that are required to be implemented by the slave channel."
-msgstr ""
+msgstr "Di bawah adalah senarai kaedah yang diperlukan untuk dilaksanakan oleh saluran hamba."
 
 #: ../../guide/slave.rst:31
 msgid ":meth:`.EFBChannel.get_chat_picture`"
@@ -98,7 +98,7 @@ msgstr ""
 
 #: ../../guide/slave.rst:72
 msgid "Callable name of such methods has a more strict standard than a normal Python 3 identifier name, for compatibility reason. An additional feature callable name should:"
-msgstr ""
+msgstr "Nama yang dipanggil kaedah tersebut mempunyai piawaian yang lebih ketat daripada nama pengenal Python 3 biasa, untuk sebab keserasian. Nama ciri tambahan boleh dipanggil:"
 
 #: ../../guide/slave.rst:76
 msgid "be case sensitive"
@@ -134,19 +134,19 @@ msgstr "Perintah mesej"
 
 #: ../../guide/slave.rst:101
 msgid "Message commands are usually sent by slave channels so that users can respond to certain messages that has specific required actions."
-msgstr ""
+msgstr "Perintah mesej biasanya dihantar oleh saluran hamba supaya pengguna dapat bertindak balas terhadap mesej tertentu yang mempunyai tindakan khusus yang diperlukan."
 
 #: ../../guide/slave.rst:105
 msgid "Possible cases when message commands could be useful:"
-msgstr ""
+msgstr "Kes-kes yang mungkin apabila arahan mesej berguna:"
 
 #: ../../guide/slave.rst:107
 msgid "Add as friends when a contact card is received."
-msgstr ""
+msgstr "Tambah sebagai rakan apabila kad kenalan diterima."
 
 #: ../../guide/slave.rst:108
 msgid "Accept or decline when a friend request is received."
-msgstr ""
+msgstr "Menerima atau menolak apabila permintaan rakan diterima."
 
 #: ../../guide/slave.rst:109
 msgid "Vote to a voting message."
@@ -154,15 +154,15 @@ msgstr ""
 
 #: ../../guide/slave.rst:110
 msgid "Like / thumb up to a message if applicable."
-msgstr ""
+msgstr "Seperti / ibu jari ke mesej jika berkenaan."
 
 #: ../../guide/slave.rst:112
 msgid "A message can be attached with a ``list`` of commands, in which each of them has:"
-msgstr ""
+msgstr "Mesej boleh dilampirkan dengan `` senarai `` arahan, di mana setiap daripada mereka mempunyai:"
 
 #: ../../guide/slave.rst:115
 msgid "a human-friendly name,"
-msgstr ""
+msgstr "nama manusia yang mesra,"
 
 #: ../../guide/slave.rst:116
 msgid "a callable name,"
@@ -178,7 +178,7 @@ msgstr ""
 
 #: ../../guide/slave.rst:120
 msgid "When a user clicked the button, the corresponding method of your channel will be called with provided arguments."
-msgstr ""
+msgstr "Apabila pengguna mengklik butang itu, kaedah yang sama saluran anda akan dipanggil dengan hujah yang disediakan."
 
 #: ../../guide/slave.rst:123
 msgid "Note that all such methods MUST return a ``str`` as a respond to the action from user, and they should NOT raise any exception to its caller. Any exceptions occurred within should be ``expect``\\ ed and processed."
@@ -190,7 +190,7 @@ msgstr ""
 
 #: ../../guide/slave.rst:132
 msgid "Slave channels should deliver all messages that the IM provides, including what the user sent not with this channel. But it should not deliver message sent from the master channel again back to the master channel as a new message."
-msgstr ""
+msgstr "Saluran hamba harus menyampaikan semua mesej yang disediakan oleh IM, termasuk apa yang pengguna tidak menghantar dengan saluran ini. Tetapi ia tidak sepatutnya menghantar mesej yang dihantar dari saluran induk lagi ke saluran induk sebagai mesej baru."
 
 #: ../../guide/slave.rst:137
 msgid "Messages should be delivered regardless of the notification settings user had in the IM platform, but you can:"

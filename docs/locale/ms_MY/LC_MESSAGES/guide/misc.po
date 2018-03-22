@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-23 05:36-0500\n"
+"PO-Revision-Date: 2018-03-22 07:41-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: ../../guide/misc.rst:7
 msgid "In complex modules, you should have detailed logs in DEBUG level and maybe INFO level, and all your log handlers should follow that of the root logger, which is controlled by the framework. This could be helpful when for you to locate issues reported by users."
-msgstr ""
+msgstr "Dalam modul kompleks, anda harus mempunyai log terperinci dalam tahap debug dan mungkin tahap info, dan semua pengendali log anda harus mengikuti logger akar, yang dikendalikan oleh rangka kerja. Ini boleh membantu apabila anda mencari isu yang dilaporkan oleh pengguna."
 
 #: ../../guide/misc.rst:14
 msgid "Vendor-specifics"
@@ -34,7 +34,7 @@ msgstr ""
 
 #: ../../guide/misc.rst:16
 msgid "If you are going to include vendor specific information in messages and/or chats, please make your effort to document them in your README or documentation, so that other developers can refer to it when adapting your module."
-msgstr ""
+msgstr "Jika anda akan memasukkan maklumat khusus penjual dalam mesej dan / atau perbualan, sila buat usaha anda untuk mendokumenkannya dalam bacalah atau dokumentasi anda, supaya pemaju lain boleh merujuknya semasa menyesuaikan modul anda."
 
 #: ../../guide/misc.rst:23
 msgid "Threading"
@@ -42,5 +42,5 @@ msgstr ""
 
 #: ../../guide/misc.rst:25
 msgid "All channels are recommended a separate thread while processing a new message, so as to prevent unexpectedly long thread blocking."
-msgstr ""
+msgstr "Semua saluran dicadangkan benang berasingan semasa memproses mesej baru, untuk mengelakkan penyekatan thread yang tidak disangka-sangka."
 

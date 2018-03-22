@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"POT-Creation-Date: 2018-03-22 22:34+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -18,27 +18,27 @@ msgstr ""
 
 #: ../../guide/master.rst:2
 msgid "Master channels"
-msgstr "Canales maestros"
+msgstr "Canales principales"
 
 #: ../../guide/master.rst:4
 msgid "Master channels are the interface that directly or indirectly interact with the user. Despite the first master channel of EFB (EFB Telegram Master) is written in a form of Telegram Bot, master channels can be written in many forms, such as:"
-msgstr "Los canales maestros son las interfaces que directa o indirectamente interactúan con el usuario. A pesar de que el primer canal maestro de EFB (EFB Telegram Master) esta escrito en la forma de un Bot de Telegram, los canales maestros pueden ser escritos de muchas formas, tales como:"
+msgstr "Los canales principales son la interfaces que interactúa directa o indirectamente con el usuario. A pesar del primer canal maestro de EFB (EFB telegrama maestro) está escrito en una forma de bot telegrama, los canales principales se pueden escribir en muchas formas, tales como:"
 
 #: ../../guide/master.rst:10
 msgid "A web app"
-msgstr "Una aplicación web"
+msgstr "Una aplicación Web"
 
 #: ../../guide/master.rst:11
 msgid "A server that expose APIs to dedicated desktop and mobile clients"
-msgstr "Un servidor que expone las API dedicadas a clientes móviles y de escritorio"
+msgstr "Un servidor que expone APIs a clientes de escritorio y móviles dedicados"
 
 #: ../../guide/master.rst:13
 msgid "A chat bot on an existing IM"
-msgstr "Un bot de un chat en una IM existente"
+msgstr "Un bot chat en un IM existente"
 
 #: ../../guide/master.rst:14
 msgid "A server that compiles with a generic IM Protocol"
-msgstr "Un servidor que compila con un protocolo genérico IM"
+msgstr "Un servidor que compila con un protocolo im genérico"
 
 #: ../../guide/master.rst:15
 msgid "A CLI client"
@@ -46,7 +46,7 @@ msgstr "Un cliente CLI"
 
 #: ../../guide/master.rst:16
 msgid "Anything else you can think of..."
-msgstr "Cualquier otra cosa en la que puedas pensar..."
+msgstr "Cualquier otra cosa que puedas pensar..."
 
 #: ../../guide/master.rst:19
 msgid "Design guideline"
@@ -57,8 +57,8 @@ msgid "When the master channel is implemented on an existing protocol or platfor
 msgstr "Cuando el canal maestro es implementado en un protocolo o plataforma existente, él debería cumplir lo más que pueda con los siguientes lineamientos:"
 
 #: ../../guide/master.rst:25
-msgid "maintain one thread per chat, indicating it's name, source channel and type;"
-msgstr "mantener un thread por cada chat, indicando su nombre, el canal fuente y el tipo;"
+msgid "maintain one conversation thread per chat, indicating its name, source channel and type;"
+msgstr ""
 
 #: ../../guide/master.rst:27
 msgid "support all, if not most, types of messages defined in the framework, process and deliver messages between the user and slave channels;"

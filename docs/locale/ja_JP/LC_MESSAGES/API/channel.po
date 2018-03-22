@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-20 23:43+1100\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"POT-Creation-Date: 2018-03-01 22:12+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgid "Set[:obj:`.MsgType`] -- Types of messages that the channel accepts as inc
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBChannel:23
-msgid "*str* -- Unique identifier of the channel. Convention of IDs is specified in :doc:`/guide/packaging` This ID will be appended with its instance ID when available."
+msgid "*str* -- Unique identifier of the channel. Convention of IDs is specified in :doc:`/guide/packaging`. This ID will be appended with its instance ID when available."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBChannel:29

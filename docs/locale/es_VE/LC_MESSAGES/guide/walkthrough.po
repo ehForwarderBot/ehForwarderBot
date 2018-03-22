@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-23 21:34+1100\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -138,19 +138,19 @@ msgstr "El trabajo de los canales esclavos es relativamente simple."
 
 #: ../../guide/walkthrough.rst:95
 msgid "Deliver messages to and from the master channel."
-msgstr ""
+msgstr "Entrega mensajes para y desde el canal principal."
 
 #: ../../guide/walkthrough.rst:96
 msgid "Maintains a list of all available chats, and group members."
-msgstr ""
+msgstr "Mantiene una lista de todos los chats disponibles, y los miembros del grupo."
 
 #: ../../guide/walkthrough.rst:97
 msgid "Monitors changes of chats and notify the master channel."
-msgstr ""
+msgstr "Monitorea los cambios de los chat y notifica al canal principal."
 
 #: ../../guide/walkthrough.rst:99
 msgid "Features that does not fit into the standard EFB Slave Channel model can be offered as :ref:`slave-additional-features`."
-msgstr ""
+msgstr "Las características que no encajen dentro del modelo estándar del canal esclavo EFB pueden ser ofrecidas como :ref:`slave-additional-features`."
 
 #: ../../guide/walkthrough.rst:103
 msgid "Master Channels"
@@ -158,7 +158,7 @@ msgstr "Canales Maestros"
 
 #: ../../guide/walkthrough.rst:105
 msgid "Master channels is relatively more complicated and also more flexible. As it directly faces the user, its user interface should be user-friendly, or at least friendly to the targeted users."
-msgstr ""
+msgstr "Los canales maestros son relativamente más complicados y también más flexibles. Como está directamente con el usuario, su interfaz debe ser simple de usar, o al menos amistoso para los usuarios específicos."
 
 #: ../../guide/walkthrough.rst:110
 msgid "The job of the master channel includes:"
@@ -166,11 +166,11 @@ msgstr "El trabajo del canal maestro incluye:"
 
 #: ../../guide/walkthrough.rst:112
 msgid "Receive, process and display messages from slave channels."
-msgstr ""
+msgstr "Recibe, procesa y muestra mensajes de los canales esclavos."
 
 #: ../../guide/walkthrough.rst:114
 msgid "Display a full list of chats from all slave channels."
-msgstr ""
+msgstr "Muestra una lista completa de todos los chats de los canales esclavos."
 
 #: ../../guide/walkthrough.rst:115
 msgid "Offer an interface for the user to use \"extra functions\" from slave channels."
@@ -190,5 +190,5 @@ msgstr "Middlewares"
 
 #: ../../guide/walkthrough.rst:123
 msgid "Middlewares can monitor and make changes to or nullify messages and statuses delivered between channels. Middlewares are executed in order of registration, one after another. A middleware will always receive the messages processed by the preceding middleware if available. Once a middleware nullify a message or status, the message will not be processed and delivered any further."
-msgstr ""
+msgstr "Los middleewares pueden monitorear y hacer cambios para anular mensajes y estados entregados entre canales. Los middlewares son ejecutados por orden de registro, uno tras otro. Un middleware siempre va a recibir los mensajes procesados por el middleware anterior si está disponible. Una vez que un middleware anule un mensaje o un estado, el mensaje no será procesado ni entregado."
 

@@ -1,0 +1,111 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-11 19:57+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Chinese Simplified\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: zh-CN\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/config.pot\n"
+"Language: zh_CN\n"
+
+#: ../../config.rst:2
+msgid "Configuration File"
+msgstr "配置文件"
+
+#: ../../config.rst:4
+msgid "EFB has an overall configuration file to manage all enabled modules. It is located under the :doc:`directory <directories>` of current profile, and named ``config.yaml``."
+msgstr "EFB 使用全局配置文件来管理所有启用的模块。它位于当前配置文件的\\ :doc:`目录 <directories>`下的 ``config yaml``。"
+
+#: ../../config.rst:9
+msgid "Syntax"
+msgstr "语法"
+
+#: ../../config.rst:11
+msgid "The configuration file is in the YAML syntax. If you are not familiar with its syntax, please check its documentations and tutorials for details."
+msgstr "配置文件使用 YAML 语法。如果您不熟悉该语法，请查阅相关文档及教程。"
+
+#: ../../config.rst:15
+msgid "The ID of the master channel enabled is under the key ``master_channel``"
+msgstr "主端的信道 ID 位于 ``master_channel`` 下"
+
+#: ../../config.rst:16
+msgid "The ID of slave channels enabled is listed under the key ``slave_channels``. It has to be a list even if just one channel is to be enabled."
+msgstr "从端的 ID 位于 ``slave_channels`` 下，且必须为一个列表，即使您可能仅使用一个信道。"
+
+#: ../../config.rst:19
+msgid "The ID of middlewares enabled are listed under the key ``middlewares``. It has to be a list even if just one middleware is to be enabled. However, if you don't want to enable any middleware, just omit the section completely."
+msgstr "需要启用的中间件的 ID 应列于 ``middlewares`` 下。它应当为一个列表，即使只有一个中间件被启用。不过如果您不打算使用中间件，请忽略该部分。"
+
+#: ../../config.rst:25
+msgid "Instance ID"
+msgstr "实例 ID"
+
+#: ../../config.rst:27
+msgid "To have multiple accounts running simultaneously, you can appoint an instance ID to a module. Instance ID can be defined by the user, and if defined, it must has nothing other than letters, numbers and underscores, i.e. in regular expressions ``[a-zA-Z0-9_]+``. When instance ID is not defined, the channel will run in the \"default\" instance with no instance ID."
+msgstr "若要同时运行多个帐户，您可以为模块指定一个实例 ID。实例 ID 的值可以自行定义，但必须由字母、数字和下划线构成，正则表达式表示为 ``[a-zA-Z0-9_]+``。当实例 ID 未定义时，该信道将在「默认（``default``）」实例中运行，且不具有实例 ID。"
+
+#: ../../config.rst:33
+msgid "To indicate the instance ID of an instance, append ``#`` following by the instance ID to the module ID. For example, slave channel ``bar.dummy`` running with instance ID ``alice`` should be defined as ``bar.dummy#alice``. If the channel requires configurations, it should be done in the directory with the same name (e.g. ``EFB_DATA_PATH/profiles/PROFILE/bar.dummy#alice``), so as to isolate instances."
+msgstr "若要指定某一实例的实例 ID，需将 ``#`` 和实例 ID 追加到组件 ID 的后面。例如：从端 ``bar.dummy`` 运行 ID 为 ``alice``\n"
+" 的实例时，该实例应定义为 ``bar.dummy#alice``。由于实例之间相互隔离，如果该信道需要进行进一步配置，这些配置应该在同名目录中进行（如： ``EFB_DATA_PATH/profiles/PROFILE/bar.dummy#alice``）。"
+
+#: ../../config.rst:40
+msgid "Please avoid having two modules with the same set of module ID and instance ID as it may leads to unexpected results."
+msgstr "请避免添加具有相同组件 ID 和实例 ID 的两个示例，因为这可能会导致未定义的结果。"
+
+#: ../../config.rst:44
+msgid "Example"
+msgstr "示例"
+
+#: ../../config.rst:47
+msgid "To enable the following modules:"
+msgstr "若要启用以下组件："
+
+#: ../../config.rst:49
+msgid "Master channel"
+msgstr "主端"
+
+#: ../../config.rst:50
+msgid "Demo Master (``foo.demo_master``)"
+msgstr "演示主端 (``foo.demo_master``)"
+
+#: ../../config.rst:53
+msgid "Slave channels"
+msgstr "从端"
+
+#: ../../config.rst:52
+msgid "Demo Slave (``foo.demo_slave``)"
+msgstr "演示从端 (``foo.demo_slave``)"
+
+#: ../../config.rst:53
+msgid "Dummy Slave (``bar.dummy``)"
+msgstr "虚拟从端 (``bar.dummy``)"
+
+#: ../../config.rst:54
+msgid "Dummy Slave (``bar.dummy``) at ``alt`` instance"
+msgstr "虚拟从端 (``bar.dummy``) 运行于 ``alt`` 实例"
+
+#: ../../config.rst:57
+msgid "Middlewares"
+msgstr "中间件"
+
+#: ../../config.rst:56
+msgid "Message Archiver (``foo.msg_archiver``)"
+msgstr "消息存档 (``foo.msg_archiver``)"
+
+#: ../../config.rst:57
+msgid "Null Middleware (``foo.null``)"
+msgstr "空中间件 (``foo.null``)"
+
+#: ../../config.rst:59
+msgid "In the ``config.yaml`` it should have the following lines:"
+msgstr "在 ``config.yaml`` 中，应当存在以下内容："
+

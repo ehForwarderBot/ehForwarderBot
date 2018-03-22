@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-23 21:34+1100\n"
-"PO-Revision-Date: 2018-02-23 05:36-0500\n"
+"PO-Revision-Date: 2018-03-22 07:41-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:25
 msgid "Component of the framework that maintains the instances of channels, and delivers messages between channels."
-msgstr ""
+msgstr "Komponen rangka kerja yang mengekalkan contoh saluran, dan menyampaikan mesej antara saluran."
 
 #: ../../guide/walkthrough.rst:32
 msgid "Middleware"
@@ -54,7 +54,7 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:30
 msgid "Module that processes messages and statuses delivered between channels, and make modifications where needed."
-msgstr ""
+msgstr "Modul yang memproses mesej dan status yang dihantar antara saluran, dan membuat pengubahsuaian jika diperlukan."
 
 #: ../../guide/walkthrough.rst:35
 msgid "Concepts to know"
@@ -66,7 +66,7 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:38
 msgid "A common term that means both channels and middlewares."
-msgstr ""
+msgstr "Istilah umum yang bermaksud kedua-dua saluran dan pertengahan."
 
 #: ../../guide/walkthrough.rst:44
 msgid "Chat"
@@ -74,7 +74,7 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:42
 msgid "A place where conversations happen. Consists of User Chats (private messages), Group Chats, and System Chats."
-msgstr ""
+msgstr "Tempat di mana perbualan berlaku. Terdiri daripada Chat Pengguna (mesej peribadi), Chat Kumpulan, dan Chat Sistem."
 
 #: ../../guide/walkthrough.rst:61
 msgid "User / User Chat"
@@ -82,15 +82,15 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:47
 msgid "A user of the IM platform that the user can possibly chat with, or a conversation with them. Messages from such conversation has one and only one unique author. *(Except messages that are from the user themself, or from the system.)*"
-msgstr ""
+msgstr "Seorang pengguna platform IM yang pengguna mungkin boleh bersembang, atau perbualan dengan mereka. Mesej dari perbualan itu mempunyai satu dan hanya satu pengarang unik. * (Kecuali mesej yang berasal dari pengguna sendiri, atau dari sistem.) *"
 
 #: ../../guide/walkthrough.rst:53
 msgid "For platforms that support bot or something similar, they would also be considered as a \"user\", unless messages in such chat can be sent from any user other than the bot."
-msgstr ""
+msgstr "Untuk platform yang menyokong bot atau sesuatu yang serupa, mereka juga akan dianggap sebagai \"pengguna\", melainkan mesej dalam sembang tersebut boleh dihantar dari mana-mana pengguna selain bot."
 
 #: ../../guide/walkthrough.rst:58
 msgid "For chats that the user receive messages, but cannot send message to, it should also be considered as a user chat, only to raise an exception when messages was trying to send to the chat."
-msgstr ""
+msgstr "Untuk perbualan yang pengguna menerima mesej, tetapi tidak boleh menghantar mesej kepada, ia juga harus dianggap sebagai sembang pengguna, hanya untuk meningkatkan pengecualian ketika mesej cuba mengirim ke obrolan."
 
 #: ../../guide/walkthrough.rst:66
 msgid "Group chat"
@@ -98,7 +98,7 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:64
 msgid "A chat that involves more than one user. A group chat should have a list of members (users) that can involve in the conversation."
-msgstr ""
+msgstr "Sembang yang melibatkan lebih daripada satu pengguna. Sembang kumpulan harus mempunyai senarai ahli (pengguna) yang boleh melibatkan diri dalam perbualan."
 
 #: ../../guide/walkthrough.rst:73
 msgid "System chat"
@@ -106,7 +106,7 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:69
 msgid "A chat that is a part of the system. Usually used for chats that are either a part of the IM platform, or the channel. Slave channels can use this feature to send system message and notifications to the master channel."
-msgstr ""
+msgstr "Sembang yang merupakan sebahagian daripada sistem. Biasanya digunakan untuk perbualan yang sama ada sebahagian daripada platform IM, atau saluran. Saluran hamba boleh menggunakan ciri ini untuk menghantar mesej dan pemberitahuan sistem kepada saluran induk."
 
 #: ../../guide/walkthrough.rst:83
 msgid "Message"
@@ -134,19 +134,19 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:93
 msgid "The job of slave channels is relatively simple."
-msgstr ""
+msgstr "Kerja saluran hamba agak mudah."
 
 #: ../../guide/walkthrough.rst:95
 msgid "Deliver messages to and from the master channel."
-msgstr ""
+msgstr "Menyampaikan mesej ke dan dari saluran induk."
 
 #: ../../guide/walkthrough.rst:96
 msgid "Maintains a list of all available chats, and group members."
-msgstr ""
+msgstr "Mengekalkan senarai semua sembang sedia ada, dan ahli kumpulan."
 
 #: ../../guide/walkthrough.rst:97
 msgid "Monitors changes of chats and notify the master channel."
-msgstr ""
+msgstr "Memantau perubahan sembang dan memberitahu saluran induk."
 
 #: ../../guide/walkthrough.rst:99
 msgid "Features that does not fit into the standard EFB Slave Channel model can be offered as :ref:`slave-additional-features`."
@@ -158,7 +158,7 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:105
 msgid "Master channels is relatively more complicated and also more flexible. As it directly faces the user, its user interface should be user-friendly, or at least friendly to the targeted users."
-msgstr ""
+msgstr "Saluran guru agak rumit dan juga lebih fleksibel. Memandangkan ia secara langsung menghadapi pengguna, antara muka penggunanya harus mesra pengguna, atau sekurang-kurangnya mesra kepada pengguna yang disasarkan."
 
 #: ../../guide/walkthrough.rst:110
 msgid "The job of the master channel includes:"

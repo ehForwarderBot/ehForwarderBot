@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-22 10:02+1100\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr "状态：正在输入、发送文件等。: :obj:`.EFBMsgStatusAttribute
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:14
 msgid "Do NOT use object of the abstract class :class:`.EFBMsgAttribute` for ``attributes``, but object of specific class instead."
-msgstr ""
+msgstr "不要在 ``attributes`` 中使用抽象类 :class:`.EFBMsgAttribute` 的对象，而应该使用具体类的对象。"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:20
 msgid ":obj:`.EFBChat` -- Author of this message."
@@ -50,11 +50,11 @@ msgstr ":obj:`.EFBChat` -- 这条消息的作者。"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:24
 msgid ":obj:`.EFBChat` -- Sender of the message."
-msgstr ""
+msgstr ":obj:`.EFBChat` -- 发送消息的会话."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:28
 msgid "Optional[:obj:`EFBMsgCommands`] -- Commands attached to the message"
-msgstr ""
+msgstr "Optional[:obj:`EFBMsgCommands`] -- 附加到消息的命令"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:32
 msgid ":obj:`.EFBChannel` -- The channel that the message is to be delivered to"
@@ -66,7 +66,7 @@ msgstr "*bool* -- 标记已编辑的消息。"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:40
 msgid "*IO[bytes]* -- File object to multimedia file, type \"ra\". ``None`` if N/A. recommended to use ``NamedTemporaryFile`` object, the file can be deleted when closed, if not used otherwise. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
-msgstr ""
+msgstr "*IO[bytes]* -- 多媒体文件对应的文件对象，文件指针类型为 \"ra\"。如果不适用的话则为``None``。推荐使用 ``NamedTemporaryFile`` 对象，推荐关闭文件后如不再使用就删除它。所有文件对象必须在发送前复位到 0 (``file.seek(0)``)。"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:47
 msgid "*str* -- File name of the multimedia file. ``None`` if N/A"
@@ -86,7 +86,7 @@ msgstr "*str* -- 多媒体文件的本地路径。如果不适用的话则值为
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:63
 msgid "Optional[:obj:`EFBMsgSubstitutions`] -- Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat."
-msgstr ""
+msgstr "Optional[:obj:`EFBMsgSubstitutions`] -- 消息的替换信息。通常当消息的部分文本引用另一个用户或聊天时使用。"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:69
 msgid "Optional[:obj:`EFBMsg`] -- Target message (usually for messages that \"replies to\" another message)."
@@ -146,7 +146,7 @@ msgstr "父类: :class:`abc.ABC`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgAttribute:1
 msgid "Abstract class of a message attribute."
-msgstr ""
+msgstr "消息属性的抽象类。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:1
@@ -155,7 +155,7 @@ msgstr "父类: :class:`object`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
 msgid "EFB message command."
-msgstr ""
+msgstr "EFB 消息命令。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:5
 msgid "*str* -- Human-friendly name of the command."
@@ -329,7 +329,7 @@ msgstr "EFB 消息的替换。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:3
 msgid "This is for the case when user \"@-referred\" a list of users in the message. Substitutions here is a dict of correspondence between the string used to refer to the user in the message and a user object."
-msgstr ""
+msgstr "这适用于对用户在消息中 @ 其他用户的情况。这里的替换是一个在消息中引用用户的字符串与用户对象之间对应关系的字典。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:8
 msgid "Dictionary of text substitutions targeting to a user or member."
@@ -337,7 +337,7 @@ msgstr "针对用户或成员文本替换的字典。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:10
 msgid "The key of the dictionary is a tuple of two :obj:`int`\\ s, where first of it is the starting position in the string, and the second is the ending position defined similar to Python's substring. A tuple of ``(3, 15)`` corresponds to ``msg.text[3:15]``. The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``, ``b ∈ (a, l]``, where ``l`` is the length of the message text."
-msgstr ""
+msgstr "字典的键值为一个包含两个 :obj:`int` 的元组，其中第一个是在字符串中的起始位置，第二个则是和 Python 中的 substring 函数功能类似的结束位置。元组 ``(3, 15)`` 对应于 ``msg.text[3:15]``。元组 ``(a, b)`` 必须介于``a ∈ [0, l)``, ``b ∈ (a, l]`` 之间，其中 ``l`` 为消息文本的长度。"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:17
 msgid "Value of the dict may be any user of the chat, or a member of a group. Notice that the :obj:`EFBChat` object here must NOT be a group."
@@ -357,7 +357,7 @@ msgstr "示例"
 
 #: ../../API/message.rst:17
 msgid "Prelude: Defining related chats"
-msgstr ""
+msgstr "入门：定义相关的聊天"
 
 #: ../../API/message.rst:28
 msgid "Initialization and marking chats"
@@ -385,7 +385,7 @@ msgstr "多媒体消息"
 
 #: ../../API/message.rst:78
 msgid "Information related to media processing is described in :doc:`/guide/media_processing`."
-msgstr ""
+msgstr "和媒体处理相关的信息可以参考 :doc:`/guide/media_processing`。"
 
 #: ../../API/message.rst:81
 msgid "The example below is for image (picture) messages. Audio, file, video, sticker works in the same way."

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-22 10:02+1100\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "首先，感谢您抽出时间对该项目做出贡献！"
 
 #: ../../contributing.rst:7
 msgid "Please note that only questions on the framework will be answered here. For issue related with any module, please contact their respective authors or post in their corresponding repositories."
-msgstr ""
+msgstr "请注意，这里只回答有关框架的问题。如果您想提有关组件的问题，请联系组件的作者或是在相应的代码仓库中提出疑问。"
 
 #: ../../contributing.rst:12
 msgid "Here is a simple guide on how you can file in an issue, or submit a pull request that is useful and effective."
@@ -46,7 +46,7 @@ msgstr "提交 bug 报告之前"
 
 #: ../../contributing.rst:26
 msgid "Please ensure if your issue is about the framework itself, not about any module. Reports about module should be sent to their respective places."
-msgstr ""
+msgstr "请确保您的问题仅限于框架本身，而不涉及任何的组件。有关组件的问题应前往各个组件的相关区域提问。"
 
 #: ../../contributing.rst:29
 msgid "Read through the documentation to see if it has covered your question."
@@ -71,15 +71,15 @@ msgstr "尽可能地给出重现问题的 **详细确切步骤** 。"
 #: ../../contributing.rst:39
 #: ../../contributing.rst:77
 msgid "**Provide specific examples to demonstrate the steps.**"
-msgstr ""
+msgstr "**提供具体的示例及复现步骤。**"
 
 #: ../../contributing.rst:40
 msgid "**Describe the behavior you observed after following the steps** and point out what exactly is the problem with that behavior."
-msgstr ""
+msgstr "**描述你执行这些步骤后所观察到的现象**，并指出这种现象所存在的问题。"
 
 #: ../../contributing.rst:42
 msgid "**Explain which behavior you expected to see instead and why.**"
-msgstr ""
+msgstr "**解释一下你期望发生的现象及为原因。**"
 
 #: ../../contributing.rst:43
 msgid "**If the problem wasn't triggered by a specific action**, describe what you were doing before the problem happened and share more information using the guidelines below."
@@ -87,15 +87,15 @@ msgstr "**若问题不是由某个特定操作引起的** ，请描述问题发�
 
 #: ../../contributing.rst:46
 msgid "**Provide log related to the issue.** Use the verbose flag to start the logging process, and submit the entire log from the first step you performed."
-msgstr ""
+msgstr "**提供与该问题相关的日志。 ** 使用 verbose 模式启动日志记录过程，并提交从第一步操作开始的完整日志。"
 
 #: ../../contributing.rst:50
 msgid "Provide more context by answering these questions:"
-msgstr ""
+msgstr "通过回答这些问题以提供更多的背景信息："
 
 #: ../../contributing.rst:52
 msgid "**Did the problem start happening recently** (e.g. after updating to the latest version) or was this always a problem?"
-msgstr ""
+msgstr "**是否最近才出现问题**（如更新到最新版本后），还是一直存在这个问题？"
 
 #: ../../contributing.rst:54
 msgid "**Can you reliably reproduce the issue?** If not, provide details about how often the problem happens and under which conditions it normally happens."
@@ -119,7 +119,7 @@ msgstr "在您提交报告前，请确保您的个人信息已被全部抹去。
 
 #: ../../contributing.rst:69
 msgid "Suggesting enhancements"
-msgstr ""
+msgstr "功能建议"
 
 #: ../../contributing.rst:71
 msgid "If you have any suggestions, feel free to raise it up in the issue list. Please try to provide as much details as you can, that includes:"
@@ -131,7 +131,7 @@ msgstr "**使用一个明确的和描述性的标题** 来描述您的建议。"
 
 #: ../../contributing.rst:76
 msgid "**Give details on how the enhancement behave**."
-msgstr ""
+msgstr "**详细说明新功能的行为**。"
 
 #: ../../contributing.rst:78
 msgid "**Specify the name and version of the OS you're using.**"
@@ -143,7 +143,7 @@ msgstr "改编自 GitHub Inc 的 `Atom contribution guide`__ 。"
 
 #: ../../contributing.rst:85
 msgid "Pull requests"
-msgstr ""
+msgstr "Pull requests"
 
 #: ../../contributing.rst:86
 msgid "When you have done some changes and want to submit it to us, fork it to your account and submit a GitHub pull request. Please write a detailed description for your pull request on:"
@@ -163,7 +163,7 @@ msgstr "**您涉及了哪一个 issue？** （若适用）。"
 
 #: ../../contributing.rst:94
 msgid "Always write a clear log message for your commits. One-line messages are fine for small changes, but bigger changes needs a detailed description after the one-liner."
-msgstr ""
+msgstr "为所有 commit 撰写清楚的日志消息。对于简单的修改，可以接受简短的说明，但达到一定程度更改需要在正文进行详细的描述。"
 
 #: ../../contributing.rst:98
 msgid "Adapted from `OpenGovernment contribution guide`__ by Participatory Politics Foundation"

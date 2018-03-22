@@ -1,0 +1,94 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-22 22:34+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Italian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: it\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/master.pot\n"
+"Language: it_IT\n"
+
+#: ../../guide/master.rst:2
+msgid "Master channels"
+msgstr ""
+
+#: ../../guide/master.rst:4
+msgid "Master channels are the interface that directly or indirectly interact with the user. Despite the first master channel of EFB (EFB Telegram Master) is written in a form of Telegram Bot, master channels can be written in many forms, such as:"
+msgstr ""
+
+#: ../../guide/master.rst:10
+msgid "A web app"
+msgstr ""
+
+#: ../../guide/master.rst:11
+msgid "A server that expose APIs to dedicated desktop and mobile clients"
+msgstr ""
+
+#: ../../guide/master.rst:13
+msgid "A chat bot on an existing IM"
+msgstr ""
+
+#: ../../guide/master.rst:14
+msgid "A server that compiles with a generic IM Protocol"
+msgstr ""
+
+#: ../../guide/master.rst:15
+msgid "A CLI client"
+msgstr ""
+
+#: ../../guide/master.rst:16
+msgid "Anything else you can think of..."
+msgstr ""
+
+#: ../../guide/master.rst:19
+msgid "Design guideline"
+msgstr ""
+
+#: ../../guide/master.rst:21
+msgid "When the master channel is implemented on an existing protocol or platform, as far as possible, while considering the user experience, a master channel should:"
+msgstr ""
+
+#: ../../guide/master.rst:25
+msgid "maintain one conversation thread per chat, indicating its name, source channel and type;"
+msgstr ""
+
+#: ../../guide/master.rst:27
+msgid "support all, if not most, types of messages defined in the framework, process and deliver messages between the user and slave channels;"
+msgstr ""
+
+#: ../../guide/master.rst:30
+msgid "support all, if not most, features of messages, including: targeted message reply, chat substitution in text (usually used in @ references), commands, etc. Master channel should be able to process incoming messages with such features, and send messages with such features to slave channels if applicable;"
+msgstr ""
+
+#: ../../guide/master.rst:36
+msgid "be able to invoke and process \"additional features\" offered by slave channels."
+msgstr ""
+
+#: ../../guide/master.rst:39
+msgid "Optionally, a master channel can also support / identify vendor-specified information from certain slave channels."
+msgstr ""
+
+#: ../../guide/master.rst:46
+msgid "An example of an ideal design of a master channel, inspired by Telegram Desktop"
+msgstr ""
+
+#: ../../guide/master.rst:49
+msgid "Depends on your implementation, a master channel may probably needs to maintain a list of chats and messages, for presentation or other purposes."
+msgstr ""
+
+#: ../../guide/master.rst:54
+msgid "Message delivery"
+msgstr ""
+
+#: ../../guide/master.rst:56
+msgid "Note that sometimes users may send messages outside of this EFB session, so that slave channels might provide a message has its author marked as \"self\"."
+msgstr ""
+

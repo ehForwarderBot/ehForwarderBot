@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:41-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Azerbaijani\n"
 "MIME-Version: 1.0\n"
@@ -18,66 +18,66 @@ msgstr ""
 
 #: ../../API/exceptions.rst:2
 msgid "Exceptions"
-msgstr ""
+msgstr "İstisnalar"
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBException:1
 msgid "Bases: :class:`Exception`"
-msgstr ""
+msgstr "Təməl: :class:`Exception`"
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBException:1
 msgid "A general class to indicate that the exception is from EFB framework."
-msgstr ""
+msgstr "EFB framework istisna olunmayan ümumi bir sinifdir."
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChatNotFound:1
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChannelNotFound:1
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:1
 msgid "Bases: :class:`ehforwarderbot.exceptions.EFBException`"
-msgstr ""
+msgstr "Təməl: :class: `ehforwarderbot.exceptions.EFBException`"
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChatNotFound:1
 msgid "Raised by a slave channel when a chat indicated is not found."
-msgstr ""
+msgstr "Bir çatın göstərildiyi zamanı bir ana kanal qaldırıldı."
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChatNotFound:3
 msgid "Can be raised by any method that involves a chat or a message."
-msgstr ""
+msgstr "Bir çatı və ya mesajı əhatə edən şey hər hansı bir üsulla qaldırıla bilər."
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChannelNotFound:1
 msgid "Raised by the coordinator when the message sent delivers to a missing channel."
-msgstr ""
+msgstr "Mesaj itirilmiş kanala göndərilmişsə koordinator tərəfindən qaldırılır."
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:1
 msgid "Raised by slave channel for any other error occurred when sending a message or a status."
-msgstr ""
+msgstr "Mesaj və ya status göndərilərkən hər hansı bir səhv baş verərsə ana kanal tərəfindən qaldırılır."
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:4
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:4
 msgid "Can be raised in :meth:`.EFBChannel.send_message` and :meth:`.EFBChannel.send_status`."
-msgstr ""
+msgstr "Daxil oluna bilər :meth:`.EFBChannel.send_message`və :meth:`.EFBChannel.send_status`."
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:1
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:1
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:1
 msgid "Bases: :class:`ehforwarderbot.exceptions.EFBMessageError`"
-msgstr ""
+msgstr "Təməl: :class:`ehforwarderbot.exceptions.EFBMessageError`"
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:1
 msgid "Raised by a slave channel when a message indicated is not found."
-msgstr ""
+msgstr "Mesajın göstərmə zamanı yoxdursa ana kanal tərəfindən qaldırılır."
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:3
 msgid "Can be raised in :meth:`.EFBChannel.send_message` (edited message / target message not found) and in :meth:`.EFBChannel.send_status` (message to delete is not found)."
-msgstr ""
+msgstr "Daxil ola bilər :meth:`.EFBChannel.send_message` (redaktə olunmuş mesaj / hədəf mesaj tapılmadı) və :meth:`.EFBChannel.send_status` (silinən mesaj tapılmadı)."
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:1
 msgid "Raised by a slave channel when the indicated message type is not supported."
-msgstr ""
+msgstr "Mesaj növü dəstəklənmədiyində ana kanal tərəfindən qaldırıla bilər."
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:3
 msgid "Can be raised in :meth:`.EFBChannel.send_message`."
-msgstr ""
+msgstr "Daxil ola bilər :meth:`.EFBChannel.send_message`."
 
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:1
 msgid "Raised by slave channels when a chat operation is not supported. E.g.: cannot edit message, cannot delete message."
-msgstr ""
+msgstr "Çat əməliyyatı dəstəklənmədiyində ana kanal tərəfindən qaldırılır. Məs. mesaj redaktə oluna bilmir, mesaj silinə bilmir."
 

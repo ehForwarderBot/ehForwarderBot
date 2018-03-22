@@ -1,0 +1,99 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-01 22:12+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Romanian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: ro\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/API/middleware.pot\n"
+"Language: ro_RO\n"
+
+#: ../../API/middleware.rst:2
+msgid "EFBMiddleware"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware:1
+msgid "Middleware class."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware:5
+msgid "*str* -- Unique ID of the middleware Convention of IDs is specified in :doc:`/guide/packaging`. This ID will be appended with its instance ID when available."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware:11
+msgid "*str* -- Human-readable name of the middleware."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware:15
+msgid "*str* -- The instance ID if available."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.__init__:1
+msgid "Initialize the middleware. Inherited initializer must call the \"super init\" method at the beginning."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.__init__:0
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.__init__:5
+msgid "Instance ID of the channel."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:1
+msgid "Process a message with middleware"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:3
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:3
+msgid "Message object to process"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:6
+msgid "Processed message or None if discarded."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:7
+msgid "Optional[:obj:`.EFBMsg`]"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:1
+msgid "Process a status update with middleware"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:6
+msgid "Processed status or None if discarded."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:7
+msgid "Optional[:obj:`.EFBStatus`]"
+msgstr ""
+
+#: ../../API/middleware.rst:8
+msgid "About Middleware ID"
+msgstr ""
+
+#: ../../API/middleware.rst:10
+msgid "With the introduction of instance IDs, it is required to use the ``self.middleware_id`` or equivalent instead of any hard-coded ID or constants while referring to the middleware (e.g. while retrieving the path to the configuration files, etc)."
+msgstr ""
+

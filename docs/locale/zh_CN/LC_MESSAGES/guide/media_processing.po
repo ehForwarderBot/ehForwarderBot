@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "选择媒体格式"
 
 #: ../../guide/media_processing.rst:7
 msgid "Both Master and Slave channel can take their charges to convert media files they send or receive. In general: **if a media file received from remote server is not a common format, convert it before deliver it on; if a media file sent to remote server requires to be in a specific format, it should be converted before sending out**. Nevertheless, this is only a guideline on channels' responsibility regarding media processing, and everyone has their own opinion on what is a common format / encoding. Therefore we only recommend this behaviour, but do not force in our code. This is to say that, you still have to take care of the accepted type of media encoding of your corresponding method of presentation, and convert and/or fallback to different type of representation if necessary. After all, the delivery of information is more important."
-msgstr ""
+msgstr "主端和从端都应该对收发的媒体文件的格式负责。一般来说：如果从远程服务器收到的媒体文件不是一个常见的格式，这个文件应该在传递给其他信道之前转码。如果发送到远程服务器的媒体文件有格式要求，则应在发出之前进行转换。然而，我们只提供一个关于媒体格式转换责任的指导建议，毕竟每个人对于常见格式、编码的定义不尽相同。故我们只提供推荐行为，而不在框架内做出强制限制。也就是说，如果信道向框架外输出的媒体文件对格式有所要求，信道仍旧需要检查文件格式，并在必要时转换。毕竟保证信息的传递更为重要。"
 
 #: ../../guide/media_processing.rst:25
 msgid "Media encoders"
@@ -38,11 +38,11 @@ msgstr "类似地，我们不会对它做出明确的限制，我们只是提出
 
 #: ../../guide/media_processing.rst:33
 msgid "We try to aim to use as few different libraries as we can, as more library to install means more space, install time, and complexity. While processing media files, we recommend to use the following libraries if possible:"
-msgstr ""
+msgstr "尽可能少地使用不同的外部代码库。多一个外部代码库依赖就意味着用户需要更多的时间和空间，并且提升了安装的复杂性。在处理媒体文件时，我们建议尽可能使用以下的库："
 
 #: ../../guide/media_processing.rst:39
 msgid "pillow"
-msgstr ""
+msgstr "pillow"
 
 #: ../../guide/media_processing.rst:40
 msgid "ffmpeg"
@@ -54,17 +54,17 @@ msgstr "消息中的文件"
 
 #: ../../guide/media_processing.rst:45
 msgid "When a file sent out from a channel, it should be open, sought back to 0 ( ``file.seek(0)`` ) before sending."
-msgstr ""
+msgstr "从信道发出的文件对象都应该为打开的状态、且文件指针应该定位于 0（``file.seek(0)``）。"
 
 #: ../../guide/media_processing.rst:48
 msgid "Files sent should be able to be located somewhere in the file system, better with a appropriate extension name, but not required. All files should also have its MIME type specified in the message object. If the channel is not sure about the correct MIME type, it can try to guess with ``libmagic``, or fallback to ``application/octet-stream``. Always try the best to provide the most suitable MIME type when sending."
-msgstr ""
+msgstr "所有发出的都应该能在文件系统中找到，并最好有附有相应的扩展名。在发送文件的同时也应该在消息对象中指定其 MIME 类型。如果文件的 MIME 类型不明确，可以尝试用 ``libmagic`` 猜测，或者使用最基本的 ``application/octet-stream``。发送文件是应尽可能提供准确的 MIME 类型。"
 
 #: ../../guide/media_processing.rst:57
 msgid "For such files, we use ``close`` to signify the end of its lifecycle. If the file is not required by the sender's channel anymore, it can be safely discarded."
-msgstr ""
+msgstr "发出的文件会通过 ``close`` 来标记其的生命周期的结束。如果消息的来源信道也不再需要它的话，该文件此时就被安全地丢弃了。"
 
 #: ../../guide/media_processing.rst:61
 msgid "Generally, ``tempfile.NamedTemporaryFile`` should work for ordinary cases."
-msgstr ""
+msgstr "一般来讲，``tempfile.NamedTemporaryFile`` 应该能适用于大多数情况。"
 

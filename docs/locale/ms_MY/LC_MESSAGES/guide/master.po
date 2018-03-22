@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-23 05:36-0500\n"
+"POT-Creation-Date: 2018-03-22 22:34+1100\n"
+"PO-Revision-Date: 2018-03-22 07:41-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: ../../guide/master.rst:2
 msgid "Master channels"
-msgstr ""
+msgstr "Saluran induk"
 
 #: ../../guide/master.rst:4
 msgid "Master channels are the interface that directly or indirectly interact with the user. Despite the first master channel of EFB (EFB Telegram Master) is written in a form of Telegram Bot, master channels can be written in many forms, such as:"
@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../guide/master.rst:14
 msgid "A server that compiles with a generic IM Protocol"
-msgstr ""
+msgstr "Pelayan yang menyusun Protokol IM generik"
 
 #: ../../guide/master.rst:15
 msgid "A CLI client"
@@ -54,23 +54,23 @@ msgstr ""
 
 #: ../../guide/master.rst:21
 msgid "When the master channel is implemented on an existing protocol or platform, as far as possible, while considering the user experience, a master channel should:"
-msgstr ""
+msgstr "Apabila saluran induk dilaksanakan pada protokol atau platform sedia ada, sejauh mungkin, semasa mempertimbangkan pengalaman pengguna, saluran induk harus:"
 
 #: ../../guide/master.rst:25
-msgid "maintain one thread per chat, indicating it's name, source channel and type;"
+msgid "maintain one conversation thread per chat, indicating its name, source channel and type;"
 msgstr ""
 
 #: ../../guide/master.rst:27
 msgid "support all, if not most, types of messages defined in the framework, process and deliver messages between the user and slave channels;"
-msgstr ""
+msgstr "menyokong semua, jika tidak paling, jenis mesej yang ditakrifkan dalam rangka kerja, memproses dan menyampaikan pesan antara pengguna dan saluran hamba;"
 
 #: ../../guide/master.rst:30
 msgid "support all, if not most, features of messages, including: targeted message reply, chat substitution in text (usually used in @ references), commands, etc. Master channel should be able to process incoming messages with such features, and send messages with such features to slave channels if applicable;"
-msgstr ""
+msgstr "menyokong semua, jika tidak paling, ciri-ciri mesej, termasuk: balasan mesej disasarkan, penggantian sembang dalam teks (biasanya digunakan dalam @ rujukan), perintah, dan lain-lain saluran Master sepatutnya dapat memproses mesej masuk dengan ciri-ciri tersebut, ciri-ciri seperti saluran hamba jika berkenaan;"
 
 #: ../../guide/master.rst:36
 msgid "be able to invoke and process \"additional features\" offered by slave channels."
-msgstr ""
+msgstr "dapat memanggil dan memproses \"ciri tambahan\" yang ditawarkan oleh saluran hamba."
 
 #: ../../guide/master.rst:39
 msgid "Optionally, a master channel can also support / identify vendor-specified information from certain slave channels."
@@ -78,11 +78,11 @@ msgstr ""
 
 #: ../../guide/master.rst:46
 msgid "An example of an ideal design of a master channel, inspired by Telegram Desktop"
-msgstr ""
+msgstr "Satu contoh reka bentuk ideal saluran induk, diilhamkan oleh Telegram Desktop"
 
 #: ../../guide/master.rst:49
 msgid "Depends on your implementation, a master channel may probably needs to maintain a list of chats and messages, for presentation or other purposes."
-msgstr ""
+msgstr "Bergantung kepada pelaksanaan anda, saluran induk mungkin perlu mengekalkan senarai sembang dan mesej, untuk persembahan atau tujuan lain."
 
 #: ../../guide/master.rst:54
 msgid "Message delivery"

@@ -1,0 +1,90 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-22 10:02+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Italian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: it\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/API/coordinator.pot\n"
+"Language: it_IT\n"
+
+#: ../../API/coordinator.rst:2
+msgid "Coordinator"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.coordinator:1
+msgid "Coordinator among channels."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.coordinator:5
+msgid "*str* -- Name of current profile.."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.coordinator:9
+msgid "*threading.Lock* -- Global interaction thread lock."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.coordinator:13
+msgid "*EFBChannel* -- The running master channel object."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.coordinator:17
+msgid "*Dict[str, EFBChannel]* -- Dictionary of running slave channel object. Keys are the unique identifier of the channel."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.coordinator:22
+msgid "*List[EFBMiddleware]* -- List of middlewares"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.coordinator.add_channel:1
+msgid "Register the channel with the coordinator."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.coordinator.add_channel:0
+#: ../../../docstring of ehforwarderbot.coordinator.add_middleware:0
+#: ../../../docstring of ehforwarderbot.coordinator.send_message:0
+#: ../../../docstring of ehforwarderbot.coordinator.send_status:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.coordinator.add_channel:3
+msgid "Channel to register"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.coordinator.add_middleware:1
+msgid "Register a middleware with the coordinator."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.coordinator.add_middleware:3
+msgid "Middleware to register"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.coordinator.send_message:1
+#: ../../../docstring of ehforwarderbot.coordinator.send_status:1
+msgid "Deliver a message to the destination channel."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.coordinator.send_message:3
+msgid "The message"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.coordinator.send_message:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.coordinator.send_message:6
+msgid "The message sent by the destination channel, includes the updated message ID from there. Returns ``None`` if the message is not sent."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.coordinator.send_status:3
+msgid "The status"
+msgstr ""
+

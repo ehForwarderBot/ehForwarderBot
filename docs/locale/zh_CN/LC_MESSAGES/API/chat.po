@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"POT-Creation-Date: 2018-03-01 22:12+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -61,8 +61,8 @@ msgid ":obj:`.EFBChat` or None -- The parent chat of the member. Only available 
 msgstr ":obj:`.EFBChat` 或 None -- 成员的所在的群组对象。只对聊天组成员可用。默认值为 ``None``。"
 
 #: ../../../docstring of ehforwarderbot.EFBChat:43
-msgid "list of :obj:`.EFBChat` -- Provide a list of members in the group. Defaulted to an empty ``list``. You may want to extend this object and implement a ``@property`` method set for loading chats on demand."
-msgstr ":obj:`.EFBChat`列表 -- 提供群组中成员的列表。默认值为一个空的``list``。你可以扩展这个对象并实现一个 ``@property`` 方法从而在需要的时候装载会话。"
+msgid "list of :obj:`.EFBChat` -- Provide a list of members in the group. Defaulted to an empty ``list``. You may want to extend this object and implement a ``@property`` method set for loading members on demand."
+msgstr ":obj:`.EFBChat` 列表 -- 提供群组中成员的列表。默认值为一个空的 ``list``。你可以扩展这个对象并实现一个 ``@property`` 方法从而在需要的时候装载会话。"
 
 #: ../../../docstring of ehforwarderbot.EFBChat:50
 msgid "*Dict[str, Any]* -- Any vendor specific attributes."

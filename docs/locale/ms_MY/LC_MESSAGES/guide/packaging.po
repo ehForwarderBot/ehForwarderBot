@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-23 05:36-0500\n"
+"POT-Creation-Date: 2018-03-22 22:34+1100\n"
+"PO-Revision-Date: 2018-03-22 07:41-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: ../../guide/packaging.rst:7
 msgid "Publish modules on PyPI is one of the easiest way for users to install your package.  Please refer to related documentation and tutorials about PyPI and pip for publishing packages."
-msgstr ""
+msgstr "Menerbitkan modul pada PyPI adalah salah satu cara termudah untuk pengguna memasang pakej anda. Sila rujuk dokumentasi dan tutorial yang berkaitan dengan PyPI dan pip untuk pakej penerbitan."
 
 #: ../../guide/packaging.rst:12
 msgid "For EFB modules, the package is recommended to have a name starts with ``efb-``, or in the format of ``efb-platform-type``, e.g. ``efb-irc-slave`` or ``efb-wechat-mp-filter-middleware``. If there is a collision of name, you can adjust the package name accordingly, but please start the package name with ``efb-``."
@@ -74,13 +74,13 @@ msgstr ""
 
 #: ../../guide/packaging.rst:63
 msgid "Private modules"
-msgstr ""
+msgstr "Modul peribadi"
 
 #: ../../guide/packaging.rst:65
 msgid "If you want to extend from, or make changes on existing modules for your own use, you can have your modules in the private modules :doc:`directory <../directories>`."
 msgstr ""
 
 #: ../../guide/packaging.rst:69
-msgid "For such modules, your channel ID must be the fully-qualifying name of the class. For example, if your class is located at ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``, the channel must have ID ``bob_ric_mod.IRCChannel`` for the framework to recognise it."
+msgid "For such modules, your channel ID must be the fully-qualified name of the class. For example, if your class is located at ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``, the channel must have ID ``bob_ric_mod.IRCChannel`` for the framework to recognise it."
 msgstr ""
 

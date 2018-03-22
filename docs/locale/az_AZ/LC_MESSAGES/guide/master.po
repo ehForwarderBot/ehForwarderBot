@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"POT-Creation-Date: 2018-03-22 22:34+1100\n"
+"PO-Revision-Date: 2018-03-22 07:41-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Azerbaijani\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgid "When the master channel is implemented on an existing protocol or platfor
 msgstr ""
 
 #: ../../guide/master.rst:25
-msgid "maintain one thread per chat, indicating it's name, source channel and type;"
+msgid "maintain one conversation thread per chat, indicating its name, source channel and type;"
 msgstr ""
 
 #: ../../guide/master.rst:27

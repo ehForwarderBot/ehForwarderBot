@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-20 23:43+1100\n"
-"PO-Revision-Date: 2018-02-23 05:36-0500\n"
+"POT-Creation-Date: 2018-03-01 22:12+1100\n"
+"PO-Revision-Date: 2018-03-22 07:41-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgid "Set[:obj:`.MsgType`] -- Types of messages that the channel accepts as inc
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBChannel:23
-msgid "*str* -- Unique identifier of the channel. Convention of IDs is specified in :doc:`/guide/packaging` This ID will be appended with its instance ID when available."
+msgid "*str* -- Unique identifier of the channel. Convention of IDs is specified in :doc:`/guide/packaging`. This ID will be appended with its instance ID when available."
 msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBChannel:29
@@ -50,7 +50,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.__init__:1
 msgid "Initialize the channel. Inherited initializer must call the \"super init\" method at the beginning."
-msgstr ""
+msgstr "Menginisialisasi saluran. Pengasas warisan mesti memanggil kaedah \"super init\" pada mulanya."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.__init__:0
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:0
@@ -62,11 +62,11 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.__init__:5
 msgid "Instance ID of the channel."
-msgstr ""
+msgstr "ID contoh saluran."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:1
 msgid "Get the chat object from a slave channel."
-msgstr ""
+msgstr "Dapatkan objek sembang daripada saluran hamba."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:3
 msgid "UID of the chat."
@@ -114,7 +114,7 @@ msgstr ""
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:36
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chats:6
 msgid "This is not required by Master Channels"
-msgstr ""
+msgstr "Ini tidak diperlukan oleh Saluran Induk"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:1
 msgid "Get the profile picture of a chat. Profile picture is also referred as profile photo, avatar, \"head image\" sometimes."
@@ -154,7 +154,7 @@ msgstr "senarai sembang sedia ada dalam saluran."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_extra_functions:1
 msgid "Get a list of additional features"
-msgstr ""
+msgstr "Dapatkan senarai ciri tambahan"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_extra_functions:3
 msgid "A dict of methods marked as additional features. Method can be called with ``get_extra_functions()[\"methodName\"]()``."
@@ -262,7 +262,7 @@ msgstr ""
 
 #: ../../API/channel.rst:36
 msgid "About Channel ID"
-msgstr ""
+msgstr "Mengenai ID Saluran"
 
 #: ../../API/channel.rst:38
 msgid "With the introduction of instance IDs, it is required to use the ``self.channel_id`` or equivalent instead of any hard-coded ID or constants while referring to the channel (e.g. while retrieving the path to the configuration files, creating chat and message objects, etc)."

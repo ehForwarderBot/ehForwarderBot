@@ -1,0 +1,129 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-01 22:12+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Italian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: it\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/API/chat.pot\n"
+"Language: it_IT\n"
+
+#: ../../API/chat.rst:2
+msgid "EFBChat"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat:1
+msgid "EFB Chat object. This is used to represent a chat or a group member."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat:5
+msgid "*str* -- Unique ID of the channel."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat:9
+msgid "*str* -- Emoji of the channel."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat:13
+msgid "*str* -- Name of the channel."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat:17
+msgid "*str* -- Name of the chat."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat:21
+msgid "*str* -- Alternative name of the chat, usually set by user."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat:25
+msgid ":obj:`.ChatType` -- Type of the chat."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat:29
+msgid "*str* -- Unique ID of the chat. This should be unique within the channel."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat:33
+msgid "*bool* -- Indicate if this object represents a chat. Defaulted to ``True``. This should be set to ``False`` when used on a group member."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat:38
+msgid ":obj:`.EFBChat` or None -- The parent chat of the member. Only available to chat member objects. Defaulted to ``None``."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat:43
+msgid "list of :obj:`.EFBChat` -- Provide a list of members in the group. Defaulted to an empty ``list``. You may want to extend this object and implement a ``@property`` method set for loading members on demand."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat:50
+msgid "*Dict[str, Any]* -- Any vendor specific attributes."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat:54
+msgid "*bool* -- Indicate if this chat represents the user."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat:58
+msgid "*bool* -- Indicate if this chat represents a system chat/member."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat.__init__:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat.__init__:1
+msgid "Provide the channel object to fill :attr:`channel_name`, :attr:`channel_emoji`, and :attr:`channel_id` automatically."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat.is_self:1
+msgid "If this chat represents the user"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat.is_system:1
+msgid "If this chat is a system chat"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat.self:1
+msgid "Set the chat as yourself. In this context, \"yourself\" means the user behind the master channel. Every channel should relate this to the corresponding target."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat.self:0
+#: ../../../docstring of ehforwarderbot.EFBChat.system:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat.self:5
+#: ../../../docstring of ehforwarderbot.EFBChat.system:4
+msgid "This object."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat.self:0
+#: ../../../docstring of ehforwarderbot.EFBChat.system:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat.system:1
+msgid "Set the chat as a system chat. Only set for channel-level and group-level system chats."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat.verify:1
+msgid "Verify the completeness of the data."
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat.verify:0
+msgid "raises"
+msgstr ""
+
+#: ../../../docstring of ehforwarderbot.EFBChat.verify:3
+msgid ":exc:`ValueError` -- When this chat is invalid."
+msgstr ""
+

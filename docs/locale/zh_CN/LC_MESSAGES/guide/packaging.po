@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"POT-Creation-Date: 2018-03-22 22:34+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "我们建议将 EFB 模块名以 ``efb-`` 为前缀，或是按 ``efb-�
 
 #: ../../guide/packaging.rst:21
 msgid "Module discovery"
-msgstr ""
+msgstr "组件发现机制"
 
 #: ../../guide/packaging.rst:23
 msgid "EH Forwarder Bot uses `Setuptools' Entry Point feature`__ to discover and manage channels and middlewares. In your ``setup.py`` script or ``.egg-info/entry_points.txt``, specify the group and object as follows:"
@@ -54,11 +54,11 @@ msgstr "中间件组：``ehforwarderbot.middleware``"
 
 #: ../../guide/packaging.rst:34
 msgid "Convention for object names is ``<author>.<platform>``, e.g. ``alice.irc``. This should also be your module's ID."
-msgstr ""
+msgstr "对象名称的格式推荐使用 ``<author>.<platform>``，如 ``alice.irc``，同时该名称应与组件 ID 相同。"
 
 #: ../../guide/packaging.rst:37
 msgid "Object reference should point to your module's class, which extends either ``EFBChannel`` or ``EFBMiddleware``."
-msgstr ""
+msgstr "对象引用应该指向组件的主类，这个类应继承 ``EFBChannel`` 或 ``EFBMiddleware`` 其中之一。"
 
 #: ../../guide/packaging.rst:41
 msgid "Example"
@@ -78,9 +78,9 @@ msgstr "私有模块"
 
 #: ../../guide/packaging.rst:65
 msgid "If you want to extend from, or make changes on existing modules for your own use, you can have your modules in the private modules :doc:`directory <../directories>`."
-msgstr "如果您想要对现有模块做出更改或是扩展以满足个人使用，您可以将模块放入私有模块 :doc:`目录 <../directories>` 中。"
+msgstr "如果您想要对现有组件做出更改或是扩展以满足个人使用，您可以将其放入私有组件:doc:`目录 <../directories>`中。"
 
 #: ../../guide/packaging.rst:69
-msgid "For such modules, your channel ID must be the fully-qualifying name of the class. For example, if your class is located at ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``, the channel must have ID ``bob_ric_mod.IRCChannel`` for the framework to recognise it."
-msgstr ""
+msgid "For such modules, your channel ID must be the fully-qualified name of the class. For example, if your class is located at ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``, the channel must have ID ``bob_ric_mod.IRCChannel`` for the framework to recognise it."
+msgstr "对于这些组件，您的通道 ID 必须是类的完全限定名称。例如，如果类位于 ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``。这个通道的 ID 应为 ``bob_ric_mod.IRCChannel``，以供框架识别。"
 

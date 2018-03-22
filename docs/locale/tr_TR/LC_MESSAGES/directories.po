@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"POT-Creation-Date: 2018-03-11 19:57+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -28,15 +28,11 @@ msgstr "Çoğu modüllerin EH Forwarder Bot 2.0 için konfigürasyon ve datalar�
 msgid "By default, the data directory is user specific, located in the user's home directory, ``~/.ehforwarderbot``.  This can be overridden with the environment variable ``EFB_DATA_PATH``. This path defined here should be an **absolute path**."
 msgstr "Varsayılan olarak, veri dizini kullanıcıya özgü, kullanıcının ana dizininde bulunan, `` ~/.ehforwarderbot``. Bu, çevre değişkeni ``EFB_DATA_PATH`` ile geçersiz kılınabilir. Burada tanımlanan bu yol bir ** mutlak yol ** olmalıdır."
 
-#: ../../directories.rst:23
-msgid "Notice that when either of the path is customised with an environment variable, EFB will append the username of the user running it to the path."
-msgstr "Yolun herhangi biri bir ortam değişkeniyle özelleştirildiğinde EFB, onu çalıştıran kullanıcının adını yola ekleyecektir."
-
-#: ../../directories.rst:28
+#: ../../directories.rst:24
 msgid "Directory structure"
 msgstr "Altdizin yapısı"
 
-#: ../../directories.rst:30
+#: ../../directories.rst:26
 msgid "Using the default configuration as an example, this section will introduce about the structure of EFB data directory."
 msgstr "Bu kısım size EFB veri dizininin yapısını, varsayılan konfigürasyonu örnek olarak kullanarak tanıtacak."
 

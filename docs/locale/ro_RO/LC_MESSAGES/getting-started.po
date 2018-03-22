@@ -1,0 +1,150 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-01 22:12+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Romanian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: ro\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/getting-started.pot\n"
+"Language: ro_RO\n"
+
+#: ../../getting-started.rst:2
+msgid "Getting started"
+msgstr ""
+
+#: ../../getting-started.rst:4
+msgid "A few simple steps to get started with EFB."
+msgstr ""
+
+#: ../../getting-started.rst:7
+msgid "Install EH Forwarder Bot"
+msgstr ""
+
+#: ../../getting-started.rst:9
+msgid "EH Forwarder Bot can be installed in the following ways:"
+msgstr ""
+
+#: ../../getting-started.rst:13
+msgid "The following instructions may not work properly until a stable release is uploaded. As you are in the beta version documentation, I assume you know what to do."
+msgstr ""
+
+#: ../../getting-started.rst:19
+msgid "Install from PyPI"
+msgstr ""
+
+#: ../../getting-started.rst:21
+msgid "``pip`` will by default install the latest stable version from PyPI, but development versions are available at PyPI as well."
+msgstr ""
+
+#: ../../getting-started.rst:31
+msgid "Install from GitHub"
+msgstr ""
+
+#: ../../getting-started.rst:33
+msgid "This will install the latest commit from GitHub. It might not be stable, so proceed with caution."
+msgstr ""
+
+#: ../../getting-started.rst:42
+msgid "A good network environment"
+msgstr ""
+
+#: ../../getting-started.rst:44
+msgid "Since most of our channels are using polling for message retrieval, a good network environment is necessary for channels to run smoothly. A poor network environment may lead to slow response, or loss of messages."
+msgstr ""
+
+#: ../../getting-started.rst:51
+msgid "Create local directories"
+msgstr ""
+
+#: ../../getting-started.rst:53
+msgid "EFB uses a \\*nix user configuration style, which is described in details in :doc:`directories`. In short, if you are using the default configuration, you need to create ``~/.ehforwarderbot``, and give read and write permission to the user running EFB."
+msgstr ""
+
+#: ../../getting-started.rst:59
+msgid "Choose, install and enable modules"
+msgstr ""
+
+#: ../../getting-started.rst:61
+msgid "Currently, all modules that was submitted to us are recorded in the `channels repository <https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository>`_. You can choose the channels that fits your need the best."
+msgstr ""
+
+#: ../../getting-started.rst:65
+msgid "Instructions about installing each channel is available at their respective documentations."
+msgstr ""
+
+#: ../../getting-started.rst:68
+msgid "When you have successfully installed a channel, you can enable it by listing its Channel ID in the :doc:`configuration file <config>`. The default path is ``~/.ehforwarderbot/profiles/default/config.yaml``. Please refer to :doc:`directories` if you have configured otherwise."
+msgstr ""
+
+#: ../../getting-started.rst:73
+msgid "Please note that although you can have more than one slaves channels running at the same time, you can only have exactly one master channels running in one profile. Meanwhile, middlewares are completely optional."
+msgstr ""
+
+#: ../../getting-started.rst:77
+msgid "Example"
+msgstr ""
+
+#: ../../getting-started.rst:80
+msgid "To enable the following modules:"
+msgstr ""
+
+#: ../../getting-started.rst:82
+msgid "Master channel"
+msgstr ""
+
+#: ../../getting-started.rst:83
+msgid "Demo Master (``foo.demo_master``)"
+msgstr ""
+
+#: ../../getting-started.rst:85
+msgid "Slave channels"
+msgstr ""
+
+#: ../../getting-started.rst:85
+msgid "Demo Slave (``foo.demo_slave``)"
+msgstr ""
+
+#: ../../getting-started.rst:86
+msgid "Dummy Slave (``bar.dummy``)"
+msgstr ""
+
+#: ../../getting-started.rst:88
+msgid "Middlewares"
+msgstr ""
+
+#: ../../getting-started.rst:88
+msgid "Null Middleware (``foo.null``)"
+msgstr ""
+
+#: ../../getting-started.rst:90
+msgid "In the ``config.yaml`` it should have the following lines:"
+msgstr ""
+
+#: ../../getting-started.rst:102
+msgid "Launch EFB"
+msgstr ""
+
+#: ../../getting-started.rst:108
+msgid "This will launch EFB directly in the current environment. The default :doc:`profile` is named ``default``, to launch EFB in a different profile, append ``--profile <profile-name>`` to the command."
+msgstr ""
+
+#: ../../getting-started.rst:112
+msgid "For more command line options, use ``--help`` option."
+msgstr ""
+
+#: ../../getting-started.rst:115
+msgid "Launch EFB as a daemon process"
+msgstr ""
+
+#: ../../getting-started.rst:117
+msgid "Since version 2, EH Forwarder Bot has removed the daemon helper as it is unstable to use.  We recommend you to use mature solutions for daemon management, such as systemd_, upstart_, or pm2_."
+msgstr ""
+

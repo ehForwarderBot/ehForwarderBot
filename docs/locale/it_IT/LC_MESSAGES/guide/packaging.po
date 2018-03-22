@@ -1,0 +1,86 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-22 22:34+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Italian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: it\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/packaging.pot\n"
+"Language: it_IT\n"
+
+#: ../../guide/packaging.rst:2
+msgid "Packaging and Publish"
+msgstr ""
+
+#: ../../guide/packaging.rst:5
+msgid "Publish your module on PyPI"
+msgstr ""
+
+#: ../../guide/packaging.rst:7
+msgid "Publish modules on PyPI is one of the easiest way for users to install your package.  Please refer to related documentation and tutorials about PyPI and pip for publishing packages."
+msgstr ""
+
+#: ../../guide/packaging.rst:12
+msgid "For EFB modules, the package is recommended to have a name starts with ``efb-``, or in the format of ``efb-platform-type``, e.g. ``efb-irc-slave`` or ``efb-wechat-mp-filter-middleware``. If there is a collision of name, you can adjust the package name accordingly, but please start the package name with ``efb-``."
+msgstr ""
+
+#: ../../guide/packaging.rst:21
+msgid "Module discovery"
+msgstr ""
+
+#: ../../guide/packaging.rst:23
+msgid "EH Forwarder Bot uses `Setuptools' Entry Point feature`__ to discover and manage channels and middlewares. In your ``setup.py`` script or ``.egg-info/entry_points.txt``, specify the group and object as follows:"
+msgstr ""
+
+#: ../../guide/packaging.rst:30
+msgid "Group for master channels: ``ehforwarderbot.master``"
+msgstr ""
+
+#: ../../guide/packaging.rst:31
+msgid "Group for slave channels: ``ehforwarderbot.slave``"
+msgstr ""
+
+#: ../../guide/packaging.rst:32
+msgid "Group for middlewares: ``ehforwarderbot.middleware``"
+msgstr ""
+
+#: ../../guide/packaging.rst:34
+msgid "Convention for object names is ``<author>.<platform>``, e.g. ``alice.irc``. This should also be your module's ID."
+msgstr ""
+
+#: ../../guide/packaging.rst:37
+msgid "Object reference should point to your module's class, which extends either ``EFBChannel`` or ``EFBMiddleware``."
+msgstr ""
+
+#: ../../guide/packaging.rst:41
+msgid "Example"
+msgstr ""
+
+#: ../../guide/packaging.rst:43
+msgid "``setup.py`` script"
+msgstr ""
+
+#: ../../guide/packaging.rst:55
+msgid "``.egg-info/entry_points.txt``"
+msgstr ""
+
+#: ../../guide/packaging.rst:63
+msgid "Private modules"
+msgstr ""
+
+#: ../../guide/packaging.rst:65
+msgid "If you want to extend from, or make changes on existing modules for your own use, you can have your modules in the private modules :doc:`directory <../directories>`."
+msgstr ""
+
+#: ../../guide/packaging.rst:69
+msgid "For such modules, your channel ID must be the fully-qualified name of the class. For example, if your class is located at ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``, the channel must have ID ``bob_ric_mod.IRCChannel`` for the framework to recognise it."
+msgstr ""
+

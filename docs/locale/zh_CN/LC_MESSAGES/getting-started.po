@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-22 10:02+1100\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"POT-Creation-Date: 2018-03-01 22:12+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr "良好的网络环境"
 
 #: ../../getting-started.rst:44
 msgid "Since most of our channels are using polling for message retrieval, a good network environment is necessary for channels to run smoothly. A poor network environment may lead to slow response, or loss of messages."
-msgstr ""
+msgstr "因大多数信道都通过轮询来获取消息，因此需要良好的网络环境来保证使信道运行顺畅。网络环境不佳可能会导致响应缓慢或是消息丢失。"
 
 #: ../../getting-started.rst:51
 msgid "Create local directories"
@@ -66,7 +66,7 @@ msgstr "创建本地文件夹"
 
 #: ../../getting-started.rst:53
 msgid "EFB uses a \\*nix user configuration style, which is described in details in :doc:`directories`. In short, if you are using the default configuration, you need to create ``~/.ehforwarderbot``, and give read and write permission to the user running EFB."
-msgstr ""
+msgstr "EFB 使用类 *nix 用户配置样式，详情请参见 :doc:`directories`。 简而言之，如果您使用默认配置，您需要创建 ``~/.ehforwarderbot`` 目录，并向运行 EFB 的用户提供读写权限。"
 
 #: ../../getting-started.rst:59
 msgid "Choose, install and enable modules"
@@ -81,110 +81,70 @@ msgid "Instructions about installing each channel is available at their respecti
 msgstr "有关信道的安装说明，可在各自的文档中获得。"
 
 #: ../../getting-started.rst:68
-msgid "When you have successfully installed a channel, you can enable it by listing its Channel ID in the configuration file. The default path is ``~/.ehforwarderbot/profiles/default/config.yaml``. Please refer to :doc:`directories` if you have configured otherwise."
-msgstr "安装信道后，您可以通过在配置文件中插入其信道 ID 来启用它。默认的配置文件路径为 ``~/.ehforwarderbot/profiles/default/config.yaml``。如您需对其它参数进行配置，请参阅 :doc:`directories` 。"
+msgid "When you have successfully installed a channel, you can enable it by listing its Channel ID in the :doc:`configuration file <config>`. The default path is ``~/.ehforwarderbot/profiles/default/config.yaml``. Please refer to :doc:`directories` if you have configured otherwise."
+msgstr "安装信道后，您可以通过在\\ :doc:`配置文件 <config>`\\ 中添加其信道 ID 来启用它。默认的配置文件路径为 ``~/.ehforwarderbot/profiles/default/config.yaml``。如您需对其它参数进行配置，请参阅\\ :doc:`directories`\\ 。"
 
 #: ../../getting-started.rst:73
 msgid "Please note that although you can have more than one slaves channels running at the same time, you can only have exactly one master channels running in one profile. Meanwhile, middlewares are completely optional."
 msgstr "请注意，您可以同时使用多个从端，但单个配置文档内只能有一个主端。同时，中间件是完全凭需选择的。"
 
-#: ../../getting-started.rst:78
-msgid "Syntax"
-msgstr "语法"
-
-#: ../../getting-started.rst:80
-msgid "The configuration file is in the YAML syntax. If you are not familiar with its syntax, please check its documentations and tutorials for details."
-msgstr "配置文件使用 YAML 语法。如果您不熟悉该语法，请查阅相关文档及教程。"
-
-#: ../../getting-started.rst:84
-msgid "The ID of the master channel enabled is under the key ``master_channel``"
-msgstr "主端的信道 ID 位于 ``master_channel``下"
-
-#: ../../getting-started.rst:85
-msgid "The ID of slave channels enabled is listed under the key ``slave_channel``. It has to be a list even if just one channel is to be enabled."
-msgstr "从端的 ID 位于 ``slave_channel``下，且必须为一个列表，即使仅使用一个信道。"
-
-#: ../../getting-started.rst:88
-msgid "The ID of middlewares enabled are listed under the key ``middlewares``. It has to be a list even if just one middleware is to be enabled. However, if you don't want to enable any middleware, just omit the section completely."
-msgstr "需要启用的中间件的 ID 应列于 ``middlewares`` 下。它应当为一个列表，即使只有一个中间件被启用。不过如果您不打算使用中间件，请忽略该部分。"
-
-#: ../../getting-started.rst:93
-msgid "To have multiple accounts running simultaneously, you can also appoint an instance ID to a module. Instance ID can be defined by the user, and if defined, it must has nothing other than letters, numbers and underscores, i.e. in regular expressions ``[a-zA-Z0-9_]+``. When an instance ID is not defined, the channel will run in the \"default\" instance with no instance ID."
-msgstr ""
-
-#: ../../getting-started.rst:99
-msgid "To indicate the instance ID of an instance, append ``#`` following by the instance ID to the module ID. For example, slave channel ``bar.dummy`` running with instance ID ``alice`` should be defined as ``bar.dummy#alice``. If the channel requires configurations, it should be done in the directory with the same name (e.g. ``EFB_DATA_PATH/profiles/PROFILE/bar.dummy#alice``), so as to isolate instances."
-msgstr ""
-
-#: ../../getting-started.rst:106
-msgid "Please avoid having two modules with the same set of module ID and instance ID as it may leads to unexpected results."
-msgstr ""
-
-#: ../../getting-started.rst:109
+#: ../../getting-started.rst:77
 msgid "Example"
 msgstr "示例"
 
-#: ../../getting-started.rst:112
+#: ../../getting-started.rst:80
 msgid "To enable the following modules:"
-msgstr ""
+msgstr "若要启用以下组件："
 
-#: ../../getting-started.rst:114
+#: ../../getting-started.rst:82
 msgid "Master channel"
 msgstr "主端"
 
-#: ../../getting-started.rst:115
+#: ../../getting-started.rst:83
 msgid "Demo Master (``foo.demo_master``)"
 msgstr "演示主端 (``foo.demo_master``)"
 
-#: ../../getting-started.rst:118
+#: ../../getting-started.rst:85
 msgid "Slave channels"
 msgstr "从端"
 
-#: ../../getting-started.rst:117
+#: ../../getting-started.rst:85
 msgid "Demo Slave (``foo.demo_slave``)"
 msgstr "演示从端 (``foo.demo_slave``)"
 
-#: ../../getting-started.rst:118
+#: ../../getting-started.rst:86
 msgid "Dummy Slave (``bar.dummy``)"
 msgstr "虚拟从端 (``bar.dummy``)"
 
-#: ../../getting-started.rst:119
-msgid "Dummy Slave (``bar.dummy``) at ``alt`` instance"
-msgstr ""
-
-#: ../../getting-started.rst:122
+#: ../../getting-started.rst:88
 msgid "Middlewares"
 msgstr "中间件"
 
-#: ../../getting-started.rst:121
-msgid "Message Archiver (``foo.msg_archiver``)"
-msgstr "消息存档 (``foo.msg_archiver``)"
-
-#: ../../getting-started.rst:122
+#: ../../getting-started.rst:88
 msgid "Null Middleware (``foo.null``)"
 msgstr "空中间件 (``foo.null``)"
 
-#: ../../getting-started.rst:124
+#: ../../getting-started.rst:90
 msgid "In the ``config.yaml`` it should have the following lines:"
 msgstr "在 ``config.yaml`` 中，应当存在以下内容："
 
-#: ../../getting-started.rst:138
+#: ../../getting-started.rst:102
 msgid "Launch EFB"
 msgstr "启动 EFB"
 
-#: ../../getting-started.rst:144
+#: ../../getting-started.rst:108
 msgid "This will launch EFB directly in the current environment. The default :doc:`profile` is named ``default``, to launch EFB in a different profile, append ``--profile <profile-name>`` to the command."
 msgstr "这会直接在目前的环境下启动 EFB。默认的 :doc:`profile` 名称为 ``default``。若要使用不同的配置文档，请在命令后面加上 ``--profile <profile-name>`` 。"
 
-#: ../../getting-started.rst:148
+#: ../../getting-started.rst:112
 msgid "For more command line options, use ``--help`` option."
 msgstr "如需更多命令行选项, 请使用 ``--help`` 指令。"
 
-#: ../../getting-started.rst:151
+#: ../../getting-started.rst:115
 msgid "Launch EFB as a daemon process"
 msgstr "将 EFB 作为守护进程启用"
 
-#: ../../getting-started.rst:153
+#: ../../getting-started.rst:117
 msgid "Since version 2, EH Forwarder Bot has removed the daemon helper as it is unstable to use.  We recommend you to use mature solutions for daemon management, such as systemd_, upstart_, or pm2_."
 msgstr "从 2.0 版本开始，因稳定性原因，守护进程助手已被从 EH Forwarder Bot 中移除。我们建议您通过更为成熟的解决方案来管理守护进程，例如 systemd_，upstart_，或 pm2_。"
 

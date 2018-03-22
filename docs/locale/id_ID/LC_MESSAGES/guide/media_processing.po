@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Memilih format media"
 
 #: ../../guide/media_processing.rst:7
 msgid "Both Master and Slave channel can take their charges to convert media files they send or receive. In general: **if a media file received from remote server is not a common format, convert it before deliver it on; if a media file sent to remote server requires to be in a specific format, it should be converted before sending out**. Nevertheless, this is only a guideline on channels' responsibility regarding media processing, and everyone has their own opinion on what is a common format / encoding. Therefore we only recommend this behaviour, but do not force in our code. This is to say that, you still have to take care of the accepted type of media encoding of your corresponding method of presentation, and convert and/or fallback to different type of representation if necessary. After all, the delivery of information is more important."
-msgstr "Saluran Master dan Slave dapat mengambil dakwaan mereka untuk mengonversi file media yang mereka kirim atau terima. Secara umum: ** jika file media yang diterima dari server jauh bukan format yang umum, ubah dulu sebelum mengirimkannya; Jika file media yang dikirim ke server jarak jauh harus dalam format tertentu, maka file tersebut harus dikonversi sebelum dikirim **. Meskipun demikian, ini hanya pedoman tanggung jawab saluran mengenai pemrosesan media, dan setiap orang memiliki pendapat mereka sendiri tentang format umum / pengkodean yang umum. Oleh karena itu kami hanya merekomendasikan perilaku ini, tapi jangan memaksakan kode kami. Ini adalah untuk mengatakan bahwa, Anda masih harus mengurus jenis pengkodean media yang diterima dari metode penyajian yang sesuai, dan mengubah dan / atau mengganti jenis representasi yang berbeda jika diperlukan. Bagaimanapun, penyampaian informasi itu lebih penting."
+msgstr "Saluran Induk dan Slave dapat mengambil dakwaan mereka untuk mengkonversi berkas media yang mereka kirim atau terima. Secara umum: **apabila berkas media yang diterima dari server jarak jauh bukan merupakan format yang umum, konversikan terlebih dahulu sebelum mengirimkannya; apabila berkas media yang dikirim ke server jarak jauh mengharuskan dalam format tertentu, maka berkas tersebut harus dikonversi sebelum dikirim**. Walaupun demikian, ini hanya sebuah pedoman tanggung jawab saluran mengenai pengolahan media, dan setiap orang memiliki pendapat mereka sendiri mengenai format umum / pengkodean. Oleh karena itu kami hanya menyarankan perilaku ini, tapi jangan memaksakan kode kami. Ini merupakan untuk mengatakan bahwa, anda masih harus memperhatikan jenis pengkodean media yang diterima dari metode penyajian yang cocok, dan mengubah dan/atau mengganti jenis representasi yang berbeda apabila diperlukan. Bagaimanapun juga, penyampaian informasi itu lebih penting."
 
 #: ../../guide/media_processing.rst:25
 msgid "Media encoders"
@@ -38,7 +38,7 @@ msgstr "Begitu pula, kita juga tidak akan membatasi hal ini juga, tapi hanya seb
 
 #: ../../guide/media_processing.rst:33
 msgid "We try to aim to use as few different libraries as we can, as more library to install means more space, install time, and complexity. While processing media files, we recommend to use the following libraries if possible:"
-msgstr "Kami mencoba untuk menggunakan beberapa perpustakaan yang berbeda yang kami bisa, karena lebih banyak perpustakaan yang dipasang berarti lebih banyak ruang, waktu pasang, dan kompleksitas. Saat memproses file media, sebaiknya gunakan pustaka berikut jika memungkinkan:"
+msgstr "Kami mencoba untuk menggunakan beberapa pustaka yang berbeda sebisa kami, ketika lebih banyak pustaka yang dipasang berarti akan lebih banyak ruang, waktu pasang, dan kompleksitas. Saat memproses berkas media, kami menyarankan untuk menggunakan pustaka berikut jika memungkinkan:"
 
 #: ../../guide/media_processing.rst:39
 msgid "pillow"
@@ -58,7 +58,7 @@ msgstr "Saat sebuah file dikirim dari sebuah saluran, itu harus terbuka, kembali
 
 #: ../../guide/media_processing.rst:48
 msgid "Files sent should be able to be located somewhere in the file system, better with a appropriate extension name, but not required. All files should also have its MIME type specified in the message object. If the channel is not sure about the correct MIME type, it can try to guess with ``libmagic``, or fallback to ``application/octet-stream``. Always try the best to provide the most suitable MIME type when sending."
-msgstr "File yang dikirim harus dapat ditempatkan di suatu tempat di sistem file, lebih baik dengan nama ekstensi yang sesuai, namun tidak diperlukan. Semua file juga harus memiliki jenis MIME yang ditentukan dalam objek pesan. Jika saluran tidak yakin tentang jenis MIME yang benar, coba tebak dengan ``libmagic``, atau kembali ke ``application/octet-stream``. Selalu mencoba yang terbaik untuk memberikan jenis MIME yang paling sesuai ketika mengirim."
+msgstr "Berkas yang dikirim harus bisa ditempatkan di suatu tempat dalam sistem berkas, akan lebih baik dengan nama ekstensi yang sesuai, tapi tidak diperlukan. Semua berkas juga harus memiliki tipe MIME yang ditentukan pada objek pesan. Apabila saluran tidak begitu yakin tentang tipe MIME yang benar, itu dapat di coba taksirkan dengan ``libmagic``, atau kembali ke ``application/octet-stream``. Selalu mencoba yang terbaik untuk memberikan tipe MIME yang paling cocok saat mengirim."
 
 #: ../../guide/media_processing.rst:57
 msgid "For such files, we use ``close`` to signify the end of its lifecycle. If the file is not required by the sender's channel anymore, it can be safely discarded."

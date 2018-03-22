@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"POT-Creation-Date: 2018-03-22 22:34+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -22,31 +22,31 @@ msgstr "主端"
 
 #: ../../guide/master.rst:4
 msgid "Master channels are the interface that directly or indirectly interact with the user. Despite the first master channel of EFB (EFB Telegram Master) is written in a form of Telegram Bot, master channels can be written in many forms, such as:"
-msgstr ""
+msgstr "主端是 EFB 框架直接或间接与用户交互的界面。尽管 EFB 的第一个主端（EFB Telegram 主端）是用 Telegram Bot 的形式展现的，但主端的展现形式可能多重多样："
 
 #: ../../guide/master.rst:10
 msgid "A web app"
-msgstr ""
+msgstr "Web App"
 
 #: ../../guide/master.rst:11
 msgid "A server that expose APIs to dedicated desktop and mobile clients"
-msgstr ""
+msgstr "提供 API 给专有桌面和移动客户端程序的服务端程序"
 
 #: ../../guide/master.rst:13
 msgid "A chat bot on an existing IM"
-msgstr ""
+msgstr "面相现有 IM 的 bot"
 
 #: ../../guide/master.rst:14
 msgid "A server that compiles with a generic IM Protocol"
-msgstr ""
+msgstr "使用泛用型 IM 协议的服务器程序"
 
 #: ../../guide/master.rst:15
 msgid "A CLI client"
-msgstr ""
+msgstr "CLI 客户端"
 
 #: ../../guide/master.rst:16
 msgid "Anything else you can think of..."
-msgstr ""
+msgstr "其他任何你能想到的形式..."
 
 #: ../../guide/master.rst:19
 msgid "Design guideline"
@@ -54,41 +54,41 @@ msgstr "设计指南"
 
 #: ../../guide/master.rst:21
 msgid "When the master channel is implemented on an existing protocol or platform, as far as possible, while considering the user experience, a master channel should:"
-msgstr ""
+msgstr "当主端在现有的协议或平台上实现时，其尽可能在考虑用户体验的同时："
 
 #: ../../guide/master.rst:25
-msgid "maintain one thread per chat, indicating it's name, source channel and type;"
-msgstr ""
+msgid "maintain one conversation thread per chat, indicating its name, source channel and type;"
+msgstr "为每一个会话提供一个专属的聊天串，标注其名称、来源信道和类型；"
 
 #: ../../guide/master.rst:27
 msgid "support all, if not most, types of messages defined in the framework, process and deliver messages between the user and slave channels;"
-msgstr ""
+msgstr "尽可能支持框架所定义的所有消息类型，在用户和从端之间处理并传递消息；"
 
 #: ../../guide/master.rst:30
 msgid "support all, if not most, features of messages, including: targeted message reply, chat substitution in text (usually used in @ references), commands, etc. Master channel should be able to process incoming messages with such features, and send messages with such features to slave channels if applicable;"
-msgstr ""
+msgstr "尽可能支持所有消息特性，包括直接回复消息、消息指向替换（通常用于 @ 引用用户）、消息指令等。主端应当能够处理来自从端的具有此类特性的消息，并在适当的情况允许用户发送具有这些特性的消息到从端；"
 
 #: ../../guide/master.rst:36
 msgid "be able to invoke and process \"additional features\" offered by slave channels."
-msgstr ""
+msgstr "能够调用和处理从端提供的「附加功能」。"
 
 #: ../../guide/master.rst:39
 msgid "Optionally, a master channel can also support / identify vendor-specified information from certain slave channels."
-msgstr ""
+msgstr "另外，主端可以选择支持一些从端提供的「供应商特定」数据。"
 
 #: ../../guide/master.rst:46
 msgid "An example of an ideal design of a master channel, inspired by Telegram Desktop"
-msgstr ""
+msgstr "理想的主端设计的例子，灵感来自 Telegram Desktop"
 
 #: ../../guide/master.rst:49
 msgid "Depends on your implementation, a master channel may probably needs to maintain a list of chats and messages, for presentation or other purposes."
-msgstr ""
+msgstr "取决于实现方式，主端可能需要维护一个完整的会话和消息列表，以展示给用户或用作其他用途。"
 
 #: ../../guide/master.rst:54
 msgid "Message delivery"
-msgstr ""
+msgstr "消息传递"
 
 #: ../../guide/master.rst:56
 msgid "Note that sometimes users may send messages outside of this EFB session, so that slave channels might provide a message has its author marked as \"self\"."
-msgstr ""
+msgstr "注意，有时用户可能在 EFB 会话之外发送消息，因此从端有可能传递作者标记为 \"self\" 的消息到主端。"
 

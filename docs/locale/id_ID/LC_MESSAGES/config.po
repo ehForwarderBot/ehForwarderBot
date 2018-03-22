@@ -1,0 +1,110 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-11 19:57+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Indonesian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: id\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/config.pot\n"
+"Language: id_ID\n"
+
+#: ../../config.rst:2
+msgid "Configuration File"
+msgstr "Berkas Konfigurasi"
+
+#: ../../config.rst:4
+msgid "EFB has an overall configuration file to manage all enabled modules. It is located under the :doc:`directory <directories>` of current profile, and named ``config.yaml``."
+msgstr "EFB mempunyai keseluruhan berkas konfigurasi untuk mengelola semua modul yang diaktifkan. Hal tersebut terletak di bawah :doc:`direktori <directories>` profil saat ini, dan dinamakan ``config.yaml``."
+
+#: ../../config.rst:9
+msgid "Syntax"
+msgstr "Sintaks"
+
+#: ../../config.rst:11
+msgid "The configuration file is in the YAML syntax. If you are not familiar with its syntax, please check its documentations and tutorials for details."
+msgstr "Berkas konfigurasi berada di sintaks YAML. Jika anda tidak akrab dengan sintaks tersebut, silahkan periksa dokumentasi dan tutorial tersebut untuk rinciannya."
+
+#: ../../config.rst:15
+msgid "The ID of the master channel enabled is under the key ``master_channel``"
+msgstr "ID dari saluran induk diaktifkan di bawah tombol ``saluran_induk``"
+
+#: ../../config.rst:16
+msgid "The ID of slave channels enabled is listed under the key ``slave_channels``. It has to be a list even if just one channel is to be enabled."
+msgstr "ID dari saluran slave yang diaktifkan adalah yang tercantum di bawah tombol ``saluran_slave``. Ini harus dijadikan sebuah daftar meskipun hanya satu saluran yang bisa diaktifkan."
+
+#: ../../config.rst:19
+msgid "The ID of middlewares enabled are listed under the key ``middlewares``. It has to be a list even if just one middleware is to be enabled. However, if you don't want to enable any middleware, just omit the section completely."
+msgstr "ID dari middleware yang diaktifkan adalah yang tercantum di bawah tombol ``middleware``. Ini harus dijadikan sebuah daftar meskipun hanya satu middleware yang bisa diaktifkan. Namun, Apabila anda tidak menginginkan untuk mengaktifkan middleware apapun, hanya menghilangkan bagian sepenuhnya."
+
+#: ../../config.rst:25
+msgid "Instance ID"
+msgstr "Contoh ID"
+
+#: ../../config.rst:27
+msgid "To have multiple accounts running simultaneously, you can appoint an instance ID to a module. Instance ID can be defined by the user, and if defined, it must has nothing other than letters, numbers and underscores, i.e. in regular expressions ``[a-zA-Z0-9_]+``. When instance ID is not defined, the channel will run in the \"default\" instance with no instance ID."
+msgstr ""
+
+#: ../../config.rst:33
+msgid "To indicate the instance ID of an instance, append ``#`` following by the instance ID to the module ID. For example, slave channel ``bar.dummy`` running with instance ID ``alice`` should be defined as ``bar.dummy#alice``. If the channel requires configurations, it should be done in the directory with the same name (e.g. ``EFB_DATA_PATH/profiles/PROFILE/bar.dummy#alice``), so as to isolate instances."
+msgstr "Untuk menunjukkan contoh ID contoh, menambahkan `#` berikut dengan contoh ID ke ID modul. Misalnya, saluran budak ``bar.dummy`` berjalan dengan contoh ID ``alice`` harus diartikan sebagai ``bar.dummy#alice``. Jika saluran memerlukan konfigurasi, hal itu harus dilakukan dalam direktori dengan nama yang sama (misalnya ``EFB_DATA_PATH/profil/PROFIL/bar.dummy#alice``), sehingga untuk mengisolasi kasus."
+
+#: ../../config.rst:40
+msgid "Please avoid having two modules with the same set of module ID and instance ID as it may leads to unexpected results."
+msgstr "Hindari memiliki dua modul dengan penetapan yang sama dari modul ID dan contoh ID seperti itu mungkin menyebabkan hasil yang tak terduga."
+
+#: ../../config.rst:44
+msgid "Example"
+msgstr "Contoh"
+
+#: ../../config.rst:47
+msgid "To enable the following modules:"
+msgstr "Untuk mengaktifkan modul-modul berikut:"
+
+#: ../../config.rst:49
+msgid "Master channel"
+msgstr "Saluran utama"
+
+#: ../../config.rst:50
+msgid "Demo Master (``foo.demo_master``)"
+msgstr ""
+
+#: ../../config.rst:53
+msgid "Slave channels"
+msgstr ""
+
+#: ../../config.rst:52
+msgid "Demo Slave (``foo.demo_slave``)"
+msgstr ""
+
+#: ../../config.rst:53
+msgid "Dummy Slave (``bar.dummy``)"
+msgstr ""
+
+#: ../../config.rst:54
+msgid "Dummy Slave (``bar.dummy``) at ``alt`` instance"
+msgstr "Budak tiruan (``bar.dummy``) di ``alt`` contoh"
+
+#: ../../config.rst:57
+msgid "Middlewares"
+msgstr ""
+
+#: ../../config.rst:56
+msgid "Message Archiver (``foo.msg_archiver``)"
+msgstr ""
+
+#: ../../config.rst:57
+msgid "Null Middleware (``foo.null``)"
+msgstr ""
+
+#: ../../config.rst:59
+msgid "In the ``config.yaml`` it should have the following lines:"
+msgstr "Di ``config.yaml`` harus mempunyai baris berikut:"
+

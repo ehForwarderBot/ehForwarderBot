@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-20 23:43+1100\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"POT-Creation-Date: 2018-03-01 22:12+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr "EFBChannel"
 
 #: ../../../docstring of ehforwarderbot.EFBChannel:1
 msgid "The abstract channel class."
-msgstr ""
+msgstr "Kelas saluran abstrak."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel:5
 msgid "*str* -- A human-friendly name of the channel."
@@ -41,8 +41,8 @@ msgid "Set[:obj:`.MsgType`] -- Types of messages that the channel accepts as inc
 msgstr "Atur[:obj:`.MsgType`] --Jenis pesan yang diterima saluran sebagai pesan masuk."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel:23
-msgid "*str* -- Unique identifier of the channel. Convention of IDs is specified in :doc:`/guide/packaging` This ID will be appended with its instance ID when available."
-msgstr "*str* -- Pengenal unik pada saluran. Konvensi ID ditentukan dalam :doc:`/guide/packaging` ID ini akan ditambahkan dengan ID instan bila tersedia."
+msgid "*str* -- Unique identifier of the channel. Convention of IDs is specified in :doc:`/guide/packaging`. This ID will be appended with its instance ID when available."
+msgstr "*str* -- mengenal yang Unik dari saluran. Konvensi Id ditetapkan di :doc:`/panduan/kemasan`. ID ini akan ditambahkan dengan contoh ID bila tersedia."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel:29
 msgid "*str* -- The instance ID if available."
@@ -50,7 +50,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.__init__:1
 msgid "Initialize the channel. Inherited initializer must call the \"super init\" method at the beginning."
-msgstr ""
+msgstr "Menginisialisasi saluran. Mewarisi penginisialisasi harus memanggil \"super init\" di metode awal."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.__init__:0
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:0
@@ -66,7 +66,7 @@ msgstr ""
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:1
 msgid "Get the chat object from a slave channel."
-msgstr "Dapatkan objek obrolan dari saluran slave."
+msgstr "Dapatkan objek obrolan dari saluran budak."
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:3
 msgid "UID of the chat."
@@ -230,7 +230,7 @@ msgstr "Bila kerangka kerja EFB diminta untuk berhenti dengan anggun, metode ini
 
 #: ../../../docstring of ehforwarderbot.EFBChannel.stop_polling:6
 msgid "When the channel is ready to stop, the polling function must stop blocking. EFB framework will quit completely when all polling threads end."
-msgstr "Saat saluran siap utnuk berhenti, fungsi pemungutan suara harus berhenti mencekal. Kerangka kerja EFB akan berhenti sepenuhnya di saat semua rangkaian pemungutan suara berakhir."
+msgstr "Saat saluran siap untuk berhenti, fungsi pemungutan suara harus berhenti mencekal. Kerangka kerja EFB akan berhenti sepenuhnya di saat semua rangkaian pemungutan suara berakhir."
 
 #: ../../API/channel.rst:8
 msgid "Common operations"
@@ -266,5 +266,5 @@ msgstr "Tentang ID Saluran"
 
 #: ../../API/channel.rst:38
 msgid "With the introduction of instance IDs, it is required to use the ``self.channel_id`` or equivalent instead of any hard-coded ID or constants while referring to the channel (e.g. while retrieving the path to the configuration files, creating chat and message objects, etc)."
-msgstr "Dengan diperkenalkannya ID instan, diperlukan untuk menggunakan ``self.channel_id`` atau setara dengan ID kode keras atau konstanta saat mengacu pada peranti tengah (misalnya saat mengambil path pada file konfigurasi, membuat objek obrolan dan pesan, dll)."
+msgstr "Dengan diperkenalkannya contoh ID, diperlukan untuk menggunakan ``self.channel_id`` atau setara dengan ID kode keras atau konstanta saat mengacu pada peranti tengah (misalnya saat mengambil jalur pada berkas konfigurasi, membuat objek obrolan dan pesan, dll)."
 

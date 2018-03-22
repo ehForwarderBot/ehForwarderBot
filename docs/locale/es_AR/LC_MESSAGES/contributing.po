@@ -1,0 +1,171 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-22 10:02+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Spanish, Argentina\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: es-AR\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/contributing.pot\n"
+"Language: es_AR\n"
+
+#: ../../contributing.rst:3
+msgid "How to contribute"
+msgstr ""
+
+#: ../../contributing.rst:5
+msgid "First of all, thanks for taking your time to contribute!"
+msgstr ""
+
+#: ../../contributing.rst:7
+msgid "Please note that only questions on the framework will be answered here. For issue related with any module, please contact their respective authors or post in their corresponding repositories."
+msgstr ""
+
+#: ../../contributing.rst:12
+msgid "Here is a simple guide on how you can file in an issue, or submit a pull request that is useful and effective."
+msgstr ""
+
+#: ../../contributing.rst:15
+msgid "If you need help, or want to talk to the authors, feel free to chat with us at our `Gitter chat`_ or `Telegram support group`_."
+msgstr ""
+
+#: ../../contributing.rst:23
+msgid "Reporting bugs"
+msgstr ""
+
+#: ../../contributing.rst:25
+msgid "Before submitting a bug report"
+msgstr ""
+
+#: ../../contributing.rst:26
+msgid "Please ensure if your issue is about the framework itself, not about any module. Reports about module should be sent to their respective places."
+msgstr ""
+
+#: ../../contributing.rst:29
+msgid "Read through the documentation to see if it has covered your question."
+msgstr ""
+
+#: ../../contributing.rst:30
+msgid "Check the `current issue list`__ to see if it's been reported."
+msgstr ""
+
+#: ../../contributing.rst:35
+msgid "How Do I Submit A (Good) Bug Report?"
+msgstr ""
+
+#: ../../contributing.rst:36
+msgid "**Use a clear and descriptive title** for the issue to identify the problem."
+msgstr ""
+
+#: ../../contributing.rst:37
+msgid "**Describe the exact steps which reproduce the problem** in as many details as possible."
+msgstr ""
+
+#: ../../contributing.rst:39
+#: ../../contributing.rst:77
+msgid "**Provide specific examples to demonstrate the steps.**"
+msgstr ""
+
+#: ../../contributing.rst:40
+msgid "**Describe the behavior you observed after following the steps** and point out what exactly is the problem with that behavior."
+msgstr ""
+
+#: ../../contributing.rst:42
+msgid "**Explain which behavior you expected to see instead and why.**"
+msgstr ""
+
+#: ../../contributing.rst:43
+msgid "**If the problem wasn't triggered by a specific action**, describe what you were doing before the problem happened and share more information using the guidelines below."
+msgstr ""
+
+#: ../../contributing.rst:46
+msgid "**Provide log related to the issue.** Use the verbose flag to start the logging process, and submit the entire log from the first step you performed."
+msgstr ""
+
+#: ../../contributing.rst:50
+msgid "Provide more context by answering these questions:"
+msgstr ""
+
+#: ../../contributing.rst:52
+msgid "**Did the problem start happening recently** (e.g. after updating to the latest version) or was this always a problem?"
+msgstr ""
+
+#: ../../contributing.rst:54
+msgid "**Can you reliably reproduce the issue?** If not, provide details about how often the problem happens and under which conditions it normally happens."
+msgstr ""
+
+#: ../../contributing.rst:58
+msgid "Include details about your configuration and environment:"
+msgstr ""
+
+#: ../../contributing.rst:60
+msgid "**What version of EFB are you using?** You can get the version by using the flag `-V`."
+msgstr ""
+
+#: ../../contributing.rst:62
+msgid "**What's the name and version of the OS you're using?**"
+msgstr ""
+
+#: ../../contributing.rst:65
+msgid "When submitting your log, please remember to hide your private information."
+msgstr ""
+
+#: ../../contributing.rst:69
+msgid "Suggesting enhancements"
+msgstr ""
+
+#: ../../contributing.rst:71
+msgid "If you have any suggestions, feel free to raise it up in the issue list. Please try to provide as much details as you can, that includes:"
+msgstr ""
+
+#: ../../contributing.rst:75
+msgid "**Use a clear and descriptive title** for the issue to identify the suggestion."
+msgstr ""
+
+#: ../../contributing.rst:76
+msgid "**Give details on how the enhancement behave**."
+msgstr ""
+
+#: ../../contributing.rst:78
+msgid "**Specify the name and version of the OS you're using.**"
+msgstr ""
+
+#: ../../contributing.rst:80
+msgid "Adapted from `Atom contribution guide`__ by GitHub Inc."
+msgstr ""
+
+#: ../../contributing.rst:85
+msgid "Pull requests"
+msgstr ""
+
+#: ../../contributing.rst:86
+msgid "When you have done some changes and want to submit it to us, fork it to your account and submit a GitHub pull request. Please write a detailed description for your pull request on:"
+msgstr ""
+
+#: ../../contributing.rst:90
+msgid "**What changes have you made?**"
+msgstr ""
+
+#: ../../contributing.rst:91
+msgid "**What problem have you solved?**"
+msgstr ""
+
+#: ../../contributing.rst:92
+msgid "**Which issue have you addressed** if applicable."
+msgstr ""
+
+#: ../../contributing.rst:94
+msgid "Always write a clear log message for your commits. One-line messages are fine for small changes, but bigger changes needs a detailed description after the one-liner."
+msgstr ""
+
+#: ../../contributing.rst:98
+msgid "Adapted from `OpenGovernment contribution guide`__ by Participatory Politics Foundation"
+msgstr ""
+

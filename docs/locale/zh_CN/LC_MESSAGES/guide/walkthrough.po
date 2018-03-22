@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-23 21:34+1100\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -138,19 +138,19 @@ msgstr "从端的工作相对简单。"
 
 #: ../../guide/walkthrough.rst:95
 msgid "Deliver messages to and from the master channel."
-msgstr ""
+msgstr "传递来往于主端的消息。"
 
 #: ../../guide/walkthrough.rst:96
 msgid "Maintains a list of all available chats, and group members."
-msgstr ""
+msgstr "维护所有可用会话和群组成员的列表。"
 
 #: ../../guide/walkthrough.rst:97
 msgid "Monitors changes of chats and notify the master channel."
-msgstr ""
+msgstr "监视会话信息的变更并通知主端。"
 
 #: ../../guide/walkthrough.rst:99
 msgid "Features that does not fit into the standard EFB Slave Channel model can be offered as :ref:`slave-additional-features`."
-msgstr ""
+msgstr "在标准的 EFB 从端模型外的附加功能可以通过 :ref:`slave-additional-features` 来提供。"
 
 #: ../../guide/walkthrough.rst:103
 msgid "Master Channels"
@@ -158,7 +158,7 @@ msgstr "主端"
 
 #: ../../guide/walkthrough.rst:105
 msgid "Master channels is relatively more complicated and also more flexible. As it directly faces the user, its user interface should be user-friendly, or at least friendly to the targeted users."
-msgstr ""
+msgstr "主端相对来说更加复杂同时也更灵活。由于它直接面向用户，它的界面应该对用户友好，至少对于目标用户友好。"
 
 #: ../../guide/walkthrough.rst:110
 msgid "The job of the master channel includes:"
@@ -166,11 +166,11 @@ msgstr "主端的工作包括："
 
 #: ../../guide/walkthrough.rst:112
 msgid "Receive, process and display messages from slave channels."
-msgstr ""
+msgstr "接收，处理和显示来自从端的消息。"
 
 #: ../../guide/walkthrough.rst:114
 msgid "Display a full list of chats from all slave channels."
-msgstr ""
+msgstr "显示来自所有从端的完整会话列表。"
 
 #: ../../guide/walkthrough.rst:115
 msgid "Offer an interface for the user to use \"extra functions\" from slave channels."
@@ -190,5 +190,5 @@ msgstr "中间件"
 
 #: ../../guide/walkthrough.rst:123
 msgid "Middlewares can monitor and make changes to or nullify messages and statuses delivered between channels. Middlewares are executed in order of registration, one after another. A middleware will always receive the messages processed by the preceding middleware if available. Once a middleware nullify a message or status, the message will not be processed and delivered any further."
-msgstr ""
+msgstr "中间件可以监视，更改或拦截在通道间传递的消息和状态。中间件按照注册的顺序一个接一个的执行。 如果存在，中间件会始终接受被上一个中间件处理过的消息。一旦中间件拦截了消息或状态，该消息将不再被进一步处理。"
 

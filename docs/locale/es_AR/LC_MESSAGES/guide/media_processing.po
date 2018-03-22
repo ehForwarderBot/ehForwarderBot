@@ -1,0 +1,70 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-09 13:12+0800\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Spanish, Argentina\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: es-AR\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/media_processing.pot\n"
+"Language: es_AR\n"
+
+#: ../../guide/media_processing.rst:2
+msgid "Media processing"
+msgstr ""
+
+#: ../../guide/media_processing.rst:5
+msgid "Choosing media formats"
+msgstr ""
+
+#: ../../guide/media_processing.rst:7
+msgid "Both Master and Slave channel can take their charges to convert media files they send or receive. In general: **if a media file received from remote server is not a common format, convert it before deliver it on; if a media file sent to remote server requires to be in a specific format, it should be converted before sending out**. Nevertheless, this is only a guideline on channels' responsibility regarding media processing, and everyone has their own opinion on what is a common format / encoding. Therefore we only recommend this behaviour, but do not force in our code. This is to say that, you still have to take care of the accepted type of media encoding of your corresponding method of presentation, and convert and/or fallback to different type of representation if necessary. After all, the delivery of information is more important."
+msgstr ""
+
+#: ../../guide/media_processing.rst:25
+msgid "Media encoders"
+msgstr ""
+
+#: ../../guide/media_processing.rst:27
+msgid "Similarly, we will also not put a strict limit on this as well, but just a recommendation. As you might have already know, there are few mature pure Python media processing libraries, most of them will more or less requires internal or external binary dependencies."
+msgstr ""
+
+#: ../../guide/media_processing.rst:33
+msgid "We try to aim to use as few different libraries as we can, as more library to install means more space, install time, and complexity. While processing media files, we recommend to use the following libraries if possible:"
+msgstr ""
+
+#: ../../guide/media_processing.rst:39
+msgid "pillow"
+msgstr ""
+
+#: ../../guide/media_processing.rst:40
+msgid "ffmpeg"
+msgstr ""
+
+#: ../../guide/media_processing.rst:43
+msgid "Files in messages"
+msgstr ""
+
+#: ../../guide/media_processing.rst:45
+msgid "When a file sent out from a channel, it should be open, sought back to 0 ( ``file.seek(0)`` ) before sending."
+msgstr ""
+
+#: ../../guide/media_processing.rst:48
+msgid "Files sent should be able to be located somewhere in the file system, better with a appropriate extension name, but not required. All files should also have its MIME type specified in the message object. If the channel is not sure about the correct MIME type, it can try to guess with ``libmagic``, or fallback to ``application/octet-stream``. Always try the best to provide the most suitable MIME type when sending."
+msgstr ""
+
+#: ../../guide/media_processing.rst:57
+msgid "For such files, we use ``close`` to signify the end of its lifecycle. If the file is not required by the sender's channel anymore, it can be safely discarded."
+msgstr ""
+
+#: ../../guide/media_processing.rst:61
+msgid "Generally, ``tempfile.NamedTemporaryFile`` should work for ordinary cases."
+msgstr ""
+

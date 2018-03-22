@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-22 10:02+1100\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr "Durum: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:14
 msgid "Do NOT use object of the abstract class :class:`.EFBMsgAttribute` for ``attributes``, but object of specific class instead."
-msgstr ""
+msgstr "Soyut sınıfın nesnesini KULLANMAYIN :class:`.EFBMsgAttribute` `attributes` için değil, bunun yerine özel sınıfın nesnesi."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:20
 msgid ":obj:`.EFBChat` -- Author of this message."
@@ -50,7 +50,7 @@ msgstr ":obj:`.EFBChat` -- Mesajın sahibi."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:24
 msgid ":obj:`.EFBChat` -- Sender of the message."
-msgstr ""
+msgstr ":obj:`.EFBChat` --  Mesajın göndereni."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:28
 msgid "Optional[:obj:`EFBMsgCommands`] -- Commands attached to the message"
@@ -66,7 +66,7 @@ msgstr "*bool* -- Eğer mesaj düzenlenir ise bunu işaretleyin."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:40
 msgid "*IO[bytes]* -- File object to multimedia file, type \"ra\". ``None`` if N/A. recommended to use ``NamedTemporaryFile`` object, the file can be deleted when closed, if not used otherwise. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
-msgstr ""
+msgstr "*IO[bytes]* -- Multimedya dosyasına dosya nesnesi, \"ra\" yazın. Yoksa ``None`` yoktur. ``NamedTemporaryFile`` nesnesini kullanmanız önerilir, aksi halde kullanılmazsa dosyayı kapattığınızda silinebilir. Göndermeden önce tüm dosya nesneleri 0'a geriye sarılmalıdır (``file.seek(0)``)."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:47
 msgid "*str* -- File name of the multimedia file. ``None`` if N/A"
@@ -146,7 +146,7 @@ msgstr "Bases: :class:`abc.ABC`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgAttribute:1
 msgid "Abstract class of a message attribute."
-msgstr ""
+msgstr "Bir ileti özniteliği Özet sınıfı."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:1
@@ -155,7 +155,7 @@ msgstr "Bases: :class:`object`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
 msgid "EFB message command."
-msgstr ""
+msgstr "EFB mesaj komutu."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:5
 msgid "*str* -- Human-friendly name of the command."
@@ -329,7 +329,7 @@ msgstr "EFB mesaj değiştirme."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:3
 msgid "This is for the case when user \"@-referred\" a list of users in the message. Substitutions here is a dict of correspondence between the string used to refer to the user in the message and a user object."
-msgstr ""
+msgstr "Kullanıcı, mesajdaki kullanıcıların bir listesini \"@-referred\" olarak tanımladığında geçerlidir. Burada yapılan değişiklikler, mesajdaki kullanıcıya atıfta kullanılan dize ile bir kullanıcı nesnesi arasındaki yazışmanın bir deyişidir."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:8
 msgid "Dictionary of text substitutions targeting to a user or member."
@@ -357,7 +357,7 @@ msgstr "Örnekler"
 
 #: ../../API/message.rst:17
 msgid "Prelude: Defining related chats"
-msgstr ""
+msgstr "Prelude: İlgili sohbetleri tanımlama"
 
 #: ../../API/message.rst:28
 msgid "Initialization and marking chats"

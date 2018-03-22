@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-22 10:02+1100\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "*EFBChannel* -- 正在运行的主端对象。"
 
 #: ../../../docstring of ehforwarderbot.coordinator:17
 msgid "*Dict[str, EFBChannel]* -- Dictionary of running slave channel object. Keys are the unique identifier of the channel."
-msgstr ""
+msgstr "*Dict[str, EFBChannel]* -- 正在运行的从端的字典。键值为信道的唯一标识符。"
 
 #: ../../../docstring of ehforwarderbot.coordinator:22
 msgid "*List[EFBMiddleware]* -- List of middlewares"

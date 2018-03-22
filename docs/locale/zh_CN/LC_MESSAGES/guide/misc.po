@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: ../../guide/misc.rst:2
 msgid "Miscellaneous"
-msgstr ""
+msgstr "其他"
 
 #: ../../guide/misc.rst:5
 msgid "Logging"
@@ -26,19 +26,19 @@ msgstr "日志"
 
 #: ../../guide/misc.rst:7
 msgid "In complex modules, you should have detailed logs in DEBUG level and maybe INFO level, and all your log handlers should follow that of the root logger, which is controlled by the framework. This could be helpful when for you to locate issues reported by users."
-msgstr ""
+msgstr "在复杂的组件中，应该在 DEBUG 级别和 INFO 级别中输出调试日志，所有 handler 的日志级别都应该继承由框架控制的 root logger。良好的日志记录会帮助开发者查找用户报告的问题。"
 
 #: ../../guide/misc.rst:14
 msgid "Vendor-specifics"
-msgstr ""
+msgstr "供应商特定数据"
 
 #: ../../guide/misc.rst:16
 msgid "If you are going to include vendor specific information in messages and/or chats, please make your effort to document them in your README or documentation, so that other developers can refer to it when adapting your module."
-msgstr ""
+msgstr "若要在消息和/或会话中包含供应商特定数据，请在项目的 README 文件或项目文档中说明这些信息，以便其他开发人员在适配该模块时参考。"
 
 #: ../../guide/misc.rst:23
 msgid "Threading"
-msgstr ""
+msgstr "线程"
 
 #: ../../guide/misc.rst:25
 msgid "All channels are recommended a separate thread while processing a new message, so as to prevent unexpectedly long thread blocking."

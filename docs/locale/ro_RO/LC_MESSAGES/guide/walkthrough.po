@@ -1,0 +1,194 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-23 21:34+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
+"Last-Translator: blueset <ilove@1a23.com>\n"
+"Language-Team: Romanian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: ro\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/walkthrough.pot\n"
+"Language: ro_RO\n"
+
+#: ../../guide/walkthrough.rst:2
+msgid "Walk-through — How EFB works"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:4
+msgid "EH Forwarder Bot is an extensible framework that allows user to control and manage accounts from different chat platforms in a unified interface. It consists of 4 parts: a Master Channel, some Slave Channels, some Middlewares and a Coordinator."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:17
+msgid "Master Channel"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:15
+msgid "The channel that directly interact with the user. There is guaranteed to have one and only one master channel in an EFB Session."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:22
+msgid "Slave Channel"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:20
+msgid "The channel that delivers messages to and from their relative platform. There should be at lease one slave channel in an EFB Session."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:27
+msgid "Coordinator"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:25
+msgid "Component of the framework that maintains the instances of channels, and delivers messages between channels."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:32
+msgid "Middleware"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:30
+msgid "Module that processes messages and statuses delivered between channels, and make modifications where needed."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:35
+msgid "Concepts to know"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:39
+msgid "Module"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:38
+msgid "A common term that means both channels and middlewares."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:44
+msgid "Chat"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:42
+msgid "A place where conversations happen. Consists of User Chats (private messages), Group Chats, and System Chats."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:61
+msgid "User / User Chat"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:47
+msgid "A user of the IM platform that the user can possibly chat with, or a conversation with them. Messages from such conversation has one and only one unique author. *(Except messages that are from the user themself, or from the system.)*"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:53
+msgid "For platforms that support bot or something similar, they would also be considered as a \"user\", unless messages in such chat can be sent from any user other than the bot."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:58
+msgid "For chats that the user receive messages, but cannot send message to, it should also be considered as a user chat, only to raise an exception when messages was trying to send to the chat."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:66
+msgid "Group chat"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:64
+msgid "A chat that involves more than one user. A group chat should have a list of members (users) that can involve in the conversation."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:73
+msgid "System chat"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:69
+msgid "A chat that is a part of the system. Usually used for chats that are either a part of the IM platform, or the channel. Slave channels can use this feature to send system message and notifications to the master channel."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:83
+msgid "Message"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:76
+msgid "Messages are delivered strictly between the master channel and a slave channel. It usually carries an information of a certain type."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:80
+msgid "Each message should at least have a unique ID that is distinct within the slave channel related to it. Any edited message should be able to be identified with the same unique ID."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:88
+msgid "Status"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:86
+msgid "Information that is not formatted into a message. Usually includes updates of chats and members of chats, and removal of messages."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:91
+msgid "Slave Channels"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:93
+msgid "The job of slave channels is relatively simple."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:95
+msgid "Deliver messages to and from the master channel."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:96
+msgid "Maintains a list of all available chats, and group members."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:97
+msgid "Monitors changes of chats and notify the master channel."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:99
+msgid "Features that does not fit into the standard EFB Slave Channel model can be offered as :ref:`slave-additional-features`."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:103
+msgid "Master Channels"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:105
+msgid "Master channels is relatively more complicated and also more flexible. As it directly faces the user, its user interface should be user-friendly, or at least friendly to the targeted users."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:110
+msgid "The job of the master channel includes:"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:112
+msgid "Receive, process and display messages from slave channels."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:114
+msgid "Display a full list of chats from all slave channels."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:115
+msgid "Offer an interface for the user to use \"extra functions\" from slave channels."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:117
+msgid "Process updates from slave channels."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:118
+msgid "Provide a user-friendly interface as far as possible."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:121
+msgid "Middlewares"
+msgstr ""
+
+#: ../../guide/walkthrough.rst:123
+msgid "Middlewares can monitor and make changes to or nullify messages and statuses delivered between channels. Middlewares are executed in order of registration, one after another. A middleware will always receive the messages processed by the preceding middleware if available. Once a middleware nullify a message or status, the message will not be processed and delivered any further."
+msgstr ""
+

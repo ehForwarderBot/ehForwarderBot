@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -18,43 +18,43 @@ msgstr ""
 
 #: ../../guide/middleware.rst:2
 msgid "Middlewares"
-msgstr ""
+msgstr "中间件"
 
 #: ../../guide/middleware.rst:4
 msgid "Middlewares works in between the master channel and slave channels, they look through messages and statuses delivered between channels, passing them on, make changes or discarding them, one after another."
-msgstr ""
+msgstr "在消息与状态传递的过程中，中间件位于主端与从端之间，按启用顺序依次对所有消息和状态进行监听、修改或拦截。"
 
 #: ../../guide/middleware.rst:9
 msgid "Like channels, middlewares will also each have an instance per EFB session, managed by the coordinator. However, they don't have centrally polling threads, which means if a middleware wants to have a polling thread or something similar running in the background, it has to stop the thread using Python's ``atexit`` or otherwise."
-msgstr ""
+msgstr "与信道一样，所有中间件也在 EFB 配置中拥有一个实例，并由协调器进行管理。然而，他们没有集中轮询线程，也就是说如果中间件想要在后台运行轮询线程或类似的线程，这些线程必须通过 Python 的 ``atexit`` 或其他方式停止。"
 
 #: ../../guide/middleware.rst:17
 msgid "Message and Status Processing"
-msgstr ""
+msgstr "消息和状态处理"
 
 #: ../../guide/middleware.rst:19
 msgid "Each middleware by default has 2 methods, :meth:`~.ehforwarderbot.EFBMiddleware.process_message` which processes message objects, and :meth:`~.ehforwarderbot.EFBMiddleware.process_status` which processes status objects. If they are not overridden, they will not touch on the object and pass it on as is."
-msgstr ""
+msgstr "默认情况下，每个中间件都有两个方法：:meth:`~.ehforwarderbot.EFBMiddleware.process_message` 处理消息对象, 以及 :meth:`~.ehforwarderbot.EFBMiddleware.process_status` 处理状态对象。这两个方法默认继承的行为是不对传入的消息或状态进行更改。"
 
 #: ../../guide/middleware.rst:24
 msgid "To modify an object, just override the relative method and make changes to it. To discard an object, simply return ``None``. When an object is discarded, it will not be passed further to other middlewares or channels, which means a middleware or a channel should never receive a ``None`` message or status."
-msgstr ""
+msgstr "要修改对象，只需要覆盖相应的方法，并该对象它进行修改。 要拦截一个对象，只需返回 ``None``。对象被拦截后，它不会被传递到其他中间件或信道，也就是说中间件和信道都不会收到 ``None`` 消息或状态。"
 
 #: ../../guide/middleware.rst:32
 msgid "Other Usages"
-msgstr ""
+msgstr "其他用法"
 
 #: ../../guide/middleware.rst:34
 msgid "Having rather few limitation compare to channels, middlewares are rather easy to write, which allows it to do more than just intercept messages and statuses."
-msgstr ""
+msgstr "中间件与通道相比限制较少，因此相对容易编写。进而中间件能够做到的不仅仅是截取消息和状态。"
 
 #: ../../guide/middleware.rst:38
 msgid "Some ideas:"
-msgstr ""
+msgstr "例如："
 
 #: ../../guide/middleware.rst:40
 msgid "Periodic broadcast to master / slave channels"
-msgstr ""
+msgstr "定期向主端、从端群发消息"
 
 #: ../../guide/middleware.rst:41
 msgid "Integration with chat bots"
@@ -62,13 +62,13 @@ msgstr "集成聊天机器人（chat bot）功能"
 
 #: ../../guide/middleware.rst:42
 msgid "Automated operations on vendor-specific commands / additional features"
-msgstr ""
+msgstr "面向供应商特定指令和附加功能的批量操作"
 
 #: ../../guide/middleware.rst:44
 msgid "Share user session from slave channel with other programs"
-msgstr ""
+msgstr "将从端的用户登录与外部程序共享"
 
 #: ../../guide/middleware.rst:46
 msgid "etc..."
-msgstr ""
+msgstr "等等……"
 

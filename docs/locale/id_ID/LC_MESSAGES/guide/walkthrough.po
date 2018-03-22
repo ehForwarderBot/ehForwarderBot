@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-23 21:34+1100\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:4
 msgid "EH Forwarder Bot is an extensible framework that allows user to control and manage accounts from different chat platforms in a unified interface. It consists of 4 parts: a Master Channel, some Slave Channels, some Middlewares and a Coordinator."
-msgstr "EH Forwarder Bot adalah kerangka kerja yang bisa diperluas yang memungkinkan pengguna mengontrol dan mengelola akun dari platform obrolan yang berbeda di antarmuka yang dipersatukan. Ini terdiri dari 4 bagian: Channel Inti, beberapa Saluran Cabang, beberapa Middleware dan Koordinator."
+msgstr "EH Forwarder Bot adalah kerangka kerja yang bisa diperluas yang memungkinkan pengguna mengontrol dan mengelola akun dari platform obrolan yang berbeda di antarmuka yang dipersatukan. Ini terdiri dari 4 bagian: Saluran Utama, beberapa Saluran Cabang, beberapa Middleware dan Koordinator."
 
 #: ../../guide/walkthrough.rst:17
 msgid "Master Channel"
@@ -30,7 +30,7 @@ msgstr "Saluan Inti"
 
 #: ../../guide/walkthrough.rst:15
 msgid "The channel that directly interact with the user. There is guaranteed to have one and only one master channel in an EFB Session."
-msgstr "Saluran yang langsung dikatakan berhubungan dengan pengguna. Ada jaminan untuk memiliki satu dan hanya satu saluran utama dalam Sesi EFB."
+msgstr "Saluran yang berhubungan langsung dengan pengguna. Adanya jaminan untuk mempunyai satu dan hanya satu saluran utama dalam Sesi EFB."
 
 #: ../../guide/walkthrough.rst:22
 msgid "Slave Channel"
@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:20
 msgid "The channel that delivers messages to and from their relative platform. There should be at lease one slave channel in an EFB Session."
-msgstr "Saluran yang mengirimkan pesan ke dan dari platform relatif mereka. Harus ada sewa satu slave channel dalam Sesi EFB."
+msgstr "Saluran yang menghantarkan ke pesan dan dari platform relatif mereka. Ada yang harus di sewa satu saluran budak di sebuah sesi EFB."
 
 #: ../../guide/walkthrough.rst:27
 msgid "Coordinator"
@@ -114,11 +114,11 @@ msgstr "Pesan"
 
 #: ../../guide/walkthrough.rst:76
 msgid "Messages are delivered strictly between the master channel and a slave channel. It usually carries an information of a certain type."
-msgstr "Pesan dikirim secara ketat antara saluran utama dan saluran slave. Biasanya memuat informasi jenis tertentu."
+msgstr "Pesan yang disampaikan secara ketat antara guru saluran dan saluran budak. Hal ini biasanya membawa informasi dari jenis tertentu."
 
 #: ../../guide/walkthrough.rst:80
 msgid "Each message should at least have a unique ID that is distinct within the slave channel related to it. Any edited message should be able to be identified with the same unique ID."
-msgstr "Masing-masing pesan setidaknya harus memiliki ID yang unik yang berbeda dalam saluran slave yang terkait dengannya. Semua pesan yang diubah harus dapat ditentukan dengan ID yang unik yang sama."
+msgstr "Setiap pesan setidaknya harus memiliki ID unik yang berbeda dalam saluran budak berhubungan dengan itu. Setiap pesan yang disunting harus dapat diidentifikasi dengan ID unik yang sama."
 
 #: ../../guide/walkthrough.rst:88
 msgid "Status"
@@ -130,7 +130,7 @@ msgstr "Informasi yang tidak diformat ke dalam pesan. Biasanya termasuk pembarua
 
 #: ../../guide/walkthrough.rst:91
 msgid "Slave Channels"
-msgstr ""
+msgstr "Saluran Slave"
 
 #: ../../guide/walkthrough.rst:93
 msgid "The job of slave channels is relatively simple."
@@ -138,19 +138,19 @@ msgstr "Tugas dari saluran budak relatif sederhana."
 
 #: ../../guide/walkthrough.rst:95
 msgid "Deliver messages to and from the master channel."
-msgstr ""
+msgstr "Menyampaikan pesan ke dan dari saluran utama."
 
 #: ../../guide/walkthrough.rst:96
 msgid "Maintains a list of all available chats, and group members."
-msgstr ""
+msgstr "Mengelola sebuah daftar dari semua obrolan yang tersedia, dan anggota kelompok."
 
 #: ../../guide/walkthrough.rst:97
 msgid "Monitors changes of chats and notify the master channel."
-msgstr ""
+msgstr "Monitor perubahan obrolan dan memberitahukan saluran inti."
 
 #: ../../guide/walkthrough.rst:99
 msgid "Features that does not fit into the standard EFB Slave Channel model can be offered as :ref:`slave-additional-features`."
-msgstr ""
+msgstr "Fitur-fitur yang tidak sesuai dengan standar EFB model Saluran Budak dapat ditawarkan sebagai :ref:`budak-tambahan-fitur`."
 
 #: ../../guide/walkthrough.rst:103
 msgid "Master Channels"
@@ -158,7 +158,7 @@ msgstr "Saluran Inti"
 
 #: ../../guide/walkthrough.rst:105
 msgid "Master channels is relatively more complicated and also more flexible. As it directly faces the user, its user interface should be user-friendly, or at least friendly to the targeted users."
-msgstr ""
+msgstr "Saluran inti ini relatif lebih rumit dan juga lebih fleksibel. Karena berhadapan langsung dengan pengguna, antarmuka pengguna harus pengguna yang ramah, atau setidaknya cocok untuk pengguna yang ditargetkan."
 
 #: ../../guide/walkthrough.rst:110
 msgid "The job of the master channel includes:"
@@ -166,11 +166,11 @@ msgstr "Pekerjaan dari saluran inti termasuk:"
 
 #: ../../guide/walkthrough.rst:112
 msgid "Receive, process and display messages from slave channels."
-msgstr ""
+msgstr "Menerima, memproses dan menampilkan pesan dari budak saluran."
 
 #: ../../guide/walkthrough.rst:114
 msgid "Display a full list of chats from all slave channels."
-msgstr ""
+msgstr "Menampilkan daftar lengkap dari obrolan dari semua budak saluran."
 
 #: ../../guide/walkthrough.rst:115
 msgid "Offer an interface for the user to use \"extra functions\" from slave channels."
@@ -190,5 +190,5 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:123
 msgid "Middlewares can monitor and make changes to or nullify messages and statuses delivered between channels. Middlewares are executed in order of registration, one after another. A middleware will always receive the messages processed by the preceding middleware if available. Once a middleware nullify a message or status, the message will not be processed and delivered any further."
-msgstr ""
+msgstr "Middlewares dapat memantau dan membuat perubahan atau membatalkan pesan dan status disampaikan antara saluran. Middlewares dieksekusi dalam urutan pendaftaran, satu demi satu. Sebuah middleware akan selalu menerima pesan-pesan yang diproses jika sebelumnya middleware tersedia. Sekali middleware membatalkan pesan atau status, pesan tidak akan diproses dan disampaikan lebih lanjut."
 

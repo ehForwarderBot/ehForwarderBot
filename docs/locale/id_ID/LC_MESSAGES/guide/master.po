@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-18 15:04+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"POT-Creation-Date: 2018-03-22 22:34+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -54,19 +54,19 @@ msgstr "Pedoman desain"
 
 #: ../../guide/master.rst:21
 msgid "When the master channel is implemented on an existing protocol or platform, as far as possible, while considering the user experience, a master channel should:"
-msgstr "Saat saluran utama diimplementasikan pada protokol atau platform yang ada, sejauh mungkin, sambil mempertimbangkan pengalaman pengguna, saluran utama harus:"
+msgstr "Saat saluran induk diimplementasikan pada protokol atau platform yang ada, sejauh mungkin, sambil mempertimbangkan pengalaman pengguna, saluran induk harus:"
 
 #: ../../guide/master.rst:25
-msgid "maintain one thread per chat, indicating it's name, source channel and type;"
-msgstr "mempertahankan satu thread per chat, menunjukkan nama, sumber saluran, dan tipenya;"
+msgid "maintain one conversation thread per chat, indicating its name, source channel and type;"
+msgstr ""
 
 #: ../../guide/master.rst:27
 msgid "support all, if not most, types of messages defined in the framework, process and deliver messages between the user and slave channels;"
-msgstr "mendukung semua, atau paling tidak sebagian besar, jenis pesan yang ditetapkan dalam framework, memproses dan menyampaikan pesan antara pengguna dengan saluran slave;"
+msgstr "mendukung semua, atau paling tidak sebagian besar, jenis pesan yang ditetapkan dalam kerangka kerja, memproses dan menyampaikan pesan antara pengguna dan saluran slave;"
 
 #: ../../guide/master.rst:30
 msgid "support all, if not most, features of messages, including: targeted message reply, chat substitution in text (usually used in @ references), commands, etc. Master channel should be able to process incoming messages with such features, and send messages with such features to slave channels if applicable;"
-msgstr "mendukung semua, jika tidak terlalu banyak, fitur pesan, termasuk: balasan pesan tertarget, proses obrolan dalam teks (biasanya digunakan di @ referensi), perintah, dsb. Saluran utama harus dapat memproses pesan masuk dengan fitur seperti itu, dan mengirim pesan dengan fitur seperti itu ke saluran slave jika berlaku;"
+msgstr "mendukung semua, atau paling tidak sebagian besar, fitur pesan, termasuk: balasan pesan tertarget, penggantian obrolan dalam teks (biasanya digunakan dalam @ referensi), perintah, dsb. Saluran induk harus dapat memproses pesan masuk dengan fitur yang demikian, dan mengirim pesan dengan fitur yang demikian ke saluran slave jika berlaku;"
 
 #: ../../guide/master.rst:36
 msgid "be able to invoke and process \"additional features\" offered by slave channels."

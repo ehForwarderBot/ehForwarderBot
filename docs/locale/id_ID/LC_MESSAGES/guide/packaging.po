@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"POT-Creation-Date: 2018-03-22 22:34+1100\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr "Grup untuk saluran utama: ``ehforwarderbot.master``"
 
 #: ../../guide/packaging.rst:31
 msgid "Group for slave channels: ``ehforwarderbot.slave``"
-msgstr ""
+msgstr "Grup untuk saluran slave: ``ehforwarderbot.slave``"
 
 #: ../../guide/packaging.rst:32
 msgid "Group for middlewares: ``ehforwarderbot.middleware``"
@@ -54,7 +54,7 @@ msgstr "Grup untuk middlewares: ``ehforwarderbot.middleware``"
 
 #: ../../guide/packaging.rst:34
 msgid "Convention for object names is ``<author>.<platform>``, e.g. ``alice.irc``. This should also be your module's ID."
-msgstr ""
+msgstr "Konvensi untuk nama objek adalah ``<author>.<platform>``, misalnya ``alice.irc``. Ini juga harus menjadi ID modul anda."
 
 #: ../../guide/packaging.rst:37
 msgid "Object reference should point to your module's class, which extends either ``EFBChannel`` or ``EFBMiddleware``."
@@ -74,13 +74,13 @@ msgstr ""
 
 #: ../../guide/packaging.rst:63
 msgid "Private modules"
-msgstr ""
+msgstr "Modul pribadi"
 
 #: ../../guide/packaging.rst:65
 msgid "If you want to extend from, or make changes on existing modules for your own use, you can have your modules in the private modules :doc:`directory <../directories>`."
-msgstr "Jika anda ingin memperluas dari, atau membuat perubahan pada modul yang ada untuk penggunaan anda sendiri, anda dapat memiliki modul anda di modul pribadi :doc: `directory <../directories>`."
+msgstr "Jika anda ingin mengembangkan dari, atau membuat perubahan pada modul yang ada untuk digunakan secara pribadi, anda dapat memiliki modulnya di modul pribadi :doc:`direktori <../directories>`."
 
 #: ../../guide/packaging.rst:69
-msgid "For such modules, your channel ID must be the fully-qualifying name of the class. For example, if your class is located at ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``, the channel must have ID ``bob_ric_mod.IRCChannel`` for the framework to recognise it."
-msgstr "Untuk modul, ID channel anda harus sepenuhnya-kualifikasi nama kelas. Misalnya, jika kelas anda berada di `<EFB_BASE_PATH>/modul/bob_irc_mod/__init__.py:IRCChannel`, saluran harus memiliki ID `bob_ric_mod.IRCChannel` untuk kerangka untuk mengenalinya."
+msgid "For such modules, your channel ID must be the fully-qualified name of the class. For example, if your class is located at ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``, the channel must have ID ``bob_ric_mod.IRCChannel`` for the framework to recognise it."
+msgstr ""
 

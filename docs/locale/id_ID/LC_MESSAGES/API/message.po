@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-22 10:02+1100\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -26,11 +26,11 @@ msgstr "Sebuah pesan."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:5
 msgid "Optional[:obj:`.EFBMsgAttribute`] -- Attributes used for a specific message type. Only specific message type requires this attribute. Defaulted to ``None``."
-msgstr "Opsional [:obj:'. EFBMsgAttribute']--atribut yang digunakan untuk jenis pesan tertentu. Hanya jenis pesan tertentu membutuhkan atribut ini. Gagal untuk '' tidak ''."
+msgstr "Pilihan [:obj:'. EFBMsgAttribute`] -- perlengkapan yang digunakan untuk jenis pesan tertentu. Hanya jenis pesan tertentu membutuhkan perlengkapan ini. Gagal untuk ``Sama sekali tidak``."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:9
 msgid "Link: :obj:`.EFBMsgLinkAttribute`"
-msgstr "Link: :obj:'. EFBMsgLinkAttribute'"
+msgstr "Tautan: :obj:`. EFBMsgLinkAttribute'"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:10
 msgid "Location: :obj:`.EFBMsgLocationAttribute`"
@@ -38,11 +38,11 @@ msgstr "Lokasi: :obj:'. EFBMsgLocationAttribute'"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:11
 msgid "Status: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`"
-msgstr "Status: Mengetik/mengirim file lain-lain: :obj:'. EFBMsgStatusAttribute'"
+msgstr "Status: Mengetik/mengirim beberapa berkas/etc.: :obj:`.EFBMsgStatusAttribute`"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:14
 msgid "Do NOT use object of the abstract class :class:`.EFBMsgAttribute` for ``attributes``, but object of specific class instead."
-msgstr "JANGAN gunakan objek kelas abstrak: class: `.EFBMsgAttribute` untuk` `attributes``, tapi objek dari kelas tertentu."
+msgstr "JANGAN gunakan objek kelas abstrak :class:`.EFBMsgAttribute` untuk` `perlengkapan``, tapi objek dari kelas tertentu."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:20
 msgid ":obj:`.EFBChat` -- Author of this message."
@@ -50,7 +50,7 @@ msgstr ":obj:'. EFBChat'--penulis pesan ini."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:24
 msgid ":obj:`.EFBChat` -- Sender of the message."
-msgstr ""
+msgstr ":obj:`.EFBChat` -- Pengirim pesan."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:28
 msgid "Optional[:obj:`EFBMsgCommands`] -- Commands attached to the message"
@@ -66,35 +66,35 @@ msgstr "*Bool*--bendera hal ini jika pesan diedit."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:40
 msgid "*IO[bytes]* -- File object to multimedia file, type \"ra\". ``None`` if N/A. recommended to use ``NamedTemporaryFile`` object, the file can be deleted when closed, if not used otherwise. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
-msgstr ""
+msgstr "*IO[bytes]* -- Berkas objek untuk multimedia berkas, ketik \"ra\". ``Tidak ada`` jika N/A. dianjurkan untuk menggunakan `NamedTemporaryFile` objek, berkas dapat dihapus ketika ditutup, jika tidak digunakan jika tidak. Semua objek berkas harus mundur kembali ke 0 (``file.seek(0)``) sebelum pengiriman."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:47
 msgid "*str* -- File name of the multimedia file. ``None`` if N/A"
-msgstr "* str *--nama File dari multimedia file. '' Tidak '' jika N/A"
+msgstr "*str* -- nama berkas dari berkas multimedia. ``Tidak ada`` jika N/A"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:51
 msgid "*bool* -- Mark as true if this message is a system message."
-msgstr "* bool *--Tandai benar jika pesan ini adalah pesan sistem."
+msgstr "*bool* -- Tandai benar jika pesan ini adalah pesan sistem."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:55
 msgid "*str* -- MIME type of the file. ``None`` if N/A"
-msgstr "* str *--jenis MIME file. '' Tidak '' jika N/A"
+msgstr "*str* -- tipe MIME dari berkas. ``Tidak ada`` jika N/A"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:59
 msgid "*str* -- Local path of multimedia file. ``None`` if N/A"
-msgstr "* str *--jalan lokal multimedia file. '' Tidak '' jika N/A"
+msgstr "*str* -- jalan lokal dari berkas multimedia. ``Tidak ada`` jika N/A"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:63
 msgid "Optional[:obj:`EFBMsgSubstitutions`] -- Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat."
-msgstr "Opsional [: obj: `EFBMsgSubstitutions`] - Substitusi pesan, biasanya digunakan bila beberapa bagian teks pesan merujuk ke pengguna lain atau obrolan."
+msgstr "Opsional[:obj:`EFBMsgSubstitutions`] -- Substitusi pesan, biasanya digunakan ketika beberapa bagian dari pesan teks mengacu ke pengguna lain atau obrolan."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:69
 msgid "Optional[:obj:`EFBMsg`] -- Target message (usually for messages that \"replies to\" another message)."
-msgstr "Opsional [:obj:'EFBMsg']--Target pesan (biasanya untuk pesan yang \"Balasan ke\" pesan lain)."
+msgstr "Opsional[:obj:`EFBMsg`] -- Sasaran pesan (biasanya untuk pesan-pesan yang \"balasan untuk\" pesan lain)."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:74
 msgid "This message may be a \"minimum message\", with only required fields:"
-msgstr "Pesan ini mungkin \"minimal pesan\", dengan hanya harus diisi:"
+msgstr "Pesan ini mungkin \"minimal pesan\", dengan hanya bidang yang diperlukan:"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:76
 msgid ":attr:`.EFBMsg.chat`"
@@ -126,15 +126,15 @@ msgstr ":obj:'. MsgType'--jenis pesan"
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:92
 msgid "*str* -- Unique ID of message. Usually stores the message ID from slave channel. This ID must be unique among all chats in the same channel."
-msgstr "* str * - ID unik dari pesan. Biasanya menyimpan ID pesan dari slave channel. ID ini harus unik di antara semua obrolan di saluran yang sama."
+msgstr "*str* -- ID unik dari pesan. Biasanya menyimpan pesan ID dari saluran budak. ID ini harus unik di antara semua obrolan di saluran yang sama."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:97
 msgid "Some channels may not support message editing. Some channels may issue a new uid for edited message."
-msgstr "Beberapa Channel mungkin tidak mendukung pesan mengedit. Beberapa Channel dapat mengeluarkan uid baru untuk diedit pesan."
+msgstr "Beberapa saluran mungkin tidak mendukung pesan editing. Beberapa saluran mungkin dapat persoalan uid baru untuk menerbitkan pesan."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg:102
 msgid "*Dict[str, Any]* -- A series of vendor specific attributes attached. This can be used by any other channels or middlewares that is compatible with such information. Note that no guarantee is provided for information in this section."
-msgstr "* Dict [str, setiap] *--serangkaian Penjual atribut tertentu yang terpasang. Ini dapat digunakan oleh saluran lain atau middlewares yang kompatibel dengan informasi tersebut. Perhatikan bahwa tidak ada jaminan yang disediakan untuk informasi dalam bagian ini."
+msgstr "*Dict[str, Apapun]* -- serangkaian penjual atribut tertentu yang terpasang. Ini dapat digunakan oleh setiap saluran lain atau middlewares yang kompatibel dengan informasi tersebut. Perhatikan bahwa tidak ada jaminan yang diberikan dalam bagian ini."
 
 #: ../../../docstring of ehforwarderbot.EFBMsg.verify:1
 msgid "Verify the validity of message."
@@ -146,7 +146,7 @@ msgstr "Basis: :kelas: `abc.ABC`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgAttribute:1
 msgid "Abstract class of a message attribute."
-msgstr ""
+msgstr "Kelas abstrak dari sebuah atribut pesan."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:1
@@ -155,7 +155,7 @@ msgstr "Basis: :kelas: `objek`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
 msgid "EFB message command."
-msgstr ""
+msgstr "EFB pesan perintah."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:5
 msgid "*str* -- Human-friendly name of the command."
@@ -203,7 +203,7 @@ msgstr "Perintah pesan EFB. Perintah pesan mengizinkan pengguna untuk melakukan 
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:7
 msgid "list of :obj:`EFBMsgCommand` -- Commands for the message."
-msgstr "daftar: obj: `EFBMsgCommand` - Perintah untuk pesan."
+msgstr "daftar :obj:`EFBMsgCommand` -- Perintah untuk pesan."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgCommands.__init__:1
 msgid "Commands for the message."
@@ -225,15 +225,15 @@ msgstr "* str* -- Judul link."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:9
 msgid "*str, optional* -- Description of the link."
-msgstr "* str, optional* -- Deskripsi dari link."
+msgstr "*str, pilih* -- Deskripsi dari tautan."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:13
 msgid "*str, optional* -- Image/thumbnail URL of the link."
-msgstr "* str, opsional* -- URL gambar/thumbnail dari link."
+msgstr "*str, pilih* -- URL gambar/thumbnail dari tautan."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:17
 msgid "*str* -- URL of the link."
-msgstr "* str* -- URL link."
+msgstr "*str* -- URL tautan."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:1
 msgid "Title of the link."
@@ -261,7 +261,7 @@ msgstr "* float* -- Lintang lokasi."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:9
 msgid "*float* -- Longitude of the location."
-msgstr "* float* -- Bujur lokasi."
+msgstr "*pelampung* -- Bujur dari lokasi."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:1
 msgid "Latitude of the location."
@@ -273,7 +273,7 @@ msgstr "Bujur lokasi."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
 msgid "EFB Message status attribute. Message with type ``Status`` notifies the other end to update a chat-specific status, such as typing, send files, etc."
-msgstr "Atribut status pesan EFB Pesan dengan tipe ``Status`` memberitahukan pihak lain untuk memperbarui status khusus obrolan, seperti mengetik, mengirim file, dll."
+msgstr "Perlengkapan status pesan EFB Pesan dengan jenis ``Status`` memberitahukan pihak lain untuk memperbarui status khusus obrolan, seperti mengetik, mengirim berkas, dll."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:7
 msgid "Type of status, possible values are defined in the ``EFBMsgStatusAttribute``."
@@ -281,7 +281,7 @@ msgstr "Jenis status, nilai yang mungkin ditentukan dalam ``EFBMsgStatusAttribut
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:12
 msgid "*Optional[int]* -- Number of milliseconds for this status to expire. Default to 5 seconds."
-msgstr "*Opsional [int]* -- Jumlah milidetik untuk status ini akan kadaluarsa. Default ke 5 detik."
+msgstr "*Opsional[int]* -- Jumlah milidetik untuk status ini akan kadaluarsa. Standar ke 5 detik."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:17
 msgid "List of status types supported"
@@ -293,23 +293,24 @@ msgstr "Basis: :kelas:`enum.Enum`"
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:3
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of typing."
-msgstr "Digunakan di :attr:`~ .ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, mewakili status pengetikan."
+msgstr "Digunakan di :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, mewakili status pengetikan."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:8
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading file."
-msgstr "Digunakan di: attr: `~ .ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, mewakili status file upload."
+msgstr "Digunakan di :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, mewakili status unggahan berkas."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:13
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading image."
-msgstr "Digunakan di: attr: `~ .ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, mewakili status upload gambar."
+msgstr "Digunakan di :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, mewakili status unggahan gambar."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:18
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading audio."
-msgstr "Digunakan di: attr: `~ .ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, mewakili status mengunggah audio."
+msgstr "Digunakan di :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, mewakili status mengunggah audio."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:23
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading video."
-msgstr "Digunakan di: attr: `~ .ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, mewakili status mengunggah video."
+msgstr "Digunakan di\n"
+":attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, mewakili status mengunggah video."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:1
 msgid "Type of status."
@@ -329,7 +330,7 @@ msgstr "Substitusi pesan EFB."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:3
 msgid "This is for the case when user \"@-referred\" a list of users in the message. Substitutions here is a dict of correspondence between the string used to refer to the user in the message and a user object."
-msgstr ""
+msgstr "Ini adalah kasus ketika pengguna \"@-disebut\" daftar pengguna di pesan. Substitusi berikut adalah dict korespondensi antara string yang digunakan untuk merujuk kepada pengguna dalam pesan dan objek pengguna."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:8
 msgid "Dictionary of text substitutions targeting to a user or member."
@@ -337,7 +338,7 @@ msgstr "Kamus substitusi teks yang ditargetkan ke pengguna atau member."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:10
 msgid "The key of the dictionary is a tuple of two :obj:`int`\\ s, where first of it is the starting position in the string, and the second is the ending position defined similar to Python's substring. A tuple of ``(3, 15)`` corresponds to ``msg.text[3:15]``. The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``, ``b ∈ (a, l]``, where ``l`` is the length of the message text."
-msgstr ""
+msgstr "Kunci dari kamus adalah sebuah tuple dari dua :obj:`int`\\ s, di mana lebih dari itu adalah posisi awal dalam string, dan yang kedua adalah posisi berakhir didefinisikan mirip dengan Python substring. Sebuah tuple ``(3, 15)`` sesuai dengan ``msg.teks[3:15]``. Nilai dari tuple ``(a, b)`` harus berbaring dalam ``a ∈ [0, l)``, ``b ∈ (a, l]``, di mana ``l`` adalah panjang dari pesan teks."
 
 #: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:17
 msgid "Value of the dict may be any user of the chat, or a member of a group. Notice that the :obj:`EFBChat` object here must NOT be a group."
@@ -357,7 +358,7 @@ msgstr "Contoh"
 
 #: ../../API/message.rst:17
 msgid "Prelude: Defining related chats"
-msgstr ""
+msgstr "Pendahuluan: Mendefinisikan obrolan terkait"
 
 #: ../../API/message.rst:28
 msgid "Initialization and marking chats"
@@ -385,18 +386,18 @@ msgstr "Pesan media"
 
 #: ../../API/message.rst:78
 msgid "Information related to media processing is described in :doc:`/guide/media_processing`."
-msgstr "Informasi yang berkaitan dengan pemrosesan media dijelaskan di: doc: `/ guide / media_processing`."
+msgstr "Informasi yang berkaitan dengan pengolahan media dijelaskan di :doc:`/guide/media_processing`."
 
 #: ../../API/message.rst:81
 msgid "The example below is for image (picture) messages. Audio, file, video, sticker works in the same way."
-msgstr "Contoh di bawah ini adalah untuk gambar (foto) pesan. Audio, file, video, stiker bekerja dengan cara yang sama."
+msgstr "Contoh di bawah ini adalah untuk gambar (foto) pesan. Audio, berkas, video, stiker bekerja dengan cara yang sama."
 
 #: ../../API/message.rst:84
 #: ../../API/message.rst:96
 #: ../../API/message.rst:105
 #: ../../API/message.rst:119
 msgid "In non-text messages, the ``text`` attribute is optional."
-msgstr "Dalam pesan non-teks, atribut `` teks` adalah opsional."
+msgstr "Dalam pesan non-teks, perlengkapan `` teks`` adalah pilihan."
 
 #: ../../API/message.rst:102
 msgid "Location message"
@@ -416,7 +417,7 @@ msgstr "Pesan tidak didukung"
 
 #: ../../API/message.rst:127
 msgid "``text`` attribute is required for this type of message."
-msgstr "atribut ``teks`` diperlukan untuk jenis pesan ini."
+msgstr "Perlengkapan ``teks`` diperlukan untuk jenis pesan ini."
 
 #: ../../API/message.rst:136
 msgid "Additional information"

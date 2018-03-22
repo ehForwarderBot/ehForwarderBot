@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-02-23 05:35-0500\n"
+"PO-Revision-Date: 2018-03-22 07:40-0400\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr ""
 
 #: ../../start.rst:9
 msgid "Both commands are exactly the same thing, accept the same flags, run the same code. The latter is only a backup in case the former does not work."
-msgstr "Kedua perintah itu persis sama, menerima bendera yang sama, menjalankan kode yang sama. Yang terakhir ini hanya cadangan jika mantan tidak bekerja."
+msgstr "Kedua perintah tersebut sebenarnya sama, menerima bendera yang sama, menjalankan kode yang sama. Yang terakhir ini hanyalah sebuah cadangan dalam kasus pertama yang tidak bekerja."
 
 #: ../../start.rst:14
 msgid "Options"
@@ -42,7 +42,7 @@ msgstr "Pilihan"
 
 #: ../../start.rst:16
 msgid "``-h``, ``--help``: Show help message"
-msgstr ""
+msgstr "``-h``, ``--help``: Menampilkan pesan bantuan"
 
 #: ../../start.rst:18
 msgid "``-p PROFILE``, ``--profile PROFILE``: Switch :doc:`profile <profile>`"
@@ -50,7 +50,7 @@ msgstr ""
 
 #: ../../start.rst:20
 msgid "From version 2, EFB supports running different instances under the same user, identified by their profiles. The default profile is named ``default``."
-msgstr "Dari versi 2, EFB mendukung menjalankan berbagai contoh di bawah pengguna yang sama, yang diidentifikasi oleh profil mereka. Profil default dinamakan `` default``."
+msgstr "Dari versi 2, EFB mendukung jalannya berbagai contoh berbeda di bawah pengguna yang sama, yang diidentifikasi oleh profil mereka. Profil bawaan dinamakan `` bawaan``."
 
 #: ../../start.rst:24
 msgid "``-V``, ``--version``: Print version information"
