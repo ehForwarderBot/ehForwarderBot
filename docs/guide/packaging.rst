@@ -66,7 +66,7 @@ If you want to extend from, or make changes on existing
 modules for your own use, you can have your modules in
 the private modules :doc:`directory <../directories>`.
 
-For such modules, your channel ID must be the fully-qualifying
+For such modules, your channel ID must be the fully-qualified
 name of the class. For example, if your class is located
 at ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``,
 the channel must have ID ``bob_ric_mod.IRCChannel`` for the

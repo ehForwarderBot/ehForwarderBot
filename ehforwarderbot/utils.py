@@ -64,7 +64,7 @@ def get_data_path(module_id: str):
         module_id (str): Module ID
 
     Returns:
-        str: The data path of selected channel.
+        str: The data path of indicated module.
     """
     profile = coordinator.profile
     base_path = get_base_path()

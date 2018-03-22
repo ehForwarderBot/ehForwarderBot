@@ -22,8 +22,8 @@ When the master channel is implemented on an existing
 protocol or platform, as far as possible, while
 considering the user experience, a master channel should:
 
-* maintain one thread per chat, indicating it's name,
-  source channel and type;
+* maintain one conversation thread per chat, indicating
+  its name, source channel and type;
 * support all, if not most, types of messages defined
   in the framework, process and deliver messages
   between the user and slave channels;
