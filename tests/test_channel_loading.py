@@ -18,6 +18,34 @@ class ChannelLoadingTest(unittest.TestCase):
     def setUp(self):
         pass
 
+    def test_instance_id(self):
+        with tempfile.TemporaryDirectory() as f:
+            os.environ['EFB_DATA_PATH'] = f
+            config_path = ehforwarderbot.utils.get_config_path()
+
+            master_id = "tests.mocks.master.MockMasterChannel#instance1"
+            slave_ids = [
+                "tests.mocks.slave.MockSlaveChannel#instance1",
+                "tests.mocks.slave.MockSlaveChannel#instance2"
+            ]
+
+            config = yaml.dump({
+                "master_channel": master_id,
+                "slave_channels": slave_ids
+            })
+
+            if not os.path.exists(os.path.dirname(config_path)):
+                os.makedirs(os.path.dirname(config_path))
+            with open(config_path, 'w') as conf_file:
+                conf_file.write(config)
+            ehforwarderbot.__main__.init()
+
+            self.assertEqual(coordinator.master.channel_id, master_id)
+            self.assertIsInstance(coordinator.master, master.MockMasterChannel)
+            for i in slave_ids:
+                self.assertIn(i, coordinator.slaves)
+                self.assertIsInstance(coordinator.slaves[i], slave.MockSlaveChannel)
+
     def test_custom_path_module_loading(self):
         with tempfile.TemporaryDirectory() as f:
             os.environ['EFB_DATA_PATH'] = f

@@ -14,13 +14,14 @@ class MockMiddleware(EFBMiddleware):
             * "interrupt_non_text": Interrupt only non-text messages.
     """
 
-    middleware_id: str = "tests.mocks.middleware"
+    middleware_id: str = "tests.mocks.middleware.MockMiddleware"
     middleware_name: str = "Mock Middleware"
     __version__: str = '0.0.1a'
 
     logger = logging.getLogger(middleware_id)
 
-    def __init__(self, mode: str="log"):
+    def __init__(self, instance_id: str = None, mode: str="log"):
+        super().__init__(instance_id=instance_id)
         self.mode: str = mode
 
     def process_message(self, message: EFBMsg) -> Optional[EFBMsg]:

@@ -11,7 +11,7 @@ class MockMasterChannel(EFBChannel):
 
     channel_name: str = "Mock Master"
     channel_emoji: str = "➕"
-    channel_id: str = "tests.mocks.master"
+    channel_id: str = "tests.mocks.master.MockMasterChannel"
     channel_type: ChannelType = ChannelType.Master
     supported_message_types: Set[MsgType] = {MsgType.Text, MsgType.Link}
     __version__: str = '0.0.1'
@@ -24,6 +24,7 @@ class MockMasterChannel(EFBChannel):
     logger = getLogger(channel_id)
 
     polling = threading.Event()
+
 
     def poll(self):
         self.polling.wait()
@@ -39,7 +40,7 @@ class MockMasterChannel(EFBChannel):
         self.polling.set()
 
     def send_text_msg(self):
-        slave = coordinator.slaves['tests.mocks.slave']
+        slave = next(iter(coordinator.slaves.values()))
         wonderland = slave.get_chat('wonderland001')
         msg = EFBMsg()
         msg.deliver_to = slave
@@ -50,7 +51,7 @@ class MockMasterChannel(EFBChannel):
         return coordinator.send_message(msg)
 
     def send_link_msg(self):
-        slave = coordinator.slaves['tests.mocks.slave']
+        slave = next(iter(coordinator.slaves.values()))
         alice = slave.get_chat('alice')
         msg = EFBMsg()
         msg.deliver_to = slave
@@ -65,7 +66,7 @@ class MockMasterChannel(EFBChannel):
         return coordinator.send_message(msg)
 
     def send_location_msg(self):
-        slave = coordinator.slaves['tests.mocks.slave']
+        slave = next(iter(coordinator.slaves.values()))
         alice = slave.get_chat('alice')
         msg = EFBMsg()
         msg.deliver_to = slave
@@ -77,7 +78,7 @@ class MockMasterChannel(EFBChannel):
         return coordinator.send_message(msg)
 
     def send_message_recall_status(self):
-        slave = coordinator.slaves['tests.mocks.slave']
+        slave = next(iter(coordinator.slaves.values()))
         alice = slave.get_chat('alice')
         msg = EFBMsg()
         msg.deliver_to = slave

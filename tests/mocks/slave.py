@@ -11,7 +11,7 @@ class MockSlaveChannel(EFBChannel):
 
     channel_name: str = "Mock Slave"
     channel_emoji: str = "➖"
-    channel_id: str = "tests.mocks.slave"
+    channel_id: str = "tests.mocks.slave.MockSlaveChannel"
     channel_type: ChannelType = ChannelType.Slave
     supported_message_types: Set[MsgType] = {MsgType.Text, MsgType.Link}
     __version__: str = '0.0.1'
@@ -28,7 +28,8 @@ class MockSlaveChannel(EFBChannel):
         "wonderland001": "W.png"
     }
 
-    def __init__(self):
+    def __init__(self, instance_id=None):
+        super().__init__(instance_id)
         alice = EFBChat(self)
         alice.chat_name = "Alice"
         alice.chat_uid = "alice"
