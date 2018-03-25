@@ -14,6 +14,7 @@ from . import coordinator
 from .__version__ import __version__
 from .channel import EFBChannel
 from .middleware import EFBMiddleware
+from .utils import LogLevelFilter
 
 # gettext.install('ehforwarderbot', 'locale')
 coordinator.translator = gettext.translation('ehforwarderbot',
@@ -84,7 +85,7 @@ def init():
         logger.log(99, "\x1b[0;37;42m %s \x1b[0m",
                    _("Slave channel {name} ({id}) # {instance_id} is initialized.")
                    .format(name=cls.channel_name, id=cls.channel_id,
-                           instance_id=instance_id))
+                           instance_id=instance_id or _("Default profile")))
 
     logger.log(99, "\x1b[0;37;46m %s \x1b[0m",
                _("Initializing master {}...").format(conf['master_channel']))
@@ -96,7 +97,7 @@ def init():
                _("Master channel {name} ({id}) # {instance_id} is initialized.")
                .format(name=coordinator.master.channel_name,
                        id=coordinator.master.channel_id,
-                       instance_id=instance_id))
+                       instance_id=instance_id or _("Default profile")))
 
     logger.log(99, "\x1b[1;37;42m %s \x1b[0m", _("All channels initialized."))
     for i in conf['middlewares']:
@@ -109,7 +110,7 @@ def init():
         logger.log(99, "\x1b[0;37;42m %s \x1b[0m",
                    _("Middleware {name} ({id}) # {instance_id} is initialized.")
                    .format(name=cls.middleware_name, id=cls.middleware_id,
-                           instance_id=instance_id))
+                           instance_id=instance_id or _("Default profile")))
 
     logger.log(99, "\x1b[1;37;42m %s \x1b[0m", _("All middlewares are initialized."))
 
@@ -172,16 +173,26 @@ def main():
         finally:
             print(versions)
     else:
-        if getattr(args, "verbose", None):
-            level = logging.DEBUG
-        else:
-            level = logging.ERROR
-        logging.basicConfig(format='%(asctime)s [%(levelname)s]: %(name)s (%(module)s.%(funcName)s; '
-                                   '%(filename)s:%(lineno)d) \n    %(message)s', level=level)
-        logging.root.setLevel(level)
+        # logging.basicConfig(format='%(asctime)s [%(levelname)s]: %(name)s (%(module)s.%(funcName)s; '
+        #                            '%(filename)s:%(lineno)d) \n    %(message)s', level=logging.ERROR)
+        # logging.root.setLevel(logging.ERROR)
 
-        # signal.signal(signal.SIGINT, stop_gracefully)
-        # signal.signal(signal.SIGTERM, stop_gracefully)
+        logging_format = "%(asctime)s [%(levelname)s]: %(name)s (%(module)s.%(funcName)s; " \
+                         "%(filename)s:%(lineno)d)\n    %(message)s"
+
+        # logging.root.setLevel(level)
+
+        if getattr(args, "verbose", None):
+            debug_logger = logging.StreamHandler(sys.stdout)
+            debug_logger.addFilter(LogLevelFilter(max_level=logging.WARNING))
+            debug_logger.setFormatter(logging.Formatter(logging_format))
+            logging.root.addHandler(debug_logger)
+
+        error_logger = logging.StreamHandler(sys.stderr)
+        error_logger.addFilter(LogLevelFilter(min_level=logging.ERROR))
+        error_logger.setFormatter(logging.Formatter(logging_format))
+        logging.root.addHandler(error_logger)
+
         atexit.register(stop_gracefully)
 
         if args.profile:
