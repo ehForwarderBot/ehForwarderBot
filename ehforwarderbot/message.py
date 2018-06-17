@@ -227,9 +227,9 @@ class EFBMsgLocationAttribute(EFBMsgAttribute):
         return "<EFBMsgLocationAttribute: {attr.latitude}, {attr.longitude}>".format(attr=self)
 
     def verify(self):
-        if self.latitude is None or isinstance(self.latitude, float):
+        if self.latitude is None or not isinstance(self.latitude, float):
             raise ValueError("Latitude is invalid.")
-        if self.latitude is None or isinstance(self.latitude, float):
+        if self.longitude is None or not isinstance(self.longitude, float):
             raise ValueError("Longitude is invalid.")
 
 
