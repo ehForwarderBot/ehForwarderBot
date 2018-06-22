@@ -184,9 +184,10 @@ def main():
 
         if getattr(args, "verbose", None):
             debug_logger = logging.StreamHandler(sys.stdout)
-            debug_logger.addFilter(LogLevelFilter(max_level=logging.DEBUG))
+            debug_logger.addFilter(LogLevelFilter(max_level=logging.WARNING))
             debug_logger.setFormatter(logging.Formatter(logging_format))
             logging.root.addHandler(debug_logger)
+            logging.root.level = logging.DEBUG
 
         error_logger = logging.StreamHandler(sys.stderr)
         error_logger.addFilter(LogLevelFilter(min_level=logging.ERROR))
