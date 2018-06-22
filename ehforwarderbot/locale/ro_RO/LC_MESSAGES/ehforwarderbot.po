@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-11 19:57+1100\n"
-"PO-Revision-Date: 2018-03-22 07:40-0400\n"
+"POT-Creation-Date: 2018-06-22 18:54+1000\n"
+"PO-Revision-Date: 2018-06-22T08:56:05+0000\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
@@ -16,63 +16,69 @@ msgstr ""
 "X-Crowdin-Language: ro\n"
 "X-Crowdin-File: /ehForwarderBot/ehforwarderbot/locale/ehforwarderbot.pot\n"
 
-#: ehforwarderbot/__main__.py:27
+#: ehforwarderbot/__main__.py:28
 #, python-brace-format
 msgid "Python 3.6 or higher is required. Your version is {version}."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:29
+#: ehforwarderbot/__main__.py:30
 msgid "EH Forwarder Bot is an extensible chat tunnel framework which allows users to contact people from other chat platforms, and ultimately remotely control their accounts in other platforms."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:37
+#: ehforwarderbot/__main__.py:38
 msgid "Enable verbose mode. (Level: Debug)"
 msgstr ""
 
-#: ehforwarderbot/__main__.py:39
+#: ehforwarderbot/__main__.py:40
 msgid "Show version numbers and exit."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:41
+#: ehforwarderbot/__main__.py:42
 msgid "Choose a profile to start with."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:77
+#: ehforwarderbot/__main__.py:78
 msgid "Initializing slave {}..."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:85
+#: ehforwarderbot/__main__.py:86
 #, python-brace-format
 msgid "Slave channel {name} ({id}) # {instance_id} is initialized."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:90
+#: ehforwarderbot/__main__.py:88 ehforwarderbot/__main__.py:100
+#: ehforwarderbot/__main__.py:113 ehforwarderbot/__main__.py:144
+#: ehforwarderbot/__main__.py:153 ehforwarderbot/__main__.py:164
+msgid "Default profile"
+msgstr ""
+
+#: ehforwarderbot/__main__.py:91
 msgid "Initializing master {}..."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:96
+#: ehforwarderbot/__main__.py:97
 #, python-brace-format
 msgid "Master channel {name} ({id}) # {instance_id} is initialized."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:101
+#: ehforwarderbot/__main__.py:102
 msgid "All channels initialized."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:103
+#: ehforwarderbot/__main__.py:104
 msgid "Initializing middleware {}..."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:110
+#: ehforwarderbot/__main__.py:111
 #, python-brace-format
 msgid "Middleware {name} ({id}) # {instance_id} is initialized."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:114
+#: ehforwarderbot/__main__.py:115
 msgid "All middlewares are initialized."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:134
+#: ehforwarderbot/__main__.py:135
 #, python-brace-format
 msgid "EH Forwarder Bot\n"
 "Version: {version}\n"
@@ -80,36 +86,31 @@ msgid "EH Forwarder Bot\n"
 "{py_version}"
 msgstr ""
 
-#: ehforwarderbot/__main__.py:143 ehforwarderbot/__main__.py:152
-#: ehforwarderbot/__main__.py:163
-msgid "Default profile"
-msgstr ""
-
-#: ehforwarderbot/__main__.py:144
+#: ehforwarderbot/__main__.py:145
 msgid "Master channel:"
 msgstr ""
 
-#: ehforwarderbot/__main__.py:144 ehforwarderbot/__main__.py:154
-#: ehforwarderbot/__main__.py:165
+#: ehforwarderbot/__main__.py:145 ehforwarderbot/__main__.py:155
+#: ehforwarderbot/__main__.py:166
 #, python-brace-format
 msgid "{name} ({id}) {version} # {instance_id}"
 msgstr ""
 
-#: ehforwarderbot/__main__.py:149
+#: ehforwarderbot/__main__.py:150
 msgid "Slave channel:"
 msgid_plural "Slave channels:"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: ehforwarderbot/__main__.py:159
+#: ehforwarderbot/__main__.py:160
 msgid "Middleware:"
 msgid_plural "Middlewares:"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: ehforwarderbot/__main__.py:171
+#: ehforwarderbot/__main__.py:172
 msgid "No middleware is enabled."
 msgstr ""
 

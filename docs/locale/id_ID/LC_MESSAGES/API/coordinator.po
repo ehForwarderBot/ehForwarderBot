@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-22 10:02+1100\n"
-"PO-Revision-Date: 2018-03-22 07:40-0400\n"
+"PO-Revision-Date: 2018-06-22T08:56:34+0000\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -38,11 +38,11 @@ msgstr "*EFBChannel* -- Objek saluran utama yang sedang berjalan."
 
 #: ../../../docstring of ehforwarderbot.coordinator:17
 msgid "*Dict[str, EFBChannel]* -- Dictionary of running slave channel object. Keys are the unique identifier of the channel."
-msgstr ""
+msgstr "Dict [str, EFBChannel] *--Kamus untuk menjalankan objek slave channel. Kuncinya merupakan sebuah kode pengenal yang unik dari channel."
 
 #: ../../../docstring of ehforwarderbot.coordinator:22
 msgid "*List[EFBMiddleware]* -- List of middlewares"
-msgstr ""
+msgstr "*List[EFBMiddleware]* -- Daftar perangkat lunak"
 
 #: ../../../docstring of ehforwarderbot.coordinator.add_channel:1
 msgid "Register the channel with the coordinator."
