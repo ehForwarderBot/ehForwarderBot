@@ -53,6 +53,7 @@ class ChatType(Enum):
     User = "User"
     Group = "Group"
     System = "System"
+    Unknown = "Unknown"
 
 
 class TargetType(Enum):

@@ -118,10 +118,10 @@ class EFBMsg:
             raise ValueError("Author is not valid.")
         else:
             self.author.verify()
-        if self.author is None or not isinstance(self.author, EFBChat):
+        if self.chat is None or not isinstance(self.chat, EFBChat):
             raise ValueError("Chat is not valid.")
-        else:
-            self.author.verify()
+        elif self.chat is not self.author:  # Prevent repetitive verification
+            self.chat.verify()
         if self.type is None or not isinstance(self.type, MsgType):
             raise ValueError("Type is not valid.")
         if self.deliver_to is None or not isinstance(self.deliver_to, EFBChannel):
@@ -129,15 +129,18 @@ class EFBMsg:
         if self.type in (MsgType.Audio, MsgType.File, MsgType.Image, MsgType.Sticker, MsgType.Video):
             if self.file is None or not hasattr(self.file, "read") or not hasattr(self.file, "close"):
                 raise ValueError("File is not valid.")
-            if self.mime is None or not self.mime:
+            if self.mime is None or not self.mime or not isinstance(self.mime, str):
                 raise ValueError("MIME is not valid.")
-            if self.path is None or not self.path:
+            if self.path is None or not self.path or not isinstance(self.path, str):
                 raise ValueError("Path is not valid.")
-        if self.type == MsgType.Location and (self.attributes is None or not isinstance(self.attributes, EFBMsgLocationAttribute)):
+        if self.type == MsgType.Location and (self.attributes is None
+                                              or not isinstance(self.attributes, EFBMsgLocationAttribute)):
             raise ValueError("Attribute of location message is invalid.")
-        if self.type == MsgType.Link and (self.attributes is None or not isinstance(self.attributes, EFBMsgLinkAttribute)):
+        if self.type == MsgType.Link and (self.attributes is None
+                                          or not isinstance(self.attributes, EFBMsgLinkAttribute)):
             raise ValueError("Attribute of link message is invalid.")
-        if self.type == MsgType.Status and (self.attributes is None or not isinstance(self.attributes, EFBMsgStatusAttribute)):
+        if self.type == MsgType.Status and (self.attributes is None
+                                            or not isinstance(self.attributes, EFBMsgStatusAttribute)):
             raise ValueError("Attribute of status message is invalid.")
 
         if self.attributes:

@@ -54,7 +54,7 @@ class EFBChat:
             self.channel_id: str = channel.channel_id
 
         self.chat_name: str = None
-        self.chat_type: ChatType = None
+        self.chat_type: ChatType = ChatType.Unknown
         self.chat_alias: str = None
         self.chat_uid: str = None
         self.is_chat: bool = True

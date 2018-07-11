@@ -39,3 +39,36 @@ class ChannelLoadingTest(unittest.TestCase):
         copy = chat.copy()
         self.assertEqual(chat, copy)
         self.assertIsNot(chat, copy)
+
+    def test_verify(self):
+        channel = MockMasterChannel()
+
+        with self.subTest("Valid chat"):
+            chat = EFBChat(channel)
+            chat.chat_uid = "00001"
+            chat.chat_name = "Chat"
+            chat.chat_alias = "chaT"
+            chat.chat_type = ChatType.User
+            chat.verify()
+
+        with self.subTest("Missing UID"):
+            chat = EFBChat(channel)
+            chat.chat_name = "Chat"
+            chat.chat_type = ChatType.User
+            with self.assertRaises(ValueError):
+                chat.verify()
+
+        with self.subTest("Missing name"):
+            chat = EFBChat(channel)
+            chat.chat_uid = "00001"
+            chat.chat_type = ChatType.User
+            with self.assertRaises(ValueError):
+                chat.verify()
+
+        with self.subTest("Wrong chat type"):
+            chat = EFBChat(channel)
+            chat.chat_uid = "00001"
+            chat.chat_name = "Chat"
+            chat.chat_type = "user"
+            with self.assertRaises(ValueError):
+                chat.verify()
