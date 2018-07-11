@@ -141,7 +141,7 @@ def main():
             # Master channel
             master_channel: EFBChannel = utils.locate_module(conf['master_channel'], 'master')
             instance_id = conf['master_channel'].split('#', 1)[1:]
-            instance_id = (instance_id and instance_id[0]) or _("Default profile")
+            instance_id = (instance_id and instance_id[0]) or _("Default instance")
             versions += "\n\n" + _("Master channel:") + "\n    " + _("{name} ({id}) {version} # {instance_id}") \
                 .format(name=master_channel.channel_name,
                         id=master_channel.channel_id,
@@ -150,7 +150,7 @@ def main():
             versions += "\n\n" + ngettext("Slave channel:", "Slave channels:", len(conf['slave_channels']))
             for i in conf['slave_channels']:
                 instance_id = i.split('#', 1)[1:]
-                instance_id = (instance_id and instance_id[0]) or _("Default profile")
+                instance_id = (instance_id and instance_id[0]) or _("Default instance")
                 slave_channel: EFBChannel = utils.locate_module(i, 'slave')
                 versions += "\n    " + _("{name} ({id}) {version} # {instance_id}") \
                             .format(name=slave_channel.channel_name,
@@ -161,7 +161,7 @@ def main():
             if conf['middlewares']:
                 for i in conf['middlewares']:
                     instance_id = i.split('#', 1)[1:]
-                    instance_id = (instance_id and instance_id[0]) or _("Default profile")
+                    instance_id = (instance_id and instance_id[0]) or _("Default instance")
                     middleware: EFBMiddleware = utils.locate_module(i, 'middleware')
                     versions += "\n    " + _("{name} ({id}) {version} # {instance_id}") \
                                 .format(name=middleware.middleware_name,
