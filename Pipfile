@@ -4,7 +4,4 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-PyYAML = "*"
-
-[requires]
-python_version = ">=3.5"
+"e1839a8" = {path = ".", editable = true}
