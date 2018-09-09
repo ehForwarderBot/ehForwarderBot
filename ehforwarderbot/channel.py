@@ -67,7 +67,7 @@ class EFBChannel(ABC):
         methods = {}
         for mName in dir(self):
             m = getattr(self, mName)
-            if getattr(m, "extra_fn", False):
+            if callable(m) and getattr(m, "extra_fn", False):
                 methods[mName] = m
         return methods
 
