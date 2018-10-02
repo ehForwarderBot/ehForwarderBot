@@ -200,16 +200,16 @@ conversion = {
 }
 
 
-# Locale fallback settings
-def locale_fallback_decorator(fun):
-
-    def wrapper(self, **kwargs):
-        self.config.language = conversion.get(self.config.language, self.config.language)
-        return fun(self, **kwargs)
-    return wrapper
-
-
-sphinx.application.Sphinx._init_i18n = locale_fallback_decorator(sphinx.application.Sphinx._init_i18n)
+# # Locale fallback settings
+# def locale_fallback_decorator(fun):
+#
+#     def wrapper(self, **kwargs):
+#         self.config.language = conversion.get(self.config.language, self.config.language)
+#         return fun(self, **kwargs)
+#     return wrapper
+#
+#
+# sphinx.application.Sphinx._init_i18n = locale_fallback_decorator(sphinx.application.Sphinx._init_i18n)
 
 
 def setup(self):
