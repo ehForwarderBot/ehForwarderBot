@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-01 22:12+1100\n"
-"PO-Revision-Date: 2018-06-22T08:56:43+0000\n"
+"POT-Creation-Date: 2018-10-03 09:10+1000\n"
+"PO-Revision-Date: 2018-10-02 23:12\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -20,72 +20,84 @@ msgstr ""
 msgid "EFBMiddleware"
 msgstr "EFBMiddleware"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware:1
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:1
 msgid "Middleware class."
 msgstr "Clase Middleware."
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware:5
-msgid "*str* -- Unique ID of the middleware Convention of IDs is specified in :doc:`/guide/packaging`. This ID will be appended with its instance ID when available."
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:5
+msgid "Unique ID of the middleware. Convention of IDs is specified in :doc:`/guide/packaging`. This ID will be appended with its instance ID when available."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware:11
-msgid "*str* -- Human-readable name of the middleware."
-msgstr "*str* -- Nombre para el middleware."
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
+msgid "type"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware:15
-msgid "*str* -- The instance ID if available."
-msgstr "*str* -- La instancia del ID, si está disponible."
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:9
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:15
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:21
+msgid "str"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.__init__:1
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:13
+msgid "Human-readable name of the middleware."
+msgstr ""
+
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:19
+msgid "The instance ID if available."
+msgstr ""
+
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:1
 msgid "Initialize the middleware. Inherited initializer must call the \"super init\" method at the beginning."
 msgstr "Inicialización del middleware. El inicializador heredado debe llamar al comienzo el método \"super init\"."
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.__init__:0
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Parameters"
 msgstr "Parámetros"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.__init__:5
-msgid "Instance ID of the channel."
-msgstr "ID de la instancia del canal."
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:5
+msgid "Instance ID of the middleware."
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:1
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:1
 msgid "Process a message with middleware"
 msgstr "Procesa un mensaje con el middleware"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:3
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:3
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:3
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:3
 msgid "Message object to process"
 msgstr "Objeto mensaje a procesar"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Returns"
 msgstr "Resultados"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:6
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:6
 msgid "Processed message or None if discarded."
 msgstr "Mensaje procesado o None si es descartado."
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Return type"
 msgstr "Tipo de dato devuelto"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:7
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:7
 msgid "Optional[:obj:`.EFBMsg`]"
 msgstr "Optional[:obj:`.EFBMsg`]"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:1
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:1
 msgid "Process a status update with middleware"
 msgstr "Procesa una actualización del estado con el middleware"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:6
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:6
 msgid "Processed status or None if discarded."
 msgstr "Estado procesado o None si es descartado."
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:7
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:7
 msgid "Optional[:obj:`.EFBStatus`]"
 msgstr "Optional[:obj:`.EFBStatus`]"
 

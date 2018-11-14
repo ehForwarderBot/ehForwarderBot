@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-22 18:54+1000\n"
-"PO-Revision-Date: 2018-06-22T08:56:32+0000\n"
+"POT-Creation-Date: 2018-10-03 09:10+1000\n"
+"PO-Revision-Date: 2018-10-02 23:12\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id_ID\n"
@@ -47,8 +47,7 @@ msgid "Slave channel {name} ({id}) # {instance_id} is initialized."
 msgstr "Saluran slave {name} ({id}) # {instance_id} diinisialisasi."
 
 #: ehforwarderbot/__main__.py:88 ehforwarderbot/__main__.py:100
-#: ehforwarderbot/__main__.py:113 ehforwarderbot/__main__.py:144
-#: ehforwarderbot/__main__.py:153 ehforwarderbot/__main__.py:164
+#: ehforwarderbot/__main__.py:113
 msgid "Default profile"
 msgstr "Profil standar"
 
@@ -85,6 +84,11 @@ msgid "EH Forwarder Bot\n"
 "Python version:\n"
 "{py_version}"
 msgstr "EH Forwarder Bot versi: {version} Python versi:{py_version}"
+
+#: ehforwarderbot/__main__.py:144 ehforwarderbot/__main__.py:153
+#: ehforwarderbot/__main__.py:164
+msgid "Default instance"
+msgstr ""
 
 #: ehforwarderbot/__main__.py:145
 msgid "Master channel:"

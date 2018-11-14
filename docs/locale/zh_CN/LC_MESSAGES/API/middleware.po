@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-01 22:12+1100\n"
-"PO-Revision-Date: 2018-06-22T08:56:23+0000\n"
+"POT-Creation-Date: 2018-10-03 09:10+1000\n"
+"PO-Revision-Date: 2018-10-02 23:12\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -20,72 +20,84 @@ msgstr ""
 msgid "EFBMiddleware"
 msgstr "EFBMiddleware"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware:1
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:1
 msgid "Middleware class."
 msgstr "中间件类。"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware:5
-msgid "*str* -- Unique ID of the middleware Convention of IDs is specified in :doc:`/guide/packaging`. This ID will be appended with its instance ID when available."
-msgstr "*str* -- 中间件的唯一标识符。ID 的命名规范在\\ :doc:`/guide/packaging`\\ 中有说明。 在适当的时候，这个 ID 将被附加实例 ID。"
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:5
+msgid "Unique ID of the middleware. Convention of IDs is specified in :doc:`/guide/packaging`. This ID will be appended with its instance ID when available."
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware:11
-msgid "*str* -- Human-readable name of the middleware."
-msgstr "*str* -- 面向用户的中间件名称。"
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
+msgid "type"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware:15
-msgid "*str* -- The instance ID if available."
-msgstr "*str* -- 实例 ID（若可用）。"
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:9
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:15
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:21
+msgid "str"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.__init__:1
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:13
+msgid "Human-readable name of the middleware."
+msgstr ""
+
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:19
+msgid "The instance ID if available."
+msgstr ""
+
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:1
 msgid "Initialize the middleware. Inherited initializer must call the \"super init\" method at the beginning."
 msgstr "初始化中间件。继承初始化方法必须在最初调用父类的初始化方法。"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.__init__:0
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Parameters"
 msgstr "参数"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.__init__:5
-msgid "Instance ID of the channel."
-msgstr "信道的实例 ID。"
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:5
+msgid "Instance ID of the middleware."
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:1
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:1
 msgid "Process a message with middleware"
 msgstr "通过中间件处理一条消息"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:3
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:3
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:3
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:3
 msgid "Message object to process"
 msgstr "待处理的消息对象"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Returns"
 msgstr "返回"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:6
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:6
 msgid "Processed message or None if discarded."
 msgstr "已处理的消息，如果丢弃消息则为 None。"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Return type"
 msgstr "返回类型"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_message:7
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:7
 msgid "Optional[:obj:`.EFBMsg`]"
 msgstr "Optional[:obj:`.EFBMsg`]"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:1
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:1
 msgid "Process a status update with middleware"
 msgstr "通过中间件处理状态更新"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:6
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:6
 msgid "Processed status or None if discarded."
 msgstr "已处理的消息，如果丢弃则为 None。"
 
-#: ../../../docstring of ehforwarderbot.EFBMiddleware.process_status:7
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:7
 msgid "Optional[:obj:`.EFBStatus`]"
 msgstr "Optional[:obj:`.EFBStatus`]"
 

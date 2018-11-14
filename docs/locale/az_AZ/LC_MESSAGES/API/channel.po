@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-01 22:12+1100\n"
-"PO-Revision-Date: 2018-06-22T08:56:47+0000\n"
+"POT-Creation-Date: 2018-10-03 09:10+1000\n"
+"PO-Revision-Date: 2018-10-02 23:12\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Azerbaijani\n"
 "MIME-Version: 1.0\n"
@@ -20,216 +20,239 @@ msgstr ""
 msgid "EFBChannel"
 msgstr "EFBKanal"
 
-#: ../../../docstring of ehforwarderbot.EFBChannel:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:1
 msgid "The abstract channel class."
 msgstr "Mücərrəd kanal sinifi."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel:5
-msgid "*str* -- A human-friendly name of the channel."
-msgstr "*str* -- İnsan-dostu kanal adı."
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:5
+msgid "A human-friendly name of the channel."
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBChannel:9
-msgid "*str* -- Emoji icon of the channel. Recommended to use a visually-length-one emoji that represents the channel best."
-msgstr "*str* -- Kanalın emoji ikonu. Ən yaxşı şəkildə təmsil edən görüntü qabiliyyətli bir emojidən istifadə etməyiniz təklif olunur."
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:0
+msgid "type"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBChannel:15
-msgid ":obj:`.ChannelType` -- Type of the channel."
-msgstr ":obj: `.ChannelType` -- Kanalın növü."
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:7
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:15
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:35
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:41
+msgid "str"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBChannel:19
-msgid "Set[:obj:`.MsgType`] -- Types of messages that the channel accepts as incoming messages."
-msgstr "Təyin et[:obj:`.MsgType`] -- Kanalın daxil olan mesajları qəbul etdiyi mesaj növləri."
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:11
+msgid "Emoji icon of the channel. Recommended to use a visually-length-one emoji that represents the channel best."
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBChannel:23
-msgid "*str* -- Unique identifier of the channel. Convention of IDs is specified in :doc:`/guide/packaging`. This ID will be appended with its instance ID when available."
-msgstr "*str* --Kanalın unikal identifikatoru. İdlərin çevrilməsi göstərilmişdir\n"
-":doc:`/guide/packaging` Mövcud olarsa bu İD instansiya İD-nə əlavə olunacaq."
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:19
+msgid "Type of the channel."
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBChannel:29
-msgid "*str* -- The instance ID if available."
-msgstr "*str* --İnstansiya İD mümkündür."
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:21
+msgid ":obj:`.ChannelType`"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.__init__:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:25
+msgid "Types of messages that the channel accepts as incoming messages."
+msgstr ""
+
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:27
+msgid "Set[:obj:`.MsgType`]"
+msgstr ""
+
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:31
+msgid "Unique identifier of the channel. Convention of IDs is specified in :doc:`/guide/packaging`. This ID will be appended with its instance ID when available."
+msgstr ""
+
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:39
+msgid "The instance ID if available."
+msgstr ""
+
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.__init__:1
 msgid "Initialize the channel. Inherited initializer must call the \"super init\" method at the beginning."
 msgstr "Kanalın başladılması. Inherited başladılması \"super init\" üsulunu ilə çağırılmalıdır."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.__init__:0
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:0
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:0
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.__init__:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:0
 msgid "Parameters"
 msgstr "Tənzimləmələr"
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.__init__:5
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.__init__:5
 msgid "Instance ID of the channel."
 msgstr "Kanalın instansiya İD-i."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:1
 msgid "Get the chat object from a slave channel."
 msgstr "Çat obyektini ana kanaldan əldə et."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:3
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:3
 msgid "UID of the chat."
 msgstr "Çatın UID-i."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:5
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:5
 msgid "UID of group member, only when the selected chat is a group."
 msgstr "Qrup üzvlərinin UİD-si, sadəcə seçilmiş çat qrupları."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:0
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chats:0
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_extra_functions:0
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chats:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_extra_functions:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:0
 msgid "Returns"
 msgstr "Qaytarmalar"
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:9
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:9
 msgid "The chat found."
 msgstr "Çat tapıldı."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:0
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chats:0
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_extra_functions:0
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chats:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_extra_functions:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:0
 msgid "Return type"
 msgstr "Qaytarma növü"
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:0
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:0
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:0
 msgid "raises"
 msgstr "ucalma"
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:12
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:16
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:11
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:6
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:12
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:16
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:11
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:6
 msgid ":exc:`~.exceptions.EFBChatNotFound` -- Raised when a chat required is not found."
 msgstr ":exc:~.exceptions.EFBChatNotFound` -- Lazım olan ucalma çatı tapılmadı."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat:15
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:36
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chats:6
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:15
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:36
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chats:6
 msgid "This is not required by Master Channels"
 msgstr "Bu Usta Kanallarda vacib deyil"
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:1
 msgid "Get the profile picture of a chat. Profile picture is also referred as profile photo, avatar, \"head image\" sometimes."
 msgstr "Çatın profil şəklini əldə et. Profil şəkli, bəzən profil fotosuna, avatara, \"başlıq şəkli\" istinad olunur."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:5
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:5
 msgid "Chat to get picture from."
 msgstr "Çatdan profil şəkli əldə et."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:8
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:8
 msgid "Opened temporary file object. The file object must have appropriate extension name that matches to the format of picture sent, and seek to position 0.  It can be deleted when closed if not required otherwise."
 msgstr "Müvəqqəti fayl obyekti açıldı. Fayl obyektində göndərilən şəkil formatına uyğun olan müvafiq fayl sonluğu olmalıdır və 0-ə yerləşdirilməlidir. Əks halda istənilən bağlı vəziyyətlərdə silinə bilər."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:8
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:8
 msgid "Opened temporary file object. The file object must have appropriate extension name that matches to the format of picture sent, and seek to position 0."
 msgstr "Müvəqqəti fayl obyekti açıldı. Fayl obyektində göndərilən şəkil formatına uyğun olan müvafiq fayl sonluğu olmalıdır və 0-ə yerləşdirilməlidir."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:13
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:13
 msgid "It can be deleted when closed if not required otherwise."
 msgstr "Əks halda istənilən bağlı vəziyyətlərdə silinə bilər."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:18
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:18
 msgid ":exc:`~.exceptions.EFBOperationNotSupported` -- Raised when the chat does not offer a profile picture."
 msgstr ":exc:~.exceptions.EFBOperationNotSupported` --Çat profil şəkli təqdim etmədiyi üçün qaldırıldı."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chat_picture:22
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:22
 msgid "Examples"
 msgstr "Nümunələr"
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chats:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chats:1
 msgid "Return a list of available chats in the channel."
 msgstr "Kanalda olan mümkün çat siyahısına qayıdın."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_chats:3
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chats:3
 msgid "a list of available chats in the channel."
 msgstr "kanalda mümkün olan çatların siyahısı."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_extra_functions:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_extra_functions:1
 msgid "Get a list of additional features"
 msgstr "Əlavə xüsusiyyətlərin siyahısını əldə et"
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.get_extra_functions:3
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_extra_functions:3
 msgid "A dict of methods marked as additional features. Method can be called with ``get_extra_functions()[\"methodName\"]()``."
 msgstr "Üsulların bir nümunəsi əlavə xüsusiyyət kimi qeyd olunmuşdur. Üsul ilə çağrılacaq ``get_extra_functions()[\"methodName\"]()``."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.poll:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.poll:1
 msgid "Method to poll for messages. This method is called when the framework is initialized. This method should be blocking."
 msgstr "Mesajlar üçün anket üsulu. Bu üsul framework çağırışını başladır. Bu üsulun qarşısı alınmalıdır."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:1
 msgid "Send a message to, or edit a sent message in the channel."
 msgstr "Mesaj göndər və ya bu kanlada göndərilən mesajı redaktə et."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:4
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:4
 msgid "Message object to be processed."
 msgstr "Mesaj obyekti emal olunur."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:7
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:7
 msgid "The same message object with message ID from the recipient."
 msgstr "Alıcının mesaj İD ilə mesaj obyekti eynilik təşkil edir."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:9
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:9
 msgid ":obj:`.EFBMsg`"
 msgstr ":obj: `.EFBMsg`"
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:13
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:13
 msgid ":exc:`~.exceptions.EFBMessageTypeNotSupported` -- Raised when the message type sent is not supported by the channel."
 msgstr ":exc:`~.exceptions.EFBMessageTypeNotSupported` --Göndərilən mesaj növü kanal tərəfindən dəstəklənmədiyindən qaldırıldı."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:16
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:16
 msgid ":exc:`~.exceptions.EFBOperationNotSupported` -- Raised when an message edit request is sent, but not supported by the channel."
 msgstr ":exc:`~.exceptions.EFBOperationNotSupported` --Bir mesaj redaktə sorğusu göndərildi, lakin kanal tərəfindən dəstəklənmədiyindən qaldırıldı."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:19
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:19
 msgid ":exc:`~.exceptions.EFBMessageNotFound` -- Raised when an existing message indicated is not found. E.g.: The message to be edited, the message referred in the :attr:`msg.target <.EFBMsg.target>` attribute."
 msgstr ":exc:`~.exceptions.EFBMessageNotFound` -- Mövcud bir mesaj göstərildiyi zaman qaldırıldı. Məs: Redaktə olunan mesaj, bura istinad edir :attr:`msg.target <.EFBMsg.target>` attribute."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_message:24
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:24
 msgid ":exc:`~.exceptions.EFBMessageError` -- Raised when other error occurred while sending or editing the message."
 msgstr ":exc:`~.exceptions.EFBMessageError` -- Mesajı göndərərkən və ya redaktə edərkən digər səhvlər yarandığından qaldırıldı."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:1
 msgid "Send a status to the channel."
 msgstr "Kanala status göndər."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:3
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:3
 msgid "the status"
 msgstr "statusu"
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:8
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:8
 msgid ":exc:`~.exceptions.EFBMessageNotFound` -- Raised when an existing message indicated is not found. E.g.: The message to be removed."
 msgstr ":exc:`~.exceptions.EFBMessageNotFound` -- Mövcud bir mesaj göstərildiyi vaxt tapılmadı. Məs: Bu mesaj silinmişdir."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:11
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:11
 msgid ":exc:`~.exceptions.EFBOperationNotSupported` -- Raised when the channel does not support message removal."
 msgstr ":exc:`~.exceptions.EFBOperationNotSupported` -- Bu kanal mesajın silinməsini dəstəkləmədiyindən qaldırıldı."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:13
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:13
 msgid ":exc:`~.exceptions.EFBMessageError` -- Raised when other error occurred while removing the message."
 msgstr ":exc:`~.exceptions.EFBMessageError` -- Mesajı silərkən digər səhvlər baş verdiyi üçün qaldırıldı."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:17
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:17
 msgid "Avoid raising exceptions from this method in Master Channels as it would be hard for a Slave Channel to process the exception."
 msgstr "Usta kanallarda bu üsuldan istifadə olunaraq istisnaların artırılmasına yol verməyin, istisnaların yerinə yetirilməsi bir Ana Kanal üçün çətin olacaqdır."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.send_status:22
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:22
 msgid "This is not applicable to Slave Channels"
 msgstr "Bu Usta Kanallara tətbiq oluna bilməz"
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.stop_polling:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.stop_polling:1
 msgid "When EFB framework is asked to stop gracefully, this method is called to each channel object to stop all processes in the channel, save all status if necessary, and terminate polling."
 msgstr "EFB framework nə vaxtsa bu üsulu çağırarsa, kanal daxilində olan bütün proseslər dayandırılacaq, bütün statuslar saxlanacaq və səs vermələr ləğv olunacaqdır."
 
-#: ../../../docstring of ehforwarderbot.EFBChannel.stop_polling:6
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.stop_polling:6
 msgid "When the channel is ready to stop, the polling function must stop blocking. EFB framework will quit completely when all polling threads end."
 msgstr "Kanal dayandırılmağa hazır olduqda, səs vermə funksiyası blokuda dayandırmalıdır. EFB framework tamamilə bütün səs vermələrdən çıxacaqdır."
 

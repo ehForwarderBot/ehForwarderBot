@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-22 10:02+1100\n"
-"PO-Revision-Date: 2018-06-22T08:56:33+0000\n"
+"POT-Creation-Date: 2018-10-03 09:10+1000\n"
+"PO-Revision-Date: 2018-10-02 23:12\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -20,335 +20,414 @@ msgstr ""
 msgid "EFBMsg"
 msgstr "EFBMsg"
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:1
 msgid "A message."
 msgstr "Sebuah pesan."
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:5
-msgid "Optional[:obj:`.EFBMsgAttribute`] -- Attributes used for a specific message type. Only specific message type requires this attribute. Defaulted to ``None``."
-msgstr "Pilihan [:obj:'. EFBMsgAttribute`] -- perlengkapan yang digunakan untuk jenis pesan tertentu. Hanya jenis pesan tertentu membutuhkan perlengkapan ini. Gagal untuk ``Sama sekali tidak``."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:5
+msgid "Attributes used for a specific message type. Only specific message type requires this attribute. Defaulted to ``None``."
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:9
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:9
 msgid "Link: :obj:`.EFBMsgLinkAttribute`"
 msgstr "Tautan: :obj:`. EFBMsgLinkAttribute'"
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:10
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:10
 msgid "Location: :obj:`.EFBMsgLocationAttribute`"
 msgstr "Lokasi: :obj:'. EFBMsgLocationAttribute'"
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:11
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:11
 msgid "Status: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`"
 msgstr "Status: Mengetik/mengirim beberapa berkas/etc.: :obj:`.EFBMsgStatusAttribute`"
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:14
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:14
 msgid "Do NOT use object of the abstract class :class:`.EFBMsgAttribute` for ``attributes``, but object of specific class instead."
 msgstr "JANGAN gunakan objek kelas abstrak :class:`.EFBMsgAttribute` untuk` `perlengkapan``, tapi objek dari kelas tertentu."
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:20
-msgid ":obj:`.EFBChat` -- Author of this message."
-msgstr ":obj:'. EFBChat'--penulis pesan ini."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:0
+msgid "type"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:24
-msgid ":obj:`.EFBChat` -- Sender of the message."
-msgstr ":obj:`.EFBChat` -- Pengirim pesan."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:18
+msgid "Optional[:obj:`.EFBMsgAttribute`]"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:28
-msgid "Optional[:obj:`EFBMsgCommands`] -- Commands attached to the message"
-msgstr "Opsional [: obj: `EFBMsgCommands`] - Perintah yang menyertai pesan"
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:22
+msgid "Author of this message."
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:32
-msgid ":obj:`.EFBChannel` -- The channel that the message is to be delivered to"
-msgstr ":obj:'. EFBChannel'--saluran yang pesan dikirim ke"
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:24
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:30
+msgid ":obj:`.EFBChat`"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:36
-msgid "*bool* -- Flag this up if the message is edited."
-msgstr "*Bool*--bendera hal ini jika pesan diedit."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:28
+msgid "Sender of the message."
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:40
-msgid "*IO[bytes]* -- File object to multimedia file, type \"ra\". ``None`` if N/A. recommended to use ``NamedTemporaryFile`` object, the file can be deleted when closed, if not used otherwise. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
-msgstr "*IO[bytes]* -- Berkas objek untuk multimedia berkas, ketik \"ra\". ``Tidak ada`` jika N/A. dianjurkan untuk menggunakan `NamedTemporaryFile` objek, berkas dapat dihapus ketika ditutup, jika tidak digunakan jika tidak. Semua objek berkas harus mundur kembali ke 0 (``file.seek(0)``) sebelum pengiriman."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:34
+msgid "Commands attached to the message"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:47
-msgid "*str* -- File name of the multimedia file. ``None`` if N/A"
-msgstr "*str* -- nama berkas dari berkas multimedia. ``Tidak ada`` jika N/A"
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:36
+msgid "Optional[:obj:`EFBMsgCommands`]"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:51
-msgid "*bool* -- Mark as true if this message is a system message."
-msgstr "*bool* -- Tandai benar jika pesan ini adalah pesan sistem."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:40
+msgid "The channel that the message is to be delivered to"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:55
-msgid "*str* -- MIME type of the file. ``None`` if N/A"
-msgstr "*str* -- tipe MIME dari berkas. ``Tidak ada`` jika N/A"
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:42
+msgid ":obj:`.EFBChannel`"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:59
-msgid "*str* -- Local path of multimedia file. ``None`` if N/A"
-msgstr "*str* -- jalan lokal dari berkas multimedia. ``Tidak ada`` jika N/A"
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:46
+msgid "Flag this up if the message is edited."
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:63
-msgid "Optional[:obj:`EFBMsgSubstitutions`] -- Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat."
-msgstr "Opsional[:obj:`EFBMsgSubstitutions`] -- Substitusi pesan, biasanya digunakan ketika beberapa bagian dari pesan teks mengacu ke pengguna lain atau obrolan."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:48
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:69
+msgid "bool"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:69
-msgid "Optional[:obj:`EFBMsg`] -- Target message (usually for messages that \"replies to\" another message)."
-msgstr "Opsional[:obj:`EFBMsg`] -- Sasaran pesan (biasanya untuk pesan-pesan yang \"balasan untuk\" pesan lain)."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:52
+msgid "File object to multimedia file, type \"ra\". ``None`` if N/A. recommended to use ``NamedTemporaryFile`` object, the file can be deleted when closed, if not used otherwise. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:74
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:57
+msgid "IO[bytes]"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:61
+msgid "File name of the multimedia file. ``None`` if N/A"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:63
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:75
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:81
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:112
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:130
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:7
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:25
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:7
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:13
+msgid "str"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:67
+msgid "Mark as true if this message is a system message."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:73
+msgid "MIME type of the file. ``None`` if N/A"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:79
+msgid "Local path of multimedia file. ``None`` if N/A"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:85
+msgid "Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:89
+msgid "Optional[:obj:`EFBMsgSubstitutions`]"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:93
+msgid "Target message (usually for messages that \"replies to\" another message)."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:98
 msgid "This message may be a \"minimum message\", with only required fields:"
 msgstr "Pesan ini mungkin \"minimal pesan\", dengan hanya bidang yang diperlukan:"
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:76
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:100
 msgid ":attr:`.EFBMsg.chat`"
 msgstr ":attr:'. EFBMsg.chat'"
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:77
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:101
 msgid ":attr:`.EFBMsg.author`"
 msgstr ":attr:'. EFBMsg.author'"
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:78
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:102
 msgid ":attr:`.EFBMsg.text`"
 msgstr ":attr:'. EFBMsg.text'"
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:79
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:103
 msgid ":attr:`.EFBMsg.type`"
 msgstr ":attr:'. EFBMsg.type'"
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:80
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:104
 msgid ":attr:`.EFBMsg.uid`"
 msgstr ":attr:'. EFBMsg.uid'"
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:84
-msgid "*str* -- text of the message"
-msgstr "* str *--teks pesan"
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:106
+msgid "Optional[:obj:`EFBMsg`]"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:88
-msgid ":obj:`.MsgType` -- Type of message"
-msgstr ":obj:'. MsgType'--jenis pesan"
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:110
+msgid "text of the message"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:92
-msgid "*str* -- Unique ID of message. Usually stores the message ID from slave channel. This ID must be unique among all chats in the same channel."
-msgstr "*str* -- ID unik dari pesan. Biasanya menyimpan pesan ID dari saluran budak. ID ini harus unik di antara semua obrolan di saluran yang sama."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:116
+msgid "Type of message"
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:97
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:118
+msgid ":obj:`.MsgType`"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:122
+msgid "Unique ID of message. Usually stores the message ID from slave channel. This ID must be unique among all chats in the same channel."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:127
 msgid "Some channels may not support message editing. Some channels may issue a new uid for edited message."
 msgstr "Beberapa saluran mungkin tidak mendukung pesan editing. Beberapa saluran mungkin dapat persoalan uid baru untuk menerbitkan pesan."
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:102
-msgid "*Dict[str, Any]* -- A series of vendor specific attributes attached. This can be used by any other channels or middlewares that is compatible with such information. Note that no guarantee is provided for information in this section."
-msgstr "*Dict[str, Apapun]* -- serangkaian penjual atribut tertentu yang terpasang. Ini dapat digunakan oleh setiap saluran lain atau middlewares yang kompatibel dengan informasi tersebut. Perhatikan bahwa tidak ada jaminan yang diberikan dalam bagian ini."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:134
+msgid "A series of vendor specific attributes attached. This can be used by any other channels or middlewares that is compatible with such information. Note that no guarantee is provided for information in this section."
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg.verify:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:139
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:25
+msgid "Dict[str, Any]"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg.verify:1
 msgid "Verify the validity of message."
 msgstr "Verifikasi keabsahan pesan."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgAttribute:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgAttribute:1
 msgid "Bases: :class:`abc.ABC`"
 msgstr "Basis: :kelas: `abc.ABC`"
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgAttribute:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgAttribute:1
 msgid "Abstract class of a message attribute."
 msgstr "Kelas abstrak dari sebuah atribut pesan."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:1
-msgid "Bases: :class:`object`"
-msgstr "Basis: :kelas: `objek`"
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
-msgid "EFB message command."
-msgstr "EFB pesan perintah."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:5
-msgid "*str* -- Human-friendly name of the command."
-msgstr "* str * - Nama perintah manusia yang bersahabat."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:9
-msgid "*str* -- Callable name of the command."
-msgstr "* str * - Callable nama perintah."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:13
-msgid "*List[Any]* -- Arguments passed to the function."
-msgstr "* Daftar [Any] * - Argumen diteruskan ke fungsi."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:17
-msgid "*Dict[str, Any]* -- Keyword arguments passed to the function."
-msgstr "* Dict [str, Any] * - Kata kunci argumen dilewatkan ke fungsi."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:0
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommands.__init__:0
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:0
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:0
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:0
-msgid "Parameters"
-msgstr "Parameter"
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:1
-msgid "Human-friendly name of the command."
-msgstr "Nama perintah manusia yang bersahabat."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:3
-msgid "Callable name of the command."
-msgstr "Callable nama perintah."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:5
-msgid "Arguments passed to the function. Defaulted to empty list;"
-msgstr "Argumen diteruskan ke fungsi. Default ke daftar kosong;"
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:7
-msgid "Keyword arguments passed to the function. Defaulted to empty dict."
-msgstr "Argumen kata kunci diteruskan ke fungsi. Default untuk mengosongkan dict."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:1
-msgid "EFB message commands. Message commands allow user to take action to a specific message, including vote, add friends, etc."
-msgstr "Perintah pesan EFB. Perintah pesan mengizinkan pengguna untuk melakukan tindakan terhadap pesan tertentu, termasuk memilih, menambahkan teman, dll."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:7
-msgid "list of :obj:`EFBMsgCommand` -- Commands for the message."
-msgstr "daftar :obj:`EFBMsgCommand` -- Perintah untuk pesan."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommands.__init__:1
-msgid "Commands for the message."
-msgstr "Perintah untuk pesan."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
 msgid "Bases: :class:`ehforwarderbot.message.EFBMsgAttribute`"
 msgstr "Basis:: kelas: `ehforwarderbot.message.EFBMsgAttribute`"
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
 msgid "EFB link message attribute."
 msgstr "Atribut pesan link EFB."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:5
-msgid "*str* -- Title of the link."
-msgstr "* str* -- Judul link."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:9
-msgid "*str, optional* -- Description of the link."
-msgstr "*str, pilih* -- Deskripsi dari tautan."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:13
-msgid "*str, optional* -- Image/thumbnail URL of the link."
-msgstr "*str, pilih* -- URL gambar/thumbnail dari tautan."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:17
-msgid "*str* -- URL of the link."
-msgstr "*str* -- URL tautan."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:5
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:1
 msgid "Title of the link."
 msgstr "Judul dari tautan."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:3
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:11
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:3
 msgid "Description of the link."
 msgstr "Deskripsi dari tautan."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:5
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:13
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:19
+msgid "str, optional"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:17
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:5
 msgid "Image/thumbnail URL of the link."
 msgstr "URL gambar/thumbnail dari tautan."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:7
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:23
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:7
 msgid "URL of the link."
 msgstr "URL dari tautan."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands.__init__:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:0
+msgid "Parameters"
+msgstr "Parameter"
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
 msgid "EFB location message attribute."
 msgstr "Atribut pesan lokasi EFB."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:5
-msgid "*float* -- Latitude of the location."
-msgstr "* float* -- Lintang lokasi."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:9
-msgid "*float* -- Longitude of the location."
-msgstr "*pelampung* -- Bujur dari lokasi."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:5
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:1
 msgid "Latitude of the location."
 msgstr "Lintang lokasi."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:3
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:7
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:13
+msgid "float"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:11
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:3
 msgid "Longitude of the location."
 msgstr "Bujur lokasi."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:1
+msgid "Bases: :class:`object`"
+msgstr "Basis: :kelas: `objek`"
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:1
+msgid "EFB message command."
+msgstr "EFB pesan perintah."
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:5
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:1
+msgid "Human-friendly name of the command."
+msgstr "Nama perintah manusia yang bersahabat."
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:11
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:3
+msgid "Callable name of the command."
+msgstr "Callable nama perintah."
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:17
+msgid "Arguments passed to the function."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:19
+msgid "List[Any]"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:23
+msgid "Keyword arguments passed to the function."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:5
+msgid "Arguments passed to the function. Defaulted to empty list;"
+msgstr "Argumen diteruskan ke fungsi. Default ke daftar kosong;"
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:7
+msgid "Keyword arguments passed to the function. Defaulted to empty dict."
+msgstr "Argumen kata kunci diteruskan ke fungsi. Default untuk mengosongkan dict."
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:1
+msgid "EFB message commands. Message commands allow user to take action to a specific message, including vote, add friends, etc."
+msgstr "Perintah pesan EFB. Perintah pesan mengizinkan pengguna untuk melakukan tindakan terhadap pesan tertentu, termasuk memilih, menambahkan teman, dll."
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:7
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands.__init__:1
+msgid "Commands for the message."
+msgstr "Perintah untuk pesan."
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:9
+msgid "list of :obj:`EFBMsgCommand`"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
 msgid "EFB Message status attribute. Message with type ``Status`` notifies the other end to update a chat-specific status, such as typing, send files, etc."
 msgstr "Perlengkapan status pesan EFB Pesan dengan jenis ``Status`` memberitahukan pihak lain untuk memperbarui status khusus obrolan, seperti mengetik, mengirim berkas, dll."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:7
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:7
 msgid "Type of status, possible values are defined in the ``EFBMsgStatusAttribute``."
 msgstr "Jenis status, nilai yang mungkin ditentukan dalam ``EFBMsgStatusAttribute``."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:12
-msgid "*Optional[int]* -- Number of milliseconds for this status to expire. Default to 5 seconds."
-msgstr "*Opsional[int]* -- Jumlah milidetik untuk status ini akan kadaluarsa. Standar ke 5 detik."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:12
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:2
+msgid "Number of milliseconds for this status to expire. Default to 5 seconds."
+msgstr "Jumlah milidetik untuk status ini akan kadaluarsa. Default ke 5 detik."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:17
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:15
+msgid "Optional[int]"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:19
 msgid "List of status types supported"
 msgstr "Daftar jenis status yang didukung"
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:1
 msgid "Bases: :class:`enum.Enum`"
 msgstr "Basis: :kelas:`enum.Enum`"
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:3
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:3
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of typing."
 msgstr "Digunakan di :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, mewakili status pengetikan."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:8
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:8
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading file."
 msgstr "Digunakan di :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, mewakili status unggahan berkas."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:13
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:13
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading image."
 msgstr "Digunakan di :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, mewakili status unggahan gambar."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:18
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:18
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading audio."
 msgstr "Digunakan di :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, mewakili status mengunggah audio."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:23
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:23
 msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading video."
 msgstr "Digunakan di\n"
 ":attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, mewakili status mengunggah video."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:1
 msgid "Type of status."
 msgstr "Jenis dari status."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:2
-msgid "Number of milliseconds for this status to expire. Default to 5 seconds."
-msgstr "Jumlah milidetik untuk status ini akan kadaluarsa. Default ke 5 detik."
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:1
 msgid "Bases: :class:`dict`"
 msgstr "Basis:: kelas: `dict`"
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:1
 msgid "EFB message substitutions."
 msgstr "Substitusi pesan EFB."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:3
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:3
 msgid "This is for the case when user \"@-referred\" a list of users in the message. Substitutions here is a dict of correspondence between the string used to refer to the user in the message and a user object."
 msgstr "Ini adalah kasus ketika pengguna \"@-disebut\" daftar pengguna di pesan. Substitusi berikut adalah dict korespondensi antara string yang digunakan untuk merujuk kepada pengguna dalam pesan dan objek pengguna."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:8
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:8
 msgid "Dictionary of text substitutions targeting to a user or member."
 msgstr "Kamus substitusi teks yang ditargetkan ke pengguna atau member."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:10
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:10
 msgid "The key of the dictionary is a tuple of two :obj:`int`\\ s, where first of it is the starting position in the string, and the second is the ending position defined similar to Python's substring. A tuple of ``(3, 15)`` corresponds to ``msg.text[3:15]``. The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``, ``b ∈ (a, l]``, where ``l`` is the length of the message text."
 msgstr "Kunci dari kamus adalah sebuah tuple dari dua :obj:`int`\\ s, di mana lebih dari itu adalah posisi awal dalam string, dan yang kedua adalah posisi berakhir didefinisikan mirip dengan Python substring. Sebuah tuple ``(3, 15)`` sesuai dengan ``msg.teks[3:15]``. Nilai dari tuple ``(a, b)`` harus berbaring dalam ``a ∈ [0, l)``, ``b ∈ (a, l]``, di mana ``l`` adalah panjang dari pesan teks."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:17
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:17
 msgid "Value of the dict may be any user of the chat, or a member of a group. Notice that the :obj:`EFBChat` object here must NOT be a group."
 msgstr "Nilai dict bisa jadi pengguna chat, atau anggota grup. Perhatikan bahwa: obj: `EFBChat` objek disini TIDAK boleh menjadi grup."
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:21
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:21
 msgid "Type:"
 msgstr "Jenis:"
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:22
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:22
 msgid "Dict[Tuple[int, int], :obj:`.EFBChat`]"
 msgstr "Dict[Tuple[int, int], :obj:`.EFBChat`]"
 

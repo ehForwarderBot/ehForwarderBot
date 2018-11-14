@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-22 10:02+1100\n"
-"PO-Revision-Date: 2018-06-22T08:56:37+0000\n"
+"POT-Creation-Date: 2018-10-03 09:10+1000\n"
+"PO-Revision-Date: 2018-10-02 23:12\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Spanish, Argentina\n"
 "MIME-Version: 1.0\n"
@@ -20,71 +20,131 @@ msgstr ""
 msgid "Coordinator"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.coordinator:1
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:1
 msgid "Coordinator among channels."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.coordinator:5
-msgid "*str* -- Name of current profile.."
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:5
+msgid "Name of current profile.."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.coordinator:9
-msgid "*threading.Lock* -- Global interaction thread lock."
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:0
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:0
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:0
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:0
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:0
+msgid "type"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.coordinator:13
-msgid "*EFBChannel* -- The running master channel object."
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:7
+msgid "str"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.coordinator:17
-msgid "*Dict[str, EFBChannel]* -- Dictionary of running slave channel object. Keys are the unique identifier of the channel."
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:11
+msgid "Global interaction thread lock."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.coordinator:22
-msgid "*List[EFBMiddleware]* -- List of middlewares"
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:13
+msgid "threading.Lock"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.coordinator.add_channel:1
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:17
+msgid "The running master channel object."
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:19
+msgid "EFBChannel"
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:23
+msgid "Dictionary of running slave channel object. Keys are the unique identifier of the channel."
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:26
+msgid "Dict[str, EFBChannel]"
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:30
+msgid "List of middlewares"
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:32
+msgid "List[EFBMiddleware]"
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_channel:1
 msgid "Register the channel with the coordinator."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.coordinator.add_channel:0
-#: ../../../docstring of ehforwarderbot.coordinator.add_middleware:0
-#: ../../../docstring of ehforwarderbot.coordinator.send_message:0
-#: ../../../docstring of ehforwarderbot.coordinator.send_status:0
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_channel:0
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_middleware:0
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:0
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_status:0
 msgid "Parameters"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.coordinator.add_channel:3
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_channel:3
 msgid "Channel to register"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.coordinator.add_middleware:1
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_middleware:1
 msgid "Register a middleware with the coordinator."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.coordinator.add_middleware:3
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_middleware:3
 msgid "Middleware to register"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.coordinator.send_message:1
-#: ../../../docstring of ehforwarderbot.coordinator.send_status:1
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.master:1
+msgid "The instance of the master channel."
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.master_thread:1
+msgid "The thread running poll() of the master channel."
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.middlewares:1
+msgid "Instances of middlewares. Sorted in the order of execution."
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.mutex:1
+msgid "Mutual exclusive lock for user interaction through CLI interface"
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.profile:1
+msgid "Current running profile name"
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:1
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_status:1
 msgid "Deliver a message to the destination channel."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.coordinator.send_message:3
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:3
 msgid "The message"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.coordinator.send_message:0
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:0
 msgid "Returns"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.coordinator.send_message:6
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:6
 msgid "The message sent by the destination channel, includes the updated message ID from there. Returns ``None`` if the message is not sent."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.coordinator.send_status:3
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_status:3
 msgid "The status"
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.slave_threads:1
+msgid "Threads running poll() from slave channels. Keys are the channel IDs."
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.slaves:1
+msgid "Instances of slave channels. Keys are the channel IDs."
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.translator:1
+msgid "Internal GNU gettext translator."
 msgstr ""
 

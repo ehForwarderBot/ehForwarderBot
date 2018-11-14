@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-11 16:37+0800\n"
-"PO-Revision-Date: 2018-06-22T08:56:23+0000\n"
+"POT-Creation-Date: 2018-10-03 09:10+1000\n"
+"PO-Revision-Date: 2018-10-02 23:12\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -20,143 +20,154 @@ msgstr ""
 msgid "Status"
 msgstr "状态"
 
-#: ../../../docstring of ehforwarderbot.EFBStatus:1
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.EFBStatus:1
 msgid "Abstract class of a status"
 msgstr "状态的抽象类"
 
-#: ../../../docstring of ehforwarderbot.EFBStatus:5
-msgid ":obj:`.EFBChannel` -- The channel that this status is sent to, usually the master channel."
-msgstr ":obj:`.EFBChannel` -- 收到这条状态的信道，通常是主端。"
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.EFBStatus:5
+msgid "The channel that this status is sent to, usually the master channel."
+msgstr ""
 
-#: ../../../docstring of ehforwarderbot.status.EFBChatUpdates:1
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.EFBStatus:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:0
+msgid "type"
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.EFBStatus:9
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:7
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:7
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:13
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:19
+msgid ":obj:`.EFBChannel`"
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:1
 msgid "Inform the master channel on updates of slave chats."
 msgstr "通知主端关于从端会话的更新。"
 
-#: ../../../docstring of ehforwarderbot.status.EFBChatUpdates:5
-#: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates:5
-msgid ":obj:`.EFBChannel` -- Slave channel that issues the update"
-msgstr ":obj:`.EFBChannel` -- 发送更新的从端"
-
-#: ../../../docstring of ehforwarderbot.status.EFBChatUpdates:9
-msgid "*Optional[Tuple[str]]* -- Unique ID of new chats"
-msgstr "*Optional[Tuple[str]]* -- 新会话的唯一 ID"
-
-#: ../../../docstring of ehforwarderbot.status.EFBChatUpdates:13
-msgid "*Optional[Tuple[str]]* -- Unique ID of removed chats"
-msgstr "*Optional[Tuple[str]]* -- 已移除会话的唯一 ID"
-
-#: ../../../docstring of ehforwarderbot.status.EFBChatUpdates:17
-msgid "*Optional[Tuple[str]]* -- Unique ID of modified chats"
-msgstr "*Optional[Tuple[str]]* -- 已变更会话的唯一 ID"
-
-#: ../../../docstring of ehforwarderbot.status.EFBChatUpdates.__init__:0
-#: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:0
-#: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:0
-msgid "Parameters"
-msgstr "参数"
-
-#: ../../../docstring of ehforwarderbot.status.EFBChatUpdates.__init__:1
-#: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:1
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:5
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates.__init__:1
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:5
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:1
 msgid "Slave channel that issues the update"
 msgstr "发送更新的从端"
 
-#: ../../../docstring of ehforwarderbot.status.EFBChatUpdates.__init__:3
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:11
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates.__init__:3
 msgid "Unique ID of new chats"
 msgstr "新会话的唯一 ID"
 
-#: ../../../docstring of ehforwarderbot.status.EFBChatUpdates.__init__:5
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:13
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:19
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:25
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:19
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:25
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:31
+msgid "Optional[Tuple[str]]"
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:17
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates.__init__:5
 msgid "Unique ID of removed chats"
 msgstr "已移除会话的唯一 ID"
 
-#: ../../../docstring of ehforwarderbot.status.EFBChatUpdates.__init__:7
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:23
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates.__init__:7
 msgid "Unique ID of modified chats"
 msgstr "已变更会话的唯一 ID"
 
-#: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates:1
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates.__init__:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:0
+msgid "Parameters"
+msgstr "参数"
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:1
 msgid "Inform the master channel on updates of members in a slave chat."
 msgstr "通知主端关于从端群组成员的更新。"
 
-#: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates:9
-msgid "*str* -- Unique ID of the chat."
-msgstr "*str* -- 会话的唯一 ID。"
-
-#: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates:13
-msgid "*Optional[Tuple[str]]* -- Unique ID of new members"
-msgstr "*Optional[Tuple[str]]* -- 新成员的唯一 ID"
-
-#: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates:17
-msgid "*Optional[Tuple[str]]* -- Unique ID of removed members"
-msgstr "*Optional[Tuple[str]]* -- 已移除成员的唯一 ID"
-
-#: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates:21
-msgid "*Optional[Tuple[str]]* -- Unique ID of modified members"
-msgstr "*Optional[Tuple[str]]* -- 已变更成员的唯一 ID"
-
-#: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:3
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:11
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:3
 msgid "Unique ID of the chat."
 msgstr "会话的唯一 ID。"
 
-#: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:5
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:13
+msgid "str"
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:17
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:5
 msgid "Unique ID of new members"
 msgstr "新成员的唯一 ID"
 
-#: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:7
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:23
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:7
 msgid "Unique ID of removed members"
 msgstr "已移除成员的唯一 ID"
 
-#: ../../../docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:9
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:29
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:9
 msgid "Unique ID of modified members"
 msgstr "已变更成员的唯一 ID"
 
-#: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval:1
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:1
 msgid "Inform a channel to remove a certain message."
 msgstr "通知信道删除特定消息。"
 
-#: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval:3
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:3
 msgid "This is usually known as \"delete from everyone\", \"delete from recipient\", \"recall a message\", or \"revoke a message\" as well, depends on the IM."
 msgstr "在不同的即时通讯平台，该操作通常被称为「从所有人删除」、「从收件人处删除」、「撤回」 等。"
 
-#: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval:6
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:6
 msgid "Some channels may not support removal of messages, and raises a :obj:`.exceptions.EFBOperationNotSupported` exception."
 msgstr "某些信道可能不支持删除消息，并会抛出 :obj:`.exceptions.EFBOperationNotSupported` 异常。"
 
-#: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval:11
-msgid ":obj:`.EFBChannel` -- Channel issued the status"
-msgstr ":obj:`.EFBChannel` -- 发送该状态的信道"
-
-#: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval:15
-msgid ":obj:`.EFBChannel` -- Channel the status is issued to"
-msgstr ":obj:`.EFBChannel` -- 收到状态的信道"
-
-#: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval:19
-msgid ":obj:`.EFBMsg` -- Message to remove. This may not be a complete :obj:`.EFBMsg` object."
-msgstr ":obj:`.EFBMsg` -- 要删除的消息。该对象可能不是一个完整的 :obj:`.EFBMsg` 对象。"
-
-#: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:1
-msgid "Create a message removal status"
-msgstr "创建消息删除状态"
-
-#: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:3
-msgid "Try to provided as much as you can, if not, provide a minimum information in the channel:"
-msgstr "尝试提供尽可能多的信息，但必须保证如下信息存在："
-
-#: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:6
-msgid "Slave channel ID and chat ID (:attr:`message.chat.channel_id <.EFBChat.channel_id>` and :attr:`message.chat.chat_uid <.EFBChat.chat_uid>`)"
-msgstr "从端 ID 与会话 ID (:attr:`message.chat.channel_id <.EFBChat.channel_id>` 和 :attr:`message.chat.chat_uid <.EFBChat.chat_uid>`)"
-
-#: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:8
-msgid "Message unique ID from the slave channel (:attr:`message.uid <.EFBMsg.uid>`)"
-msgstr "来自该从端的消息唯一 ID (:attr:`message.uid <.EFBMsg.uid>`)"
-
-#: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:10
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:11
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:10
 msgid "Channel issued the status"
 msgstr "发送状态的信道"
 
-#: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:12
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:17
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:12
 msgid "Channel the status is issued to"
 msgstr "接收状态的信道"
 
-#: ../../../docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:14
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:23
+msgid "Message to remove. This may not be a complete :obj:`.EFBMsg` object."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:26
+msgid ":obj:`.EFBMsg`"
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:1
+msgid "Create a message removal status"
+msgstr "创建消息删除状态"
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:3
+msgid "Try to provided as much as you can, if not, provide a minimum information in the channel:"
+msgstr "尝试提供尽可能多的信息，但必须保证如下信息存在："
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:6
+msgid "Slave channel ID and chat ID (:attr:`message.chat.channel_id <.EFBChat.channel_id>` and :attr:`message.chat.chat_uid <.EFBChat.chat_uid>`)"
+msgstr "从端 ID 与会话 ID (:attr:`message.chat.channel_id <.EFBChat.channel_id>` 和 :attr:`message.chat.chat_uid <.EFBChat.chat_uid>`)"
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:8
+msgid "Message unique ID from the slave channel (:attr:`message.uid <.EFBMsg.uid>`)"
+msgstr "来自该从端的消息唯一 ID (:attr:`message.uid <.EFBMsg.uid>`)"
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:14
 msgid "Message to remove."
 msgstr "要移除的消息。"
 

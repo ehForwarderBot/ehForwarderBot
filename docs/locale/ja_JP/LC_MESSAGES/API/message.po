@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-22 10:02+1100\n"
-"PO-Revision-Date: 2018-06-22T08:56:15+0000\n"
+"POT-Creation-Date: 2018-10-03 09:10+1000\n"
+"PO-Revision-Date: 2018-10-02 23:11\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -20,334 +20,413 @@ msgstr ""
 msgid "EFBMsg"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:1
 msgid "A message."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:5
-msgid "Optional[:obj:`.EFBMsgAttribute`] -- Attributes used for a specific message type. Only specific message type requires this attribute. Defaulted to ``None``."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:5
+msgid "Attributes used for a specific message type. Only specific message type requires this attribute. Defaulted to ``None``."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:9
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:9
 msgid "Link: :obj:`.EFBMsgLinkAttribute`"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:10
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:10
 msgid "Location: :obj:`.EFBMsgLocationAttribute`"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:11
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:11
 msgid "Status: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:14
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:14
 msgid "Do NOT use object of the abstract class :class:`.EFBMsgAttribute` for ``attributes``, but object of specific class instead."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:20
-msgid ":obj:`.EFBChat` -- Author of this message."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:0
+msgid "type"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:24
-msgid ":obj:`.EFBChat` -- Sender of the message."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:18
+msgid "Optional[:obj:`.EFBMsgAttribute`]"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:28
-msgid "Optional[:obj:`EFBMsgCommands`] -- Commands attached to the message"
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:22
+msgid "Author of this message."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:32
-msgid ":obj:`.EFBChannel` -- The channel that the message is to be delivered to"
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:24
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:30
+msgid ":obj:`.EFBChat`"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:36
-msgid "*bool* -- Flag this up if the message is edited."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:28
+msgid "Sender of the message."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:40
-msgid "*IO[bytes]* -- File object to multimedia file, type \"ra\". ``None`` if N/A. recommended to use ``NamedTemporaryFile`` object, the file can be deleted when closed, if not used otherwise. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:34
+msgid "Commands attached to the message"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:47
-msgid "*str* -- File name of the multimedia file. ``None`` if N/A"
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:36
+msgid "Optional[:obj:`EFBMsgCommands`]"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:51
-msgid "*bool* -- Mark as true if this message is a system message."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:40
+msgid "The channel that the message is to be delivered to"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:55
-msgid "*str* -- MIME type of the file. ``None`` if N/A"
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:42
+msgid ":obj:`.EFBChannel`"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:59
-msgid "*str* -- Local path of multimedia file. ``None`` if N/A"
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:46
+msgid "Flag this up if the message is edited."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:63
-msgid "Optional[:obj:`EFBMsgSubstitutions`] -- Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:48
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:69
+msgid "bool"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:69
-msgid "Optional[:obj:`EFBMsg`] -- Target message (usually for messages that \"replies to\" another message)."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:52
+msgid "File object to multimedia file, type \"ra\". ``None`` if N/A. recommended to use ``NamedTemporaryFile`` object, the file can be deleted when closed, if not used otherwise. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:74
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:57
+msgid "IO[bytes]"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:61
+msgid "File name of the multimedia file. ``None`` if N/A"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:63
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:75
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:81
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:112
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:130
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:7
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:25
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:7
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:13
+msgid "str"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:67
+msgid "Mark as true if this message is a system message."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:73
+msgid "MIME type of the file. ``None`` if N/A"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:79
+msgid "Local path of multimedia file. ``None`` if N/A"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:85
+msgid "Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:89
+msgid "Optional[:obj:`EFBMsgSubstitutions`]"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:93
+msgid "Target message (usually for messages that \"replies to\" another message)."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:98
 msgid "This message may be a \"minimum message\", with only required fields:"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:76
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:100
 msgid ":attr:`.EFBMsg.chat`"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:77
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:101
 msgid ":attr:`.EFBMsg.author`"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:78
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:102
 msgid ":attr:`.EFBMsg.text`"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:79
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:103
 msgid ":attr:`.EFBMsg.type`"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:80
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:104
 msgid ":attr:`.EFBMsg.uid`"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:84
-msgid "*str* -- text of the message"
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:106
+msgid "Optional[:obj:`EFBMsg`]"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:88
-msgid ":obj:`.MsgType` -- Type of message"
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:110
+msgid "text of the message"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:92
-msgid "*str* -- Unique ID of message. Usually stores the message ID from slave channel. This ID must be unique among all chats in the same channel."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:116
+msgid "Type of message"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:97
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:118
+msgid ":obj:`.MsgType`"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:122
+msgid "Unique ID of message. Usually stores the message ID from slave channel. This ID must be unique among all chats in the same channel."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:127
 msgid "Some channels may not support message editing. Some channels may issue a new uid for edited message."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg:102
-msgid "*Dict[str, Any]* -- A series of vendor specific attributes attached. This can be used by any other channels or middlewares that is compatible with such information. Note that no guarantee is provided for information in this section."
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:134
+msgid "A series of vendor specific attributes attached. This can be used by any other channels or middlewares that is compatible with such information. Note that no guarantee is provided for information in this section."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.EFBMsg.verify:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:139
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:25
+msgid "Dict[str, Any]"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg.verify:1
 msgid "Verify the validity of message."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgAttribute:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgAttribute:1
 msgid "Bases: :class:`abc.ABC`"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgAttribute:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgAttribute:1
 msgid "Abstract class of a message attribute."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:1
-msgid "Bases: :class:`object`"
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:1
-msgid "EFB message command."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:5
-msgid "*str* -- Human-friendly name of the command."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:9
-msgid "*str* -- Callable name of the command."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:13
-msgid "*List[Any]* -- Arguments passed to the function."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand:17
-msgid "*Dict[str, Any]* -- Keyword arguments passed to the function."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:0
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommands.__init__:0
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:0
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:0
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:0
-msgid "Parameters"
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:1
-msgid "Human-friendly name of the command."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:3
-msgid "Callable name of the command."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:5
-msgid "Arguments passed to the function. Defaulted to empty list;"
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommand.__init__:7
-msgid "Keyword arguments passed to the function. Defaulted to empty dict."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:1
-msgid "EFB message commands. Message commands allow user to take action to a specific message, including vote, add friends, etc."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommands:7
-msgid "list of :obj:`EFBMsgCommand` -- Commands for the message."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgCommands.__init__:1
-msgid "Commands for the message."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
 msgid "Bases: :class:`ehforwarderbot.message.EFBMsgAttribute`"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
 msgid "EFB link message attribute."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:5
-msgid "*str* -- Title of the link."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:9
-msgid "*str, optional* -- Description of the link."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:13
-msgid "*str, optional* -- Image/thumbnail URL of the link."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute:17
-msgid "*str* -- URL of the link."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:5
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:1
 msgid "Title of the link."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:3
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:11
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:3
 msgid "Description of the link."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:5
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:13
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:19
+msgid "str, optional"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:17
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:5
 msgid "Image/thumbnail URL of the link."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:7
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:23
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:7
 msgid "URL of the link."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands.__init__:0
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
 msgid "EFB location message attribute."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:5
-msgid "*float* -- Latitude of the location."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute:9
-msgid "*float* -- Longitude of the location."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:5
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:1
 msgid "Latitude of the location."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:3
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:7
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:13
+msgid "float"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:11
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:3
 msgid "Longitude of the location."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:1
+msgid "Bases: :class:`object`"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:1
+msgid "EFB message command."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:5
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:1
+msgid "Human-friendly name of the command."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:11
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:3
+msgid "Callable name of the command."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:17
+msgid "Arguments passed to the function."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:19
+msgid "List[Any]"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:23
+msgid "Keyword arguments passed to the function."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:5
+msgid "Arguments passed to the function. Defaulted to empty list;"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:7
+msgid "Keyword arguments passed to the function. Defaulted to empty dict."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:1
+msgid "EFB message commands. Message commands allow user to take action to a specific message, including vote, add friends, etc."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:7
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands.__init__:1
+msgid "Commands for the message."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:9
+msgid "list of :obj:`EFBMsgCommand`"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
 msgid "EFB Message status attribute. Message with type ``Status`` notifies the other end to update a chat-specific status, such as typing, send files, etc."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:7
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:7
 msgid "Type of status, possible values are defined in the ``EFBMsgStatusAttribute``."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:12
-msgid "*Optional[int]* -- Number of milliseconds for this status to expire. Default to 5 seconds."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute:17
-msgid "List of status types supported"
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:1
-msgid "Bases: :class:`enum.Enum`"
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:3
-msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of typing."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:8
-msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading file."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:13
-msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading image."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:18
-msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading audio."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:23
-msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading video."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:1
-msgid "Type of status."
-msgstr ""
-
-#: ../../../docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:2
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:12
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:2
 msgid "Number of milliseconds for this status to expire. Default to 5 seconds."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:15
+msgid "Optional[int]"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:19
+msgid "List of status types supported"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:1
+msgid "Bases: :class:`enum.Enum`"
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:3
+msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of typing."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:8
+msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading file."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:13
+msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading image."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:18
+msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading audio."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:23
+msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading video."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:1
+msgid "Type of status."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:1
 msgid "Bases: :class:`dict`"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:1
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:1
 msgid "EFB message substitutions."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:3
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:3
 msgid "This is for the case when user \"@-referred\" a list of users in the message. Substitutions here is a dict of correspondence between the string used to refer to the user in the message and a user object."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:8
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:8
 msgid "Dictionary of text substitutions targeting to a user or member."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:10
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:10
 msgid "The key of the dictionary is a tuple of two :obj:`int`\\ s, where first of it is the starting position in the string, and the second is the ending position defined similar to Python's substring. A tuple of ``(3, 15)`` corresponds to ``msg.text[3:15]``. The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``, ``b ∈ (a, l]``, where ``l`` is the length of the message text."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:17
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:17
 msgid "Value of the dict may be any user of the chat, or a member of a group. Notice that the :obj:`EFBChat` object here must NOT be a group."
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:21
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:21
 msgid "Type:"
 msgstr ""
 
-#: ../../../docstring of ehforwarderbot.message.EFBMsgSubstitutions:22
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:22
 msgid "Dict[Tuple[int, int], :obj:`.EFBChat`]"
 msgstr ""
 
