@@ -68,29 +68,33 @@ contribution guideline before you do so.
 Related articles
 ----------------
 
-* `Idea: Group Chat Tunneling (Sync) with EH Forwarder Bot`__
+* `Idea: Group Chat Tunneling (Sync) with EH Forwarder Bot`_
+* `What’s so new in EH Forwarder Bot 2 (and its modules)`_
 
-.. __: https://blog.1a23.com/2017/01/28/Idea-Group-Chat-Tunneling-Sync-with-EH-Forwarder-Bot/
+.. _Idea\: Group Chat Tunneling (Sync) with EH Forwarder Bot: https://blog.1a23.com/2017/01/28/Idea-Group-Chat-Tunneling-Sync-with-EH-Forwarder-Bot/
+.. _What’s so new in EH Forwarder Bot 2 (and its modules): https://blog.1a23.com/2018/02/28/What%E2%80%99s-so-new-in-EH-Forwarder-Bot-2-and-its-modules/
+
 
 License
 -------
 
-EFB framework is licensed under `GNU General Public License 3.0`_::
+EFB framework is licensed under `GNU Affero General Public License 3.0`_::
 
     EH Forwarder Bot: An extensible chat tunneling bot framework.
-    Copyright (C) 2016 Eana Hufwe
+    Copyright (C) 2018 Eana Hufwe
     All rights reserved.
 
     This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or any later version.
+    it under the terms of the GNU Affero General Public License as
+    published by the Free Software Foundation, either version 3 of the
+    License, or any later version.
 
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
+    You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .. _Install and enable channels: https://ehforwarderbot.readthedocs.io/en/latest/getting-started.html
