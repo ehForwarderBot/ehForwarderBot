@@ -90,7 +90,7 @@ class EFBMsg:
         self.substitutions: Optional[EFBMsgSubstitutions] = None
         self.target: Optional[EFBMsg] = None
         self.text: str = ""
-        self.type: MsgType = None
+        self.type: MsgType = MsgType.Unsupported
         self.uid: Optional[str] = None
         self.vendor_specific: Dict[str, Any] = dict()
 

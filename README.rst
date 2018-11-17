@@ -78,7 +78,8 @@ Related articles
 License
 -------
 
-EFB framework is licensed under `GNU Affero General Public License 3.0`_::
+EFB framework is licensed under `GNU Affero General Public License 3.0`_ or
+later versions::
 
     EH Forwarder Bot: An extensible chat tunneling bot framework.
     Copyright (C) 2018 Eana Hufwe
@@ -100,4 +101,4 @@ EFB framework is licensed under `GNU Affero General Public License 3.0`_::
 .. _Install and enable channels: https://ehforwarderbot.readthedocs.io/en/latest/getting-started.html
 .. _channels repository: https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository
 .. _Documentation: https://ehforwarderbot.readthedocs.io/
-.. _GNU General Public License 3.0: https://www.gnu.org/licenses/gpl-3.0.txt
+.. _GNU Affero General Public License 3.0: https://www.gnu.org/licenses/agpl-3.0.txt
