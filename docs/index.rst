@@ -78,7 +78,7 @@ Related articles
 License
 =======
 
-EFB framework is licensed under `GNU Aferro General Public License 3.0`_
+EFB framework is licensed under `GNU Affero General Public License 3.0`_
 or later versions.
 
 .. code-block:: text
