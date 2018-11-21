@@ -28,7 +28,7 @@ will introduce about the structure of EFB data directory.
 
 ::
 
-    ./ehforwarderbot                or $EFB_DATA_PATH/username
+    ./ehforwarderbot                or $EFB_DATA_PATH
     |- profiles
     |  |- default                   The default profile.
     |  |  |- config.yaml            Main configuration file.

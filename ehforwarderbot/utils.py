@@ -48,7 +48,7 @@ def get_base_path() -> str:
     """
     base_path = os.environ.get("EFB_DATA_PATH", None)
     if base_path:
-        base_path = os.path.join(base_path, getpass.getuser(), "")
+        base_path = os.path.abspath(base_path)
     else:
         base_path = os.path.expanduser("~/.ehforwarderbot/")
     os.makedirs(base_path, exist_ok=True)
