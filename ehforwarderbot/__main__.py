@@ -74,6 +74,18 @@ def init():
 
     conf = config.load_config()
 
+    logger.log(99, "\x1b[0;37;46m %s \x1b[0m",
+               _("Initializing master {}...").format(conf['master_channel']))
+    instance_id = conf['master_channel'].split('#', 1)[1:]
+    instance_id = (instance_id and instance_id[0]) or None
+    coordinator.add_channel(utils.locate_module(conf['master_channel'], 'master')
+                            (instance_id=instance_id))
+    logger.log(99, "\x1b[0;37;42m %s \x1b[0m",
+               _("Master channel {name} ({id}) # {instance_id} is initialized.")
+               .format(name=coordinator.master.channel_name,
+                       id=coordinator.master.channel_id,
+                       instance_id=instance_id or _("Default profile")))
+
     for i in conf['slave_channels']:
         logger.log(99, "\x1b[0;37;46m %s \x1b[0m", _("Initializing slave {}...").format(i))
 
@@ -86,18 +98,6 @@ def init():
                    _("Slave channel {name} ({id}) # {instance_id} is initialized.")
                    .format(name=cls.channel_name, id=cls.channel_id,
                            instance_id=instance_id or _("Default profile")))
-
-    logger.log(99, "\x1b[0;37;46m %s \x1b[0m",
-               _("Initializing master {}...").format(conf['master_channel']))
-    instance_id = conf['master_channel'].split('#', 1)[1:]
-    instance_id = (instance_id and instance_id[0]) or None
-    coordinator.add_channel(utils.locate_module(conf['master_channel'], 'master')
-                            (instance_id=instance_id))
-    logger.log(99, "\x1b[0;37;42m %s \x1b[0m",
-               _("Master channel {name} ({id}) # {instance_id} is initialized.")
-               .format(name=coordinator.master.channel_name,
-                       id=coordinator.master.channel_id,
-                       instance_id=instance_id or _("Default profile")))
 
     logger.log(99, "\x1b[1;37;42m %s \x1b[0m", _("All channels initialized."))
     for i in conf['middlewares']:
