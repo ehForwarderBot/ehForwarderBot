@@ -143,3 +143,8 @@ settings user had in the IM platform, but you can:
   deliver it; or
 - provide options in the slave channel to ignore certain messages
   provided by the IM server.
+  
+Implementation details
+----------------------
+
+See :class:`EFBChannel`.

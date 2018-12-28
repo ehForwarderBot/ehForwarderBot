@@ -35,9 +35,15 @@ setup(
         "Topic :: Utilities"
     ],
     install_requires=[
-        "PyYaml"
+        "ruamel.yaml",
+        "asciimatics",
+        "cjkwrap",
+        "typing"
     ],
     entry_points={
-        "console_scripts": ['ehforwarderbot = ehforwarderbot.__main__:main']
+        "console_scripts": [
+            'ehforwarderbot = ehforwarderbot.__main__:main',
+            'efb-wizard = ehforwarderbot.wizard:main'
+        ]
     }
 )

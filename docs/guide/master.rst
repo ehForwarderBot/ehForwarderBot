@@ -56,3 +56,8 @@ Message delivery
 Note that sometimes users may send messages outside of
 this EFB session, so that slave channels might provide a
 message has its author marked as "self".
+
+Implementation details
+----------------------
+
+See :class:`EFBChannel`.

@@ -68,3 +68,17 @@ as it may leads to unexpected results.
         middlewares:
         - foo.msg_archiver
         - foo.null
+
+Configuration wizard (Unstable)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Alternatively, you may want to try the interactive setup wizard 
+that guides you to enable channels and middlewares, and continue
+to setup those modules if they also has a similar wizard.
+
+.. attention::
+    This feature is still unstable and may not guarentee a successful
+    configuration.  If you have encouter any bug that is caused by
+    the main wizard, you may want to submit an issue.
+
+You can start the wizard by running ``efb-wizard`` in a compatible
+console or terminal emulator.

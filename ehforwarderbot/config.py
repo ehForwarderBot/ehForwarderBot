@@ -3,12 +3,13 @@
 import os
 
 import sys
-import yaml
+from ruamel.yaml import YAML
 from typing import Dict, Any
 from . import utils
 from .channel import EFBChannel
 from .middleware import EFBMiddleware
 from .constants import ChannelType
+
 
 __all__ = ["load_config"]
 
@@ -23,7 +24,7 @@ def load_config() -> Dict[str, Any]:
     if not os.path.exists(conf_path):
         raise FileNotFoundError("Config File does not exist. (%s)" % conf_path)
     with open(conf_path) as f:
-        data = yaml.load(f.read())
+        data = YAML().load(f)
 
         # Verify configuration
 

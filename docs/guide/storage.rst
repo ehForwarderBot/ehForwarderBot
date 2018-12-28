@@ -30,3 +30,60 @@ While processing multimedia messages, we inevitably need
 to store certain files temporarily, either within the channel
 or across channels. Usually, temporary files can be handled
 with Python's ``tempfile`` library.
+
+Wizard
+------
+
+If your module requires relatively complicated configuration, 
+it would be helpful to provide users with a wizard to 
+*prerequisite of your module* and *guide them to setup your module for use*.
+
+From version 2.0.0b12, EFB introduced a centralised wizard program
+to allow users to enable or disable modules in a text-based user 
+interface (TUI). If you want to include your wizard program as a part
+of the wizard, you can include a new entry point in your ``setup.py``
+with `Setuptools' Entry Point feature`__.
+
+.. __: https://setuptools.readthedocs.io/en/latest/setuptools.html#dynamic-discovery-of-services-and-plugins
+
+The group for wizard program is ``ehforwarderbot.wizard``, and
+the entry point function must accept 2 positional arguments:
+profile ID and instance ID.
+
+Example
+```````
+
+``setup.py`` script
+
+.. code-block:: python
+
+    setup(
+        # ...
+        entry_points={
+            "ehforwarderbot.wizard": ['alice.irc = efb_irc_slave.wizard:main']
+        },
+        # ...
+    )
+
+``.egg-info/entry_points.txt``
+
+.. code-block:: ini
+
+    [ehforwarderbot.wizard]
+    alice.irc = efb_irc_slave.wizard:main
+
+``efb_irc_slave/wizard.py``
+
+.. code-block:: python
+
+    # ...
+
+    def main(profile, instance):
+        print("Welcome to the setup wizard of my channel.")
+        print("You are setting up this channel in profile "
+              "'{0}' and instance '{1}'.".format(profile, instance))
+        print("Press ENTER/RETURN to continue.")
+        input()
+
+        step1()
+        
