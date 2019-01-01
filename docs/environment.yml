@@ -5,8 +5,11 @@ dependencies:
 - python>=3.6
 - pandoc
 - sphinx>=1.5.1
-- pyyaml
 - pip
 - pip:
   - sphinx-readable-theme
   - sphinx-intl
+  - ruamel.yaml
+  - asciimatics
+  - cjkwrap
+  - typing

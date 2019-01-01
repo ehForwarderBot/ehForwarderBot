@@ -194,6 +194,8 @@ class DataModel:
         return mid, iid
 
     def get_instance_display_name(self, cid):
+        if not cid:
+            return cid
         mid, iid = self.split_cid(cid)
         if mid not in self.modules:
             return None
@@ -208,7 +210,7 @@ class DataModel:
         return name
 
     def has_wizard(self, cid):
-        mid, _ = self.split_text(cid)
+        mid, _ = self.split_cid(cid)
         if mid not in self.modules:
             return None
         return callable(self.modules[mid].wizard)
@@ -438,20 +440,20 @@ class ModulesView(Frame):
             self.show_popup(_("You must enable at least one slave channel."))
             return
 
-        options = map(str, self.slave_channels.options)
-        if len(list(options)) != len(set(options)):
+        options = list(map(repr, self.slave_channels.options))
+        if len(options) != len(set(options)):
             self.show_popup(_("Duplicate instances detected in slave channel settings. "
                               "Each module-instance pair must be unique."))
             return
 
-        options = map(str, self.middlewares.options)
-        if len(list(options)) != len(set(options)):
+        options = list(map(repr, self.middlewares.options))
+        if len(options) != len(set(options)):
             self.show_popup(_("Duplicate instances detected in middleware settings. "
                               "Each module-instance pair must be unique."))
             return
 
         self._model.save_config()
-        raise NextScene("ModuleSetup")
+        raise NextScene("ModulesSetup")
 
     def show_popup(self, message):
         self._scene.add_effect(PopUpDialog(
@@ -564,7 +566,7 @@ class StartupView(Frame):
         self.save()
         self._model.profile = self.data['profile']
         self._model.load_config()
-        raise NextScene("Channels")
+        raise NextScene("Modules")
 
 
 class ModulesSetupView(Frame):
@@ -636,7 +638,7 @@ class ModulesSetupView(Frame):
                             "module settings again.")
             button_text = _("Continue")
 
-        h = get_height(label_text, screen.width)
+        h = get_height(label_text, screen.width) + 3
         layout.add_widget(Label(label_text, height=h))
 
         layout.add_widget(Button(_("Back"), self._back))
@@ -657,7 +659,7 @@ def screen(scr, scene, data):
     result = prerequisite_check()
     if result:
         scene_decorators.append(PopUpDialog(
-            screen,
+            scr,
             result,
             [_("OK")],
             on_close=stop_wizard
@@ -665,6 +667,7 @@ def screen(scr, scene, data):
     scenes = [Scene(scene_decorators, -1, name="Welcome"),
               Scene([ModulesView(scr, data)], -1, name="Modules"),
               Scene([ModulesSetupView(scr, data)], -1, name="ModulesSetup")]
+    scene = scene or scenes[0]
     scr.play(scenes, stop_on_resize=True, start_scene=scene)
 
 
@@ -751,10 +754,12 @@ def main():
 
     modules = [data.config['master_channel']]
     modules.extend(data.config['slave_channels'])
-    modules.extend(data.config['middlewares'])
+    if 'middlewares' in data.config:
+        modules.extend(data.config['middlewares'])
     for i in modules:
         mid, cid = data.split_cid(i)
         if callable(data.modules[mid].wizard):
+            print(_("Configuring {0}...").format(i))
             data.modules[mid].wizard(data.profile, cid)
 
 if __name__ == '__main__':
