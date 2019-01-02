@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-22 22:34+1100\n"
-"PO-Revision-Date: 2018-10-02 23:11\n"
+"POT-Creation-Date: 2019-01-02 10:45-0800\n"
+"PO-Revision-Date: 2019-01-02 18:46\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -91,4 +91,12 @@ msgstr "Mesaj teslimi"
 #: ../../guide/master.rst:56
 msgid "Note that sometimes users may send messages outside of this EFB session, so that slave channels might provide a message has its author marked as \"self\"."
 msgstr "Bazen kullanıcılar, bu EFB oturumunun dışına mesaj gönderebilir, böylece slave kanallarının yazarının \"ben\" olarak işaretlediği bir mesaj verebileceğini unutmayın."
+
+#: ../../guide/master.rst:61
+msgid "Implementation details"
+msgstr ""
+
+#: ../../guide/master.rst:63
+msgid "See :class:`EFBChannel`."
+msgstr ""
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-23 21:34+1100\n"
-"PO-Revision-Date: 2018-10-02 23:12\n"
+"POT-Creation-Date: 2019-01-02 10:45-0800\n"
+"PO-Revision-Date: 2019-01-02 18:47\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -203,4 +203,12 @@ msgstr "mencakup pengaturan pemberitahuan di ``vendor_specific`` bagian dari obr
 #: ../../guide/slave.rst:144
 msgid "provide options in the slave channel to ignore certain messages provided by the IM server."
 msgstr "memberikan pilihan dalam saluran budak untuk mengabaikan pesan-pesan tertentu yang disediakan oleh server IM."
+
+#: ../../guide/slave.rst:148
+msgid "Implementation details"
+msgstr ""
+
+#: ../../guide/slave.rst:150
+msgid "See :class:`EFBChannel`."
+msgstr ""
 

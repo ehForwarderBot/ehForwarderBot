@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2018-10-02 23:12\n"
+"POT-Creation-Date: 2019-01-02 10:45-0800\n"
+"PO-Revision-Date: 2019-01-02 18:47\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Azerbaijani\n"
 "MIME-Version: 1.0\n"
@@ -54,5 +54,37 @@ msgstr ""
 
 #: ../../guide/storage.rst:29
 msgid "While processing multimedia messages, we inevitably need to store certain files temporarily, either within the channel or across channels. Usually, temporary files can be handled with Python's ``tempfile`` library."
+msgstr ""
+
+#: ../../guide/storage.rst:35
+msgid "Wizard"
+msgstr ""
+
+#: ../../guide/storage.rst:37
+msgid "If your module requires relatively complicated configuration, it would be helpful to provide users with a wizard to *prerequisite of your module* and *guide them to setup your module for use*."
+msgstr ""
+
+#: ../../guide/storage.rst:41
+msgid "From version 2.0.0b12, EFB introduced a centralised wizard program to allow users to enable or disable modules in a text-based user interface (TUI). If you want to include your wizard program as a part of the wizard, you can include a new entry point in your ``setup.py`` with `Setuptools' Entry Point feature`__."
+msgstr ""
+
+#: ../../guide/storage.rst:49
+msgid "The group for wizard program is ``ehforwarderbot.wizard``, and the entry point function must accept 2 positional arguments: profile ID and instance ID."
+msgstr ""
+
+#: ../../guide/storage.rst:54
+msgid "Example"
+msgstr ""
+
+#: ../../guide/storage.rst:56
+msgid "``setup.py`` script"
+msgstr ""
+
+#: ../../guide/storage.rst:68
+msgid "``.egg-info/entry_points.txt``"
+msgstr ""
+
+#: ../../guide/storage.rst:75
+msgid "``efb_irc_slave/wizard.py``"
 msgstr ""
 
