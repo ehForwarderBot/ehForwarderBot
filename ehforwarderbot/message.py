@@ -32,6 +32,13 @@ class EFBMsg:
         commands (Optional[:obj:`EFBMsgCommands`]): Commands attached to the message
         deliver_to (:obj:`.EFBChannel`): The channel that the message is to be delivered to
         edit (bool): Flag this up if the message is edited.
+            Flag only this if no multimedia file is modified, otherwise flag up both
+            this one and ``edit_media`` as well.
+
+            If no media file is modified, the edited message may carry no information about
+            the file.
+        edit_media (bool): Flag this up if any file attached to the message is modified.
+            If this value is true, ``edit_media`` must also be true.
         file (IO[bytes]): File object to multimedia file, type "ra". ``None`` if N/A.
             recommended to use ``NamedTemporaryFile`` object, the file can be
             deleted when closed, if not used otherwise.
@@ -82,6 +89,7 @@ class EFBMsg:
         self.commands: Optional[EFBMsgCommands] = None
         self.deliver_to: EFBChannel = None
         self.edit: bool = False
+        self.edit_media: bool = False
         self.file: Optional[IO[bytes]] = None
         self.filename: Optional[str] = None
         self.is_system: bool = False
@@ -126,7 +134,8 @@ class EFBMsg:
             raise ValueError("Type is not valid.")
         if self.deliver_to is None or not isinstance(self.deliver_to, EFBChannel):
             raise ValueError("Deliver_to is not valid.")
-        if self.type in (MsgType.Audio, MsgType.File, MsgType.Image, MsgType.Sticker, MsgType.Video):
+        if self.type in (MsgType.Audio, MsgType.File, MsgType.Image, MsgType.Sticker, MsgType.Video) and \
+                ((not self.edit) or (self.edit and self.edit_media)):
             if self.file is None or not hasattr(self.file, "read") or not hasattr(self.file, "close"):
                 raise ValueError("File is not valid.")
             if self.mime is None or not self.mime or not isinstance(self.mime, str):
