@@ -1,7 +1,7 @@
 # coding=utf-8
 
 from abc import ABC
-from typing import Optional
+from typing import Optional, Dict, Callable
 
 from .message import EFBMsg
 from .status import EFBStatus
@@ -38,7 +38,21 @@ class EFBMiddleware(ABC):
         """
         self.instance_id = instance_id
         if instance_id:
-            self.middleware_id += f"#{instance_id}"
+            self.middleware_id += "#" + instance_id
+
+    def get_extra_functions(self) -> Dict[str, Callable]:
+        """Get a list of additional features
+
+        Returns:
+            Dict[str, Callable]: A dict of methods marked as additional features.
+            Method can be called with ``get_extra_functions()["methodName"]()``.
+        """
+        methods = {}
+        for mName in dir(self):
+            m = getattr(self, mName)
+            if callable(m) and getattr(m, "extra_fn", False):
+                methods[mName] = m
+        return methods
 
     def process_message(self, message: EFBMsg) -> Optional[EFBMsg]:
         """

@@ -53,7 +53,7 @@ class EFBChannel(ABC):
         """
         self.instance_id = instance_id
         if instance_id:
-            self.channel_id += f"#{instance_id}"
+            self.channel_id += "#" + instance_id
 
     def get_extra_functions(self) -> Dict[str, Callable]:
         """Get a list of additional features
