@@ -759,8 +759,10 @@ def main():
     for i in modules:
         mid, cid = data.split_cid(i)
         if callable(data.modules[mid].wizard):
-            print(_("Configuring {0}...").format(i))
+            print(_("Press ENTER/RETURN to start setting up {0}.").format(i))
+            input()
             data.modules[mid].wizard(data.profile, cid)
+
 
 if __name__ == '__main__':
     main()
