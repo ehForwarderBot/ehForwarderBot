@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-03 09:10+1000\n"
-"PO-Revision-Date: 2019-01-02 18:46\n"
+"POT-Creation-Date: 2019-01-11 16:22-0800\n"
+"PO-Revision-Date: 2019-01-12 00:26\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: English\n"
 "MIME-Version: 1.0\n"
@@ -44,6 +44,7 @@ msgstr ""
 msgid "Do NOT use object of the abstract class :class:`.EFBMsgAttribute` for ``attributes``, but object of specific class instead."
 msgstr ""
 
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
@@ -110,31 +111,40 @@ msgid ":obj:`.EFBChannel`"
 msgstr ""
 
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:46
-msgid "Flag this up if the message is edited."
+msgid "Flag this up if the message is edited. Flag only this if no multimedia file is modified, otherwise flag up both this one and ``edit_media`` as well."
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:48
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:69
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:50
+msgid "If no media file is modified, the edited message may carry no information about the file."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:53
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:60
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:81
 msgid "bool"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:52
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:57
+msgid "Flag this up if any file attached to the message is modified. If this value is true, ``edit_media`` must also be true."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:64
 msgid "File object to multimedia file, type \"ra\". ``None`` if N/A. recommended to use ``NamedTemporaryFile`` object, the file can be deleted when closed, if not used otherwise. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:57
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:69
 msgid "IO[bytes]"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:61
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:73
 msgid "File name of the multimedia file. ``None`` if N/A"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:63
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:75
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:81
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:112
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:130
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:87
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:93
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:124
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:142
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:7
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:25
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:7
@@ -142,83 +152,83 @@ msgstr ""
 msgid "str"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:67
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:79
 msgid "Mark as true if this message is a system message."
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:73
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:85
 msgid "MIME type of the file. ``None`` if N/A"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:79
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:91
 msgid "Local path of multimedia file. ``None`` if N/A"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:85
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:97
 msgid "Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat."
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:89
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:101
 msgid "Optional[:obj:`EFBMsgSubstitutions`]"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:93
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:105
 msgid "Target message (usually for messages that \"replies to\" another message)."
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:98
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:110
 msgid "This message may be a \"minimum message\", with only required fields:"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:100
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:112
 msgid ":attr:`.EFBMsg.chat`"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:101
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:113
 msgid ":attr:`.EFBMsg.author`"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:102
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:114
 msgid ":attr:`.EFBMsg.text`"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:103
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:115
 msgid ":attr:`.EFBMsg.type`"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:104
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:116
 msgid ":attr:`.EFBMsg.uid`"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:106
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:118
 msgid "Optional[:obj:`EFBMsg`]"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:110
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:122
 msgid "text of the message"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:116
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:128
 msgid "Type of message"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:118
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:130
 msgid ":obj:`.MsgType`"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:122
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:134
 msgid "Unique ID of message. Usually stores the message ID from slave channel. This ID must be unique among all chats in the same channel."
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:127
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:139
 msgid "Some channels may not support message editing. Some channels may issue a new uid for edited message."
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:134
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:146
 msgid "A series of vendor specific attributes attached. This can be used by any other channels or middlewares that is compatible with such information. Note that no guarantee is provided for information in this section."
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:139
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:151
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:25
 msgid "Dict[str, Any]"
 msgstr ""

@@ -13,14 +13,16 @@ Attributes:
 """
 
 import threading
-from typing import List, Dict, Optional, cast
+from typing import List, Dict, Optional, cast, TYPE_CHECKING
 
 from . import EFBMsg
 from .channel import EFBChannel
 from .constants import ChannelType
 from .exceptions import EFBChannelNotFound
 from .middleware import EFBMiddleware
-from .status import EFBStatus
+
+if TYPE_CHECKING:
+    from .status import EFBStatus
 
 profile: str = "default"
 """Current running profile name"""
@@ -116,7 +118,7 @@ def send_message(msg: EFBMsg) -> Optional[EFBMsg]:
         raise EFBChannelNotFound(msg)
 
 
-def send_status(status: EFBStatus):
+def send_status(status: 'EFBStatus'):
     """
     Deliver a message to the destination channel.
 
@@ -127,15 +129,15 @@ def send_status(status: EFBStatus):
     if status is None:
         return
 
-    s: Optional[EFBStatus] = status
+    s: 'Optional[EFBStatus]' = status
 
     # Go through middlewares
     for i in middlewares:
-        s = i.process_status(cast(EFBStatus, s))
+        s = i.process_status(cast('EFBStatus', s))
         if s is None:
             return
 
-    status = cast(EFBStatus, s)
+    status = cast('EFBStatus', s)
 
     status.verify()
 

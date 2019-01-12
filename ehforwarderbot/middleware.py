@@ -1,10 +1,11 @@
 # coding=utf-8
 
 from abc import ABC
-from typing import Optional, Dict, Callable
+from typing import Optional, Dict, Callable, TYPE_CHECKING
 
-from .message import EFBMsg
-from .status import EFBStatus
+if TYPE_CHECKING:
+    from .message import EFBMsg
+    from .status import EFBStatus
 
 __all__ = ['EFBMiddleware']
 
@@ -54,7 +55,7 @@ class EFBMiddleware(ABC):
                 methods[mName] = m
         return methods
 
-    def process_message(self, message: EFBMsg) -> Optional[EFBMsg]:
+    def process_message(self, message: 'EFBMsg') -> 'Optional[EFBMsg]':
         """
         Process a message with middleware
 
@@ -66,7 +67,7 @@ class EFBMiddleware(ABC):
         """
         return message
 
-    def process_status(self, status: EFBStatus) -> Optional[EFBStatus]:
+    def process_status(self, status: 'EFBStatus') -> 'Optional[EFBStatus]':
         """
         Process a status update with middleware
 

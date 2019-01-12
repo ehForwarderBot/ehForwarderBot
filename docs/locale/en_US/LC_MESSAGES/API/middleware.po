@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-03 09:10+1000\n"
-"PO-Revision-Date: 2019-01-02 18:46\n"
+"POT-Creation-Date: 2019-01-11 16:22-0800\n"
+"PO-Revision-Date: 2019-01-12 00:26\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: English\n"
 "MIME-Version: 1.0\n"
@@ -62,6 +62,26 @@ msgstr ""
 msgid "Instance ID of the middleware."
 msgstr ""
 
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:1
+msgid "Get a list of additional features"
+msgstr ""
+
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:3
+msgid "A dict of methods marked as additional features. Method can be called with ``get_extra_functions()[\"methodName\"]()``."
+msgstr ""
+
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
+msgid "Return type"
+msgstr ""
+
 #: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:1
 msgid "Process a message with middleware"
 msgstr ""
@@ -71,18 +91,8 @@ msgstr ""
 msgid "Message object to process"
 msgstr ""
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
-msgid "Returns"
-msgstr ""
-
 #: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:6
 msgid "Processed message or None if discarded."
-msgstr ""
-
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
-msgid "Return type"
 msgstr ""
 
 #: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:7
@@ -106,6 +116,34 @@ msgid "About Middleware ID"
 msgstr ""
 
 #: ../../API/middleware.rst:10
-msgid "With the introduction of instance IDs, it is required to use the ``self.middleware_id`` or equivalent instead of any hard-coded ID or constants while referring to the middleware (e.g. while retrieving the path to the configuration files, etc)."
+msgid "With the introduction of instance IDs, it is required to use the ``self.middleware_id`` or equivalent instead of any hard-coded ID or constants while referring to the middleware ID (e.g. while retrieving the path to the configuration files, etc)."
+msgstr ""
+
+#: ../../API/middleware.rst:16
+msgid "Receive commands with user through Master Channel"
+msgstr ""
+
+#: ../../API/middleware.rst:18
+msgid "Despite we do not limit how users can perform actions to your middleware, there are 2 common ways to do it through a master channel."
+msgstr ""
+
+#: ../../API/middleware.rst:23
+msgid "Capture messages"
+msgstr ""
+
+#: ../../API/middleware.rst:24
+msgid "If the action is chat-specific, you might want to catch messages that match specific pattern. Try to make the pattern easy to type but unique enough so that you don't accidentally catch messages that were meant to sent to the chat."
+msgstr ""
+
+#: ../../API/middleware.rst:29
+msgid "You may also construct a virtual sender of type \"System\" to give response to the user."
+msgstr ""
+
+#: ../../API/middleware.rst:33
+msgid "\"Additional features\""
+msgstr ""
+
+#: ../../API/middleware.rst:34
+msgid "If the action is not specific to any chat, but to the system as a whole, we have provided the same command line-like interface as in slave channels to middlewares as well. Details are available at :ref:`slave-additional-features`."
 msgstr ""
 
