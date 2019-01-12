@@ -82,6 +82,7 @@ class EFBMsg:
             for information in this section.
 
     """
+
     def __init__(self):
         self.attributes: Optional[EFBMsgAttribute] = None
         self.author: EFBChat = None
@@ -164,6 +165,7 @@ class EFBMsg:
 
 class EFBMsgAttribute(ABC):
     """Abstract class of a message attribute."""
+
     @abstractmethod
     def __init__(self):
         raise NotImplementedError("Do not use the abstract class EFBMsgAttribute")
@@ -260,7 +262,7 @@ class EFBMsgCommand:
     args: List[Any] = []
     kwargs: Dict[str, Any] = {}
 
-    def __init__(self, name: str, callable_name: str, args: List[Any]=None, kwargs: Optional[Dict[str, Any]]=None):
+    def __init__(self, name: str, callable_name: str, args: List[Any] = None, kwargs: Optional[Dict[str, Any]] = None):
         """
         Args:
             name (str): Human-friendly name of the command.
@@ -345,6 +347,7 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
                 Default to 5 seconds.
         Types: List of status types supported
     """
+
     class Types(Enum):
         """
         Attributes:
@@ -370,7 +373,7 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
         UPLOADING_AUDIO = "UPLOADING_AUDIO"
         UPLOADING_VIDEO = "UPLOADING_VIDEO"
 
-    def __init__(self, status_type: Types, timeout: Optional[int] = 5000):
+    def __init__(self, status_type: Types, timeout: int = 5000):
         """
         Args:
             status_type: Type of status.
@@ -378,7 +381,7 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
                 Number of milliseconds for this status to expire.
                 Default to 5 seconds.
         """
-        self.status_type: self.Types = status_type
+        self.status_type: 'EFBMsgStatusAttribute.Types' = status_type
         self.timeout: int = timeout
 
     def __str__(self):
@@ -423,13 +426,13 @@ class EFBMsgSubstitutions(dict):
         for i in substitutions:
             if not isinstance(i, tuple) or not len(i) == 2 or not isinstance(i[0], int) or not isinstance(i[1], int) \
                     or not i[0] < i[1]:
-                raise TypeError("Substitution %s's index must be a tuple of 2 integers where the first one is less"
-                                "than the second one." % i)
+                raise TypeError("Index of substitution {} must be a tuple of 2 integers where the first one is less"
+                                "than the second one.".format(i))
             if not isinstance(substitutions[i], EFBChat):
-                raise TypeError("Substitution %s is not a chat object." % i)
+                raise TypeError("Substitution {} is not a chat object.".format(i))
             if substitutions[i].is_chat and \
-                            substitutions[i].chat_type == ChatType.Group:
-                raise ValueError("Substitution %s is a group." % i)
+                    substitutions[i].chat_type == ChatType.Group:
+                raise ValueError("Substitution {} is a group.".format(i))
         super().__init__(substitutions)
 
     def verify(self):

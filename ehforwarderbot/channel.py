@@ -37,8 +37,8 @@ class EFBChannel(ABC):
     channel_name: str = "Empty channel"
     channel_emoji: str = "�"
     channel_id: str = "efb.empty_channel"
-    channel_type: ChannelType = None
-    instance_id: str = None
+    channel_type: ChannelType
+    instance_id: Optional[str] = None
     supported_message_types: Set[MsgType] = set()
     __version__: str = 'undefined version'
 

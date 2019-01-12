@@ -24,10 +24,10 @@ class EFBMiddleware(ABC):
     """
     middleware_id: str = "efb.empty_middleware"
     middleware_name: str = "Empty Middleware"
-    instance_id: str = None
+    instance_id: Optional[str] = None
     __version__: str = 'undefined version'
 
-    def __init__(self, instance_id: str = None):
+    def __init__(self, instance_id: Optional[str] = None):
         """
         Initialize the middleware.
         Inherited initializer must call the "super init" method

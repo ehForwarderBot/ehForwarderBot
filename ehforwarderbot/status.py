@@ -1,9 +1,9 @@
 # coding=utf-8
 
 from abc import abstractmethod, ABC
-from typing import Tuple, Optional
+from typing import Iterable
 
-from . import EFBChannel, EFBMsg
+from . import EFBChannel, EFBMsg, coordinator
 
 __all__ = ["EFBStatus", "EFBChatUpdates", "EFBMemberUpdates", "EFBMessageRemoval"]
 
@@ -28,30 +28,30 @@ class EFBStatus(ABC):
 
 
 class EFBChatUpdates(EFBStatus):
-    """EFBChatUpdates(channel: EFBChannel, new_chats: Optional[Tuple[str]]=tuple(), removed_chats: Optional[Tuple[str]]=tuple(), modified_chats: Optional[Tuple[str]]=tuple())
+    """EFBChatUpdates(channel: EFBChannel, new_chats: Optional[Iterable[str]]=tuple(), removed_chats: Optional[Iterable[str]]=tuple(), modified_chats: Optional[Iterable[str]]=tuple())
 
     Inform the master channel on updates of slave chats.
 
     Attributes:
         channel (:obj:`.EFBChannel`): Slave channel that issues the update
-        new_chats (Optional[Tuple[str]]): Unique ID of new chats
-        removed_chats (Optional[Tuple[str]]): Unique ID of removed chats
-        modified_chats (Optional[Tuple[str]]): Unique ID of modified chats
+        new_chats (Optional[Iterable[str]]): Unique ID of new chats
+        removed_chats (Optional[Iterable[str]]): Unique ID of removed chats
+        modified_chats (Optional[Iterable[str]]): Unique ID of modified chats
     """
-    def __init__(self, channel: 'EFBChannel', new_chats: Optional[Tuple[str]]=tuple(),
-                 removed_chats: Optional[Tuple[str]]=tuple(), modified_chats: Optional[Tuple[str]]=tuple()):
-        """__init__(channel: EFBChannel, new_chats: Optional[Tuple[str]]=tuple(), removed_chats: Optional[Tuple[str]]=tuple(), modified_chats: Optional[Tuple[str]]=tuple())
+    def __init__(self, channel: 'EFBChannel', new_chats: Iterable[str]=tuple(),
+                 removed_chats: Iterable[str]=tuple(), modified_chats: Iterable[str]=tuple()):
+        """__init__(channel: EFBChannel, new_chats: Iterable[str]=tuple(), removed_chats: Iterable[str]=tuple(), modified_chats: Iterable[str]=tuple())
 
         Args:
             channel (:obj:`.EFBChannel`): Slave channel that issues the update
-            new_chats (Optional[Tuple[str]]): Unique ID of new chats
-            removed_chats (Optional[Tuple[str]]): Unique ID of removed chats
-            modified_chats (Optional[Tuple[str]]): Unique ID of modified chats
+            new_chats (Optional[Iterable[str]]): Unique ID of new chats
+            removed_chats (Optional[Iterable[str]]): Unique ID of removed chats
+            modified_chats (Optional[Iterable[str]]): Unique ID of modified chats
         """
         self.channel: 'EFBChannel' = channel
-        self.new_chats: Tuple[str] = new_chats
-        self.removed_chats: Tuple[str] = removed_chats
-        self.modified_chats: Tuple[str] = modified_chats
+        self.new_chats: Iterable[str] = new_chats
+        self.removed_chats: Iterable[str] = removed_chats
+        self.modified_chats: Iterable[str] = modified_chats
         self.destination_channel: 'EFBChannel' = coordinator.master
 
     def __str__(self):
@@ -64,35 +64,35 @@ class EFBChatUpdates(EFBStatus):
 
 
 class EFBMemberUpdates(EFBStatus):
-    """EFBMemberUpdates(channel: EFBChannel, chat_id: str, new_members: Optional[Tuple[str]]=tuple(), removed_members: Optional[Tuple[str]]=tuple(), modified_members: Optional[Tuple[str]]=tuple())
+    """EFBMemberUpdates(channel: EFBChannel, chat_id: str, new_members: Optional[Iterable[str]]=tuple(), removed_members: Optional[Iterable[str]]=tuple(), modified_members: Optional[Iterable[str]]=tuple())
 
     Inform the master channel on updates of members in a slave chat.
 
     Attributes:
         channel (:obj:`.EFBChannel`): Slave channel that issues the update
         chat_id (str): Unique ID of the chat.
-        new_members (Optional[Tuple[str]]): Unique ID of new members
-        removed_members (Optional[Tuple[str]]): Unique ID of removed members
-        modified_members (Optional[Tuple[str]]): Unique ID of modified members
+        new_members (Optional[Iterable[str]]): Unique ID of new members
+        removed_members (Optional[Iterable[str]]): Unique ID of removed members
+        modified_members (Optional[Iterable[str]]): Unique ID of modified members
     """
 
     def __init__(self, channel: 'EFBChannel', chat_id: str,
-                 new_members: Optional[Tuple[str]]=tuple(), removed_members: Optional[Tuple[str]]=tuple(),
-                 modified_members: Optional[Tuple[str]]=tuple()):
-        """__init__(channel: EFBChannel, chat_id: str, new_members: Optional[Tuple[str]]=tuple(), removed_members: Optional[Tuple[str]]=tuple(), modified_members: Optional[Tuple[str]]=tuple())
+                 new_members: Iterable[str]=tuple(), removed_members: Iterable[str]=tuple(),
+                 modified_members: Iterable[str]=tuple()):
+        """__init__(channel: EFBChannel, chat_id: str, new_members: Iterable[str]=tuple(), removed_members: Iterable[str]=tuple(), modified_members: Optional[Iterable[str]]=tuple())
 
         Args:
             channel (:obj:`.EFBChannel`): Slave channel that issues the update
             chat_id (str): Unique ID of the chat.
-            new_members (Optional[Tuple[str]]): Unique ID of new members
-            removed_members (Optional[Tuple[str]]): Unique ID of removed members
-            modified_members (Optional[Tuple[str]]): Unique ID of modified members
+            new_members (Optional[Iterable[str]]): Unique ID of new members
+            removed_members (Optional[Iterable[str]]): Unique ID of removed members
+            modified_members (Optional[Iterable[str]]): Unique ID of modified members
         """
         self.channel: 'EFBChannel' = channel
         self.chat_id: str = chat_id
-        self.new_members: Tuple[str] = new_members
-        self.removed_members: Tuple[str] = removed_members
-        self.modified_members: Tuple[str] = modified_members
+        self.new_members: Iterable[str] = new_members
+        self.removed_members: Iterable[str] = removed_members
+        self.modified_members: Iterable[str] = modified_members
         self.destination_channel: 'EFBChannel' = coordinator.master
 
     def __str__(self):

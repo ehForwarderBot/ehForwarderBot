@@ -45,18 +45,18 @@ class EFBChat:
                 Provide the channel object to fill :attr:`channel_name`,
                 :attr:`channel_emoji`, and :attr:`channel_id` automatically.
         """
-        self.channel_name: str = None
-        self.channel_emoji: str = None
-        self.channel_id: str = None
+        self.channel_name: str = ""
+        self.channel_emoji: str = ""
+        self.channel_id: str = ""
         if isinstance(channel, EFBChannel):
             self.channel_name: str = channel.channel_name
             self.channel_emoji: str = channel.channel_emoji
             self.channel_id: str = channel.channel_id
 
-        self.chat_name: str = None
+        self.chat_name: str = ""
         self.chat_type: ChatType = ChatType.Unknown
-        self.chat_alias: str = None
-        self.chat_uid: str = None
+        self.chat_alias: Optional[str] = None
+        self.chat_uid: str = ""
         self.is_chat: bool = True
         self.members: List[EFBChat] = []
         self.group: Optional[EFBChat] = None

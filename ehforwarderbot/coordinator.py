@@ -13,7 +13,7 @@ Attributes:
 """
 
 import threading
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, cast
 
 from . import EFBMsg
 from .channel import EFBChannel
@@ -28,7 +28,7 @@ profile: str = "default"
 mutex: threading.Lock = threading.Lock()
 """Mutual exclusive lock for user interaction through CLI interface"""
 
-master: EFBChannel = None
+master: EFBChannel
 """The instance of the master channel."""
 
 slaves: Dict[str, EFBChannel] = dict()
@@ -91,14 +91,20 @@ def send_message(msg: EFBMsg) -> Optional[EFBMsg]:
         Returns ``None`` if the message is not sent.
     """
     global middlewares, master, slaves
+
     if msg is None:
         return
 
+    m: Optional[EFBMsg] = msg
+
     # Go through middlewares
     for i in middlewares:
-        msg = i.process_message(msg)
-        if msg is None:
-            return
+        assert isinstance(m, EFBMsg)
+        m = i.process_message(m)
+        if m is None:
+            return None
+
+    msg = cast(EFBMsg, m)
 
     msg.verify()
 
@@ -121,11 +127,15 @@ def send_status(status: EFBStatus):
     if status is None:
         return
 
+    s: Optional[EFBStatus] = status
+
     # Go through middlewares
     for i in middlewares:
-        status = i.process_status(status)
-        if status is None:
+        s = i.process_status(cast(EFBStatus, s))
+        if s is None:
             return
+
+    status = cast(EFBStatus, s)
 
     status.verify()
 
