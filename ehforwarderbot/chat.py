@@ -92,6 +92,22 @@ class EFBChat:
         return self
 
     @property
+    def display_name(self) -> str:
+        """Shortcut property, equivalent to ``chat_alias or chat_name``"""
+        return self.chat_alias or self.chat_name
+
+    @property
+    def long_name(self) -> str:
+        """
+        Shortcut property, if alias exists, this will provide the alias with name
+        in parenthesis. Otherwise, this will return the name
+        """
+        if self.chat_alias:
+            return "{0} ({1})".format(self.chat_alias, self.chat_name)
+        else:
+            return self.chat_name
+
+    @property
     def is_self(self) -> bool:
         """If this chat represents the user"""
         return self.chat_uid == EFBChat.SELF_ID
