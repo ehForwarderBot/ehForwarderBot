@@ -38,8 +38,12 @@ setup(
         "ruamel.yaml",
         "asciimatics",
         "cjkwrap",
-        "typing"
+        "typing",
+        "typing_extensions"
     ],
+    extras_require={
+        'telemetry': ['1a23-telemetry']
+    },
     entry_points={
         "console_scripts": [
             'ehforwarderbot = ehforwarderbot.__main__:main',

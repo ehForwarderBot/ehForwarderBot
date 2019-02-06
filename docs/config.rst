@@ -69,6 +69,43 @@ as it may leads to unexpected results.
         - foo.msg_archiver
         - foo.null
 
+Granulated logging control
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you have special needs on processing and controlling the log produced
+by the framework and running modules, you can use specify the log
+configuration with `Python's configuration dictionary schema`_ under
+section ``logging``.
+
+.. admonition:: Example
+
+    .. code-block:: yaml
+
+        logging:
+            version: 1
+            disable_existing_loggers: false
+            formatters:
+                standard:
+                    format: '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+            handlers:
+                default:
+                    level: INFO
+                    formatter: standard
+                    class: logging.StreamHandler
+                    stream: ext://sys.stdout
+            loggers:
+                  '':
+                        handlers: [default,]
+                        level: INFO
+                        propagate: true
+                  AliceIRCChannel:
+                        handlers: [default, ]
+                        level: WARN
+                        propagate: false
+
+
+.. _Python's configuration dictionary schema: https://docs.python.org/3.7/library/logging.config.html#logging-config-dictschema
+
 Configuration wizard (Unstable)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Alternatively, you may want to try the interactive setup wizard 

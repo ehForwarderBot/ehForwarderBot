@@ -8,6 +8,7 @@ import atexit
 import mimetypes
 import pkg_resources
 import gettext
+import logging.config
 
 from . import config, utils
 from . import coordinator
@@ -59,7 +60,7 @@ def stop_gracefully():
             i.join()
 
 
-def init():
+def init(conf):
     """
     Initialize all channels.
     """
@@ -70,9 +71,7 @@ def init():
     mimetypes.init([pkg_resources.resource_filename('ehforwarderbot', 'mimetypes')])
 
     # Initialize all channels
-    # (Load libraries and modules and init them with Queue `q`)
-
-    conf = config.load_config()
+    # (Load libraries and modules and init them)
 
     for i in conf['slave_channels']:
         logger.log(99, "\x1b[0;37;46m %s \x1b[0m", _("Initializing slave {}...").format(i))
@@ -128,6 +127,48 @@ def poll():
         coordinator.slave_threads[i].start()
 
 
+def setup_logging(args, conf):
+    """Setup logging"""
+    logging_format = "%(asctime)s [%(levelname)s]: %(name)s (%(module)s.%(funcName)s; " \
+                     "%(filename)s:%(lineno)d)\n    %(message)s"
+
+    if getattr(args, "verbose", None):
+        debug_logger = logging.StreamHandler(sys.stdout)
+        debug_logger.addFilter(LogLevelFilter(max_level=logging.WARNING))
+        debug_logger.setFormatter(logging.Formatter(logging_format))
+        logging.root.addHandler(debug_logger)
+        logging.root.level = logging.DEBUG
+
+    error_logger = logging.StreamHandler(sys.stderr)
+    error_logger.addFilter(LogLevelFilter(min_level=logging.ERROR))
+    error_logger.setFormatter(logging.Formatter(logging_format))
+    logging.root.addHandler(error_logger)
+
+    if conf['logging']:
+        logging.config.dictConfig(conf['logging'])
+
+
+CAPTURE_EXCEPTIONS = "I agree."
+CAPTURE_LOG = "I agree to surrender my immortal soul."
+
+
+def setup_telemetry(key: str):
+    """Setup telemetry"""
+
+    if not isinstance(key, str):
+        return
+
+    if key not in (CAPTURE_EXCEPTIONS, CAPTURE_LOG):
+        return
+
+    telemetry_config = {}
+    if key == CAPTURE_LOG:
+        telemetry_config['capture_logs'] = True
+
+    import telemetry_1a23
+    telemetry_1a23.init('ehforwarderbot', telemetry_config)
+
+
 def main():
     args = parser.parse_args()
 
@@ -173,33 +214,17 @@ def main():
         finally:
             print(versions)
     else:
-        # logging.basicConfig(format='%(asctime)s [%(levelname)s]: %(name)s (%(module)s.%(funcName)s; '
-        #                            '%(filename)s:%(lineno)d) \n    %(message)s', level=logging.ERROR)
-        # logging.root.setLevel(logging.ERROR)
+        conf = config.load_config()
 
-        logging_format = "%(asctime)s [%(levelname)s]: %(name)s (%(module)s.%(funcName)s; " \
-                         "%(filename)s:%(lineno)d)\n    %(message)s"
-
-        # logging.root.setLevel(level)
-
-        if getattr(args, "verbose", None):
-            debug_logger = logging.StreamHandler(sys.stdout)
-            debug_logger.addFilter(LogLevelFilter(max_level=logging.WARNING))
-            debug_logger.setFormatter(logging.Formatter(logging_format))
-            logging.root.addHandler(debug_logger)
-            logging.root.level = logging.DEBUG
-
-        error_logger = logging.StreamHandler(sys.stderr)
-        error_logger.addFilter(LogLevelFilter(min_level=logging.ERROR))
-        error_logger.setFormatter(logging.Formatter(logging_format))
-        logging.root.addHandler(error_logger)
+        setup_logging(args, conf)
+        setup_telemetry(conf['telemetry'])
 
         atexit.register(stop_gracefully)
 
         if args.profile:
             coordinator.profile = str(args.profile)
 
-        init()
+        init(conf)
         poll()
 
 

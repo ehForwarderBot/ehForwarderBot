@@ -5,10 +5,19 @@ import os
 import sys
 from ruamel.yaml import YAML
 from typing import Dict, Any
+
+from typing_extensions import Final
+
 from . import utils
 from .channel import EFBChannel
 from .middleware import EFBMiddleware
 from .constants import ChannelType
+
+
+OPTIONAL_DEFAULTS: Final[Dict[str, Any]] = {
+    "logging": {},
+    "telemetry": ''
+}
 
 
 __all__ = ["load_config"]
@@ -24,7 +33,8 @@ def load_config() -> Dict[str, Any]:
     if not os.path.exists(conf_path):
         raise FileNotFoundError("Config File does not exist. (%s)" % conf_path)
     with open(conf_path) as f:
-        data = YAML().load(f)
+        data: Dict[str, Any] = OPTIONAL_DEFAULTS.copy()
+        data.update(YAML().load(f))
 
         # Verify configuration
 
