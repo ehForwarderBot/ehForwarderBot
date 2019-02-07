@@ -1,7 +1,7 @@
 # coding=utf-8
 
 from abc import ABC, abstractmethod
-from typing import IO, Dict, Optional, List, Any, Tuple
+from typing import IO, Dict, Optional, List, Any, Tuple, Iterable
 
 from .constants import *
 from .chat import EFBChat
@@ -47,6 +47,12 @@ class EFBMsg:
         is_system (bool): Mark as true if this message is a system message.
         mime (str): MIME type of the file. ``None`` if N/A
         path (str): Local path of multimedia file. ``None`` if N/A
+        reactions (Dict[str, Iterable[:obj:`EFBChat`]]):
+            Indicate reactions to the message. Dictionary key represents the
+            reaction name, usually an emoji. Value is a collection of users
+            who reacted to the message with that certain emoji.
+            All :obj:`EFBChat` objects in this dict must be of a user or a
+            group member.
         substitutions (Optional[:obj:`EFBMsgSubstitutions`]):
             Substitutions of messages, usually used when
             the some parts of the text of the message
@@ -96,6 +102,7 @@ class EFBMsg:
         self.is_system: bool = False
         self.mime: Optional[str] = None
         self.path: Optional[str] = None
+        self.reactions: Dict[str, Iterable[EFBChat]] = dict()
         self.substitutions: Optional[EFBMsgSubstitutions] = None
         self.target: Optional[EFBMsg] = None
         self.text: str = ""
@@ -115,7 +122,8 @@ class EFBMsg:
                "System message: {msg.is_system}; " \
                "Substitutions: {msg.substitutions}; " \
                "Target messages: {msg.target}; " \
-               "UID: {msg.uid};" \
+               "UID: {msg.uid}; " \
+               "Reactions: {msg.reactions}; " \
                "File: {msg.file} ({msg.filename} @ {msg.path}), {msg.mime}; " \
                "Vendor: {msg.vendor_specific}>".format(msg=self)
 
@@ -199,6 +207,7 @@ class EFBMsgLinkAttribute(EFBMsgAttribute):
             image (str, optional): Image/thumbnail URL of the link.
             url (str): URL of the link.
         """
+        super().__init__()
         if title is None or url is None:
             raise ValueError("Title and URL is required.")
         self.title = title
@@ -234,6 +243,7 @@ class EFBMsgLocationAttribute(EFBMsgAttribute):
             latitude (float): Latitude of the location.
             longitude (float): Longitude of the location.
         """
+        super().__init__()
         self.latitude = latitude
         self.longitude = longitude
 
@@ -381,6 +391,7 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
                 Number of milliseconds for this status to expire.
                 Default to 5 seconds.
         """
+        super().__init__()
         self.status_type: 'EFBMsgStatusAttribute.Types' = status_type
         self.timeout: int = timeout
 

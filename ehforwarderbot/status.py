@@ -1,11 +1,16 @@
 # coding=utf-8
 
 from abc import abstractmethod, ABC
-from typing import Iterable
+from typing import Iterable, Dict, Iterable, TYPE_CHECKING
 
+from ehforwarderbot import ChannelType, ChatType
 from . import EFBChannel, EFBMsg, coordinator
 
-__all__ = ["EFBStatus", "EFBChatUpdates", "EFBMemberUpdates", "EFBMessageRemoval"]
+if TYPE_CHECKING:
+    from . import EFBChat
+
+__all__ = ["EFBStatus", "EFBChatUpdates", "EFBMemberUpdates", "EFBMessageRemoval", 
+           "EFBReactToMessage", "EFBMessageReactUpdate"]
 
 
 class EFBStatus(ABC):
@@ -156,3 +161,81 @@ class EFBMessageRemoval(EFBStatus):
             raise ValueError("Message channel is not valid.")
         if not self.message.chat.channel_id or not self.message.chat.chat_uid or not self.message.uid:
             raise ValueError("Message does not contain the minimum information required")
+
+
+class EFBReactToMessage(EFBStatus):
+    """
+    Created when user react to a message, issued from master channel.
+
+    Args:
+        chat (:obj:`EFBChat`): The chat where message
+        msg_id (str): ID of the message to react to
+        reaction (str): The reaction name to be sent, usually an emoji
+        destination_channel (:obj:`.EFBChannel`):
+            Channel the status is issued to, extracted from the chat object.
+    """
+
+    def __init__(self, chat: 'EFBChat', msg_id: str, reaction: str):
+        """
+        Args:
+            chat (:obj:`EFBChat`): The chat where message
+            msg_id (str): ID of the message to react to
+            reaction (str): The reaction name to be sent, usually an emoji
+        """
+        super().__init__()
+        self.chat: 'EFBChat' = chat
+        self.msg_id: str = msg_id
+        self.reaction: str = reaction
+        self.destination_channel: EFBChannel = coordinator.slaves.get(self.chat.channel_id)
+
+    def verify(self):
+        if not self.chat:
+            raise ValueError("Chat is not valid.")
+        if not self.destination_channel or not isinstance(self.destination_channel, EFBChannel):
+            raise ValueError("Destination channel does not exist.")
+        if self.destination_channel.channel_type != ChannelType.Slave:
+            raise ValueError("Destination channel is not a slave channel.")
+
+
+class EFBMessageReactUpdate(EFBStatus):
+    """
+    Update reacts of a message, issued from slave channel to master channel.
+
+    Args:
+        chat (:obj:`EFBChat`): The chat where message
+        msg_id (str): ID of the message for the reacts
+        reactions (Dict[str, Iterable[:obj:`EFBChat`]]):
+            Indicate reactions to the message. Dictionary key represents the
+            reaction name, usually an emoji. Value is a collection of users
+            who reacted to the message with that certain emoji.
+            All :obj:`EFBChat` objects in this dict must be of a user or a
+            group member.
+        destination_channel (:obj:`.EFBChannel`):
+            Channel the status is issued to, which is always the master channel.
+    """
+
+    def __init__(self, chat: 'EFBChat', msg_id: str, reactions: Dict[str, Iterable['EFBChat']]):
+        """
+        Args:
+            chat (:obj:`EFBChat`): The chat where message
+            msg_id (str): ID of the message for the reacts
+            reactions (Dict[str, Iterable[:obj:`EFBChat`]]):
+                Indicate reactions to the message. Dictionary key represents the
+                reaction name, usually an emoji. Value is a collection of users
+                who reacted to the message with that certain emoji.
+                All :obj:`EFBChat` objects in this dict must be of a user or a
+                group member.
+        """
+        super().__init__()
+        self.chat: 'EFBChat' = chat
+        self.msg_id: str = msg_id
+        self.reactions: Dict[str, Iterable[EFBChat]] = reactions
+        self.destination_channel = coordinator.master
+
+    def verify(self):
+        if not self.chat:
+            raise ValueError("Chat is not valid.")
+        for reaction, users in self.reactions.items():
+            for user in users:
+                if user.chat_type == ChatType.Group:
+                    raise ValueError("Chat {} from reaction {} is a group.".format(user, reaction))
