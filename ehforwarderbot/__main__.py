@@ -10,6 +10,8 @@ import pkg_resources
 import gettext
 import logging.config
 
+from typing import Dict
+
 from . import config, utils
 from . import coordinator
 from .__version__ import __version__
@@ -43,6 +45,7 @@ parser.add_argument("-p", "--profile",
                     help=_("Choose a profile to start with."),
                     default="default")
 
+telemetry = None
 
 def stop_gracefully():
     logger = logging.getLogger(__name__)
@@ -77,6 +80,7 @@ def init(conf):
         logger.log(99, "\x1b[0;37;46m %s \x1b[0m", _("Initializing slave {}...").format(i))
 
         cls = utils.locate_module(i, 'slave')
+        telemetry_set_metadata({i: cls.__version__})
         instance_id = i.split('#', 1)[1:]
         instance_id = (instance_id and instance_id[0]) or None
         coordinator.add_channel(cls(instance_id=instance_id))
@@ -90,8 +94,9 @@ def init(conf):
                _("Initializing master {}...").format(conf['master_channel']))
     instance_id = conf['master_channel'].split('#', 1)[1:]
     instance_id = (instance_id and instance_id[0]) or None
-    coordinator.add_channel(utils.locate_module(conf['master_channel'], 'master')
-                            (instance_id=instance_id))
+    module = utils.locate_module(conf['master_channel'], 'master')
+    coordinator.add_channel(module(instance_id=instance_id))
+    telemetry_set_metadata({conf['master_channel']: module.__version__})
     logger.log(99, "\x1b[0;37;42m %s \x1b[0m",
                _("Master channel {name} ({id}) # {instance_id} is initialized.")
                .format(name=coordinator.master.channel_name,
@@ -102,6 +107,7 @@ def init(conf):
     for i in conf['middlewares']:
         logger.log(99, "\x1b[0;37;46m %s \x1b[0m", _("Initializing middleware {}...").format(i))
         cls = utils.locate_module(i, 'middleware')
+        telemetry_set_metadata({i: cls.__version__})
 
         instance_id = i.split('#', 1)[1:]
         instance_id = (instance_id and instance_id[0]) or None
@@ -163,10 +169,21 @@ def setup_telemetry(key: str):
 
     telemetry_config = {}
     if key == CAPTURE_LOG:
-        telemetry_config['capture_logs'] = True
+        telemetry_config.update({"sentry": {"capture_logs": True}})
+
+    global telemetry
 
     import telemetry_1a23
     telemetry_1a23.init('ehforwarderbot', telemetry_config)
+    telemetry_1a23.set_metadata({"ehforwarderbot": __version__})
+
+    telemetry = telemetry_1a23
+
+
+def telemetry_set_metadata(metadata: Dict[str, str]):
+    global telemetry
+    if telemetry:
+        telemetry.set_metadata(metadata)
 
 
 def main():
@@ -206,7 +223,7 @@ def main():
                     middleware: EFBMiddleware = utils.locate_module(i, 'middleware')
                     versions += "\n    " + _("{name} ({id}) {version} # {instance_id}") \
                                 .format(name=middleware.middleware_name,
-                                        id=middleware.middleware_name,
+                                        id=middleware.middleware_id,
                                         version=middleware.__version__,
                                         instance_id=instance_id)
             else:
