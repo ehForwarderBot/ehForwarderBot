@@ -237,3 +237,15 @@ class EFBChannel(ABC):
         quit completely when all polling threads end.
         """
         raise NotImplementedError()
+
+    def get_message_by_id(self, msg_id: str) -> Optional['EFBMsg']:
+        """
+        Get message entity by its ID.
+        Applicable to both master channels and slave channels.
+        Return ``None`` when message not found.
+
+        Override this method and raise
+        :exc:`~.exceptions.EFBOperationNotSupported`
+        if it is not feasible to perform this for your platform.
+        """
+        raise NotImplementedError()
