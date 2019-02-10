@@ -12,7 +12,9 @@ And then, enable in the config file under the name
 ``telemetry``. There are 2 options you can choose from.
 
 - Exception only: Send only exceptions and stack trace to us.
-- Full log: Send the entire verbose log to us alongside exceptions.
+- Exception log: Send verbose log to us alongside exceptions.
+- Full log: Send the full verbose log content and what's
+  send in previous modes.
 
 To enable "exception only" mode, append the following line to the
 config file:
@@ -21,7 +23,7 @@ config file:
 
     telemetry: I agree.
 
-To enable "full log" mode, append the following line to the
+To enable "Exception log" mode, append the following line to the
 config file:
 
 .. code-block:: yaml

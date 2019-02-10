@@ -47,6 +47,7 @@ parser.add_argument("-p", "--profile",
 
 telemetry = None
 
+
 def stop_gracefully():
     logger = logging.getLogger(__name__)
     if isinstance(coordinator.master, EFBChannel):
@@ -156,6 +157,7 @@ def setup_logging(args, conf):
 
 CAPTURE_EXCEPTIONS = "I agree."
 CAPTURE_LOG = "I agree to surrender my immortal soul."
+CAPTURE_LOG_ANALYSIS = "I agree to surrender my immortal soul and endless knowledge."
 
 
 def setup_telemetry(key: str):
@@ -164,12 +166,18 @@ def setup_telemetry(key: str):
     if not isinstance(key, str):
         return
 
-    if key not in (CAPTURE_EXCEPTIONS, CAPTURE_LOG):
+    if key not in (CAPTURE_EXCEPTIONS, CAPTURE_LOG, CAPTURE_LOG_ANALYSIS):
         return
 
     telemetry_config = {}
-    if key == CAPTURE_LOG:
-        telemetry_config.update({"sentry": {"capture_logs": True}})
+    if key in (CAPTURE_LOG, CAPTURE_LOG_ANALYSIS):
+        telemetry_config.update({"sentry": {"enable": True, "capture_logs": True}})
+    if key == CAPTURE_LOG_ANALYSIS:
+        telemetry_config.update({
+            "logz": {"enable": True},
+            "loggly": {"enable": True},
+            "logdna": {"enable": True}
+        })
 
     global telemetry
 
