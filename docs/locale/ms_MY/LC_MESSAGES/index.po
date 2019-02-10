@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-02 10:45-0800\n"
-"PO-Revision-Date: 2019-01-12 00:27\n"
+"POT-Creation-Date: 2019-02-09 21:13-0800\n"
+"PO-Revision-Date: 2019-02-10 05:15\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgid "EH Forwarder Bot"
 msgstr ""
 
 #: ../../index.rst:31
-msgid "*Codename* **EH Forwarder Bot** (EFB) is an extensible chat tunnel framework which allows users to contact people from other chat platforms, and ultimately remotely control their accounts in other platforms."
+msgid "*Codename* **EH Forwarder Bot** (EFB) is an extensible chat tunneling framework allowing users to contact people from multiple chat platforms and remotely control their accounts in one stop."
 msgstr ""
 
 #: ../../index.rst:50

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-02 10:45-0800\n"
-"PO-Revision-Date: 2019-01-12 00:26\n"
+"POT-Creation-Date: 2019-02-09 21:13-0800\n"
+"PO-Revision-Date: 2019-02-10 05:14\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -61,6 +61,7 @@ msgid "Please avoid having two modules with the same set of module ID and instan
 msgstr ""
 
 #: ../../config.rst:44
+#: ../../config.rst:80
 msgid "Example"
 msgstr ""
 
@@ -109,18 +110,26 @@ msgid "In the ``config.yaml`` it should have the following lines:"
 msgstr ""
 
 #: ../../config.rst:73
+msgid "Granulated logging control"
+msgstr ""
+
+#: ../../config.rst:75
+msgid "If you have special needs on processing and controlling the log produced by the framework and running modules, you can use specify the log configuration with `Python's configuration dictionary schema`_ under section ``logging``."
+msgstr ""
+
+#: ../../config.rst:110
 msgid "Configuration wizard (Unstable)"
 msgstr ""
 
-#: ../../config.rst:74
+#: ../../config.rst:111
 msgid "Alternatively, you may want to try the interactive setup wizard that guides you to enable channels and middlewares, and continue to setup those modules if they also has a similar wizard."
 msgstr ""
 
-#: ../../config.rst:79
+#: ../../config.rst:116
 msgid "This feature is still unstable and may not guarentee a successful configuration.  If you have encouter any bug that is caused by the main wizard, you may want to submit an issue."
 msgstr ""
 
-#: ../../config.rst:83
+#: ../../config.rst:120
 msgid "You can start the wizard by running ``efb-wizard`` in a compatible console or terminal emulator."
 msgstr ""
 

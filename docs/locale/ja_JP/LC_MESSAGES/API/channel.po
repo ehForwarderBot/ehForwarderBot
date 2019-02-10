@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-03 09:10+1000\n"
-"PO-Revision-Date: 2019-01-12 00:26\n"
+"POT-Creation-Date: 2019-02-09 21:13-0800\n"
+"PO-Revision-Date: 2019-02-10 05:14\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -182,6 +182,14 @@ msgstr ""
 
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_extra_functions:3
 msgid "A dict of methods marked as additional features. Method can be called with ``get_extra_functions()[\"methodName\"]()``."
+msgstr ""
+
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_message_by_id:1
+msgid "Get message entity by its ID. Applicable to both master channels and slave channels. Return ``None`` when message not found."
+msgstr ""
+
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_message_by_id:5
+msgid "Override this method and raise :exc:`~.exceptions.EFBOperationNotSupported` if it is not feasible to perform this for your platform."
 msgstr ""
 
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.poll:1

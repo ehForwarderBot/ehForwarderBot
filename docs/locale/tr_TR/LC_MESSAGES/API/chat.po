@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-03 09:10+1000\n"
-"PO-Revision-Date: 2019-01-12 00:26\n"
+"POT-Creation-Date: 2019-02-09 21:13-0800\n"
+"PO-Revision-Date: 2019-02-10 05:14\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -131,6 +131,10 @@ msgstr "Parametreler"
 msgid "Provide the channel object to fill :attr:`channel_name`, :attr:`channel_emoji`, and :attr:`channel_id` automatically."
 msgstr "Otomatik olarak :attr:`channel_name`, :attr:`channel_emoji`, ve :attr:`channel_id` doldurmak için kanal nesnesini sağla."
 
+#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.display_name:1
+msgid "Shortcut property, equivalent to ``chat_alias or chat_name``"
+msgstr ""
+
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.is_self:1
 msgid "If this chat represents the user"
 msgstr "Eğer bu sohbet kullanıcıyı temsil ediyorlarsa"
@@ -138,6 +142,10 @@ msgstr "Eğer bu sohbet kullanıcıyı temsil ediyorlarsa"
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.is_system:1
 msgid "If this chat is a system chat"
 msgstr "Eğer bu sohbet bir sistem sohbeti ise"
+
+#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.long_name:1
+msgid "Shortcut property, if alias exists, this will provide the alias with name in parenthesis. Otherwise, this will return the name"
+msgstr ""
 
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.self:1
 msgid "Set the chat as yourself. In this context, \"yourself\" means the user behind the master channel. Every channel should relate this to the corresponding target."
