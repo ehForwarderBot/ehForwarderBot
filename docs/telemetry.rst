@@ -1,8 +1,8 @@
 Telemetry / Error Tracking
 ==========================
 
-If you want to enable telemetry / error tracking to help us make
-EFB better, you can install EFB with optional ``telemetry`` option.
+If you want to enable telemetry / error tracking / log analysis to help
+us make EFB better, you can install EFB with optional ``telemetry`` option.
 
 .. code-block:: bash
 
@@ -29,6 +29,14 @@ config file:
 .. code-block:: yaml
 
     telemetry: I agree to surrender my immortal soul.
+
+To enable "Full log" mode, append the following line to the
+config file:
+
+.. code-block:: yaml
+
+    telemetry: I agree to surrender my immortal soul and endless knowledge.
+
 
 For more details about what telemetry service we are using,
 privacy policies, and how we are collecting information through
