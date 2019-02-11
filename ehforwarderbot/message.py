@@ -198,6 +198,7 @@ class EFBMsgLinkAttribute(EFBMsgAttribute):
     image: Optional[str] = None
     url: str = ""
 
+    # noinspection PyMissingConstructor
     def __init__(self, title: str = None, description: Optional[str] = None,
                  image: Optional[str] = None, url: str = None):
         """
@@ -207,7 +208,6 @@ class EFBMsgLinkAttribute(EFBMsgAttribute):
             image (str, optional): Image/thumbnail URL of the link.
             url (str): URL of the link.
         """
-        super().__init__()
         if title is None or url is None:
             raise ValueError("Title and URL is required.")
         self.title = title
@@ -237,13 +237,13 @@ class EFBMsgLocationAttribute(EFBMsgAttribute):
     latitude: float = 0
     longitude: float = 0
 
+    # noinspection PyMissingConstructor
     def __init__(self, latitude: float, longitude: float):
         """
         Args:
             latitude (float): Latitude of the location.
             longitude (float): Longitude of the location.
         """
-        super().__init__()
         self.latitude = latitude
         self.longitude = longitude
 
@@ -391,7 +391,6 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
                 Number of milliseconds for this status to expire.
                 Default to 5 seconds.
         """
-        super().__init__()
         self.status_type: 'EFBMsgStatusAttribute.Types' = status_type
         self.timeout: int = timeout
 
