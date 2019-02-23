@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-09 13:12+0800\n"
-"PO-Revision-Date: 2019-02-10 05:14\n"
+"POT-Creation-Date: 2019-02-23 14:26-0800\n"
+"PO-Revision-Date: 2019-02-23 22:52\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -22,5 +22,5 @@ msgstr "API 文档"
 
 #: ../../API/index.rst:4
 msgid "This section contains documentations for the current API of EH Forwarder Bot."
-msgstr "该部分为 EH Forwarder Bot 目前的API文档。"
+msgstr "该部分为 EH Forwarder Bot 目前的 API 文档。"
 

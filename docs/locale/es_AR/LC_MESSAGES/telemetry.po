@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-09 21:13-0800\n"
-"PO-Revision-Date: 2019-02-10 05:14\n"
+"POT-Creation-Date: 2019-02-23 14:26-0800\n"
+"PO-Revision-Date: 2019-02-23 22:52\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Spanish, Argentina\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgid "Telemetry / Error Tracking"
 msgstr ""
 
 #: ../../telemetry.rst:4
-msgid "If you want to enable telemetry / error tracking to help us make EFB better, you can install EFB with optional ``telemetry`` option."
+msgid "If you want to enable telemetry / error tracking / log analysis to help us make EFB better, you can install EFB with optional ``telemetry`` option."
 msgstr ""
 
 #: ../../telemetry.rst:11
@@ -49,6 +49,10 @@ msgid "To enable \"Exception log\" mode, append the following line to the config
 msgstr ""
 
 #: ../../telemetry.rst:33
+msgid "To enable \"Full log\" mode, append the following line to the config file:"
+msgstr ""
+
+#: ../../telemetry.rst:41
 msgid "For more details about what telemetry service we are using, privacy policies, and how we are collecting information through this, you can visit `1A23 Telemetry GitHub Repository`_ for more details."
 msgstr ""
 
