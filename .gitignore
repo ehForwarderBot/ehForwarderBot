@@ -154,3 +154,9 @@ Temporary Items
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+
+# MyPy
+.mypy_cache
+
+# doit
+.doit.db
