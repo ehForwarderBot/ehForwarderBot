@@ -1,5 +1,5 @@
 import threading
-from typing import Set
+from typing import Set, Optional
 from logging import getLogger
 
 from ehforwarderbot import EFBChannel, EFBMsg, EFBStatus, ChannelType, MsgType, coordinator, EFBChat
@@ -24,7 +24,6 @@ class MockMasterChannel(EFBChannel):
     logger = getLogger(channel_id)
 
     polling = threading.Event()
-
 
     def poll(self):
         self.polling.wait()
@@ -87,3 +86,6 @@ class MockMasterChannel(EFBChannel):
         msg.uid = "1"
         status = EFBMessageRemoval(self, slave, msg)
         return coordinator.send_status(status)
+
+    def get_message_by_id(self, msg_id: str) -> Optional['EFBMsg']:
+        pass

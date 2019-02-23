@@ -13,6 +13,7 @@ Attributes:
 """
 
 import threading
+from gettext import NullTranslations
 from typing import List, Dict, Optional, cast, TYPE_CHECKING
 
 from . import EFBMsg
@@ -30,7 +31,7 @@ profile: str = "default"
 mutex: threading.Lock = threading.Lock()
 """Mutual exclusive lock for user interaction through CLI interface"""
 
-master: EFBChannel
+master: EFBChannel  # late init
 """The instance of the master channel."""
 
 slaves: Dict[str, EFBChannel] = dict()
@@ -45,7 +46,7 @@ master_thread: Optional[threading.Thread] = None
 slave_threads: Dict[str, threading.Thread] = dict()
 """Threads running poll() from slave channels. Keys are the channel IDs."""
 
-translator = None
+translator: NullTranslations  # late init
 """Internal GNU gettext translator."""
 
 

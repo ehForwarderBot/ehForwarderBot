@@ -33,7 +33,7 @@ else:
         from ehforwarderbot import coordinator, utils
 
 Module = namedtuple("Module", ['type', 'id', 'name', 'emoji', 'wizard'])
-Module.replace = Module._replace
+Module.replace = Module._replace  # type: ignore
 
 gettext.translation(
     'ehforwarderbot',

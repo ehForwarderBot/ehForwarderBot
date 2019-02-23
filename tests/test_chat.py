@@ -58,13 +58,6 @@ class ChannelLoadingTest(unittest.TestCase):
             with self.assertRaises(ValueError):
                 chat.verify()
 
-        with self.subTest("Missing name"):
-            chat = EFBChat(channel)
-            chat.chat_uid = "00001"
-            chat.chat_type = ChatType.User
-            with self.assertRaises(ValueError):
-                chat.verify()
-
         with self.subTest("Wrong chat type"):
             chat = EFBChat(channel)
             chat.chat_uid = "00001"

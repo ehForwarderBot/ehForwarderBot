@@ -16,11 +16,11 @@ class MockMiddleware(EFBMiddleware):
 
     middleware_id: str = "tests.mocks.middleware.MockMiddleware"
     middleware_name: str = "Mock Middleware"
-    __version__: str = '0.0.1a'
+    __version__: str = '0.0.1'
 
     logger = logging.getLogger(middleware_id)
 
-    def __init__(self, instance_id: str = None, mode: str="log"):
+    def __init__(self, instance_id: str = None, mode: str = "log"):
         super().__init__(instance_id=instance_id)
         self.mode: str = mode
 

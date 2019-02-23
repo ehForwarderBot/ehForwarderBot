@@ -6,6 +6,7 @@ import argparse
 import sys
 import atexit
 import mimetypes
+
 import pkg_resources
 import gettext
 import logging.config
@@ -18,6 +19,7 @@ from .__version__ import __version__
 from .channel import EFBChannel
 from .middleware import EFBMiddleware
 from .utils import LogLevelFilter
+
 
 # gettext.install('ehforwarderbot', 'locale')
 coordinator.translator = gettext.translation('ehforwarderbot',
@@ -45,7 +47,7 @@ parser.add_argument("-p", "--profile",
                     help=_("Choose a profile to start with."),
                     default="default")
 
-telemetry = None
+telemetry = None  # type: ignore
 
 
 def stop_gracefully():
@@ -191,7 +193,7 @@ def setup_telemetry(key: str):
 def telemetry_set_metadata(metadata: Dict[str, str]):
     global telemetry
     if telemetry:
-        telemetry.set_metadata(metadata)
+        telemetry.set_metadata(metadata)  # type: ignore
 
 
 def main():

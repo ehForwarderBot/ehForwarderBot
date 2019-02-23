@@ -1,6 +1,5 @@
 # coding=utf-8
 
-import getpass
 import os
 import pydoc
 import logging

@@ -186,7 +186,7 @@ class EFBReactToMessage(EFBStatus):
         self.chat: 'EFBChat' = chat
         self.msg_id: str = msg_id
         self.reaction: str = reaction
-        self.destination_channel: EFBChannel = coordinator.slaves.get(self.chat.channel_id)
+        self.destination_channel: EFBChannel = coordinator.slaves[self.chat.channel_id]
 
     def verify(self):
         if not self.chat:

@@ -97,4 +97,7 @@ class MockSlaveChannel(EFBChannel):
     def echo(self, args):
         return args
 
+    def get_message_by_id(self, msg_id: str) -> Optional['EFBMsg']:
+        pass
+
     # TODO: Send types of messages and statuses to slave channels

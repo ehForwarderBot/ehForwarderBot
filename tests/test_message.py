@@ -64,14 +64,6 @@ class EFBMessageTest(unittest.TestCase):
             msg.text = "Message"
             msg.verify()
 
-        with self.subTest("Missing type"), self.assertRaises(ValueError):
-            msg = EFBMsg()
-            msg.deliver_to = self.channel
-            msg.author = self.chat
-            msg.chat = self.chat
-            msg.text = "Message"
-            msg.verify()
-
     def test_chain_verify(self):
         patch_chat_0 = self.chat.copy()
         patch_chat_1 = self.chat.copy()
@@ -102,7 +94,7 @@ class EFBMessageTest(unittest.TestCase):
 
         with self.subTest("Link message"):
             msg.type = MsgType.Link
-            msg.attributes = EFBMsgLinkAttribute()
+            msg.attributes = EFBMsgLinkAttribute(title='Title', url='URL')
             msg.attributes.verify = mock.Mock()
             msg.verify()
 
