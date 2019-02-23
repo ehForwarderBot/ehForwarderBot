@@ -1,2 +1,3 @@
 include ehforwarderbot/mimetypes
+include ehforwarderbot/py.typed
 recursive-include ehforwarderbot/locale *.mo *.po

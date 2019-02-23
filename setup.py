@@ -21,6 +21,7 @@ setup(
     license='AGPLv3+',
     python_requires='>=3.6',
     include_package_data=True,
+    zip_safe=False,
     keywords=['EFB', 'EH Forwarder Bot', 'Chat tunneling', 'IM', 'messaging'],
     classifiers=[
         "Development Status :: 4 - Beta",
