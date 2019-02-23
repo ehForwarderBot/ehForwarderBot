@@ -1,5 +1,6 @@
 import glob
 
+from doit.action import CmdAction
 
 PACKAGE = "ehforwarderbot"
 DEFAULT_BUMP_MODE = "bump"
@@ -19,9 +20,9 @@ def task_sphinx_html():
 def task_gettext():
     pot = "./{package}/locale/{package}.pot".format(package=PACKAGE)
     sources = glob.glob("./{package}/**/*.py".format(package=PACKAGE), recursive=True)
+    command = "xgettext --add-comments=TRANSLATORS -o " + pot + " " + " ".join(sources)
     sources += glob.glob("./docs/**/*.rst", recursive=True)
     targets = [pot] + glob.glob("./docs/_build/locale/**/*.pot", recursive=True)
-    command = "xgettext --add-comments=TRANSLATORS -o " + pot + " " + " ".join(sources)
     return {
         "actions": [
             command,
@@ -35,7 +36,7 @@ def task_gettext():
 def task_msgfmt():
     sources = glob.glob("./{package}/**/*.po".format(package=PACKAGE), recursive=True)
     dests = [i[:-3] + ".mo" for i in sources]
-    actions = [("msgfmt", sources[i], "-o", dests[i]) for i in range(len(sources))]
+    actions = [["msgfmt", sources[i], "-o", dests[i]] for i in range(len(sources))]
     return {
         "actions": actions,
         "targets": dests,
@@ -45,25 +46,28 @@ def task_msgfmt():
 
 
 def task_crowdin():
-    sources = glob.glob("./{package}/**/*.po".format(package=PACKAGE), recursive=True)
+    sources = glob.glob("./{package}/**/*.pot".format(package=PACKAGE), recursive=True)
     return {
-        "actions": ["crowdin upload source"],
+        "actions": ["crowdin upload sources"],
         "file_dep": sources,
-        "task_dep": ["gettext"]
+        "task_dep": ["gettext"],
+        "verbosity": 1
     }
 
 
 def task_crowdin_pull():
     return {
-        "actions": ["crowdin download"]
+        "actions": ["crowdin download"],
+        "verbosity": 1,
+        "task_dep": ["crowdin"]
     }
 
 
 def task_commit_lang_file():
     return {
         "actions": [
-            ("git", "add", "*.po"),
-            ("git", "commit", "-s", "Sync localization files from Crowdin")
+            ["git", "add", "*.po"],
+            ["git", "commit", "-m", "Sync localization files from Crowdin"]
         ],
         "task_dep": ["crowdin", "crowdin_pull"]
     }
@@ -71,14 +75,10 @@ def task_commit_lang_file():
 
 def task_bump_version():
     def gen_bump_version(mode=DEFAULT_BUMP_MODE):
-        return 'bumpversion', mode
+        return 'bumpversion ' + mode
 
     return {
-        "actions": [gen_bump_version],
-        "targets": [
-            "./{package}/__version__.py".format(package=PACKAGE),
-            ".bumpversion.cfg"
-        ],
+        "actions": [CmdAction(gen_bump_version)],
         "params": [
             {
                 "name": "Version bump mode",
@@ -95,7 +95,8 @@ def task_bump_version():
                     ("dev", "Bump a dev version (for commit only)")
                 ]
             }
-        ]
+        ],
+        "task_dep": ["test", "commit_lang_file"]
     }
 
 
@@ -108,11 +109,13 @@ def task_mypy():
 
 
 def task_test():
+    sources = glob.glob("./{package}/**/*.py".format(package=PACKAGE), recursive=True)
     return {
         "actions": [
             "coverage run --source ./{} -m pytest".format(PACKAGE),
             "coverage report"
         ],
+        "file_dep": sources,
         "verbosity": 2
     }
 
@@ -121,7 +124,8 @@ def task_build():
     return {
         "actions": [
             "python setup.py sdist bdist_wheel"
-        ]
+        ],
+        "task_dep": ["test", "msgfmt", "bump_version"]
     }
 
 
@@ -132,5 +136,5 @@ def task_publish():
         return ["twine", "upload"] + binarys
     return {
         "actions": [get_twine_command],
-        "task_dep": ["test", "msgfmt", "build"]
+        "task_dep": ["build"]
     }
