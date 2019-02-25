@@ -25,7 +25,7 @@ __all__ = ["load_config"]
 
 def load_config() -> Dict[str, Any]:
     # Include custom channels
-    custom_channel_path = utils.get_custom_modules_path()
+    custom_channel_path = str(utils.get_custom_modules_path())
     if custom_channel_path not in sys.path:
         sys.path.insert(0, custom_channel_path)
 

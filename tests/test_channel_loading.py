@@ -3,6 +3,7 @@ import os
 import shutil
 import tempfile
 import inspect
+from pathlib import Path
 
 from ruamel.yaml import YAML
 
@@ -50,9 +51,9 @@ class ChannelLoadingTest(unittest.TestCase):
 
     def test_load_config(self):
         data = {
-            "master_channel": "master.MockMasterChannel",
-            "slave_channels": ["slave.MockSlaveChannel"],
-            "middlewares": ["middleware.MockMiddleware"]
+            "master_channel": "tests.mocks.master.MockMasterChannel",
+            "slave_channels": ["tests.mocks.slave.MockSlaveChannel"],
+            "middlewares": ["tests.mocks.middleware.MockMiddleware"]
         }
         config_path = ehforwarderbot.utils.get_config_path()
         with open(config_path, 'w') as f:
@@ -70,10 +71,13 @@ class ChannelLoadingTest(unittest.TestCase):
                 "slave_channels": ["slave.MockSlaveChannel"],
                 "middlewares": ["middleware.MockMiddleware"]
             }
-            test_path = os.path.join(os.path.dirname(inspect.getfile(inspect.currentframe())), 'mocks')
-            shutil.copy(os.path.join(test_path, 'master.py'), modules_path)
-            shutil.copy(os.path.join(test_path, 'slave.py'), modules_path)
-            shutil.copy(os.path.join(test_path, 'middleware.py'), modules_path)
+            test_path = Path(inspect.getfile(inspect.currentframe())).parent / 'mocks'
+            # noinspection PyTypeChecker
+            shutil.copy(test_path / 'master.py', modules_path)
+            # noinspection PyTypeChecker
+            shutil.copy(test_path / 'slave.py', modules_path)
+            # noinspection PyTypeChecker
+            shutil.copy(test_path / 'middleware.py', modules_path)
             config = self.dump_and_load_config(config)
             ehforwarderbot.__main__.init(config)
 

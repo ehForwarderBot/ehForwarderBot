@@ -1,7 +1,9 @@
 # coding=utf-8
 
 from abc import ABC, abstractmethod
-from typing import IO, Dict, Optional, List, Any, Tuple, Iterable
+from collections.abc import Iterable as CIterable
+from collections.abc import Mapping as CMapping
+from typing import IO, Dict, Optional, List, Any, Tuple, Iterable, Mapping
 
 from .constants import *
 from .chat import EFBChat
@@ -260,43 +262,48 @@ class EFBMsgLocationAttribute(EFBMsgAttribute):
 class EFBMsgCommand:
     """
     EFB message command.
+    This object records a way to call a method in the module object.
+    In case where the message has an ``author`` from a different module
+    from the ``chat``, this function should be called on the ``author``'s
+    module.
 
     Attributes:
         name (str): Human-friendly name of the command.
         callable_name (str): Callable name of the command.
-        args (List[Any]): Arguments passed to the function.
-        kwargs (Dict[str, Any]): Keyword arguments passed to the function.
+        args (Iterable[Any]): Arguments passed to the function.
+        kwargs (Mapping[str, Any]): Keyword arguments passed to the function.
     """
     name: str = ""
     callable_name: str = ""
     args: List[Any] = []
     kwargs: Dict[str, Any] = {}
 
-    def __init__(self, name: str, callable_name: str, args: List[Any] = None, kwargs: Optional[Dict[str, Any]] = None):
+    def __init__(self, name: str, callable_name: str, args: Iterable[Any] = None,
+                 kwargs: Optional[Mapping[str, Any]] = None):
         """
         Args:
             name (str): Human-friendly name of the command.
             callable_name (str): Callable name of the command.
-            args (Optional[List[Any]]): Arguments passed to the function. Defaulted to empty list;
-            kwargs (Optional[Dict[str, Any]]): Keyword arguments passed to the function.
+            args (Optional[Iterable[Any]]): Arguments passed to the function. Defaulted to empty list;
+            kwargs (Optional[Mapping[str, Any]]): Keyword arguments passed to the function.
                 Defaulted to empty dict.
         """
         if args is None:
-            args = list()
+            args = tuple()
         if kwargs is None:
             kwargs = dict()
         if not isinstance(name, str):
             raise TypeError("name must be a string.")
         if not isinstance(callable_name, str):
             raise TypeError("callable must be a string.")
-        if not isinstance(args, list):
-            raise TypeError("args must be a list.")
-        if not isinstance(kwargs, dict):
-            raise TypeError("kwargs must be a dict.")
+        if not isinstance(args, CIterable):
+            raise TypeError("args must be an iterable.")
+        if not isinstance(kwargs, CMapping):
+            raise TypeError("kwargs must be a mapping.")
         self.name = name
         self.callable_name = callable_name
-        self.args = args.copy()
-        self.kwargs = kwargs.copy()
+        self.args = tuple(args)
+        self.kwargs = dict(kwargs)
 
     def __str__(self):
         return "<EFBMsgCommand: {name}, {callable_name}({params})>".format(
