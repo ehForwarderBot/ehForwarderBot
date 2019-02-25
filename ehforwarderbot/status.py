@@ -159,7 +159,7 @@ class EFBMessageRemoval(EFBStatus):
             raise ValueError("Destination channel is not valid.")
         if self.message is None or not isinstance(self.message, EFBMsg):
             raise ValueError("Message channel is not valid.")
-        if not self.message.chat.channel_id or not self.message.chat.chat_uid or not self.message.uid:
+        if not self.message.chat.module_id or not self.message.chat.chat_uid or not self.message.uid:
             raise ValueError("Message does not contain the minimum information required")
 
 
@@ -186,7 +186,7 @@ class EFBReactToMessage(EFBStatus):
         self.chat: 'EFBChat' = chat
         self.msg_id: str = msg_id
         self.reaction: str = reaction
-        self.destination_channel: EFBChannel = coordinator.slaves[self.chat.channel_id]
+        self.destination_channel: EFBChannel = coordinator.slaves[self.chat.module_id]
 
     def verify(self):
         if not self.chat:

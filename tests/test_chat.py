@@ -3,31 +3,38 @@ import unittest
 from ehforwarderbot import EFBChat, ChatType
 
 from .mocks.master import MockMasterChannel
+from .mocks.middleware import MockMiddleware
 
 
-class ChannelLoadingTest(unittest.TestCase):
+class ChatTest(unittest.TestCase):
     def setUp(self):
         pass
 
     def test_generate_with_channel(self):
         channel = MockMasterChannel()
         chat = EFBChat(channel)
-        self.assertEqual(chat.channel_id, channel.channel_id)
-        self.assertEqual(chat.channel_name, channel.channel_name)
-        self.assertEqual(chat.channel_emoji, channel.channel_emoji)
+        assert chat.module_id == channel.channel_id
+        assert chat.module_name == channel.channel_name
+        assert chat.channel_emoji == channel.channel_emoji
+
+    def test_generate_with_middleware(self):
+        middleware = MockMiddleware()
+        chat = EFBChat(middleware=middleware)
+        assert chat.module_id == middleware.middleware_id
+        assert chat.module_name == middleware.middleware_name
 
     def test_is_system(self):
         chat = EFBChat().system()
-        self.assertTrue(chat.is_system)
+        assert chat.is_system
 
     def test_is_self(self):
         chat = EFBChat().self()
-        self.assertTrue(chat.is_self)
+        assert chat.is_self
 
     def test_normal_chat(self):
         chat = EFBChat()
-        self.assertFalse(chat.is_self)
-        self.assertFalse(chat.is_system)
+        assert not chat.is_self
+        assert not chat.is_system
 
     def test_copy(self):
         channel = MockMasterChannel()
@@ -37,8 +44,8 @@ class ChannelLoadingTest(unittest.TestCase):
         chat.chat_alias = "chaT"
         chat.chat_type = ChatType.User
         copy = chat.copy()
-        self.assertEqual(chat, copy)
-        self.assertIsNot(chat, copy)
+        assert chat == copy
+        assert chat is not copy
 
     def test_verify(self):
         channel = MockMasterChannel()
