@@ -14,7 +14,7 @@ Attributes:
 
 import threading
 from gettext import NullTranslations
-from typing import List, Dict, Optional, cast, TYPE_CHECKING
+from typing import List, Dict, Optional, cast, TYPE_CHECKING, Union
 
 from . import EFBMsg
 from .channel import EFBChannel
@@ -143,3 +143,28 @@ def send_status(status: 'EFBStatus'):
     status.verify()
 
     status.destination_channel.send_status(status)
+
+
+def get_module_by_id(module_id: str) -> Union[EFBChannel, EFBMiddleware]:
+    """
+    Return the module instance of a provided module ID
+    Args:
+        module_id: Module ID, with instance ID if available.
+
+    Returns:
+        Module instance requested.
+
+    Raises:
+        NameError: When the module is not found.
+    """
+    try:
+        if master.channel_id == module_id:
+            return master
+    except NameError:
+        pass
+    if module_id in slaves:
+        return slaves[module_id]
+    for i in middlewares:
+        if i.middleware_id == module_id:
+            return i
+    raise NameError("Module ID {} is not found".format(module_id))
