@@ -728,14 +728,14 @@ def prerequisite_check():
         next(pkg_resources.iter_entry_points("ehforwarderbot.master"))
     except StopIteration:
         return _("No master channel detected.  EH Forwarder Bot requires at least one "
-                 "master channel to run.") + "\n\n" + modules_err
+                 "master channel installed to run.") + "\n\n" + modules_err
 
     # 2. At least 1 slave channel must be installed
     try:
         next(pkg_resources.iter_entry_points("ehforwarderbot.slave"))
     except StopIteration:
         return _("No slave channel detected.  EH Forwarder Bot requires at least one "
-                 "slave channel to run.") + "\n\n" + modules_err
+                 "slave channel installed to run.") + "\n\n" + modules_err
 
 
 def main():

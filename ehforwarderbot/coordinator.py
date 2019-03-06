@@ -16,13 +16,13 @@ import threading
 from gettext import NullTranslations
 from typing import List, Dict, Optional, cast, TYPE_CHECKING, Union
 
-from . import EFBMsg
 from .channel import EFBChannel
 from .constants import ChannelType
 from .exceptions import EFBChannelNotFound
 from .middleware import EFBMiddleware
 
 if TYPE_CHECKING:
+    from . import EFBMsg
     from .status import EFBStatus
 
 profile: str = "default"
@@ -81,7 +81,7 @@ def add_middleware(middleware: EFBMiddleware):
         raise TypeError("Middleware instance is expected")
 
 
-def send_message(msg: EFBMsg) -> Optional[EFBMsg]:
+def send_message(msg: 'EFBMsg') -> Optional['EFBMsg']:
     """
     Deliver a message to the destination channel.
 
@@ -98,16 +98,11 @@ def send_message(msg: EFBMsg) -> Optional[EFBMsg]:
     if msg is None:
         return
 
-    m: Optional[EFBMsg] = msg
-
     # Go through middlewares
     for i in middlewares:
-        assert isinstance(m, EFBMsg)
-        m = i.process_message(m)
-        if m is None:
+        msg = i.process_message(msg)
+        if msg is None:
             return None
-
-    msg = cast(EFBMsg, m)
 
     msg.verify()
 

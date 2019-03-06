@@ -58,7 +58,7 @@ def get_base_path() -> Union[os.PathLike, Path]:
 
 def get_data_path(module_id: str) -> Union[os.PathLike, Path]:
     """
-    Get the path for permanent storage of a module.
+    Get the path for persistent storage of a module.
     
     This method creates the queried path if not existing.
     

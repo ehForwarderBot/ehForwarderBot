@@ -1,27 +1,30 @@
-from .base_test import StandardChannelTest
+from .base_class import setup
 
 from ehforwarderbot import coordinator
 
 from .mocks.master import MockMasterChannel
 from .mocks.middleware import MockMiddleware
 
+setup_module = setup
 
-class CoordinatorTest(StandardChannelTest):
-    def test_acceptable_text(self):
-        master: MockMasterChannel = coordinator.master
-        middleware: MockMiddleware = coordinator.middlewares[0]
-        middleware.mode = "append_text"
-        self.assertIn(middleware.middleware_id, master.send_text_msg().text)
 
-    def test_interrupt_text(self):
-        master: MockMasterChannel = coordinator.master
-        middleware: MockMiddleware = coordinator.middlewares[0]
-        middleware.mode = "interrupt"
-        self.assertIsNone(master.send_text_msg())
+def test_acceptable_text():
+    master: MockMasterChannel = coordinator.master
+    middleware: MockMiddleware = coordinator.middlewares[0]
+    middleware.mode = "append_text"
+    assert middleware.middleware_id in master.send_text_msg().text
 
-    def test_interrupt_non_text(self):
-        master: MockMasterChannel = coordinator.master
-        middleware: MockMiddleware = coordinator.middlewares[0]
-        middleware.mode = "interrupt_non_text"
-        self.assertIsNotNone(master.send_text_msg())
-        self.assertIsNone(master.send_link_msg())
+
+def test_interrupt_text():
+    master: MockMasterChannel = coordinator.master
+    middleware: MockMiddleware = coordinator.middlewares[0]
+    middleware.mode = "interrupt"
+    assert master.send_text_msg() is None
+
+
+def test_interrupt_non_text():
+    master: MockMasterChannel = coordinator.master
+    middleware: MockMiddleware = coordinator.middlewares[0]
+    middleware.mode = "interrupt_non_text"
+    assert master.send_text_msg() is not None
+    assert master.send_link_msg() is None

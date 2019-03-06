@@ -8,6 +8,7 @@ from typing import IO, Dict, Optional, List, Any, Tuple, Iterable, Mapping
 from .constants import *
 from .chat import EFBChat
 from .channel import EFBChannel
+from . import coordinator
 
 
 class EFBMsg:
@@ -171,6 +172,22 @@ class EFBMsg:
 
         if self.substitutions:
             self.substitutions.verify()
+
+    def __getstate__(self):
+        state = self.__dict__.copy()
+        del state['file']
+        if state['deliver_to'] is not None:
+            state['deliver_to'] = state['deliver_to'].channel_id
+        return state
+
+    def __setstate__(self, state: Dict[str, any]):
+        self.__dict__.update(state)
+        if self.path:
+            self.file = open(self.path, 'rb')
+        try:
+            self.deliver_to = coordinator.get_module_by_id(state['deliver_to'])
+        except NameError:
+            self.deliver_to = None
 
 
 class EFBMsgAttribute(ABC):
@@ -390,6 +407,7 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
         UPLOADING_AUDIO = "UPLOADING_AUDIO"
         UPLOADING_VIDEO = "UPLOADING_VIDEO"
 
+    # noinspection PyMissingConstructor
     def __init__(self, status_type: Types, timeout: int = 5000):
         """
         Args:
