@@ -52,9 +52,11 @@ telemetry = None  # type: ignore
 
 def stop_gracefully():
     logger = logging.getLogger(__name__)
-    if isinstance(coordinator.master, EFBChannel):
+    if hasattr(coordinator, "master") and isinstance(coordinator.master, EFBChannel):
         coordinator.master.stop_polling()
         logger.debug("Stop signal sent to master: %s" % coordinator.master.channel_name)
+    else:
+        logger.info("Valid master channel is not found.")
     for i in coordinator.slaves:
         if isinstance(coordinator.slaves[i], EFBChannel):
             coordinator.slaves[i].stop_polling()
