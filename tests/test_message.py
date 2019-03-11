@@ -212,3 +212,39 @@ def test_pickle_media_message(media_type):
         msg_dup = pickle.loads(pickle.dumps(msg))
         for attr in ("deliver_to", "author", "chat", "type", "chat", "filename", "path", "mime", "text", "uid"):
             assert getattr(msg, attr) == getattr(msg_dup, attr)
+
+
+def test_pickle_link_attribute():
+    link = EFBMsgLinkAttribute(title="a", description="b", image="c", url="d")
+    link_dup = pickle.loads(pickle.dumps(link))
+    for attr in ("title", "description", "image", "url"):
+        assert getattr(link, attr) == getattr(link_dup, attr)
+
+
+def test_pickle_location_attribute():
+    location = EFBMsgLocationAttribute(latitude=1.0, longitude=-1.0)
+    location_dup = pickle.loads(pickle.dumps(location))
+    for attr in ("latitude", "longitude"):
+        assert getattr(location, attr) == getattr(location_dup, attr)
+
+
+def test_pickle_commands_attribute():
+    commands = EFBMsgCommands([
+        EFBMsgCommand(name="Command 1", callable_name="command_1",
+                      args=(1, 2, 3), kwargs={"four": 4, "five": 5}),
+        EFBMsgCommand(name="Command 2", callable_name="command_2",
+                      args=("1", "2", "3"), kwargs={"four": "4", "five": "5"})
+    ])
+    commands_dup = pickle.loads(pickle.dumps(commands))
+    for cmd in range(len(commands.commands)):
+        for attr in ("name", "callable_name", "args", "kwargs"):
+            assert getattr(commands.commands[cmd], attr) == \
+                   getattr(commands_dup.commands[cmd], attr)
+
+
+def test_pickle_status():
+    for t in EFBMsgStatusAttribute.Types:
+        status = EFBMsgStatusAttribute(t, 1234)
+        status_dup = pickle.loads(pickle.dumps(status))
+        assert status.status_type == status_dup.status_type
+        assert status.timeout == status_dup.timeout

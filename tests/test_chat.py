@@ -1,3 +1,5 @@
+import pickle
+
 import pytest
 
 from ehforwarderbot import EFBChat, ChatType
@@ -73,3 +75,15 @@ def test_verify_wrong_chat_type():
     chat.chat_type = "user"
     with pytest.raises(ValueError):
         chat.verify()
+
+
+def test_pickle():
+    chat = EFBChat(channel)
+    chat.chat_uid = "00001"
+    chat.chat_name = "Chat"
+    chat.chat_alias = "chaT"
+    chat.chat_type = ChatType.User
+    chat_dup = pickle.loads(pickle.dumps(chat))
+    for attr in ("module_name", "module_id", "channel_emoji", "chat_name",
+                 "chat_type", "chat_alias", "chat_uid", "is_chat"):
+        assert getattr(chat, attr) == getattr(chat_dup, attr)
