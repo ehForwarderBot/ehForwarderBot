@@ -165,7 +165,15 @@ CAPTURE_LOG_ANALYSIS = "I agree to surrender my immortal soul and endless knowle
 
 
 def setup_telemetry(key: str):
-    """Setup telemetry"""
+    """
+    Setup telemetry
+
+    EH Forwarder Bot Framework includes NO code that uploads your log
+    or any other data to anywhere.
+
+    To enable telemetry functionality, additional modules need to be
+    installed manually. See :doc:`telemetry` for details.
+    """
 
     if not isinstance(key, str):
         return
@@ -207,6 +215,9 @@ def main():
                      "Python version:\n"
                      "{py_version}").format(version=__version__, py_version=sys.version)
         try:
+            if args.profile:
+                coordinator.profile = str(args.profile)
+
             conf = config.load_config()
             # Master channel
             master_channel: EFBChannel = utils.locate_module(conf['master_channel'], 'master')
@@ -243,15 +254,15 @@ def main():
         finally:
             print(versions)
     else:
+        if args.profile:
+            coordinator.profile = str(args.profile)
+
         conf = config.load_config()
 
         setup_logging(args, conf)
         setup_telemetry(conf['telemetry'])
 
         atexit.register(stop_gracefully)
-
-        if args.profile:
-            coordinator.profile = str(args.profile)
 
         init(conf)
         poll()
