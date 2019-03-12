@@ -6,7 +6,7 @@ python:
   - 3.7
 install:
   - pip install -Ue .
-  - pip install -U pytest mypy 1a23_telemetry doit
+  - pip install -U pytest mypy 1a23_telemetry doit coverage
 script:
   - doit mypy
   - doit test
