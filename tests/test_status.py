@@ -37,7 +37,7 @@ def test_pickle_member_updates():
 
 def test_pickle_message_removal():
     msg = EFBMsg()
-    slave = next(iter(coordinator.slave.values()))
+    slave = next(iter(coordinator.slaves.values()))
     msg.chat = slave.get_chat("alice")
     msg.uid = "uid"
     msg_removal = EFBMessageRemoval(

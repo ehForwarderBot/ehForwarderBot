@@ -1,7 +1,7 @@
 # coding=utf-8
 
 from abc import abstractmethod, ABC
-from typing import Iterable, Dict, Iterable, TYPE_CHECKING
+from typing import Iterable, Dict, Iterable, TYPE_CHECKING, Any
 
 from ehforwarderbot import ChannelType, ChatType
 from . import EFBChannel, EFBMsg, coordinator
@@ -38,12 +38,14 @@ class EFBStatus(ABC):
             state['destination_channel'] = state['destination_channel'].channel_id
         return state
 
-    def __setstate__(self, state: Dict[str, any]):
+    def __setstate__(self, state: Dict[str, Any]):
         self.__dict__.update(state)
         try:
-            self.destination_channel = coordinator.get_module_by_id(state['destination_channel'])
+            dc = coordinator.get_module_by_id(state['destination_channel'])
+            if isinstance(dc, EFBChannel):
+                self.destination_channel = dc
         except NameError:
-            self.destination_channel = None
+            pass
 
 
 class EFBChatUpdates(EFBStatus):
@@ -89,12 +91,14 @@ class EFBChatUpdates(EFBStatus):
             state['channel'] = state['channel'].channel_id
         return state
 
-    def __setstate__(self, state: Dict[str, any]):
+    def __setstate__(self, state: Dict[str, Any]):
         super(EFBChatUpdates, self).__setstate__(state)
         try:
-            self.channel = coordinator.get_module_by_id(state['channel'])
+            c = coordinator.get_module_by_id(state['channel'])
+            if isinstance(c, EFBChannel):
+                self.channel = c
         except NameError:
-            self.channel = None
+            pass
 
 
 class EFBMemberUpdates(EFBStatus):
@@ -144,12 +148,14 @@ class EFBMemberUpdates(EFBStatus):
             state['channel'] = state['channel'].channel_id
         return state
 
-    def __setstate__(self, state: Dict[str, any]):
+    def __setstate__(self, state: Dict[str, Any]):
         super(EFBMemberUpdates, self).__setstate__(state)
         try:
-            self.channel = coordinator.get_module_by_id(state['channel'])
+            c = coordinator.get_module_by_id(state['channel'])
+            if isinstance(c, EFBChannel):
+                self.channel = c
         except NameError:
-            self.channel = None
+            pass
 
 
 class EFBMessageRemoval(EFBStatus):
@@ -212,12 +218,14 @@ class EFBMessageRemoval(EFBStatus):
             state['source_channel'] = state['source_channel'].channel_id
         return state
 
-    def __setstate__(self, state: Dict[str, any]):
+    def __setstate__(self, state: Dict[str, Any]):
         super(EFBMessageRemoval, self).__setstate__(state)
         try:
-            self.source_channel = coordinator.get_module_by_id(state['source_channel'])
+            sc = coordinator.get_module_by_id(state['source_channel'])
+            if isinstance(sc, EFBChannel):
+                self.source_channel = sc
         except NameError:
-            self.source_channel = None
+            pass
 
 
 class EFBReactToMessage(EFBStatus):
@@ -243,7 +251,9 @@ class EFBReactToMessage(EFBStatus):
         self.chat: 'EFBChat' = chat
         self.msg_id: str = msg_id
         self.reaction: str = reaction
-        self.destination_channel: EFBChannel = coordinator.get_module_by_id(self.chat.module_id)
+        dc = coordinator.get_module_by_id(self.chat.module_id)
+        if isinstance(dc, EFBChannel):
+            self.destination_channel = dc
 
     def verify(self):
         if not self.chat:

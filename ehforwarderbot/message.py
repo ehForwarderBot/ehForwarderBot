@@ -180,14 +180,16 @@ class EFBMsg:
             state['deliver_to'] = state['deliver_to'].channel_id
         return state
 
-    def __setstate__(self, state: Dict[str, any]):
+    def __setstate__(self, state: Dict[str, Any]):
         self.__dict__.update(state)
         if self.path:
             self.file = open(self.path, 'rb')
         try:
-            self.deliver_to = coordinator.get_module_by_id(state['deliver_to'])
+            dt = coordinator.get_module_by_id(state['deliver_to'])
+            if isinstance(dt, EFBChannel):
+                self.deliver_to = dt
         except NameError:
-            self.deliver_to = None
+            pass
 
 
 class EFBMsgAttribute(ABC):
@@ -292,8 +294,8 @@ class EFBMsgCommand:
     """
     name: str = ""
     callable_name: str = ""
-    args: List[Any] = []
-    kwargs: Dict[str, Any] = {}
+    args: Tuple = tuple()
+    kwargs: Mapping[str, Any] = {}
 
     def __init__(self, name: str, callable_name: str, args: Iterable[Any] = None,
                  kwargs: Optional[Mapping[str, Any]] = None):
@@ -326,7 +328,7 @@ class EFBMsgCommand:
         return "<EFBMsgCommand: {name}, {callable_name}({params})>".format(
             name=self.name,
             callable_name=self.callable_name,
-            params=", ".join(self.args + ["%r=%r" % i for i in self.kwargs.items()])
+            params=", ".join(self.args + tuple("%r=%r" % i for i in self.kwargs.items()))
         )
 
     def verify(self):

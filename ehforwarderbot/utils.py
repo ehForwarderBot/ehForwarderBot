@@ -1,12 +1,13 @@
 # coding=utf-8
 
+import logging
 import os
 import pydoc
-import logging
 from pathlib import Path
+from typing import Callable
 
 import pkg_resources
-from typing import Callable, Union
+
 from . import coordinator
 
 
@@ -33,7 +34,7 @@ def extra(name: str, desc: str) -> Callable:
     return attr_dec
 
 
-def get_base_path() -> Union[os.PathLike, Path]:
+def get_base_path() -> Path:
     """
     Get the base data path for EFB. This can be defined by the
     environment variable ``EFB_DATA_PATH``.
@@ -56,7 +57,7 @@ def get_base_path() -> Union[os.PathLike, Path]:
     return base_path
 
 
-def get_data_path(module_id: str) -> Union[os.PathLike, Path]:
+def get_data_path(module_id: str) -> Path:
     """
     Get the path for persistent storage of a module.
     
@@ -75,7 +76,7 @@ def get_data_path(module_id: str) -> Union[os.PathLike, Path]:
     return data_path
 
 
-def get_config_path(module_id: str = None, ext: str = 'yaml') -> Union[os.PathLike, Path]:
+def get_config_path(module_id: str = None, ext: str = 'yaml') -> Path:
     """
     Get path for configuration file. Defaulted to
     ``~/.ehforwarderbot/profiles/profile_name/channel_id/config.yaml``.
@@ -101,7 +102,7 @@ def get_config_path(module_id: str = None, ext: str = 'yaml') -> Union[os.PathLi
     return config_path / "config.{}".format(ext)
 
 
-def get_custom_modules_path() -> Union[os.PathLike, Path]:
+def get_custom_modules_path() -> Path:
     """
     Get the path to custom channels
 

@@ -100,9 +100,12 @@ def send_message(msg: 'EFBMsg') -> Optional['EFBMsg']:
 
     # Go through middlewares
     for i in middlewares:
-        msg = i.process_message(msg)
-        if msg is None:
+        m = i.process_message(msg)
+        if m is None:
             return None
+        # for mypy type check
+        assert m is not None
+        msg = m
 
     msg.verify()
 
