@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-02-23 22:52\n"
+"POT-Creation-Date: 2019-03-12 14:35+1100\n"
+"PO-Revision-Date: 2019-03-12 03:38\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -95,6 +95,27 @@ msgstr "Daftar middleware dengan penyelaras."
 msgid "Middleware to register"
 msgstr "Middleware untuk mendaftar"
 
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:1
+msgid "Return the module instance of a provided module ID :param module_id: Module ID, with instance ID if available."
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:0
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:0
+msgid "Returns"
+msgstr "Pulangan"
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:4
+msgid "Module instance requested."
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:0
+msgid "raises"
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:6
+msgid ":exc:`NameError` -- When the module is not found."
+msgstr ""
+
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.master_thread:1
 msgid "The thread running poll() of the master channel."
 msgstr ""
@@ -119,10 +140,6 @@ msgstr "Menyampaikan mesej ke saluran tujuan."
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:3
 msgid "The message"
 msgstr "Mesej itu"
-
-#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:0
-msgid "Returns"
-msgstr "Pulangan"
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:6
 msgid "The message sent by the destination channel, includes the updated message ID from there. Returns ``None`` if the message is not sent."

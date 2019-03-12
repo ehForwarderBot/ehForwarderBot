@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-02-23 22:52\n"
+"POT-Creation-Date: 2019-03-12 14:35+1100\n"
+"PO-Revision-Date: 2019-03-12 03:38\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -164,7 +164,7 @@ msgid "Try to provided as much as you can, if not, provide a minimum information
 msgstr "Cuba berikan seberapa banyak yang anda boleh, jika tidak, beri maklumat minimum dalam saluran:"
 
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:6
-msgid "Slave channel ID and chat ID (:attr:`message.chat.channel_id <.EFBChat.channel_id>` and :attr:`message.chat.chat_uid <.EFBChat.chat_uid>`)"
+msgid "Slave channel ID and chat ID (:attr:`message.chat.module_id <.EFBChat.module_id>` and :attr:`message.chat.chat_uid <.EFBChat.chat_uid>`)"
 msgstr ""
 
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:8

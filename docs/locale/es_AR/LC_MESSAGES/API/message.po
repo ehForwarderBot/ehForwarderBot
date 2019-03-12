@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-02-23 22:52\n"
+"POT-Creation-Date: 2019-03-12 14:35+1100\n"
+"PO-Revision-Date: 2019-03-12 03:37\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Spanish, Argentina\n"
 "MIME-Version: 1.0\n"
@@ -148,8 +148,8 @@ msgstr ""
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:152
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:7
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:25
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:7
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:13
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:11
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:17
 msgid "str"
 msgstr ""
 
@@ -238,7 +238,6 @@ msgid "A series of vendor specific attributes attached. This can be used by any 
 msgstr ""
 
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:161
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:25
 msgid "Dict[str, Any]"
 msgstr ""
 
@@ -322,29 +321,33 @@ msgid "Bases: :class:`object`"
 msgstr ""
 
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:1
-msgid "EFB message command."
-msgstr "Comando de mensaje EFB."
+msgid "EFB message command. This object records a way to call a method in the module object. In case where the message has an ``author`` from a different module from the ``chat``, this function should be called on the ``author``'s module."
+msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:5
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:9
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:1
 msgid "Human-friendly name of the command."
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:11
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:15
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:3
 msgid "Callable name of the command."
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:17
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:21
 msgid "Arguments passed to the function."
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:19
-msgid "List[Any]"
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:23
+msgid "Iterable[Any]"
 msgstr ""
 
-#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:23
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:27
 msgid "Keyword arguments passed to the function."
+msgstr ""
+
+#: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:29
+msgid "Mapping[str, Any]"
 msgstr ""
 
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:5

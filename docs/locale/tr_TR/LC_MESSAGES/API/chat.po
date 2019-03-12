@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-02-23 22:52\n"
+"POT-Creation-Date: 2019-03-12 14:35+1100\n"
+"PO-Revision-Date: 2019-03-12 03:37\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -25,11 +25,9 @@ msgid "EFB Chat object. This is used to represent a chat or a group member."
 msgstr "EFB Sohbet nesnesi. Bir sohbeti veya bir grup üyesini temsil etmesi için kullanılır."
 
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:5
-msgid "Unique ID of the channel."
+msgid "Unique ID of the module."
 msgstr ""
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
@@ -45,7 +43,6 @@ msgid "type"
 msgstr ""
 
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:7
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:13
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:19
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:25
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:31
@@ -54,11 +51,15 @@ msgid "str"
 msgstr ""
 
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:11
-msgid "Emoji of the channel."
+msgid "Emoji of the channel, if available."
+msgstr ""
+
+#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:13
+msgid "Optional[str]"
 msgstr ""
 
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:17
-msgid "Name of the channel."
+msgid "Name of the module."
 msgstr ""
 
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:23
@@ -86,8 +87,6 @@ msgid "Indicate if this object represents a chat. Defaulted to ``True``. This sh
 msgstr ""
 
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:50
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:78
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:84
 msgid "bool"
 msgstr ""
 
@@ -115,21 +114,25 @@ msgstr ""
 msgid "Dict[str, Any]"
 msgstr ""
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:76
-msgid "Indicate if this chat represents the user."
-msgstr ""
-
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:82
-msgid "Indicate if this chat represents a system chat/member."
-msgstr ""
-
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.__init__:0
 msgid "Parameters"
 msgstr "Parametreler"
 
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.__init__:1
-msgid "Provide the channel object to fill :attr:`channel_name`, :attr:`channel_emoji`, and :attr:`channel_id` automatically."
-msgstr "Otomatik olarak :attr:`channel_name`, :attr:`channel_emoji`, ve :attr:`channel_id` doldurmak için kanal nesnesini sağla."
+msgid "Provide the channel object to fill :attr:`module_name`, :attr:`channel_emoji`, and :attr:`module_id` automatically."
+msgstr ""
+
+#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.__init__:4
+msgid "Provide the middleware object to fill :attr:`module_name`, and :attr:`module_id` automatically."
+msgstr ""
+
+#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.channel_id:1
+msgid "Alias to module_id. (This property will be deprecated)"
+msgstr ""
+
+#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.channel_name:1
+msgid "Alias to module_name. (This property will be deprecated)"
+msgstr ""
 
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.display_name:1
 msgid "Shortcut property, equivalent to ``chat_alias or chat_name``"

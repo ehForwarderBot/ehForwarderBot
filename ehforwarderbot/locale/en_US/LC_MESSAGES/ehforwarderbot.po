@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-02-23 22:52\n"
+"POT-Creation-Date: 2019-03-12 14:35+1100\n"
+"PO-Revision-Date: 2019-03-12 03:37\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: English\n"
 "Language: en_US\n"
@@ -169,13 +169,13 @@ msgid "You have chosen to enable the following modules for profile \"{0}\".\n\n"
 "Master channel: {1}"
 msgstr ""
 
-#: ehforwarderbot/wizard.py:591 ehforwarderbot/__main__.py:218
+#: ehforwarderbot/wizard.py:591 ehforwarderbot/__main__.py:231
 msgid "Slave channel:"
 msgid_plural "Slave channels:"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ehforwarderbot/wizard.py:598 ehforwarderbot/__main__.py:228
+#: ehforwarderbot/wizard.py:598 ehforwarderbot/__main__.py:241
 msgid "Middleware:"
 msgid_plural "Middlewares:"
 msgstr[0] ""
@@ -230,11 +230,11 @@ msgid "You may want to visit the modules repository to find a list of available 
 msgstr ""
 
 #: ehforwarderbot/wizard.py:730
-msgid "No master channel detected.  EH Forwarder Bot requires at least one master channel to run."
+msgid "No master channel detected.  EH Forwarder Bot requires at least one master channel installed to run."
 msgstr ""
 
 #: ehforwarderbot/wizard.py:737
-msgid "No slave channel detected.  EH Forwarder Bot requires at least one slave channel to run."
+msgid "No slave channel detected.  EH Forwarder Bot requires at least one slave channel installed to run."
 msgstr ""
 
 #: ehforwarderbot/wizard.py:762
@@ -259,47 +259,47 @@ msgstr ""
 msgid "Show version numbers and exit."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:83
+#: ehforwarderbot/__main__.py:85
 msgid "Initializing slave {}..."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:92
+#: ehforwarderbot/__main__.py:94
 #, python-brace-format
 msgid "Slave channel {name} ({id}) # {instance_id} is initialized."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:94 ehforwarderbot/__main__.py:107
-#: ehforwarderbot/__main__.py:121
+#: ehforwarderbot/__main__.py:96 ehforwarderbot/__main__.py:109
+#: ehforwarderbot/__main__.py:123
 msgid "Default profile"
 msgstr ""
 
-#: ehforwarderbot/__main__.py:97
+#: ehforwarderbot/__main__.py:99
 msgid "Initializing master {}..."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:104
+#: ehforwarderbot/__main__.py:106
 #, python-brace-format
 msgid "Master channel {name} ({id}) # {instance_id} is initialized."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:109
+#: ehforwarderbot/__main__.py:111
 msgid "All channels initialized."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:111
+#: ehforwarderbot/__main__.py:113
 msgid "Initializing middleware {}..."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:119
+#: ehforwarderbot/__main__.py:121
 #, python-brace-format
 msgid "Middleware {name} ({id}) # {instance_id} is initialized."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:123
+#: ehforwarderbot/__main__.py:125
 msgid "All middlewares are initialized."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:203
+#: ehforwarderbot/__main__.py:213
 #, python-brace-format
 msgid "EH Forwarder Bot\n"
 "Version: {version}\n"
@@ -307,22 +307,22 @@ msgid "EH Forwarder Bot\n"
 "{py_version}"
 msgstr ""
 
-#: ehforwarderbot/__main__.py:212 ehforwarderbot/__main__.py:221
-#: ehforwarderbot/__main__.py:232
+#: ehforwarderbot/__main__.py:225 ehforwarderbot/__main__.py:234
+#: ehforwarderbot/__main__.py:245
 msgid "Default instance"
 msgstr ""
 
-#: ehforwarderbot/__main__.py:213
+#: ehforwarderbot/__main__.py:226
 msgid "Master channel:"
 msgstr ""
 
-#: ehforwarderbot/__main__.py:213 ehforwarderbot/__main__.py:223
-#: ehforwarderbot/__main__.py:234
+#: ehforwarderbot/__main__.py:226 ehforwarderbot/__main__.py:236
+#: ehforwarderbot/__main__.py:247
 #, python-brace-format
 msgid "{name} ({id}) {version} # {instance_id}"
 msgstr ""
 
-#: ehforwarderbot/__main__.py:240
+#: ehforwarderbot/__main__.py:253
 msgid "No middleware is enabled."
 msgstr ""
 

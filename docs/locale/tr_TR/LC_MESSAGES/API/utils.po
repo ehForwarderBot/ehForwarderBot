@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-02-23 22:52\n"
+"POT-Creation-Date: 2019-03-12 14:35+1100\n"
+"PO-Revision-Date: 2019-03-12 03:37\n"
 "Last-Translator: blueset <ilove@1a23.com>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -68,13 +68,6 @@ msgstr "Bu yöntem mevcut değilse sorgulanan yolu oluşturur."
 msgid "The base path."
 msgstr "Temel yol."
 
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
-msgid "Return type"
-msgstr "Dönüş türü"
-
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:1
 msgid "Get path for configuration file. Defaulted to ``~/.ehforwarderbot/profiles/profile_name/channel_id/config.yaml``."
 msgstr "Yapılandırma dosyası için yol edinin. Öntanımlı olarak``~/.ehforwarderbot/profiles/profile_name/channel_id/config.yaml``."
@@ -100,12 +93,12 @@ msgid "Get the path to custom channels"
 msgstr "Özel kanallara giden yolu al"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:3
-msgid "The path."
-msgstr "Yol."
+msgid "The path for custom channels."
+msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:1
-msgid "Get the path for permanent storage of a module."
-msgstr "Bir modülün kalıcı olarak depolanması için yol edinin."
+msgid "Get the path for persistent storage of a module."
+msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:5
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:3
