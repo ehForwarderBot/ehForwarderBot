@@ -20,6 +20,7 @@ def task_sphinx_html():
 def task_gettext():
     pot = "./{package}/locale/{package}.pot".format(package=PACKAGE)
     sources = glob.glob("./{package}/**/*.py".format(package=PACKAGE), recursive=True)
+    sources = [i for i in sources if "__version__.py" not in i]
     command = "xgettext --add-comments=TRANSLATORS -o " + pot + " " + " ".join(sources)
     sources += glob.glob("./docs/**/*.rst", recursive=True)
     targets = [pot] + glob.glob("./docs/_build/locale/**/*.pot", recursive=True)
