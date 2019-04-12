@@ -67,7 +67,7 @@ def task_crowdin_pull():
 def task_commit_lang_file():
     return {
         "actions": [
-            ["git", "add", "*.po"],
+            ["git", "add", "*.po", "readme_translations/*.rst"],
             ["git", "commit", "-m", "Sync localization files from Crowdin"]
         ],
         "task_dep": ["crowdin", "crowdin_pull"]
