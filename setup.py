@@ -39,7 +39,6 @@ setup(
         "ruamel.yaml",
         "asciimatics",
         "cjkwrap",
-        "typing",
         "typing_extensions"
     ],
     extras_require={
