@@ -38,6 +38,24 @@ stable, so proceed with caution.
     pip3 install git+https://github.com/blueset/ehforwarderbot.git
 
 
+Alternative installation methods
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can find a list of alternative installation methods contributed
+by the community in the `project wiki`_.
+
+For scripts, containers (e.g. Docker), etc. that may include one or
+more external modules, please visit the `modules repository`_.
+
+.. note::
+
+    These alternative installation methods are maintained by the
+    community, please consult their respective author or maintainer
+    for help related to those methods.
+
+.. _project wiki: https://github.com/blueset/ehForwarderBot/wiki/Alternative-installation-methods
+
+
 A good network environment
 --------------------------
 
@@ -59,7 +77,7 @@ Choose, install and enable modules
 ----------------------------------
 
 Currently, all modules that was submitted to us are recorded in
-the `channels repository <https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository>`_.
+the `modules repository`_.
 You can choose the channels that fits your need the best.
 
 Instructions about installing each channel is available at
@@ -97,6 +115,8 @@ running in one profile. Meanwhile, middlewares are completely optional.
         - bar.dummy
         middlewares:
         - foo.null
+
+.. _modules repository: https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository
 
 Launch EFB
 ----------
