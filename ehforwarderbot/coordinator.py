@@ -46,7 +46,7 @@ master_thread: Optional[threading.Thread] = None
 slave_threads: Dict[str, threading.Thread] = dict()
 """Threads running poll() from slave channels. Keys are the channel IDs."""
 
-translator: NullTranslations  # late init
+translator: NullTranslations = NullTranslations()
 """Internal GNU gettext translator."""
 
 

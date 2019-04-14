@@ -8,7 +8,7 @@ from typing import Dict, Any
 
 from typing_extensions import Final
 
-from . import utils
+from . import utils, coordinator
 from .channel import EFBChannel
 from .middleware import EFBMiddleware
 from .constants import ChannelType
@@ -18,6 +18,8 @@ OPTIONAL_DEFAULTS: Final[Dict[str, Any]] = {
     "logging": {},
     "telemetry": ''
 }
+
+_ = coordinator.translator.gettext
 
 
 __all__ = ["load_config"]
@@ -31,7 +33,7 @@ def load_config() -> Dict[str, Any]:
 
     conf_path = utils.get_config_path()
     if not os.path.exists(conf_path):
-        raise FileNotFoundError("Config File does not exist. (%s)" % conf_path)
+        raise FileNotFoundError(_("Config File does not exist. ({})").format(conf_path))
     with open(conf_path) as f:
         data: Dict[str, Any] = OPTIONAL_DEFAULTS.copy()
         data.update(YAML().load(f))
@@ -39,38 +41,52 @@ def load_config() -> Dict[str, Any]:
         # Verify configuration
 
         # - Master channel
-        if not isinstance(data.get("master_channel", None), str):
-            raise ValueError("Master Channel path must be a string.")
+        master_channel_id = data.get("master_channel", None)
+        if not master_channel_id:
+            raise ValueError(_("Master Channel is not specified in the profile config."))
+        elif not isinstance(master_channel_id, str):
+            raise ValueError(_("Master Channel ID is expected to be a string, but "
+                               "\"{0}\" is of type {1}.").format(master_channel_id, type(master_channel_id)))
         channel = utils.locate_module(data['master_channel'], 'master')
         if not channel:
-            raise ValueError("\"%s\" is not found." % data['master_channel'])
+            raise ValueError(_("\"{}\" is not found.").format(master_channel_id))
         if not issubclass(channel, EFBChannel):
-            raise ValueError("\"%s\" is not a channel." % data['master_channel'])
+            raise ValueError(_("\"{0}\" is not a channel, but a {1}.").format(master_channel_id, channel))
         if not channel.channel_type == ChannelType.Master:
-            raise ValueError("\"%s\" is not a master channel." % data['master_channel'])
+            raise ValueError(_("\"{0}\" is not a master channel, but a {1}.")
+                             .format(master_channel_id, channel.channel_type))
 
         # - Slave channels
-        if not isinstance(data.get("slave_channels", None), list):
-            raise ValueError("Slave Channel paths must be a list.")
-        for i in data['slave_channels']:
+        slave_channels_list = data.get("slave_channels", None)
+        if not slave_channels_list:
+            if not master_channel_id:
+                raise ValueError(_("Slave Channels are not specified in the profile config."))
+        elif not isinstance(slave_channels_list, list):
+            raise ValueError(_("Slave Channel IDs are expected to be a list, but {} is found.")
+                             .format(slave_channels_list))
+        for i in slave_channels_list:
             channel = utils.locate_module(i, 'slave')
             if not channel:
-                raise ValueError("\"%s\" is not found." % i)
+                raise ValueError(_("\"{}\" is not found.").format(master_channel_id))
             if not issubclass(channel, EFBChannel):
-                raise ValueError("\"%s\" is not a channel." % i)
+                raise ValueError(_("\"{0}\" is not a channel, but a {1}.").format(master_channel_id, channel))
             if not channel.channel_type == ChannelType.Slave:
-                raise ValueError("\"%s\" is not a slave channel." % i)
+                raise ValueError(_("\"{0}\" is not a slave channel, but a {1}.")
+                                 .format(master_channel_id, channel.channel_type))
 
         # - Middlewares
-        if data.get("middlewares", None) is not None:
-            if not isinstance(data.get("middlewares"), list):
-                raise ValueError("Middleware paths must be a list")
-            for i in data['middlewares']:
+        middlewares_list = data.get("middlewares", None)
+        if middlewares_list is not None:
+            if not isinstance(middlewares_list, list):
+                raise ValueError(_("Middleware IDs must be a list, but a {} is found.")
+                                 .format(type(middlewares_list)))
+            for i in middlewares_list:
                 middleware = utils.locate_module(i, 'middleware')
                 if not middleware:
-                    raise ValueError("\"%s\" is not found." % i)
+                    raise ValueError(_("\"{}\" is not found.").format(i))
                 if not issubclass(middleware, EFBMiddleware):
-                    raise ValueError("\"%s\" is not a middleware." % i)
+                    raise ValueError(_("\"{0}\" is not a middleware, but a {1}.")
+                                     .format(i, middleware))
         else:
             data['middlewares'] = list()
     return data
