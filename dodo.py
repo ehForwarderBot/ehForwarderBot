@@ -3,9 +3,8 @@ import glob
 from doit.action import CmdAction
 
 PACKAGE = "ehforwarderbot"
-DEFAULT_BUMP_MODE = "bump"
-# {major}.{minor}.{patch}{stage}{bump}.dev{dev}
-# stage: a, b, rc, stable, .post
+DEFAULT_BUMP_MODE = "beta"
+# major, minor, patch, alpha, beta, dev, post
 DOIT_CONFIG = {
     "default_tasks": ["msgfmt"]
 }
@@ -76,7 +75,7 @@ def task_commit_lang_file():
 
 def task_bump_version():
     def gen_bump_version(mode=DEFAULT_BUMP_MODE):
-        return 'bumpversion ' + mode
+        return './bump.py ' + mode
 
     return {
         "actions": [CmdAction(gen_bump_version)],
@@ -86,13 +85,14 @@ def task_bump_version():
                 "short": "b",
                 "long": "bump",
                 "default": DEFAULT_BUMP_MODE,
-                "help": "{major}.{minor}.{patch}{stage}{bump}.dev{dev}",
+                "help": "{major}.{minor}.{patch}{(a|b)}{.post}{.dev}",
                 "choices": [
                     ("major", "Bump a major version"),
                     ("minor", "Bump a minor version"),
                     ("patch", "Bump a patch version"),
-                    ("stage", "Bump a stage, in order: a, b, rc, (stable), .post"),
-                    ("bump", "Bump a bump version (N/A to stable)"),
+                    ("alpha", "Bump to the next alpha version"),
+                    ("alpha", "Bump to the next beta version"),
+                    ("post", "Bump to the next post version"),
                     ("dev", "Bump a dev version (for commit only)")
                 ]
             }
