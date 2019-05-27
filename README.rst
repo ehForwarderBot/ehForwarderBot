@@ -6,6 +6,7 @@ EH Forwarder Bot
    :target: https://www.python.org/
 .. image:: https://img.shields.io/travis/com/blueset/ehForwarderBot.svg
    :alt: Travis (.com)
+   :target: https://travis-ci.com
 .. image:: https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg?logo=gitter-white
    :alt: Gitter
    :target: https://gitter.im/blueset/ehForwarderBot
@@ -99,6 +100,18 @@ later versions::
 
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    
+Localization support
+--------------------
+
+EFB supports localized user interface prompts experimentally,
+by setting the locale environmental variable (``LANGUAGE``,
+``LC_ALL``, ``LC_MESSAGES`` or ``LANG``) to one of our
+`supported languages`_. Meanwhile, you can help to translate
+this project into your languages on `our Crowdin page`_.
+
+.. _supported languages: https://crowdin.com/project/ehforwarderbot/
+.. _our Crowdin page: https://crowdin.com/project/ehforwarderbot/
 
 .. _Install and enable channels: https://ehforwarderbot.readthedocs.io/en/latest/getting-started.html
 .. _channels repository: https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository
