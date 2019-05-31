@@ -41,7 +41,7 @@ class EFBMsg:
             If no media file is modified, the edited message may carry no information about
             the file.
         edit_media (bool): Flag this up if any file attached to the message is modified.
-            If this value is true, ``edit_media`` must also be true.
+            If this value is true, ``edit`` must also be ``True``.
         file (IO[bytes]): File object to multimedia file, type "ra". ``None`` if N/A.
             recommended to use ``NamedTemporaryFile`` object, the file can be
             deleted when closed, if not used otherwise.
@@ -442,7 +442,7 @@ class EFBMsgSubstitutions(dict):
 
     Dictionary of text substitutions targeting to a user or member.
 
-    The key of the dictionary is a tuple of two :obj:`int`\ s, where first
+    The key of the dictionary is a tuple of two :obj:`int`\\ s, where first
     of it is the starting position in the string, and the second is the
     ending position defined similar to Python's substring. A tuple of
     ``(3, 15)`` corresponds to ``msg.text[3:15]``.

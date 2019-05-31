@@ -104,10 +104,11 @@ later versions::
 Localization support
 --------------------
 
-EFB supports localized user interface prompts experimentally,
+EFB supports localized user interface prompts,
 by setting the locale environmental variable (``LANGUAGE``,
 ``LC_ALL``, ``LC_MESSAGES`` or ``LANG``) to one of our
-`supported languages`_. Meanwhile, you can help to translate
+`supported languages`_. Our documentation is also available in different
+languages. You can help to translate
 this project into your languages on `our Crowdin page`_.
 
 .. _supported languages: https://crowdin.com/project/ehforwarderbot/
