@@ -56,13 +56,12 @@ more external modules, please visit the `modules repository`_.
 .. _project wiki: https://github.com/blueset/ehForwarderBot/wiki/Alternative-installation-methods
 
 
-A good network environment
---------------------------
+A stable internet connection
+----------------------------
 
-Since most of our channels are using polling for message retrieval,
-a good network environment is necessary for channels to run smoothly.
-A poor network environment may lead to slow response,
-or loss of messages.
+Since the majority of our channels are using polling for message retrieval,
+a stable internet connection is necessary for channels to run smoothly.
+An unstable connection may lead to slow response, or loss of messages.
 
 
 Create local directories
@@ -130,6 +129,11 @@ This will launch EFB directly in the current environment. The default
 profile, append ``--profile <profile-name>`` to the command.
 
 For more command line options, use ``--help`` option.
+
+Use EFB in another language
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TODO: talk about language env var, and crowdin.
 
 Launch EFB as a daemon process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

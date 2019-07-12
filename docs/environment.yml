@@ -8,6 +8,7 @@ dependencies:
 - pip
 - pip:
   - sphinx-readable-theme
+  - sphinxcontrib-restbuilder
   - sphinx-intl
   - ruamel.yaml
   - asciimatics

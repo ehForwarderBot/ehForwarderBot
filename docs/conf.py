@@ -42,7 +42,8 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.todo',
               'sphinx.ext.viewcode',
               'sphinx.ext.githubpages',
-              'sphinx.ext.napoleon']
+              'sphinx.ext.napoleon',
+              'sphinxcontrib.restbuilder']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -187,9 +188,10 @@ napoleon_use_ivar = False
 napoleon_use_param = True
 napoleon_use_rtype = True
 
-# Sphinx-intl esttings
-locale_dirs = ['locale/']   # path is example but recommended.
-gettext_compact = False     # optional.
+# Sphinx-intl settings
+locale_dirs = ['locale/']
+gettext_compact = False
+gettext_additional_targets = ['literal-block', 'image']
 
 
 conversion = {
