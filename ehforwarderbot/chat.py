@@ -2,13 +2,32 @@
 
 import copy
 import warnings
+from enum import Enum
 from typing import List, Dict, Any, Optional
 
 from .channel import EFBChannel
 from .constants import ChatType
 from .middleware import EFBMiddleware
 
-__all__ = ['EFBChat']
+__all__ = ['EFBChat', 'EFBChatNotificationState']
+
+
+class EFBChatNotificationState(Enum):
+    """
+    Indicates the notifications settings of a chat in its slave channel
+    or middleware. If an exact match is not available, choose the most similar one.
+    """
+
+    NONE = 0
+    """No notification is sent to slave IM channel at all."""
+
+    MENTIONS = 1
+    """Notifications are sent only when the user is mentioned in the message, 
+    in the form of @-references or direct reply (message target).
+    """
+
+    ALL = -1
+    """All messages in the chat triggers notifications."""
 
 
 class EFBChat:
@@ -25,6 +44,8 @@ class EFBChat:
         chat_uid (str): Unique ID of the chat. This should be unique within the channel.
         is_chat (bool): Indicate if this object represents a chat. Defaulted to ``True``.
             This should be set to ``False`` when used on a group member.
+        notification (EFBChatNotificationState): Indicate the notification settings of the chat in
+            its slave channel (or middleware), defaulted to ``ALL``.
         group (:obj:`.EFBChat` or None): The parent chat of the member. Only
             available to chat member objects. Defaulted to ``None``.
         members (list of :obj:`.EFBChat`): Provide a list of members
@@ -64,6 +85,7 @@ class EFBChat:
         self.chat_alias: Optional[str] = None
         self.chat_uid: str = ""
         self.is_chat: bool = True
+        self.notification: EFBChatNotificationState = EFBChatNotificationState.ALL
         self.members: List[EFBChat] = []
         self.group: Optional[EFBChat] = None
         self.vendor_specific: Dict[str, Any] = dict()
