@@ -60,3 +60,13 @@ class EFBOperationNotSupported(EFBMessageError):
     Can be raised in :meth:`.EFBChannel.send_message` and :meth:`.EFBChannel.send_status`.
     """
     pass
+
+
+class EFBMessageReactionNotPossible(EFBException):
+    """
+    Raised by slave channel when a message reaction request from master channel is
+    not possible to be processed.
+
+    Can be raised in :meth:`.EFBChannel.send_status`.
+    """
+    pass
