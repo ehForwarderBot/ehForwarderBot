@@ -22,7 +22,7 @@ class EFBChatNotificationState(Enum):
     """No notification is sent to slave IM channel at all."""
 
     MENTIONS = 1
-    """Notifications are sent only when the user is mentioned in the message, 
+    """Notifications are sent only when the user is mentioned in the message,
     in the form of @-references or direct reply (message target).
     """
 
@@ -149,7 +149,7 @@ class EFBChat:
     def channel_id(self) -> str:
         """Alias to module_id. (This property will be deprecated)"""
         warnings.warn("channel_id will be deprecated. Use module_id instead.", PendingDeprecationWarning)
-        return self.channel_id
+        return self.module_id
 
     @channel_id.setter
     def channel_id(self, value):
@@ -160,7 +160,7 @@ class EFBChat:
     def channel_name(self) -> str:
         """Alias to module_name. (This property will be deprecated)"""
         warnings.warn("channel_name will be deprecated. Use module_name instead.", PendingDeprecationWarning)
-        return self.channel_name
+        return self.module_name
 
     @channel_name.setter
     def channel_name(self, value):
