@@ -175,15 +175,25 @@ class EFBMsg:
 
     def __getstate__(self):
         state = self.__dict__.copy()
+        # Remove file object
         del state['file']
+
+        # Convert channel object to channel ID
         if state['deliver_to'] is not None:
             state['deliver_to'] = state['deliver_to'].channel_id
         return state
 
     def __setstate__(self, state: Dict[str, Any]):
         self.__dict__.update(state)
+
+        # Try to load file from original path
         if self.path:
-            self.file = open(self.path, 'rb')
+            try:
+                self.file = open(self.path, 'rb')
+            except IOError:
+                pass
+
+        # Try to load "deliver_to" channel
         try:
             dt = coordinator.get_module_by_id(state['deliver_to'])
             if isinstance(dt, EFBChannel):

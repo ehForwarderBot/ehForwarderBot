@@ -213,7 +213,9 @@ def main():
         versions = _("EH Forwarder Bot\n"
                      "Version: {version}\n"
                      "Python version:\n"
-                     "{py_version}").format(version=__version__, py_version=sys.version)
+                     "{py_version}\n"
+                     "Running on profile \"{profile}\"."
+                     ).format(version=__version__, py_version=sys.version, profile=args.profile)
         try:
             if args.profile:
                 coordinator.profile = str(args.profile)
