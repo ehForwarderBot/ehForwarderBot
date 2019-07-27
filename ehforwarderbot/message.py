@@ -176,7 +176,8 @@ class EFBMsg:
     def __getstate__(self):
         state = self.__dict__.copy()
         # Remove file object
-        del state['file']
+        if state.get('file', None) is not None:
+            del state['file']
 
         # Convert channel object to channel ID
         if state['deliver_to'] is not None:
