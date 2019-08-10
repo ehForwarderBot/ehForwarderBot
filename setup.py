@@ -4,17 +4,17 @@ from setuptools import setup, find_packages
 if sys.version_info < (3, 6):
     raise Exception("Python 3.6 or higher is required. Your version is %s." % sys.version)
 
-long_description = open('README.rst').read()
+# long_description = open('README.rst').read()
 
-__version__ = ""
-exec(open('ehforwarderbot/__version__.py').read())
+# __version__ = ""
+# exec(open('ehforwarderbot/__version__.py').read())
 
 setup(
     name='ehforwarderbot',
     packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
-    version=__version__,
+    version="attr: ehforwarderbot.__version__.__version__",
     description='An extensible message tunneling chat bot framework.',
-    long_description=long_description,
+    long_description="file: README.rst",
     author='Eana Hufwe',
     author_email='ilove@1a23.com',
     url='https://github.com/blueset/ehforwarderbot',
@@ -49,5 +49,10 @@ setup(
             'ehforwarderbot = ehforwarderbot.__main__:main',
             'efb-wizard = ehforwarderbot.wizard:main'
         ]
+    },
+    project_urls={
+        "Documentation": "https://ehForwarderBot.readthedocs.io",
+        "Telegram Chat": "https://t.me/EFBSupport",
+        "Gitter Chat": "https://gitter.im/blueset/ehForwarderBot"
     }
 )
