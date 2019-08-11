@@ -1,16 +1,16 @@
 # coding=utf-8
 
 from abc import abstractmethod, ABC
-from typing import Iterable, Dict, Iterable, TYPE_CHECKING, Any
+from typing import  Dict, Collection, TYPE_CHECKING, Any
 
-from ehforwarderbot import ChannelType, ChatType
-from . import EFBChannel, EFBMsg, coordinator
+from . import EFBChannel, EFBMsg, coordinator, ChannelType, ChatType
+from .message import Reactions
 
 if TYPE_CHECKING:
     from . import EFBChat
 
 __all__ = ["EFBStatus", "EFBChatUpdates", "EFBMemberUpdates", "EFBMessageRemoval",
-           "EFBReactToMessage", "EFBMessageReactUpdate"]
+           "EFBReactToMessage", "EFBMessageReactionsUpdate"]
 
 
 class EFBStatus(ABC):
@@ -49,32 +49,32 @@ class EFBStatus(ABC):
 
 
 class EFBChatUpdates(EFBStatus):
-    """EFBChatUpdates(channel: EFBChannel, new_chats: Optional[Iterable[str]]=tuple(), removed_chats: Optional[Iterable[str]]=tuple(), modified_chats: Optional[Iterable[str]]=tuple())
+    """EFBChatUpdates(channel: EFBChannel, new_chats: Optional[Collection[str]]=tuple(), removed_chats: Optional[Collection[str]]=tuple(), modified_chats: Optional[Collection[str]]=tuple())
 
     Inform the master channel on updates of slave chats.
 
     Attributes:
         channel (:obj:`.EFBChannel`): Slave channel that issues the update
-        new_chats (Optional[Iterable[str]]): Unique ID of new chats
-        removed_chats (Optional[Iterable[str]]): Unique ID of removed chats
-        modified_chats (Optional[Iterable[str]]): Unique ID of modified chats
+        new_chats (Optional[Collection[str]]): Unique ID of new chats
+        removed_chats (Optional[Collection[str]]): Unique ID of removed chats
+        modified_chats (Optional[Collection[str]]): Unique ID of modified chats
     """
 
     # noinspection PyMissingConstructor
-    def __init__(self, channel: 'EFBChannel', new_chats: Iterable[str] = tuple(),
-                 removed_chats: Iterable[str] = tuple(), modified_chats: Iterable[str] = tuple()):
-        """__init__(channel: EFBChannel, new_chats: Iterable[str]=tuple(), removed_chats: Iterable[str]=tuple(), modified_chats: Iterable[str]=tuple())
+    def __init__(self, channel: 'EFBChannel', new_chats: Collection[str] = tuple(),
+                 removed_chats: Collection[str] = tuple(), modified_chats: Collection[str] = tuple()):
+        """__init__(channel: EFBChannel, new_chats: Collection[str]=tuple(), removed_chats: Collection[str]=tuple(), modified_chats: Collection[str]=tuple())
 
         Args:
             channel (:obj:`.EFBChannel`): Slave channel that issues the update
-            new_chats (Optional[Iterable[str]]): Unique ID of new chats
-            removed_chats (Optional[Iterable[str]]): Unique ID of removed chats
-            modified_chats (Optional[Iterable[str]]): Unique ID of modified chats
+            new_chats (Optional[Collection[str]]): Unique ID of new chats
+            removed_chats (Optional[Collection[str]]): Unique ID of removed chats
+            modified_chats (Optional[Collection[str]]): Unique ID of modified chats
         """
         self.channel: 'EFBChannel' = channel
-        self.new_chats: Iterable[str] = new_chats
-        self.removed_chats: Iterable[str] = removed_chats
-        self.modified_chats: Iterable[str] = modified_chats
+        self.new_chats: Collection[str] = new_chats
+        self.removed_chats: Collection[str] = removed_chats
+        self.modified_chats: Collection[str] = modified_chats
         self.destination_channel: 'EFBChannel' = coordinator.master
 
     def __str__(self):
@@ -102,36 +102,36 @@ class EFBChatUpdates(EFBStatus):
 
 
 class EFBMemberUpdates(EFBStatus):
-    """EFBMemberUpdates(channel: EFBChannel, chat_id: str, new_members: Optional[Iterable[str]]=tuple(), removed_members: Optional[Iterable[str]]=tuple(), modified_members: Optional[Iterable[str]]=tuple())
+    """EFBMemberUpdates(channel: EFBChannel, chat_id: str, new_members: Optional[Collection[str]]=tuple(), removed_members: Optional[Collection[str]]=tuple(), modified_members: Optional[Collection[str]]=tuple())
 
     Inform the master channel on updates of members in a slave chat.
 
     Attributes:
         channel (:obj:`.EFBChannel`): Slave channel that issues the update
         chat_id (str): Unique ID of the chat.
-        new_members (Optional[Iterable[str]]): Unique ID of new members
-        removed_members (Optional[Iterable[str]]): Unique ID of removed members
-        modified_members (Optional[Iterable[str]]): Unique ID of modified members
+        new_members (Optional[Collection[str]]): Unique ID of new members
+        removed_members (Optional[Collection[str]]): Unique ID of removed members
+        modified_members (Optional[Collection[str]]): Unique ID of modified members
     """
 
     # noinspection PyMissingConstructor
     def __init__(self, channel: 'EFBChannel', chat_id: str,
-                 new_members: Iterable[str] = tuple(), removed_members: Iterable[str] = tuple(),
-                 modified_members: Iterable[str] = tuple()):
-        """__init__(channel: EFBChannel, chat_id: str, new_members: Iterable[str]=tuple(), removed_members: Iterable[str]=tuple(), modified_members: Optional[Iterable[str]]=tuple())
+                 new_members: Collection[str] = tuple(), removed_members: Collection[str] = tuple(),
+                 modified_members: Collection[str] = tuple()):
+        """__init__(channel: EFBChannel, chat_id: str, new_members: Collection[str]=tuple(), removed_members: Collection[str]=tuple(), modified_members: Optional[Collection[str]]=tuple())
 
         Args:
             channel (:obj:`.EFBChannel`): Slave channel that issues the update
             chat_id (str): Unique ID of the chat.
-            new_members (Optional[Iterable[str]]): Unique ID of new members
-            removed_members (Optional[Iterable[str]]): Unique ID of removed members
-            modified_members (Optional[Iterable[str]]): Unique ID of modified members
+            new_members (Optional[Collection[str]]): Unique ID of new members
+            removed_members (Optional[Collection[str]]): Unique ID of removed members
+            modified_members (Optional[Collection[str]]): Unique ID of modified members
         """
         self.channel: 'EFBChannel' = channel
         self.chat_id: str = chat_id
-        self.new_members: Iterable[str] = new_members
-        self.removed_members: Iterable[str] = removed_members
-        self.modified_members: Iterable[str] = modified_members
+        self.new_members: Collection[str] = new_members
+        self.removed_members: Collection[str] = removed_members
+        self.modified_members: Collection[str] = modified_members
         self.destination_channel: 'EFBChannel' = coordinator.master
 
     def __str__(self):
@@ -264,14 +264,14 @@ class EFBReactToMessage(EFBStatus):
             raise ValueError("Destination channel is not a slave channel.")
 
 
-class EFBMessageReactUpdate(EFBStatus):
+class EFBMessageReactionsUpdate(EFBStatus):
     """
     Update reacts of a message, issued from slave channel to master channel.
 
     Args:
         chat (:obj:`EFBChat`): The chat where message
         msg_id (str): ID of the message for the reacts
-        reactions (Dict[str, Iterable[:obj:`EFBChat`]]):
+        reactions (Dict[str, Collection[:obj:`EFBChat`]]):
             Indicate reactions to the message. Dictionary key represents the
             reaction name, usually an emoji. Value is a collection of users
             who reacted to the message with that certain emoji.
@@ -282,12 +282,12 @@ class EFBMessageReactUpdate(EFBStatus):
     """
 
     # noinspection PyMissingConstructor
-    def __init__(self, chat: 'EFBChat', msg_id: str, reactions: Dict[str, Iterable['EFBChat']]):
+    def __init__(self, chat: 'EFBChat', msg_id: str, reactions: Reactions):
         """
         Args:
             chat (:obj:`EFBChat`): The chat where message
             msg_id (str): ID of the message for the reacts
-            reactions (Dict[str, Iterable[:obj:`EFBChat`]]):
+            reactions (Dict[str, Collection[:obj:`EFBChat`]]):
                 Indicate reactions to the message. Dictionary key represents the
                 reaction name, usually an emoji. Value is a collection of users
                 who reacted to the message with that certain emoji.
@@ -296,7 +296,7 @@ class EFBMessageReactUpdate(EFBStatus):
         """
         self.chat: 'EFBChat' = chat
         self.msg_id: str = msg_id
-        self.reactions: Dict[str, Iterable[EFBChat]] = reactions
+        self.reactions: Reactions = reactions
         self.destination_channel = coordinator.master
 
     def verify(self):

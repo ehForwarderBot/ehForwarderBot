@@ -1,14 +1,18 @@
 # coding=utf-8
 
 from abc import ABC, abstractmethod
-from collections.abc import Iterable as CIterable
+from collections.abc import Collection as CCollection
 from collections.abc import Mapping as CMapping
-from typing import IO, Dict, Optional, List, Any, Tuple, Iterable, Mapping
+from typing import IO, Dict, Optional, List, Any, Tuple, Mapping, Collection
 
 from .constants import *
 from .chat import EFBChat
 from .channel import EFBChannel
 from . import coordinator
+
+
+# Type definition
+Reactions = Dict[str, Collection[EFBChat]]
 
 
 class EFBMsg:
@@ -50,7 +54,7 @@ class EFBMsg:
         is_system (bool): Mark as true if this message is a system message.
         mime (str): MIME type of the file. ``None`` if N/A
         path (str): Local path of multimedia file. ``None`` if N/A
-        reactions (Dict[str, Iterable[:obj:`EFBChat`]]):
+        reactions (Dict[str, Collection[:obj:`EFBChat`]]):
             Indicate reactions to the message. Dictionary key represents the
             reaction name, usually an emoji. Value is a collection of users
             who reacted to the message with that certain emoji.
@@ -105,7 +109,7 @@ class EFBMsg:
         self.is_system: bool = False
         self.mime: Optional[str] = None
         self.path: Optional[str] = None
-        self.reactions: Dict[str, Iterable[EFBChat]] = dict()
+        self.reactions: Reactions = dict()
         self.substitutions: Optional[EFBMsgSubstitutions] = None
         self.target: Optional[EFBMsg] = None
         self.text: str = ""
@@ -300,7 +304,7 @@ class EFBMsgCommand:
     Attributes:
         name (str): Human-friendly name of the command.
         callable_name (str): Callable name of the command.
-        args (Iterable[Any]): Arguments passed to the function.
+        args (Collection[Any]): Arguments passed to the function.
         kwargs (Mapping[str, Any]): Keyword arguments passed to the function.
     """
     name: str = ""
@@ -308,13 +312,13 @@ class EFBMsgCommand:
     args: Tuple = tuple()
     kwargs: Mapping[str, Any] = {}
 
-    def __init__(self, name: str, callable_name: str, args: Iterable[Any] = None,
+    def __init__(self, name: str, callable_name: str, args: Collection[Any] = None,
                  kwargs: Optional[Mapping[str, Any]] = None):
         """
         Args:
             name (str): Human-friendly name of the command.
             callable_name (str): Callable name of the command.
-            args (Optional[Iterable[Any]]): Arguments passed to the function. Defaulted to empty list;
+            args (Optional[Collection[Any]]): Arguments passed to the function. Defaulted to empty list;
             kwargs (Optional[Mapping[str, Any]]): Keyword arguments passed to the function.
                 Defaulted to empty dict.
         """
@@ -326,8 +330,8 @@ class EFBMsgCommand:
             raise TypeError("name must be a string.")
         if not isinstance(callable_name, str):
             raise TypeError("callable must be a string.")
-        if not isinstance(args, CIterable):
-            raise TypeError("args must be an iterable.")
+        if not isinstance(args, CCollection):
+            raise TypeError("args must be a collection.")
         if not isinstance(kwargs, CMapping):
             raise TypeError("kwargs must be a mapping.")
         self.name = name
