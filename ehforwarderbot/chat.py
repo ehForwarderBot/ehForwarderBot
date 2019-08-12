@@ -8,6 +8,7 @@ from typing import List, Dict, Any, Optional
 from .channel import EFBChannel
 from .constants import ChatType
 from .middleware import EFBMiddleware
+from .types import ModuleID
 
 __all__ = ['EFBChat', 'EFBChatNotificationState']
 
@@ -71,14 +72,14 @@ class EFBChat:
         """
         self.module_name: str = ""
         self.channel_emoji: Optional[str] = None
-        self.module_id: str = ""
+        self.module_id: ModuleID = ""
         if isinstance(channel, EFBChannel):
-            self.module_name: str = channel.channel_name
-            self.channel_emoji: str = channel.channel_emoji
-            self.module_id: str = channel.channel_id
+            self.module_name = channel.channel_name
+            self.channel_emoji = channel.channel_emoji
+            self.module_id = channel.channel_id
         elif isinstance(middleware, EFBMiddleware):
-            self.module_id: str = middleware.middleware_id
-            self.module_name: str = middleware.middleware_name
+            self.module_id = middleware.middleware_id
+            self.module_name = middleware.middleware_name
 
         self.chat_name: str = ""
         self.chat_type: ChatType = ChatType.Unknown

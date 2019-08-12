@@ -5,14 +5,11 @@ from collections.abc import Collection as CCollection
 from collections.abc import Mapping as CMapping
 from typing import IO, Dict, Optional, List, Any, Tuple, Mapping, Collection
 
+from . import coordinator
 from .constants import *
 from .chat import EFBChat
 from .channel import EFBChannel
-from . import coordinator
-
-
-# Type definition
-Reactions = Dict[str, Collection[EFBChat]]
+from .types import Reactions, MessageID
 
 
 class EFBMsg:
@@ -55,8 +52,8 @@ class EFBMsg:
         mime (str): MIME type of the file. ``None`` if N/A
         path (str): Local path of multimedia file. ``None`` if N/A
         reactions (Dict[str, Collection[:obj:`EFBChat`]]):
-            Indicate reactions to the message. Dictionary key represents the
-            reaction name, usually an emoji. Value is a collection of users
+            Indicate reactions to the message. Dictionary key is the canonical name
+            of reaction, usually an emoji. Value is a collection of users
             who reacted to the message with that certain emoji.
             All :obj:`EFBChat` objects in this dict must be of a user or a
             group member.
@@ -114,7 +111,7 @@ class EFBMsg:
         self.target: Optional[EFBMsg] = None
         self.text: str = ""
         self.type: MsgType = MsgType.Unsupported
-        self.uid: Optional[str] = None
+        self.uid: Optional[MessageID] = None
         self.vendor_specific: Dict[str, Any] = dict()
 
     def __str__(self):

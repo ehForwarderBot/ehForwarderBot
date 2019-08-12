@@ -1,10 +1,10 @@
 # coding=utf-8
 
 from abc import abstractmethod, ABC
-from typing import  Dict, Collection, TYPE_CHECKING, Any
+from typing import Dict, Collection, TYPE_CHECKING, Any
 
 from . import EFBChannel, EFBMsg, coordinator, ChannelType, ChatType
-from .message import Reactions
+from .types import Reactions, ReactionName
 
 if TYPE_CHECKING:
     from . import EFBChat
@@ -174,6 +174,10 @@ class EFBMessageRemoval(EFBStatus):
         destination_channel (:obj:`.EFBChannel`): Channel the status is issued to
         message (:obj:`.EFBMsg`): Message to remove.
             This may not be a complete :obj:`.EFBMsg` object.
+
+    Raises:
+        :obj:`.exceptions.EFBOperationNotSupported`:
+            When message removal is not supported in the channel.
     """
 
     # noinspection PyMissingConstructor
@@ -232,19 +236,29 @@ class EFBReactToMessage(EFBStatus):
     """
     Created when user react to a message, issued from master channel.
 
+    When this status is sent, a :obj:`.status.EFBMessageReactionsUpdate` is NOT
+    required to be issued back to master channel.
+
     Args:
         chat (:obj:`EFBChat`): The chat where message
         msg_id (str): ID of the message to react to
         reaction (str): The reaction name to be sent, usually an emoji
         destination_channel (:obj:`.EFBChannel`):
             Channel the status is issued to, extracted from the chat object.
+
+    Raises:
+        :obj:`.exceptions.EFBMessageReactionNotPossible`:
+            Raised when the reaction is not valid (e.g. the specific reaction is not
+            in the list of possible reactions).
+        :obj:`.exceptions.EFBOperationNotSupported`:
+            Raised when reaction in any form is not supported to the message at all.
     """
 
     # noinspection PyMissingConstructor
-    def __init__(self, chat: 'EFBChat', msg_id: str, reaction: str):
+    def __init__(self, chat: 'EFBChat', msg_id: str, reaction: ReactionName):
         """
         Args:
-            chat (:obj:`EFBChat`): The chat where message
+            chat (:obj:`EFBChat`): The chat where message is sent
             msg_id (str): ID of the message to react to
             reaction (str): The reaction name to be sent, usually an emoji
         """

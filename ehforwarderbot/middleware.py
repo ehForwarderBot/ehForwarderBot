@@ -2,6 +2,7 @@
 
 from abc import ABC
 from typing import Optional, Dict, Callable, TYPE_CHECKING
+from .types import ModuleID, InstanceID, ExtraCommandName
 
 if TYPE_CHECKING:
     from .message import EFBMsg
@@ -23,12 +24,12 @@ class EFBMiddleware(ABC):
         instance_id (str):
             The instance ID if available.
     """
-    middleware_id: str = "efb.empty_middleware"
+    middleware_id: ModuleID = "efb.empty_middleware"
     middleware_name: str = "Empty Middleware"
-    instance_id: Optional[str] = None
+    instance_id: Optional[InstanceID] = None
     __version__: str = 'undefined version'
 
-    def __init__(self, instance_id: Optional[str] = None):
+    def __init__(self, instance_id: Optional[InstanceID] = None):
         """
         Initialize the middleware.
         Inherited initializer must call the "super init" method
@@ -41,7 +42,7 @@ class EFBMiddleware(ABC):
         if instance_id:
             self.middleware_id += "#" + instance_id
 
-    def get_extra_functions(self) -> Dict[str, Callable]:
+    def get_extra_functions(self) -> Dict[ExtraCommandName, Callable]:
         """Get a list of additional features
 
         Returns:

@@ -2,7 +2,9 @@
 
 from abc import ABC, abstractmethod
 from typing import Optional, Dict, List, Set, Callable, IO, TYPE_CHECKING
-from .constants import *
+
+from .types import ModuleID, InstanceID, ExtraCommandName, ReactionName, ChatID, MessageID
+from .constants import ChannelType, MsgType
 
 if TYPE_CHECKING:
     from .chat import EFBChat
@@ -32,17 +34,32 @@ class EFBChannel(ABC):
             This ID will be appended with its instance ID when available.
         instance_id (str):
             The instance ID if available.
+        suggested_reactions (Optional[List[str]]):
+            A list of suggested reactions to be applied to messages. Valid to
+            slave channels only, master channels should leave this value as
+            ``None``.
+
+            Reactions should be ordered in a meaningful way, e.g., the order
+            used by the IM platform, or frequency of usage. Note that it is
+            not necessary to list all suggested reactions if that is too long,
+            or not feasible.
+
+            Set to ``None`` when it is known that no reaction is supported to
+            ANY message in the channel. Set to empty list when it is not feasible
+            to provide a list of suggested reactions, for example, the list of
+            reactions is different for each chat or message.
     """
 
     channel_name: str = "Empty channel"
     channel_emoji: str = "�"
-    channel_id: str = "efb.empty_channel"
+    channel_id: ModuleID = "efb.empty_channel"
     channel_type: ChannelType
-    instance_id: Optional[str] = None
+    instance_id: Optional[InstanceID] = None
     supported_message_types: Set[MsgType] = set()
+    suggested_reactions: Optional[List[ReactionName]] = None
     __version__: str = 'undefined version'
 
-    def __init__(self, instance_id: str = None):
+    def __init__(self, instance_id: InstanceID = None):
         """
         Initialize the channel.
         Inherited initializer must call the "super init" method
@@ -55,7 +72,7 @@ class EFBChannel(ABC):
         if instance_id:
             self.channel_id += "#" + instance_id
 
-    def get_extra_functions(self) -> Dict[str, Callable]:
+    def get_extra_functions(self) -> Dict[ExtraCommandName, Callable]:
         """Get a list of additional features
 
         Returns:
@@ -129,7 +146,7 @@ class EFBChannel(ABC):
         raise NotImplementedError()
 
     @abstractmethod
-    def get_chat(self, chat_uid: str, member_uid: Optional[str] = None) -> 'EFBChat':
+    def get_chat(self, chat_uid: ChatID, member_uid: Optional[ChatID] = None) -> 'EFBChat':
         """get_chat(self, chat_uid: str, member_uid: Optional[str] = None) -> EFBChat
 
         Get the chat object from a slave channel.
@@ -238,7 +255,7 @@ class EFBChannel(ABC):
         """
         raise NotImplementedError()
 
-    def get_message_by_id(self, chat_uid: str, msg_id: str) -> Optional['EFBMsg']:
+    def get_message_by_id(self, chat_uid: ChatID, msg_id: MessageID) -> Optional['EFBMsg']:
         """
         Get message entity by its ID.
         Applicable to both master channels and slave channels.
