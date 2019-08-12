@@ -1,7 +1,7 @@
 # coding=utf-8
 
 from abc import abstractmethod, ABC
-from typing import Dict, Collection, TYPE_CHECKING, Any
+from typing import Dict, Collection, TYPE_CHECKING, Any, Optional
 
 from . import EFBChannel, EFBMsg, coordinator, ChannelType, ChatType
 from .types import Reactions, ReactionName
@@ -242,7 +242,8 @@ class EFBReactToMessage(EFBStatus):
     Args:
         chat (:obj:`EFBChat`): The chat where message
         msg_id (str): ID of the message to react to
-        reaction (str): The reaction name to be sent, usually an emoji
+        reaction (Optional[str]): The reaction name to be sent, usually an emoji.
+            Set to ``None`` to remove reaction.
         destination_channel (:obj:`.EFBChannel`):
             Channel the status is issued to, extracted from the chat object.
 
@@ -255,12 +256,12 @@ class EFBReactToMessage(EFBStatus):
     """
 
     # noinspection PyMissingConstructor
-    def __init__(self, chat: 'EFBChat', msg_id: str, reaction: ReactionName):
+    def __init__(self, chat: 'EFBChat', msg_id: str, reaction: Optional[ReactionName]):
         """
         Args:
             chat (:obj:`EFBChat`): The chat where message is sent
             msg_id (str): ID of the message to react to
-            reaction (str): The reaction name to be sent, usually an emoji
+            reaction (Optional[str]): The reaction name to be sent, usually an emoji
         """
         self.chat: 'EFBChat' = chat
         self.msg_id: str = msg_id
