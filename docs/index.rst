@@ -7,14 +7,17 @@ EH Forwarder Bot
 .. image:: https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg
    :alt: Gitter
    :target: https://gitter.im/blueset/ehForwarderBot
-.. image:: https://img.shields.io/badge/Chat-on%20Telegram-blue.svg
-   :alt: Telegram support group
+.. image:: https://img.shields.io/badge/-Telegram-blue.svg?logo=data:image/svg%2Bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTkuNzgsMTguNjVMMTAuMDYsMTQuNDJMMTcuNzQsNy41QzE4LjA4LDcuMTkgMTcuNjcsNy4wNCAxNy4yMiw3LjMxTDcuNzQsMTMuM0wzLjY0LDEyQzIuNzYsMTEuNzUgMi43NSwxMS4xNCAzLjg0LDEwLjdMMTkuODEsNC41NEMyMC41NCw0LjIxIDIxLjI0LDQuNzIgMjAuOTYsNS44NEwxOC4yNCwxOC42NUMxOC4wNSwxOS41NiAxNy41LDE5Ljc4IDE2Ljc0LDE5LjM2TDEyLjYsMTYuM0wxMC42MSwxOC4yM0MxMC4zOCwxOC40NiAxMC4xOSwxOC42NSA5Ljc4LDE4LjY1WiIgLz48L3N2Zz4=
+   :alt: Telegram
    :target: https://telegram.me/efbsupport
 .. image:: https://readthedocs.org/projects/ehforwarderbot/badge/?version=latest
    :alt: Documentation
    :target: https://ehforwarderbot.readthedocs.io/en/latest/
 .. image:: https://img.shields.io/pypi/v/ehforwarderbot.svg
    :alt: PyPI release
+   :target: https://pypi.org/project/ehforwarderbot/
+.. image:: https://img.shields.io/pypi/dm/ehforwarderbot.svg
+   :alt: Downloads per month
    :target: https://pypi.org/project/ehforwarderbot/
 .. image:: https://img.shields.io/codacy/grade/3b2555f9134844e3b01b00700bc43eeb.svg
    :alt: Codacy grade
