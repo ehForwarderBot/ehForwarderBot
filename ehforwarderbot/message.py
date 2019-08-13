@@ -91,6 +91,9 @@ class EFBMsg:
             with such information. Note that no guarantee is provided
             for information in this section.
 
+    Notes:
+        ``EFBMsg`` objects are picklable, thus it is strongly recommended
+        to keep any object of its subclass also picklable.
     """
 
     def __init__(self):

@@ -37,7 +37,7 @@ class EFBChat:
 
     Attributes:
         module_id (str): Unique ID of the module.
-        channel_emoji (Optional[str]): Emoji of the channel, if available.
+        channel_emoji (str): Emoji of the channel, if available.
         module_name (str): Name of the module.
         chat_name (str): Name of the chat.
         chat_alias (str): Alternative name of the chat, usually set by user.
@@ -54,6 +54,10 @@ class EFBChat:
             object and implement a ``@property`` method set for loading members on
             demand.
         vendor_specific (Dict[str, Any]): Any vendor specific attributes.
+
+    Notes:
+        ``EFBChat`` objects are picklable, thus it is strongly recommended
+        to keep any object of its subclass also picklable.
     """
 
     SELF_ID = "__self__"
@@ -71,7 +75,7 @@ class EFBChat:
                 and :attr:`module_id` automatically.
         """
         self.module_name: str = ""
-        self.channel_emoji: Optional[str] = None
+        self.channel_emoji: str = ""
         self.module_id: ModuleID = ""
         if isinstance(channel, EFBChannel):
             self.module_name = channel.channel_name
