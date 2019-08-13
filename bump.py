@@ -61,7 +61,11 @@ def bump_version(v: version.Version, level: str) -> str:
             release[-1] += 1
             stage, pre = "a", 1
         elif stage == "a":
-            pre += 1
+            if not dev:
+                if pre is None:
+                    pre = 1
+                else:
+                    pre += 1
         post = dev = None
     elif level == "beta":
         if stage is None:
@@ -72,7 +76,11 @@ def bump_version(v: version.Version, level: str) -> str:
             release[-1] += 1
             stage, pre = "b", 1
         elif stage == "b":
-            pre += 1
+            if not dev:
+                if pre is None:
+                    pre = 1
+                else:
+                    pre += 1
         elif stage < "b":
             pre = 1
             stage = "b"
@@ -88,7 +96,10 @@ def bump_version(v: version.Version, level: str) -> str:
             dev += 1
         else:
             if stage:
-                pre += 1
+                if pre is None:
+                    pre = 1
+                else:
+                    pre += 1
             else:
                 release[-1] += 1
             dev = 1
