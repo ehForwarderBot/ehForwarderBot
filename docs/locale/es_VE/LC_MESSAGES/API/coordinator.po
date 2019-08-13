@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-12 14:35+1100\n"
-"PO-Revision-Date: 2019-03-12 03:37\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-13 04:12\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -109,11 +109,11 @@ msgid "Module instance requested."
 msgstr ""
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:0
-msgid "raises"
+msgid "Raises"
 msgstr ""
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:6
-msgid ":exc:`NameError` -- When the module is not found."
+msgid "When the module is not found."
 msgstr ""
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.master_thread:1
@@ -155,5 +155,9 @@ msgstr ""
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.slaves:1
 msgid "Instances of slave channels. Keys are the channel IDs."
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.translator:1
+msgid "Internal GNU gettext translator."
 msgstr ""
 

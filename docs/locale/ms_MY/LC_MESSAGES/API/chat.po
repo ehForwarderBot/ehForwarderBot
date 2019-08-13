@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-12 14:35+1100\n"
-"PO-Revision-Date: 2019-03-12 03:38\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-13 04:13\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,6 +28,7 @@ msgstr "Objek Sembang EFB. Ini digunakan untuk mewakili sembang atau ahli kumpul
 msgid "Unique ID of the module."
 msgstr ""
 
+#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
@@ -91,26 +92,34 @@ msgid "bool"
 msgstr ""
 
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:54
-msgid "The parent chat of the member. Only available to chat member objects. Defaulted to ``None``."
+msgid "Indicate the notification settings of the chat in its slave channel (or middleware), defaulted to ``ALL``."
 msgstr ""
 
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:57
-msgid ":obj:`.EFBChat` or None"
+msgid "EFBChatNotificationState"
 msgstr ""
 
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:61
+msgid "The parent chat of the member. Only available to chat member objects. Defaulted to ``None``."
+msgstr ""
+
+#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:64
+msgid ":obj:`.EFBChat` or None"
+msgstr ""
+
+#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:68
 msgid "Provide a list of members in the group. Defaulted to an empty ``list``. You may want to extend this object and implement a ``@property`` method set for loading members on demand."
 msgstr ""
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:66
+#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:73
 msgid "list of :obj:`.EFBChat`"
 msgstr ""
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:70
+#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:77
 msgid "Any vendor specific attributes."
 msgstr ""
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:72
+#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:79
 msgid "Dict[str, Any]"
 msgstr ""
 
@@ -178,10 +187,10 @@ msgid "Verify the completeness of the data."
 msgstr "Sahkan kesempurnaan data."
 
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.verify:0
-msgid "raises"
+msgid "Raises"
 msgstr ""
 
 #: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.verify:3
-msgid ":exc:`ValueError` -- When this chat is invalid."
+msgid "When this chat is invalid."
 msgstr ""
 

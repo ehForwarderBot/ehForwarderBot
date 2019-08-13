@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-12 14:35+1100\n"
-"PO-Revision-Date: 2019-03-12 03:37\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-13 04:12\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +74,7 @@ msgstr "ID único de los nuevos chats"
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:19
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:25
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:31
-msgid "Optional[Iterable[str]]"
+msgid "Optional[Collection[str]]"
 msgstr ""
 
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:17
@@ -92,8 +92,8 @@ msgstr "ID único de los chats modificados"
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:0
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:0
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage.__init__:0
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactUpdate:0
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactUpdate.__init__:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate.__init__:0
 msgid "Parameters"
 msgstr "Parámetros"
 
@@ -156,6 +156,15 @@ msgstr ""
 msgid ":obj:`.EFBMsg`"
 msgstr ""
 
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:0
+msgid "Raises"
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:28
+msgid "When message removal is not supported in the channel."
+msgstr ""
+
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:1
 msgid "Create a message removal status"
 msgstr "Crear un mensaje de remoción de estado"
@@ -181,41 +190,59 @@ msgid "Created when user react to a message, issued from master channel."
 msgstr ""
 
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:3
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage.__init__:1
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactUpdate:3
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactUpdate.__init__:1
+msgid "When this status is sent, a :obj:`.status.EFBMessageReactionsUpdate` is NOT required to be issued back to master channel."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:6
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate:3
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate.__init__:1
 msgid "The chat where message"
 msgstr ""
 
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:5
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:8
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage.__init__:3
 msgid "ID of the message to react to"
 msgstr ""
 
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:7
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:10
+msgid "The reaction name to be sent, usually an emoji. Set to ``None`` to remove reaction."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:13
+msgid "Channel the status is issued to, extracted from the chat object."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:16
+msgid "Raised when the reaction is not valid (e.g. the specific reaction is not     in the list of possible reactions)."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:17
+msgid "Raised when reaction in any form is not supported to the message at all."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage.__init__:1
+msgid "The chat where message is sent"
+msgstr ""
+
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage.__init__:5
 msgid "The reaction name to be sent, usually an emoji"
 msgstr ""
 
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:9
-msgid "Channel the status is issued to, extracted from the chat object."
-msgstr ""
-
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactUpdate:1
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate:1
 msgid "Update reacts of a message, issued from slave channel to master channel."
 msgstr ""
 
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactUpdate:5
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactUpdate.__init__:3
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate:5
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate.__init__:3
 msgid "ID of the message for the reacts"
 msgstr ""
 
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactUpdate:7
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactUpdate.__init__:5
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate:7
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate.__init__:5
 msgid "Indicate reactions to the message. Dictionary key represents the reaction name, usually an emoji. Value is a collection of users who reacted to the message with that certain emoji. All :obj:`EFBChat` objects in this dict must be of a user or a group member."
 msgstr ""
 
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactUpdate:13
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate:13
 msgid "Channel the status is issued to, which is always the master channel."
 msgstr ""
 

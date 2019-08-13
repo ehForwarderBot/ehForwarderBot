@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-03-12 03:38\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-13 04:13\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,10 @@ msgstr ""
 
 #: ../../telemetry.rst:4
 msgid "If you want to enable telemetry / error tracking / log analysis to help us make EFB better, you can install EFB with optional ``telemetry`` option."
+msgstr ""
+
+#: ../../telemetry.rst:7
+msgid "pip3 install --update ehforwarderbot[telemetry]"
 msgstr ""
 
 #: ../../telemetry.rst:11
@@ -44,12 +48,24 @@ msgstr ""
 msgid "To enable \"exception only\" mode, append the following line to the config file:"
 msgstr ""
 
+#: ../../telemetry.rst:22
+msgid "telemetry: I agree."
+msgstr ""
+
 #: ../../telemetry.rst:26
 msgid "To enable \"Exception log\" mode, append the following line to the config file:"
 msgstr ""
 
+#: ../../telemetry.rst:29
+msgid "telemetry: I agree to surrender my immortal soul."
+msgstr ""
+
 #: ../../telemetry.rst:33
 msgid "To enable \"Full log\" mode, append the following line to the config file:"
+msgstr ""
+
+#: ../../telemetry.rst:36
+msgid "telemetry: I agree to surrender my immortal soul and endless knowledge."
 msgstr ""
 
 #: ../../telemetry.rst:41

@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-03-12 03:37\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-13 04:11\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,6 +74,10 @@ msgstr ""
 
 #: ../../guide/master.rst:39
 msgid "Optionally, a master channel can also support / identify vendor-specified information from certain slave channels."
+msgstr ""
+
+#: ../../guide/master.rst:46
+msgid ".. image:: guide/../_static/master-channel-0.png"
 msgstr ""
 
 #: ../../guide/master.rst:46

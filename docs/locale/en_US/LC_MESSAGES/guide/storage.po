@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-03-12 03:37\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-13 04:12\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: English\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,11 +80,37 @@ msgstr ""
 msgid "``setup.py`` script"
 msgstr ""
 
+#: ../../guide/storage.rst:58
+msgid "setup(\n"
+"    # ...\n"
+"    entry_points={\n"
+"        \"ehforwarderbot.wizard\": ['alice.irc = efb_irc_slave.wizard:main']\n"
+"    },\n"
+"    # ...\n"
+")"
+msgstr ""
+
 #: ../../guide/storage.rst:68
 msgid "``.egg-info/entry_points.txt``"
 msgstr ""
 
+#: ../../guide/storage.rst:70
+msgid "[ehforwarderbot.wizard]\n"
+"alice.irc = efb_irc_slave.wizard:main"
+msgstr ""
+
 #: ../../guide/storage.rst:75
 msgid "``efb_irc_slave/wizard.py``"
+msgstr ""
+
+#: ../../guide/storage.rst:77
+msgid "# ...\n\n"
+"def main(profile, instance):\n"
+"    print(\"Welcome to the setup wizard of my channel.\")\n"
+"    print(\"You are setting up this channel in profile \"\n"
+"          \"'{0}' and instance '{1}'.\".format(profile, instance))\n"
+"    print(\"Press ENTER/RETURN to continue.\")\n"
+"    input()\n\n"
+"    step1()"
 msgstr ""
 

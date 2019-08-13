@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-12 14:35+1100\n"
-"PO-Revision-Date: 2019-03-12 03:37\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-13 04:12\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -126,7 +126,7 @@ msgid "bool"
 msgstr ""
 
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:57
-msgid "Flag this up if any file attached to the message is modified. If this value is true, ``edit_media`` must also be true."
+msgid "Flag this up if any file attached to the message is modified. If this value is true, ``edit`` must also be ``True``."
 msgstr ""
 
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:64
@@ -166,11 +166,11 @@ msgid "Local path of multimedia file. ``None`` if N/A"
 msgstr ""
 
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:97
-msgid "Indicate reactions to the message. Dictionary key represents the reaction name, usually an emoji. Value is a collection of users who reacted to the message with that certain emoji. All :obj:`EFBChat` objects in this dict must be of a user or a group member."
+msgid "Indicate reactions to the message. Dictionary key is the canonical name of reaction, usually an emoji. Value is a collection of users who reacted to the message with that certain emoji. All :obj:`EFBChat` objects in this dict must be of a user or a group member."
 msgstr ""
 
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:103
-msgid "Dict[str, Iterable[:obj:`EFBChat`]]"
+msgid "Dict[str, Collection[:obj:`EFBChat`]]"
 msgstr ""
 
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:107
@@ -339,7 +339,7 @@ msgid "Arguments passed to the function."
 msgstr ""
 
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:23
-msgid "Iterable[Any]"
+msgid "Collection[Any]"
 msgstr ""
 
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:27
@@ -460,17 +460,55 @@ msgstr "Örnekler"
 msgid "Prelude: Defining related chats"
 msgstr "Prelude: İlgili sohbetleri tanımlama"
 
+#: ../../API/message.rst:19
+msgid "master = coordinator.master\n"
+"slave = coordinator.slave['ehforwarderbot.channels.slave.eh.demo']\n"
+"alice = slave.get_chat(chat_uid=\"alice101\")\n"
+"bob = slave.get_chat(chat_uid=\"bobrocks\")\n"
+"wonderland = slave.get_chat(chat_uid=\"thewonderlandgroup\")"
+msgstr ""
+
 #: ../../API/message.rst:28
 msgid "Initialization and marking chats"
 msgstr "Başlatma ve işaretleme sohbetleri"
+
+#: ../../API/message.rst:30
+msgid "message = EFBMsg()\n\n"
+"# 1. a chat delivered from slave to master, or\n"
+"message.deliver_to = master\n"
+"message.chat = wonderland\n"
+"message.author = alice\n\n"
+"# 2. a chat delivered from master to slave\n"
+"message.deliver_to = slave\n"
+"message.chat = alice\n"
+"message.author = EFBChat(slave).self()"
+msgstr ""
 
 #: ../../API/message.rst:45
 msgid "Marking message references (targeted message)"
 msgstr "Mesaj referanslarını işaretleme (hedeflenmiş mesaj)"
 
+#: ../../API/message.rst:47
+msgid "# Information in this part should be retrieved\n"
+"# from recorded historical data.\n"
+"message.target = EFBMsg()\n"
+"message.target.chat = alice\n"
+"message.target.author = alice\n"
+"message.target.text = \"Hello, world.\"\n"
+"message.target.type = MsgType.Text\n"
+"message.target.uid = \"100000002\""
+msgstr ""
+
 #: ../../API/message.rst:59
 msgid "Edit a previously sent message"
 msgstr "Önceden gönderilmiş mesajı düzenle"
+
+#: ../../API/message.rst:61
+msgid "message.edit = True\n"
+"message.uid = \"100000003\"\n"
+"# Message UID should be the UID from the slave channel\n"
+"# regardless of where the message is delivered to."
+msgstr ""
 
 #: ../../API/message.rst:69
 msgid "Type-specific Information"
@@ -479,6 +517,11 @@ msgstr "Türe özgü bilgi"
 #: ../../API/message.rst:75
 msgid "Text message"
 msgstr "Metin mesajı"
+
+#: ../../API/message.rst:72
+msgid "message.type = MsgType.Text\n"
+"message.text = \"Hello, Wonderland.\""
+msgstr ""
 
 #: ../../API/message.rst:93
 msgid "Media message"
@@ -499,17 +542,48 @@ msgstr "Aşağıdaki örnek resim(fotoğraf) mesajlar içindir. Ses, dosya, vide
 msgid "In non-text messages, the ``text`` attribute is optional."
 msgstr "Metin olmayan mesajlarda, `` text`` özelliği isteğe bağlıdır."
 
+#: ../../API/message.rst:86
+msgid "message.type = MsgType.Image\n"
+"message.text = \"Image caption\"\n"
+"message.file = NamedTemporaryFile(suffix=\".png\")\n"
+"message.file.write(binary_data)\n"
+"message.filename = \"holiday photo.png\"\n"
+"message.mime = \"image/png\""
+msgstr ""
+
 #: ../../API/message.rst:102
 msgid "Location message"
 msgstr "Konum mesajı"
+
+#: ../../API/message.rst:98
+msgid "message.type = MsgType.Location\n"
+"message.text = \"I'm here! Come and find me!\"\n"
+"message.attributes = EFBMsgLocationAttribute(51.4826, -0.0077)"
+msgstr ""
 
 #: ../../API/message.rst:116
 msgid "Link message"
 msgstr "Bağlantı mesajı"
 
+#: ../../API/message.rst:107
+msgid "message.type = MsgType.Link\n"
+"message.text = \"Check it out!\"\n"
+"message.attributes = EFBMsgLinkAttribute(\n"
+"    title=\"Example Domain\",\n"
+"    description=\"This domain is established to be used for illustrative examples in documents.\",\n"
+"    image=\"https://example.com/thumbnail.png\",\n"
+"    url=\"https://example.com\"\n"
+")"
+msgstr ""
+
 #: ../../API/message.rst:124
 msgid "Status"
 msgstr "Durum"
+
+#: ../../API/message.rst:121
+msgid "message.type = MsgType.Status\n"
+"message.attributes = EFBMsgStatusAttribute(EFBMsgStatusAttribute.TYPING)"
+msgstr ""
 
 #: ../../API/message.rst:133
 msgid "Unsupported message"
@@ -519,6 +593,12 @@ msgstr "Desteklenmeyen mesaj"
 msgid "``text`` attribute is required for this type of message."
 msgstr "Bu tür bir mesaj için `` text`` özelliği gereklidir."
 
+#: ../../API/message.rst:129
+msgid "message.type = MsgType.Unsupported\n"
+"message.text = \"Alice requested USD 10.00 from you. \"\n"
+"               \"Please continue from your client.\""
+msgstr ""
+
 #: ../../API/message.rst:136
 msgid "Additional information"
 msgstr "Ek bilgi"
@@ -527,7 +607,26 @@ msgstr "Ek bilgi"
 msgid "Substitution"
 msgstr "Değişim"
 
+#: ../../API/message.rst:139
+msgid "message.text = \"Hey @alice, @bob, and @all. Attention!\"\n"
+"message.substitutions = EFBMsgSubstitutions({\n"
+"    (4, 10): alice,\n"
+"    (12, 16): bob,\n"
+"    (22, 26): EFBChat(slave).self()\n"
+"})"
+msgstr ""
+
 #: ../../API/message.rst:156
 msgid "Commands"
 msgstr "Komutlar"
+
+#: ../../API/message.rst:149
+msgid "message.text = \"Carol sent you a friend request.\"\n"
+"message.commands = EFBMsgCommands([\n"
+"    EFBCommand(name=\"Accept\", callable_name=\"accept_friend_request\",\n"
+"               kwargs={\"username\": \"carol_jhonos\", \"hash\": \"2a9329bd93f\"}),\n"
+"    EFBCommand(name=\"Decline\", callable_name=\"decline_friend_request\",\n"
+"               kwargs={\"username\": \"carol_jhonos\", \"hash\": \"2a9329bd93f\"})\n"
+"])"
+msgstr ""
 

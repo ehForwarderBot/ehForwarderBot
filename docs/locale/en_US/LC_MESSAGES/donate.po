@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-03-12 03:37\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-13 04:12\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: English\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,20 +24,45 @@ msgstr ""
 msgid "|Beerpay|"
 msgstr ""
 
+#: ../../donate.rst:0
+msgid ".. image:: https://img.shields.io/badge/Donate-with%20Beerpay-red.svg\n"
+"   :alt: Beerpay"
+msgstr ""
+
 #: ../../donate.rst:5
 msgid "|Donate with PayPal|"
+msgstr ""
+
+#: ../../donate.rst:0
+msgid ".. image:: https://img.shields.io/badge/Donate-with%20Paypal-blue.svg\n"
+"   :alt: Donate with PayPal"
 msgstr ""
 
 #: ../../donate.rst:6
 msgid "|Donate with Patreon|"
 msgstr ""
 
+#: ../../donate.rst:0
+msgid ".. image:: https://img.shields.io/badge/Donate-with%20Patreon-orange.svg\n"
+"   :alt: Donate with Patreon"
+msgstr ""
+
 #: ../../donate.rst:7
 msgid "|Donate with AliPay|"
 msgstr ""
 
+#: ../../donate.rst:0
+msgid ".. image:: https://img.shields.io/badge/Donate-with%20AliPay-orange.svg\n"
+"   :alt: Donate with AliPay"
+msgstr ""
+
 #: ../../donate.rst:8
 msgid "|Donate with WeChat|"
+msgstr ""
+
+#: ../../donate.rst:0
+msgid ".. image:: https://img.shields.io/badge/Donate-with%20WeChat-green.svg\n"
+"   :alt: Donate with WeChat"
 msgstr ""
 
 #: ../../donate.rst:9

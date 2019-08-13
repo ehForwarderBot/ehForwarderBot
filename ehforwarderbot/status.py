@@ -265,7 +265,7 @@ class EFBReactToMessage(EFBStatus):
         """
         self.chat: 'EFBChat' = chat
         self.msg_id: str = msg_id
-        self.reaction: str = reaction
+        self.reaction: Optional[str] = reaction
         dc = coordinator.get_module_by_id(self.chat.module_id)
         if isinstance(dc, EFBChannel):
             self.destination_channel = dc

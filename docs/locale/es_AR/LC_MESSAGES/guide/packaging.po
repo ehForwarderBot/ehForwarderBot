@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-03-12 03:37\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-13 04:12\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Spanish, Argentina\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,8 +68,23 @@ msgstr ""
 msgid "``setup.py`` script"
 msgstr ""
 
+#: ../../guide/packaging.rst:45
+msgid "setup(\n"
+"    # ...\n"
+"    entry_points={\n"
+"        \"ehforwarderbot.slave\": ['alice.irc = efb_irc_slave:IRCChannel']\n"
+"    },\n"
+"    # ...\n"
+")"
+msgstr ""
+
 #: ../../guide/packaging.rst:55
 msgid "``.egg-info/entry_points.txt``"
+msgstr ""
+
+#: ../../guide/packaging.rst:57
+msgid "[ehforwarderbot.slave]\n"
+"alice.irc = efb_irc_slave:IRCChannel"
 msgstr ""
 
 #: ../../guide/packaging.rst:63

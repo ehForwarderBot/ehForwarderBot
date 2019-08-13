@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-03-12 03:37\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-13 04:11\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,6 +18,46 @@ msgstr ""
 
 #: ../../index.rst:2
 msgid "EH Forwarder Bot"
+msgstr ""
+
+#: ../../index.rst:None
+msgid ".. image:: https://img.shields.io/badge/Python->%3D%203.6-blue.svg\n"
+"   :alt: Python >= 3.6"
+msgstr ""
+
+#: ../../index.rst:None
+msgid ".. image:: https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg\n"
+"   :alt: Gitter"
+msgstr ""
+
+#: ../../index.rst:None
+msgid ".. image:: https://img.shields.io/badge/Chat-on%20Telegram-blue.svg\n"
+"   :alt: Telegram support group"
+msgstr ""
+
+#: ../../index.rst:None
+msgid ".. image:: https://readthedocs.org/projects/ehforwarderbot/badge/?version=latest\n"
+"   :alt: Documentation"
+msgstr ""
+
+#: ../../index.rst:None
+msgid ".. image:: https://img.shields.io/pypi/v/ehforwarderbot.svg\n"
+"   :alt: PyPI release"
+msgstr ""
+
+#: ../../index.rst:None
+msgid ".. image:: https://img.shields.io/codacy/grade/3b2555f9134844e3b01b00700bc43eeb.svg\n"
+"   :alt: Codacy grade"
+msgstr ""
+
+#: ../../index.rst:None
+msgid ".. image:: https://d322cqt584bo4o.cloudfront.net/ehforwarderbot/localized.svg\n"
+"   :alt: Translate this project"
+msgstr ""
+
+#: ../../index.rst:None
+msgid ".. image:: https://images.1a23.com/di/XOEE/EFB_v2.png\n"
+"   :alt: Banner"
 msgstr ""
 
 #: ../../index.rst:31
@@ -70,6 +110,22 @@ msgstr ""
 
 #: ../../index.rst:81
 msgid "EFB framework is licensed under `GNU Affero General Public License 3.0`_ or later versions."
+msgstr ""
+
+#: ../../index.rst:84
+msgid "EH Forwarder Bot: An extensible chat tunneling bot framework.\n"
+"Copyright (C) 2018 Eana Hufwe\n"
+"All rights reserved.\n\n"
+"This program is free software: you can redistribute it and/or modify\n"
+"it under the terms of the GNU Affero General Public License as\n"
+"published by the Free Software Foundation, either version 3 of the\n"
+"License, or any later version.\n\n"
+"This program is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n\n"
+"You should have received a copy of the GNU Affero General Public License\n"
+"along with this program.  If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
 
 #: ../../index.rst:104

@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-03-12 03:37\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-13 04:12\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -44,6 +44,10 @@ msgstr "Pasang dari PyPI"
 msgid "``pip`` will by default install the latest stable version from PyPI, but development versions are available at PyPI as well."
 msgstr "`` pip`` secara default akan memasang versi stabil terbaru dari PyPI, namun versi pengembangannya tersedia di PyPI juga."
 
+#: ../../getting-started.rst:25
+msgid "pip3 install ehforwarderbot"
+msgstr ""
+
 #: ../../getting-started.rst:31
 msgid "Install from GitHub"
 msgstr "Pasang dari GitHub"
@@ -52,100 +56,140 @@ msgstr "Pasang dari GitHub"
 msgid "This will install the latest commit from GitHub. It might not be stable, so proceed with caution."
 msgstr "Ini akan memasang komit terbaru dari GitHub. Kemungkinan tidak stabil, jadi lanjutkan dengan hati-hati."
 
+#: ../../getting-started.rst:36
+msgid "pip3 install git+https://github.com/blueset/ehforwarderbot.git"
+msgstr ""
+
 #: ../../getting-started.rst:42
-msgid "A good network environment"
-msgstr "Lingkungan jaringan yang bagus"
+msgid "Alternative installation methods"
+msgstr ""
 
 #: ../../getting-started.rst:44
-msgid "Since most of our channels are using polling for message retrieval, a good network environment is necessary for channels to run smoothly. A poor network environment may lead to slow response, or loss of messages."
-msgstr "Karena sebagian besar dari saluran kami menggunakan pemungutan suara untuk pengambilan pesan, baik lingkungan jaringan yang diperlukan untuk saluran dapat berjalan dengan lancar. Sebuah lingkungan jaringan yang buruk dapat menyebabkan respons yang lambat, atau kehilangan pesan."
+msgid "You can find a list of alternative installation methods contributed by the community in the `project wiki`_."
+msgstr ""
 
-#: ../../getting-started.rst:51
+#: ../../getting-started.rst:47
+msgid "For scripts, containers (e.g. Docker), etc. that may include one or more external modules, please visit the `modules repository`_."
+msgstr ""
+
+#: ../../getting-started.rst:52
+msgid "These alternative installation methods are maintained by the community, please consult their respective author or maintainer for help related to those methods."
+msgstr ""
+
+#: ../../getting-started.rst:60
+msgid "A stable internet connection"
+msgstr ""
+
+#: ../../getting-started.rst:62
+msgid "Since the majority of our channels are using polling for message retrieval, a stable internet connection is necessary for channels to run smoothly. An unstable connection may lead to slow response, or loss of messages."
+msgstr ""
+
+#: ../../getting-started.rst:68
 msgid "Create local directories"
 msgstr "Buat direktori lokal"
 
-#: ../../getting-started.rst:53
+#: ../../getting-started.rst:70
 msgid "EFB uses a \\*nix user configuration style, which is described in details in :doc:`directories`. In short, if you are using the default configuration, you need to create ``~/.ehforwarderbot``, and give read and write permission to the user running EFB."
 msgstr "EFB menggunakan \\*nix pengguna konfigurasi gaya, yang dijelaskan secara detail di :doc:`directories`. Singkatnya, jika anda menggunakan konfigurasi default, anda perlu membuat ``~/.ehforwarderbot``, dan memberikan membaca dan izin menulis untuk pengguna yang menjalankan EFB."
 
-#: ../../getting-started.rst:59
+#: ../../getting-started.rst:76
 msgid "Choose, install and enable modules"
 msgstr "Pilih, pasang dan aktifkan modul"
 
-#: ../../getting-started.rst:61
-msgid "Currently, all modules that was submitted to us are recorded in the `channels repository <https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository>`_. You can choose the channels that fits your need the best."
-msgstr "Saat ini, semua modul yang dikirimkan kepada kami dicatat di `saluran repositori \n"
-"<https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository>` _. Anda bisa memilih saluran yang terbaik yang sesuai dengan kebutuhan anda."
-
-#: ../../getting-started.rst:65
-msgid "Instructions about installing each channel is available at their respective documentations."
-msgstr "Petunjuk tentang pemasangan setiap saluran tersedia di dokumentasi mereka masing-masing."
-
-#: ../../getting-started.rst:68
-msgid "When you have successfully installed a channel, you can enable it by listing its Channel ID in the :doc:`configuration file <config>`. The default path is ``~/.ehforwarderbot/profiles/default/config.yaml``. Please refer to :doc:`directories` if you have configured otherwise."
-msgstr "Saat anda telah berhasil memasang saluran, anda bisa mengaktifkannya dengan mencantumkan ID Saluran di :doc:`berkas konfigurasi <config>`. Path bawaannya adalah ``~/.ehforwarderbot/profiles/default/config.yaml``. Silahkan merujuk pada :doc:`direktori` apabila anda sudah dikonfigurasikan sebaliknya."
-
-#: ../../getting-started.rst:73
-msgid "Please note that although you can have more than one slaves channels running at the same time, you can only have exactly one master channels running in one profile. Meanwhile, middlewares are completely optional."
-msgstr "Harap dicatat bahwa meskipun anda dapat memiliki lebih dari satu saluran budak yang berjalan pada saat yang sama, anda hanya dapat memiliki satu saluran utama yang berjalan dalam satu profil. Sementara itu, middlewares benar-benar opsional."
-
-#: ../../getting-started.rst:77
-msgid "Example"
-msgstr "Contoh"
-
-#: ../../getting-started.rst:80
-msgid "To enable the following modules:"
+#: ../../getting-started.rst:78
+msgid "Currently, all modules that was submitted to us are recorded in the `modules repository`_. You can choose the channels that fits your need the best."
 msgstr ""
 
 #: ../../getting-started.rst:82
+msgid "Instructions about installing each channel is available at their respective documentations."
+msgstr "Petunjuk tentang pemasangan setiap saluran tersedia di dokumentasi mereka masing-masing."
+
+#: ../../getting-started.rst:85
+msgid "When you have successfully installed a channel, you can enable it by listing its Channel ID in the :doc:`configuration file <config>`. The default path is ``~/.ehforwarderbot/profiles/default/config.yaml``. Please refer to :doc:`directories` if you have configured otherwise."
+msgstr "Saat anda telah berhasil memasang saluran, anda bisa mengaktifkannya dengan mencantumkan ID Saluran di :doc:`berkas konfigurasi <config>`. Path bawaannya adalah ``~/.ehforwarderbot/profiles/default/config.yaml``. Silahkan merujuk pada :doc:`direktori` apabila anda sudah dikonfigurasikan sebaliknya."
+
+#: ../../getting-started.rst:90
+msgid "Please note that although you can have more than one slaves channels running at the same time, you can only have exactly one master channels running in one profile. Meanwhile, middlewares are completely optional."
+msgstr "Harap dicatat bahwa meskipun anda dapat memiliki lebih dari satu saluran budak yang berjalan pada saat yang sama, anda hanya dapat memiliki satu saluran utama yang berjalan dalam satu profil. Sementara itu, middlewares benar-benar opsional."
+
+#: ../../getting-started.rst:94
+msgid "Example"
+msgstr "Contoh"
+
+#: ../../getting-started.rst:97
+msgid "To enable the following modules:"
+msgstr ""
+
+#: ../../getting-started.rst:99
 msgid "Master channel"
 msgstr "Saluran utama"
 
-#: ../../getting-started.rst:83
+#: ../../getting-started.rst:100
 msgid "Demo Master (``foo.demo_master``)"
 msgstr "Demo Master ('' foo.demo_master'')"
 
-#: ../../getting-started.rst:85
+#: ../../getting-started.rst:102
 msgid "Slave channels"
 msgstr "Saluran Slave"
 
-#: ../../getting-started.rst:85
+#: ../../getting-started.rst:102
 msgid "Demo Slave (``foo.demo_slave``)"
 msgstr "Demo Slave (``foo.demo_slave``)"
 
-#: ../../getting-started.rst:86
+#: ../../getting-started.rst:103
 msgid "Dummy Slave (``bar.dummy``)"
 msgstr "Dummy Slave (``bar.dummy``)"
 
-#: ../../getting-started.rst:88
+#: ../../getting-started.rst:105
 msgid "Middlewares"
 msgstr "Middlewares"
 
-#: ../../getting-started.rst:88
+#: ../../getting-started.rst:105
 msgid "Null Middleware (``foo.null``)"
 msgstr "Null Middleware ('' foo.null'')"
 
-#: ../../getting-started.rst:90
+#: ../../getting-started.rst:107
 msgid "In the ``config.yaml`` it should have the following lines:"
 msgstr "Di '' config.yaml'' seharusnya baris berikut:"
 
-#: ../../getting-started.rst:102
+#: ../../getting-started.rst:109
+msgid "master_channel: foo.demo_master\n"
+"slave_channels:\n"
+"- foo.demo_slave\n"
+"- bar.dummy\n"
+"middlewares:\n"
+"- foo.null"
+msgstr ""
+
+#: ../../getting-started.rst:121
 msgid "Launch EFB"
 msgstr "Luncurkan EFB"
 
-#: ../../getting-started.rst:108
+#: ../../getting-started.rst:123
+msgid "ehforwarderbot"
+msgstr ""
+
+#: ../../getting-started.rst:127
 msgid "This will launch EFB directly in the current environment. The default :doc:`profile` is named ``default``, to launch EFB in a different profile, append ``--profile <profile-name>`` to the command."
 msgstr "Ini akan meluncurkan EFB langsung dalam lingkungan saat ini. Default :doc:'profil' yang bernama '' default'', untuk memulai EFB di profil yang berbeda, menambahkan ''--profil <profile-name>'' ke perintah."
 
-#: ../../getting-started.rst:112
+#: ../../getting-started.rst:131
 msgid "For more command line options, use ``--help`` option."
 msgstr "Untuk opsi baris perintah yang lain, menggunakan ''--membantu '' pilihan."
 
-#: ../../getting-started.rst:115
+#: ../../getting-started.rst:134
+msgid "Use EFB in another language"
+msgstr ""
+
+#: ../../getting-started.rst:136
+msgid "TODO: talk about language env var, and crowdin."
+msgstr ""
+
+#: ../../getting-started.rst:139
 msgid "Launch EFB as a daemon process"
 msgstr "Meluncurkan EFB sebagai proses daemon"
 
-#: ../../getting-started.rst:117
+#: ../../getting-started.rst:141
 msgid "Since version 2, EH Forwarder Bot has removed the daemon helper as it is unstable to use.  We recommend you to use mature solutions for daemon management, such as systemd_, upstart_, or pm2_."
 msgstr "Semenjak versi 2, EH Forwarder Bot telah menghapus daemon helper karena tidak stabil penggunaannya. Kami menyarankan anda untuk menggunakan solusi yang baik untuk pengelolaan daemon, seperti systemd_, upstart_, atau pm2_."
 

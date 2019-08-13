@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-12 14:35+1100\n"
-"PO-Revision-Date: 2019-03-12 03:37\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-13 04:12\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
 "MIME-Version: 1.0\n"
@@ -15,6 +15,56 @@ msgstr ""
 "X-Crowdin-Project: ehforwarderbot\n"
 "X-Crowdin-Language: tr\n"
 "X-Crowdin-File: /ehForwarderBot/ehforwarderbot/locale/ehforwarderbot.pot\n"
+
+#: ehforwarderbot/config.py:36
+msgid "Config File does not exist. ({})"
+msgstr ""
+
+#: ehforwarderbot/config.py:46
+msgid "Master Channel is not specified in the profile config."
+msgstr ""
+
+#: ehforwarderbot/config.py:48
+#, python-brace-format
+msgid "Master Channel ID is expected to be a string, but \"{0}\" is of type {1}."
+msgstr ""
+
+#: ehforwarderbot/config.py:52 ehforwarderbot/config.py:70
+#: ehforwarderbot/config.py:86
+msgid "\"{}\" is not found."
+msgstr ""
+
+#: ehforwarderbot/config.py:54 ehforwarderbot/config.py:72
+#, python-brace-format
+msgid "\"{0}\" is not a channel, but a {1}."
+msgstr ""
+
+#: ehforwarderbot/config.py:56
+#, python-brace-format
+msgid "\"{0}\" is not a master channel, but a {1}."
+msgstr ""
+
+#: ehforwarderbot/config.py:63
+msgid "Slave Channels are not specified in the profile config."
+msgstr ""
+
+#: ehforwarderbot/config.py:65
+msgid "Slave Channel IDs are expected to be a list, but {} is found."
+msgstr ""
+
+#: ehforwarderbot/config.py:74
+#, python-brace-format
+msgid "\"{0}\" is not a slave channel, but a {1}."
+msgstr ""
+
+#: ehforwarderbot/config.py:81
+msgid "Middleware IDs must be a list, but a {} is found."
+msgstr ""
+
+#: ehforwarderbot/config.py:88
+#, python-brace-format
+msgid "\"{0}\" is not a middleware, but a {1}."
+msgstr ""
 
 #: ehforwarderbot/wizard.py:83 ehforwarderbot/__main__.py:47
 msgid "Choose a profile to start with."
@@ -169,13 +219,13 @@ msgid "You have chosen to enable the following modules for profile \"{0}\".\n\n"
 "Master channel: {1}"
 msgstr ""
 
-#: ehforwarderbot/wizard.py:591 ehforwarderbot/__main__.py:231
+#: ehforwarderbot/wizard.py:591 ehforwarderbot/__main__.py:233
 msgid "Slave channel:"
 msgid_plural "Slave channels:"
 msgstr[0] "Bağımlı kanal:"
 msgstr[1] "Bağımlı kanallar:"
 
-#: ehforwarderbot/wizard.py:598 ehforwarderbot/__main__.py:241
+#: ehforwarderbot/wizard.py:598 ehforwarderbot/__main__.py:243
 msgid "Middleware:"
 msgid_plural "Middlewares:"
 msgstr[0] "Aracı yazılım:"
@@ -304,28 +354,26 @@ msgstr "Tüm aracı yazılımlar başlatıldı."
 msgid "EH Forwarder Bot\n"
 "Version: {version}\n"
 "Python version:\n"
-"{py_version}"
-msgstr "EH Forwarder Bot\n"
-"Versiyonu: {version}\n"
-"Python versiyonu:\n"
-"{py_version}"
+"{py_version}\n"
+"Running on profile \"{profile}\"."
+msgstr ""
 
-#: ehforwarderbot/__main__.py:225 ehforwarderbot/__main__.py:234
-#: ehforwarderbot/__main__.py:245
+#: ehforwarderbot/__main__.py:227 ehforwarderbot/__main__.py:236
+#: ehforwarderbot/__main__.py:247
 msgid "Default instance"
 msgstr ""
 
-#: ehforwarderbot/__main__.py:226
+#: ehforwarderbot/__main__.py:228
 msgid "Master channel:"
 msgstr "Ana kanal:"
 
-#: ehforwarderbot/__main__.py:226 ehforwarderbot/__main__.py:236
-#: ehforwarderbot/__main__.py:247
+#: ehforwarderbot/__main__.py:228 ehforwarderbot/__main__.py:238
+#: ehforwarderbot/__main__.py:249
 #, python-brace-format
 msgid "{name} ({id}) {version} # {instance_id}"
 msgstr "{name} ({id}) {version} # {instance_id}"
 
-#: ehforwarderbot/__main__.py:253
+#: ehforwarderbot/__main__.py:255
 msgid "No middleware is enabled."
 msgstr "Hiçbir aracı yazılım aktif değil."
 

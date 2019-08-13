@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-03-12 03:37\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-13 04:12\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Spanish, Argentina\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,11 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:4
 msgid "EH Forwarder Bot is an extensible framework that allows user to control and manage accounts from different chat platforms in a unified interface. It consists of 4 parts: a Master Channel, some Slave Channels, some Middlewares and a Coordinator."
+msgstr ""
+
+#: ../../guide/walkthrough.rst:None
+msgid ".. image:: guide/../_static/EFB-docs-0.png\n"
+"   :alt: EFB Project Structure"
 msgstr ""
 
 #: ../../guide/walkthrough.rst:17
