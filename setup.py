@@ -37,7 +37,7 @@ setup(
     ],
     install_requires=[
         "ruamel.yaml",
-        "asciimatics",
+        "bullet",
         "cjkwrap",
         "typing_extensions"
     ],

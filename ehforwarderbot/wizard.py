@@ -2,35 +2,28 @@
 """
 Interactive wizard to guide user to set up EFB and modules.
 
-This guide should also include checks on Python versions, so this specific script is written
-to be compatible with both Python 2 and 3.
+Since newer version of pip (>=9.0), which checks Python version
+prior to installation, is already widespread, we are dropping
+Python version check in wizard script, and assuming user is
+running an appropriate Python version.
 """
 import argparse
-from typing import Dict
-
-import pkg_resources
 import gettext
-import sys
 import os
 import platform
-import cjkwrap
+import sys
 from collections import namedtuple
-from asciimatics.screen import Screen
-from asciimatics.scene import Scene
-from asciimatics.exceptions import ResizeScreenError, StopApplication, NextScene
-from asciimatics.widgets import Frame, ListBox, Layout, Divider, Text, \
-    Button, TextBox, Widget, Label, PopUpDialog, RadioButtons
-import asciimatics.widgets
+from typing import Dict, Callable
+from urllib.parse import quote
+
+import bullet.utils
+import cjkwrap
+import pkg_resources
+from bullet import Bullet, keyhandler, colors
+from bullet.charDef import NEWLINE_KEY, BACK_SPACE_KEY
 from ruamel.yaml import YAML
 
-if sys.version_info < (3,):
-    # noinspection PyUnresolvedReferences
-    from urllib import quote
-else:
-    from urllib.parse import quote
-
-    if sys.version_info >= (3, 6):
-        from ehforwarderbot import coordinator, utils
+from ehforwarderbot import coordinator, utils
 
 Module = namedtuple("Module", ['type', 'id', 'name', 'emoji', 'wizard'])
 Module.replace = Module._replace  # type: ignore
@@ -40,50 +33,19 @@ gettext.translation(
     pkg_resources.resource_filename('ehforwarderbot', 'locale'),
     fallback=True
 ).install(names=["ngettext"])
-
-# CJK support hack for asciimatics widgets
-
-_split_text = asciimatics.widgets._split_text
+_: Callable
+ngettext: Callable
 
 
-def split_text(text, width, height, unicode_aware=True):
-    if not unicode_aware:
-        return _split_text(text, width, height, unicode_aware)
-    result = []
-    for i in text.split("\n"):
-        if not i:
-            result.append(i)
-        else:
-            result += cjkwrap.wrap(i, width)
-
-    # Check for a height overrun and truncate.
-    if len(result) > height:
-        result = result[:height]
-        result[height - 1] = result[height - 1][:width - 3] + "..."
-
-    # Very small columns could be shorter than individual words - truncate
-    # each line if necessary.
-    for i, line in enumerate(result):
-        if len(line) > width:
-            result[i] = line[:width - 3] + "..."
-    return result
-
-
-def get_height(text, width):
-    return len(split_text(text, width, float('inf')))
-
-
-asciimatics.widgets._split_text = split_text
+def print_wrapped(text):
+    paras = text.split("\n")
+    for i in paras:
+        print(*cjkwrap.wrap(i), sep="\n")
 
 
 class DataModel:
-    def __init__(self):
-        parser = argparse.ArgumentParser()
-        parser.add_argument("-p", "--profile",
-                            help=_("Choose a profile to start with."),
-                            default="default")
-        args = parser.parse_args()
-        self.profile = args.profile
+    def __init__(self, profile):
+        self.profile = profile
 
         self.yaml = YAML()
         self.config = None
@@ -177,12 +139,23 @@ class DataModel:
                 fn = i.load()
                 self.modules[i.name].replace(wizard=fn)
 
-    def get_master_id_tuples(self):
-        return [(i.name, i.id) for i in self.modules.values()
-                if i.type == "master"]
+    def get_master_lists(self):
+        names = []
+        ids = []
+        for i in self.modules.values():
+            if i.type == "master":
+                names.append(i.name)
+                ids.append(i.id)
+        return names, ids
 
-    def get_slave_id_tuples(self):
-        return [(i.name, i.id) for i in self.modules.values() if i.type == "slave"]
+    def get_slave_lists(self):
+        names = []
+        ids = []
+        for i in self.modules.values():
+            if i.type == "slave":
+                names.append(i.name)
+                ids.append(i.id)
+        return names, ids
 
     @staticmethod
     def split_cid(cid):
@@ -198,7 +171,12 @@ class DataModel:
             return cid
         mid, iid = self.split_cid(cid)
         if mid not in self.modules:
-            return None
+            if iid:
+                return _("Unknown/custom module (instance: {instance})").format(
+                    iid
+                )
+            else:
+                return _("Unknown/custom module")
         else:
             if iid:
                 name = _("{channel} (instance: {instance})").format(
@@ -212,467 +190,165 @@ class DataModel:
     def has_wizard(self, cid):
         mid, _ = self.split_cid(cid)
         if mid not in self.modules:
-            return None
+            return False
         return callable(self.modules[mid].wizard)
 
-    def get_selected_slave_id_tuples(self):
+    def get_selected_slave_lists(self):
         if 'slave_channels' not in self.config:
             self.config['slave_channels'] = []
-            return []
+            return [], []
         i = 0
-        res = []
+
+        names = []
+        ids = []
+
         while i < len(self.config['slave_channels']):
             cid = self.config['slave_channels'][i]
-            mid, _ = self.split_cid(cid)
+            mid, __ = self.split_cid(cid)
 
             if mid not in self.modules or self.modules[mid].type != "slave":
-                self.config['slave_channels'].pop(i)
+                names.append(_("Unknown/custom channel ({channel_id})").format(channel_id=cid))
+                ids.append(cid)
             else:
-                i += 1
                 name = self.get_instance_display_name(cid)
-                res.append((name, cid))
-        return res
+                names.append(name)
+                ids.append(cid)
+            i += 1
+        return names, ids
 
-    def get_middleware_id_tuples(self):
-        return [(i.name, i.id) for i in self.modules.values() if i.type == "middleware"]
+    def get_middleware_lists(self):
+        names = []
+        ids = []
+        for i in self.modules.values():
+            if i.type == "middleware":
+                names.append(i.name)
+                ids.append(i.id)
+        return names, ids
 
-    def get_selected_middleware_id_tuples(self):
+    def get_selected_middleware_lists(self):
         if 'middlewares' not in self.config:
             self.config['middlewares'] = []
-            return []
+            return [], []
         i = 0
-        res = []
+        names = []
+        ids = []
         while i < len(self.config['middlewares']):
             cid = self.config['middlewares'][i]
-            mid, _ = self.split_cid(cid)
+            mid, __ = self.split_cid(cid)
 
             if mid not in self.modules or self.modules[mid].type != "middleware":
-                self.config['middlewares'].pop(i)
+                names.append(_("Unknown/custom middleware ({middleware_id})").format(middleware_id=cid))
+                ids.append(cid)
             else:
-                i += 1
                 name = self.get_instance_display_name(cid)
-                res.append((name, cid))
-        return res
+                names.append(name)
+                ids.append(cid)
+            i += 1
+        return names, ids
 
 
-class ModuleEntryView(Frame):
+class KeyValueBullet(Bullet):
+    def __init__(self, prompt: str = "", choices: list = [], choices_id: list = [], bullet: str = "●",
+                 bullet_color: str = colors.foreground["default"], word_color: str = colors.foreground["default"],
+                 word_on_switch: str = colors.REVERSE, background_color: str = colors.background["default"],
+                 background_on_switch: str = colors.REVERSE, pad_right=0, indent: int = 0, align=0, margin: int = 0,
+                 shift: int = 0):
+        super().__init__(prompt, choices, bullet, bullet_color, word_color, word_on_switch, background_color,
+                         background_on_switch, pad_right, indent, align, margin, shift)
 
-    def __init__(self, screen, data, mtype, index, mode, on_close=None):
-        # self.palette['background'] = (Screen.COLOUR_WHITE, Screen.A_NORMAL, Screen.COLOUR_BLUE)
+        self.choices_id = choices_id
+        self._key_handler = self._key_handler.copy()
+        self._key_handler[NEWLINE_KEY] = self.__class__.accept
 
-        if mtype == "slave" and mode == "add":
-            title = _("Add a new slave channel")
-        elif mtype == "slave" and mode == "edit":
-            title = _("Edit a slave channel entry")
-        elif mtype == "middleware" and mode == "add":
-            title = _("Add a new middleware")
-        elif mtype == "middleware" and mode == "edit":
-            title = _("Edit a middleware entry")
-        else:
-            raise ValueError("Unknown mtype and mode pair: %s, %s", mtype, mode)
+    @keyhandler.register(NEWLINE_KEY)
+    def accept(self, *args):
+        pos = self.pos
+        bullet.utils.moveCursorDown(len(self.choices) - pos)
+        self.pos = 0
+        return self.choices[pos], self.choices_id[pos]
 
-        super(ModuleEntryView, self) \
-            .__init__(screen,
-                      min(screen.height, 15), min(screen.width, 75),
-                      hover_focus=True,
-                      is_modal=True,
-                      title=title,
-                      reduce_cpu=True
-                      )
 
-        self.set_theme("bright")
-        self._model = data  # type: DataModel
-        self._mtype = mtype  # type: str
-        self._index = index
-        self._mode = mode
-        self._on_close = on_close
-        layout = Layout([1])
-        self.add_layout(layout)
+class ReorderBullet(Bullet):
 
-        module_kv = []
-        label = ""
-        if mtype == "slave":
-            module_kv = self._model.get_slave_id_tuples()
-            label = _("Slave channel")
-        elif mtype == 'middleware':
-            module_kv = self._model.get_middleware_id_tuples()
-            label = _("Middleware")
-
-        self.modules = RadioButtons(
-            module_kv,
-            label=label,
-            name="modules"
+    def __init__(self, prompt: str = "", choices: list = [], choices_id: list = [], bullet: str = "●",
+                 bullet_color: str = colors.foreground["default"], word_color: str = colors.foreground["default"],
+                 word_on_switch: str = colors.REVERSE, background_color: str = colors.background["default"],
+                 background_on_switch: str = colors.REVERSE, pad_right=0, indent: int = 0, align=0, margin: int = 0,
+                 shift: int = 0):
+        super().__init__(prompt, choices, bullet, bullet_color, word_color, word_on_switch, background_color,
+                         background_on_switch, pad_right, indent, align, margin, shift)
+        self.prompt += "\n" + _(
+            "[ =: Shift up; -: Shift down; Backspace: Remove ]"
         )
-        layout.add_widget(self.modules)
-
-        self.instance = Text(
-            _("Instance ID"),
-            "instance_id",
-        )
-        layout.add_widget(self.instance)
-
-        layout.add_widget(Label(_("Leave this blank to use the default instance."), 3))
-
-        layout.add_widget(Divider(height=2))
-        layout.add_widget(Button(_("Save"), self._save))
-
-        if mode == "edit":
-            if mtype == "slave":
-                c = self._model.config['slave_channels'][index].split("#")
-            else:  # mtype == "middleware"
-                c = self._model.config['middlewares'][index].split("#")
-            self.modules.value = c[0]
-            if len(c) > 1:
-                self.instance.value = c[1]
-        self.fix()
-
-    def _save(self):
-        val = self.modules.value
-        name = self._model.modules[val].name
-
-        if self.instance.value:
-            val += "#" + self.instance.value
-
-        if self._mtype == "slave":
-            dest = self._model.config['slave_channels']
-        else:  # self._mode == "edit"
-            dest = self._model.config['middlewares']
-
-        if self._mode == "add":
-            if val in dest:
-                return
-            dest.insert(self._index, "")
-        else:  # mode == edit
-            if val in dest[:self._index] or val in dest[self._index + 1:]:
-                dest.pop(self._index)
-                return
-
-        dest[self._index] = val
-        dest.yaml_add_eol_comment(name, self._index)
-
-        self._scene.remove_effect(self)
-        if self._on_close:
-            self._on_close()
-
-
-class ModulesView(Frame):
-    def __init__(self, screen, data):
-        """
-        Args:
-            screen (Screen): Screen
-            data (DataModel): Data model
-        """
-        super(ModulesView, self).__init__(screen, min(screen.height, 43), min(screen.width, 132),
-                                          hover_focus=True,
-                                          title=_("Choose modules"),
-                                          reduce_cpu=True)
-
-        self._model = data
-        self.set_theme("bright")
-        master_layout = Layout([6, 4])
-        self.add_layout(master_layout)
-
-        self.master_channel = RadioButtons(
-            self._model.get_master_id_tuples(),
-            label=_("Master channel"),
-            name="master_channel"
-        )
-        if "master_channel" in self._model.config and \
-                self._model.config['master_channel'] in self._model.modules and \
-                self._model.modules[self._model.config['master_channel']].type == "master":
-            self.master_channel.value = self._model.config['master_channel']
-        master_layout.add_widget(self.master_channel, 0)
-        self.master_instance = Text(_("Instance ID"), "master_channel_instance")
-        master_layout.add_widget(self.master_instance, 1)
-        master_layout.add_widget(Label(_("Leave this blank to use the default instance."), 3), 1)
-
-        layout = Layout([1])
-        self.add_layout(layout)
-        layout.add_widget(Label("", 3))
-
-        slave_layout = Layout([8, 2])
-        self.add_layout(slave_layout)
-        slave_layout.add_widget(Label(_("Slave channels")), 0)
-        self.slave_channels = ListBox(
-            Widget.FILL_COLUMN,
-            self._model.get_selected_slave_id_tuples(),
-            name="slave_channels",
-            add_scroll_bar=True
-        )
-        slave_layout.add_widget(self.slave_channels, 0)
-        slave_layout.add_widget(Button(_("Add"), self.edit_popup("slave", "add")), 1)
-        slave_layout.add_widget(Button(_("Edit"), self.edit_popup("slave", "edit")), 1)
-        slave_layout.add_widget(Button(_("Up"), self.shift("slave", is_up=True)), 1)
-        slave_layout.add_widget(Button(_("Down"), self.shift("slave", is_up=False)), 1)
-        slave_layout.add_widget(Button(_("Remove"), self.delete("slave")), 1)
-
-        layout = Layout([1])
-        self.add_layout(layout)
-        layout.add_widget(Label("", 3))
-
-        middleware_layout = Layout([8, 2])
-        self.add_layout(middleware_layout)
-        middleware_layout.add_widget(Label(_("Middlewares")), 0)
-        self.middlewares = ListBox(
-            Widget.FILL_COLUMN,
-            self._model.get_selected_middleware_id_tuples(),
-            name="middlewares",
-            add_scroll_bar=True
-        )
-        middleware_layout.add_widget(self.middlewares, 0)
-        middleware_layout.add_widget(Button(_("Add"), self.edit_popup("middleware", "add")), 1)
-        middleware_layout.add_widget(Button(_("Edit"), self.edit_popup("middleware", "edit")), 1)
-        middleware_layout.add_widget(Button(_("Up"), self.shift("middleware", is_up=True)), 1)
-        middleware_layout.add_widget(Button(_("Down"), self.shift("middleware", is_up=False)), 1)
-        middleware_layout.add_widget(Button(_("Remove"), self.delete("middleware")), 1)
-
-        confirm_layout = Layout([1])
-        self.add_layout(confirm_layout)
-        confirm_layout.add_widget(Divider(height=4))
-        confirm_layout.add_widget(Button(_("Next"), self._ok))
-        self.fix()
-
-    def _ok(self):
-        self.save()
-
-        # Check if the current configuration is valid
-        if len(self.slave_channels.options) < 1:
-            self.show_popup(_("You must enable at least one slave channel."))
-            return
-
-        options = list(map(repr, self.slave_channels.options))
-        if len(options) != len(set(options)):
-            self.show_popup(_("Duplicate instances detected in slave channel settings. "
-                              "Each module-instance pair must be unique."))
-            return
-
-        options = list(map(repr, self.middlewares.options))
-        if len(options) != len(set(options)):
-            self.show_popup(_("Duplicate instances detected in middleware settings. "
-                              "Each module-instance pair must be unique."))
-            return
-
-        self._model.save_config()
-        raise NextScene("ModulesSetup")
-
-    def show_popup(self, message):
-        self._scene.add_effect(PopUpDialog(
-            self.screen,
-            message,
-            [_("OK")]
+        self.choices.extend((
+            _("+ Add"),
+            _("✓ Submit")
         ))
-
-    def edit_popup(self, mtype, mode):
-        def on_add_edit():
-            if mtype == "slave":
-                on_close = self.update_slaves_list
-                index = self.slave_channels._line
-                l = self.slave_channels.options
-            else:  # mtype == "middleware":
-                on_close = self.update_middleware_list
-                index = self.middlewares._line
-                l = self.middlewares.options
-
-            if len(l) == 0:
-                return
-
-            self._scene.add_effect(ModuleEntryView(self.screen, self._model, mtype,
-                                                   index, mode, on_close))
-        return on_add_edit
-
-    def shift(self, mtype, is_up=False):
-        def on_shift():
-            if mtype == "slave":
-                l = self._model.config["slave_channels"]
-                control = self.slave_channels
-                update = self.update_slaves_list
-            else:  # mtype == "middleware"
-                l = self._model.config["middlewares"]
-                control = self.middlewares
-                update = self.update_middleware_list
-            index = control._line
-            if (is_up and index <= 0) or (not is_up and index >= len(l) - 1):
-                return
-            if is_up:
-                l[index], l[index - 1] = l[index - 1], l[index]
-            else:
-                l[index], l[index + 1] = l[index + 1], l[index]
-            update()
-            control._line += -1 if is_up else 1
-            control.value = control.options[control._line][1]
-        return on_shift
-
-    def delete(self, mtype):
-        def on_delete():
-            if mtype == "slave":
-                l = self._model.config["slave_channels"]
-                index = self.slave_channels._line
-                update = self.update_slaves_list
-            else:  # mtype == "middleware"
-                l = self._model.config["middlewares"]
-                index = self.middlewares._line
-                update = self.update_middleware_list
-            if len(l) < 1:
-                return
-            index = max(0, min(index, len(l) - 1))
-            l.pop(index)
-            update()
-        return on_delete
-
-    def update_slaves_list(self):
-        self.slave_channels.options = self._model.get_selected_slave_id_tuples()
-
-    def update_middleware_list(self):
-        self.middlewares.options = self._model.get_selected_middleware_id_tuples()
-
-
-class StartupView(Frame):
-    def __init__(self, screen, data):
-        super(StartupView, self).__init__(screen, min(screen.height, 43), min(screen.width, 132),
-                                          hover_focus=True,
-                                          title=_("EH Forwarder Bot Setup Wizard"),
-                                          reduce_cpu=True)
-
-        self._model = data
-        self.set_theme("bright")
-        layout = Layout([100], fill_frame=True)
-        self.add_layout(layout)
-        label_text = _("Checking Python version... OK\n"
-                       "Checking master channels... OK\n"
-                       "Checking slave channels... OK\n"
-                       "\n"
-                       "Welcome to EH Forwarder Bot Setup Wizard.  This program "
-                       "will guide you to finish up the last few steps to "
-                       "get EFB ready to use.\n"
-                       "\n"
-                       "To use this wizard in another supported language, "
-                       "please change your system language or modify the "
-                       "language environment variable and restart the wizard.\n"
-                       "\n"
-                       "Confirm the profile name to use below and "
-                       "select \"Next\" to continue.\n\n")
-        h = get_height(label_text, screen.width)
-        layout.add_widget(Label(label_text, height=h))
-
-        self.profile = Text("Profile", "profile")
-        self.profile.value = self._model.profile
-        layout.add_widget(self.profile)
-        layout.add_widget(Divider(height=4))
-
-        layout.add_widget(Button(_("Next"), self._ok))
-        self.fix()
-
-    def _ok(self):
-        self.save()
-        self._model.profile = self.data['profile']
-        self._model.load_config()
-        raise NextScene("Modules")
-
-
-class ModulesSetupView(Frame):
-    def __init__(self, screen, data):
-        super(ModulesSetupView, self).__init__(screen, min(screen.height, 43), min(screen.width, 132),
-                                               hover_focus=True,
-                                               title=_("EH Forwarder Bot Setup Wizard"),
-                                               reduce_cpu=True)
-
-        self._model = data  # type: DataModel
-        self.set_theme("bright")
-        layout = Layout([1], fill_frame=True)
-        self.add_layout(layout)
-        label_text = _("You have chosen to enable the following modules for profile \"{0}\".\n"
-                       "\n"
-                       "Master channel: {1}").format(
-            self._model.profile,
-            self._model.get_instance_display_name(self._model.config['master_channel'])
-        )
-
-        label_text += "\n\n" + \
-                      ngettext("Slave channel:", "Slave channels:", len(self._model.config['slave_channels'])) + "\n"
-        for i in self._model.config['slave_channels']:
-            label_text += '- ' + self._model.get_instance_display_name(i) + "\n"
-
-        num_middlewares = len(self._model.config.get('middlewares', []))
-        if num_middlewares > 0:
-            label_text += '\n\n' + \
-                ngettext("Middleware:", "Middlewares:")
-            for i in self._model.config['middlewares']:
-                label_text += '- ' + self._model.get_instance_display_name(i) + "\n"
-
-        modules_count = 1
-        missing_wizards = []
-        if not self._model.has_wizard(self._model.config['master_channel']):
-            missing_wizards.append(self._model.config['master_channel'])
-        for i in self._model.config['slave_channels']:
-            modules_count += 1
-            if not self._model.has_wizard(i):
-                missing_wizards.append(i)
-        for i in self._model.config['middlewares']:
-            modules_count += 1
-            if not self._model.has_wizard(i):
-                missing_wizards.append(i)
-
-        if missing_wizards:
-            label_text += "\n" + \
-                ngettext("Note:\n"
-                         "The following module does not have a setup wizard. It is probably because "
-                         "that it does not need to be set up, or it requires you to set up manually.\n"
-                         "Please consult its documentation for further details.\n",
-                         "Note:\n"
-                         "The following modules do not have a setup wizard. It is probably because "
-                         "that they do not need to be set up, or they require you to set up manually.\n"
-                         "Please consult their documentations respectively for further details.\n",
-                         len(missing_wizards))
-            for i in missing_wizards:
-                label_text += "- " + self._model.get_instance_display_name(i) + "\n"
-
-        label_text += "\n"
-        if len(missing_wizards) == modules_count:
-            label_text += _("If you are happy with this settings, you may finish this wizard now, and "
-                            "continue to configure other modules if necessary. Otherwise, you can also "
-                            "go back to change your module settings again.")
-            button_text = _("Finish")
-        else:
-            label_text += _("If you are happy with this settings, this wizard will guide you to setup "
-                            "modules you have enabled. Otherwise, you can also go back to change your "
-                            "module settings again.")
-            button_text = _("Continue")
-
-        h = get_height(label_text, screen.width) + 3
-        layout.add_widget(Label(label_text, height=h))
-
-        layout.add_widget(Button(_("Back"), self._back))
-        layout.add_widget(Button(button_text, self._ok))
-        self.fix()
-
-    @staticmethod
-    def _back():
-        raise NextScene("Modules")
-
-    @staticmethod
-    def _ok():
-        raise StopApplication("Continue")
-
-
-def screen(scr, scene, data):
-    scene_decorators = [StartupView(scr, data)]
-    result = prerequisite_check()
-    if result:
-        scene_decorators.append(PopUpDialog(
-            scr,
-            result,
-            [_("OK")],
-            on_close=stop_wizard
+        self.choices_id = choices_id
+        self.choices_id.extend((
+            "add",
+            "submit"
         ))
-    scenes = [Scene(scene_decorators, -1, name="Welcome"),
-              Scene([ModulesView(scr, data)], -1, name="Modules"),
-              Scene([ModulesSetupView(scr, data)], -1, name="ModulesSetup")]
-    scene = scene or scenes[0]
-    scr.play(scenes, stop_on_resize=True, start_scene=scene)
+        self._key_handler = self._key_handler.copy()
+        self._key_handler[NEWLINE_KEY] = self.__class__.accept
 
+    @keyhandler.register(ord('-'))
+    def shift_up(self):
+        choices = len(self.choices)
+        if self.pos - 1 < 0 or self.pos >= choices - 2:
+            return
+        else:
+            self.choices[self.pos - 1], self.choices[self.pos] = self.choices[self.pos], self.choices[self.pos - 1]
+            bullet.utils.clearLine()
+            old_pos = self.pos
+            self.pos -= 1
+            self.printBullet(old_pos)
+            bullet.utils.moveCursorUp(1)
+            bullet.utils.clearLine()
+            self.printBullet(self.pos)
 
-def stop_wizard(_):
-    raise StopApplication('')
+    @keyhandler.register(ord('='))
+    def shift_down(self):
+        choices = len(self.choices)
+        if self.pos >= choices - 3:
+            return
+        else:
+            self.choices[self.pos + 1], self.choices[self.pos] = self.choices[self.pos], self.choices[self.pos + 1]
+            bullet.utils.clearLine()
+            old_pos = self.pos
+            self.pos += 1
+            self.printBullet(old_pos)
+            bullet.utils.moveCursorDown(1)
+            bullet.utils.clearLine()
+            self.printBullet(self.pos)
+
+    @keyhandler.register(BACK_SPACE_KEY)
+    def delete_item(self):
+        choices = len(self.choices)
+        if self.pos >= choices - 2:
+            return
+        self.choices.pop(self.pos)
+        self.choices_id.pop(self.pos)
+        bullet.utils.moveCursorUp(self.pos - 1)
+        bullet.utils.clearConsoleDown(choices)
+        bullet.utils.moveCursorUp(1)
+        for i in range(len(self.choices)):
+            bullet.utils.moveCursorDown(1)
+            self.printBullet(i)
+        bullet.utils.moveCursorUp(1)
+
+    @keyhandler.register(NEWLINE_KEY)
+    def accept(self):
+        choices = len(self.choices)
+        if self.pos == choices - 1 and choices <= 2:
+            # Reject empty list
+            return None
+        if self.pos >= choices - 2:  # Add / Submit
+            pos = self.pos
+            bullet.utils.moveCursorDown(len(self.choices) - pos)
+            self.pos = 0
+            return self.choices, self.choices_id, self.choices_id[pos]
+        return None
 
 
 def get_platform_name():
@@ -708,60 +384,315 @@ def prerequisite_check():
     """
 
     # Check Python version
+    print(_("Checking Python version... "), end="")
     if sys.version_info < (3, 6):
         version_str = "%s.%s.%s" % sys.version_info[:3]
         # TRANSLATORS: This word is used as a part of search query suggested to users,
         # it may appears in context like "Ubuntu 16.04 install Python 3.7"
         search_url = build_search_query(_("install") + " Python 3.7")
-        return _("EH Forwarder Bot requires a minimum of Python 3.6 to run.  You "
-                 "are currently using Python {version}. \n"
-                 "\n"
-                 "You may want to try:\n"
-                 "{url}").format(version=version_str, url=search_url)
+        print()
+        print(_("EH Forwarder Bot requires a minimum of Python 3.6 to run.  You "
+                "are currently using Python {version}. \n"
+                "\n"
+                "You may want to try:\n"
+                "{url}").format(version=version_str, url=search_url))
+        exit(1)
+    else:
+        print(_("OK"))
 
     # Check installations of modules
     modules_err = _("You may want to visit the modules repository to find a list of "
                     "available modules to install.\n"
                     "https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository")
     # 1. At least 1 master channel must be installed
+    print(_("Checking master channels... "), end="")
     try:
         next(pkg_resources.iter_entry_points("ehforwarderbot.master"))
     except StopIteration:
-        return _("No master channel detected.  EH Forwarder Bot requires at least one "
-                 "master channel installed to run.") + "\n\n" + modules_err
+        print()
+        print(_("No master channel detected.  EH Forwarder Bot requires at least one "
+                "master channel installed to run.") + "\n\n" + modules_err)
+        exit(1)
+    print(_("OK"))
 
     # 2. At least 1 slave channel must be installed
+    print(_("Checking slave channels... "), end="")
     try:
         next(pkg_resources.iter_entry_points("ehforwarderbot.slave"))
     except StopIteration:
-        return _("No slave channel detected.  EH Forwarder Bot requires at least one "
-                 "slave channel installed to run.") + "\n\n" + modules_err
+        print()
+        print(_("No slave channel detected.  EH Forwarder Bot requires at least one "
+                "slave channel installed to run.") + "\n\n" + modules_err)
+        exit(1)
+    print(_("OK"))
+    print()
+
+
+def choose_master_channel(data: DataModel):
+    channel_names, channel_ids = data.get_master_lists()
+
+    list_widget = KeyValueBullet(prompt=_("1. Choose master channel"),
+                                 choices=channel_names,
+                                 choices_id=channel_ids)
+
+    default_idx = None
+    default_instance = ''
+    if "master_channel" in data.config:
+        default_config = data.config['master_channel'].split("#")
+        default_id = default_config[0]
+        if len(default_config) > 1:
+            default_instance = default_config[1]
+        try:
+            default_idx = channel_ids.index(default_id)
+        except ValueError:
+            pass
+
+    chosen_channel_name, chosen_channel_id = list_widget.launch(default=default_idx)
+
+    chosen_instance = input(_("Instance name to use with {channel_name}: [{default_instance}]")
+                            .format(channel_name=chosen_channel_name,
+                                    default_instance=default_instance or _("default instance"))
+                            + " ").strip()
+    if chosen_instance:
+        chosen_channel_id += "#" + chosen_instance  # type: ignore
+    data.config['master_channel'] = chosen_channel_id
+
+
+def choose_slave_channels(data: DataModel):
+    chosen_slave_names, chosen_slave_ids = data.get_selected_slave_lists()
+    widget = ReorderBullet(_("2. Choose slave channels (at least one is required)."),
+                           choices=chosen_slave_names,
+                           choices_id=chosen_slave_ids)
+
+    channel_names, channel_ids = data.get_slave_lists()
+    list_widget = KeyValueBullet(prompt=_("Choose a slave channel to add."),
+                                 choices=channel_names,
+                                 choices_id=channel_ids)
+
+    while True:
+        print()
+        chosen_slave_names, chosen_slave_ids, action = widget.launch()
+        if action == 'add':
+            print()
+            add_channel_name, add_channel_id = list_widget.launch()
+            add_channel_instance = input(_("Instance name to use with {channel_name}: [{default_instance}]")
+                                         .format(channel_name=add_channel_name,
+                                                 default_instance=_("default instance"))
+                                         + " ").strip()
+            if add_channel_instance:
+                add_channel_id += "#" + add_channel_instance  # type: ignore
+
+            display_name = data.get_instance_display_name(add_channel_id)
+            if add_channel_id in widget.choices_id:
+                print_wrapped(_("{instance_name} ({instance_id}) is already enabled. "
+                                "Please try another one.")
+                              .format(instance_name=display_name, instance_id=add_channel_id))
+            else:
+                widget.choices.insert(-2, display_name)
+                widget.choices_id.insert(-2, add_channel_id)
+        else:  # action == 'submit'
+            break
+    data.config['slave_channels'] = chosen_slave_ids
+
+
+def choose_middlewares(data: DataModel):
+    chosen_middlewares_names, chosen_middlewares_ids = data.get_selected_middleware_lists()
+    widget = ReorderBullet(_("3. Choose middlewares (optional)."),
+                           choices=chosen_middlewares_names,
+                           choices_id=chosen_middlewares_ids)
+
+    middlewares_names, middlewares_ids = data.get_middleware_lists()
+    list_widget = KeyValueBullet(prompt=_("Choose a middleware to add."),
+                                 choices=middlewares_names,
+                                 choices_id=middlewares_ids)
+
+    while True:
+        print()
+        chosen_middlewares_names, chosen_middlewares_ids, action = widget.launch()
+        if action == 'add':
+
+            print()
+            if not middlewares_ids:
+                print_wrapped(_("No installed middleware is detected, press ENTER to go back."))
+                input()
+            else:
+                add_middleware_name, add_middleware_id = list_widget.launch()
+                add_middleware_instance = input(_("Instance name to use with {middleware_name}: [{default_instance}]")
+                                                .format(middleware_name=add_middleware_name,
+                                                        default_instance=_("default instance"))
+                                                + " ").strip()
+                if add_middleware_instance:
+                    add_middleware_id += "#" + add_middleware_instance  # type: ignore
+
+                display_name = data.get_instance_display_name(add_middleware_id)
+                if add_middleware_id in widget.choices_id:
+                    print_wrapped(_("{instance_name} ({instance_id}) is already enabled. "
+                                    "Please try another one.")
+                                  .format(instance_name=display_name, instance_id=add_middleware_id))
+                else:
+                    widget.choices.insert(-2, display_name)
+                    widget.choices_id.insert(-2, add_middleware_id)
+        else:  # action == 'submit'
+            break
+    data.config['slave_channels'] = chosen_middlewares_ids
+
+
+def confirmation(data: DataModel):
+    list_widget = KeyValueBullet(prompt=_("Would you like to continue?"),
+                                 choices=[_("Save and continue"),
+                                          _("Change master channel settings"),
+                                          _("Change slave channel settings"),
+                                          _("Change middleware settings")],
+                                 choices_id=["continue", "master", "slave", "middleware"])
+
+    while True:
+        print()
+        print_wrapped(_('You have chosen to enable the following '
+                        'modules for profile "{profile}".')
+                      .format(profile=data.profile))
+        print()
+        master_name = data.get_instance_display_name(data.config['master_channel'])
+        print_wrapped(_("Master channel: {channel_name}")
+                      .format(channel_name=master_name))
+        print()
+        print_wrapped(ngettext("Slave channel:", "Slave channels:",
+                               len(data.config['slave_channels'])))
+        for i in data.config['slave_channels']:
+            print_wrapped('- ' + data.get_instance_display_name(i))
+
+        num_middlewares = len(data.config.get('middlewares', []))
+        if num_middlewares > 0:
+            print()
+            print_wrapped(ngettext("Middleware:", "Middlewares:", num_middlewares))
+            for i in data.config['middlewares']:
+                print_wrapped('- ' + data.get_instance_display_name(i))
+        print()
+
+        outcome = list_widget.launch()[1]
+
+        if outcome == "master":
+            choose_master_channel(data)
+        elif outcome == "slave":
+            choose_slave_channels(data)
+        elif outcome == "middleware":
+            choose_middlewares(data)
+        else:  # "continue"
+            break
+
+    data.save_config()
+    print()
+    print("Configuration is saved.")
 
 
 def main():
-    data = DataModel()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", "--profile",
+                        help=_("Choose a profile to start with."),
+                        default="default")
+    parser.add_argument("-m", "--module",
+                        help=_("Start the wizard of a module manually, skipping "
+                               "the framework wizard."))
+    args = parser.parse_args()
+
+    data = DataModel(args.profile)
     data.load_config()
-    last_scene = None
-    while True:
-        try:
-            Screen.wrapper(screen,
-                           arguments=[last_scene, data])
-            break
-        except ResizeScreenError as e:
-            last_scene = e.scene
-        except StopApplication:
-            break
+
+    if args.module:
+        mid, iid = data.split_cid(args.module)
+        if callable(data.modules[mid].wizard):
+            data.modules[mid].wizard(data.profile, iid)
+            return
+        else:
+            print(_("{module_id} did not register any wizard "
+                    "program to start with.").format(module_id=args.module))
+            exit(1)
+
+    prerequisite_check()
+
+    print_wrapped(_("Welcome to EH Forwarder Bot Setup Wizard.  This program "
+                    "will guide you to finish up the last few steps to "
+                    "get EFB ready to use.\n"
+                    "\n"
+                    "To use this wizard in another supported language, "
+                    "please change your system language or modify the "
+                    "language environment variable and restart the wizard."))
+
+    print()
+
+    data.profile = input(_("Profile") + f": [{data.profile}] ") or data.profile
+    print()
+
+    choose_master_channel(data)
+    choose_slave_channels(data)
+    choose_middlewares(data)
+    confirmation(data)
+
+    print_wrapped(_("Some more advanced settings, such as granulated log control, "
+                    "are not included in this wizard.  For further details, you may want to "
+                    "refer to the documentation.\n\n"
+                    "https://ehforwarderbot.readthedocs.io/en/latest/config.html"))
+
+    modules_count = 1
+    missing_wizards = []
+    if not data.has_wizard(data.config['master_channel']):
+        missing_wizards.append(data.config['master_channel'])
+    for i in data.config['slave_channels']:
+        modules_count += 1
+        if not data.has_wizard(i):
+            missing_wizards.append(i)
+    for i in data.config['middlewares']:
+        modules_count += 1
+        if not data.has_wizard(i):
+            missing_wizards.append(i)
+
+    if missing_wizards:
+        prompt = ngettext("Note:\n"
+                          "The following module does not have a setup wizard. It is probably because "
+                          "that it does not need to be set up, or it requires you to set up manually.\n"
+                          "Please consult its documentation for further details.\n",
+                          "Note:\n"
+                          "The following modules do not have a setup wizard. It is probably because "
+                          "that they do not need to be set up, or they require you to set up manually.\n"
+                          "Please consult their documentations respectively for further details.\n",
+                          len(missing_wizards))
+        print_wrapped(prompt)
+        print()
+
+        for i in missing_wizards:
+            print_wrapped("- " + data.get_instance_display_name(i) + " (" + i + ")")
+
+        print()
+
+        if len(missing_wizards) == modules_count:
+            print_wrapped(_("Congratulations! You have finished setting up EFB "
+                            "framework for the chosen profile. "
+                            "You may now continue to configure modules you have "
+                            "enabled manually, if necessary."))
+            exit(0)
+        else:
+            print_wrapped(_("We will now guide you to set up some modules you "
+                            "have enabled. "
+                            "But you may still need to configure other modules "
+                            "manually if necessary."))
+    else:
+        print_wrapped("We will now guide you to set up modules you have enabled, "
+                      "each at a time.")
 
     modules = [data.config['master_channel']]
     modules.extend(data.config['slave_channels'])
     if 'middlewares' in data.config:
         modules.extend(data.config['middlewares'])
     for i in modules:
-        mid, cid = data.split_cid(i)
+        mid, iid = data.split_cid(i)
         if callable(data.modules[mid].wizard):
             print(_("Press ENTER/RETURN to start setting up {0}.").format(i))
             input()
-            data.modules[mid].wizard(data.profile, cid)
+            data.modules[mid].wizard(data.profile, iid)
+
+    print()
+    print_wrapped(_("Congratulations! You have now finished all wizard-enabled "
+                    "modules. If you did not configure some modules enabled, "
+                    "you might need to configure them manually."))
 
 
 if __name__ == '__main__':
