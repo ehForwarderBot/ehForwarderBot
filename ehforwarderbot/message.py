@@ -15,6 +15,10 @@ from .types import Reactions, MessageID
 class EFBMsg:
     """A message.
 
+    Note:
+        ``EFBMsg`` objects are picklable, thus it is strongly recommended
+        to keep any object of its subclass also picklable.
+
     Attributes:
         attributes (Optional[:obj:`.EFBMsgAttribute`]):
             Attributes used for a specific message type.
@@ -90,10 +94,6 @@ class EFBMsg:
             used by any other channels or middlewares that is compatible
             with such information. Note that no guarantee is provided
             for information in this section.
-
-    Notes:
-        ``EFBMsg`` objects are picklable, thus it is strongly recommended
-        to keep any object of its subclass also picklable.
     """
 
     def __init__(self):

@@ -35,6 +35,10 @@ class EFBChat:
     """
     EFB Chat object. This is used to represent a chat or a group member.
 
+    Note:
+        ``EFBChat`` objects are picklable, thus it is strongly recommended
+        to keep any object of its subclass also picklable.
+
     Attributes:
         module_id (str): Unique ID of the module.
         channel_emoji (str): Emoji of the channel, if available.
@@ -54,10 +58,6 @@ class EFBChat:
             object and implement a ``@property`` method set for loading members on
             demand.
         vendor_specific (Dict[str, Any]): Any vendor specific attributes.
-
-    Notes:
-        ``EFBChat`` objects are picklable, thus it is strongly recommended
-        to keep any object of its subclass also picklable.
     """
 
     SELF_ID = "__self__"
