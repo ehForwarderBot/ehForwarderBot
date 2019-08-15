@@ -8,19 +8,31 @@ class MsgType(Enum):
     """Text message"""
 
     Image = "Image"
-    """Image (picture) message"""
+
+    """
+    Image (picture) message.
+    
+    Notes:
+        Animated GIF images shall use :attr:`Animation` type instead.
+    """
 
     Audio = "Audio"
     """Audio message. Including music and voice message."""
+
+    Animation = "Animation"
+    """
+    Message with an animation, usually in the form of GIF or
+    soundless video.
+    """
+
+    Video = "Video"
+    """Video message"""
 
     File = "File"
     """Messages sent as a file."""
 
     Location = "Location"
     """Location message."""
-
-    Video = "Video"
-    """Video message"""
 
     Link = "Link"
     """
