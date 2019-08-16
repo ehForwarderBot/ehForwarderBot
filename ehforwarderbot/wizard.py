@@ -53,9 +53,8 @@ class DataModel:
 
     @staticmethod
     def default_config():
-        # TRANSLATORS: This part of text must be formatted in a monospaced font.
-        # and no line shall exceed the width of a 70-cell-wide terminal.
-        return _(
+        # TRANSLATORS: This part of text must be formatted in a monospaced font, and no line shall exceed the width of a 70-cell-wide terminal.
+        config = _(
             "# ===================================\n"
             "# EH Forwarder Bot Configuration File\n"
             "# ===================================\n"
@@ -68,23 +67,29 @@ class DataModel:
             "# --------------\n"
             "# Exactly one instance of a master channel is required for a profile.\n"
             "# Fill in the module ID and instance ID (if needed) below.\n"
-        ) + "\n" \
-            "master_channel:\n\n" + _(
+        )
+        config += "\nmaster_channel:\n\n"
+        # TRANSLATORS: This part of text must be formatted in a monospaced font, and no line shall exceed the width of a 70-cell-wide terminal.
+        config += _(
             "# Slave Channels\n"
             "# --------------\n"
             "# \n"
             "# At least one slave channel is required for a profile.\n"
             "# Fill in the module ID and instance ID (if needed) of each slave channel\n"
             "# to be enabled below.\n"
-        ) + "\n" \
-            "slave_channels: []\n\n" + _(
+        )
+        config += "\nslave_channels: []\n\n"
+        # TRANSLATORS: This part of text must be formatted in a monospaced font, and no line shall exceed the width of a 70-cell-wide terminal.
+        config += _(
             "# Middlewares\n"
             "# -----------\n"
             "# Middlewares are not required to run an EFB profile. If you are not\n"
             "# going to use any middleware in this profile, you can safely remove\n"
             "# this section. Otherwise, please list down the module ID and instance\n"
             "# ID of each middleware to be enabled below.\n"
-        ) + "middlewares: []\n"
+        )
+        config += "middlewares: []\n"
+        return config
 
     def load_config(self):
         coordinator.profile = self.profile
@@ -137,7 +142,7 @@ class DataModel:
         for i in pkg_resources.iter_entry_points("ehforwarderbot.wizard"):
             if i.name in self.modules:
                 fn = i.load()
-                self.modules[i.name].replace(wizard=fn)
+                self.modules[i.name] = self.modules[i.name].replace(wizard=fn)
 
     def get_master_lists(self):
         names = []
@@ -247,6 +252,7 @@ class DataModel:
         return names, ids
 
 
+# @keyhandler.init
 class KeyValueBullet(Bullet):
     def __init__(self, prompt: str = "", choices: list = [], choices_id: list = [], bullet: str = "●",
                  bullet_color: str = colors.foreground["default"], word_color: str = colors.foreground["default"],
@@ -260,7 +266,7 @@ class KeyValueBullet(Bullet):
         self._key_handler = self._key_handler.copy()
         self._key_handler[NEWLINE_KEY] = self.__class__.accept
 
-    @keyhandler.register(NEWLINE_KEY)
+    # @keyhandler.register(NEWLINE_KEY)
     def accept(self, *args):
         pos = self.pos
         bullet.utils.moveCursorDown(len(self.choices) - pos)
@@ -268,6 +274,7 @@ class KeyValueBullet(Bullet):
         return self.choices[pos], self.choices_id[pos]
 
 
+# @keyhandler.init
 class ReorderBullet(Bullet):
 
     def __init__(self, prompt: str = "", choices: list = [], choices_id: list = [], bullet: str = "●",
@@ -290,7 +297,7 @@ class ReorderBullet(Bullet):
             "submit"
         ))
         self._key_handler = self._key_handler.copy()
-        self._key_handler[NEWLINE_KEY] = self.__class__.accept
+        self._key_handler[NEWLINE_KEY] = self.__class__.accept_fork
 
     @keyhandler.register(ord('-'))
     def shift_up(self):
@@ -337,8 +344,8 @@ class ReorderBullet(Bullet):
             self.printBullet(i)
         bullet.utils.moveCursorUp(1)
 
-    @keyhandler.register(NEWLINE_KEY)
-    def accept(self):
+    # @keyhandler.register(NEWLINE_KEY)
+    def accept_fork(self):
         choices = len(self.choices)
         if self.pos == choices - 1 and choices <= 2:
             # Reject empty list
