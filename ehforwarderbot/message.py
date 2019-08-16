@@ -66,7 +66,7 @@ class EFBMsg:
             the some parts of the text of the message
             refers to another user or chat.
         target (Optional[:obj:`EFBMsg`]):
-            Target message (usually for messages that "replies to" 
+            Target message (usually for messages that "replies to"
             another message).
 
             .. note::

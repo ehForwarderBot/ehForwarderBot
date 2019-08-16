@@ -1,14 +1,12 @@
-import unittest
 import pickle
-from unittest import mock
 from tempfile import NamedTemporaryFile
+from unittest import mock
 
 import pytest
 
 from ehforwarderbot import EFBMsg, EFBChat, ChatType, MsgType, coordinator
 from ehforwarderbot.message import EFBMsgLinkAttribute, EFBMsgLocationAttribute, EFBMsgStatusAttribute, EFBMsgCommands, \
     EFBMsgCommand
-
 from .mocks.master import MockMasterChannel
 
 coordinator.master = MockMasterChannel()

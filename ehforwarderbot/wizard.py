@@ -49,7 +49,7 @@ class DataModel:
 
         self.yaml = YAML()
         self.config = None
-        self.modules = {}  # type: Dict[str, Module]
+        self.modules: Dict[str, Module] = {}
 
     @staticmethod
     def default_config():

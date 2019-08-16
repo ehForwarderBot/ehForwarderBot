@@ -11,7 +11,7 @@ class MsgType(Enum):
 
     """
     Image (picture) message.
-    
+
     Notes:
         Animated GIF images shall use :attr:`Animation` type instead.
     """

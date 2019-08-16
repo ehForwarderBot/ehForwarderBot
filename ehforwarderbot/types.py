@@ -27,5 +27,5 @@ MessageID = str
 
 ExtraCommandName = str
 """Command name of additional features, in the format of
-``^[A-Za-z][A-Za-z0-9_]{0,19}$``. 
+``^[A-Za-z][A-Za-z0-9_]{0,19}$``.
 """

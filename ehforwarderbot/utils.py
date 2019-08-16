@@ -84,7 +84,7 @@ def get_config_path(module_id: ModuleID = None, ext: str = 'yaml') -> Path:
     
     This method creates the queried path if not existing. The config file will
     not be created, however.
-    
+
     Args:
         module_id (str): Module ID.
         ext (Optional[Str]): Extension name of the config file.
