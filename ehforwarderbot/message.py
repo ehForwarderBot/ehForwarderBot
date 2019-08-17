@@ -301,6 +301,9 @@ class EFBMsgCommand:
     from the ``chat``, this function should be called on the ``author``'s
     module.
 
+    The method specified must return either a ``str`` as result or ``None``
+    if this message will be further edited or deleted for interactions.
+
     Attributes:
         name (str): Human-friendly name of the command.
         callable_name (str): Callable name of the command.
