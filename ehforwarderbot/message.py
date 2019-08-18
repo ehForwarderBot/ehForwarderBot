@@ -473,6 +473,9 @@ class EFBMsgSubstitutions(dict):
 
     Type:
         Dict[Tuple[int, int], :obj:`.EFBChat`]
+
+    Attributes:
+        is_mentioned (bool): if the user (self) is mentioned in this message.
     """
 
     def __init__(self, substitutions: Dict[Tuple[int, int], EFBChat]):
@@ -489,6 +492,8 @@ class EFBMsgSubstitutions(dict):
                     substitutions[i].chat_type == ChatType.Group:
                 raise ValueError("Substitution {} is a group.".format(i))
         super().__init__(substitutions)
+
+        self.is_mentioned = any(i.is_self for i in self.values())
 
     def verify(self):
         ranges = sorted(self.keys())
