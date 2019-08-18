@@ -1,0 +1,27 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.0.0
+    hooks:
+    -   id: trailing-whitespace
+        types: [python]
+    -   id: end-of-file-fixer
+        types: [python]
+    -   id: check-yaml
+    -   id: check-added-large-files
+#-   repo: git://github.com/Lucas-C/pre-commit-hooks-markup
+#    sha: v1.0.0
+#    hooks:
+#    -   id: rst-linter
+-   repo: local
+    hooks:
+    -   id: version_bump
+        name: Version bump
+        entry: ./pre-commit
+        language: script
+        stages: [commit]
+        exclude_types: [pofile]
+        exclude: .+(__version__\.py|\.po)
+        pass_filenames: false
+default_stages: [commit]

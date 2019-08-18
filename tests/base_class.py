@@ -32,4 +32,3 @@ def setup(tmp_path):
     assert coordinator.master.channel_id == master.MockMasterChannel.channel_id
     assert slave.MockSlaveChannel.channel_id in coordinator.slaves
     assert coordinator.middlewares[0].middleware_id == middleware.MockMiddleware.middleware_id
-

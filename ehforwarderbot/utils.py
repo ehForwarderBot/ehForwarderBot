@@ -39,12 +39,12 @@ def get_base_path() -> Path:
     """
     Get the base data path for EFB. This can be defined by the
     environment variable ``EFB_DATA_PATH``.
-    
+
     If ``EFB_DATA_PATH`` is not defined, this gives
     ``~/.ehforwarderbot``.
-    
+
     This method creates the queried path if not existing.
-    
+
     Returns:
         The base path.
     """
@@ -61,9 +61,9 @@ def get_base_path() -> Path:
 def get_data_path(module_id: ModuleID) -> Path:
     """
     Get the path for persistent storage of a module.
-    
+
     This method creates the queried path if not existing.
-    
+
     Args:
         module_id (str): Module ID
 
@@ -81,7 +81,7 @@ def get_config_path(module_id: ModuleID = None, ext: str = 'yaml') -> Path:
     """
     Get path for configuration file. Defaulted to
     ``~/.ehforwarderbot/profiles/profile_name/channel_id/config.yaml``.
-    
+
     This method creates the queried path if not existing. The config file will
     not be created, however.
 

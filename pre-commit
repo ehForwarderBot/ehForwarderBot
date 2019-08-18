@@ -1,0 +1,31 @@
+#!/usr/local/bin/python3
+import sys
+import pathlib
+import subprocess
+
+PACKAGE = "ehforwarderbot"
+ROOT_PATH = subprocess.check_output("git rev-parse --show-toplevel".split())\
+    .decode().strip()
+VERSION_FILE = str(pathlib.Path(ROOT_PATH) / PACKAGE / "__version__.py")
+
+# commit_msg_path = sys.argv[1]
+
+stashed = subprocess.run("git diff --cached --name-only".split(),
+                         capture_output=True).stdout.decode().splitlines()
+# Ignore Crowdin sync commits
+if any(i.endswith('.po') for i in stashed):
+    print("Discovered pofile stashed, do not bump up version.")
+    exit(0)
+
+# Ignore commits with version change
+if any("__version__.py" in i for i in stashed):
+    print("Discovered version file stashed, do not bump up version.")
+    exit(0)
+
+# Bump version by a "dev".
+bump_py = str(pathlib.Path(ROOT_PATH) / "bump.py")
+subprocess.run((bump_py, '--allow-dirty', '--no-commit', 'dev'),
+               capture_output=False)
+subprocess.run(("git", "add", VERSION_FILE),
+               capture_output=True)
+exit(0)

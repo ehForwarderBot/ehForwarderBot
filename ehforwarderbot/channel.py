@@ -139,7 +139,7 @@ class EFBChannel(ABC):
 
         Returns:
             List[.EFBChat]: a list of available chats in the channel.
-        
+
         Note:
             This is not required by Master Channels
         """
@@ -150,7 +150,7 @@ class EFBChannel(ABC):
         """get_chat(self, chat_uid: str, member_uid: Optional[str] = None) -> EFBChat
 
         Get the chat object from a slave channel.
-        
+
         Args:
             chat_uid (str): UID of the chat.
             member_uid (Optional[str]): UID of group member,
@@ -205,7 +205,7 @@ class EFBChannel(ABC):
         Get the profile picture of a chat. Profile picture is
         also referred as profile photo, avatar, "head image"
         sometimes.
-        
+
         Args:
             chat (.EFBChat): Chat to get picture from.
 
@@ -222,10 +222,10 @@ class EFBChannel(ABC):
                 required is not found.
             :exc:`~.exceptions.EFBOperationNotSupported`: Raised
                 when the chat does not offer a profile picture.
-            
+
         Examples:
             .. code:: Python
-            
+
                 if chat.channel_uid != self.channel_uid:
                     raise EFBChannelNotFound()
                 file = tempfile.NamedTemporaryFile(suffix=".png")
@@ -236,7 +236,7 @@ class EFBChannel(ABC):
                 file.write(response.content)
                 file.seek(0)
                 return file
-                
+
         Note:
             This is not required by Master Channels
         """
