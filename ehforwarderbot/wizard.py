@@ -7,12 +7,14 @@ prior to installation, is already widespread, we are dropping
 Python version check in wizard script, and assuming user is
 running an appropriate Python version.
 """
+
 import argparse
 import gettext
 import os
 import platform
 import sys
 from collections import namedtuple
+from io import StringIO
 from typing import Dict, Callable
 from urllib.parse import quote
 
@@ -89,7 +91,10 @@ class DataModel:
             "# ID of each middleware to be enabled below.\n"
         )
         config += "middlewares: []\n"
-        return config
+
+        str_io = StringIO(config)
+        str_io.seek(0)
+        return str_io
 
     def load_config(self):
         coordinator.profile = self.profile
