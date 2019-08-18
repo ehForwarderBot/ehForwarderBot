@@ -106,16 +106,14 @@ section ``logging``.
 
 .. _Python's configuration dictionary schema: https://docs.python.org/3.7/library/logging.config.html#logging-config-dictschema
 
-Configuration wizard (Unstable)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configuration wizard (beta)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Alternatively, you may want to try the interactive setup wizard 
 that guides you to enable channels and middlewares, and continue
-to setup those modules if they also has a similar wizard.
-
-.. attention::
-    This feature is still unstable and may not guarentee a successful
-    configuration.  If you have encouter any bug that is caused by
-    the main wizard, you may want to submit an issue.
+to setup those modules if they also have provided a similar wizard.
 
 You can start the wizard by running ``efb-wizard`` in a compatible
-console or terminal emulator.
+console or terminal emulator. If you want to start the wizard of a module
+for a profile individually, run::
+
+    efb-wizard -p <profile name> -m <module ID>

@@ -101,10 +101,10 @@ later versions::
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
     
-Localization support
---------------------
+Translation support
+-------------------
 
-EFB supports localized user interface prompts,
+EFB supports translated user interface prompts,
 by setting the locale environmental variable (``LANGUAGE``,
 ``LC_ALL``, ``LC_MESSAGES`` or ``LANG``) to one of our
 `supported languages`_. Our documentation is also available in different

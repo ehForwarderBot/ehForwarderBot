@@ -133,7 +133,16 @@ For more command line options, use ``--help`` option.
 Use EFB in another language
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO: talk about language env var, and crowdin.
+EFB supports translated user interface and prompts.
+You can set your system language or locale environmental variables
+(``LANGUAGE``, ``LC_ALL``, ``LC_MESSAGES`` or ``LANG``) to one of our
+`supported languages`_ to switch language.
+
+You can help to translate this project into your languages on
+`our Crowdin page`_.
+
+.. _supported languages: https://crowdin.com/project/ehforwarderbot/
+.. _our Crowdin page: https://crowdin.com/project/ehforwarderbot/
 
 Launch EFB as a daemon process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -145,16 +154,3 @@ daemon management, such as systemd_, upstart_, or pm2_.
 .. _systemd: https://www.freedesktop.org/wiki/Software/systemd/
 .. _upstart: http://upstart.ubuntu.com/
 .. _pm2: http://pm2.keymetrics.io/
-
-.. old_content
-    ## Configure your channels
-    Some channels, regardless of its type, may require you to provide some details for it to operate, such as API key/secret, login credentials, preferences, etc. Different modules may put their configuration in different ways, but the values should always be put a variable in `config.py`, where its variable name is the "unique ID" of the channel.
-    For more details about how to configure your channel, please consult the respective documentation of the channels.
-    ## Get it up and running
-    Most of the time, you can just run `python3 daemon.py start` and it should be ready to go.
-    .. tip:: "Run it as a normal process"
-        Besides, you can still use the classic `python3 main.py` to launch EFB. If you want to keep it running in the background when daemon process is not working on your machine, you can use tools like `screen` or `nohup` to prevent it from being terminated during disconnection.
-    However, some channels may require one-time credentials (e.g. Dynamic QR code scanning for WeChat Web Protocol). When you run the module, you may be required to take some actions before the bot goes online.
-    If the channel does require you to take actions at run-time, it should state in the documentation.
-    ## Keep it up at all times
-    You can use any supervisor tool of your preference to keep EFB up at all times. However, this may not always work when you have channels that requires user interactions during initialization.
