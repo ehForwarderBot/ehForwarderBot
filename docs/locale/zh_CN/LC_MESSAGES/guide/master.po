@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-02-23 22:52\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-18 06:55\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -34,7 +34,7 @@ msgstr "提供 API 给专有桌面和移动客户端程序的服务端程序"
 
 #: ../../guide/master.rst:13
 msgid "A chat bot on an existing IM"
-msgstr "面相现有 IM 的 bot"
+msgstr "面向现有 IM 的 bot"
 
 #: ../../guide/master.rst:14
 msgid "A server that compiles with a generic IM Protocol"
@@ -75,6 +75,10 @@ msgstr "能够调用和处理从端提供的「附加功能」。"
 #: ../../guide/master.rst:39
 msgid "Optionally, a master channel can also support / identify vendor-specified information from certain slave channels."
 msgstr "另外，主端可以选择支持一些从端提供的「供应商特定」数据。"
+
+#: ../../guide/master.rst:46
+msgid ".. image:: guide/../_static/master-channel-0.png"
+msgstr ""
 
 #: ../../guide/master.rst:46
 msgid "An example of an ideal design of a master channel, inspired by Telegram Desktop"

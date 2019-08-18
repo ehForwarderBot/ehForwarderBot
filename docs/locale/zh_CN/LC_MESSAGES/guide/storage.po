@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-02-23 22:52\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-18 06:55\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,11 +26,11 @@ msgstr "配置和永久性存储"
 
 #: ../../guide/storage.rst:7
 msgid "As described in :doc:`/directories`, each module has been allocated with a folder per profile for configurations and other storage. The path can be obtained using :meth:`~.ehforwarderbot.utils.get_data_path` with your module ID. All such storage is specific to only one profile."
-msgstr "正如:doc:`/directories`中所描述的，在任一配置中，每个组件示例都分配了其专属的存储文件夹。该路径可以通过 :meth:`~.ehforwarderbot.utils.get_data_path` 通过组件 ID 获取。每一个存储文件夹都只对应一个配置文件。"
+msgstr "正如\\ :doc:`/directories`\\ 中所描述的，在任一配置中，每个组件示例都分配了其专属的存储文件夹。该路径可以通过 :meth:`~.ehforwarderbot.utils.get_data_path` 通过组件 ID 获取。每一个存储文件夹都只对应一个配置文件。"
 
 #: ../../guide/storage.rst:14
 msgid "For configurations, we recommend to use ``<module_data_path>/config.yaml``. Similarly, we prepared :meth:`~.ehforwarderbot.utils.get_config_path` to get the path for default config file. Again, you are not forced to use this name or YAML as the format of your config file."
-msgstr "我们建议配置文件使用 ``<module_data_path>/config.yaml``。同样，我们也准备了 :meth:`~.ehforwarderbot.utils.get_config_path` 来获取默认配置文件的路径。但我们强制要求使用此文件名称或使用 YAML 作为配置文件的格式。"
+msgstr "我们建议配置文件使用 ``<module_data_path>/config.yaml``\\ 。同样，我们也准备了 :meth:`~.ehforwarderbot.utils.get_config_path` 来获取默认配置文件的路径。但我们没有强制要求使用此文件名称或使用 YAML 作为配置文件的格式。"
 
 #: ../../guide/storage.rst:20
 msgid "Usually in the storage folder lives:"
@@ -58,15 +58,15 @@ msgstr "在处理多媒体消息时，无论是在信道内还是在信道之间
 
 #: ../../guide/storage.rst:35
 msgid "Wizard"
-msgstr ""
+msgstr "向导"
 
 #: ../../guide/storage.rst:37
 msgid "If your module requires relatively complicated configuration, it would be helpful to provide users with a wizard to *prerequisite of your module* and *guide them to setup your module for use*."
-msgstr ""
+msgstr "如果您的组件需要相对复杂的配置，最好向用户提供一个向导，让他们知晓\\ *你的组件的必备条件*\\ ，并且\\ *指导他们设置您的组件*\\ 。"
 
 #: ../../guide/storage.rst:41
 msgid "From version 2.0.0b12, EFB introduced a centralised wizard program to allow users to enable or disable modules in a text-based user interface (TUI). If you want to include your wizard program as a part of the wizard, you can include a new entry point in your ``setup.py`` with `Setuptools' Entry Point feature`__."
-msgstr ""
+msgstr "从版本 2.0.0b12 T开始，EFB 引入了一个中心向导程序，让用户在基于文本的用户界面 (TUI) 中启用或禁用组件。如果您想把您的向导程序作为中心向导的一部分，可以使用 `Setuptools 的接入点（entry point）功能`__\\ 在您的 ``setup.py`` 中添加一个新的接入点。"
 
 #: ../../guide/storage.rst:49
 msgid "The group for wizard program is ``ehforwarderbot.wizard``, and the entry point function must accept 2 positional arguments: profile ID and instance ID."
@@ -74,17 +74,43 @@ msgstr ""
 
 #: ../../guide/storage.rst:54
 msgid "Example"
-msgstr ""
+msgstr "示例"
 
 #: ../../guide/storage.rst:56
 msgid "``setup.py`` script"
+msgstr "``setup.py`` 脚本"
+
+#: ../../guide/storage.rst:58
+msgid "setup(\n"
+"    # ...\n"
+"    entry_points={\n"
+"        \"ehforwarderbot.wizard\": ['alice.irc = efb_irc_slave.wizard:main']\n"
+"    },\n"
+"    # ...\n"
+")"
 msgstr ""
 
 #: ../../guide/storage.rst:68
 msgid "``.egg-info/entry_points.txt``"
+msgstr "`.egg-info/entry_points.txt``"
+
+#: ../../guide/storage.rst:70
+msgid "[ehforwarderbot.wizard]\n"
+"alice.irc = efb_irc_slave.wizard:main"
 msgstr ""
 
 #: ../../guide/storage.rst:75
 msgid "``efb_irc_slave/wizard.py``"
+msgstr "``efb_irc_slave/wizard.py``"
+
+#: ../../guide/storage.rst:77
+msgid "# ...\n\n"
+"def main(profile, instance):\n"
+"    print(\"Welcome to the setup wizard of my channel.\")\n"
+"    print(\"You are setting up this channel in profile \"\n"
+"          \"'{0}' and instance '{1}'.\".format(profile, instance))\n"
+"    print(\"Press ENTER/RETURN to continue.\")\n"
+"    input()\n\n"
+"    step1()"
 msgstr ""
 

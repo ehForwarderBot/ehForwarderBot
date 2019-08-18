@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-02-23 22:52\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-18 06:55\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,6 +31,7 @@ msgstr "用来表示来自 EFB 框架异常的一个通用类。"
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChatNotFound:1
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChannelNotFound:1
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageReactionNotPossible:1
 msgid "Bases: :class:`ehforwarderbot.exceptions.EFBException`"
 msgstr "父类: :class:`ehforwarderbot.exceptions.EFBException`"
 
@@ -80,4 +81,12 @@ msgstr "可以在 :meth:`.EFBChannel.send_message` 中被抛出。"
 #: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:1
 msgid "Raised by slave channels when a chat operation is not supported. E.g.: cannot edit message, cannot delete message."
 msgstr "当聊天操作不被支持时由从端抛出。例如：无法编辑消息，无法删除消息。"
+
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageReactionNotPossible:1
+msgid "Raised by slave channel when a message reaction request from master channel is not possible to be processed."
+msgstr ""
+
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageReactionNotPossible:4
+msgid "Can be raised in :meth:`.EFBChannel.send_status`."
+msgstr ""
 

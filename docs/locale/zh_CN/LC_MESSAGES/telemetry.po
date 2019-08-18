@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-02-23 22:52\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-18 06:55\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,15 +18,19 @@ msgstr ""
 
 #: ../../telemetry.rst:2
 msgid "Telemetry / Error Tracking"
-msgstr ""
+msgstr "遥测/错误跟踪"
 
 #: ../../telemetry.rst:4
 msgid "If you want to enable telemetry / error tracking / log analysis to help us make EFB better, you can install EFB with optional ``telemetry`` option."
+msgstr "如果您想要启用遥测/错误跟踪/日志分析来帮助我们更好地改进 EFB，您可以在安装 EFB 时启用 ``telemetry`` 选项。"
+
+#: ../../telemetry.rst:7
+msgid "pip3 install --update ehforwarderbot[telemetry]"
 msgstr ""
 
 #: ../../telemetry.rst:11
 msgid "And then, enable in the config file under the name ``telemetry``. There are 2 options you can choose from."
-msgstr ""
+msgstr "接着，在配置文件中启用 ``telemetry`` 选项。有两个选项可供选择。"
 
 #: ../../telemetry.rst:14
 msgid "Exception only: Send only exceptions and stack trace to us."
@@ -34,22 +38,34 @@ msgstr ""
 
 #: ../../telemetry.rst:15
 msgid "Exception log: Send verbose log to us alongside exceptions."
-msgstr ""
+msgstr "异常日志：将异常与详细日志发送给我们。"
 
 #: ../../telemetry.rst:16
 msgid "Full log: Send the full verbose log content and what's send in previous modes."
-msgstr ""
+msgstr "完整日志：发送前面包含的所有内容以及完整的详细日志。"
 
 #: ../../telemetry.rst:19
 msgid "To enable \"exception only\" mode, append the following line to the config file:"
 msgstr ""
 
+#: ../../telemetry.rst:22
+msgid "telemetry: I agree."
+msgstr ""
+
 #: ../../telemetry.rst:26
 msgid "To enable \"Exception log\" mode, append the following line to the config file:"
+msgstr "要启用 “异常日志” 模式，请在配置文件中添加以下内容："
+
+#: ../../telemetry.rst:29
+msgid "telemetry: I agree to surrender my immortal soul."
 msgstr ""
 
 #: ../../telemetry.rst:33
 msgid "To enable \"Full log\" mode, append the following line to the config file:"
+msgstr "要启用 “完整日志” 模式，请在配置文件中添加以下内容："
+
+#: ../../telemetry.rst:36
+msgid "telemetry: I agree to surrender my immortal soul and endless knowledge."
 msgstr ""
 
 #: ../../telemetry.rst:41

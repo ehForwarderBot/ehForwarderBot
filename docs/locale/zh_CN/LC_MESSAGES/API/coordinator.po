@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-02-23 22:52\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-18 06:55\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr "通道间的协调器。"
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:5
 msgid "Name of current profile.."
-msgstr ""
+msgstr "当前配置文件的名称"
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:0
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:0
@@ -34,11 +34,11 @@ msgstr ""
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:0
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:0
 msgid "type"
-msgstr ""
+msgstr "类型"
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:7
 msgid "str"
-msgstr ""
+msgstr "str"
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:11
 msgid "Global interaction thread lock."
@@ -50,27 +50,27 @@ msgstr ""
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:17
 msgid "The running master channel object."
-msgstr ""
+msgstr "正在运行的主端对象。"
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:19
 msgid "EFBChannel"
-msgstr ""
+msgstr "EFBChannel"
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:23
 msgid "Dictionary of running slave channel object. Keys are the unique identifier of the channel."
-msgstr ""
+msgstr "正在运行的从端的字典。键值为信道的唯一标识符。"
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:26
 msgid "Dict[str, EFBChannel]"
-msgstr ""
+msgstr "Dict[str, EFBChannel]"
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:30
 msgid "List of middlewares"
-msgstr ""
+msgstr "中间件列表"
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:32
 msgid "List[EFBMiddleware]"
-msgstr ""
+msgstr "List[EFBMiddleware]"
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_channel:1
 msgid "Register the channel with the coordinator."
@@ -95,13 +95,34 @@ msgstr "向协调器注册一个中间件。"
 msgid "Middleware to register"
 msgstr "需要注册的中间件"
 
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:1
+msgid "Return the module instance of a provided module ID :param module_id: Module ID, with instance ID if available."
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:0
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:0
+msgid "Returns"
+msgstr "返回"
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:4
+msgid "Module instance requested."
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:0
+msgid "Raises"
+msgstr ""
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:6
+msgid "When the module is not found."
+msgstr ""
+
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.master_thread:1
 msgid "The thread running poll() of the master channel."
 msgstr ""
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.middlewares:1
 msgid "Instances of middlewares. Sorted in the order of execution."
-msgstr ""
+msgstr "中间件实例，按执行顺序排序"
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.mutex:1
 msgid "Mutual exclusive lock for user interaction through CLI interface"
@@ -109,7 +130,7 @@ msgstr ""
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.profile:1
 msgid "Current running profile name"
-msgstr ""
+msgstr "正在运行的配置文件的名称"
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:1
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_status:1
@@ -119,10 +140,6 @@ msgstr "向目标信道传送一个消息。"
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:3
 msgid "The message"
 msgstr "消息"
-
-#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:0
-msgid "Returns"
-msgstr "返回"
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:6
 msgid "The message sent by the destination channel, includes the updated message ID from there. Returns ``None`` if the message is not sent."
@@ -138,5 +155,9 @@ msgstr ""
 
 #: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.slaves:1
 msgid "Instances of slave channels. Keys are the channel IDs."
+msgstr "从端实例，键值为信道 ID。"
+
+#: ../../../ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.translator:1
+msgid "Internal GNU gettext translator."
 msgstr ""
 

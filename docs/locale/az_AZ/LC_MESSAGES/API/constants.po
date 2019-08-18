@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-13 12:09+0800\n"
-"PO-Revision-Date: 2019-08-13 04:13\n"
+"POT-Creation-Date: 2019-08-18 12:16+0800\n"
+"PO-Revision-Date: 2019-08-18 06:32\n"
 "Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Azerbaijani\n"
 "MIME-Version: 1.0\n"
@@ -27,6 +27,10 @@ msgstr "Sabit"
 msgid "An enumeration."
 msgstr "Sadalamaq."
 
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Animation:1
+msgid "Message with an animation, usually in the form of GIF or soundless video."
+msgstr ""
+
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Audio:1
 msgid "Audio message. Including music and voice message."
 msgstr "Səs mesajı. Musiqi və səsli mesajlar daxildir."
@@ -36,8 +40,16 @@ msgid "Messages sent as a file."
 msgstr "Mesaj fayl olaraq göndərildi."
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Image:1
-msgid "Image (picture) message"
-msgstr "Şəkil (foto) mesaj"
+msgid "Image (picture) message."
+msgstr ""
+
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Image:3
+msgid "Notes"
+msgstr ""
+
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Image:5
+msgid "Animated GIF images shall use :attr:`Animation` type instead."
+msgstr ""
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Link:1
 msgid "Message that is mainly one specific link, or a text message with one link preview."

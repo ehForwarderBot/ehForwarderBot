@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-02-23 22:52\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-18 06:55\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,7 +82,7 @@ msgstr "通过 *附加功能*，从端能够提供 EFB 没有要求的更多功�
 
 #: ../../guide/slave.rst:47
 msgid "Such features are accessed by the user in a CLI-like style. An \"additional feature\" method should only take one string parameter aside from ``self``, and wrap it with :meth:`~ehforwarderbot.utils.extra` decorator. The ``extra`` decorator takes 2 arguments: ``name`` -- a short name of the feature, and ``desc`` -- a description of the feature with its usage."
-msgstr "用户可以通过和 CLI 类似的方式来访问这些功能。「附加功能」方法除 ``self`` 之外只能接受一个字符串参数，并使用 :meth:`~ehforwarderbot.utils.extra` 装饰器将其封装。该装饰器接受两个参数：``name`` -- 功能的名称，以及``desc`` -- 功能的描述及其用法。"
+msgstr "用户可以通过和 CLI 类似的方式来访问这些功能。「附加功能」方法除 ``self`` 之外只能接受一个字符串参数，并使用 :meth:`~ehforwarderbot.utils.extra` 装饰器将其封装。该装饰器接受两个参数：``name`` -- 功能的名称，以及 ``desc`` -- 功能的描述及其用法。"
 
 #: ../../guide/slave.rst:55
 msgid "``desc`` should describe what the feature does and how to use it. It's more like the help text for an CLI program. Since method of invoking the feature depends on the implementation of the master channel, you should use ``\"{function_name}\"`` as its name in ``desc``, and master channel will replace it with respective name depend on their implementation."
@@ -124,9 +124,22 @@ msgstr "*越短越精确越好，但是要容易被理解*"
 msgid "In RegEx, it's can be expressed as::"
 msgstr "在正则表达式中，它可以被表示为::"
 
+#: ../../guide/slave.rst:84
+msgid "^[A-Za-z][A-Za-z0-9_]{0,19}$"
+msgstr ""
+
 #: ../../guide/slave.rst:86
 msgid "Example"
 msgstr "范例"
+
+#: ../../guide/slave.rst:89
+msgid "@extra(name=\"Echo\",\n"
+"       desc=\"Return back the same string from input.\\n\"\n"
+"            \"Usage:\\n\"\n"
+"            \"    {function_name} text\")\n"
+"def echo(self, arguments: str = \"\") -> str:\n"
+"    return arguments"
+msgstr ""
 
 #: ../../guide/slave.rst:99
 msgid "Message commands"
@@ -154,7 +167,7 @@ msgstr "向投票消息进行投票."
 
 #: ../../guide/slave.rst:110
 msgid "Like / thumb up to a message if applicable."
-msgstr "为消息点赞（如果使用）"
+msgstr "为消息点赞（如果适用）"
 
 #: ../../guide/slave.rst:112
 msgid "A message can be attached with a ``list`` of commands, in which each of them has:"
@@ -206,9 +219,9 @@ msgstr "在从端中提供选项，以忽略来自 IM 服务器的某些特定�
 
 #: ../../guide/slave.rst:148
 msgid "Implementation details"
-msgstr ""
+msgstr "实现细节"
 
 #: ../../guide/slave.rst:150
 msgid "See :class:`EFBChannel`."
-msgstr ""
+msgstr "见 :class:`EFBChannel` 。"
 

@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-02-23 22:52\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-18 12:16+0800\n"
+"PO-Revision-Date: 2019-08-18 06:55\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,59 +20,120 @@ msgstr ""
 msgid "EH Forwarder Bot"
 msgstr "EH Forwarder Bot"
 
-#: ../../index.rst:31
-msgid "*Codename* **EH Forwarder Bot** (EFB) is an extensible chat tunneling framework allowing users to contact people from multiple chat platforms and remotely control their accounts in one stop."
+#: ../../index.rst:None
+msgid ".. image:: https://img.shields.io/badge/Python->%3D%203.6-blue.svg\n"
+"   :alt: Python >= 3.6"
 msgstr ""
 
-#: ../../index.rst:50
+#: ../../index.rst:None
+msgid ".. image:: https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg\n"
+"   :alt: Gitter"
+msgstr ""
+
+#: ../../index.rst:None
+msgid ".. image:: https://img.shields.io/badge/-Telegram-blue.svg?logo=data:image/svg%2Bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTkuNzgsMTguNjVMMTAuMDYsMTQuNDJMMTcuNzQsNy41QzE4LjA4LDcuMTkgMTcuNjcsNy4wNCAxNy4yMiw3LjMxTDcuNzQsMTMuM0wzLjY0LDEyQzIuNzYsMTEuNzUgMi43NSwxMS4xNCAzLjg0LDEwLjdMMTkuODEsNC41NEMyMC41NCw0LjIxIDIxLjI0LDQuNzIgMjAuOTYsNS44NEwxOC4yNCwxOC42NUMxOC4wNSwxOS41NiAxNy41LDE5Ljc4IDE2Ljc0LDE5LjM2TDEyLjYsMTYuM0wxMC42MSwxOC4yM0MxMC4zOCwxOC40NiAxMC4xOSwxOC42NSA5Ljc4LDE4LjY1WiIgLz48L3N2Zz4=\n"
+"   :alt: Telegram"
+msgstr ""
+
+#: ../../index.rst:None
+msgid ".. image:: https://readthedocs.org/projects/ehforwarderbot/badge/?version=latest\n"
+"   :alt: Documentation"
+msgstr ""
+
+#: ../../index.rst:None
+msgid ".. image:: https://img.shields.io/pypi/v/ehforwarderbot.svg\n"
+"   :alt: PyPI release"
+msgstr ""
+
+#: ../../index.rst:None
+msgid ".. image:: https://img.shields.io/pypi/dm/ehforwarderbot.svg\n"
+"   :alt: Downloads per month"
+msgstr ""
+
+#: ../../index.rst:None
+msgid ".. image:: https://img.shields.io/codacy/grade/3b2555f9134844e3b01b00700bc43eeb.svg\n"
+"   :alt: Codacy grade"
+msgstr ""
+
+#: ../../index.rst:None
+msgid ".. image:: https://d322cqt584bo4o.cloudfront.net/ehforwarderbot/localized.svg\n"
+"   :alt: Translate this project"
+msgstr ""
+
+#: ../../index.rst:None
+msgid ".. image:: https://images.1a23.com/di/XOEE/EFB_v2.png\n"
+"   :alt: Banner"
+msgstr ""
+
+#: ../../index.rst:34
+msgid "*Codename* **EH Forwarder Bot** (EFB) is an extensible chat tunneling framework allowing users to contact people from multiple chat platforms and remotely control their accounts in one stop."
+msgstr "*开发代号* **EH Forwarder Bot** (EFB) 是一个可扩展的聊天隧道框架，允许用户联系其他聊天平台的用户，并远程控制他们在其他平台上的账户。"
+
+#: ../../index.rst:53
 msgid "For tips, tricks and community contributed articles, see `project wiki`_."
 msgstr "如需提示、相关技巧及社区文章，请参阅 `项目 Wiki`_。"
 
-#: ../../index.rst:56
+#: ../../index.rst:59
 msgid "Indices and tables"
 msgstr "索引和列表"
 
-#: ../../index.rst:58
+#: ../../index.rst:61
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../index.rst:59
+#: ../../index.rst:62
 msgid ":ref:`modindex`"
 msgstr ":ref:`modindex`"
 
-#: ../../index.rst:60
+#: ../../index.rst:63
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
-#: ../../index.rst:63
+#: ../../index.rst:66
 msgid "Feel like contributing?"
 msgstr "想参与贡献吗？"
 
-#: ../../index.rst:65
+#: ../../index.rst:68
 msgid "Everyone is welcomed to raise an issue or submit a pull request, just remember to read through and follow the :doc:`contribution guideline <./contributing>` before you do so."
 msgstr "我们欢迎任何人提出问题或是提交请求，但请务必先阅读并根据 :doc:`贡献指南 <./contributing>` 的提示来进行操作。"
 
-#: ../../index.rst:70
+#: ../../index.rst:73
 msgid "Related articles"
 msgstr "相关文章"
 
-#: ../../index.rst:72
+#: ../../index.rst:75
 msgid "`Idea: Group Chat Tunneling (Sync) with EH Forwarder Bot`_"
 msgstr "`设想：使用 EH Forwarder Bot 进行群组消息同步`_"
 
-#: ../../index.rst:73
+#: ../../index.rst:76
 msgid "`What’s so new in EH Forwarder Bot 2 (and its modules)`_"
-msgstr ""
+msgstr "`EH Forwarder Bot 2（及其模块）有什么新功能`_"
 
-#: ../../index.rst:79
+#: ../../index.rst:82
 msgid "License"
 msgstr "许可协议"
 
-#: ../../index.rst:81
+#: ../../index.rst:84
 msgid "EFB framework is licensed under `GNU Affero General Public License 3.0`_ or later versions."
+msgstr "EFB 框架使用 `GNU Affero General Public License 3.0`_ 许可证。"
+
+#: ../../index.rst:87
+msgid "EH Forwarder Bot: An extensible chat tunneling bot framework.\n"
+"Copyright (C) 2018 Eana Hufwe\n"
+"All rights reserved.\n\n"
+"This program is free software: you can redistribute it and/or modify\n"
+"it under the terms of the GNU Affero General Public License as\n"
+"published by the Free Software Foundation, either version 3 of the\n"
+"License, or any later version.\n\n"
+"This program is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n\n"
+"You should have received a copy of the GNU Affero General Public License\n"
+"along with this program.  If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
 
-#: ../../index.rst:104
+#: ../../index.rst:107
 msgid ":doc:`Donate <donate>`."
 msgstr ":doc:`捐赠 <donate>`."
 

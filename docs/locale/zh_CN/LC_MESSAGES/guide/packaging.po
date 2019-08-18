@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-02-23 22:52\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-18 06:55\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,9 +68,24 @@ msgstr "示例"
 msgid "``setup.py`` script"
 msgstr "``setup.py`` 脚本"
 
+#: ../../guide/packaging.rst:45
+msgid "setup(\n"
+"    # ...\n"
+"    entry_points={\n"
+"        \"ehforwarderbot.slave\": ['alice.irc = efb_irc_slave:IRCChannel']\n"
+"    },\n"
+"    # ...\n"
+")"
+msgstr ""
+
 #: ../../guide/packaging.rst:55
 msgid "``.egg-info/entry_points.txt``"
 msgstr "`.egg-info/entry_points.txt``"
+
+#: ../../guide/packaging.rst:57
+msgid "[ehforwarderbot.slave]\n"
+"alice.irc = efb_irc_slave:IRCChannel"
+msgstr ""
 
 #: ../../guide/packaging.rst:63
 msgid "Private modules"
@@ -82,5 +97,5 @@ msgstr "如果您想要对现有组件做出更改或是扩展以满足个人使
 
 #: ../../guide/packaging.rst:69
 msgid "For such modules, your channel ID must be the fully-qualified name of the class. For example, if your class is located at ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``, the channel must have ID ``bob_ric_mod.IRCChannel`` for the framework to recognise it."
-msgstr "对于这些组件，您的通道 ID 必须是类的完全限定名称。例如，如果类位于 ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``。这个通道的 ID 应为 ``bob_ric_mod.IRCChannel``，以供框架识别。"
+msgstr "对于这些组件，您的通道 ID 必须是类的完全限定名称。例如，如果类位于 ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``\\ 。这个通道的 ID 应为 ``bob_ric_mod.IRCChannel``，以供框架识别。"
 

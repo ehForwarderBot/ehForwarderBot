@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-02-23 22:52\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-18 06:55\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -57,7 +57,7 @@ msgstr "获取 EFB 数据目录的路径。该路径可由环境变量 ``EFB_DAT
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:4
 msgid "If ``EFB_DATA_PATH`` is not defined, this gives ``~/.ehforwarderbot``."
-msgstr "如果未定义 ``EFB_DATA_PATH``，默认路径为 ``~/.ehforwarderbot``。"
+msgstr "如果未定义 ``EFB_DATA_PATH``，默认路径为 ``~/.ehforwarderbot``\\ 。"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:7
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:3
@@ -68,16 +68,9 @@ msgstr "如果返回的路径不存在，该方法将创建该目录。"
 msgid "The base path."
 msgstr "数据路径。"
 
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
-msgid "Return type"
-msgstr "返回类型"
-
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:1
 msgid "Get path for configuration file. Defaulted to ``~/.ehforwarderbot/profiles/profile_name/channel_id/config.yaml``."
-msgstr "获取配置文件的路径。默认为 ``~/.ehforwarderbot/profiles/profile_name/channel_id/config.yaml``。"
+msgstr "获取配置文件的路径。默认为 ``~/.ehforwarderbot/profiles/profile_name/channel_id/config.yaml``\\ 。"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:4
 msgid "This method creates the queried path if not existing. The config file will not be created, however."
@@ -100,12 +93,12 @@ msgid "Get the path to custom channels"
 msgstr "获取自定义信道的路径"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:3
-msgid "The path."
-msgstr "路径。"
+msgid "The path for custom channels."
+msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:1
-msgid "Get the path for permanent storage of a module."
-msgstr "获取分配给组件的永久存储目录的路径。"
+msgid "Get the path for persistent storage of a module."
+msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:5
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:3

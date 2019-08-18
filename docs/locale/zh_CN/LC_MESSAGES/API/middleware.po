@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 14:26-0800\n"
-"PO-Revision-Date: 2019-02-23 22:52\n"
-"Last-Translator: blueset <ilove@1a23.com>\n"
+"POT-Creation-Date: 2019-08-13 12:09+0800\n"
+"PO-Revision-Date: 2019-08-18 06:55\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,13 +32,13 @@ msgstr ""
 #: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
 #: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
 msgid "type"
-msgstr ""
+msgstr "类型"
 
 #: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:9
 #: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:15
 #: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:21
 msgid "str"
-msgstr ""
+msgstr "str"
 
 #: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:13
 msgid "Human-readable name of the middleware."
