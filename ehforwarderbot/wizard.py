@@ -263,7 +263,7 @@ class KeyValueBullet(Bullet):
                          background_on_switch, pad_right, indent, align, margin, shift)
 
         self.choices_id = choices_id
-        self._key_handler = self._key_handler.copy()
+        self._key_handler: Dict[int, Callable] = self._key_handler.copy()
         self._key_handler[NEWLINE_KEY] = self.__class__.accept
 
     # @keyhandler.register(NEWLINE_KEY)
@@ -296,7 +296,7 @@ class ReorderBullet(Bullet):
             "add",
             "submit"
         ))
-        self._key_handler = self._key_handler.copy()
+        self._key_handler: Dict[int, Callable] = self._key_handler.copy()
         self._key_handler[NEWLINE_KEY] = self.__class__.accept_fork
 
     @keyhandler.register(ord('-'))
@@ -354,7 +354,7 @@ class ReorderBullet(Bullet):
             pos = self.pos
             bullet.utils.moveCursorDown(len(self.choices) - pos)
             self.pos = 0
-            return self.choices, self.choices_id, self.choices_id[pos]
+            return self.choices[:-2], self.choices_id[:-2], self.choices_id[pos]
         return None
 
 
@@ -541,7 +541,7 @@ def choose_middlewares(data: DataModel):
                     widget.choices_id.insert(-2, add_middleware_id)
         else:  # action == 'submit'
             break
-    data.config['slave_channels'] = chosen_middlewares_ids
+    data.config['middlewares'] = chosen_middlewares_ids
 
 
 def confirmation(data: DataModel):
@@ -588,7 +588,7 @@ def confirmation(data: DataModel):
 
     data.save_config()
     print()
-    print("Configuration is saved.")
+    print(_("Configuration is saved."))
 
 
 def main():
@@ -638,6 +638,7 @@ def main():
                     "are not included in this wizard.  For further details, you may want to "
                     "refer to the documentation.\n\n"
                     "https://ehforwarderbot.readthedocs.io/en/latest/config.html"))
+    print()
 
     modules_count = 1
     missing_wizards = []
@@ -691,7 +692,7 @@ def main():
         modules.extend(data.config['middlewares'])
     for i in modules:
         mid, iid = data.split_cid(i)
-        if callable(data.modules[mid].wizard):
+        if mid in data.modules and callable(data.modules[mid].wizard):
             print(_("Press ENTER/RETURN to start setting up {0}.").format(i))
             input()
             data.modules[mid].wizard(data.profile, iid)
