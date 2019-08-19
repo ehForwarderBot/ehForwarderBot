@@ -32,3 +32,15 @@ Options
     This option enables verbose log of EFB and all enabled
     modules. This, together with ``-V``, is particularly
     useful in debugging and issue reporting.
+
+Quitting EFB
+------------
+
+If you started EFB in a shell, you can simply press Control-C to trigger the
+quit process. Otherwise, ask your service manager to issue a ``SIGTERM`` for a
+graceful exit. The exit process may take a few second to complete.
+
+.. important::
+    It is important for you to issue a graceful termination signal (e.g.
+    ``SIGTERM``), and **NOT** to use ``SIGKILL``. Otherwise you may face the
+    risk of losing data and breaking programs.
