@@ -152,7 +152,7 @@ def main():
 
     if not args.dry_run and not args.no_commit:
         subprocess.check_output(["git", "add", "--update", version_file_path])
-        subprocess.check_output(["git", "commit", "-m", bump_message])
+        subprocess.check_output(["git", "commit", "-S", "-m", bump_message])
 
         if args.tag:
             subprocess.check_output(["git", "tag", new_ver])
