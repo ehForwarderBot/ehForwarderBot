@@ -24,7 +24,7 @@ class EFBMiddleware(ABC):
         instance_id (str):
             The instance ID if available.
     """
-    middleware_id: ModuleID = "efb.empty_middleware"
+    middleware_id: ModuleID = ModuleID("efb.empty_middleware")
     middleware_name: str = "Empty Middleware"
     instance_id: Optional[InstanceID] = None
     __version__: str = 'undefined version'
@@ -38,9 +38,9 @@ class EFBMiddleware(ABC):
         Args:
             instance_id: Instance ID of the middleware.
         """
-        self.instance_id = instance_id
         if instance_id:
-            self.middleware_id += "#" + instance_id
+            self.instance_id = InstanceID(instance_id)
+            self.middleware_id = ModuleID(self.middleware_id + "#" + instance_id)
 
     def get_extra_functions(self) -> Dict[ExtraCommandName, Callable]:
         """Get a list of additional features
@@ -53,7 +53,7 @@ class EFBMiddleware(ABC):
         for mName in dir(self):
             m = getattr(self, mName)
             if callable(m) and getattr(m, "extra_fn", False):
-                methods[mName] = m
+                methods[ExtraCommandName(mName)] = m
         return methods
 
     def process_message(self, message: 'EFBMsg') -> 'Optional[EFBMsg]':

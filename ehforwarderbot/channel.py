@@ -52,7 +52,7 @@ class EFBChannel(ABC):
 
     channel_name: str = "Empty channel"
     channel_emoji: str = "�"
-    channel_id: ModuleID = "efb.empty_channel"
+    channel_id: ModuleID = ModuleID("efb.empty_channel")
     channel_type: ChannelType
     instance_id: Optional[InstanceID] = None
     supported_message_types: Set[MsgType] = set()
@@ -68,9 +68,9 @@ class EFBChannel(ABC):
         Args:
             instance_id: Instance ID of the channel.
         """
-        self.instance_id = instance_id
         if instance_id:
-            self.channel_id += "#" + instance_id
+            self.instance_id = InstanceID(instance_id)
+            self.channel_id = ModuleID(self.channel_id + "#" + instance_id)
 
     def get_extra_functions(self) -> Dict[ExtraCommandName, Callable]:
         """Get a list of additional features
@@ -85,7 +85,7 @@ class EFBChannel(ABC):
         for mName in dir(self):
             m = getattr(self, mName)
             if callable(m) and getattr(m, "extra_fn", False):
-                methods[mName] = m
+                methods[ExtraCommandName(mName)] = m
         return methods
 
     @abstractmethod

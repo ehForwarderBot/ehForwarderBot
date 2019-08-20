@@ -1,31 +1,32 @@
 """A list of type aliases when no separate class is defined for some types of values.
 User-facing types (display names, descriptions, message text, etc.) shall not be included here,
 """
-from typing import Collection, Dict, TYPE_CHECKING
+from typing import Collection, TYPE_CHECKING, Mapping
+from typing_extensions import NewType
 
 if TYPE_CHECKING:
-    from . import EFBChat
+    from .chat import EFBChat
 
 
-ReactionName = str
+ReactionName = NewType('ReactionName', str)
 """Canonical representation of a reaction, usually an emoji."""
 
-Reactions = Dict[ReactionName, Collection['EFBChat']]
+Reactions = Mapping[ReactionName, Collection['EFBChat']]
 """Reactions to a message."""
 
-ModuleID = str
+ModuleID = NewType('ModuleID', str)
 "Module ID, including instance ID after ``#`` if available."
 
-InstanceID = str
+InstanceID = NewType('InstanceID', str)
 "Instance ID of a module."
 
-ChatID = str
+ChatID = NewType('ChatID', str)
 "Chat ID from slave channel or middleware."
 
-MessageID = str
+MessageID = NewType('MessageID', str)
 "Message ID from slave channel or middleware."
 
-ExtraCommandName = str
+ExtraCommandName = NewType('ExtraCommandName', str)
 """Command name of additional features, in the format of
 ``^[A-Za-z][A-Za-z0-9_]{0,19}$``.
 """

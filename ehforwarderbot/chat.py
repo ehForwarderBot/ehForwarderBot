@@ -8,7 +8,7 @@ from typing import List, Dict, Any, Optional
 from .channel import EFBChannel
 from .constants import ChatType
 from .middleware import EFBMiddleware
-from .types import ModuleID
+from .types import ModuleID, ChatID
 
 __all__ = ['EFBChat', 'EFBChatNotificationState']
 
@@ -76,7 +76,7 @@ class EFBChat:
         """
         self.module_name: str = ""
         self.channel_emoji: str = ""
-        self.module_id: ModuleID = ""
+        self.module_id: ModuleID = ModuleID("")
         if isinstance(channel, EFBChannel):
             self.module_name = channel.channel_name
             self.channel_emoji = channel.channel_emoji
@@ -88,7 +88,7 @@ class EFBChat:
         self.chat_name: str = ""
         self.chat_type: ChatType = ChatType.Unknown
         self.chat_alias: Optional[str] = None
-        self.chat_uid: str = ""
+        self.chat_uid: ChatID = ChatID("")
         self.is_chat: bool = True
         self.notification: EFBChatNotificationState = EFBChatNotificationState.ALL
         self.members: List[EFBChat] = []
@@ -151,7 +151,7 @@ class EFBChat:
         return self.chat_type == ChatType.System
 
     @property
-    def channel_id(self) -> str:
+    def channel_id(self) -> ModuleID:
         """Alias to module_id. (This property will be deprecated)"""
         warnings.warn("channel_id will be deprecated. Use module_id instead.", PendingDeprecationWarning)
         return self.module_id

@@ -4,7 +4,7 @@ from abc import abstractmethod, ABC
 from typing import Dict, Collection, TYPE_CHECKING, Any, Optional
 
 from . import EFBChannel, EFBMsg, coordinator, ChannelType, ChatType
-from .types import Reactions, ReactionName
+from .types import Reactions, ReactionName, ChatID
 
 if TYPE_CHECKING:
     from . import EFBChat
@@ -61,8 +61,10 @@ class EFBChatUpdates(EFBStatus):
     """
 
     # noinspection PyMissingConstructor
-    def __init__(self, channel: 'EFBChannel', new_chats: Collection[str] = tuple(),
-                 removed_chats: Collection[str] = tuple(), modified_chats: Collection[str] = tuple()):
+    def __init__(self, channel: 'EFBChannel',
+                 new_chats: Collection[ChatID] = tuple(),
+                 removed_chats: Collection[ChatID] = tuple(),
+                 modified_chats: Collection[ChatID] = tuple()):
         """__init__(channel: EFBChannel, new_chats: Collection[str]=tuple(), removed_chats: Collection[str]=tuple(), modified_chats: Collection[str]=tuple())
 
         Args:
@@ -72,9 +74,9 @@ class EFBChatUpdates(EFBStatus):
             modified_chats (Optional[Collection[str]]): Unique ID of modified chats
         """
         self.channel: 'EFBChannel' = channel
-        self.new_chats: Collection[str] = new_chats
-        self.removed_chats: Collection[str] = removed_chats
-        self.modified_chats: Collection[str] = modified_chats
+        self.new_chats: Collection[ChatID] = new_chats
+        self.removed_chats: Collection[ChatID] = removed_chats
+        self.modified_chats: Collection[ChatID] = modified_chats
         self.destination_channel: 'EFBChannel' = coordinator.master
 
     def __str__(self):
@@ -115,9 +117,10 @@ class EFBMemberUpdates(EFBStatus):
     """
 
     # noinspection PyMissingConstructor
-    def __init__(self, channel: 'EFBChannel', chat_id: str,
-                 new_members: Collection[str] = tuple(), removed_members: Collection[str] = tuple(),
-                 modified_members: Collection[str] = tuple()):
+    def __init__(self, channel: 'EFBChannel', chat_id: ChatID,
+                 new_members: Collection[ChatID] = tuple(),
+                 removed_members: Collection[ChatID] = tuple(),
+                 modified_members: Collection[ChatID] = tuple()):
         """__init__(channel: EFBChannel, chat_id: str, new_members: Collection[str]=tuple(), removed_members: Collection[str]=tuple(), modified_members: Optional[Collection[str]]=tuple())
 
         Args:
@@ -128,10 +131,10 @@ class EFBMemberUpdates(EFBStatus):
             modified_members (Optional[Collection[str]]): Unique ID of modified members
         """
         self.channel: 'EFBChannel' = channel
-        self.chat_id: str = chat_id
-        self.new_members: Collection[str] = new_members
-        self.removed_members: Collection[str] = removed_members
-        self.modified_members: Collection[str] = modified_members
+        self.chat_id: ChatID = chat_id
+        self.new_members: Collection[ChatID] = new_members
+        self.removed_members: Collection[ChatID] = removed_members
+        self.modified_members: Collection[ChatID] = modified_members
         self.destination_channel: 'EFBChannel' = coordinator.master
 
     def __str__(self):

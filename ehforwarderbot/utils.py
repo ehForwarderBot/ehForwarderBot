@@ -4,7 +4,7 @@ import logging
 import os
 import pydoc
 from pathlib import Path
-from typing import Callable
+from typing import Callable, Optional
 
 import pkg_resources
 
@@ -12,7 +12,7 @@ from . import coordinator
 from .types import ModuleID
 
 
-def extra(name: str, desc: str) -> Callable:
+def extra(name: str, desc: str) -> Callable[..., Optional[str]]:
     """
     Decorator for slave channel's "additional features" interface.
 
@@ -130,7 +130,7 @@ def locate_module(module_id: ModuleID, module_type: str = None):
     if module_type:
         entry_point = 'ehforwarderbot.%s' % module_type
 
-    module_id = module_id.split('#', 1)[0]
+    module_id = ModuleID(module_id.split('#', 1)[0])
 
     if entry_point:
         for i in pkg_resources.iter_entry_points(entry_point):
