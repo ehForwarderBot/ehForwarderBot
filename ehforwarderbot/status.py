@@ -4,7 +4,7 @@ from abc import abstractmethod, ABC
 from typing import Dict, Collection, TYPE_CHECKING, Any, Optional
 
 from . import EFBChannel, EFBMsg, coordinator, ChannelType, ChatType
-from .types import Reactions, ReactionName, ChatID
+from .types import Reactions, ReactionName, ChatID, MessageID
 
 if TYPE_CHECKING:
     from . import EFBChat
@@ -300,7 +300,7 @@ class EFBMessageReactionsUpdate(EFBStatus):
     """
 
     # noinspection PyMissingConstructor
-    def __init__(self, chat: 'EFBChat', msg_id: str, reactions: Reactions):
+    def __init__(self, chat: 'EFBChat', msg_id: MessageID, reactions: Reactions):
         """
         Args:
             chat (:obj:`EFBChat`): The chat where message
@@ -313,7 +313,7 @@ class EFBMessageReactionsUpdate(EFBStatus):
                 group member.
         """
         self.chat: 'EFBChat' = chat
-        self.msg_id: str = msg_id
+        self.msg_id: MessageID = msg_id
         self.reactions: Reactions = reactions
         self.destination_channel = coordinator.master
 

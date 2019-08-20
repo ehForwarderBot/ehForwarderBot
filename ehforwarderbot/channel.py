@@ -255,7 +255,7 @@ class EFBChannel(ABC):
         """
         raise NotImplementedError()
 
-    def get_message_by_id(self, chat_uid: ChatID, msg_id: MessageID) -> Optional['EFBMsg']:
+    def get_message_by_id(self, chat: EFBChat, msg_id: MessageID) -> Optional['EFBMsg']:
         """
         Get message entity by its ID.
         Applicable to both master channels and slave channels.
@@ -266,7 +266,7 @@ class EFBChannel(ABC):
         if it is not feasible to perform this for your platform.
 
         Args:
-            chat_uid: Unique ID of chat in slave channel / middleware.
+            chat: Chat in slave channel / middleware.
             msg_id: ID of message from the chat in slave channel / middleware.
         """
         raise NotImplementedError()
