@@ -27,7 +27,7 @@ EH Forwarder Bot
    :target: https://crowdin.com/project/ehforwarderbot/
 
 
-.. image:: https://images.1a23.com/di/XOEE/EFB_v2.png
+.. image:: https://github.com/blueset/ehForwarderBot/blob/master/banner.png
    :alt: Banner
 
 
