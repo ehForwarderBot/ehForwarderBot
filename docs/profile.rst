@@ -10,10 +10,6 @@ a set of channels that share the same code, but
 has different data files, so that they can run on
 their own.
 
-Profiles are, by default, specific to users. This
-means, two users can have profiles in the same
-name but operates in isolation.
-
 The default profile name is called ``default``.
 To switch to a different profile, specify the
 profile name in ``--profile`` flag while starting

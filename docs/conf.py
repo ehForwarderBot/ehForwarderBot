@@ -193,7 +193,6 @@ locale_dirs = ['locale/']
 gettext_compact = False
 gettext_additional_targets = ['literal-block', 'image']
 
-
 conversion = {
     'az': 'az_AZ', 'es': 'es_VE', 'id': 'id_ID',
     'it': 'it_IT', 'ja': 'ja_JP', 'ms': 'ms_MY',
@@ -217,4 +216,4 @@ conversion = {
 def setup(self):
     self.config.language = conversion.get(self.config.language, self.config.language)
     self.config.overrides['language'] = conversion.get(self.config.overrides.get('language', None),
-                                               self.config.overrides.get('language', None))
+                                                       self.config.overrides.get('language', None))
