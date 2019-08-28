@@ -11,6 +11,6 @@ dependencies:
   - sphinxcontrib-restbuilder
   - sphinx-intl
   - ruamel.yaml
-  - bullets
+  - bullet
   - cjkwrap
   - typing_extensions
