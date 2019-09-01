@@ -1,30 +1,16 @@
-from .base_class import setup
-
-from ehforwarderbot import coordinator
+import pytest
 
 from .mocks.master import MockMasterChannel
 from .mocks.middleware import MockMiddleware
 
-setup_module = setup
+
+def test_matching_keys(coord):
+    assert coord.slaves.keys() == coord.slave_threads.keys()
 
 
-def test_acceptable_text():
-    master: MockMasterChannel = coordinator.master
-    middleware: MockMiddleware = coordinator.middlewares[0]
-    middleware.mode = "append_text"
-    assert middleware.middleware_id in master.send_text_msg().text
-
-
-def test_interrupt_text():
-    master: MockMasterChannel = coordinator.master
-    middleware: MockMiddleware = coordinator.middlewares[0]
-    middleware.mode = "interrupt"
-    assert master.send_text_msg() is None
-
-
-def test_interrupt_non_text():
-    master: MockMasterChannel = coordinator.master
-    middleware: MockMiddleware = coordinator.middlewares[0]
-    middleware.mode = "interrupt_non_text"
-    assert master.send_text_msg() is not None
-    assert master.send_link_msg() is None
+def test_get_module_by_id(coord, master_channel, slave_channel, middleware):
+    assert coord.get_module_by_id(master_channel.channel_id) is not None
+    assert coord.get_module_by_id(slave_channel.channel_id) is not None
+    assert coord.get_module_by_id(middleware.middleware_id) is not None
+    with pytest.raises(NameError):
+        coord.get_module_by_id("non_existing.module")

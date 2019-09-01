@@ -44,7 +44,7 @@ def test_instance_id():
 
 def dump_and_load_config(config):
     config_path = ehforwarderbot.utils.get_config_path()
-    with open(config_path, 'w') as f:
+    with config_path.open('w') as f:
         yaml.dump(config, f)
     return ehforwarderbot.config.load_config()
 
@@ -56,7 +56,7 @@ def test_load_config():
         "middlewares": ["tests.mocks.middleware.MockMiddleware"]
     }
     config_path = ehforwarderbot.utils.get_config_path()
-    with open(config_path, 'w') as f:
+    with config_path.open('w') as f:
         yaml.dump(data, f)
     result = ehforwarderbot.config.load_config()
     for k, v in data.items():
@@ -69,10 +69,12 @@ def test_custom_path_module_loading():
         modules_path = ehforwarderbot.utils.get_custom_modules_path()
         config = {
             "master_channel": "master.MockMasterChannel",
-            "slave_channels": ["slave.MockSlaveChannel"],
-            "middlewares": ["middleware.MockMiddleware"]
+            "slave_channels": ["slave.MockSlaveChannel",
+                               "slave.MockSlaveChannel#instance"],
+            "middlewares": ["middleware.MockMiddleware",
+                            "middleware.MockMiddleware#instance"]
         }
-        test_path = Path(inspect.getfile(inspect.currentframe())).parent / 'mocks'
+        test_path: Path = Path(inspect.getfile(inspect.currentframe())).parent / 'mocks'
         # noinspection PyTypeChecker
         shutil.copy(test_path / 'master.py', modules_path)
         # noinspection PyTypeChecker
@@ -83,8 +85,17 @@ def test_custom_path_module_loading():
         ehforwarderbot.__main__.init(config)
 
         assert coordinator.master.channel_id == master.MockMasterChannel.channel_id
-        assert slave.MockSlaveChannel.channel_id in coordinator.slaves
+        assert coordinator.master.instance_id is None
+        slave_0 = slave.MockSlaveChannel.channel_id
+        assert slave_0 in coordinator.slaves
+        assert coordinator.slaves[slave_0].instance_id is None
+        slave_1 = slave_0 + "#instance"
+        assert slave_1 in coordinator.slaves
+        assert coordinator.slaves[slave_1].instance_id == "instance"
         assert coordinator.middlewares[0].middleware_id == middleware.MockMiddleware.middleware_id
+        assert coordinator.middlewares[0].instance_id is None
+        assert coordinator.middlewares[1].middleware_id == middleware.MockMiddleware.middleware_id + "#instance"
+        assert coordinator.middlewares[1].instance_id == "instance"
 
 
 def test_non_existing_module_loading():
@@ -95,8 +106,7 @@ def test_non_existing_module_loading():
             "slave_channels": ["this_doesnt_exist.EitherChannel"]
         }
         with pytest.raises(ValueError):
-            config = dump_and_load_config(config)
-            ehforwarderbot.__main__.init(config)
+            dump_and_load_config(config)
 
 
 def test_no_config_file():

@@ -115,7 +115,7 @@ def send_message(msg: 'EFBMsg') -> Optional['EFBMsg']:
     elif msg.deliver_to.channel_id in slaves:
         return slaves[msg.deliver_to.channel_id].send_message(msg)
     else:
-        raise EFBChannelNotFound(msg)
+        raise EFBChannelNotFound()
 
 
 def send_status(status: 'EFBStatus'):

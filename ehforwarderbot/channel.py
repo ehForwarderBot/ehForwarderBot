@@ -80,7 +80,7 @@ class EFBChannel(ABC):
             Method can be called with ``get_extra_functions()["methodName"]()``.
         """
         if self.channel_type == ChannelType.Master:
-            raise NameError("get_extra_function is not available on master channels.")
+            raise TypeError("get_extra_function is not available on master channels.")
         methods = {}
         for mName in dir(self):
             m = getattr(self, mName)
@@ -147,8 +147,7 @@ class EFBChannel(ABC):
 
     @abstractmethod
     def get_chat(self, chat_uid: ChatID, member_uid: Optional[ChatID] = None) -> 'EFBChat':
-        """get_chat(self, chat_uid: str, member_uid: Optional[str] = None) -> EFBChat
-
+        """
         Get the chat object from a slave channel.
 
         Args:

@@ -6,19 +6,19 @@ import pytest
 
 from ehforwarderbot import EFBMsg, EFBChat, ChatType, MsgType, coordinator
 from ehforwarderbot.message import EFBMsgLinkAttribute, EFBMsgLocationAttribute, EFBMsgStatusAttribute, EFBMsgCommands, \
-    EFBMsgCommand
-from .mocks.master import MockMasterChannel
+    EFBMsgCommand, EFBMsgSubstitutions
 
-coordinator.master = MockMasterChannel()
-chat = EFBChat(channel=coordinator.master)
-chat.chat_name = "Chat 0"
-chat.chat_uid = "0"
-chat.chat_type = ChatType.User
+
+@pytest.fixture(scope="module")
+def chat(slave_channel):
+    chat = slave_channel.alice.copy()
+    return chat
+
 
 media_types = (MsgType.Image, MsgType.Audio, MsgType.File, MsgType.Sticker)
 
 
-def test_verify_text_msg():
+def test_verify_text_msg(chat):
     msg = EFBMsg()
     msg.deliver_to = coordinator.master
     msg.author = chat
@@ -29,10 +29,10 @@ def test_verify_text_msg():
 
 
 @pytest.mark.parametrize("media_type", media_types, ids=str)
-def test_verify_media_msg(media_type):
+def test_verify_media_msg(chat, master_channel, media_type):
     with NamedTemporaryFile() as f:
         msg = EFBMsg()
-        msg.deliver_to = coordinator.master
+        msg.deliver_to = master_channel
         msg.author = chat
         msg.chat = chat
         msg.type = media_type
@@ -43,7 +43,7 @@ def test_verify_media_msg(media_type):
         msg.verify()
 
 
-def test_verify_missing_deliver_to():
+def test_verify_missing_deliver_to(chat):
     msg = EFBMsg()
     msg.author = chat
     msg.chat = chat
@@ -53,9 +53,9 @@ def test_verify_missing_deliver_to():
         msg.verify()
 
 
-def test_verify_missing_author():
+def test_verify_missing_author(chat, master_channel):
     msg = EFBMsg()
-    msg.deliver_to = coordinator.master
+    msg.deliver_to = master_channel
     msg.chat = chat
     msg.type = MsgType.Text
     msg.text = "Message"
@@ -63,7 +63,7 @@ def test_verify_missing_author():
         msg.verify()
 
 
-def test_verify_missing_chat():
+def test_verify_missing_chat(chat):
     msg = EFBMsg()
     msg.deliver_to = coordinator.master
     msg.author = chat
@@ -73,15 +73,23 @@ def test_verify_missing_chat():
         msg.verify()
 
 
-patch_chat_0 = chat.copy()
-patch_chat_1 = chat.copy()
-patch_chat_0.verify = mock.Mock()
-patch_chat_1.verify = mock.Mock()
+@pytest.fixture()
+def patch_chat_0(slave_channel):
+    mocked_chat = slave_channel.alice.copy()
+    mocked_chat.verify = mock.Mock()
+    return mocked_chat
 
 
-def test_verify_different_author_and_chat():
+@pytest.fixture()
+def patch_chat_1(slave_channel):
+    mocked_chat = EFBChat(slave_channel).self()
+    mocked_chat.verify = mock.Mock()
+    return mocked_chat
+
+
+def test_verify_different_author_and_chat(patch_chat_0, patch_chat_1, master_channel):
     msg = EFBMsg()
-    msg.deliver_to = coordinator.master
+    msg.deliver_to = master_channel
 
     msg.author = patch_chat_0
     msg.chat = patch_chat_1
@@ -91,13 +99,10 @@ def test_verify_different_author_and_chat():
     patch_chat_0.verify.assert_called_once()
     patch_chat_1.verify.assert_called_once()
 
-    patch_chat_0.verify.reset_mock()
-    patch_chat_1.verify.reset_mock()
 
-
-def test_verify_same_author_and_chat():
+def test_verify_same_author_and_chat(patch_chat_0, master_channel):
     msg = EFBMsg()
-    msg.deliver_to = coordinator.master
+    msg.deliver_to = master_channel
 
     msg.author = patch_chat_0
     msg.chat = patch_chat_0
@@ -107,105 +112,114 @@ def test_verify_same_author_and_chat():
     patch_chat_0.verify.assert_called_once()
 
 
-def test_verify_link_message():
+@pytest.fixture()
+def base_message(chat, master_channel):
     msg = EFBMsg()
-    msg.deliver_to = coordinator.master
+    msg.deliver_to = master_channel
 
-    msg.author = patch_chat_0
-    msg.chat = patch_chat_1
+    msg.author = chat
+    msg.chat = chat
     msg.text = "Message"
-    msg.verify()
+    msg.uid = "0"
+
+    return msg
+
+
+def test_verify_link_message(base_message):
+    msg = base_message
 
     msg.type = MsgType.Link
     msg.attributes = EFBMsgLinkAttribute(title='Title', url='URL')
-    msg.attributes.verify = mock.Mock()
     msg.verify()
 
-    msg.attributes.verify.assert_called_once()
+    with pytest.raises(ValueError) as exec_info:
+        msg.attributes = EFBMsgLinkAttribute(title="Title")
+    assert "URL" in str(exec_info)
+
+    with pytest.raises(ValueError) as exec_info:
+        msg.attributes = EFBMsgLinkAttribute(url="URL")
+    assert "Title" in str(exec_info)
 
 
-def test_verify_location_message():
-    msg = EFBMsg()
-    msg.deliver_to = coordinator.master
-
-    msg.author = patch_chat_0
-    msg.chat = patch_chat_1
-    msg.text = "Message"
-    msg.verify()
+def test_verify_location_message(base_message):
+    msg = base_message
 
     msg.type = MsgType.Location
     msg.attributes = EFBMsgLocationAttribute(latitude=0.0, longitude=0.0)
-    msg.attributes.verify = mock.Mock()
     msg.verify()
 
-    msg.attributes.verify.assert_called_once()
+    with pytest.raises(ValueError) as exec_info:
+        msg.attributes = EFBMsgLocationAttribute(latitude='0.0', longitude=1.0)
+        msg.verify()
+    assert 'Latitude' in str(exec_info)
+
+    with pytest.raises(ValueError) as exec_info:
+        msg.attributes = EFBMsgLocationAttribute(latitude=1.0, longitude=10)
+        msg.verify()
+    assert 'Longitude' in str(exec_info)
 
 
-def test_verify_status_message():
-    msg = EFBMsg()
-    msg.deliver_to = coordinator.master
-
-    msg.author = patch_chat_0
-    msg.chat = patch_chat_1
-    msg.text = "Message"
-    msg.verify()
+def test_verify_status_message(base_message):
+    msg = base_message
 
     msg.type = MsgType.Status
     msg.attributes = EFBMsgStatusAttribute(status_type=EFBMsgStatusAttribute.Types.TYPING)
-    msg.attributes.verify = mock.Mock()
     msg.verify()
 
-    msg.attributes.verify.assert_called_once()
+    with pytest.raises(ValueError):
+        EFBMsgStatusAttribute(status_type=EFBMsgStatusAttribute.Types.UPLOADING_FILE, timeout=-1)
 
 
-def test_verify_message_command():
-    msg = EFBMsg()
-    msg.deliver_to = coordinator.master
-
-    msg.author = patch_chat_0
-    msg.chat = patch_chat_1
-    msg.text = "Message"
-    msg.verify()
+def test_verify_message_command(base_message):
+    msg = base_message
 
     msg.type = MsgType.Text
-    msg.attributes = None
-    msg.commands = EFBMsgCommands([
-        EFBMsgCommand(name="Command 1", callable_name="command_1")
-    ])
+    command = EFBMsgCommand(name="Command 1", callable_name="command_1")
 
-    msg.commands.commands[0].verify = mock.Mock()
-
+    msg.commands = EFBMsgCommands([command])
     msg.verify()
 
-    msg.commands.commands[0].verify.assert_called_once()
+    with pytest.raises(TypeError):
+        # noinspection PyTypeChecker
+        EFBMsgCommand("name", "callable_name", "args", "kwargs")  # type: ignore
 
 
-def test_pickle_minimum_text_message():
-    msg = EFBMsg()
-    msg.deliver_to = coordinator.master
-    msg.author = chat
-    msg.chat = chat
-    msg.type = MsgType.Text
-    msg.text = "Message"
-    msg.uid = "message_id"
+def test_substitution(base_message, chat):
+    base_message.substitutions = EFBMsgSubstitutions({(0, 3): chat})
+    base_message.verify()
+
+    with pytest.raises(TypeError):
+        EFBMsgSubstitutions([chat])
+
+    with pytest.raises(TypeError):
+        EFBMsgSubstitutions({(1, 2, 3): chat})
+
+    with pytest.raises(TypeError):
+        EFBMsgSubstitutions({(1, 2, 3): chat.chat_uid})
+
+    with pytest.raises(TypeError):
+        EFBMsgSubstitutions({(2, 1): chat})
+
+    with pytest.raises(ValueError):
+        EFBMsgSubstitutions({(1, 3): chat, (2, 4): chat})
+
+
+def test_pickle_minimum_text_message(base_message):
+    msg = base_message
     msg_dup = pickle.loads(pickle.dumps(msg))
     for i in ("deliver_to", "author", "chat", "type", "text", "uid"):
         assert getattr(msg, i) == getattr(msg_dup, i)
 
 
 @pytest.mark.parametrize("media_type", media_types, ids=str)
-def test_pickle_media_message(media_type):
+def test_pickle_media_message(media_type, base_message):
     with NamedTemporaryFile() as f:
-        msg = EFBMsg()
-        msg.deliver_to = coordinator.master
-        msg.author = chat
-        msg.chat = chat
+        msg = base_message
         msg.type = media_type
         msg.file = f
         msg.filename = "test.bin"
         msg.path = f.name
         msg.mime = "application/octet-stream"
-        msg.uid = "message_id"
         msg.verify()
         msg_dup = pickle.loads(pickle.dumps(msg))
         for attr in ("deliver_to", "author", "chat", "type", "chat", "filename", "path", "mime", "text", "uid"):

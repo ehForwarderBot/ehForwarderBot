@@ -5,13 +5,14 @@ from logging import getLogger
 from ehforwarderbot import EFBChannel, EFBMsg, EFBStatus, ChannelType, MsgType, coordinator, EFBChat
 from ehforwarderbot.message import EFBMsgLinkAttribute, EFBMsgLocationAttribute
 from ehforwarderbot.status import EFBMessageRemoval
+from ehforwarderbot.types import ModuleID
 
 
 class MockMasterChannel(EFBChannel):
 
     channel_name: str = "Mock Master"
     channel_emoji: str = "➕"
-    channel_id: str = "tests.mocks.master.MockMasterChannel"
+    channel_id: ModuleID = ModuleID("tests.mocks.master.MockMasterChannel")
     channel_type: ChannelType = ChannelType.Master
     supported_message_types: Set[MsgType] = {MsgType.Text, MsgType.Link}
     __version__: str = '0.0.1'

@@ -1,5 +1,12 @@
-"""A list of type aliases when no separate class is defined for some types of values.
-User-facing types (display names, descriptions, message text, etc.) shall not be included here,
+"""A list of type aliases when no separate class is defined for some types of
+values. User-facing types (display names, descriptions, message text, etc.)
+shall not be included here.
+
+Most of types listed here are defined under the "NewType" syntax in order to
+clarify some ambiguous values not covered by simple type checking. This is only
+useful if you are using static type checking in your development. If you are
+not using type checking of any kind, you can simply ignore values in this
+module.
 """
 from typing import Collection, TYPE_CHECKING, Mapping
 from typing_extensions import NewType

@@ -60,8 +60,8 @@ class EFBChat:
         vendor_specific (Dict[str, Any]): Any vendor specific attributes.
     """
 
-    SELF_ID = "__self__"
-    SYSTEM_ID = "__system__"
+    SELF_ID = ChatID("__self__")
+    SYSTEM_ID = ChatID("__system__")
 
     def __init__(self, channel: Optional[EFBChannel] = None,
                  middleware: Optional[EFBMiddleware] = None):
@@ -197,5 +197,5 @@ class EFBChat:
         return self.module_id == other.module_id and self.chat_uid == other.chat_uid
 
     def __str__(self):
-        return "<EFBChat: {c.chat_name} ({alias}{c.chat_uid}) @ {c.module_name}>" \
-            .format(c=self, alias=self.chat_alias + ", " if self.chat_alias else "")
+        return "<EFBChat: {c.long_name} ({c.chat_uid}) @ {c.module_name}>" \
+            .format(c=self)

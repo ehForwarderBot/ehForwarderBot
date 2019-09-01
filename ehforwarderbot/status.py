@@ -78,6 +78,7 @@ class EFBChatUpdates(EFBStatus):
         self.removed_chats: Collection[ChatID] = removed_chats
         self.modified_chats: Collection[ChatID] = modified_chats
         self.destination_channel: 'EFBChannel' = coordinator.master
+        self.verify()
 
     def __str__(self):
         return "<EFBChatUpdates @ {s.channel.channel_name}; New: {s.new_chats}; " \
@@ -136,6 +137,7 @@ class EFBMemberUpdates(EFBStatus):
         self.removed_members: Collection[ChatID] = removed_members
         self.modified_members: Collection[ChatID] = modified_members
         self.destination_channel: 'EFBChannel' = coordinator.master
+        self.verify()
 
     def __str__(self):
         return "<EFBMemberUpdates: {s.chat_id} @ {s.channel.channel_name}; New: {s.new_chats}; " \
@@ -204,6 +206,7 @@ class EFBMessageRemoval(EFBStatus):
         self.source_channel: 'EFBChannel' = source_channel
         self.destination_channel: 'EFBChannel' = destination_channel
         self.message: 'EFBMsg' = message
+        self.verify()
 
     def __str__(self):
         return "<EFBMessageRemoval: {s.message}; {s.source_channel.channel_name} " \
@@ -269,13 +272,17 @@ class EFBReactToMessage(EFBStatus):
         self.chat: 'EFBChat' = chat
         self.msg_id: str = msg_id
         self.reaction: Optional[str] = reaction
-        dc = coordinator.get_module_by_id(self.chat.module_id)
-        if isinstance(dc, EFBChannel):
-            self.destination_channel = dc
+        if getattr(self.chat, 'module_id', None):
+            dc = coordinator.get_module_by_id(self.chat.module_id)
+            if isinstance(dc, EFBChannel):
+                self.destination_channel = dc
+        self.verify()
 
     def verify(self):
         if not self.chat:
             raise ValueError("Chat is not valid.")
+        if not self.msg_id:
+            raise ValueError("Message ID is not valid.")
         if not self.destination_channel or not isinstance(self.destination_channel, EFBChannel):
             raise ValueError("Destination channel does not exist.")
         if self.destination_channel.channel_type != ChannelType.Slave:
@@ -316,11 +323,14 @@ class EFBMessageReactionsUpdate(EFBStatus):
         self.msg_id: MessageID = msg_id
         self.reactions: Reactions = reactions
         self.destination_channel = coordinator.master
+        self.verify()
 
     def verify(self):
         if not self.chat:
             raise ValueError("Chat is not valid.")
+        if not self.msg_id:
+            raise ValueError("Message ID is not valid.")
         for reaction, users in self.reactions.items():
             for user in users:
                 if user.chat_type == ChatType.Group:
-                    raise ValueError("Chat {} from reaction {} is a group.".format(user, reaction))
+                    raise ValueError("Chat {} from reaction {} should not be a group.".format(user, reaction))

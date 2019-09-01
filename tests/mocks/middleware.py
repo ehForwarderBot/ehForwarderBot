@@ -2,6 +2,8 @@ import logging
 from typing import Optional
 
 from ehforwarderbot import EFBMiddleware, EFBMsg, EFBStatus, MsgType
+from ehforwarderbot.types import ModuleID, InstanceID
+from ehforwarderbot.utils import extra
 
 
 class MockMiddleware(EFBMiddleware):
@@ -14,13 +16,13 @@ class MockMiddleware(EFBMiddleware):
             * "interrupt_non_text": Interrupt only non-text messages.
     """
 
-    middleware_id: str = "tests.mocks.middleware.MockMiddleware"
+    middleware_id: ModuleID = ModuleID("tests.mocks.middleware.MockMiddleware")
     middleware_name: str = "Mock Middleware"
     __version__: str = '0.0.1'
 
     logger = logging.getLogger(middleware_id)
 
-    def __init__(self, instance_id: str = None, mode: str = "log"):
+    def __init__(self, instance_id: Optional[InstanceID] = None, mode: str = "log"):
         super().__init__(instance_id=instance_id)
         self.mode: str = mode
 
@@ -29,12 +31,19 @@ class MockMiddleware(EFBMiddleware):
         if self.mode == "append_text":
             message.text += " (Processed by " + self.middleware_id + ")"
         elif self.mode == "interrupt":
-            return
+            return None
         elif self.mode == "interrupt_non_text" and message.type != MsgType.Text:
-            return
+            return None
         return message
 
     def process_status(self, status: EFBStatus) -> Optional[EFBStatus]:
         if self.mode == "interrupt":
-            return
+            return None
         return status
+
+    @extra(name="Echo",
+           desc="Echo back the input.\n"
+                "Usage:\n"
+                "    {function_name} text")
+    def echo(self, args):
+        return args

@@ -5,13 +5,14 @@ from logging import getLogger
 from ehforwarderbot import EFBChannel, EFBMsg, EFBStatus, ChannelType, MsgType, EFBChat, ChatType
 from ehforwarderbot.exceptions import EFBChatNotFound
 from ehforwarderbot.utils import extra
+from ehforwarderbot.types import ModuleID, MessageID
 
 
 class MockSlaveChannel(EFBChannel):
 
     channel_name: str = "Mock Slave"
     channel_emoji: str = "➖"
-    channel_id: str = "tests.mocks.slave.MockSlaveChannel"
+    channel_id: ModuleID = ModuleID("tests.mocks.slave.MockSlaveChannel")
     channel_type: ChannelType = ChannelType.Slave
     supported_message_types: Set[MsgType] = {MsgType.Text, MsgType.Link}
     __version__: str = '0.0.1'
@@ -34,19 +35,23 @@ class MockSlaveChannel(EFBChannel):
         alice.chat_name = "Alice"
         alice.chat_uid = "alice"
         alice.chat_type = ChatType.User
+        self.alice = alice
         bob = EFBChat(self)
         bob.chat_name = "Bob"
         bob.chat_alias = "Little bobby"
         bob.chat_uid = "bob"
         bob.chat_type = ChatType.User
+        self.bob = bob
         carol = EFBChat(self)
         carol.chat_name = "Carol"
         carol.chat_uid = "carol"
         carol.chat_type = ChatType.User
+        self.carol = carol
         dave = EFBChat(self)
         dave.chat_name = "デブ"  # Nah, that's a joke
         dave.chat_uid = "dave"
         dave.chat_type = ChatType.User
+        self.dave = dave
         wonderland = EFBChat(self)
         wonderland.chat_name = "Wonderland"
         wonderland.chat_uid = "wonderland001"
@@ -54,6 +59,7 @@ class MockSlaveChannel(EFBChannel):
         wonderland.members = [bob.copy(), carol.copy(), dave.copy()]
         for i in wonderland.members:
             i.group = wonderland
+        self.wonderland = wonderland
         self.chats: List[EFBChat] = [alice, bob, wonderland]
 
     def poll(self):
@@ -90,6 +96,9 @@ class MockSlaveChannel(EFBChannel):
         if chat.chat_uid in self.__picture_dict:
             return open('tests/mocks/' + self.__picture_dict[chat.chat_uid], 'rb')
 
+    def get_message_by_id(self, chat: EFBChat, msg_id: MessageID) -> Optional['EFBMsg']:
+        pass
+
     @extra(name="Echo",
            desc="Echo back the input.\n"
                 "Usage:\n"
@@ -97,7 +106,12 @@ class MockSlaveChannel(EFBChannel):
     def echo(self, args):
         return args
 
-    def get_message_by_id(self, msg_id: str) -> Optional['EFBMsg']:
-        pass
+    @extra(name="Extra function A", desc="Do something A.\nUsage: {function_name}")
+    def function_a(self):
+        return f"Value of function A from {self.channel_id}."
+
+    @extra(name="Extra function B", desc="Do something B.\nUsage: {function_name}")
+    def function_b(self):
+        return f"Value of function B from {self.channel_name}."
 
     # TODO: Send types of messages and statuses to slave channels
