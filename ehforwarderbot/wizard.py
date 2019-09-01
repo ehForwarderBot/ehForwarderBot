@@ -279,7 +279,6 @@ class KeyValueBullet(Bullet):
         return self.choices[pos], self.choices_id[pos]
 
 
-# @keyhandler.init
 class ReorderBullet(Bullet):
 
     def __init__(self, prompt: str = "", choices: list = [], choices_id: list = [], bullet: str = "●",
