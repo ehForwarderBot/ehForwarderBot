@@ -117,6 +117,9 @@ running in one profile. Meanwhile, middlewares are completely optional.
 
 .. _modules repository: https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository
 
+Alternatively, you can also use the :ref:`config:Configuration wizard` which
+can also help you set up modules installed (if they also come with a wizard).
+
 Launch EFB
 ----------
 
@@ -143,6 +146,12 @@ You can help to translate this project into your languages on
 
 .. _supported languages: https://crowdin.com/project/ehforwarderbot/
 .. _our Crowdin page: https://crowdin.com/project/ehforwarderbot/
+
+.. note::
+
+    If your are installing from source code, you will not get translations
+    of the user interface without manual compile of message catalogs (``.mo``)
+    prior to installation.
 
 Launch EFB as a daemon process
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -43,6 +43,7 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.viewcode',
               'sphinx.ext.githubpages',
               'sphinx.ext.napoleon',
+              'sphinx.ext.autosectionlabel',
               'sphinxcontrib.restbuilder']
 
 # Add any paths that contain templates here, relative to this directory.
@@ -212,6 +213,7 @@ conversion = {
 #
 # sphinx.application.Sphinx._init_i18n = locale_fallback_decorator(sphinx.application.Sphinx._init_i18n)
 
+autosectionlabel_prefix_document = True
 
 def setup(self):
     self.config.language = conversion.get(self.config.language, self.config.language)
