@@ -1,9 +1,3 @@
-from ehforwarderbot import coordinator
-
-from .mocks.master import MockMasterChannel
-from .mocks.middleware import MockMiddleware
-
-
 def test_append_text(master_channel, middleware):
     middleware.mode = "append_text"
     assert middleware.middleware_id in master_channel.send_text_msg().text

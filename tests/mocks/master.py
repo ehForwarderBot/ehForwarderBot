@@ -1,11 +1,12 @@
 import threading
-from typing import Set, Optional
+from typing import Set, Optional, IO, List
 from logging import getLogger
 
 from ehforwarderbot import EFBChannel, EFBMsg, EFBStatus, ChannelType, MsgType, coordinator, EFBChat
 from ehforwarderbot.message import EFBMsgLinkAttribute, EFBMsgLocationAttribute
 from ehforwarderbot.status import EFBMessageRemoval
-from ehforwarderbot.types import ModuleID
+from ehforwarderbot.types import ModuleID, MessageID
+from types import ChatID
 
 
 class MockMasterChannel(EFBChannel):
@@ -16,11 +17,6 @@ class MockMasterChannel(EFBChannel):
     channel_type: ChannelType = ChannelType.Master
     supported_message_types: Set[MsgType] = {MsgType.Text, MsgType.Link}
     __version__: str = '0.0.1'
-
-    # Slave-only methods
-    get_chat = None
-    get_chats = None
-    get_chat_picture = None
 
     logger = getLogger(channel_id)
 
@@ -88,5 +84,14 @@ class MockMasterChannel(EFBChannel):
         status = EFBMessageRemoval(self, slave, msg)
         return coordinator.send_status(status)
 
-    def get_message_by_id(self, msg_id: str) -> Optional['EFBMsg']:
+    def get_message_by_id(self, chat: EFBChat, msg_id: MessageID) -> Optional['EFBMsg']:
         pass
+
+    def get_chats(self) -> List['EFBChat']:
+        raise NotImplementedError()
+
+    def get_chat(self, chat_uid: ChatID, member_uid: Optional[ChatID] = None) -> 'EFBChat':
+        raise NotImplementedError()
+
+    def get_chat_picture(self, chat: 'EFBChat') -> IO[bytes]:
+        raise NotImplementedError()

@@ -4,7 +4,7 @@ from unittest import mock
 
 import pytest
 
-from ehforwarderbot import EFBMsg, EFBChat, ChatType, MsgType, coordinator
+from ehforwarderbot import EFBMsg, EFBChat, MsgType, coordinator
 from ehforwarderbot.message import EFBMsgLinkAttribute, EFBMsgLocationAttribute, EFBMsgStatusAttribute, EFBMsgCommands, \
     EFBMsgCommand, EFBMsgSubstitutions
 

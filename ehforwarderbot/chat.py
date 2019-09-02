@@ -24,7 +24,7 @@ class EFBChatNotificationState(Enum):
 
     MENTIONS = 1
     """Notifications are sent only when the user is mentioned in the message,
-    in the form of @-references or direct reply (message target).
+    in the form of @-references or quote-reply (message target).
     """
 
     ALL = -1

@@ -4,9 +4,6 @@ import pytest
 
 from ehforwarderbot import EFBChat, ChatType
 
-from .mocks.master import MockMasterChannel
-from .mocks.middleware import MockMiddleware
-
 
 def test_generate_with_channel(slave_channel):
     chat = EFBChat(slave_channel)

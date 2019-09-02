@@ -1,18 +1,15 @@
 # coding=utf-8
 
-import os
-
 import sys
-from ruamel.yaml import YAML
 from typing import Dict, Any
 
+from ruamel.yaml import YAML
 from typing_extensions import Final
 
 from . import utils, coordinator
 from .channel import EFBChannel
-from .middleware import EFBMiddleware
 from .constants import ChannelType
-
+from .middleware import EFBMiddleware
 
 OPTIONAL_DEFAULTS: Final[Dict[str, Any]] = {
     "logging": {},

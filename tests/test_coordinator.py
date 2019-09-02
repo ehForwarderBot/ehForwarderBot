@@ -1,8 +1,5 @@
 import pytest
 
-from .mocks.master import MockMasterChannel
-from .mocks.middleware import MockMiddleware
-
 
 def test_matching_keys(coord):
     assert coord.slaves.keys() == coord.slave_threads.keys()
