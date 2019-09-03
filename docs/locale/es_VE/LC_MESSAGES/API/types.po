@@ -1,0 +1,58 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-03 15:32+0800\n"
+"PO-Revision-Date: 2019-09-03 07:45\n"
+"Last-Translator: Eana Hufwe (blueset)\n"
+"Language-Team: Spanish, Venezuela\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: crowdin.com\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: es-VE\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/API/types.pot\n"
+"Language: es_VE\n"
+
+#: ../../API/types.rst:2
+msgid "Custom Type Hints"
+msgstr ""
+
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types:1
+msgid "A list of type aliases when no separate class is defined for some types of values. User-facing types (display names, descriptions, message text, etc.) shall not be included here."
+msgstr ""
+
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types:5
+msgid "Most of types listed here are defined under the \"NewType\" syntax in order to clarify some ambiguous values not covered by simple type checking. This is only useful if you are using static type checking in your development. If you are not using type checking of any kind, you can simply ignore values in this module."
+msgstr ""
+
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types.ChatID:1
+msgid "Chat ID from slave channel or middleware."
+msgstr ""
+
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types.ExtraCommandName:1
+msgid "Command name of additional features, in the format of ``^[A-Za-z][A-Za-z0-9_]{0,19}$``."
+msgstr ""
+
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types.InstanceID:1
+msgid "Instance ID of a module."
+msgstr ""
+
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types.MessageID:1
+msgid "Message ID from slave channel or middleware."
+msgstr ""
+
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types.ModuleID:1
+msgid "Module ID, including instance ID after ``#`` if available."
+msgstr ""
+
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types.ReactionName:1
+msgid "Canonical representation of a reaction, usually an emoji."
+msgstr ""
+
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types.Reactions:1
+msgid "Reactions to a message."
+msgstr ""
+

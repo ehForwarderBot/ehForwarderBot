@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-13 12:09+0800\n"
-"PO-Revision-Date: 2019-08-18 06:55\n"
+"POT-Creation-Date: 2019-09-03 15:32+0800\n"
+"PO-Revision-Date: 2019-09-03 07:44\n"
 "Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr "配置文件"
 
 #: ../../config.rst:4
 msgid "EFB has an overall configuration file to manage all enabled modules. It is located under the :doc:`directory <directories>` of current profile, and named ``config.yaml``."
-msgstr "EFB 使用全局配置文件来管理所有启用的模块。它位于当前配置文件的\\ :doc:`目录 <directories>`\\ 下的 ``config yaml``\\ 。"
+msgstr "EFB 使用全局配置文件来管理所有启用的模块。它位于当前配置档案的\\ :doc:`目录 <directories>`\\ 下的 ``config yaml``\\ 。"
 
 #: ../../config.rst:9
 msgid "Syntax"
@@ -154,18 +154,26 @@ msgid "logging:\n"
 msgstr ""
 
 #: ../../config.rst:110
-msgid "Configuration wizard (Unstable)"
-msgstr "设置向导（非稳定版本）"
+msgid "Configuration wizard"
+msgstr "配置向导"
 
 #: ../../config.rst:111
-msgid "Alternatively, you may want to try the interactive setup wizard that guides you to enable channels and middlewares, and continue to setup those modules if they also has a similar wizard."
-msgstr "此外，您也可以使用交互式设置向导来启用信道和中间件。若这些组件也附带了向导，您可以继续设置它们。"
+msgid "Alternatively, you may want to try the interactive setup wizard that guides you to enable channels and middlewares, and continue to setup those modules if they also have provided a similar wizard."
+msgstr "此外，您也可以使用交互式设置向导来启用信道和中间件。若这些组件也提供了向导，您可以继续设置它们。"
 
-#: ../../config.rst:116
-msgid "This feature is still unstable and may not guarentee a successful configuration.  If you have encouter any bug that is caused by the main wizard, you may want to submit an issue."
-msgstr "该功能仍不稳定，且可能无法正确地编写配置。如果您遇到了任何由向导造成的错误，可以向我们提交相关问题。"
+#: ../../config.rst:115
+msgid "You can start the wizard by running the following command in a compatible console or terminal emulator::"
+msgstr "你可以通过在兼容的控制台或是终端模拟器中运行下面的指令来启动向导::"
+
+#: ../../config.rst:118
+msgid "efb-wizard"
+msgstr "efb-wizard"
 
 #: ../../config.rst:120
-msgid "You can start the wizard by running ``efb-wizard`` in a compatible console or terminal emulator."
-msgstr "你可以通过在兼容的控制台或是终端模拟器中运行 ``efb-wizard`` 来启动向导。"
+msgid "If you want to start the wizard of a module for a profile individually, run::"
+msgstr "如果您想要单独启动某个配置档案中某个组件的向导，则运行::"
+
+#: ../../config.rst:122
+msgid "efb-wizard -p <profile name> -m <module ID>"
+msgstr "efb-wizard -p <配置名> -m <组件 ID>"
 

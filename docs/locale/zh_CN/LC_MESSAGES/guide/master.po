@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-13 12:09+0800\n"
-"PO-Revision-Date: 2019-08-18 06:55\n"
+"POT-Creation-Date: 2019-09-03 15:32+0800\n"
+"PO-Revision-Date: 2019-09-03 07:44\n"
 "Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -78,7 +78,7 @@ msgstr "另外，主端可以选择支持一些从端提供的「供应商特定
 
 #: ../../guide/master.rst:46
 msgid ".. image:: guide/../_static/master-channel-0.png"
-msgstr ""
+msgstr ".. image:: guide/../_static/master-channel-0.png"
 
 #: ../../guide/master.rst:46
 msgid "An example of an ideal design of a master channel, inspired by Telegram Desktop"
@@ -98,9 +98,9 @@ msgstr "注意，有时用户可能在 EFB 会话之外发送消息，因此从�
 
 #: ../../guide/master.rst:61
 msgid "Implementation details"
-msgstr ""
+msgstr "实现细节"
 
 #: ../../guide/master.rst:63
 msgid "See :class:`EFBChannel`."
-msgstr ""
+msgstr "见 :class:`EFBChannel`。"
 

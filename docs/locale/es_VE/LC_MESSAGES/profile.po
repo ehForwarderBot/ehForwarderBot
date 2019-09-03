@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-13 12:09+0800\n"
-"PO-Revision-Date: 2019-08-18 06:32\n"
+"POT-Creation-Date: 2019-09-03 15:32+0800\n"
+"PO-Revision-Date: 2019-09-03 07:45\n"
 "Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -29,22 +29,18 @@ msgid "Each profile has its own set of configuration files a set of channels tha
 msgstr "Cada perfil tiene su propio conjunto de archivos de configuración y un conjunto de canales que aunque comparten el mismo código tiene diferentes archivos de datos, lo que les permite ejecutarse independientemente los unos de los otros."
 
 #: ../../profile.rst:13
-msgid "Profiles are, by default, specific to users. This means, two users can have profiles in the same name but operates in isolation."
-msgstr "Los perfiles por defecto son específicos para cada usuario. Esto quiere decir que, dos usuarios pueden tener dos perfiles con el mismo nombre pero funcionan aisladamente."
-
-#: ../../profile.rst:17
 msgid "The default profile name is called ``default``. To switch to a different profile, specify the profile name in ``--profile`` flag while starting EFB."
 msgstr "El nombre de perfil predeterminado es ``default``. Para cambiar a un perfil diferente, especifica el nombre del perfil en la bandera ``--profile`` al empezar EFB."
 
-#: ../../profile.rst:23
+#: ../../profile.rst:19
 msgid "Start a new profile"
 msgstr "Inicia un nuevo perfil"
 
-#: ../../profile.rst:25
+#: ../../profile.rst:21
 msgid "To create a new profile, you need to create a directory in the :file:`EFB_DATA_PATH/profiles`, and create a new configuration file as described in chapter :doc:`getting-started`."
 msgstr "Para crear un nuevo perfil, necesitar crear un directorio en :file:`EFB_DATA_PATH/profiles` y crear un nuevo archivo de configuración como el descrito en el capítulo :doc:`getting-started`."
 
-#: ../../profile.rst:30
+#: ../../profile.rst:26
 msgid "When everything is configured properly, you are good to go."
 msgstr "Cuando toda ha sido configurado correctamente, estás listo para proseguir."
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-13 12:09+0800\n"
-"PO-Revision-Date: 2019-08-18 06:55\n"
+"POT-Creation-Date: 2019-09-03 15:32+0800\n"
+"PO-Revision-Date: 2019-09-03 07:44\n"
 "Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -75,19 +75,19 @@ msgstr "实例 ID（若可用）。"
 
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:45
 msgid "A list of suggested reactions to be applied to messages. Valid to slave channels only, master channels should leave this value as ``None``."
-msgstr ""
+msgstr "一个建议应用于消息的回应列表。只支持从端，主端应该将此值保留为 ``None``。"
 
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:49
 msgid "Reactions should be ordered in a meaningful way, e.g., the order used by the IM platform, or frequency of usage. Note that it is not necessary to list all suggested reactions if that is too long, or not feasible."
-msgstr ""
+msgstr "回应应该按照某种有意义的方式排序，例如，按照支持的 IM 平台所使用的顺序，或者按照使用频率的顺序。请注意，如果建议的回应列表过长，或在其他完全列举不可行的情况下，没有必要列出所有建议的回应。"
 
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:54
 msgid "Set to ``None`` when it is known that no reaction is supported to ANY message in the channel. Set to empty list when it is not feasible to provide a list of suggested reactions, for example, the list of reactions is different for each chat or message."
-msgstr ""
+msgstr "若已知在此信道中任何消息均不支持回应，设置此值为 ``None``。在无法提供建议回应列表时，例如当对每个会话或消息的回应均不同时，设置此值为空列表，"
 
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:59
 msgid "Optional[List[str]]"
-msgstr ""
+msgstr "Optional[List[str]]"
 
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.__init__:1
 msgid "Initialize the channel. Inherited initializer must call the \"super init\" method at the beginning."
@@ -138,9 +138,19 @@ msgstr "获取到的会话。"
 msgid "Return type"
 msgstr "返回类型"
 
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:0
+msgid "Raises"
+msgstr "抛出"
+
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:12
-msgid ":raises :exc:`~.exceptions.EFBChatNotFound`: Raised when a chat     required is not found."
-msgstr ""
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:16
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:11
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:6
+msgid "Raised when a chat required is not found."
+msgstr "当请求当会话无法找到时被抛出。"
 
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:14
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:34
@@ -168,9 +178,9 @@ msgstr "已打开的临时文件对象。文件对象必须具有和发送的图
 msgid "It can be deleted when closed if not required otherwise."
 msgstr "如果该文件在消息被处理后不再需要，可以选择在文件被关闭时删除该文件。"
 
-#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:16
-msgid ":raises :exc:`~.exceptions.EFBChatNotFound`: Raised when a chat     required is not found. :raises :exc:`~.exceptions.EFBOperationNotSupported`: Raised     when the chat does not offer a profile picture."
-msgstr ""
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:17
+msgid "Raised when the chat does not offer a profile picture."
+msgstr "当此会话不提供头像时被抛出。"
 
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:20
 msgid "Examples"
@@ -187,7 +197,16 @@ msgid "if chat.channel_uid != self.channel_uid:\n"
 "file.write(response.content)\n"
 "file.seek(0)\n"
 "return file"
-msgstr ""
+msgstr "if chat.channel_uid != self.channel_uid:\n"
+"    raise EFBChannelNotFound()\n"
+"file = tempfile.NamedTemporaryFile(suffix=\".png\")\n"
+"response = requests.post(\"https://api.example.com/get_profile_picture/png\",\n"
+"                         data={\"uid\": chat.chat_uid})\n"
+"if response.status_code == 404:\n"
+"    raise EFBChatNotFound()\n"
+"file.write(response.content)\n"
+"file.seek(0)\n"
+"return file"
 
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chats:1
 msgid "Return a list of available chats in the channel."
@@ -214,12 +233,12 @@ msgid "Override this method and raise :exc:`~.exceptions.EFBOperationNotSupporte
 msgstr "如果该操作无法在你的平台上执行，覆盖该方法并抛出 :exc:`~.exceptions.EFBOperationNotSupported` 。"
 
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_message_by_id:9
-msgid "Unique ID of chat in slave channel / middleware."
-msgstr ""
+msgid "Chat in slave channel / middleware."
+msgstr "从端 / 中间件中的会话。"
 
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_message_by_id:10
 msgid "ID of message from the chat in slave channel / middleware."
-msgstr ""
+msgstr "从端 / 中间件中会话的消息 ID 。"
 
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.poll:1
 msgid "Method to poll for messages. This method is called when the framework is initialized. This method should be blocking."
@@ -241,9 +260,21 @@ msgstr "带有收件方消息 ID 的原消息对象。"
 msgid ":obj:`.EFBMsg`"
 msgstr ":obj:`.EFBMsg`"
 
-#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:11
-msgid ":raises :exc:`~.exceptions.EFBChatNotFound`: Raised when a chat     required is not found. :raises :exc:`~.exceptions.EFBMessageTypeNotSupported`: Raised     when the message type sent is not supported by the     channel. :raises :exc:`~.exceptions.EFBOperationNotSupported`: Raised     when an message edit request is sent, but not     supported by the channel. :raises :exc:`~.exceptions.EFBMessageNotFound`: Raised when     an existing message indicated is not found.     E.g.: The message to be edited, the message referred     in the :attr:`msg.target <.EFBMsg.target>`     attribute. :raises :exc:`~.exceptions.EFBMessageError`: Raised when other     error occurred while sending or editing the     message."
-msgstr ""
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:12
+msgid "Raised when the message type sent is not supported by the     channel."
+msgstr "当此信道不支持发出当消息类型时被抛出。"
+
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:13
+msgid "Raised when an message edit request is sent, but not     supported by the channel."
+msgstr "当发出编辑消息的请求，但此信道不支持此功能时被抛出。"
+
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:14
+msgid "Raised when an existing message indicated is not found.     E.g.: The message to be edited, the message referred     in the :attr:`msg.target <.EFBMsg.target>`     attribute."
+msgstr "当应该存在的指定消息（例如将被编辑的消息，或者在 :attr:`msg.target <.EFBMsg.target>` 属性中被引用的消息）无法找到时被抛出。"
+
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:15
+msgid "Raised when other error occurred while sending or editing the     message."
+msgstr "当在发送或编辑消息过程中有其他错误发生时被抛出。"
 
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:1
 msgid "Send a status to the channel."
@@ -253,12 +284,24 @@ msgstr "将状态发送到该信道。"
 msgid "the status"
 msgstr "状态"
 
-#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:6
-msgid ":raises :exc:`~.exceptions.EFBChatNotFound`: Raised when a chat     required is not found. :raises :exc:`~.exceptions.EFBMessageNotFound`: Raised when     an existing message indicated is not found.     E.g.: The message to be removed. :raises :exc:`~.exceptions.EFBOperationNotSupported`: Raised     when the channel does not support message removal. :raises :exc:`~.exceptions.EFBMessageError`: Raised when other     error occurred while removing the message.          .. note::         Avoid raising exceptions from this method         in Master Channels as it would be hard         for a Slave Channel to process the         exception."
-msgstr ""
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:7
+msgid "Raised when an existing message indicated is not found.     E.g.: The message to be removed."
+msgstr "当应该存在的指定消息（例如将被移除的消息）无法找到时被抛出。"
 
-#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:11
-msgid "This is not applicable to Slave Channels"
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:8
+msgid "Raised when the channel does not support message removal."
+msgstr "当此信道不支持移除消息功能时被抛出。"
+
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:9
+msgid "Raised when other error occurred while removing the message."
+msgstr "当在移除消息消息的过程中有发生其他错误时被抛出。"
+
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:13
+msgid "Avoid raising exceptions from this method in Master Channels as it would be hard for a Slave Channel to process the exception."
+msgstr "避免在主端中的这个方法抛出异常，因为在从端中很难处理异常。"
+
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:18
+msgid "This method is not applicable to Slave Channels."
 msgstr "从端不需要继承该方法。"
 
 #: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.stop_polling:1

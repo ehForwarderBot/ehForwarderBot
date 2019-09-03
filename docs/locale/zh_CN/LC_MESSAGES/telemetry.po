@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-13 12:09+0800\n"
-"PO-Revision-Date: 2019-08-18 06:55\n"
+"POT-Creation-Date: 2019-09-03 15:32+0800\n"
+"PO-Revision-Date: 2019-09-03 07:44\n"
 "Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "如果您想要启用遥测/错误跟踪/日志分析来帮助我们更�
 
 #: ../../telemetry.rst:7
 msgid "pip3 install --update ehforwarderbot[telemetry]"
-msgstr ""
+msgstr "pip3 install --update ehforwarderbot[telemetry]"
 
 #: ../../telemetry.rst:11
 msgid "And then, enable in the config file under the name ``telemetry``. There are 2 options you can choose from."
@@ -34,7 +34,7 @@ msgstr "接着，在配置文件中启用 ``telemetry`` 选项。有两个选项
 
 #: ../../telemetry.rst:14
 msgid "Exception only: Send only exceptions and stack trace to us."
-msgstr ""
+msgstr "仅限异常：只向我们发送异常和堆栈追踪内容。"
 
 #: ../../telemetry.rst:15
 msgid "Exception log: Send verbose log to us alongside exceptions."
@@ -46,11 +46,11 @@ msgstr "完整日志：发送前面包含的所有内容以及完整的详细日
 
 #: ../../telemetry.rst:19
 msgid "To enable \"exception only\" mode, append the following line to the config file:"
-msgstr ""
+msgstr "要启用 “仅限异常” 模式，请在配置文件中添加以下内容："
 
 #: ../../telemetry.rst:22
 msgid "telemetry: I agree."
-msgstr ""
+msgstr "telemetry: I agree."
 
 #: ../../telemetry.rst:26
 msgid "To enable \"Exception log\" mode, append the following line to the config file:"
@@ -58,7 +58,7 @@ msgstr "要启用 “异常日志” 模式，请在配置文件中添加以下�
 
 #: ../../telemetry.rst:29
 msgid "telemetry: I agree to surrender my immortal soul."
-msgstr ""
+msgstr "telemetry: I agree to surrender my immortal soul."
 
 #: ../../telemetry.rst:33
 msgid "To enable \"Full log\" mode, append the following line to the config file:"
@@ -66,9 +66,9 @@ msgstr "要启用 “完整日志” 模式，请在配置文件中添加以下�
 
 #: ../../telemetry.rst:36
 msgid "telemetry: I agree to surrender my immortal soul and endless knowledge."
-msgstr ""
+msgstr "telemetry: I agree to surrender my immortal soul and endless knowledge."
 
 #: ../../telemetry.rst:41
 msgid "For more details about what telemetry service we are using, privacy policies, and how we are collecting information through this, you can visit `1A23 Telemetry GitHub Repository`_ for more details."
-msgstr ""
+msgstr "关于我们使用何种遥测服务、隐私政策以及我们收集的信息的更多详情，您可以访问 `1A23 Telemetry GitHub 仓库`_\\ 以获取更多详情。"
 

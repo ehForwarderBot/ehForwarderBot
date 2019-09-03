@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-13 12:09+0800\n"
-"PO-Revision-Date: 2019-08-18 06:55\n"
+"POT-Creation-Date: 2019-09-03 15:32+0800\n"
+"PO-Revision-Date: 2019-09-03 07:44\n"
 "Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -126,7 +126,7 @@ msgstr "在正则表达式中，它可以被表示为::"
 
 #: ../../guide/slave.rst:84
 msgid "^[A-Za-z][A-Za-z0-9_]{0,19}$"
-msgstr ""
+msgstr "^[A-Za-z][A-Za-z0-9_]{0,19}$"
 
 #: ../../guide/slave.rst:86
 msgid "Example"
@@ -139,7 +139,12 @@ msgid "@extra(name=\"Echo\",\n"
 "            \"    {function_name} text\")\n"
 "def echo(self, arguments: str = \"\") -> str:\n"
 "    return arguments"
-msgstr ""
+msgstr "@extra(name=\"Echo\",\n"
+"       desc=\"返回与输入内容相同的字符串。\\n\"\n"
+"            \"用法：\\n\"\n"
+"            \"    {function_name} 文本\")\n"
+"def echo(self, arguments: str = \"\") -> str:\n"
+"    return arguments"
 
 #: ../../guide/slave.rst:99
 msgid "Message commands"

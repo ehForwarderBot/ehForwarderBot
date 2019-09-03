@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-13 12:09+0800\n"
-"PO-Revision-Date: 2019-08-18 06:55\n"
+"POT-Creation-Date: 2019-09-03 15:32+0800\n"
+"PO-Revision-Date: 2019-09-03 07:44\n"
 "Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr "默认情况下 ``pip`` 会被安装为 PyPI 中最新的稳定版，但
 
 #: ../../getting-started.rst:25
 msgid "pip3 install ehforwarderbot"
-msgstr ""
+msgstr "pip3 install ehforwarderbot"
 
 #: ../../getting-started.rst:31
 msgid "Install from GitHub"
@@ -58,31 +58,31 @@ msgstr "这将会安装 GitHub 上最新提交的代码版本。请注意，我�
 
 #: ../../getting-started.rst:36
 msgid "pip3 install git+https://github.com/blueset/ehforwarderbot.git"
-msgstr ""
+msgstr "pip3 install git+https://github.com/blueset/ehforwarderbot.git"
 
 #: ../../getting-started.rst:42
 msgid "Alternative installation methods"
-msgstr ""
+msgstr "其他安装方式"
 
 #: ../../getting-started.rst:44
 msgid "You can find a list of alternative installation methods contributed by the community in the `project wiki`_."
-msgstr ""
+msgstr "您可以在\\ `项目 wiki`_ 中找到由社区贡献的其他安装方法列表。"
 
 #: ../../getting-started.rst:47
 msgid "For scripts, containers (e.g. Docker), etc. that may include one or more external modules, please visit the `modules repository`_."
-msgstr ""
+msgstr "有关安装外部组件的脚本、容器（例如 Docker）等，请参阅\\ `组件列表`_。"
 
 #: ../../getting-started.rst:52
 msgid "These alternative installation methods are maintained by the community, please consult their respective author or maintainer for help related to those methods."
-msgstr ""
+msgstr "这些替代安装方法由社区维护，如需帮助，请联系相关作者或维护者。"
 
 #: ../../getting-started.rst:60
 msgid "A stable internet connection"
-msgstr ""
+msgstr "稳定的网络连接"
 
 #: ../../getting-started.rst:62
 msgid "Since the majority of our channels are using polling for message retrieval, a stable internet connection is necessary for channels to run smoothly. An unstable connection may lead to slow response, or loss of messages."
-msgstr ""
+msgstr "由于大多数信道都需要使用轮询来获取消息，我们需要一个稳定的网络连接来保证信道稳定运行。不稳定的网络连接可能会导致回应缓慢或消息丢失。"
 
 #: ../../getting-started.rst:68
 msgid "Create local directories"
@@ -98,7 +98,7 @@ msgstr "选择、安装和启用模块"
 
 #: ../../getting-started.rst:78
 msgid "Currently, all modules that was submitted to us are recorded in the `modules repository`_. You can choose the channels that fits your need the best."
-msgstr ""
+msgstr "现在，所有我们已知组件都记载于\\ `组件列表 `_\\ 中。您可以自由选择您所需要的组件。"
 
 #: ../../getting-started.rst:82
 msgid "Instructions about installing each channel is available at their respective documentations."
@@ -110,7 +110,7 @@ msgstr "安装信道后，您可以通过在\\ :doc:`配置文件 <config>`\\ �
 
 #: ../../getting-started.rst:90
 msgid "Please note that although you can have more than one slaves channels running at the same time, you can only have exactly one master channels running in one profile. Meanwhile, middlewares are completely optional."
-msgstr "请注意，您可以同时使用多个从端，但单个配置文档内只能有一个主端。同时，中间件是完全凭需选择的。"
+msgstr "请注意，您可以同时使用多个从端，但每个配置档案内只能有一个主端。同时，中间件是完全凭需选择的。"
 
 #: ../../getting-started.rst:94
 msgid "Example"
@@ -159,37 +159,54 @@ msgid "master_channel: foo.demo_master\n"
 "- bar.dummy\n"
 "middlewares:\n"
 "- foo.null"
-msgstr ""
+msgstr "master_channel: foo.demo_master\n"
+"slave_channels:\n"
+"- foo.demo_slave\n"
+"- bar.dummy\n"
+"middlewares:\n"
+"- foo.null"
 
-#: ../../getting-started.rst:121
+#: ../../getting-started.rst:120
+msgid "Alternatively, you can also use the :ref:`config:Configuration wizard` which can also help you set up modules installed (if they also come with a wizard)."
+msgstr "此外，您也可以使用\\ :ref:`config:Configuration wizard`\\ 来进行配置。如果您所安装的组件也配备了向导，使用此向导可以同时协助您设置这些组件。"
+
+#: ../../getting-started.rst:124
 msgid "Launch EFB"
 msgstr "启动 EFB"
 
-#: ../../getting-started.rst:123
+#: ../../getting-started.rst:126
 msgid "ehforwarderbot"
-msgstr ""
+msgstr "ehforwarderbot"
 
-#: ../../getting-started.rst:127
+#: ../../getting-started.rst:130
 msgid "This will launch EFB directly in the current environment. The default :doc:`profile` is named ``default``, to launch EFB in a different profile, append ``--profile <profile-name>`` to the command."
-msgstr "这会直接在目前的环境下启动 EFB。默认的 :doc:`profile` 名称为 ``default``。若要使用不同的配置文档，请在命令后面加上 ``--profile <profile-name>`` 。"
+msgstr "这会直接在目前的环境下启动 EFB。默认的\\ :doc:`profile`\\ 名称为 ``default``。若要使用不同的配置档案，请在命令后面加上 ``--profile <profile-name>`` 。"
 
-#: ../../getting-started.rst:131
+#: ../../getting-started.rst:134
 msgid "For more command line options, use ``--help`` option."
 msgstr "如需更多命令行选项, 请使用 ``--help`` 指令。"
 
-#: ../../getting-started.rst:134
+#: ../../getting-started.rst:137
 msgid "Use EFB in another language"
-msgstr ""
-
-#: ../../getting-started.rst:136
-msgid "TODO: talk about language env var, and crowdin."
-msgstr ""
+msgstr "在其他语言中使用 EFB"
 
 #: ../../getting-started.rst:139
+msgid "EFB supports translated user interface and prompts. You can set your system language or locale environmental variables (``LANGUAGE``, ``LC_ALL``, ``LC_MESSAGES`` or ``LANG``) to one of our `supported languages`_ to switch language."
+msgstr "EFMS 支持了界面本地化翻译。您可以将系统语言或本地环境变量（\\ ``LANGUAGE``\\ 、\\ ``LC_ALL``\\ 、\\ ``LC_MESSAGES`` 或 ``LANG``\\ ）设为一种\\ `已支持的语言`_\\ 。"
+
+#: ../../getting-started.rst:144
+msgid "You can help to translate this project into your languages on `our Crowdin page`_."
+msgstr "您可以在\\ `我们的 Crowdin 页面`_\\ 中帮助我们将 EFB 翻译为您使用的语言。"
+
+#: ../../getting-started.rst:152
+msgid "If your are installing from source code, you will not get translations of the user interface without manual compile of message catalogs (``.mo``) prior to installation."
+msgstr "如果您使用源代码安装，您需要手动编译翻译字符串文件（``.mo``）才可启用翻译后的界面。"
+
+#: ../../getting-started.rst:157
 msgid "Launch EFB as a daemon process"
 msgstr "将 EFB 作为守护进程启用"
 
-#: ../../getting-started.rst:141
+#: ../../getting-started.rst:159
 msgid "Since version 2, EH Forwarder Bot has removed the daemon helper as it is unstable to use.  We recommend you to use mature solutions for daemon management, such as systemd_, upstart_, or pm2_."
 msgstr "从 2.0 版本开始，因稳定性原因，守护进程助手已被从 EH Forwarder Bot 中移除。我们建议您通过更为成熟的解决方案来管理守护进程，例如 systemd_，upstart_，或 pm2_。"
 

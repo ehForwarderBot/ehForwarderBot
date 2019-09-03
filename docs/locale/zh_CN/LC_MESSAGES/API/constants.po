@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-18 12:16+0800\n"
-"PO-Revision-Date: 2019-08-18 06:55\n"
+"POT-Creation-Date: 2019-09-03 15:32+0800\n"
+"PO-Revision-Date: 2019-09-03 07:44\n"
 "Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "枚举。"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Animation:1
 msgid "Message with an animation, usually in the form of GIF or soundless video."
-msgstr ""
+msgstr "带有动画内容的消息，通常是 GIF 或无声视频的形式。"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Audio:1
 msgid "Audio message. Including music and voice message."
@@ -41,15 +41,15 @@ msgstr "以文件方式发送的消息。"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Image:1
 msgid "Image (picture) message."
-msgstr ""
+msgstr "图片消息。"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Image:3
 msgid "Notes"
-msgstr ""
+msgstr "备注"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Image:5
 msgid "Animated GIF images shall use :attr:`Animation` type instead."
-msgstr ""
+msgstr "动态 GIF 图片应该使用  :attr:`Animation` 类型。"
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Link:1
 msgid "Message that is mainly one specific link, or a text message with one link preview."
