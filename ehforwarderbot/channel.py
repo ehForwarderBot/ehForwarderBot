@@ -104,21 +104,25 @@ class EFBChannel(ABC):
                 recipient.
 
         Raises:
-            :exc:`~.exceptions.EFBChatNotFound`: Raised when a chat
-                required is not found.
-            :exc:`~.exceptions.EFBMessageTypeNotSupported`: Raised
-                when the message type sent is not supported by the
+            EFBChatNotFound:
+                Raised when a chat required is not found.
+
+            EFBMessageTypeNotSupported:
+                Raised when the message type sent is not supported by the
                 channel.
-            :exc:`~.exceptions.EFBOperationNotSupported`: Raised
-                when an message edit request is sent, but not
+
+            EFBOperationNotSupported:
+                Raised when an message edit request is sent, but not
                 supported by the channel.
-            :exc:`~.exceptions.EFBMessageNotFound`: Raised when
-                an existing message indicated is not found.
+
+            EFBMessageNotFound:
+                Raised when an existing message indicated is not found.
                 E.g.: The message to be edited, the message referred
                 in the :attr:`msg.target <.EFBMsg.target>`
                 attribute.
-            :exc:`~.exceptions.EFBMessageError`: Raised when other
-                error occurred while sending or editing the
+
+            EFBMessageError:
+                Raised when other error occurred while sending or editing the
                 message.
         """
         raise NotImplementedError()
@@ -159,8 +163,8 @@ class EFBChannel(ABC):
            .EFBChat: The chat found.
 
         Raises:
-            :exc:`~.exceptions.EFBChatNotFound`: Raised when a chat
-                required is not found.
+            EFBChatNotFound:
+                Raised when a chat required is not found.
 
         Note:
             This is not required by Master Channels
@@ -176,24 +180,26 @@ class EFBChannel(ABC):
             status (:obj:`.EFBStatus`): the status
 
         Raises:
-            :exc:`~.exceptions.EFBChatNotFound`: Raised when a chat
-                required is not found.
-            :exc:`~.exceptions.EFBMessageNotFound`: Raised when
-                an existing message indicated is not found.
-                E.g.: The message to be removed.
-            :exc:`~.exceptions.EFBOperationNotSupported`: Raised
-                when the channel does not support message removal.
-            :exc:`~.exceptions.EFBMessageError`: Raised when other
-                error occurred while removing the message.
+            EFBChatNotFound:
+                Raised when a chat required is not found.
 
-                .. note::
-                    Avoid raising exceptions from this method
-                    in Master Channels as it would be hard
-                    for a Slave Channel to process the
-                    exception.
+            EFBMessageNotFound:
+                Raised when an existing message indicated is not found.
+                E.g.: The message to be removed.
+
+            EFBOperationNotSupported:
+                Raised when the channel does not support message removal.
+
+            EFBMessageError:
+                Raised when other error occurred while removing the message.
 
         Note:
-            This is not applicable to Slave Channels
+            Avoid raising exceptions from this method
+            in Master Channels as it would be hard
+            for a Slave Channel to process the
+            exception.
+
+            This method is not applicable to Slave Channels.
         """
         raise NotImplementedError()
 
@@ -217,10 +223,10 @@ class EFBChannel(ABC):
             It can be deleted when closed if not required otherwise.
 
         Raises:
-            :exc:`~.exceptions.EFBChatNotFound`: Raised when a chat
-                required is not found.
-            :exc:`~.exceptions.EFBOperationNotSupported`: Raised
-                when the chat does not offer a profile picture.
+            EFBChatNotFound:
+                Raised when a chat required is not found.
+            EFBOperationNotSupported:
+                Raised when the chat does not offer a profile picture.
 
         Examples:
             .. code:: Python

@@ -12,8 +12,8 @@ With the introduction of instance IDs, it is required to use the
 ID or constants while referring to the middleware ID (e.g. while
 retrieving the path to the configuration files, etc).
 
-Receive commands with user through Master Channel
--------------------------------------------------
+Accept commands from user through Master Channel
+------------------------------------------------
 
 Despite we do not limit how users can perform actions to your
 middleware, there are 2 common ways to do it through a

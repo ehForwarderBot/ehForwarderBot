@@ -242,11 +242,11 @@ class EFBReactToMessage(EFBStatus):
     """
     Created when user react to a message, issued from master channel.
 
-    When this status is sent, a :obj:`.status.EFBMessageReactionsUpdate` is NOT
-    required to be issued back to master channel.
+    When this status is sent, a :obj:`.status.EFBMessageReactionsUpdate` is
+    recommended to be issued back to master channel.
 
     Args:
-        chat (:obj:`EFBChat`): The chat where message
+        chat (:obj:`EFBChat`): The chat where message is sent
         msg_id (str): ID of the message to react to
         reaction (Optional[str]): The reaction name to be sent, usually an emoji.
             Set to ``None`` to remove reaction.
@@ -294,7 +294,7 @@ class EFBMessageReactionsUpdate(EFBStatus):
     Update reacts of a message, issued from slave channel to master channel.
 
     Args:
-        chat (:obj:`EFBChat`): The chat where message
+        chat (:obj:`EFBChat`): The chat where message is sent
         msg_id (str): ID of the message for the reacts
         reactions (Dict[str, Collection[:obj:`EFBChat`]]):
             Indicate reactions to the message. Dictionary key represents the
@@ -310,7 +310,7 @@ class EFBMessageReactionsUpdate(EFBStatus):
     def __init__(self, chat: 'EFBChat', msg_id: MessageID, reactions: Reactions):
         """
         Args:
-            chat (:obj:`EFBChat`): The chat where message
+            chat (:obj:`EFBChat`): The chat where message is sent
             msg_id (str): ID of the message for the reacts
             reactions (Dict[str, Collection[:obj:`EFBChat`]]):
                 Indicate reactions to the message. Dictionary key represents the

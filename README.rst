@@ -85,7 +85,7 @@ EFB framework is licensed under `GNU Affero General Public License 3.0`_ or
 later versions::
 
     EH Forwarder Bot: An extensible chat tunneling bot framework.
-    Copyright (C) 2018 Eana Hufwe
+    Copyright (C) 2016 - 2019 Eana Hufwe, and the EH Forwarder Bot contributors
     All rights reserved.
 
     This program is free software: you can redistribute it and/or modify

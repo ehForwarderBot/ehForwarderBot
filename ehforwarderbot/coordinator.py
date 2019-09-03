@@ -147,6 +147,7 @@ def send_status(status: 'EFBStatus'):
 def get_module_by_id(module_id: ModuleID) -> Union[EFBChannel, EFBMiddleware]:
     """
     Return the module instance of a provided module ID
+
     Args:
         module_id: Module ID, with instance ID if available.
 
