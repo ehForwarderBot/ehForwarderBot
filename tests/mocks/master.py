@@ -6,7 +6,7 @@ from ehforwarderbot import EFBChannel, EFBMsg, EFBStatus, ChannelType, MsgType, 
 from ehforwarderbot.message import EFBMsgLinkAttribute, EFBMsgLocationAttribute
 from ehforwarderbot.status import EFBMessageRemoval
 from ehforwarderbot.types import ModuleID, MessageID
-from types import ChatID
+from ehforwarderbot.types import ChatID
 
 
 class MockMasterChannel(EFBChannel):
