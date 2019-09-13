@@ -191,13 +191,6 @@ class EFBMsg:
     def __setstate__(self, state: Dict[str, Any]):
         self.__dict__.update(state)
 
-        # Try to load file from original path
-        if self.path:
-            try:
-                self.file = open(self.path, 'rb')
-            except IOError:
-                pass
-
         # Try to load "deliver_to" channel
         try:
             dt = coordinator.get_module_by_id(state['deliver_to'])
@@ -205,6 +198,13 @@ class EFBMsg:
                 self.deliver_to = dt
         except NameError:
             pass
+
+        # Try to load file from original path
+        if self.path:
+            try:
+                self.file = open(self.path, 'rb')
+            except IOError:
+                pass
 
 
 class EFBMsgAttribute(ABC):

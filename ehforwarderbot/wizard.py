@@ -101,14 +101,6 @@ class DataModel:
         conf_path = utils.get_config_path()
         if not os.path.exists(conf_path):
             self.config = self.yaml.load(self.default_config())
-
-            # Fill in required fields
-            if "master_channel" not in self.config:
-                self.config['master_channel'] = ""
-            if "slave_channels" not in self.config:
-                self.config["slave_channels"] = []
-            if "middlewares" not in self.config:
-                self.config["middlewares"] = []
         else:
             with open(conf_path) as f:
                 self.config = self.yaml.load(f)
@@ -448,7 +440,7 @@ def choose_master_channel(data: DataModel):
 
     default_idx = None
     default_instance = ''
-    if "master_channel" in data.config:
+    if "master_channel" in data.config and data.config['master_channel']:
         default_config = data.config['master_channel'].split("#")
         default_id = default_config[0]
         if len(default_config) > 1:
