@@ -134,11 +134,11 @@ def test_verify_link_message(base_message):
 
     with pytest.raises(ValueError) as exec_info:
         msg.attributes = EFBMsgLinkAttribute(title="Title")
-    assert "URL" in str(exec_info)
+    assert "URL" in exec_info.value.args[0]
 
     with pytest.raises(ValueError) as exec_info:
         msg.attributes = EFBMsgLinkAttribute(url="URL")
-    assert "Title" in str(exec_info)
+    assert "Title" in exec_info.value.args[0]
 
 
 def test_verify_location_message(base_message):
@@ -151,12 +151,12 @@ def test_verify_location_message(base_message):
     with pytest.raises(ValueError) as exec_info:
         msg.attributes = EFBMsgLocationAttribute(latitude='0.0', longitude=1.0)
         msg.verify()
-    assert 'Latitude' in str(exec_info)
+    assert 'Latitude' in exec_info.value.args[0]
 
     with pytest.raises(ValueError) as exec_info:
         msg.attributes = EFBMsgLocationAttribute(latitude=1.0, longitude=10)
         msg.verify()
-    assert 'Longitude' in str(exec_info)
+    assert 'Longitude' in exec_info.value.args[0]
 
 
 def test_verify_status_message(base_message):
