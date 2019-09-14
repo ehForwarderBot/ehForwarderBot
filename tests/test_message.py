@@ -136,10 +136,6 @@ def test_verify_link_message(base_message):
         msg.attributes = EFBMsgLinkAttribute(title="Title")
     assert "URL" in exec_info.value.args[0]
 
-    with pytest.raises(ValueError) as exec_info:
-        msg.attributes = EFBMsgLinkAttribute(url="URL")
-    assert "Title" in exec_info.value.args[0]
-
 
 def test_verify_location_message(base_message):
     msg = base_message
@@ -179,9 +175,9 @@ def test_verify_message_command(base_message):
     msg.commands = EFBMsgCommands([command])
     msg.verify()
 
-    with pytest.raises(TypeError):
+    with pytest.raises(ValueError):
         # noinspection PyTypeChecker
-        EFBMsgCommand("name", "callable_name", "args", "kwargs")  # type: ignore
+        EFBMsgCommand("name", "callable_name", args="args", kwargs="kwargs")  # type: ignore
 
 
 def test_substitution(base_message, chat):

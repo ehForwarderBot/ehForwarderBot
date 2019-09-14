@@ -235,8 +235,8 @@ class EFBMsgLinkAttribute(EFBMsgAttribute):
     url: str = ""
 
     # noinspection PyMissingConstructor
-    def __init__(self, title: str = None, description: Optional[str] = None,
-                 image: Optional[str] = None, url: str = None):
+    def __init__(self, title: str, description: Optional[str] = None,
+                 image: Optional[str] = None, url: str = ""):
         """
         Args:
             title (str): Title of the link.
@@ -255,9 +255,9 @@ class EFBMsgLinkAttribute(EFBMsgAttribute):
                "({attr.image}) @ {attr.url}>".format(attr=self)
 
     def verify(self):
-        if self.url is None:
+        if not self.url:
             raise ValueError("URL does not exist")
-        if self.title is None:
+        if not self.title:
             raise ValueError("Title does not exist")
 
 
@@ -325,17 +325,13 @@ class EFBMsgCommand:
             kwargs (Optional[Mapping[str, Any]]): Keyword arguments passed to the function.
                 Defaulted to empty dict.
         """
-        if args is None:
-            args = tuple()
-        if kwargs is None:
-            kwargs = dict()
         self.name = name
         self.callable_name = callable_name
-        self.args = args
-        self.kwargs = kwargs
+        if args is not None:
+            self.args = tuple(args)
+        if kwargs is not None:
+            self.kwargs = dict(kwargs)
         self.verify()
-        self.args = tuple(self.args)
-        self.kwargs = dict(self.kwargs)
 
     def __str__(self):
         return "<EFBMsgCommand: {name}, {callable_name}({params})>".format(
