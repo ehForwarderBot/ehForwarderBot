@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-13 12:09+0800\n"
-"PO-Revision-Date: 2019-08-18 06:31\n"
+"POT-Creation-Date: 2019-09-03 15:32+0800\n"
+"PO-Revision-Date: 2019-09-22 08:38\n"
 "Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -29,22 +29,18 @@ msgid "Each profile has its own set of configuration files a set of channels tha
 msgstr ""
 
 #: ../../profile.rst:13
-msgid "Profiles are, by default, specific to users. This means, two users can have profiles in the same name but operates in isolation."
-msgstr ""
-
-#: ../../profile.rst:17
 msgid "The default profile name is called ``default``. To switch to a different profile, specify the profile name in ``--profile`` flag while starting EFB."
 msgstr ""
 
-#: ../../profile.rst:23
+#: ../../profile.rst:19
 msgid "Start a new profile"
 msgstr ""
 
-#: ../../profile.rst:25
+#: ../../profile.rst:21
 msgid "To create a new profile, you need to create a directory in the :file:`EFB_DATA_PATH/profiles`, and create a new configuration file as described in chapter :doc:`getting-started`."
 msgstr ""
 
-#: ../../profile.rst:30
+#: ../../profile.rst:26
 msgid "When everything is configured properly, you are good to go."
 msgstr ""
 

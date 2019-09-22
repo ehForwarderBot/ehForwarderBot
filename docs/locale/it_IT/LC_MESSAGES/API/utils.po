@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-13 12:09+0800\n"
-"PO-Revision-Date: 2019-08-18 06:31\n"
+"POT-Creation-Date: 2019-09-03 15:32+0800\n"
+"PO-Revision-Date: 2019-09-22 08:38\n"
 "Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -97,7 +97,7 @@ msgid "The path for custom channels."
 msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:1
-msgid "Get the path for persistent storage of a module."
+msgid "Get the path for permanent storage of a module."
 msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:5

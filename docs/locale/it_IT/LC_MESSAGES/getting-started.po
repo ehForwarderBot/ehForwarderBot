@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-13 12:09+0800\n"
-"PO-Revision-Date: 2019-08-18 06:31\n"
+"POT-Creation-Date: 2019-09-03 15:32+0800\n"
+"PO-Revision-Date: 2019-09-22 08:38\n"
 "Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -161,35 +161,47 @@ msgid "master_channel: foo.demo_master\n"
 "- foo.null"
 msgstr ""
 
-#: ../../getting-started.rst:121
+#: ../../getting-started.rst:120
+msgid "Alternatively, you can also use the :ref:`config:Configuration wizard` which can also help you set up modules installed (if they also come with a wizard)."
+msgstr ""
+
+#: ../../getting-started.rst:124
 msgid "Launch EFB"
 msgstr ""
 
-#: ../../getting-started.rst:123
+#: ../../getting-started.rst:126
 msgid "ehforwarderbot"
 msgstr ""
 
-#: ../../getting-started.rst:127
+#: ../../getting-started.rst:130
 msgid "This will launch EFB directly in the current environment. The default :doc:`profile` is named ``default``, to launch EFB in a different profile, append ``--profile <profile-name>`` to the command."
 msgstr ""
 
-#: ../../getting-started.rst:131
+#: ../../getting-started.rst:134
 msgid "For more command line options, use ``--help`` option."
 msgstr ""
 
-#: ../../getting-started.rst:134
+#: ../../getting-started.rst:137
 msgid "Use EFB in another language"
 msgstr ""
 
-#: ../../getting-started.rst:136
-msgid "TODO: talk about language env var, and crowdin."
+#: ../../getting-started.rst:139
+msgid "EFB supports translated user interface and prompts. You can set your system language or locale environmental variables (``LANGUAGE``, ``LC_ALL``, ``LC_MESSAGES`` or ``LANG``) to one of our `supported languages`_ to switch language."
 msgstr ""
 
-#: ../../getting-started.rst:139
+#: ../../getting-started.rst:144
+msgid "You can help to translate this project into your languages on `our Crowdin page`_."
+msgstr ""
+
+#: ../../getting-started.rst:152
+msgid "If your are installing from source code, you will not get translations of the user interface without manual compile of message catalogs (``.mo``) prior to installation."
+msgstr ""
+
+#: ../../getting-started.rst:157
 msgid "Launch EFB as a daemon process"
 msgstr ""
 
-#: ../../getting-started.rst:141
+#: ../../getting-started.rst:159
 msgid "Since version 2, EH Forwarder Bot has removed the daemon helper as it is unstable to use.  We recommend you to use mature solutions for daemon management, such as systemd_, upstart_, or pm2_."
 msgstr ""
 
