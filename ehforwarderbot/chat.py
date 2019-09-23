@@ -3,7 +3,7 @@
 import copy
 import warnings
 from enum import Enum
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, TypeVar
 
 from .channel import EFBChannel
 from .constants import ChatType
@@ -11,6 +11,9 @@ from .middleware import EFBMiddleware
 from .types import ModuleID, ChatID
 
 __all__ = ['EFBChat', 'EFBChatNotificationState']
+
+# Allow mypy to recognize subclass output for `return self` methods.
+EFBChatSelf = TypeVar('EFBChatSelf', bound='EFBChat')
 
 
 class EFBChatNotificationState(Enum):
@@ -95,7 +98,7 @@ class EFBChat:
         self.group: Optional[EFBChat] = None
         self.vendor_specific: Dict[str, Any] = dict()
 
-    def self(self) -> 'EFBChat':
+    def self(self: EFBChatSelf) -> EFBChatSelf:
         """
         Set the chat as yourself.
         In this context, "yourself" means the user behind the master channel.
@@ -110,7 +113,7 @@ class EFBChat:
         self.chat_type = ChatType.User
         return self
 
-    def system(self) -> 'EFBChat':
+    def system(self: EFBChatSelf) -> EFBChatSelf:
         """
         Set the chat as a system chat.
         Only set for channel-level and group-level system chats.
