@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 if sys.version_info < (3, 6):
     raise Exception("Python 3.6 or higher is required. Your version is %s." % sys.version)
 
-long_description = open('README.rst').read()
+long_description = open('README.rst', encoding="utf-8").read()
 
 __version__ = ""
 exec(open('ehforwarderbot/__version__.py').read())
