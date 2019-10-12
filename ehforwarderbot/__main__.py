@@ -1,5 +1,5 @@
 # coding=utf-8
-
+import signal
 import threading
 import logging
 import argparse
@@ -265,6 +265,8 @@ def main():
         setup_telemetry(conf['telemetry'])
 
         atexit.register(stop_gracefully)
+        signal.signal(signal.SIGTERM, stop_gracefully)
+        signal.signal(signal.SIGINT, stop_gracefully)
 
         init(conf)
         poll()
