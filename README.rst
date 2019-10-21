@@ -43,7 +43,7 @@ For tips, tricks and community contributed articles, see
 
 v2.0 beta release
 ------------------
-This is an beta release of EFB version 2 for test only.
+This is a beta release of EFB version 2 for test only.
 Framework API may subject to change.
 
 `Documentation`_.
