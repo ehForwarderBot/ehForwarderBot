@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2019-09-22 08:38\n"
+"POT-Creation-Date: 2019-11-18 23:44+0800\n"
+"PO-Revision-Date: 2019-11-18 15:46\n"
 "Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -69,55 +69,55 @@ msgstr ""
 msgid "*Codename* **EH Forwarder Bot** (EFB) is an extensible chat tunneling framework allowing users to contact people from multiple chat platforms and remotely control their accounts in one stop."
 msgstr ""
 
-#: ../../index.rst:53
+#: ../../index.rst:54
 msgid "For tips, tricks and community contributed articles, see `project wiki`_."
 msgstr ""
 
-#: ../../index.rst:59
+#: ../../index.rst:60
 msgid "Indices and tables"
 msgstr ""
 
-#: ../../index.rst:61
+#: ../../index.rst:62
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: ../../index.rst:62
+#: ../../index.rst:63
 msgid ":ref:`modindex`"
 msgstr ""
 
-#: ../../index.rst:63
+#: ../../index.rst:64
 msgid ":ref:`search`"
 msgstr ""
 
-#: ../../index.rst:66
+#: ../../index.rst:67
 msgid "Feel like contributing?"
 msgstr ""
 
-#: ../../index.rst:68
+#: ../../index.rst:69
 msgid "Everyone is welcomed to raise an issue or submit a pull request, just remember to read through and follow the :doc:`contribution guideline <./contributing>` before you do so."
 msgstr ""
 
-#: ../../index.rst:73
+#: ../../index.rst:74
 msgid "Related articles"
 msgstr ""
 
-#: ../../index.rst:75
+#: ../../index.rst:76
 msgid "`Idea: Group Chat Tunneling (Sync) with EH Forwarder Bot`_"
 msgstr ""
 
-#: ../../index.rst:76
+#: ../../index.rst:77
 msgid "`What’s so new in EH Forwarder Bot 2 (and its modules)`_"
 msgstr ""
 
-#: ../../index.rst:82
+#: ../../index.rst:83
 msgid "License"
 msgstr ""
 
-#: ../../index.rst:84
+#: ../../index.rst:85
 msgid "EFB framework is licensed under `GNU Affero General Public License 3.0`_ or later versions."
 msgstr ""
 
-#: ../../index.rst:87
+#: ../../index.rst:88
 msgid "EH Forwarder Bot: An extensible chat tunneling bot framework.\n"
 "Copyright (C) 2016 - 2019 Eana Hufwe, and the EH Forwarder Bot contributors\n"
 "All rights reserved.\n\n"
@@ -133,7 +133,7 @@ msgid "EH Forwarder Bot: An extensible chat tunneling bot framework.\n"
 "along with this program.  If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
 
-#: ../../index.rst:107
+#: ../../index.rst:108
 msgid ":doc:`Donate <donate>`."
 msgstr ""
 
