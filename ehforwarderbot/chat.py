@@ -200,5 +200,5 @@ class EFBChat:
         return self.module_id == other.module_id and self.chat_uid == other.chat_uid
 
     def __str__(self):
-        return "<EFBChat: {c.long_name} ({c.chat_uid}) @ {c.module_name}>" \
+        return "<EFBChat: {c.long_name} ({c.chat_uid}) @ {c.module_name} (Notification: {c.notification.name})>" \
             .format(c=self)

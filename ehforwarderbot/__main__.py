@@ -168,7 +168,7 @@ def setup_telemetry(key: str):
     """
     Setup telemetry
 
-    EH Forwarder Bot Framework includes NO code that uploads your log
+    EH Forwarder Bot framework includes NO code that uploads your log
     or any other data to anywhere.
 
     To enable telemetry functionality, additional modules need to be

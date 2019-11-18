@@ -46,6 +46,7 @@ control their accounts in one stop.
     start
     directories
     profile
+    guide/walkthrough
     guide/index
     contributing
     API/index
