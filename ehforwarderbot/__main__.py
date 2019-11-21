@@ -50,7 +50,7 @@ parser.add_argument("-p", "--profile",
 telemetry = None  # type: ignore
 
 
-def stop_gracefully():
+def stop_gracefully(*_, **__):
     logger = logging.getLogger(__name__)
     if hasattr(coordinator, "master") and isinstance(coordinator.master, EFBChannel):
         coordinator.master.stop_polling()

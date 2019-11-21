@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-19 11:42+0800\n"
-"PO-Revision-Date: 2019-11-18 15:46\n"
-"Last-Translator: Eana Hufwe (blueset)\n"
+"PO-Revision-Date: 2019-11-21 10:39+0800\n"
+"Last-Translator: Eana Hufwe <ilove@1a23.com>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: crowdin.com\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Crowdin-Project: ehforwarderbot\n"
 "X-Crowdin-Language: zh-CN\n"
 "X-Crowdin-File: /ehForwarderBot/ehforwarderbot/locale/ehforwarderbot.pot\n"
@@ -27,7 +27,7 @@ msgstr "未在配置档案中指定主端。"
 #: ehforwarderbot/config.py:45
 #, python-brace-format
 msgid "Master Channel ID is expected to be a string, but \"{0}\" is of type {1}."
-msgstr "主端 ID 应为字符串, 但此时「{0}」的类型为 {1} 。"
+msgstr "主端 ID 应为字符串, 但此时「{0}」的类型为 {1} 。"
 
 #: ehforwarderbot/config.py:49 ehforwarderbot/config.py:67
 #: ehforwarderbot/config.py:83
@@ -50,7 +50,7 @@ msgstr "配置文件中未指定从端。"
 
 #: ehforwarderbot/config.py:62
 msgid "Slave Channel IDs are expected to be a list, but {} is found."
-msgstr "从端 ID 应为一个列表，但您填入了一个 {}。"
+msgstr "从端 ID 应为一个列表，但您填入了一个 {}。"
 
 #: ehforwarderbot/config.py:71
 #, python-brace-format
@@ -67,7 +67,8 @@ msgid "\"{0}\" is not a middleware, but a {1}."
 msgstr "「{0}」是 {1} ，而不是中间件。"
 
 #: ehforwarderbot/wizard.py:60
-msgid "# ===================================\n"
+msgid ""
+"# ===================================\n"
 "# EH Forwarder Bot Configuration File\n"
 "# ===================================\n"
 "# \n"
@@ -79,7 +80,8 @@ msgid "# ===================================\n"
 "# --------------\n"
 "# Exactly one instance of a master channel is required for a profile.\n"
 "# Fill in the module ID and instance ID (if needed) below.\n"
-msgstr "# =========================\n"
+msgstr ""
+"# =========================\n"
 "# EH Forwarder Bot 配置文件\n"
 "# =========================\n"
 "# \n"
@@ -93,30 +95,34 @@ msgstr "# =========================\n"
 "# 请在下方填入组件 ID。如有需要，同时填入实例 ID。\n"
 
 #: ehforwarderbot/wizard.py:76
-msgid "# Slave Channels\n"
+msgid ""
+"# Slave Channels\n"
 "# --------------\n"
 "# \n"
 "# At least one slave channel is required for a profile.\n"
 "# Fill in the module ID and instance ID (if needed) of each slave channel\n"
 "# to be enabled below.\n"
-msgstr "# 从端\n"
+msgstr ""
+"# 从端\n"
 "# ----\n"
 "# \n"
 "# 每个配置中应存在至少一个从端。\n"
-"# 请在下方填入各个从端中启用的组件 ID。如有需要，同时填入实例 ID。\n"
+"# 请在下方填入各个从端中启用的组件 ID。如有需要，同时填入实例 ID。\n"
 
 #: ehforwarderbot/wizard.py:86
-msgid "# Middlewares\n"
+msgid ""
+"# Middlewares\n"
 "# -----------\n"
 "# Middlewares are not required to run an EFB profile. If you are not\n"
 "# going to use any middleware in this profile, you can safely remove\n"
 "# this section. Otherwise, please list down the module ID and instance\n"
 "# ID of each middleware to be enabled below.\n"
-msgstr "# 中间件\n"
+msgstr ""
+"# 中间件\n"
 "# ------\n"
 "# 中间件并不是 EFB 配置档案的必需选项。\n"
 "# 若无需使用中间件，可直接删去该部分。\n"
-"# 如有需要，请在下方填入各个启用的中间件的组件 ID 及实例 ID。\n"
+"# 如有需要，请在下方填入各个启用的中间件的组件 ID 及实例 ID。\n"
 
 #: ehforwarderbot/wizard.py:177
 #, python-brace-format
@@ -166,10 +172,14 @@ msgstr "安装"
 
 #: ehforwarderbot/wizard.py:397
 #, python-brace-format
-msgid "EH Forwarder Bot requires a minimum of Python 3.6 to run.  You are currently using Python {version}. \n\n"
+msgid ""
+"EH Forwarder Bot requires a minimum of Python 3.6 to run.  You are currently using Python {version}. \n"
+"\n"
 "You may want to try:\n"
 "{url}"
-msgstr "EH Forwarder Bot 需要至少 Python 3.6 才能运行。 您当前使用的是 Python {version}。\n\n"
+msgstr ""
+"EH Forwarder Bot 需要至少 Python 3.6 才能运行。 您当前使用的是 Python {version}。\n"
+"\n"
 "了解更多：\n"
 "{url}"
 
@@ -179,9 +189,11 @@ msgid "OK"
 msgstr "OK"
 
 #: ehforwarderbot/wizard.py:407
-msgid "You may want to visit the modules repository to find a list of available modules to install.\n"
+msgid ""
+"You may want to visit the modules repository to find a list of available modules to install.\n"
 "https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository"
-msgstr "您可以前往组件库以寻找你需要的可用组件。\n"
+msgstr ""
+"您可以前往组件库以寻找你需要的可用组件。\n"
 "https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository"
 
 #: ehforwarderbot/wizard.py:411
@@ -190,7 +202,7 @@ msgstr "检查主端...... "
 
 #: ehforwarderbot/wizard.py:416
 msgid "No master channel detected.  EH Forwarder Bot requires at least one master channel installed to run."
-msgstr "未检测到主端。EH Forwarder Bot 需要至少安装一个主端以运行。"
+msgstr "未检测到主端。EH Forwarder Bot 需要至少安装一个主端以运行。"
 
 #: ehforwarderbot/wizard.py:422
 msgid "Checking slave channels... "
@@ -198,7 +210,7 @@ msgstr "检查从端...... "
 
 #: ehforwarderbot/wizard.py:427
 msgid "No slave channel detected.  EH Forwarder Bot requires at least one slave channel installed to run."
-msgstr "未检测到从端。EH Forwarder Bot 需要至少安装一个从端以运行。"
+msgstr "未检测到从端。EH Forwarder Bot 需要至少安装一个从端以运行。"
 
 #: ehforwarderbot/wizard.py:437
 msgid "1. Choose master channel"
@@ -302,9 +314,13 @@ msgid "{module_id} did not register any wizard program to start with."
 msgstr "{module_id} 没有注册任何向导程序。"
 
 #: ehforwarderbot/wizard.py:615
-msgid "Welcome to EH Forwarder Bot Setup Wizard.  This program will guide you to finish up the last few steps to get EFB ready to use.\n\n"
+msgid ""
+"Welcome to EH Forwarder Bot Setup Wizard.  This program will guide you to finish up the last few steps to get EFB ready to use.\n"
+"\n"
 "To use this wizard in another supported language, please change your system language or modify the language environment variable and restart the wizard."
-msgstr "欢迎使用 EH Forwarder Bot 设置向导。这个程序将指导您完成启用 EFB 之前的最后几个步骤。\n\n"
+msgstr ""
+"欢迎使用 EH Forwarder Bot 设置向导。这个程序将指导您完成启用 EFB 之前的最后几个步骤。\n"
+"\n"
 "若要使用另一个支持的语言使用本向导，请更改您的系统语言，或修改语言环境变量并重启向导。"
 
 #: ehforwarderbot/wizard.py:625
@@ -312,16 +328,22 @@ msgid "Profile"
 msgstr "配置档案"
 
 #: ehforwarderbot/wizard.py:633
-msgid "Some more advanced settings, such as granulated log control, are not included in this wizard.  For further details, you may want to refer to the documentation.\n\n"
+msgid ""
+"Some more advanced settings, such as granulated log control, are not included in this wizard.  For further details, you may want to refer to the documentation.\n"
+"\n"
 "https://ehforwarderbot.readthedocs.io/en/latest/config.html"
-msgstr "部分高级设置，如详细日志控制等，将不会在本向导中设置。欲了解详情，请参阅项目文档。\n\n"
+msgstr ""
+"部分高级设置，如详细日志控制等，将不会在本向导中设置。欲了解详情，请参阅项目文档。\n"
+"\n"
 "https://ehforwarderbot.readthedocs.io/en/latest/config.html"
 
 #: ehforwarderbot/wizard.py:653
-msgid "Note:\n"
+msgid ""
+"Note:\n"
 "The following module does not have a setup wizard. It is probably because that it does not need to be set up, or it requires you to set up manually.\n"
 "Please consult its documentation for further details.\n"
-msgid_plural "Note:\n"
+msgid_plural ""
+"Note:\n"
 "The following modules do not have a setup wizard. It is probably because that they do not need to be set up, or they require you to set up manually.\n"
 "Please consult their documentations respectively for further details.\n"
 msgstr[0] "注意：以下组件没有准备设置向导。这可能是由于其不需要初始化设定、或需要您手动初始化。请参阅其各自的说明文档了解详情。\n"
@@ -358,7 +380,7 @@ msgstr "启用详细输出模式。(日志级别: 调试, Debug)"
 
 #: ehforwarderbot/__main__.py:45
 msgid "Show version numbers and exit."
-msgstr "显示版本号后退出"
+msgstr "显示版本号后退出。"
 
 #: ehforwarderbot/__main__.py:85
 msgid "Initializing slave {}..."
@@ -402,14 +424,16 @@ msgstr "所有中间件都已初始化。"
 
 #: ehforwarderbot/__main__.py:213
 #, python-brace-format
-msgid "EH Forwarder Bot\n"
+msgid ""
+"EH Forwarder Bot\n"
 "Version: {version}\n"
 "Python version:\n"
 "{py_version}\n"
 "Running on profile \"{profile}\"."
-msgstr "EH Forwarder Bot\n"
+msgstr ""
+"EH Forwarder Bot\n"
 "版本: {version}\n"
-"Python 版本:\n"
+"Python 版本:\n"
 "{py_version}\n"
 "正在使用配置文件「{profile}」。"
 
@@ -431,4 +455,3 @@ msgstr "{name} ({id}) {version} # {instance_id}"
 #: ehforwarderbot/__main__.py:255
 msgid "No middleware is enabled."
 msgstr "尚未启用任何中间件。"
-
