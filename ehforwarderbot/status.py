@@ -168,11 +168,15 @@ class EFBMessageRemoval(EFBStatus):
 
     Inform a channel to remove a certain message.
 
-    This is usually known as "delete from everyone", "delete from recipient",
-    "recall a message", or "revoke a message" as well, depends on the IM.
+    This is usually known as “delete from everyone”, “delete from recipient”,
+    “recall a message”, or “revoke a message” as well, depends on the IM.
 
     Some channels may not support removal of messages, and raises a
     :obj:`.exceptions.EFBOperationNotSupported` exception.
+
+    Feedback by sending another ``EFBMessageRemoval`` back is not required
+    when this object is sent from a master channel. Master channels should
+    treat a successful delivery of this status as a successful removal.
 
     Attributes:
         source_channel (:obj:`.EFBChannel`): Channel issued the status
