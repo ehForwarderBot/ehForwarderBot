@@ -1,3 +1,3 @@
 # coding=utf-8
 
-__version__ = "2.0.0b22"
+__version__ = "2.0.0b23.dev1"

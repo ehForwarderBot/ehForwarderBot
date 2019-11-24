@@ -3,7 +3,7 @@
 import copy
 import warnings
 from enum import Enum
-from typing import List, Dict, Any, Optional, TypeVar
+from typing import List, Dict, Any, Optional, TypeVar, Sequence
 
 from .channel import EFBChannel
 from .constants import ChatType
@@ -13,7 +13,7 @@ from .types import ModuleID, ChatID
 __all__ = ['EFBChat', 'EFBChatNotificationState']
 
 # Allow mypy to recognize subclass output for `return self` methods.
-EFBChatSelf = TypeVar('EFBChatSelf', bound='EFBChat')
+EFBChatSelf = TypeVar('EFBChatSelf', bound='EFBChat', covariant=True)
 
 
 class EFBChatNotificationState(Enum):
@@ -94,7 +94,7 @@ class EFBChat:
         self.chat_uid: ChatID = ChatID("")
         self.is_chat: bool = True
         self.notification: EFBChatNotificationState = EFBChatNotificationState.ALL
-        self.members: List[EFBChat] = []
+        self.members: Sequence[EFBChat] = []
         self.group: Optional[EFBChat] = None
         self.vendor_specific: Dict[str, Any] = dict()
 
