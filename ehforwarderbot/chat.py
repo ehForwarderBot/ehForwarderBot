@@ -3,7 +3,7 @@
 import copy
 import warnings
 from enum import Enum
-from typing import List, Dict, Any, Optional, TypeVar, Sequence
+from typing import Dict, Any, Optional, TypeVar, Sequence
 
 from .channel import EFBChannel
 from .constants import ChatType
