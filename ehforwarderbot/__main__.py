@@ -124,8 +124,9 @@ def init(conf):
 
     logger.log(99, "\x1b[1;37;42m %s \x1b[0m", _("All middlewares are initialized."))
 
-    coordinator.master_thread = threading.Thread(target=coordinator.master.poll)
-    coordinator.slave_threads = {key: threading.Thread(target=coordinator.slaves[key].poll)
+    coordinator.master_thread = threading.Thread(target=coordinator.master.poll, name=f"{coordinator.master.channel_id} polling thread")
+    coordinator.slave_threads = {key: threading.Thread(target=coordinator.slaves[key].poll,
+                                                       name=f"{key} polling thread")
                                  for key in coordinator.slaves}
 
 
