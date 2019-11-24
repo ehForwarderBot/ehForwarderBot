@@ -17,7 +17,7 @@ setup(
     long_description=long_description,
     author='Eana Hufwe',
     author_email='ilove@1a23.com',
-    url='https://github.com/blueset/ehforwarderbot',
+    url='https://efb.1a23.studio',
     license='AGPLv3+',
     python_requires='>=3.6',
     include_package_data=True,

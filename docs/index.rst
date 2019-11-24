@@ -54,7 +54,7 @@ control their accounts in one stop.
 For tips, tricks and community contributed articles, see
 `project wiki`_.
 
-.. _project wiki: https://github.com/blueset/ehForwarderBot/wiki
+.. _project wiki: https://efb.1a23.studio/wiki
 
 Indices and tables
 ==================
@@ -108,6 +108,6 @@ or later versions.
 :doc:`Donate <donate>`.
 
 .. _Install and enable channels: https://ehforwarderbot.readthedocs.io/en/efb2/getting-started.html
-.. _channels repository: https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository
+.. _channels repository: https://efb-modules.1a23.studio
 .. _Documentation: https://ehforwarderbot.readthedocs.io/en/efb2/
 .. _GNU Affero General Public License 3.0: https://www.gnu.org/licenses/agpl-3.0.txt

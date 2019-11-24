@@ -53,7 +53,7 @@ more external modules, please visit the `modules repository`_.
     community, please consult their respective author or maintainer
     for help related to those methods.
 
-.. _project wiki: https://github.com/blueset/ehForwarderBot/wiki/Alternative-installation-methods
+.. _project wiki: https://efb.1a23.studio/wiki/Alternative-installation-methods
 
 
 A stable internet connection
@@ -115,7 +115,8 @@ running in one profile. Meanwhile, middlewares are completely optional.
         middlewares:
         - foo.null
 
-.. _modules repository: https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository
+
+.. _modules repository: https://efb-modules.1a23.studio
 
 Alternatively, you can also use the :ref:`config:Configuration wizard` which
 can also help you set up modules installed (if they also come with a wizard).

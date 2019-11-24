@@ -191,10 +191,10 @@ msgstr "OK"
 #: ehforwarderbot/wizard.py:407
 msgid ""
 "You may want to visit the modules repository to find a list of available modules to install.\n"
-"https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository"
+"https://efb-modules.1a23.studio"
 msgstr ""
 "您可以前往组件库以寻找你需要的可用组件。\n"
-"https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository"
+"https://efb-modules.1a23.studio"
 
 #: ehforwarderbot/wizard.py:411
 msgid "Checking master channels... "

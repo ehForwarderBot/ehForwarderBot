@@ -14,7 +14,7 @@ Any issue related to installed modules should go to their respective repositorie
 Irrelevant issues to the framework will be locked, transferred, or removed.
 
 The list of module repositories can be found here:
-https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository
+https://efb-modules.1a23.studio
 -->
 
 

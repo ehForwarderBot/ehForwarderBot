@@ -159,7 +159,7 @@ msgstr ""
 
 #: ehforwarderbot/wizard.py:407
 msgid "You may want to visit the modules repository to find a list of available modules to install.\n"
-"https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository"
+"https://efb-modules.1a23.studio"
 msgstr ""
 
 #: ehforwarderbot/wizard.py:411

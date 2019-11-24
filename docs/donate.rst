@@ -5,4 +5,4 @@ Donate
 -  `Supporters`_
 
 .. _Donate links: https://github.com/blueset/.github
-.. _Supporters: https://github.com/blueset/ehForwarderBot/wiki/EFB-Supporters
+.. _Supporters: https://efb.1a23.studio/wiki/EFB-Supporters

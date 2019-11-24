@@ -17,7 +17,7 @@ assignees: ''
 与框架本体无关的的提议将会被锁定、转移或删除。
 
 各组件的页面链接可以在这里找到：
-https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository
+https://efb-modules.1a23.studio
 -->
 
 

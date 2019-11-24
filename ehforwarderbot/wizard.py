@@ -406,7 +406,7 @@ def prerequisite_check():
     # Check installations of modules
     modules_err = _("You may want to visit the modules repository to find a list of "
                     "available modules to install.\n"
-                    "https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository")
+                    "https://efb-modules.1a23.studio")
     # 1. At least 1 master channel must be installed
     print(_("Checking master channels... "), end="")
     try:

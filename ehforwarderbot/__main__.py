@@ -37,7 +37,7 @@ description = _("EH Forwarder Bot is an extensible chat tunnel framework which a
                 "remotely control their accounts in other platforms.")
 
 parser = argparse.ArgumentParser(description=description,
-                                 epilog="GitHub: https://github.com/blueset/ehForwarderBot")
+                                 epilog="GitHub: https://efb.1a23.studio")
 
 parser.add_argument("-v", '--verbose', action='store_true',
                     help=_("Enable verbose mode. (Level: Debug)"))

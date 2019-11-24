@@ -35,7 +35,7 @@ Before submitting a bug report
 * Read through the documentation to see if it has covered your question.
 * Check the `current issue list`__ to see if it's been reported.
 
-.. __: https://github.com/blueset/ehforwarderbot/issues
+.. __: https://efb.1a23.studio/issues
 
 How Do I Submit A (Good) Bug Report?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

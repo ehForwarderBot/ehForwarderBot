@@ -27,7 +27,7 @@ EH Forwarder Bot
    :target: https://crowdin.com/project/ehforwarderbot/
 
 
-.. image:: https://github.com/blueset/ehForwarderBot/blob/master/banner.png
+.. image:: https://efb.1a23.studio/raw/master/banner.png
    :alt: Banner
 
 
@@ -39,7 +39,7 @@ control their accounts in one stop.
 For tips, tricks and community contributed articles, see
 `project wiki`_.
 
-.. _project wiki: https://github.com/blueset/ehForwarderBot/wiki
+.. _project wiki: https://efb.1a23.studio/wiki
 
 v2.0 beta release
 ------------------
@@ -115,6 +115,6 @@ this project into your languages on `our Crowdin page`_.
 .. _our Crowdin page: https://crowdin.com/project/ehforwarderbot/
 
 .. _Install and enable channels: https://ehforwarderbot.readthedocs.io/en/latest/getting-started.html
-.. _channels repository: https://github.com/blueset/ehForwarderBot/wiki/Channels-Repository
+.. _channels repository: https://efb-modules.1a23.studio
 .. _Documentation: https://ehforwarderbot.readthedocs.io/
 .. _GNU Affero General Public License 3.0: https://www.gnu.org/licenses/agpl-3.0.txt
