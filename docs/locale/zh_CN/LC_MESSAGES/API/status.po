@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2019-11-18 15:46\n"
+"POT-Creation-Date: 2019-11-24 21:44+0800\n"
+"PO-Revision-Date: 2019-11-24 13:52\n"
 "Last-Translator: Eana Hufwe (blueset)\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -47,8 +47,8 @@ msgstr "类型"
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.EFBStatus:9
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:7
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:7
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:13
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:19
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:17
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:23
 msgid ":obj:`.EFBChannel`"
 msgstr ":obj:`.EFBChannel`"
 
@@ -130,28 +130,32 @@ msgid "Inform a channel to remove a certain message."
 msgstr "通知信道删除特定消息。"
 
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:3
-msgid "This is usually known as \"delete from everyone\", \"delete from recipient\", \"recall a message\", or \"revoke a message\" as well, depends on the IM."
-msgstr "在不同的即时通讯平台，该操作通常被称为「从所有人删除」、「从收件人处删除」、「撤回」 等。"
+msgid "This is usually known as “delete from everyone”, “delete from recipient”, “recall a message”, or “revoke a message” as well, depends on the IM."
+msgstr ""
 
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:6
 msgid "Some channels may not support removal of messages, and raises a :obj:`.exceptions.EFBOperationNotSupported` exception."
 msgstr "某些信道可能不支持删除消息，并会抛出 :obj:`.exceptions.EFBOperationNotSupported` 异常。"
 
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:11
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:9
+msgid "Feedback by sending another ``EFBMessageRemoval`` back is not required when this object is sent from a master channel. Master channels should treat a successful delivery of this status as a successful removal."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:15
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:10
 msgid "Channel issued the status"
 msgstr "发送状态的信道"
 
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:17
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:21
 #: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:12
 msgid "Channel the status is issued to"
 msgstr "接收状态的信道"
 
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:23
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:27
 msgid "Message to remove. This may not be a complete :obj:`.EFBMsg` object."
 msgstr "要删除的消息。该对象可能不是一个完整的 :obj:`.EFBMsg` 对象。"
 
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:26
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:30
 msgid ":obj:`.EFBMsg`"
 msgstr ":obj:`.EFBMsg`"
 
@@ -160,7 +164,7 @@ msgstr ":obj:`.EFBMsg`"
 msgid "Raises"
 msgstr "抛出"
 
-#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:28
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:32
 msgid "When message removal is not supported in the channel."
 msgstr "当该信道不支持信息移除时。"
 
