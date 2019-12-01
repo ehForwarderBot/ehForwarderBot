@@ -16,13 +16,12 @@ OPTIONAL_DEFAULTS: Final[Dict[str, Any]] = {
     "telemetry": ''
 }
 
-_ = coordinator.translator.gettext
-
 
 __all__ = ["load_config"]
 
 
 def load_config() -> Dict[str, Any]:
+    _ = coordinator.translator.gettext
     # Include custom channels
     custom_channel_path = str(utils.get_custom_modules_path())
     if custom_channel_path not in sys.path:
