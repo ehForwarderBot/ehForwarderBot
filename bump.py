@@ -126,7 +126,7 @@ def main():
 
     new_ver = bump_version(v, args.level)
 
-    bump_message = f"Bumping version: {source[1]} -> {new_ver}"
+    bump_message = f"bump: bumping version: {source[1]} -> {new_ver}"
 
     print(bump_message)
 
