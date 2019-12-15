@@ -17,8 +17,8 @@ def task_sphinx_html():
 
 
 def task_gettext():
-    pot = "./{package}/locale/{package}.pot".format(package=PACKAGE)
-    sources = glob.glob("./{package}/**/*.py".format(package=PACKAGE), recursive=True)
+    pot = f"./{PACKAGE}/locale/{PACKAGE}.pot"
+    sources = glob.glob(f"./{PACKAGE}/**/*.py", recursive=True)
     sources = [i for i in sources if "__version__.py" not in i]
     command = "xgettext --add-comments=TRANSLATORS -o " + pot + " " + " ".join(sources)
     sources += glob.glob("./docs/**/*.rst", recursive=True)
@@ -34,7 +34,7 @@ def task_gettext():
 
 
 def task_msgfmt():
-    sources = glob.glob("./{package}/**/*.po".format(package=PACKAGE), recursive=True)
+    sources = glob.glob(f"./{PACKAGE}/**/*.po", recursive=True)
     dests = [i[:-3] + ".mo" for i in sources]
     actions = [["msgfmt", sources[i], "-o", dests[i]] for i in range(len(sources))]
     return {
@@ -46,7 +46,7 @@ def task_msgfmt():
 
 
 def task_crowdin():
-    sources = glob.glob("./{package}/**/*.pot".format(package=PACKAGE), recursive=True)
+    sources = glob.glob(f"./{PACKAGE}/**/*.pot", recursive=True)
     return {
         "actions": ["crowdin upload sources"],
         "file_dep": sources,
@@ -102,7 +102,7 @@ def task_bump_version():
 
 
 def task_mypy():
-    actions = ["mypy -p {}".format(PACKAGE)]
+    actions = [f"mypy -p {PACKAGE}"]
     return {
         "actions": actions,
         "verbosity": 1
@@ -110,10 +110,10 @@ def task_mypy():
 
 
 def task_test():
-    sources = glob.glob("./{package}/**/*.py".format(package=PACKAGE), recursive=True)
+    sources = glob.glob(f"./{PACKAGE}/**/*.py", recursive=True)
     return {
         "actions": [
-            "coverage run --source ./{} -m pytest".format(PACKAGE),
+            f"coverage run --source ./{PACKAGE} -m pytest",
             "coverage report"
         ],
         "file_dep": sources,
@@ -124,7 +124,8 @@ def task_test():
 def task_build():
     return {
         "actions": [
-            "python setup.py sdist bdist_wheel"
+            "python setup.py sdist bdist_wheel",
+            f"rm -rf build {PACKAGE}.egg-info"
         ],
         "task_dep": ["test", "msgfmt", "bump_version"]
     }
@@ -132,10 +133,10 @@ def task_build():
 
 def task_publish():
     def get_twine_command():
-        __version__ = __import__("{}.__version__".format(PACKAGE)).__version__
+        __version__ = __import__(f"{PACKAGE}.__version__").__version__
         if 'dev' in __version__:
             raise ValueError(f"Cannot publish dev version ({__version__}).")
-        binary = glob.glob("./dist/*{}*".format(__version__), recursive=True)
+        binary = glob.glob(f"./dist/*{__version__}*", recursive=True)
         return ' '.join(["twine", "upload"] + binary)
     return {
         "actions": [CmdAction(get_twine_command)],
