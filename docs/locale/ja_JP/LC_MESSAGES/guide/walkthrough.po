@@ -3,14 +3,13 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2019-11-24 13:53\n"
-"Last-Translator: Eana Hufwe (blueset)\n"
+"PO-Revision-Date: 2019-12-15 03:59\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: ehforwarderbot\n"
 "X-Crowdin-Language: ja\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/walkthrough.pot\n"
@@ -31,7 +30,7 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:17
 msgid "Master Channel"
-msgstr ""
+msgstr "マスターチャネル"
 
 #: ../../guide/walkthrough.rst:15
 msgid "The channel that directly interact with the user. There is guaranteed to have one and only one master channel in an EFB Session."
@@ -39,7 +38,7 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:22
 msgid "Slave Channel"
-msgstr ""
+msgstr "スレーブチャネル"
 
 #: ../../guide/walkthrough.rst:20
 msgid "The channel that delivers messages to and from their relative platform. There should be at lease one slave channel in an EFB Session."
@@ -55,7 +54,7 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:32
 msgid "Middleware"
-msgstr ""
+msgstr "ミドルウェア"
 
 #: ../../guide/walkthrough.rst:30
 msgid "Module that processes messages and statuses delivered between channels, and make modifications where needed."
@@ -67,7 +66,7 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:39
 msgid "Module"
-msgstr ""
+msgstr "モジュール"
 
 #: ../../guide/walkthrough.rst:38
 msgid "A common term that means both channels and middlewares."
@@ -191,7 +190,7 @@ msgstr ""
 
 #: ../../guide/walkthrough.rst:121
 msgid "Middlewares"
-msgstr ""
+msgstr "ミドルウェア"
 
 #: ../../guide/walkthrough.rst:123
 msgid "Middlewares can monitor and make changes to or nullify messages and statuses delivered between channels. Middlewares are executed in order of registration, one after another. A middleware will always receive the messages processed by the preceding middleware if available. Once a middleware nullify a message or status, the message will not be processed and delivered any further."

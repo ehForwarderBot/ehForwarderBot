@@ -3,14 +3,13 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-18 23:44+0800\n"
-"PO-Revision-Date: 2019-11-24 13:53\n"
-"Last-Translator: Eana Hufwe (blueset)\n"
+"PO-Revision-Date: 2019-12-15 03:59\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: ehforwarderbot\n"
 "X-Crowdin-Language: ja\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/index.pot\n"
@@ -18,7 +17,7 @@ msgstr ""
 
 #: ../../index.rst:2
 msgid "EH Forwarder Bot"
-msgstr ""
+msgstr "EH Forwarder Bot"
 
 #: ../../index.rst:None
 msgid ".. image:: https://img.shields.io/badge/Python->%3D%203.6-blue.svg\n"
@@ -43,7 +42,8 @@ msgstr ""
 #: ../../index.rst:None
 msgid ".. image:: https://img.shields.io/pypi/v/ehforwarderbot.svg\n"
 "   :alt: PyPI release"
-msgstr ""
+msgstr ".. image:: https://img.shields.io/pypi/v/ehforwarderbot.svg\n"
+"   :alt: PyPI release"
 
 #: ../../index.rst:None
 msgid ".. image:: https://img.shields.io/pypi/dm/ehforwarderbot.svg\n"
@@ -58,7 +58,8 @@ msgstr ""
 #: ../../index.rst:None
 msgid ".. image:: https://d322cqt584bo4o.cloudfront.net/ehforwarderbot/localized.svg\n"
 "   :alt: Translate this project"
-msgstr ""
+msgstr ".. image:: https://d322cqt584bo4o.cloudfront.net/ehforwarderbot/localized.svg\n"
+"   :alt: Translate this project"
 
 #: ../../index.rst:None
 msgid ".. image:: https://raw.githubusercontent.com/blueset/ehForwarderBot/master/banner.png\n"

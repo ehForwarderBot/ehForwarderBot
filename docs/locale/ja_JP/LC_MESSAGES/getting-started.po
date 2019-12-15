@@ -3,14 +3,13 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-24 21:44+0800\n"
-"PO-Revision-Date: 2019-11-24 13:53\n"
-"Last-Translator: Eana Hufwe (blueset)\n"
+"PO-Revision-Date: 2019-12-15 03:59\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: ehforwarderbot\n"
 "X-Crowdin-Language: ja\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/getting-started.pot\n"
@@ -18,7 +17,7 @@ msgstr ""
 
 #: ../../getting-started.rst:2
 msgid "Getting started"
-msgstr ""
+msgstr "はじめましょう"
 
 #: ../../getting-started.rst:4
 msgid "A few simple steps to get started with EFB."
@@ -122,7 +121,7 @@ msgstr ""
 
 #: ../../getting-started.rst:99
 msgid "Master channel"
-msgstr ""
+msgstr "マスターチャンネル"
 
 #: ../../getting-started.rst:100
 msgid "Demo Master (``foo.demo_master``)"
@@ -130,7 +129,7 @@ msgstr ""
 
 #: ../../getting-started.rst:102
 msgid "Slave channels"
-msgstr ""
+msgstr "スレーブチャンネル"
 
 #: ../../getting-started.rst:102
 msgid "Demo Slave (``foo.demo_slave``)"
@@ -142,7 +141,7 @@ msgstr ""
 
 #: ../../getting-started.rst:105
 msgid "Middlewares"
-msgstr ""
+msgstr "ミドルウェア"
 
 #: ../../getting-started.rst:105
 msgid "Null Middleware (``foo.null``)"

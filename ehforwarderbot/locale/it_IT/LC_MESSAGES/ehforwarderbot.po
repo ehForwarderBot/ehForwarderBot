@@ -2,66 +2,65 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-24 21:44+0800\n"
-"PO-Revision-Date: 2019-11-24 13:53\n"
-"Last-Translator: Eana Hufwe (blueset)\n"
+"POT-Creation-Date: 2019-12-15 11:57+0800\n"
+"PO-Revision-Date: 2019-12-15 03:59\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: ehforwarderbot\n"
 "X-Crowdin-Language: it\n"
 "X-Crowdin-File: /ehForwarderBot/ehforwarderbot/locale/ehforwarderbot.pot\n"
 
-#: ehforwarderbot/config.py:33
+#: ehforwarderbot/config.py:32
 msgid "Config File does not exist. ({})"
 msgstr ""
 
-#: ehforwarderbot/config.py:43
+#: ehforwarderbot/config.py:42
 msgid "Master Channel is not specified in the profile config."
 msgstr ""
 
-#: ehforwarderbot/config.py:45
+#: ehforwarderbot/config.py:44
 #, python-brace-format
 msgid "Master Channel ID is expected to be a string, but \"{0}\" is of type {1}."
 msgstr ""
 
-#: ehforwarderbot/config.py:49 ehforwarderbot/config.py:67
-#: ehforwarderbot/config.py:83
+#: ehforwarderbot/config.py:48 ehforwarderbot/config.py:66
+#: ehforwarderbot/config.py:82
 msgid "\"{}\" is not found."
 msgstr ""
 
-#: ehforwarderbot/config.py:51 ehforwarderbot/config.py:69
+#: ehforwarderbot/config.py:50 ehforwarderbot/config.py:68
 #, python-brace-format
 msgid "\"{0}\" is not a channel, but a {1}."
 msgstr ""
 
-#: ehforwarderbot/config.py:53
+#: ehforwarderbot/config.py:52
 #, python-brace-format
 msgid "\"{0}\" is not a master channel, but a {1}."
 msgstr ""
 
-#: ehforwarderbot/config.py:60
+#: ehforwarderbot/config.py:59
 msgid "Slave Channels are not specified in the profile config."
 msgstr ""
 
-#: ehforwarderbot/config.py:62
+#: ehforwarderbot/config.py:61
 msgid "Slave Channel IDs are expected to be a list, but {} is found."
 msgstr ""
 
-#: ehforwarderbot/config.py:71
+#: ehforwarderbot/config.py:70
 #, python-brace-format
 msgid "\"{0}\" is not a slave channel, but a {1}."
 msgstr ""
 
-#: ehforwarderbot/config.py:78
+#: ehforwarderbot/config.py:77
 msgid "Middleware IDs must be a list, but a {} is found."
 msgstr ""
 
-#: ehforwarderbot/config.py:85
+#: ehforwarderbot/config.py:84
 #, python-brace-format
 msgid "\"{0}\" is not a middleware, but a {1}."
 msgstr ""
