@@ -8,7 +8,6 @@ class MsgType(Enum):
     """Text message"""
 
     Image = "Image"
-
     """
     Image (picture) message.
 

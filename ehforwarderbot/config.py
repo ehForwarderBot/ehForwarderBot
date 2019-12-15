@@ -63,12 +63,12 @@ def load_config() -> Dict[str, Any]:
         for i in slave_channels_list:
             channel = utils.locate_module(i, 'slave')
             if not channel:
-                raise ValueError(_("\"{}\" is not found.").format(master_channel_id))
+                raise ValueError(_("\"{}\" is not found.").format(i))
             if not issubclass(channel, EFBChannel):
-                raise ValueError(_("\"{0}\" is not a channel, but a {1}.").format(master_channel_id, channel))
+                raise ValueError(_("\"{0}\" is not a channel, but a {1}.").format(i, channel))
             if not channel.channel_type == ChannelType.Slave:
                 raise ValueError(_("\"{0}\" is not a slave channel, but a {1}.")
-                                 .format(master_channel_id, channel.channel_type))
+                                 .format(i, channel.channel_type))
 
         # - Middlewares
         middlewares_list = data.get("middlewares", None)
