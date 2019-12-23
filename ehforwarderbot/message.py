@@ -3,6 +3,7 @@
 from abc import ABC, abstractmethod
 from collections.abc import Collection as CCollection
 from collections.abc import Mapping as CMapping
+from contextlib import suppress
 from typing import IO, Dict, Optional, List, Any, Tuple, Mapping, Collection
 
 from . import coordinator
@@ -192,19 +193,15 @@ class EFBMsg:
         self.__dict__.update(state)
 
         # Try to load "deliver_to" channel
-        try:
+        with suppress(NameError):
             dt = coordinator.get_module_by_id(state['deliver_to'])
             if isinstance(dt, EFBChannel):
                 self.deliver_to = dt
-        except NameError:
-            pass
 
         # Try to load file from original path
         if self.path:
-            try:
+            with suppress(IOError):
                 self.file = open(self.path, 'rb')
-            except IOError:
-                pass
 
 
 class EFBMsgAttribute(ABC):

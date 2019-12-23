@@ -14,6 +14,7 @@ import os
 import platform
 import sys
 from collections import namedtuple
+from contextlib import suppress
 from io import StringIO
 from typing import Dict, Callable
 from urllib.parse import quote
@@ -445,10 +446,8 @@ def choose_master_channel(data: DataModel):
         default_id = default_config[0]
         if len(default_config) > 1:
             default_instance = default_config[1]
-        try:
+        with suppress(ValueError):
             default_idx = channel_ids.index(default_id)
-        except ValueError:
-            pass
 
     chosen_channel_name, chosen_channel_id = list_widget.launch(default=default_idx)
 

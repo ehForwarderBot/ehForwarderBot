@@ -1,6 +1,7 @@
 # coding=utf-8
 
 from abc import abstractmethod, ABC
+from contextlib import suppress
 from typing import Dict, Collection, TYPE_CHECKING, Any, Optional
 
 from . import EFBChannel, EFBMsg, coordinator, ChannelType, ChatType
@@ -40,12 +41,10 @@ class EFBStatus(ABC):
 
     def __setstate__(self, state: Dict[str, Any]):
         self.__dict__.update(state)
-        try:
+        with suppress(NameError):
             dc = coordinator.get_module_by_id(state['destination_channel'])
             if isinstance(dc, EFBChannel):
                 self.destination_channel = dc
-        except NameError:
-            pass
 
 
 class EFBChatUpdates(EFBStatus):
@@ -96,12 +95,10 @@ class EFBChatUpdates(EFBStatus):
 
     def __setstate__(self, state: Dict[str, Any]):
         super(EFBChatUpdates, self).__setstate__(state)
-        try:
+        with suppress(NameError):
             c = coordinator.get_module_by_id(state['channel'])
             if isinstance(c, EFBChannel):
                 self.channel = c
-        except NameError:
-            pass
 
 
 class EFBMemberUpdates(EFBStatus):
@@ -155,12 +152,10 @@ class EFBMemberUpdates(EFBStatus):
 
     def __setstate__(self, state: Dict[str, Any]):
         super(EFBMemberUpdates, self).__setstate__(state)
-        try:
+        with suppress(NameError):
             c = coordinator.get_module_by_id(state['channel'])
             if isinstance(c, EFBChannel):
                 self.channel = c
-        except NameError:
-            pass
 
 
 class EFBMessageRemoval(EFBStatus):
@@ -234,12 +229,10 @@ class EFBMessageRemoval(EFBStatus):
 
     def __setstate__(self, state: Dict[str, Any]):
         super(EFBMessageRemoval, self).__setstate__(state)
-        try:
+        with suppress(NameError):
             sc = coordinator.get_module_by_id(state['source_channel'])
             if isinstance(sc, EFBChannel):
                 self.source_channel = sc
-        except NameError:
-            pass
 
 
 class EFBReactToMessage(EFBStatus):

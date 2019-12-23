@@ -13,6 +13,7 @@ Attributes:
 """
 
 import threading
+from contextlib import suppress
 from gettext import NullTranslations
 from typing import List, Dict, Optional, cast, TYPE_CHECKING, Union
 
@@ -157,11 +158,9 @@ def get_module_by_id(module_id: ModuleID) -> Union[EFBChannel, EFBMiddleware]:
     Raises:
         NameError: When the module is not found.
     """
-    try:
+    with suppress(NameError):
         if master.channel_id == module_id:
             return master
-    except NameError:
-        pass
     if module_id in slaves:
         return slaves[module_id]
     for i in middlewares:
