@@ -41,6 +41,7 @@ setup(
         "cjkwrap",
         "typing_extensions"
     ],
+    tests_require=["pytest"],
     extras_require={
         'telemetry': ['1a23-telemetry']
     },

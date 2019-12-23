@@ -16,9 +16,9 @@ EH Forwarder Bot
 .. image:: https://img.shields.io/pypi/v/ehforwarderbot.svg
    :alt: PyPI release
    :target: https://pypi.org/project/ehforwarderbot/
-.. image:: https://img.shields.io/pypi/dm/ehforwarderbot.svg
+.. image:: https://pepy.tech/badge/ehforwarderbot/month
    :alt: Downloads per month
-   :target: https://pypi.org/project/ehforwarderbot/
+   :target: https://pepy.tech/project/ehforwarderbot
 .. image:: https://img.shields.io/codacy/grade/3b2555f9134844e3b01b00700bc43eeb.svg
    :alt: Codacy grade
    :target: https://www.codacy.com/app/blueset/ehForwarderBot
