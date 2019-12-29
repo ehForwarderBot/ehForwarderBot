@@ -15,7 +15,7 @@ Options
 
 - ``-h``, ``--help``: Show help message
 
-- ``-p PROFILE``, ``--profile PROFILE``: Switch :doc:`profile <profile>`
+- :samp:`-p {PROFILE}`, :samp:`--profile {PROFILE}`: Switch :doc:`profile <profile>`
 
     From version 2, EFB supports running different instances
     under the same user, identified by their profiles.

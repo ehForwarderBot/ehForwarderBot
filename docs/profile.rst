@@ -19,7 +19,7 @@ Start a new profile
 -------------------
 
 To create a new profile, you need to create a
-directory in the :file:`EFB_DATA_PATH/profiles`, and
+directory in the :file:`{EFB_DATA_PATH}/profiles`, and
 create a new configuration file as described in
 chapter :doc:`getting-started`.
 

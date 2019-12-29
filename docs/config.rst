@@ -3,7 +3,7 @@ Configuration File
 
 EFB has an overall configuration file to manage all enabled modules.
 It is located under the :doc:`directory <directories>` of current
-profile, and named ``config.yaml``.
+profile, and named :file:`config.yaml`.
 
 Syntax
 ~~~~~~
@@ -27,14 +27,14 @@ Instance ID
 To have multiple accounts running simultaneously, you can appoint an instance
 ID to a module. Instance ID can be defined by the user, and if defined,
 it must has nothing other than letters, numbers and underscores, i.e. in
-regular expressions ``[a-zA-Z0-9_]+``. When instance ID is not defined,
+regular expressions :regex:`[a-zA-Z0-9_]+`. When instance ID is not defined,
 the channel will run in the "default" instance with no instance ID.
 
 To indicate the instance ID of an instance, append ``#`` following by the
 instance ID to the module ID. For example, slave channel ``bar.dummy``
 running with instance ID ``alice`` should be defined as ``bar.dummy#alice``.
 If the channel requires configurations, it should be done in the directory
-with the same name (e.g. ``EFB_DATA_PATH/profiles/PROFILE/bar.dummy#alice``),
+with the same name (e.g. :file:`EFB_DATA_PATH/profiles/{PROFILE}/bar.dummy#alice`),
 so as to isolate instances.
 
 Please avoid having two modules with the same set of module ID and instance ID
@@ -105,18 +105,3 @@ section ``logging``.
 
 
 .. _Python's configuration dictionary schema: https://docs.python.org/3.7/library/logging.config.html#logging-config-dictschema
-
-Configuration wizard
-~~~~~~~~~~~~~~~~~~~~
-Alternatively, you may want to try the interactive setup wizard 
-that guides you to enable channels and middlewares, and continue
-to setup those modules if they also have provided a similar wizard.
-
-You can start the wizard by running the following command in a compatible
-console or terminal emulator::
-
-    efb-wizard
-
-If you want to start the wizard of a module for a profile individually, run::
-
-    efb-wizard -p <profile name> -m <module ID>

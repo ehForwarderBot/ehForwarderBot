@@ -6,7 +6,7 @@ us make EFB better, you can install EFB with optional ``telemetry`` option.
 
 .. code-block:: bash
 
-    pip3 install --update ehforwarderbot[telemetry]
+    pip3 install --update 'ehforwarderbot[telemetry]'
 
 And then, enable in the config file under the name
 ``telemetry``. There are 2 options you can choose from.

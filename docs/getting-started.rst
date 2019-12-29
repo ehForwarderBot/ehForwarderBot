@@ -82,7 +82,22 @@ You can choose the channels that fits your need the best.
 Instructions about installing each channel is available at
 their respective documentations.
 
-When you have successfully installed a channel, you can enable
+When you have successfully installed the modules of your choices, you can
+the use the configuration wizard which guides you to enable channels and
+middlewares, and continue to setup those modules if they also have provided a
+similar wizard.
+
+You can start the wizard by running the following command in a compatible
+console or terminal emulator::
+
+    efb-wizard
+
+If you want to start the wizard of a module for a profile individually, run::
+
+    efb-wizard -p <profile name> -m <module ID>
+
+
+Alternatively, you can enable those modules manually
 it by listing its Channel ID in the :doc:`configuration file <config>`.
 The default path is ``~/.ehforwarderbot/profiles/default/config.yaml``.
 Please refer to :doc:`directories` if you have configured otherwise.
@@ -118,8 +133,6 @@ running in one profile. Meanwhile, middlewares are completely optional.
 
 .. _modules repository: https://efb-modules.1a23.studio
 
-Alternatively, you can also use the :ref:`config:Configuration wizard` which
-can also help you set up modules installed (if they also come with a wizard).
 
 Launch EFB
 ----------
