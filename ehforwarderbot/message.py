@@ -151,7 +151,7 @@ class EFBMsg:
             raise ValueError("Type is not valid.")
         if self.deliver_to is None or not isinstance(self.deliver_to, EFBChannel):
             raise ValueError("Deliver_to is not valid.")
-        if self.type in (MsgType.Audio, MsgType.File, MsgType.Image, MsgType.Sticker, MsgType.Video) and \
+        if self.type in (MsgType.Voice, MsgType.File, MsgType.Image, MsgType.Sticker, MsgType.Video) and \
                 ((not self.edit) or (self.edit and self.edit_media)):
             if self.file is None or not hasattr(self.file, "read") or not hasattr(self.file, "close"):
                 raise ValueError("File is not valid.")

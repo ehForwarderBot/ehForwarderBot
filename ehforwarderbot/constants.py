@@ -15,8 +15,16 @@ class MsgType(Enum):
         Animated GIF images shall use :attr:`Animation` type instead.
     """
 
-    Audio = "Audio"
-    """Audio message. Including music and voice message."""
+    Voice = "Voice"
+    """Voice messages, usually recorded right before sending."""
+
+    Audio = Voice
+    """Audio messages (deprecated).
+
+    .. deprecated::
+        Use :attr:`.Voice` if the message has a voice message (usually recorded).
+        Use :attr:`.File` if the message has a music file (usually uploaded).
+    """
 
     Animation = "Animation"
     """
@@ -28,7 +36,7 @@ class MsgType(Enum):
     """Video message"""
 
     File = "File"
-    """Messages sent as a file."""
+    """File message."""
 
     Location = "Location"
     """Location message."""

@@ -11,14 +11,6 @@ the user's home directory, ``~/.ehforwarderbot``.  This can be
 overridden with the environment variable ``EFB_DATA_PATH``.
 This path defined here should be an **absolute path**.
 
-.. comment, deprecated
-    EFB cache is deprecated. System temporary file
-    manager is used instead.
-    Besides the data path, you can also customize the path for
-    cache/temporary files produced by channels. By default, it's
-    stored together with the data: ``~/.ehforwarderbot/cache``.
-    It can be overridden with environment variable
-    ``EFB_CACHE_PATH``.
 
 Directory structure
 -------------------
