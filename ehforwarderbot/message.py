@@ -4,204 +4,15 @@ from abc import ABC, abstractmethod
 from collections.abc import Collection as CCollection
 from collections.abc import Mapping as CMapping
 from contextlib import suppress
-from typing import IO, Dict, Optional, List, Any, Tuple, Mapping, Collection
+from os import PathLike
+from pathlib import Path
+from typing import IO, Dict, Optional, List, Any, Tuple, Mapping, Collection, Union
 
 from . import coordinator
 from .constants import *
 from .chat import EFBChat
 from .channel import EFBChannel
 from .types import Reactions, MessageID
-
-
-class EFBMsg:
-    """A message.
-
-    Note:
-        ``EFBMsg`` objects are picklable, thus it is strongly recommended
-        to keep any object of its subclass also picklable.
-
-    Attributes:
-        attributes (Optional[:obj:`.EFBMsgAttribute`]):
-            Attributes used for a specific message type.
-            Only specific message type requires this attribute. Defaulted to
-            ``None``.
-
-            - Link: :obj:`.EFBMsgLinkAttribute`
-            - Location: :obj:`.EFBMsgLocationAttribute`
-            - Status: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`
-
-            .. Note::
-                Do NOT use object of the abstract class
-                :class:`.EFBMsgAttribute` for
-                ``attributes``, but object of specific class instead.
-
-
-        author (:obj:`.EFBChat`): Author of this message.
-        chat (:obj:`.EFBChat`): Sender of the message.
-        commands (Optional[:obj:`EFBMsgCommands`]): Commands attached to the message
-        deliver_to (:obj:`.EFBChannel`): The channel that the message is to be delivered to
-        edit (bool): Flag this up if the message is edited.
-            Flag only this if no multimedia file is modified, otherwise flag up both
-            this one and ``edit_media`` as well.
-
-            If no media file is modified, the edited message may carry no information about
-            the file.
-        edit_media (bool): Flag this up if any file attached to the message is modified.
-            If this value is true, ``edit`` must also be ``True``.
-        file (IO[bytes]): File object to multimedia file, type "ra". ``None`` if N/A.
-            recommended to use ``NamedTemporaryFile`` object, the file can be
-            deleted when closed, if not used otherwise.
-            All file object must be rewind back to 0 (``file.seek(0)``) before sending.
-        filename (str): File name of the multimedia file. ``None`` if N/A
-        is_system (bool): Mark as true if this message is a system message.
-        mime (str): MIME type of the file. ``None`` if N/A
-        path (str): Local path of multimedia file. ``None`` if N/A
-        reactions (Dict[str, Collection[:obj:`EFBChat`]]):
-            Indicate reactions to the message. Dictionary key is the canonical name
-            of reaction, usually an emoji. Value is a collection of users
-            who reacted to the message with that certain emoji.
-            All :obj:`EFBChat` objects in this dict must be of a user or a
-            group member.
-        substitutions (Optional[:obj:`EFBMsgSubstitutions`]):
-            Substitutions of messages, usually used when
-            the some parts of the text of the message
-            refers to another user or chat.
-        target (Optional[:obj:`EFBMsg`]):
-            Target message (usually for messages that "replies to"
-            another message).
-
-            .. note::
-
-                This message may be a "minimum message", with only required fields:
-
-                - :attr:`.EFBMsg.chat`
-                - :attr:`.EFBMsg.author`
-                - :attr:`.EFBMsg.text`
-                - :attr:`.EFBMsg.type`
-                - :attr:`.EFBMsg.uid`
-
-        text (str): text of the message
-        type (:obj:`.MsgType`): Type of message
-        uid (str): Unique ID of message.
-            Usually stores the message ID from slave channel.
-            This ID must be unique among all chats in the same channel.
-
-            .. Note::
-                Some channels may not support message editing.
-                Some channels may issue a new uid for edited message.
-
-        vendor_specific (Dict[str, Any]):
-            A series of vendor specific attributes attached. This can be
-            used by any other channels or middlewares that is compatible
-            with such information. Note that no guarantee is provided
-            for information in this section.
-    """
-
-    def __init__(self):
-        self.attributes: Optional[EFBMsgAttribute] = None
-        self.author: EFBChat = None
-        self.chat: EFBChat = None
-        self.commands: Optional[EFBMsgCommands] = None
-        self.deliver_to: EFBChannel = None
-        self.edit: bool = False
-        self.edit_media: bool = False
-        self.file: Optional[IO[bytes]] = None
-        self.filename: Optional[str] = None
-        self.is_system: bool = False
-        self.mime: Optional[str] = None
-        self.path: Optional[str] = None
-        self.reactions: Reactions = dict()
-        self.substitutions: Optional[EFBMsgSubstitutions] = None
-        self.target: Optional[EFBMsg] = None
-        self.text: str = ""
-        self.type: MsgType = MsgType.Unsupported
-        self.uid: Optional[MessageID] = None
-        self.vendor_specific: Dict[str, Any] = dict()
-
-    def __str__(self):
-        return "<EFBMsg, {msg.author}@{msg.chat} [{msg.type.name}]: {msg.text}; {msg.uid}>".format(msg=self)
-
-    def __repr__(self):
-        return "<EFBMsg, {msg.author}@{msg.chat} [{msg.type.name}]: " \
-               "{msg.text}; " \
-               "Attributes: {msg.attributes}; " \
-               "Delivering to: {msg.deliver_to}; " \
-               "Edited: {msg.edit}; " \
-               "System message: {msg.is_system}; " \
-               "Substitutions: {msg.substitutions}; " \
-               "Target messages: {msg.target}; " \
-               "UID: {msg.uid}; " \
-               "Reactions: {msg.reactions}; " \
-               "File: {msg.file} ({msg.filename} @ {msg.path}), {msg.mime}; " \
-               "Vendor: {msg.vendor_specific}>".format(msg=self)
-
-    def verify(self):
-        """
-        Verify the validity of message.
-        """
-        if self.author is None or not isinstance(self.author, EFBChat):
-            raise ValueError("Author is not valid.")
-        else:
-            self.author.verify()
-        if self.chat is None or not isinstance(self.chat, EFBChat):
-            raise ValueError("Chat is not valid.")
-        elif self.chat is not self.author:  # Prevent repetitive verification
-            self.chat.verify()
-        if self.type is None or not isinstance(self.type, MsgType):
-            raise ValueError("Type is not valid.")
-        if self.deliver_to is None or not isinstance(self.deliver_to, EFBChannel):
-            raise ValueError("Deliver_to is not valid.")
-        if self.type in (MsgType.Voice, MsgType.File, MsgType.Image, MsgType.Sticker, MsgType.Video) and \
-                ((not self.edit) or (self.edit and self.edit_media)):
-            if self.file is None or not hasattr(self.file, "read") or not hasattr(self.file, "close"):
-                raise ValueError("File is not valid.")
-            if self.mime is None or not self.mime or not isinstance(self.mime, str):
-                raise ValueError("MIME is not valid.")
-            if self.path is None or not self.path or not isinstance(self.path, str):
-                raise ValueError("Path is not valid.")
-        if self.type == MsgType.Location and (self.attributes is None
-                                              or not isinstance(self.attributes, EFBMsgLocationAttribute)):
-            raise ValueError("Attribute of location message is invalid.")
-        if self.type == MsgType.Link and (self.attributes is None
-                                          or not isinstance(self.attributes, EFBMsgLinkAttribute)):
-            raise ValueError("Attribute of link message is invalid.")
-        if self.type == MsgType.Status and (self.attributes is None
-                                            or not isinstance(self.attributes, EFBMsgStatusAttribute)):
-            raise ValueError("Attribute of status message is invalid.")
-
-        if self.attributes:
-            self.attributes.verify()
-
-        if self.commands:
-            self.commands.verify()
-
-        if self.substitutions:
-            self.substitutions.verify()
-
-    def __getstate__(self):
-        state = self.__dict__.copy()
-        # Remove file object
-        if state.get('file', None) is not None:
-            del state['file']
-
-        # Convert channel object to channel ID
-        if state['deliver_to'] is not None:
-            state['deliver_to'] = state['deliver_to'].channel_id
-        return state
-
-    def __setstate__(self, state: Dict[str, Any]):
-        self.__dict__.update(state)
-
-        # Try to load "deliver_to" channel
-        with suppress(NameError):
-            dt = coordinator.get_module_by_id(state['deliver_to'])
-            if isinstance(dt, EFBChannel):
-                self.deliver_to = dt
-
-        # Try to load file from original path
-        if self.path:
-            with suppress(IOError):
-                self.file = open(self.path, 'rb')
 
 
 class EFBMsgAttribute(ABC):
@@ -409,9 +220,9 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
             UPLOADING_IMAGE:
                 Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`,
                 represent the status of uploading image.
-            UPLOADING_AUDIO:
+            UPLOADING_VOICE:
                 Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`,
-                represent the status of uploading audio.
+                represent the status of uploading voice.
             UPLOADING_VIDEO:
                 Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`,
                 represent the status of uploading video.
@@ -419,7 +230,7 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
         TYPING = "TYPING"
         UPLOADING_FILE = "UPLOADING_FILE"
         UPLOADING_IMAGE = "UPLOADING_IMAGE"
-        UPLOADING_AUDIO = "UPLOADING_AUDIO"
+        UPLOADING_VOICE = "UPLOADING_VOICE"
         UPLOADING_VIDEO = "UPLOADING_VIDEO"
 
     # noinspection PyMissingConstructor
@@ -445,7 +256,7 @@ class EFBMsgStatusAttribute(EFBMsgAttribute):
             raise ValueError("Timeout must be a non-negative integer.")
 
 
-class EFBMsgSubstitutions(dict):
+class EFBMsgSubstitutions(Dict[Tuple[int, int], EFBChat]):
     """
     EFB message substitutions.
 
@@ -502,3 +313,231 @@ class EFBMsgSubstitutions(dict):
                 raise ValueError("Index %s overlaps with %s." % (ranges[i], ranges[i - 1]))
         for i in self.values():
             i.verify()
+
+
+class EFBMsg:
+    """A message.
+
+    Note:
+        ``EFBMsg`` objects are picklable, thus it is strongly recommended
+        to keep any object of its subclass also picklable.
+
+    Attributes:
+        attributes (Optional[:obj:`.EFBMsgAttribute`]):
+            Attributes used for a specific message type.
+            Only specific message type requires this attribute. Defaulted to
+            ``None``.
+
+            - Link: :obj:`.EFBMsgLinkAttribute`
+            - Location: :obj:`.EFBMsgLocationAttribute`
+            - Status: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`
+
+            .. Note::
+                Do NOT use object of the abstract class
+                :class:`.EFBMsgAttribute` for
+                ``attributes``, but object of specific class instead.
+
+        author (:obj:`.EFBChat`): Author of this message.
+        chat (:obj:`.EFBChat`): Sender of the message.
+        commands (Optional[:obj:`EFBMsgCommands`]): Commands attached to the message
+
+            This attribute will be ignored in _Status_ messages.
+        deliver_to (:obj:`.EFBChannel`): The channel that the message is to be delivered to.
+        edit (bool): Flag this up if the message is edited.
+            Flag only this if no multimedia file is modified, otherwise flag up both
+            this one and ``edit_media`` as well.
+
+            If no media file is modified, the edited message may carry no information about
+            the file.
+
+            This attribute will be ignored in _Status_ messages.
+        edit_media (bool): Flag this up if any file attached to the message is modified.
+            If this value is true, ``edit`` must also be ``True``.
+            This attribute is ignored if the message type is not supposed to contain any
+            media file, e.g. :attr:`~MsgType.Text`, :attr:`~MsgType.Location`, etc.
+
+            This attribute will be ignored in _Status_ messages.
+        file (Optional[IO[bytes]]): File object to multimedia file, type "rb". ``None`` if N/A.
+            recommended to use ``NamedTemporaryFile`` object, the file can be
+            deleted when closed, if not used otherwise.
+            All file object must be rewind back to 0 (``file.seek(0)``) before sending.
+        filename (Optional[str]): File name of the multimedia file. ``None`` if N/A
+        is_system (bool): Mark as true if this message is a system message.
+        mime (Optional[str]): MIME type of the file. ``None`` if N/A
+        path (Optional[Path]): Local path of multimedia file. ``None`` if N/A
+        reactions (Dict[str, Collection[:obj:`EFBChat`]]):
+            Indicate reactions to the message. Dictionary key is the canonical name
+            of reaction, usually an emoji. Value is a collection of users
+            who reacted to the message with that certain emoji.
+            All :obj:`EFBChat` objects in this dict must be of a user or a
+            group member.
+
+            This attribute will be ignored in _Status_ messages.
+        substitutions (Optional[:obj:`EFBMsgSubstitutions`]):
+            Substitutions of messages, usually used when
+            the some parts of the text of the message
+            refers to another user or chat.
+
+            This attribute will be ignored in _Status_ messages.
+        target (Optional[:obj:`EFBMsg`]):
+            Target message (usually for messages that "replies to"
+            another message).
+
+            This attribute will be ignored in _Status_ messages.
+
+            .. note::
+
+                This message may be a "minimum message", with only required fields:
+
+                - :attr:`.EFBMsg.chat`
+                - :attr:`.EFBMsg.author`
+                - :attr:`.EFBMsg.text`
+                - :attr:`.EFBMsg.type`
+                - :attr:`.EFBMsg.uid`
+
+        text (str): text of the message
+
+            This attribute will be ignored in _Status_ messages.
+        type (:obj:`.MsgType`): Type of message
+        uid (str): Unique ID of message.
+            Usually stores the message ID from slave channel.
+            This ID must be unique among all chats in the same channel.
+
+            .. Note::
+                Some channels may not support message editing.
+                Some channels may issue a new uid for edited message.
+
+        vendor_specific (Dict[str, Any]):
+            A series of vendor specific attributes attached. This can be
+            used by any other channels or middlewares that is compatible
+            with such information. Note that no guarantee is provided
+            for information in this section.
+    """
+
+    def __init__(self,
+                 attributes: Optional[EFBMsgAttribute] = None,
+                 author: EFBChat = None,
+                 chat: EFBChat = None,
+                 commands: Optional[EFBMsgCommands] = None,
+                 deliver_to: EFBChannel = None,
+                 edit: bool = False,
+                 edit_media: bool = False,
+                 file: Optional[IO[bytes]] = None,
+                 filename: Optional[str] = None,
+                 is_system: bool = False,
+                 mime: Optional[str] = None,
+                 path: Optional[Union[str, Path]] = None,
+                 reactions: Reactions = None,
+                 substitutions: Optional[EFBMsgSubstitutions] = None,
+                 target: 'Optional[EFBMsg]' = None,
+                 text: str = "",
+                 type: MsgType = MsgType.Unsupported,
+                 uid: Optional[MessageID] = None,
+                 vendor_specific: Dict[str, Any] = None,):
+        self.attributes: Optional[EFBMsgAttribute] = attributes
+        self.author: EFBChat = author
+        self.chat: EFBChat = chat
+        self.commands: Optional[EFBMsgCommands] = commands
+        self.deliver_to: EFBChannel = deliver_to
+        self.edit: bool = edit
+        self.edit_media: bool = edit_media
+        self.file: Optional[IO[bytes]] = file
+        self.filename: Optional[str] = filename
+        self.is_system: bool = is_system
+        self.mime: Optional[str] = mime
+        if isinstance(path, str):
+            self.path: Optional[Path] = Path(path)
+        else:
+            self.path: Optional[Path] = path
+        self.reactions: Reactions = reactions if reactions is not None else dict()
+        self.substitutions: Optional[EFBMsgSubstitutions] = substitutions
+        self.target: Optional[EFBMsg] = target
+        self.text: str = text
+        self.type: MsgType = type
+        self.uid: Optional[MessageID] = uid
+        self.vendor_specific: Dict[str, Any] = vendor_specific if vendor_specific is not None else dict()
+
+    def __str__(self):
+        return "<EFBMsg, {msg.author}@{msg.chat} [{msg.type.name}]: {msg.text}; {msg.uid}>".format(msg=self)
+
+    def __repr__(self):
+        return "<EFBMsg, {msg.author}@{msg.chat} [{msg.type.name}]: " \
+               "{msg.text}; " \
+               "Attributes: {msg.attributes}; " \
+               "Delivering to: {msg.deliver_to}; " \
+               "Edited: {msg.edit}; " \
+               "System message: {msg.is_system}; " \
+               "Substitutions: {msg.substitutions}; " \
+               "Target messages: {msg.target}; " \
+               "UID: {msg.uid}; " \
+               "Reactions: {msg.reactions}; " \
+               "File: {msg.file} ({msg.filename} @ {msg.path}), {msg.mime}; " \
+               "Vendor: {msg.vendor_specific}>".format(msg=self)
+
+    def verify(self):
+        """
+        Verify the validity of message.
+        """
+        if self.author is None or not isinstance(self.author, EFBChat):
+            raise ValueError("Author is not valid.")
+        else:
+            self.author.verify()
+        if self.chat is None or not isinstance(self.chat, EFBChat):
+            raise ValueError("Chat is not valid.")
+        elif self.chat is not self.author:  # Prevent repetitive verification
+            self.chat.verify()
+        if self.type is None or not isinstance(self.type, MsgType):
+            raise ValueError("Type is not valid.")
+        if self.deliver_to is None or not isinstance(self.deliver_to, EFBChannel):
+            raise ValueError("Deliver_to is not valid.")
+        if self.type in (MsgType.Voice, MsgType.File, MsgType.Image, MsgType.Sticker, MsgType.Video) and \
+                ((not self.edit) or (self.edit and self.edit_media)):
+            if self.file is None or not hasattr(self.file, "read") or not hasattr(self.file, "close"):
+                raise ValueError("File is not valid.")
+            if self.mime is None or not self.mime or not isinstance(self.mime, str):
+                raise ValueError("MIME is not valid.")
+            if self.path is None or not self.path or not isinstance(self.path, (str, PathLike)):
+                raise ValueError("Path is not valid.")
+        if self.type == MsgType.Location and (self.attributes is None
+                                              or not isinstance(self.attributes, EFBMsgLocationAttribute)):
+            raise ValueError("Attribute of location message is invalid.")
+        if self.type == MsgType.Link and (self.attributes is None
+                                          or not isinstance(self.attributes, EFBMsgLinkAttribute)):
+            raise ValueError("Attribute of link message is invalid.")
+        if self.type == MsgType.Status and (self.attributes is None
+                                            or not isinstance(self.attributes, EFBMsgStatusAttribute)):
+            raise ValueError("Attribute of status message is invalid.")
+
+        if self.attributes:
+            self.attributes.verify()
+
+        if self.commands:
+            self.commands.verify()
+
+        if self.substitutions:
+            self.substitutions.verify()
+
+    def __getstate__(self):
+        state = self.__dict__.copy()
+        # Remove file object
+        if state.get('file', None) is not None:
+            del state['file']
+
+        # Convert channel object to channel ID
+        if state['deliver_to'] is not None:
+            state['deliver_to'] = state['deliver_to'].channel_id
+        return state
+
+    def __setstate__(self, state: Dict[str, Any]):
+        self.__dict__.update(state)
+
+        # Try to load "deliver_to" channel
+        with suppress(NameError):
+            dt = coordinator.get_module_by_id(state['deliver_to'])
+            if isinstance(dt, EFBChannel):
+                self.deliver_to = dt
+
+        # Try to load file from original path
+        if self.path:
+            with suppress(IOError):
+                self.file = open(self.path, 'rb')

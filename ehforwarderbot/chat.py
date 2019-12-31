@@ -47,7 +47,7 @@ class EFBChat:
         channel_emoji (str): Emoji of the channel, if available.
         module_name (str): Name of the module.
         chat_name (str): Name of the chat.
-        chat_alias (str): Alternative name of the chat, usually set by user.
+        chat_alias (Optional[str]): Alternative name of the chat, usually set by user.
         chat_type (:obj:`.ChatType`): Type of the chat.
         chat_uid (str): Unique ID of the chat. This should be unique within the channel.
         is_chat (bool): Indicate if this object represents a chat. Defaulted to ``True``.
@@ -67,7 +67,19 @@ class EFBChat:
     SYSTEM_ID = ChatID("__system__")
 
     def __init__(self, channel: Optional[EFBChannel] = None,
-                 middleware: Optional[EFBMiddleware] = None):
+                 middleware: Optional[EFBMiddleware] = None,
+                 module_name: str = "",
+                 channel_emoji: str = "",
+                 module_id: ModuleID = ModuleID(""),
+                 chat_name: str = "",
+                 chat_alias: Optional[str] = None,
+                 chat_type: ChatType = ChatType.Unknown,
+                 chat_uid: ChatID = ChatID(""),
+                 is_chat: bool = True,
+                 notification: EFBChatNotificationState = EFBChatNotificationState.ALL,
+                 members: 'Sequence[EFBChat]' = None,
+                 group: 'Optional[EFBChat]' = None,
+                 vendor_specific: Dict[str, Any] = None):
         """
         Args:
             channel (Optional[:obj:`.EFBChannel`]):
@@ -77,9 +89,6 @@ class EFBChat:
                 Provide the middleware object to fill :attr:`module_name`,
                 and :attr:`module_id` automatically.
         """
-        self.module_name: str = ""
-        self.channel_emoji: str = ""
-        self.module_id: ModuleID = ModuleID("")
         if isinstance(channel, EFBChannel):
             self.module_name = channel.channel_name
             self.channel_emoji = channel.channel_emoji
@@ -87,16 +96,20 @@ class EFBChat:
         elif isinstance(middleware, EFBMiddleware):
             self.module_id = middleware.middleware_id
             self.module_name = middleware.middleware_name
+        else:
+            self.module_name = module_name
+            self.channel_emoji = channel_emoji
+            self.module_id = module_id
 
-        self.chat_name: str = ""
-        self.chat_type: ChatType = ChatType.Unknown
-        self.chat_alias: Optional[str] = None
-        self.chat_uid: ChatID = ChatID("")
-        self.is_chat: bool = True
-        self.notification: EFBChatNotificationState = EFBChatNotificationState.ALL
-        self.members: Sequence[EFBChat] = []
-        self.group: Optional[EFBChat] = None
-        self.vendor_specific: Dict[str, Any] = dict()
+        self.chat_name: str = chat_name
+        self.chat_type: ChatType = chat_type
+        self.chat_alias: Optional[str] = chat_alias
+        self.chat_uid: ChatID = chat_uid
+        self.is_chat: bool = is_chat
+        self.notification: EFBChatNotificationState = notification
+        self.members: Sequence[EFBChat] = members if members is not None else []
+        self.group: Optional[EFBChat] = group
+        self.vendor_specific: Dict[str, Any] = vendor_specific if vendor_specific is not None else dict()
 
     def self(self: EFBChatSelf) -> EFBChatSelf:
         """
@@ -152,28 +165,6 @@ class EFBChat:
     def is_system(self) -> bool:
         """If this chat is a system chat"""
         return self.chat_type == ChatType.System
-
-    @property
-    def channel_id(self) -> ModuleID:
-        """Alias to module_id. (This property will be deprecated)"""
-        warnings.warn("channel_id will be deprecated. Use module_id instead.", PendingDeprecationWarning)
-        return self.module_id
-
-    @channel_id.setter
-    def channel_id(self, value):
-        warnings.warn("channel_id will be deprecated. Use module_id instead.", PendingDeprecationWarning)
-        self.module_id = value
-
-    @property
-    def channel_name(self) -> str:
-        """Alias to module_name. (This property will be deprecated)"""
-        warnings.warn("channel_name will be deprecated. Use module_name instead.", PendingDeprecationWarning)
-        return self.module_name
-
-    @channel_name.setter
-    def channel_name(self, value):
-        warnings.warn("channel_name will be deprecated. Use module_name instead.", PendingDeprecationWarning)
-        self.module_name = value
 
     def copy(self) -> 'EFBChat':
         return copy.copy(self)
