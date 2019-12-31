@@ -118,7 +118,7 @@ msgstr ""
 
 #: ../../index.rst:88
 msgid "EH Forwarder Bot: An extensible chat tunneling bot framework.\n"
-"Copyright (C) 2016 - 2019 Eana Hufwe, and the EH Forwarder Bot contributors\n"
+"Copyright (C) 2016 - 2020 Eana Hufwe, and the EH Forwarder Bot contributors\n"
 "All rights reserved.\n\n"
 "This program is free software: you can redistribute it and/or modify\n"
 "it under the terms of the GNU Affero General Public License as\n"

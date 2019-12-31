@@ -88,7 +88,7 @@ or later versions.
 .. code-block:: text
 
     EH Forwarder Bot: An extensible chat tunneling bot framework.
-    Copyright (C) 2016 - 2019 Eana Hufwe, and the EH Forwarder Bot contributors
+    Copyright (C) 2016 - 2020 Eana Hufwe, and the EH Forwarder Bot contributors
     All rights reserved.
 
     This program is free software: you can redistribute it and/or modify

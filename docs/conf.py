@@ -59,7 +59,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'EH Forwarder Bot'
-copyright = '2016 — 2019, Eana Hufwe, and the EH Forwarder Bot contributors'
+copyright = '2016 — 2020, Eana Hufwe, and the EH Forwarder Bot contributors'
 author = 'Eana Hufwe, and the EH Forwarder Bot contributors'
 
 # The version info for the project you're documenting, acts as replacement for
