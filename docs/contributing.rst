@@ -74,8 +74,11 @@ that includes:
 
 * **Use a clear and descriptive title** for the issue to identify the suggestion.
 * **Give details on how the enhancement behave**.
-* **Provide specific examples to demonstrate the steps.**
-* **Specify the name and version of the OS you're using.**
+* **Provide specific examples to demonstrate the abstraction**.
+* The enhancement to the framework must be applicable to considerably many
+  IM platforms, not just for a single IM. Suggestions for a specific IM should
+  be made to their relative channel.
+
 
   Adapted from `Atom contribution guide`__ by GitHub Inc.
 

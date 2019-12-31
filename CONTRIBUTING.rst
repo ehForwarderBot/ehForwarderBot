@@ -30,8 +30,8 @@ Reporting bugs
 Before submitting a bug report
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Please ensure if your issue is about the framework itself,
-  not about any channel. Reports about channels should goes
-  to their respective channels.
+  not about any module. Reports about modules should goes
+  to their respective places.
 * Read through the documentation to see if it has covered your question.
 * Check the `current issue list`__ to see if it's been reported.
 
@@ -80,8 +80,10 @@ that includes:
 
 * **Use a clear and descriptive title** for the issue to identify the suggestion.
 * **Give details on how the enhancement behave**.
-* **Provide specific examples to demonstrate the steps.**
-* **Specify the name and version of the OS you're using.**
+* **Provide specific examples to demonstrate the abstraction**.
+* The enhancement to the framework must be applicable to considerably many
+  IM platforms, not just for a single IM. Suggestions for a specific IM should
+  be made to their relative channel.
 
   Adapted from `Atom contribution guide`__ by GitHub Inc.
 
