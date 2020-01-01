@@ -50,8 +50,16 @@ class EFBChat:
         chat_alias (Optional[str]): Alternative name of the chat, usually set by user.
         chat_type (:obj:`.ChatType`): Type of the chat.
         chat_uid (str): Unique ID of the chat. This should be unique within the channel.
+        description (str): A text description of the chat, usually known as “bio”,
+            “description”, “purpose”, or “topic” of the chat.
         is_chat (bool): Indicate if this object represents a chat. Defaulted to ``True``.
             This should be set to ``False`` when used on a group member.
+        has_self (bool): Indicate if this chat has yourself. Defaulted to ``True``.
+
+            This should be set to ``False`` when the user is not a member of a group,
+            or when you cannot send messages to this chat at the moment. It
+            should also be ``False`` when this object represents a group member
+            instead of a chat.
         notification (EFBChatNotificationState): Indicate the notification settings of the chat in
             its slave channel (or middleware), defaulted to ``ALL``.
         group (:obj:`.EFBChat` or None): The parent chat of the member. Only
@@ -79,7 +87,9 @@ class EFBChat:
                  notification: EFBChatNotificationState = EFBChatNotificationState.ALL,
                  members: 'Sequence[EFBChat]' = None,
                  group: 'Optional[EFBChat]' = None,
-                 vendor_specific: Dict[str, Any] = None):
+                 vendor_specific: Dict[str, Any] = None,
+                 description: str = "",
+                 has_self: bool = True):
         """
         Args:
             channel (Optional[:obj:`.EFBChannel`]):
@@ -110,6 +120,8 @@ class EFBChat:
         self.members: Sequence[EFBChat] = members if members is not None else []
         self.group: Optional[EFBChat] = group
         self.vendor_specific: Dict[str, Any] = vendor_specific if vendor_specific is not None else dict()
+        self.description: str = description
+        self.has_self: bool = has_self
 
     def self(self: EFBChatSelf) -> EFBChatSelf:
         """

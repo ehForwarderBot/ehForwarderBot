@@ -261,13 +261,15 @@ class EFBMsgSubstitutions(Dict[Tuple[int, int], EFBChat]):
     EFB message substitutions.
 
     This is for the case when user "@-referred" a list of users in the message.
-    Substitutions here is a dict of correspondence between
-    the string used to refer to the user in the message
-    and a user object.
+    Substitutions here is a dict of correspondence between the index of
+    substring used to refer to a user/chat in the message and the chat object
+    it referred to.
 
-    Dictionary of text substitutions targeting to a user or member.
+    Values of the dictionary shall be either a member of the chat (``self`` or
+    the opponent for private chats, group members for group chats) or another
+    chat of the slave channel.
 
-    The key of the dictionary is a tuple of two :obj:`int`\\ s, where first
+    A key in this dictionary shall be a tuple of two :obj:`int`\\ s, where first
     of it is the starting position in the string, and the second is the
     ending position defined similar to Python's substring. A tuple of
     ``(3, 15)`` corresponds to ``msg.text[3:15]``.
@@ -280,9 +282,6 @@ class EFBMsgSubstitutions(Dict[Tuple[int, int], EFBChat]):
 
     Type:
         Dict[Tuple[int, int], :obj:`.EFBChat`]
-
-    Attributes:
-        is_mentioned (bool): if the user (self) is mentioned in this message.
     """
 
     def __init__(self, substitutions: Dict[Tuple[int, int], EFBChat]):
@@ -290,27 +289,39 @@ class EFBMsgSubstitutions(Dict[Tuple[int, int], EFBChat]):
             raise TypeError("Substitutions must be a dict.")
         super().__init__(substitutions)
         self.verify()
-        self.is_mentioned = any(i.is_self for i in self.values())
+
+    @property
+    def is_mentioned(self) -> bool:
+        """Returns ``True`` if you are mentioned in this message.
+
+        In the case where a chat (private or group) is mentioned in this
+        message instead of a group member, you would also be considered
+        mentioned if you are a member of the chat.
+        """
+        return any(
+            (i.is_self or (i.is_chat and i.has_self))
+            for i in self.values()
+        )
 
     def verify(self):
         for i in self:
             if not isinstance(i, tuple) or not len(i) == 2 or not isinstance(i[0], int) or not isinstance(i[1], int) \
                     or not i[0] < i[1]:
-                raise TypeError("Index of substitution {} must be a tuple of 2 integers where the first one is less"
-                                "than the second one.".format(i))
+                raise TypeError(f"Index of substitution {i} must be a tuple of 2 integers where the first one is less "
+                                "than the second one.")
             if not isinstance(self[i], EFBChat):
-                raise TypeError("Substitution {} is not a chat object.".format(i))
+                raise TypeError(f"Substitution {i} is not a chat object.")
             if self[i].is_chat and \
                     self[i].chat_type == ChatType.Group:
-                raise ValueError("Substitution {} is a group.".format(i))
+                raise ValueError(f"Substitution {i} is a group.")
         ranges = sorted(self.keys())
         if ranges and (ranges[0][0] < 0 or ranges[0][1] < ranges[0][0]):
-            raise ValueError("Index %s is invalid." % ranges[0])
+            raise ValueError(f"Index {ranges[0]} is invalid.")
         for i in range(1, len(ranges)):
             if ranges[i][0] < 0 or ranges[i][1] < ranges[i][0]:
-                raise ValueError("Index %s is invalid." % ranges[i])
+                raise ValueError(f"Index {ranges[i]} is invalid.")
             if ranges[i][0] < ranges[i - 1][1]:
-                raise ValueError("Index %s overlaps with %s." % (ranges[i], ranges[i - 1]))
+                raise ValueError(f"Index {ranges[i]} overlaps with {ranges[i - 1]}.")
         for i in self.values():
             i.verify()
 
@@ -435,20 +446,21 @@ class EFBMsg:
                  uid: Optional[MessageID] = None,
                  vendor_specific: Dict[str, Any] = None,):
         self.attributes: Optional[EFBMsgAttribute] = attributes
-        self.author: EFBChat = author
-        self.chat: EFBChat = chat
+        self.author: EFBChat = author  # type: ignore
+        self.chat: EFBChat = chat  # type: ignore
         self.commands: Optional[EFBMsgCommands] = commands
-        self.deliver_to: EFBChannel = deliver_to
+        self.deliver_to: EFBChannel = deliver_to  # type: ignore
         self.edit: bool = edit
         self.edit_media: bool = edit_media
         self.file: Optional[IO[bytes]] = file
         self.filename: Optional[str] = filename
         self.is_system: bool = is_system
         self.mime: Optional[str] = mime
+        self.path: Optional[Path]
         if isinstance(path, str):
-            self.path: Optional[Path] = Path(path)
+            self.path = Path(path)
         else:
-            self.path: Optional[Path] = path
+            self.path = path
         self.reactions: Reactions = reactions if reactions is not None else dict()
         self.substitutions: Optional[EFBMsgSubstitutions] = substitutions
         self.target: Optional[EFBMsg] = target

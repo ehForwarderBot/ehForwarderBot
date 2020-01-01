@@ -4,12 +4,16 @@ import logging
 import os
 import pydoc
 from pathlib import Path
-from typing import Callable, Optional
+from typing import Callable, Optional, Union, TYPE_CHECKING
 
 import pkg_resources
 
 from . import coordinator
 from .types import ModuleID
+
+if TYPE_CHECKING:
+    from .channel import EFBChannel
+    from .middleware import EFBMiddleware
 
 
 def extra(name: str, desc: str) -> Callable[..., Optional[str]]:
@@ -24,6 +28,15 @@ def extra(name: str, desc: str) -> Callable[..., Optional[str]]:
 
     Returns:
         The decorated method.
+
+
+    Examples:
+
+        .. code:: python
+
+            @extra(name="Echo", desc="Return the text entered.\n\nUsage:\n    {function_name} text")
+            def echo(self, text: str) -> Optional[str]:
+                return text
     """
 
     def attr_dec(f):
