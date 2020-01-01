@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2019-12-15 03:59\n"
+"POT-Creation-Date: 2020-01-01 15:13+0800\n"
+"PO-Revision-Date: 2020-01-01 07:16\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Romanian\n"
 "MIME-Version: 1.0\n"
@@ -23,31 +23,48 @@ msgstr ""
 msgid "Decorator for slave channel's \"additional features\" interface."
 msgstr ""
 
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:0
-msgid "Parameters"
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:7
+msgid "Args:"
 msgstr ""
 
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:3
-msgid "A human readable name for the function."
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:4
+msgid "name (str): A human readable name for the function. desc (str): A short description and usage of it. Use"
 msgstr ""
 
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:5
-msgid "A short description and usage of it. Use ``{function_name}`` in place of the function name in the description."
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:6
+msgid "``{function_name}`` in place of the function name in the description."
 msgstr ""
 
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
-msgid "Returns"
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:11
+msgid "Returns:"
 msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:10
 msgid "The decorated method."
+msgstr ""
+
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:13
+msgid "Examples:"
+msgstr ""
+
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:15
+msgid "@extra(name=\"Echo\", desc=\"Return the text entered."
+msgstr ""
+
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:21
+msgid "Usage:"
+msgstr ""
+
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:21
+msgid "{function_name} text\")"
+msgstr ""
+
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:21
+msgid "def echo(self, text: str) -> Optional[str]:"
+msgstr ""
+
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:22
+msgid "return text"
 msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:1
@@ -63,6 +80,13 @@ msgstr ""
 msgid "This method creates the queried path if not existing."
 msgstr ""
 
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
+msgid "Returns"
+msgstr ""
+
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:9
 msgid "The base path."
 msgstr ""
@@ -73,6 +97,12 @@ msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:4
 msgid "This method creates the queried path if not existing. The config file will not be created, however."
+msgstr ""
+
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:0
+msgid "Parameters"
 msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:7

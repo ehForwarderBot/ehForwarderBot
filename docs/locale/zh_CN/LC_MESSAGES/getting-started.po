@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-24 21:44+0800\n"
-"PO-Revision-Date: 2019-12-15 03:59\n"
+"POT-Creation-Date: 2020-01-01 15:13+0800\n"
+"PO-Revision-Date: 2020-01-01 07:15\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -104,54 +104,74 @@ msgid "Instructions about installing each channel is available at their respecti
 msgstr "有关信道的安装说明，可在各自的文档中获得。"
 
 #: ../../getting-started.rst:85
-msgid "When you have successfully installed a channel, you can enable it by listing its Channel ID in the :doc:`configuration file <config>`. The default path is ``~/.ehforwarderbot/profiles/default/config.yaml``. Please refer to :doc:`directories` if you have configured otherwise."
-msgstr "安装信道后，您可以通过在\\ :doc:`配置文件 <config>`\\ 中添加其信道 ID 来启用它。默认的配置文件路径为 ``~/.ehforwarderbot/profiles/default/config.yaml``。如您需对其它参数进行配置，请参阅\\ :doc:`directories`\\ 。"
+msgid "When you have successfully installed the modules of your choices, you can the use the configuration wizard which guides you to enable channels and middlewares, and continue to setup those modules if they also have provided a similar wizard."
+msgstr ""
 
 #: ../../getting-started.rst:90
+msgid "You can start the wizard by running the following command in a compatible console or terminal emulator::"
+msgstr ""
+
+#: ../../getting-started.rst:93
+msgid "efb-wizard"
+msgstr ""
+
+#: ../../getting-started.rst:95
+msgid "If you want to start the wizard of a module for a profile individually, run::"
+msgstr ""
+
+#: ../../getting-started.rst:97
+msgid "efb-wizard -p <profile name> -m <module ID>"
+msgstr ""
+
+#: ../../getting-started.rst:100
+msgid "Alternatively, you can enable those modules manually it by listing its Channel ID in the :doc:`configuration file <config>`. The default path is ``~/.ehforwarderbot/profiles/default/config.yaml``. Please refer to :doc:`directories` if you have configured otherwise."
+msgstr ""
+
+#: ../../getting-started.rst:105
 msgid "Please note that although you can have more than one slaves channels running at the same time, you can only have exactly one master channels running in one profile. Meanwhile, middlewares are completely optional."
 msgstr "请注意，您可以同时使用多个从端，但每个配置档案内只能有一个主端。同时，中间件是完全凭需选择的。"
 
-#: ../../getting-started.rst:94
+#: ../../getting-started.rst:109
 msgid "Example"
 msgstr "示例"
 
-#: ../../getting-started.rst:97
+#: ../../getting-started.rst:112
 msgid "To enable the following modules:"
 msgstr "若要启用以下组件："
 
-#: ../../getting-started.rst:99
+#: ../../getting-started.rst:114
 msgid "Master channel"
 msgstr "主端"
 
-#: ../../getting-started.rst:100
+#: ../../getting-started.rst:115
 msgid "Demo Master (``foo.demo_master``)"
 msgstr "演示主端 (``foo.demo_master``)"
 
-#: ../../getting-started.rst:102
+#: ../../getting-started.rst:117
 msgid "Slave channels"
 msgstr "从端"
 
-#: ../../getting-started.rst:102
+#: ../../getting-started.rst:117
 msgid "Demo Slave (``foo.demo_slave``)"
 msgstr "演示从端 (``foo.demo_slave``)"
 
-#: ../../getting-started.rst:103
+#: ../../getting-started.rst:118
 msgid "Dummy Slave (``bar.dummy``)"
 msgstr "虚拟从端 (``bar.dummy``)"
 
-#: ../../getting-started.rst:105
+#: ../../getting-started.rst:120
 msgid "Middlewares"
 msgstr "中间件"
 
-#: ../../getting-started.rst:105
+#: ../../getting-started.rst:120
 msgid "Null Middleware (``foo.null``)"
 msgstr "空中间件 (``foo.null``)"
 
-#: ../../getting-started.rst:107
+#: ../../getting-started.rst:122
 msgid "In the ``config.yaml`` it should have the following lines:"
 msgstr "在 ``config.yaml`` 中，应当存在以下内容："
 
-#: ../../getting-started.rst:109
+#: ../../getting-started.rst:124
 msgid "master_channel: foo.demo_master\n"
 "slave_channels:\n"
 "- foo.demo_slave\n"
@@ -165,47 +185,43 @@ msgstr "master_channel: foo.demo_master\n"
 "middlewares:\n"
 "- foo.null"
 
-#: ../../getting-started.rst:121
-msgid "Alternatively, you can also use the :ref:`config:Configuration wizard` which can also help you set up modules installed (if they also come with a wizard)."
-msgstr "此外，您也可以使用\\ :ref:`config:Configuration wizard`\\ 来进行配置。如果您所安装的组件也配备了向导，使用此向导可以同时协助您设置这些组件。"
-
-#: ../../getting-started.rst:125
+#: ../../getting-started.rst:138
 msgid "Launch EFB"
 msgstr "启动 EFB"
 
-#: ../../getting-started.rst:127
+#: ../../getting-started.rst:140
 msgid "ehforwarderbot"
 msgstr "ehforwarderbot"
 
-#: ../../getting-started.rst:131
+#: ../../getting-started.rst:144
 msgid "This will launch EFB directly in the current environment. The default :doc:`profile` is named ``default``, to launch EFB in a different profile, append ``--profile <profile-name>`` to the command."
 msgstr "这会直接在目前的环境下启动 EFB。默认的\\ :doc:`profile`\\ 名称为 ``default``。若要使用不同的配置档案，请在命令后面加上 ``--profile <profile-name>`` 。"
 
-#: ../../getting-started.rst:135
+#: ../../getting-started.rst:148
 msgid "For more command line options, use ``--help`` option."
 msgstr "如需更多命令行选项, 请使用 ``--help`` 指令。"
 
-#: ../../getting-started.rst:138
+#: ../../getting-started.rst:151
 msgid "Use EFB in another language"
 msgstr "在其他语言中使用 EFB"
 
-#: ../../getting-started.rst:140
+#: ../../getting-started.rst:153
 msgid "EFB supports translated user interface and prompts. You can set your system language or locale environmental variables (``LANGUAGE``, ``LC_ALL``, ``LC_MESSAGES`` or ``LANG``) to one of our `supported languages`_ to switch language."
 msgstr "EFMS 支持了界面本地化翻译。您可以将系统语言或本地环境变量（\\ ``LANGUAGE``\\ 、\\ ``LC_ALL``\\ 、\\ ``LC_MESSAGES`` 或 ``LANG``\\ ）设为一种\\ `已支持的语言`_\\ 。"
 
-#: ../../getting-started.rst:145
+#: ../../getting-started.rst:158
 msgid "You can help to translate this project into your languages on `our Crowdin page`_."
 msgstr "您可以在\\ `我们的 Crowdin 页面`_\\ 中帮助我们将 EFB 翻译为您使用的语言。"
 
-#: ../../getting-started.rst:153
+#: ../../getting-started.rst:166
 msgid "If your are installing from source code, you will not get translations of the user interface without manual compile of message catalogs (``.mo``) prior to installation."
 msgstr "如果您使用源代码安装，您需要手动编译翻译字符串文件（``.mo``）才可启用翻译后的界面。"
 
-#: ../../getting-started.rst:158
+#: ../../getting-started.rst:171
 msgid "Launch EFB as a daemon process"
 msgstr "将 EFB 作为守护进程启用"
 
-#: ../../getting-started.rst:160
+#: ../../getting-started.rst:173
 msgid "Since version 2, EH Forwarder Bot has removed the daemon helper as it is unstable to use.  We recommend you to use mature solutions for daemon management, such as systemd_, upstart_, or pm2_."
 msgstr "从 2.0 版本开始，因稳定性原因，守护进程助手已被从 EH Forwarder Bot 中移除。我们建议您通过更为成熟的解决方案来管理守护进程，例如 systemd_，upstart_，或 pm2_。"
 

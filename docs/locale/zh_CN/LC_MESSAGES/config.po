@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2019-12-15 03:59\n"
+"POT-Creation-Date: 2020-01-01 15:13+0800\n"
+"PO-Revision-Date: 2020-01-01 07:15\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -20,8 +20,8 @@ msgid "Configuration File"
 msgstr "配置文件"
 
 #: ../../config.rst:4
-msgid "EFB has an overall configuration file to manage all enabled modules. It is located under the :doc:`directory <directories>` of current profile, and named ``config.yaml``."
-msgstr "EFB 使用全局配置文件来管理所有启用的模块。它位于当前配置档案的\\ :doc:`目录 <directories>`\\ 下的 ``config yaml``\\ 。"
+msgid "EFB has an overall configuration file to manage all enabled modules. It is located under the :doc:`directory <directories>` of current profile, and named :file:`config.yaml`."
+msgstr ""
 
 #: ../../config.rst:9
 msgid "Syntax"
@@ -48,13 +48,12 @@ msgid "Instance ID"
 msgstr "实例 ID"
 
 #: ../../config.rst:27
-msgid "To have multiple accounts running simultaneously, you can appoint an instance ID to a module. Instance ID can be defined by the user, and if defined, it must has nothing other than letters, numbers and underscores, i.e. in regular expressions ``[a-zA-Z0-9_]+``. When instance ID is not defined, the channel will run in the \"default\" instance with no instance ID."
-msgstr "若要同时运行多个帐户，您可以为模块指定一个实例 ID。实例 ID 的值可以自行定义，但必须由字母、数字和下划线构成，正则表达式表示为 ``[a-zA-Z0-9_]+``。当实例 ID 未定义时，该信道将在「默认（\\ ``default``\\ ）」实例中运行，且不具有实例 ID。"
+msgid "To have multiple accounts running simultaneously, you can appoint an instance ID to a module. Instance ID can be defined by the user, and if defined, it must has nothing other than letters, numbers and underscores, i.e. in regular expressions :regex:`[a-zA-Z0-9_]+`. When instance ID is not defined, the channel will run in the \"default\" instance with no instance ID."
+msgstr ""
 
 #: ../../config.rst:33
-msgid "To indicate the instance ID of an instance, append ``#`` following by the instance ID to the module ID. For example, slave channel ``bar.dummy`` running with instance ID ``alice`` should be defined as ``bar.dummy#alice``. If the channel requires configurations, it should be done in the directory with the same name (e.g. ``EFB_DATA_PATH/profiles/PROFILE/bar.dummy#alice``), so as to isolate instances."
-msgstr "若要指定某一实例的实例 ID，需将 ``#`` 和实例 ID 追加到组件 ID 的后面。例如：从端 ``bar.dummy`` 运行 ID 为 ``alice``\n"
-" 的实例时，该实例应定义为 ``bar.dummy#alice``。由于实例之间相互隔离，如果该信道需要进行进一步配置，这些配置应该在同名目录中进行（如： ``EFB_DATA_PATH/profiles/PROFILE/bar.dummy#alice``）。"
+msgid "To indicate the instance ID of an instance, append ``#`` following by the instance ID to the module ID. For example, slave channel ``bar.dummy`` running with instance ID ``alice`` should be defined as ``bar.dummy#alice``. If the channel requires configurations, it should be done in the directory with the same name (e.g. :file:`EFB_DATA_PATH/profiles/{PROFILE}/bar.dummy#alice`), so as to isolate instances."
+msgstr ""
 
 #: ../../config.rst:40
 msgid "Please avoid having two modules with the same set of module ID and instance ID as it may leads to unexpected results."
@@ -151,28 +150,4 @@ msgid "logging:\n"
 "                level: WARN\n"
 "                propagate: false"
 msgstr ""
-
-#: ../../config.rst:110
-msgid "Configuration wizard"
-msgstr "配置向导"
-
-#: ../../config.rst:111
-msgid "Alternatively, you may want to try the interactive setup wizard that guides you to enable channels and middlewares, and continue to setup those modules if they also have provided a similar wizard."
-msgstr "此外，您也可以使用交互式设置向导来启用信道和中间件。若这些组件也提供了向导，您可以继续设置它们。"
-
-#: ../../config.rst:115
-msgid "You can start the wizard by running the following command in a compatible console or terminal emulator::"
-msgstr "你可以通过在兼容的控制台或是终端模拟器中运行下面的指令来启动向导::"
-
-#: ../../config.rst:118
-msgid "efb-wizard"
-msgstr "efb-wizard"
-
-#: ../../config.rst:120
-msgid "If you want to start the wizard of a module for a profile individually, run::"
-msgstr "如果您想要单独启动某个配置档案中某个组件的向导，则运行::"
-
-#: ../../config.rst:122
-msgid "efb-wizard -p <profile name> -m <module ID>"
-msgstr "efb-wizard -p <配置名> -m <组件 ID>"
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2019-12-15 03:59\n"
+"POT-Creation-Date: 2020-01-01 15:13+0800\n"
+"PO-Revision-Date: 2020-01-01 07:16\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -68,7 +68,6 @@ msgid "**Describe the exact steps which reproduce the problem** in as many detai
 msgstr ""
 
 #: ../../contributing.rst:39
-#: ../../contributing.rst:77
 msgid "**Provide specific examples to demonstrate the steps.**"
 msgstr ""
 
@@ -132,39 +131,43 @@ msgstr ""
 msgid "**Give details on how the enhancement behave**."
 msgstr ""
 
-#: ../../contributing.rst:78
-msgid "**Specify the name and version of the OS you're using.**"
+#: ../../contributing.rst:77
+msgid "**Provide specific examples to demonstrate the abstraction**."
 msgstr ""
 
-#: ../../contributing.rst:80
+#: ../../contributing.rst:78
+msgid "The enhancement to the framework must be applicable to considerably many IM platforms, not just for a single IM. Suggestions for a specific IM should be made to their relative channel."
+msgstr ""
+
+#: ../../contributing.rst:83
 msgid "Adapted from `Atom contribution guide`__ by GitHub Inc."
 msgstr ""
 
-#: ../../contributing.rst:85
+#: ../../contributing.rst:88
 msgid "Pull requests"
 msgstr ""
 
-#: ../../contributing.rst:86
+#: ../../contributing.rst:89
 msgid "When you have done some changes and want to submit it to us, fork it to your account and submit a GitHub pull request. Please write a detailed description for your pull request on:"
 msgstr "Apabila anda telah melakukan beberapa perubahan dan ingin menyerahkan kepada kami, garpu ke akaun anda dan menyerahkan Orang yang menarik permintaan. Sila menulis keterangan terperinci untuk anda tarik permintaan pada:"
 
-#: ../../contributing.rst:90
+#: ../../contributing.rst:93
 msgid "**What changes have you made?**"
 msgstr ""
 
-#: ../../contributing.rst:91
+#: ../../contributing.rst:94
 msgid "**What problem have you solved?**"
 msgstr ""
 
-#: ../../contributing.rst:92
+#: ../../contributing.rst:95
 msgid "**Which issue have you addressed** if applicable."
 msgstr ""
 
-#: ../../contributing.rst:94
+#: ../../contributing.rst:97
 msgid "Always write a clear log message for your commits. One-line messages are fine for small changes, but bigger changes needs a detailed description after the one-liner."
 msgstr "Selalu menulis jelas log pesan untuk anda melakukan. Satu-line mesej yang baik untuk perubahan kecil, tapi lebih besar perubahan butuh keterangan terperinci selepas satu-kapal."
 
-#: ../../contributing.rst:98
+#: ../../contributing.rst:101
 msgid "Adapted from `OpenGovernment contribution guide`__ by Participatory Politics Foundation"
 msgstr ""
 

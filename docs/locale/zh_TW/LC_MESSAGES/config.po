@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2019-12-15 03:59\n"
+"POT-Creation-Date: 2020-01-01 15:13+0800\n"
+"PO-Revision-Date: 2020-01-01 07:15\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgid "Configuration File"
 msgstr ""
 
 #: ../../config.rst:4
-msgid "EFB has an overall configuration file to manage all enabled modules. It is located under the :doc:`directory <directories>` of current profile, and named ``config.yaml``."
+msgid "EFB has an overall configuration file to manage all enabled modules. It is located under the :doc:`directory <directories>` of current profile, and named :file:`config.yaml`."
 msgstr ""
 
 #: ../../config.rst:9
@@ -48,11 +48,11 @@ msgid "Instance ID"
 msgstr ""
 
 #: ../../config.rst:27
-msgid "To have multiple accounts running simultaneously, you can appoint an instance ID to a module. Instance ID can be defined by the user, and if defined, it must has nothing other than letters, numbers and underscores, i.e. in regular expressions ``[a-zA-Z0-9_]+``. When instance ID is not defined, the channel will run in the \"default\" instance with no instance ID."
+msgid "To have multiple accounts running simultaneously, you can appoint an instance ID to a module. Instance ID can be defined by the user, and if defined, it must has nothing other than letters, numbers and underscores, i.e. in regular expressions :regex:`[a-zA-Z0-9_]+`. When instance ID is not defined, the channel will run in the \"default\" instance with no instance ID."
 msgstr ""
 
 #: ../../config.rst:33
-msgid "To indicate the instance ID of an instance, append ``#`` following by the instance ID to the module ID. For example, slave channel ``bar.dummy`` running with instance ID ``alice`` should be defined as ``bar.dummy#alice``. If the channel requires configurations, it should be done in the directory with the same name (e.g. ``EFB_DATA_PATH/profiles/PROFILE/bar.dummy#alice``), so as to isolate instances."
+msgid "To indicate the instance ID of an instance, append ``#`` following by the instance ID to the module ID. For example, slave channel ``bar.dummy`` running with instance ID ``alice`` should be defined as ``bar.dummy#alice``. If the channel requires configurations, it should be done in the directory with the same name (e.g. :file:`EFB_DATA_PATH/profiles/{PROFILE}/bar.dummy#alice`), so as to isolate instances."
 msgstr ""
 
 #: ../../config.rst:40
@@ -149,29 +149,5 @@ msgid "logging:\n"
 "                handlers: [default, ]\n"
 "                level: WARN\n"
 "                propagate: false"
-msgstr ""
-
-#: ../../config.rst:110
-msgid "Configuration wizard"
-msgstr ""
-
-#: ../../config.rst:111
-msgid "Alternatively, you may want to try the interactive setup wizard that guides you to enable channels and middlewares, and continue to setup those modules if they also have provided a similar wizard."
-msgstr ""
-
-#: ../../config.rst:115
-msgid "You can start the wizard by running the following command in a compatible console or terminal emulator::"
-msgstr ""
-
-#: ../../config.rst:118
-msgid "efb-wizard"
-msgstr ""
-
-#: ../../config.rst:120
-msgid "If you want to start the wizard of a module for a profile individually, run::"
-msgstr ""
-
-#: ../../config.rst:122
-msgid "efb-wizard -p <profile name> -m <module ID>"
 msgstr ""
 

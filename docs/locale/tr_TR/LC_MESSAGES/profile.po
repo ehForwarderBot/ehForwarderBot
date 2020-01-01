@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2019-12-15 03:59\n"
+"POT-Creation-Date: 2020-01-01 15:13+0800\n"
+"PO-Revision-Date: 2020-01-01 07:16\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -36,8 +36,8 @@ msgid "Start a new profile"
 msgstr "Yeni bir profil başlat"
 
 #: ../../profile.rst:21
-msgid "To create a new profile, you need to create a directory in the :file:`EFB_DATA_PATH/profiles`, and create a new configuration file as described in chapter :doc:`getting-started`."
-msgstr "Yeni bir profil oluşturmak için, buradan yeni bir dizin oluşturmanız gerekmektedir :file:`EFB_DATA_PATH/profiles`, ve bu kısımda betimlendiği gibi yeni bir konfigürasyon dosyası oluşturmalısınız :doc:`getting-started`."
+msgid "To create a new profile, you need to create a directory in the :file:`{EFB_DATA_PATH}/profiles`, and create a new configuration file as described in chapter :doc:`getting-started`."
+msgstr ""
 
 #: ../../profile.rst:26
 msgid "When everything is configured properly, you are good to go."

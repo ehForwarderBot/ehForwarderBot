@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-24 21:44+0800\n"
-"PO-Revision-Date: 2019-12-15 03:59\n"
+"POT-Creation-Date: 2020-01-01 15:13+0800\n"
+"PO-Revision-Date: 2020-01-01 07:16\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -104,54 +104,74 @@ msgid "Instructions about installing each channel is available at their respecti
 msgstr "Petunjuk tentang pemasangan setiap saluran tersedia di dokumentasi mereka masing-masing."
 
 #: ../../getting-started.rst:85
-msgid "When you have successfully installed a channel, you can enable it by listing its Channel ID in the :doc:`configuration file <config>`. The default path is ``~/.ehforwarderbot/profiles/default/config.yaml``. Please refer to :doc:`directories` if you have configured otherwise."
-msgstr "Saat anda telah berhasil memasang saluran, anda bisa mengaktifkannya dengan mencantumkan ID Saluran di :doc:`berkas konfigurasi <config>`. Path bawaannya adalah ``~/.ehforwarderbot/profiles/default/config.yaml``. Silahkan merujuk pada :doc:`direktori` apabila anda sudah dikonfigurasikan sebaliknya."
+msgid "When you have successfully installed the modules of your choices, you can the use the configuration wizard which guides you to enable channels and middlewares, and continue to setup those modules if they also have provided a similar wizard."
+msgstr ""
 
 #: ../../getting-started.rst:90
+msgid "You can start the wizard by running the following command in a compatible console or terminal emulator::"
+msgstr ""
+
+#: ../../getting-started.rst:93
+msgid "efb-wizard"
+msgstr ""
+
+#: ../../getting-started.rst:95
+msgid "If you want to start the wizard of a module for a profile individually, run::"
+msgstr ""
+
+#: ../../getting-started.rst:97
+msgid "efb-wizard -p <profile name> -m <module ID>"
+msgstr ""
+
+#: ../../getting-started.rst:100
+msgid "Alternatively, you can enable those modules manually it by listing its Channel ID in the :doc:`configuration file <config>`. The default path is ``~/.ehforwarderbot/profiles/default/config.yaml``. Please refer to :doc:`directories` if you have configured otherwise."
+msgstr ""
+
+#: ../../getting-started.rst:105
 msgid "Please note that although you can have more than one slaves channels running at the same time, you can only have exactly one master channels running in one profile. Meanwhile, middlewares are completely optional."
 msgstr "Harap dicatat bahwa meskipun anda dapat memiliki lebih dari satu saluran budak yang berjalan pada saat yang sama, anda hanya dapat memiliki satu saluran utama yang berjalan dalam satu profil. Sementara itu, middlewares benar-benar opsional."
 
-#: ../../getting-started.rst:94
+#: ../../getting-started.rst:109
 msgid "Example"
 msgstr "Contoh"
 
-#: ../../getting-started.rst:97
+#: ../../getting-started.rst:112
 msgid "To enable the following modules:"
 msgstr ""
 
-#: ../../getting-started.rst:99
+#: ../../getting-started.rst:114
 msgid "Master channel"
 msgstr "Saluran utama"
 
-#: ../../getting-started.rst:100
+#: ../../getting-started.rst:115
 msgid "Demo Master (``foo.demo_master``)"
 msgstr "Demo Master ('' foo.demo_master'')"
 
-#: ../../getting-started.rst:102
+#: ../../getting-started.rst:117
 msgid "Slave channels"
 msgstr "Saluran Slave"
 
-#: ../../getting-started.rst:102
+#: ../../getting-started.rst:117
 msgid "Demo Slave (``foo.demo_slave``)"
 msgstr "Demo Slave (``foo.demo_slave``)"
 
-#: ../../getting-started.rst:103
+#: ../../getting-started.rst:118
 msgid "Dummy Slave (``bar.dummy``)"
 msgstr "Dummy Slave (``bar.dummy``)"
 
-#: ../../getting-started.rst:105
+#: ../../getting-started.rst:120
 msgid "Middlewares"
 msgstr "Middlewares"
 
-#: ../../getting-started.rst:105
+#: ../../getting-started.rst:120
 msgid "Null Middleware (``foo.null``)"
 msgstr "Null Middleware ('' foo.null'')"
 
-#: ../../getting-started.rst:107
+#: ../../getting-started.rst:122
 msgid "In the ``config.yaml`` it should have the following lines:"
 msgstr "Di '' config.yaml'' seharusnya baris berikut:"
 
-#: ../../getting-started.rst:109
+#: ../../getting-started.rst:124
 msgid "master_channel: foo.demo_master\n"
 "slave_channels:\n"
 "- foo.demo_slave\n"
@@ -160,47 +180,43 @@ msgid "master_channel: foo.demo_master\n"
 "- foo.null"
 msgstr ""
 
-#: ../../getting-started.rst:121
-msgid "Alternatively, you can also use the :ref:`config:Configuration wizard` which can also help you set up modules installed (if they also come with a wizard)."
-msgstr ""
-
-#: ../../getting-started.rst:125
+#: ../../getting-started.rst:138
 msgid "Launch EFB"
 msgstr "Luncurkan EFB"
 
-#: ../../getting-started.rst:127
+#: ../../getting-started.rst:140
 msgid "ehforwarderbot"
 msgstr ""
 
-#: ../../getting-started.rst:131
+#: ../../getting-started.rst:144
 msgid "This will launch EFB directly in the current environment. The default :doc:`profile` is named ``default``, to launch EFB in a different profile, append ``--profile <profile-name>`` to the command."
 msgstr "Ini akan meluncurkan EFB langsung dalam lingkungan saat ini. Default :doc:'profil' yang bernama '' default'', untuk memulai EFB di profil yang berbeda, menambahkan ''--profil <profile-name>'' ke perintah."
 
-#: ../../getting-started.rst:135
+#: ../../getting-started.rst:148
 msgid "For more command line options, use ``--help`` option."
 msgstr "Untuk opsi baris perintah yang lain, menggunakan ''--membantu '' pilihan."
 
-#: ../../getting-started.rst:138
+#: ../../getting-started.rst:151
 msgid "Use EFB in another language"
 msgstr ""
 
-#: ../../getting-started.rst:140
+#: ../../getting-started.rst:153
 msgid "EFB supports translated user interface and prompts. You can set your system language or locale environmental variables (``LANGUAGE``, ``LC_ALL``, ``LC_MESSAGES`` or ``LANG``) to one of our `supported languages`_ to switch language."
 msgstr ""
 
-#: ../../getting-started.rst:145
+#: ../../getting-started.rst:158
 msgid "You can help to translate this project into your languages on `our Crowdin page`_."
 msgstr ""
 
-#: ../../getting-started.rst:153
+#: ../../getting-started.rst:166
 msgid "If your are installing from source code, you will not get translations of the user interface without manual compile of message catalogs (``.mo``) prior to installation."
 msgstr ""
 
-#: ../../getting-started.rst:158
+#: ../../getting-started.rst:171
 msgid "Launch EFB as a daemon process"
 msgstr "Meluncurkan EFB sebagai proses daemon"
 
-#: ../../getting-started.rst:160
+#: ../../getting-started.rst:173
 msgid "Since version 2, EH Forwarder Bot has removed the daemon helper as it is unstable to use.  We recommend you to use mature solutions for daemon management, such as systemd_, upstart_, or pm2_."
 msgstr "Semenjak versi 2, EH Forwarder Bot telah menghapus daemon helper karena tidak stabil penggunaannya. Kami menyarankan anda untuk menggunakan solusi yang baik untuk pengelolaan daemon, seperti systemd_, upstart_, atau pm2_."
 

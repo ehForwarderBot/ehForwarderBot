@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2019-12-15 03:59\n"
+"POT-Creation-Date: 2020-01-01 15:13+0800\n"
+"PO-Revision-Date: 2020-01-01 07:16\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -31,11 +31,15 @@ msgid "Message with an animation, usually in the form of GIF or soundless video.
 msgstr ""
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Audio:1
-msgid "Audio message. Including music and voice message."
+msgid "Audio messages (deprecated)."
+msgstr ""
+
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Audio:3
+msgid ":attr:`.Voice` if the message has a voice message (usually recorded). Use :attr:`.File` if the message has a music file (usually uploaded)."
 msgstr ""
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.File:1
-msgid "Messages sent as a file."
+msgid "File message."
 msgstr ""
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Image:1
@@ -76,5 +80,9 @@ msgstr ""
 
 #: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Video:1
 msgid "Video message"
+msgstr ""
+
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Voice:1
+msgid "Voice messages, usually recorded right before sending."
 msgstr ""
 

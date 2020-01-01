@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2019-12-15 03:59\n"
+"POT-Creation-Date: 2020-01-01 15:13+0800\n"
+"PO-Revision-Date: 2020-01-01 07:15\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -23,32 +23,49 @@ msgstr "工具"
 msgid "Decorator for slave channel's \"additional features\" interface."
 msgstr "用于从端的「附加功能」接口的装饰器（decorator）。"
 
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:0
-msgid "Parameters"
-msgstr "参数"
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:7
+msgid "Args:"
+msgstr ""
 
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:3
-msgid "A human readable name for the function."
-msgstr "面向用户的功能名称。"
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:4
+msgid "name (str): A human readable name for the function. desc (str): A short description and usage of it. Use"
+msgstr ""
 
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:5
-msgid "A short description and usage of it. Use ``{function_name}`` in place of the function name in the description."
-msgstr "简短的描述和用法。在描述中应使用 ``{function_name}`` 代替函数名。"
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:6
+msgid "``{function_name}`` in place of the function name in the description."
+msgstr ""
 
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:0
-#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
-msgid "Returns"
-msgstr "返回值"
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:11
+msgid "Returns:"
+msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:10
 msgid "The decorated method."
 msgstr "被修饰的方法。"
+
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:13
+msgid "Examples:"
+msgstr ""
+
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:15
+msgid "@extra(name=\"Echo\", desc=\"Return the text entered."
+msgstr ""
+
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:21
+msgid "Usage:"
+msgstr ""
+
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:21
+msgid "{function_name} text\")"
+msgstr ""
+
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:21
+msgid "def echo(self, text: str) -> Optional[str]:"
+msgstr ""
+
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:22
+msgid "return text"
+msgstr ""
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:1
 msgid "Get the base data path for EFB. This can be defined by the environment variable ``EFB_DATA_PATH``."
@@ -63,6 +80,13 @@ msgstr "如果未定义 ``EFB_DATA_PATH``，默认路径为 ``~/.ehforwarderbot`
 msgid "This method creates the queried path if not existing."
 msgstr "如果返回的路径不存在，该方法将创建该目录。"
 
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
+msgid "Returns"
+msgstr "返回值"
+
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:9
 msgid "The base path."
 msgstr "数据路径。"
@@ -74,6 +98,12 @@ msgstr "获取配置档案的路径。默认为 ``~/.ehforwarderbot/profiles/pro
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:4
 msgid "This method creates the queried path if not existing. The config file will not be created, however."
 msgstr "如果返回的路径不存在，该方法将创建该目录，但不会创建配置文件。"
+
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:0
+msgid "Parameters"
+msgstr "参数"
 
 #: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:7
 msgid "Module ID."

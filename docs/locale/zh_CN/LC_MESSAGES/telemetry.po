@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2019-12-15 03:59\n"
+"POT-Creation-Date: 2020-01-01 15:13+0800\n"
+"PO-Revision-Date: 2020-01-01 07:15\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -24,8 +24,8 @@ msgid "If you want to enable telemetry / error tracking / log analysis to help u
 msgstr "如果您想要启用遥测/错误跟踪/日志分析来帮助我们更好地改进 EFB，您可以在安装 EFB 时启用 ``telemetry`` 选项。"
 
 #: ../../telemetry.rst:7
-msgid "pip3 install --update ehforwarderbot[telemetry]"
-msgstr "pip3 install --update ehforwarderbot[telemetry]"
+msgid "pip3 install --update 'ehforwarderbot[telemetry]'"
+msgstr ""
 
 #: ../../telemetry.rst:11
 msgid "And then, enable in the config file under the name ``telemetry``. There are 2 options you can choose from."

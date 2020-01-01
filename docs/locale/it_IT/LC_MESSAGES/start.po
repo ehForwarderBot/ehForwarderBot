@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2019-12-15 03:59\n"
+"POT-Creation-Date: 2020-01-01 15:13+0800\n"
+"PO-Revision-Date: 2020-01-01 07:16\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -44,7 +44,7 @@ msgid "``-h``, ``--help``: Show help message"
 msgstr ""
 
 #: ../../start.rst:18
-msgid "``-p PROFILE``, ``--profile PROFILE``: Switch :doc:`profile <profile>`"
+msgid ":samp:`-p {PROFILE}`, :samp:`--profile {PROFILE}`: Switch :doc:`profile <profile>`"
 msgstr ""
 
 #: ../../start.rst:20
