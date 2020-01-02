@@ -1,17 +1,16 @@
 name: Tests
 
-on: push
-#on:
-#  push:
-#    paths:
-#      - 'ehforwarderbot/**.py'
-#      - 'tests/**.py'
-#      - 'setup.py'
-#  pull_request:
-#    paths:
-#      - 'ehforwarderbot/**.py'
-#      - 'tests/**.py'
-#      - 'setup.py'
+on:
+  push:
+    paths:
+      - 'ehforwarderbot/**.py'
+      - 'tests/**.py'
+      - 'setup.py'
+  pull_request:
+    paths:
+      - 'ehforwarderbot/**.py'
+      - 'tests/**.py'
+      - 'setup.py'
 
 jobs:
   tests:
