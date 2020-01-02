@@ -9,6 +9,10 @@ long_description = open('README.rst', encoding="utf-8").read()
 __version__ = ""
 exec(open('ehforwarderbot/__version__.py').read())
 
+
+tests_require = ["pytest", "mypy"]
+
+
 setup(
     name='ehforwarderbot',
     packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
@@ -41,9 +45,10 @@ setup(
         "cjkwrap",
         "typing_extensions"
     ],
-    tests_require=["pytest"],
+    tests_require=tests_require,
     extras_require={
-        'telemetry': ['1a23-telemetry']
+        'telemetry': ['1a23-telemetry'],
+        'tests': tests_require
     },
     entry_points={
         "console_scripts": [
