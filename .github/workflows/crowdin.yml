@@ -41,4 +41,4 @@ jobs:
     - name: Upload translations
       run: |
         cd ehForwarderBot
-        doit crowdin --verbosity=2
+        doit run --verbosity=2 crowdin
