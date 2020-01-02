@@ -13,6 +13,9 @@ EH Forwarder Bot
 .. image:: https://readthedocs.org/projects/ehforwarderbot/badge/?version=latest
    :alt: Documentation
    :target: https://ehforwarderbot.readthedocs.io/en/latest/
+.. image:: https://github.com/blueset/ehforwarderbot/workflows/Tests/badge.svg
+   :alt: Tests status
+   :target: https://github.com/blueset/ehforwarderbot/actions
 .. image:: https://img.shields.io/pypi/v/ehforwarderbot.svg
    :alt: PyPI release
    :target: https://pypi.org/project/ehforwarderbot/
