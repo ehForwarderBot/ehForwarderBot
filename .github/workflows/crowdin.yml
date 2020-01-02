@@ -36,7 +36,7 @@ jobs:
         config=$HOME/.crowdin.yaml
         here=$(pwd)
         echo project_identifier: ehforwarderbot > $config
-        echo api_key: $CROWDIN_API >> $config
+        echo api_key: $CROWDIN_TOKEN >> $config
         echo base_path: $here >> $config
     - name: Upload translations
       run: |
