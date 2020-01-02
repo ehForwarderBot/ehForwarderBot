@@ -30,18 +30,14 @@ jobs:
         find . -mindepth 1 -maxdepth 1 '!' -name parent_dirextory -exec mv '{}' parent_dirextory/ ';'
         mv parent_dirextory ehForwarderBot
     - name: Setup configuration file
-      shell: python
       env:
         CROWDIN_TOKEN: ${{ secrets.CROWDIN_TOKEN }}
       run: |
-        import os
-        from pathlib import Path
-        config_path = Path.home() / '.crowdin.yaml'
-        current_path = Path.cwd()
-        with config_path.open('w') as f:
-          f.write("project_identifier: ehforwarderbot\n")
-          f.write("api_key: {}\n".format(os.environ['CROWDIN_TOKEN']))
-          f.write("base_path: {}".format(current_path))
+        config=$HOME/temp.yaml
+        here=$(pwd)
+        echo project_identifier: ehforwarderbot > $config
+        echo api_key: $CROWDIN_API >> $config
+        echo base_path: $here >> $config
     - name: Upload translations
       run: |
         cd ehForwarderBot
