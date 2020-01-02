@@ -20,8 +20,8 @@ jobs:
       run: |
         wget https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
         sudo dpkg -i crowdin.deb
-        apt-get update
-        apt-get install -y gettext
+        sudo apt-get update
+        sudo apt-get install -y gettext
     - name: Setup directories
       shell: bash
       run: |

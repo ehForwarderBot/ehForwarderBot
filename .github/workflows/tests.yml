@@ -18,7 +18,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install '.[test]'
+        pip install '.[tests]'
     - name: Check with mypy
       run: |
         mypy -p ehforwarderbot
