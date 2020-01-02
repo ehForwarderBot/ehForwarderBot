@@ -1,6 +1,14 @@
 name: Update strings to Crowdin
 
-on: [push]
+on:
+  push:
+    paths:
+      - 'ehforwarderbot/**.py'
+      - 'docs/**.rst'
+  pull_request:
+    paths:
+      - 'ehforwarderbot/**.py'
+      - 'docs/**.rst'
 
 jobs:
   crowdin:

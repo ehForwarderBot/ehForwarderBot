@@ -1,6 +1,11 @@
 name: Testing package
 
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - 'ehforwarderbot/**.py'
+      - 'tests/**.py'
+      - 'setup.py'
 
 jobs:
   tests:
