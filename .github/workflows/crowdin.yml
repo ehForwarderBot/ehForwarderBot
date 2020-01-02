@@ -33,7 +33,7 @@ jobs:
       env:
         CROWDIN_TOKEN: ${{ secrets.CROWDIN_TOKEN }}
       run: |
-        config=$HOME/temp.yaml
+        config=$HOME/.crowdin.yaml
         here=$(pwd)
         echo project_identifier: ehforwarderbot > $config
         echo api_key: $CROWDIN_API >> $config
