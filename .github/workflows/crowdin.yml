@@ -36,12 +36,12 @@ jobs:
       run: |
         import os
         from pathlib import Path
-        config_path: Path = Path.home() / '.crowdin.yaml'
-        current_path: Path = Path.cwd()
+        config_path = Path.home() / '.crowdin.yaml'
+        current_path = Path.cwd()
         with config_path.open('w') as f:
           f.write("project_identifier: ehforwarderbot\n")
-          f.write(f"api_key: {os.environ['CROWDIN_TOKEN']}\n")
-          f.write(f"base_path: {current_path}")
+          f.write("api_key: {}\n".format(os.environ['CROWDIN_TOKEN']))
+          f.write("base_path: {}".format(current_path))
     - name: Upload translations
       run: |
         cd ehForwarderBot

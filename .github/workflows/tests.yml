@@ -24,4 +24,4 @@ jobs:
         mypy -p ehforwarderbot
     - name: Test with pytest
       run: |
-        pytest --verbosity=DEBUG -r a -l --color=true
+        pytest -vv -r a -l --color=true
