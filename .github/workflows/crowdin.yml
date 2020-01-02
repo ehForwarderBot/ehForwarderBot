@@ -1,0 +1,48 @@
+name: Update strings to Crowdin
+
+on: [push]
+
+jobs:
+  crowdin:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install '.[test]'
+        pip install sphinx sphinx-readable-theme sphinxcontrib-restbuilder sphinx-intl pandoc doit
+    - name: Install binary dependencies
+      run: |
+        wget https://artifacts.crowdin.com/repo/deb/crowdin.deb -O crowdin.deb
+        sudo dpkg -i crowdin.deb
+        apt-get update
+        apt-get install -y gettext
+    - name: Setup directories
+      shell: bash
+      run: |
+        mkdir .cache
+        mkdir -p parent_dirextory
+        find . -mindepth 1 -maxdepth 1 '!' -name parent_dirextory -exec mv '{}' parent_dirextory/ ';'
+        mv parent_dirextory ehForwarderBot
+    - name: Setup configuration file
+      shell: python
+      env:
+        CROWDIN_TOKEN: ${{ secrets.CROWDIN_TOKEN }}
+      run: |
+        import os
+        from pathlib import Path
+        config_path: Path = Path.home() / '.crowdin.yaml'
+        current_path: Path = Path.cwd()
+        with config_path.open('w') as f:
+          f.write("project_identifier: ehforwarderbot\n")
+          f.write(f"api_key: {os.environ['CROWDIN_TOKEN']}\n")
+          f.write(f"base_path: {current_path}")
+    - name: Upload translations
+      run: |
+        cd ehForwarderBot
+        doit crowdin --verbosity=2
