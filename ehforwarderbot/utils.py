@@ -4,25 +4,20 @@ import logging
 import os
 import pydoc
 from pathlib import Path
-from typing import Callable, Optional, Union, TYPE_CHECKING
+from typing import Callable, Optional
 
 import pkg_resources
 
 from . import coordinator
 from .types import ModuleID
 
-if TYPE_CHECKING:
-    from .channel import EFBChannel
-    from .middleware import EFBMiddleware
-
 
 def extra(name: str, desc: str) -> Callable[..., Optional[str]]:
-    """
-    Decorator for slave channel's "additional features" interface.
+    """Decorator for slave channel's "additional features" interface.
 
     Args:
-        name (str): A human readable name for the function.
-        desc (str): A short description and usage of it. Use
+        name: A human readable name for the function.
+        desc: A short description and usage of it. Use
             ``{function_name}`` in place of the function name
             in the description.
 
@@ -30,11 +25,11 @@ def extra(name: str, desc: str) -> Callable[..., Optional[str]]:
         The decorated method.
 
 
-    Examples:
+    Example:
 
         .. code:: python
 
-            @extra(name="Echo", desc="Return the text entered.\n\nUsage:\n    {function_name} text")
+            @extra(name="Echo", desc="Return the text entered.\\n\\nUsage:\\n    {function_name} text")
             def echo(self, text: str) -> Optional[str]:
                 return text
     """
