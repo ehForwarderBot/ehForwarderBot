@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 15:13+0800\n"
-"PO-Revision-Date: 2020-01-01 07:15\n"
+"POT-Creation-Date: 2020-01-03 21:47+0800\n"
+"PO-Revision-Date: 2020-01-03 13:49\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -15,116 +15,123 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/index.pot\n"
 "Language: zh_CN\n"
 
-#: ../../index.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:2
 msgid "EH Forwarder Bot"
 msgstr "EH Forwarder Bot"
 
-#: ../../index.rst:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:None
 msgid ".. image:: https://img.shields.io/badge/Python->%3D%203.6-blue.svg\n"
 "   :alt: Python >= 3.6"
 msgstr ".. image:: https://img.shields.io/badge/Python->%3D%203.6-blue.svg\n"
 "   :alt: Python >= 3.6"
 
-#: ../../index.rst:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:None
 msgid ".. image:: https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg\n"
 "   :alt: Gitter"
 msgstr ".. image:: https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg\n"
 "   :alt: Gitter"
 
-#: ../../index.rst:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:None
 msgid ".. image:: https://img.shields.io/badge/-Telegram-blue.svg?logo=data:image/svg%2Bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTkuNzgsMTguNjVMMTAuMDYsMTQuNDJMMTcuNzQsNy41QzE4LjA4LDcuMTkgMTcuNjcsNy4wNCAxNy4yMiw3LjMxTDcuNzQsMTMuM0wzLjY0LDEyQzIuNzYsMTEuNzUgMi43NSwxMS4xNCAzLjg0LDEwLjdMMTkuODEsNC41NEMyMC41NCw0LjIxIDIxLjI0LDQuNzIgMjAuOTYsNS44NEwxOC4yNCwxOC42NUMxOC4wNSwxOS41NiAxNy41LDE5Ljc4IDE2Ljc0LDE5LjM2TDEyLjYsMTYuM0wxMC42MSwxOC4yM0MxMC4zOCwxOC40NiAxMC4xOSwxOC42NSA5Ljc4LDE4LjY1WiIgLz48L3N2Zz4=\n"
 "   :alt: Telegram"
 msgstr ".. image:: https://img.shields.io/badge/-Telegram-blue.svg?logo=data:image/svg%2Bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTkuNzgsMTguNjVMMTAuMDYsMTQuNDJMMTcuNzQsNy41QzE4LjA4LDcuMTkgMTcuNjcsNy4wNCAxNy4yMiw3LjMxTDcuNzQsMTMuM0wzLjY0LDEyQzIuNzYsMTEuNzUgMi43NSwxMS4xNCAzLjg0LDEwLjdMMTkuODEsNC41NEMyMC41NCw0LjIxIDIxLjI0LDQuNzIgMjAuOTYsNS44NEwxOC4yNCwxOC42NUMxOC4wNSwxOS41NiAxNy41LDE5Ljc4IDE2Ljc0LDE5LjM2TDEyLjYsMTYuM0wxMC42MSwxOC4yM0MxMC4zOCwxOC40NiAxMC4xOSwxOC42NSA5Ljc4LDE4LjY1WiIgLz48L3N2Zz4=\n"
 "   :alt: Telegram"
 
-#: ../../index.rst:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:None
 msgid ".. image:: https://readthedocs.org/projects/ehforwarderbot/badge/?version=latest\n"
 "   :alt: Documentation"
 msgstr ".. image:: https://readthedocs.org/projects/ehforwarderbot/badge/?version=latest\n"
 "   :alt: 文档"
 
-#: ../../index.rst:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:None
+msgid ".. image:: https://github.com/blueset/ehforwarderbot/workflows/Tests/badge.svg\n"
+"   :alt: Tests status"
+msgstr ".. image:: https://github.com/blueset/ehforwarderbot/workflows/Tests/badge.svg\n"
+"   :alt: 测试状态"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:None
 msgid ".. image:: https://img.shields.io/pypi/v/ehforwarderbot.svg\n"
 "   :alt: PyPI release"
 msgstr ".. image:: https://img.shields.io/pypi/v/ehforwarderbot.svg\n"
 "   :alt: PyPI release"
 
-#: ../../index.rst:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:None
 msgid ".. image:: https://pepy.tech/badge/ehforwarderbot/month\n"
 "   :alt: Downloads per month"
-msgstr ""
+msgstr ".. image:: https://pepy.tech/badge/ehforwarderbot/month\n"
+"   :alt: 每月下载数量"
 
-#: ../../index.rst:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:None
 msgid ".. image:: https://img.shields.io/codacy/grade/3b2555f9134844e3b01b00700bc43eeb.svg\n"
 "   :alt: Codacy grade"
 msgstr ".. image:: https://img.shields.io/codacy/grade/3b2555f9134844e3b01b00700bc43eeb.svg\n"
 "   :alt: Codacy 等级"
 
-#: ../../index.rst:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:None
 msgid ".. image:: https://d322cqt584bo4o.cloudfront.net/ehforwarderbot/localized.svg\n"
 "   :alt: Translate this project"
 msgstr ".. image:: https://d322cqt584bo4o.cloudfront.net/ehforwarderbot/localized.svg\n"
 "   :alt: 翻译本项目"
 
-#: ../../index.rst:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:None
 msgid ".. image:: https://raw.githubusercontent.com/blueset/ehForwarderBot/master/banner.png\n"
 "   :alt: Banner"
 msgstr ".. image:: https://raw.githubusercontent.com/blueset/ehForwarderBot/master/banner.png\n"
 "   :alt: Banner"
 
-#: ../../index.rst:34
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:37
 msgid "*Codename* **EH Forwarder Bot** (EFB) is an extensible chat tunneling framework allowing users to contact people from multiple chat platforms and remotely control their accounts in one stop."
 msgstr "*开发代号* **EH Forwarder Bot** (EFB) 是一个可扩展的聊天隧道框架，允许用户联系其他聊天平台的用户，并远程控制他们在其他平台上的账户。"
 
-#: ../../index.rst:54
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:57
 msgid "For tips, tricks and community contributed articles, see `project wiki`_."
 msgstr "如需提示、相关技巧及社区文章，请参阅 `项目 Wiki`_。"
 
-#: ../../index.rst:60
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:63
 msgid "Indices and tables"
 msgstr "索引和列表"
 
-#: ../../index.rst:62
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:65
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: ../../index.rst:63
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:66
 msgid ":ref:`modindex`"
 msgstr ":ref:`modindex`"
 
-#: ../../index.rst:64
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:67
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
-#: ../../index.rst:67
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:70
 msgid "Feel like contributing?"
 msgstr "想参与贡献吗？"
 
-#: ../../index.rst:69
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:72
 msgid "Everyone is welcomed to raise an issue or submit a pull request, just remember to read through and follow the :doc:`contribution guideline <./contributing>` before you do so."
 msgstr "我们欢迎任何人提出问题或是提交请求，但请务必先阅读并根据 :doc:`贡献指南 <./contributing>` 的提示来进行操作。"
 
-#: ../../index.rst:74
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:77
 msgid "Related articles"
 msgstr "相关文章"
 
-#: ../../index.rst:76
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:79
 msgid "`Idea: Group Chat Tunneling (Sync) with EH Forwarder Bot`_"
 msgstr "`设想：使用 EH Forwarder Bot 进行群组消息同步`_"
 
-#: ../../index.rst:77
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:80
 msgid "`What’s so new in EH Forwarder Bot 2 (and its modules)`_"
 msgstr "`EH Forwarder Bot 2（及其模块）有什么新功能`_"
 
-#: ../../index.rst:83
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:86
 msgid "License"
 msgstr "许可协议"
 
-#: ../../index.rst:85
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:88
 msgid "EFB framework is licensed under `GNU Affero General Public License 3.0`_ or later versions."
 msgstr "EFB 框架使用 `GNU Affero General Public License 3.0`_ 许可证。"
 
-#: ../../index.rst:88
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:91
 msgid "EH Forwarder Bot: An extensible chat tunneling bot framework.\n"
 "Copyright (C) 2016 - 2020 Eana Hufwe, and the EH Forwarder Bot contributors\n"
 "All rights reserved.\n\n"
@@ -138,9 +145,18 @@ msgid "EH Forwarder Bot: An extensible chat tunneling bot framework.\n"
 "GNU General Public License for more details.\n\n"
 "You should have received a copy of the GNU Affero General Public License\n"
 "along with this program.  If not, see <http://www.gnu.org/licenses/>."
-msgstr ""
+msgstr "EH Forwarder Bot：一个可扩展的会话通道机器人框架\n"
+"Copyright (C) 2016 - 2020 Eana Hufwe 和 EH Forwarder Bot 贡献者\n"
+"保留所有权利。\n\n"
+"此程序是一个自由软件；您可以在遵守由自由软件基金会发布的第三版或更新\n"
+"版本的 GNU Affero 通用公共许可协议的情况下重新分发并和/或修改软件。\n\n"
+"我们本着可为人所用的意愿分发此软件，但并不提供任何保证；甚至没有商业\n"
+"性的或对特定目的适用性的暗指。更多细节请参看 GNU Affero 通用公共许可\n"
+"协议。\n\n"
+"您应该已经随收到一份 GNU Affero 通用公共许可协议；如果没有，请查阅\n"
+"<http://www.gnu.org/licenses/>。"
 
-#: ../../index.rst:108
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:111
 msgid ":doc:`Donate <donate>`."
 msgstr ":doc:`捐赠 <donate>`."
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2020-01-01 07:15\n"
+"POT-Creation-Date: 2020-01-01 21:02+0800\n"
+"PO-Revision-Date: 2020-01-03 13:49\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -15,134 +15,134 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/API/middleware.pot\n"
 "Language: zh_CN\n"
 
-#: ../../API/middleware.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:2
 msgid "EFBMiddleware"
 msgstr "EFBMiddleware"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:1
 msgid "Middleware class."
 msgstr "中间件类。"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:5
 msgid "Unique ID of the middleware. Convention of IDs is specified in :doc:`/guide/packaging`. This ID will be appended with its instance ID when available."
 msgstr "中间件的唯一标识符。ID 的命名规范在\\ :doc:`/guide/packaging`\\ 中有说明。 在适当的时候，这个 ID 将被附加实例 ID。"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
 msgid "type"
 msgstr "类型"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:9
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:15
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:21
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:9
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:15
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:21
 msgid "str"
 msgstr "str"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:13
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:13
 msgid "Human-readable name of the middleware."
 msgstr "人类可以识别的中间件名称。"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:19
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:19
 msgid "The instance ID if available."
 msgstr "实例 ID（若可用）。"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:1
 msgid "Initialize the middleware. Inherited initializer must call the \"super init\" method at the beginning."
 msgstr "初始化中间件。继承初始化方法必须在最初调用父类的初始化方法。"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Parameters"
 msgstr "参数"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:5
 msgid "Instance ID of the middleware."
 msgstr "中间件的实例 ID。"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:1
 msgid "Get a list of additional features"
 msgstr "获取附加功能列表"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Returns"
 msgstr "返回"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:3
 msgid "A dict of methods marked as additional features. Method can be called with ``get_extra_functions()[\"methodName\"]()``."
 msgstr "被标记为附加功能的方法的字典。这些方法可以通过 ``get_extra_functions()[\"methodName\"]()`` 调用。"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Return type"
 msgstr "返回类型"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:1
 msgid "Process a message with middleware"
 msgstr "通过中间件处理一条消息"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:3
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:3
 msgid "Message object to process"
 msgstr "待处理的消息对象"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:6
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:6
 msgid "Processed message or None if discarded."
 msgstr "已处理的消息，如果丢弃消息则为 None。"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:7
 msgid "Optional[:obj:`.EFBMsg`]"
 msgstr "Optional[:obj:`.EFBMsg`]"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:1
 msgid "Process a status update with middleware"
 msgstr "通过中间件处理状态更新"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:6
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:6
 msgid "Processed status or None if discarded."
 msgstr "已处理的消息，如果丢弃则为 None。"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:7
 msgid "Optional[:obj:`.EFBStatus`]"
 msgstr "Optional[:obj:`.EFBStatus`]"
 
-#: ../../API/middleware.rst:8
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:8
 msgid "About Middleware ID"
 msgstr "关于中间件 ID"
 
-#: ../../API/middleware.rst:10
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:10
 msgid "With the introduction of instance IDs, it is required to use the ``self.middleware_id`` or equivalent instead of any hard-coded ID or constants while referring to the middleware ID (e.g. while retrieving the path to the configuration files, etc)."
 msgstr "随着实例 ID 的引入，在程序代码中需要使用中间件 ID 时，如检索配置文件的路径等情况时，需动态调用 ``self.middleware_id`` 或其他等效变量，避免任何硬编码或常量 ID。"
 
-#: ../../API/middleware.rst:16
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:16
 msgid "Accept commands from user through Master Channel"
 msgstr "通过主端接收用户命令"
 
-#: ../../API/middleware.rst:18
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:18
 msgid "Despite we do not limit how users can perform actions to your middleware, there are 2 common ways to do it through a master channel."
 msgstr "尽管我们没有限制用户对中间件的操作方法，但我们提供两种使用主端的常用方式。"
 
-#: ../../API/middleware.rst:23
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:23
 msgid "Capture messages"
 msgstr "捕捉消息"
 
-#: ../../API/middleware.rst:24
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:24
 msgid "If the action is chat-specific, you might want to catch messages that match specific pattern. Try to make the pattern easy to type but unique enough so that you don't accidentally catch messages that were meant to sent to the chat."
 msgstr "对于面向特定会话的操作，您可以捕获匹配特定规则的消息。请确保规则的唯一性来保证您不会意外地捕获到本应发送至会话的消息。"
 
-#: ../../API/middleware.rst:29
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:29
 msgid "You may also construct a virtual sender of type \"System\" to give response to the user."
 msgstr "您也可以构造一个虚拟的「系统」类型发送方来回应用户。"
 
-#: ../../API/middleware.rst:33
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:33
 msgid "\"Additional features\""
 msgstr "「附加功能」"
 
-#: ../../API/middleware.rst:34
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:34
 msgid "If the action is not specific to any chat, but to the system as a whole, we have provided the same command line-like interface as in slave channels to middlewares as well. Details are available at :ref:`slave-additional-features`."
 msgstr "如果该操作并非针对某会话，而是应用于系统整体，和从端一样，我们为中间件提供了类命令行的接口。详细内容请参考\\ :ref:`slave-additional-features`。"
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2020-01-01 07:16\n"
+"POT-Creation-Date: 2020-01-01 21:02+0800\n"
+"PO-Revision-Date: 2020-01-03 13:51\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -15,134 +15,134 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/API/middleware.pot\n"
 "Language: tr_TR\n"
 
-#: ../../API/middleware.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:2
 msgid "EFBMiddleware"
 msgstr "EFBMiddleware"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:1
 msgid "Middleware class."
 msgstr "Aracı yazılım sınıfı."
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:5
 msgid "Unique ID of the middleware. Convention of IDs is specified in :doc:`/guide/packaging`. This ID will be appended with its instance ID when available."
 msgstr ""
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
 msgid "type"
 msgstr ""
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:9
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:15
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:21
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:9
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:15
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:21
 msgid "str"
 msgstr ""
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:13
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:13
 msgid "Human-readable name of the middleware."
 msgstr ""
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:19
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:19
 msgid "The instance ID if available."
 msgstr ""
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:1
 msgid "Initialize the middleware. Inherited initializer must call the \"super init\" method at the beginning."
 msgstr "Ara yazılımını başlat. Devralınan başlatıcı başlangıçta \"süper init\" yöntemini çağırmalıdır."
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Parameters"
 msgstr "Parametreler"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:5
 msgid "Instance ID of the middleware."
 msgstr ""
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:1
 msgid "Get a list of additional features"
 msgstr ""
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Returns"
 msgstr "Dönüşler"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:3
 msgid "A dict of methods marked as additional features. Method can be called with ``get_extra_functions()[\"methodName\"]()``."
 msgstr ""
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
 msgid "Return type"
 msgstr "Dönüş türü"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:1
 msgid "Process a message with middleware"
 msgstr "Özel yazılım ile mesaj işle"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:3
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:3
 msgid "Message object to process"
 msgstr "İşlenecek mesaj nesnesi"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:6
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:6
 msgid "Processed message or None if discarded."
 msgstr "İşlenmiş mesaj veya atıldıysa Hiçbiri."
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:7
 msgid "Optional[:obj:`.EFBMsg`]"
 msgstr "Optional[:obj:`.EFBMsg`]"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:1
 msgid "Process a status update with middleware"
 msgstr "Özel yazılım ile durum güncellemesi işle"
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:6
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:6
 msgid "Processed status or None if discarded."
 msgstr "İşlenmiş durum veya atıldıysa Hiçbiri."
 
-#: ../../../ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:7
 msgid "Optional[:obj:`.EFBStatus`]"
 msgstr "Optional[:obj:`.EFBStatus`]"
 
-#: ../../API/middleware.rst:8
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:8
 msgid "About Middleware ID"
 msgstr "Middleware Kimliği Hakkında"
 
-#: ../../API/middleware.rst:10
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:10
 msgid "With the introduction of instance IDs, it is required to use the ``self.middleware_id`` or equivalent instead of any hard-coded ID or constants while referring to the middleware ID (e.g. while retrieving the path to the configuration files, etc)."
 msgstr ""
 
-#: ../../API/middleware.rst:16
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:16
 msgid "Accept commands from user through Master Channel"
 msgstr ""
 
-#: ../../API/middleware.rst:18
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:18
 msgid "Despite we do not limit how users can perform actions to your middleware, there are 2 common ways to do it through a master channel."
 msgstr ""
 
-#: ../../API/middleware.rst:23
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:23
 msgid "Capture messages"
 msgstr ""
 
-#: ../../API/middleware.rst:24
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:24
 msgid "If the action is chat-specific, you might want to catch messages that match specific pattern. Try to make the pattern easy to type but unique enough so that you don't accidentally catch messages that were meant to sent to the chat."
 msgstr ""
 
-#: ../../API/middleware.rst:29
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:29
 msgid "You may also construct a virtual sender of type \"System\" to give response to the user."
 msgstr ""
 
-#: ../../API/middleware.rst:33
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:33
 msgid "\"Additional features\""
 msgstr ""
 
-#: ../../API/middleware.rst:34
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:34
 msgid "If the action is not specific to any chat, but to the system as a whole, we have provided the same command line-like interface as in slave channels to middlewares as well. Details are available at :ref:`slave-additional-features`."
 msgstr ""
 

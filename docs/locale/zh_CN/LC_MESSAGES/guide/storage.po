@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2020-01-01 07:15\n"
+"POT-Creation-Date: 2020-01-01 21:02+0800\n"
+"PO-Revision-Date: 2020-01-03 13:49\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -15,71 +15,71 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/storage.pot\n"
 "Language: zh_CN\n"
 
-#: ../../guide/storage.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:2
 msgid "Configurations and storage"
 msgstr "配置与存储"
 
-#: ../../guide/storage.rst:5
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:5
 msgid "Configurations and Permanent Storage"
 msgstr "配置和永久性存储"
 
-#: ../../guide/storage.rst:7
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:7
 msgid "As described in :doc:`/directories`, each module has been allocated with a folder per profile for configurations and other storage. The path can be obtained using :meth:`~.ehforwarderbot.utils.get_data_path` with your module ID. All such storage is specific to only one profile."
 msgstr "正如\\ :doc:`/directories`\\ 中所描述的，在任一配置中，每个组件示例都分配了其专属的存储文件夹。该路径可以通过 :meth:`~.ehforwarderbot.utils.get_data_path` 通过组件 ID 获取。每一个存储文件夹都只对应一个配置档案。"
 
-#: ../../guide/storage.rst:14
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:14
 msgid "For configurations, we recommend to use ``<module_data_path>/config.yaml``. Similarly, we prepared :meth:`~.ehforwarderbot.utils.get_config_path` to get the path for default config file. Again, you are not forced to use this name or YAML as the format of your config file."
 msgstr "我们建议配置文件使用 ``<module_data_path>/config.yaml``\\ 。同样，我们也准备了 :meth:`~.ehforwarderbot.utils.get_config_path` 来获取默认配置文件的路径。但我们没有强制要求使用此文件名称或使用 YAML 作为配置文件的格式。"
 
-#: ../../guide/storage.rst:20
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:20
 msgid "Usually in the storage folder lives:"
 msgstr "通常，存储文件夹内存放着："
 
-#: ../../guide/storage.rst:22
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:22
 msgid "Configuration files"
 msgstr "配置文件"
 
-#: ../../guide/storage.rst:23
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:23
 msgid "User credentials / Session storage"
 msgstr "用户凭据/会话存储"
 
-#: ../../guide/storage.rst:24
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:24
 msgid "Databases"
 msgstr "数据库"
 
-#: ../../guide/storage.rst:27
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:27
 msgid "Temporary Storage"
 msgstr "临时存储"
 
-#: ../../guide/storage.rst:29
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:29
 msgid "While processing multimedia messages, we inevitably need to store certain files temporarily, either within the channel or across channels. Usually, temporary files can be handled with Python's ``tempfile`` library."
 msgstr "在处理多媒体消息时，无论是在信道内还是在信道之间，不可避免地需要临时存储一些文件。通常，临时文件可以用 Python 的 ``tempfile`` 库来处理。"
 
-#: ../../guide/storage.rst:35
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:35
 msgid "Wizard"
 msgstr "向导"
 
-#: ../../guide/storage.rst:37
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:37
 msgid "If your module requires relatively complicated configuration, it would be helpful to provide users with a wizard to *prerequisite of your module* and *guide them to setup your module for use*."
 msgstr "如果您的组件需要相对复杂的配置，最好向用户提供一个向导，让他们知晓\\ *你的组件的必备条件*\\ ，并且\\ *指导他们设置您的组件*\\ 。"
 
-#: ../../guide/storage.rst:41
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:41
 msgid "From version 2.0.0b12, EFB introduced a centralised wizard program to allow users to enable or disable modules in a text-based user interface (TUI). If you want to include your wizard program as a part of the wizard, you can include a new entry point in your ``setup.py`` with `Setuptools' Entry Point feature`__."
 msgstr "从版本 2.0.0b12 T开始，EFB 引入了一个中心向导程序，让用户在基于文本的用户界面 (TUI) 中启用或禁用组件。如果您想把您的向导程序作为中心向导的一部分，可以使用 `Setuptools 的接入点（entry point）功能`__\\ 在您的 ``setup.py`` 中添加一个新的接入点。"
 
-#: ../../guide/storage.rst:49
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:49
 msgid "The group for wizard program is ``ehforwarderbot.wizard``, and the entry point function must accept 2 positional arguments: profile ID and instance ID."
 msgstr "向导程序的组名为 ``ehforwarderbot.wizard``，入口函数需接受两个位置参数：配置档案 ID 和 实例 ID。"
 
-#: ../../guide/storage.rst:54
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:54
 msgid "Example"
 msgstr "示例"
 
-#: ../../guide/storage.rst:56
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:56
 msgid "``setup.py`` script"
 msgstr "``setup.py`` 脚本"
 
-#: ../../guide/storage.rst:58
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:58
 msgid "setup(\n"
 "    # ...\n"
 "    entry_points={\n"
@@ -95,21 +95,21 @@ msgstr "setup(\n"
 "    # ...\n"
 ")"
 
-#: ../../guide/storage.rst:68
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:68
 msgid "``.egg-info/entry_points.txt``"
 msgstr "`.egg-info/entry_points.txt``"
 
-#: ../../guide/storage.rst:70
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:70
 msgid "[ehforwarderbot.wizard]\n"
 "alice.irc = efb_irc_slave.wizard:main"
 msgstr "[ehforwarderbot.wizard]\n"
 "alice.irc = efb_irc_slave.wizard:main"
 
-#: ../../guide/storage.rst:75
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:75
 msgid "``efb_irc_slave/wizard.py``"
 msgstr "``efb_irc_slave/wizard.py``"
 
-#: ../../guide/storage.rst:77
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:77
 msgid "# ...\n\n"
 "def main(profile, instance):\n"
 "    print(\"Welcome to the setup wizard of my channel.\")\n"

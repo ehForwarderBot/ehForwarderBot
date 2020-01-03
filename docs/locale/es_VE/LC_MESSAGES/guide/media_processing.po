@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2020-01-01 07:16\n"
+"POT-Creation-Date: 2020-01-01 21:02+0800\n"
+"PO-Revision-Date: 2020-01-03 13:50\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -15,55 +15,55 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/media_processing.pot\n"
 "Language: es_VE\n"
 
-#: ../../guide/media_processing.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:2
 msgid "Media processing"
 msgstr "Procesamiento multimedia"
 
-#: ../../guide/media_processing.rst:5
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:5
 msgid "Choosing media formats"
 msgstr "Eligiendo formatos multimedia"
 
-#: ../../guide/media_processing.rst:7
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:7
 msgid "Both Master and Slave channel can take their charges to convert media files they send or receive. In general: **if a media file received from remote server is not a common format, convert it before deliver it on; if a media file sent to remote server requires to be in a specific format, it should be converted before sending out**. Nevertheless, this is only a guideline on channels' responsibility regarding media processing, and everyone has their own opinion on what is a common format / encoding. Therefore we only recommend this behaviour, but do not force in our code. This is to say that, you still have to take care of the accepted type of media encoding of your corresponding method of presentation, and convert and/or fallback to different type of representation if necessary. After all, the delivery of information is more important."
 msgstr "Los canales maestros y esclavos pueden tomar turnos para convertir los archivos multimedia que envían y reciben. En general: ** Si un archivo proveniente de un servidor remoto no tiene un formato común conviértelo antes de enviarlo; Si un archivo multimedia enviado a un servidor remoto requiere un formato específico, debería ser convertido antes de enviar. Sin embargo, esto son solo lineamientos generales. Sobre las responsabilidades del canal respecto a el procesamiento multimedia todos tienen su propia opinión de cual es el formato/codificación común. Por lo tanto solo recomendamos este comportamiento, pero no lo forzamos en el código. Todo lo anterior es para decir que es necesario encargarte del tipo de codificación multimedia aceptado en el correspondiente método de presentación además de convertirlo a un tipo de presentación nuevo o devolverlo al tipo de presentación anterior de ser necesario. Después de todo la entrega de información es lo más importante."
 
-#: ../../guide/media_processing.rst:25
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:25
 msgid "Media encoders"
 msgstr "Codificadores de los datos multimedia"
 
-#: ../../guide/media_processing.rst:27
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:27
 msgid "Similarly, we will also not put a strict limit on this as well, but just a recommendation. As you might have already know, there are few mature pure Python media processing libraries, most of them will more or less requires internal or external binary dependencies."
 msgstr "De manera similar, nosotros tampoco colocamos un límite estricto en este aspecto, solo una recomendación. Como ya posiblemente sabías existen algunas librerias de procesamiento multimedia muy maduras en Python, la mayoría de ellas requerirán mayor o menor cantidad de dependencias externas."
 
-#: ../../guide/media_processing.rst:33
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:33
 msgid "We try to aim to use as few different libraries as we can, as more library to install means more space, install time, and complexity. While processing media files, we recommend to use the following libraries if possible:"
 msgstr "Tratamos de apuntar al uso de la menor cantidad de librerías posibles, dado que una mayor cantidad significa mayor espacio, tiempo de instalación, y complejidad. Al procesar los archivos multimedia, recomendamos el uso de las siguientes librerias de ser posible:"
 
-#: ../../guide/media_processing.rst:39
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:39
 msgid "pillow"
 msgstr "pillow"
 
-#: ../../guide/media_processing.rst:40
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:40
 msgid "ffmpeg"
 msgstr "ffmpeg"
 
-#: ../../guide/media_processing.rst:43
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:43
 msgid "Files in messages"
 msgstr "Archivos en mensajes"
 
-#: ../../guide/media_processing.rst:45
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:45
 msgid "When a file sent out from a channel, it should be open, sought back to 0 ( ``file.seek(0)`` ) before sending."
 msgstr "Cuando un archivo es enviado desde un canal, debe ser abierto y devuelto 0 ( ``file.seek(0)`` ) antes de enviar."
 
-#: ../../guide/media_processing.rst:48
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:48
 msgid "Files sent should be able to be located somewhere in the file system, better with a appropriate extension name, but not required. All files should also have its MIME type specified in the message object. If the channel is not sure about the correct MIME type, it can try to guess with ``libmagic``, or fallback to ``application/octet-stream``. Always try the best to provide the most suitable MIME type when sending."
 msgstr "Los archivos enviados deben poder ser localizados en algún lugar del archivo de sistema., mucho mejor con un nombre de extensión adecuado, aunque no es requerido. Todos los archivos deben tener su tipo de MIME especificado en el objeto mensaje correspondiente. Si el canal no esta seguro acerca del tipo de MIME correcto, el puede tratar de suponerlo con `libmagic``, o como segunda opción ``application/octet-stream``. Siempre trata de utilizar el tipo MIME más adecuado al enviar el mensaje."
 
-#: ../../guide/media_processing.rst:57
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:57
 msgid "For such files, we use ``close`` to signify the end of its lifecycle. If the file is not required by the sender's channel anymore, it can be safely discarded."
 msgstr "Para esos archivos, utilizamos ``close`` para señalar el final del ciclo de vida. Si el archivo ya no es requerido por el canal de envío, puede ser descartado de manera segura."
 
-#: ../../guide/media_processing.rst:61
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:61
 msgid "Generally, ``tempfile.NamedTemporaryFile`` should work for ordinary cases."
 msgstr "Generalmente, ``tempfile.NamedTemporaryFile`` debería funcionar para los casos convencionales."
 

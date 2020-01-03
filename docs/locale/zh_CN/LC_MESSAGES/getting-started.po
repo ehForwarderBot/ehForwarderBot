@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 15:13+0800\n"
-"PO-Revision-Date: 2020-01-01 07:15\n"
+"POT-Creation-Date: 2020-01-01 21:02+0800\n"
+"PO-Revision-Date: 2020-01-03 13:49\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -15,163 +15,163 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/getting-started.pot\n"
 "Language: zh_CN\n"
 
-#: ../../getting-started.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:2
 msgid "Getting started"
 msgstr "入门指南"
 
-#: ../../getting-started.rst:4
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:4
 msgid "A few simple steps to get started with EFB."
 msgstr "从一些简单的步骤来开始使用 EFB。"
 
-#: ../../getting-started.rst:7
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:7
 msgid "Install EH Forwarder Bot"
 msgstr "安装 EH Forwarder Bot"
 
-#: ../../getting-started.rst:9
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:9
 msgid "EH Forwarder Bot can be installed in the following ways:"
 msgstr "可以使用以下几种方法来安装 EH Forwarder Bot："
 
-#: ../../getting-started.rst:13
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:13
 msgid "The following instructions may not work properly until a stable release is uploaded. As you are in the beta version documentation, I assume you know what to do."
 msgstr "在稳定版本发布前，以下选项有可能无法正常工作。因您在阅读 beta 程序文档，您应已明白该如何对待该如何处理。"
 
-#: ../../getting-started.rst:19
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:19
 msgid "Install from PyPI"
 msgstr "从 PyPI 安装"
 
-#: ../../getting-started.rst:21
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:21
 msgid "``pip`` will by default install the latest stable version from PyPI, but development versions are available at PyPI as well."
 msgstr "默认情况下 ``pip`` 会被安装为 PyPI 中最新的稳定版，但您也可以选择安装 PyPI 中的开发版。"
 
-#: ../../getting-started.rst:25
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:25
 msgid "pip3 install ehforwarderbot"
 msgstr "pip3 install ehforwarderbot"
 
-#: ../../getting-started.rst:31
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:31
 msgid "Install from GitHub"
 msgstr "从 GitHub 安装"
 
-#: ../../getting-started.rst:33
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:33
 msgid "This will install the latest commit from GitHub. It might not be stable, so proceed with caution."
 msgstr "这将会安装 GitHub 上最新提交的代码版本。请注意，我们无法保证它的稳定性，请小心使用。"
 
-#: ../../getting-started.rst:36
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:36
 msgid "pip3 install git+https://github.com/blueset/ehforwarderbot.git"
 msgstr "pip3 install git+https://github.com/blueset/ehforwarderbot.git"
 
-#: ../../getting-started.rst:42
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:42
 msgid "Alternative installation methods"
 msgstr "其他安装方式"
 
-#: ../../getting-started.rst:44
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:44
 msgid "You can find a list of alternative installation methods contributed by the community in the `project wiki`_."
 msgstr "您可以在\\ `项目 wiki`_ 中找到由社区贡献的其他安装方法列表。"
 
-#: ../../getting-started.rst:47
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:47
 msgid "For scripts, containers (e.g. Docker), etc. that may include one or more external modules, please visit the `modules repository`_."
 msgstr "有关安装外部组件的脚本、容器（例如 Docker）等，请参阅\\ `组件列表`_。"
 
-#: ../../getting-started.rst:52
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:52
 msgid "These alternative installation methods are maintained by the community, please consult their respective author or maintainer for help related to those methods."
 msgstr "这些替代安装方法由社区维护，如需帮助，请联系相关作者或维护者。"
 
-#: ../../getting-started.rst:60
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:60
 msgid "A stable internet connection"
 msgstr "稳定的网络连接"
 
-#: ../../getting-started.rst:62
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:62
 msgid "Since the majority of our channels are using polling for message retrieval, a stable internet connection is necessary for channels to run smoothly. An unstable connection may lead to slow response, or loss of messages."
 msgstr "由于大多数信道都需要使用轮询来获取消息，我们需要一个稳定的网络连接来保证信道稳定运行。不稳定的网络连接可能会导致回应缓慢或消息丢失。"
 
-#: ../../getting-started.rst:68
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:68
 msgid "Create local directories"
 msgstr "创建本地文件夹"
 
-#: ../../getting-started.rst:70
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:70
 msgid "EFB uses a \\*nix user configuration style, which is described in details in :doc:`directories`. In short, if you are using the default configuration, you need to create ``~/.ehforwarderbot``, and give read and write permission to the user running EFB."
 msgstr "EFB 使用类 *nix 用户配置样式，详情请参见 :doc:`directories`\\ 。 简而言之，如果您使用默认配置，您需要创建 ``~/.ehforwarderbot`` 目录，并向运行 EFB 的用户提供读写权限。"
 
-#: ../../getting-started.rst:76
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:76
 msgid "Choose, install and enable modules"
 msgstr "选择、安装和启用模块"
 
-#: ../../getting-started.rst:78
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:78
 msgid "Currently, all modules that was submitted to us are recorded in the `modules repository`_. You can choose the channels that fits your need the best."
 msgstr "现在，所有我们已知组件都记载于\\ `组件列表 `_\\ 中。您可以自由选择您所需要的组件。"
 
-#: ../../getting-started.rst:82
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:82
 msgid "Instructions about installing each channel is available at their respective documentations."
 msgstr "有关信道的安装说明，可在各自的文档中获得。"
 
-#: ../../getting-started.rst:85
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:85
 msgid "When you have successfully installed the modules of your choices, you can the use the configuration wizard which guides you to enable channels and middlewares, and continue to setup those modules if they also have provided a similar wizard."
-msgstr ""
+msgstr "在成功安装您所选择的组件之后，您可以使用配置向导来协助您启用这些信道和中间件。如果这些组件也提供了类似的向导，主配置向导也会协助您配置这些组件。"
 
-#: ../../getting-started.rst:90
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:90
 msgid "You can start the wizard by running the following command in a compatible console or terminal emulator::"
-msgstr ""
+msgstr "你可以通过在兼容的控制台或是终端模拟器中运行下面的指令来启动向导::"
 
-#: ../../getting-started.rst:93
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:93
 msgid "efb-wizard"
-msgstr ""
+msgstr "efb-wizard"
 
-#: ../../getting-started.rst:95
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:95
 msgid "If you want to start the wizard of a module for a profile individually, run::"
-msgstr ""
+msgstr "如果您想要单独启动某个配置档案中某个组件的向导，则运行::"
 
-#: ../../getting-started.rst:97
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:97
 msgid "efb-wizard -p <profile name> -m <module ID>"
-msgstr ""
+msgstr "efb-wizard -p <配置名> -m <组件 ID>"
 
-#: ../../getting-started.rst:100
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:100
 msgid "Alternatively, you can enable those modules manually it by listing its Channel ID in the :doc:`configuration file <config>`. The default path is ``~/.ehforwarderbot/profiles/default/config.yaml``. Please refer to :doc:`directories` if you have configured otherwise."
-msgstr ""
+msgstr "此外，您还可以通过在\\ :doc:`配置文件 <config>`\\ 中添加其信道 ID 来启用它。默认的配置文件路径为 \\ ``~/.ehforwarderbot/profiles/default/config.yaml``。如果您对工作目录进行了另行配置，请参阅\\ :doc:`directories`\\ 。"
 
-#: ../../getting-started.rst:105
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:105
 msgid "Please note that although you can have more than one slaves channels running at the same time, you can only have exactly one master channels running in one profile. Meanwhile, middlewares are completely optional."
 msgstr "请注意，您可以同时使用多个从端，但每个配置档案内只能有一个主端。同时，中间件是完全凭需选择的。"
 
-#: ../../getting-started.rst:109
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:109
 msgid "Example"
 msgstr "示例"
 
-#: ../../getting-started.rst:112
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:112
 msgid "To enable the following modules:"
 msgstr "若要启用以下组件："
 
-#: ../../getting-started.rst:114
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:114
 msgid "Master channel"
 msgstr "主端"
 
-#: ../../getting-started.rst:115
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:115
 msgid "Demo Master (``foo.demo_master``)"
 msgstr "演示主端 (``foo.demo_master``)"
 
-#: ../../getting-started.rst:117
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:117
 msgid "Slave channels"
 msgstr "从端"
 
-#: ../../getting-started.rst:117
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:117
 msgid "Demo Slave (``foo.demo_slave``)"
 msgstr "演示从端 (``foo.demo_slave``)"
 
-#: ../../getting-started.rst:118
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:118
 msgid "Dummy Slave (``bar.dummy``)"
 msgstr "虚拟从端 (``bar.dummy``)"
 
-#: ../../getting-started.rst:120
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:120
 msgid "Middlewares"
 msgstr "中间件"
 
-#: ../../getting-started.rst:120
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:120
 msgid "Null Middleware (``foo.null``)"
 msgstr "空中间件 (``foo.null``)"
 
-#: ../../getting-started.rst:122
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:122
 msgid "In the ``config.yaml`` it should have the following lines:"
 msgstr "在 ``config.yaml`` 中，应当存在以下内容："
 
-#: ../../getting-started.rst:124
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:124
 msgid "master_channel: foo.demo_master\n"
 "slave_channels:\n"
 "- foo.demo_slave\n"
@@ -185,43 +185,43 @@ msgstr "master_channel: foo.demo_master\n"
 "middlewares:\n"
 "- foo.null"
 
-#: ../../getting-started.rst:138
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:138
 msgid "Launch EFB"
 msgstr "启动 EFB"
 
-#: ../../getting-started.rst:140
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:140
 msgid "ehforwarderbot"
 msgstr "ehforwarderbot"
 
-#: ../../getting-started.rst:144
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:144
 msgid "This will launch EFB directly in the current environment. The default :doc:`profile` is named ``default``, to launch EFB in a different profile, append ``--profile <profile-name>`` to the command."
 msgstr "这会直接在目前的环境下启动 EFB。默认的\\ :doc:`profile`\\ 名称为 ``default``。若要使用不同的配置档案，请在命令后面加上 ``--profile <profile-name>`` 。"
 
-#: ../../getting-started.rst:148
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:148
 msgid "For more command line options, use ``--help`` option."
 msgstr "如需更多命令行选项, 请使用 ``--help`` 指令。"
 
-#: ../../getting-started.rst:151
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:151
 msgid "Use EFB in another language"
 msgstr "在其他语言中使用 EFB"
 
-#: ../../getting-started.rst:153
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:153
 msgid "EFB supports translated user interface and prompts. You can set your system language or locale environmental variables (``LANGUAGE``, ``LC_ALL``, ``LC_MESSAGES`` or ``LANG``) to one of our `supported languages`_ to switch language."
 msgstr "EFMS 支持了界面本地化翻译。您可以将系统语言或本地环境变量（\\ ``LANGUAGE``\\ 、\\ ``LC_ALL``\\ 、\\ ``LC_MESSAGES`` 或 ``LANG``\\ ）设为一种\\ `已支持的语言`_\\ 。"
 
-#: ../../getting-started.rst:158
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:158
 msgid "You can help to translate this project into your languages on `our Crowdin page`_."
 msgstr "您可以在\\ `我们的 Crowdin 页面`_\\ 中帮助我们将 EFB 翻译为您使用的语言。"
 
-#: ../../getting-started.rst:166
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:166
 msgid "If your are installing from source code, you will not get translations of the user interface without manual compile of message catalogs (``.mo``) prior to installation."
 msgstr "如果您使用源代码安装，您需要手动编译翻译字符串文件（``.mo``）才可启用翻译后的界面。"
 
-#: ../../getting-started.rst:171
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:171
 msgid "Launch EFB as a daemon process"
 msgstr "将 EFB 作为守护进程启用"
 
-#: ../../getting-started.rst:173
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:173
 msgid "Since version 2, EH Forwarder Bot has removed the daemon helper as it is unstable to use.  We recommend you to use mature solutions for daemon management, such as systemd_, upstart_, or pm2_."
 msgstr "从 2.0 版本开始，因稳定性原因，守护进程助手已被从 EH Forwarder Bot 中移除。我们建议您通过更为成熟的解决方案来管理守护进程，例如 systemd_，upstart_，或 pm2_。"
 

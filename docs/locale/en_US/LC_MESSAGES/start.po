@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 15:13+0800\n"
-"PO-Revision-Date: 2020-01-01 07:15\n"
+"POT-Creation-Date: 2020-01-01 21:02+0800\n"
+"PO-Revision-Date: 2020-01-03 13:50\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English\n"
 "MIME-Version: 1.0\n"
@@ -15,67 +15,67 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/start.pot\n"
 "Language: en_US\n"
 
-#: ../../start.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:2
 msgid "Launch the framework"
 msgstr ""
 
-#: ../../start.rst:4
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:4
 msgid "EH Forwarder Bot offered 2 ways to launch the framework:"
 msgstr ""
 
-#: ../../start.rst:6
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:6
 msgid "``ehforwarderbot``"
 msgstr ""
 
-#: ../../start.rst:7
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:7
 msgid "``python3 -m ehforwarderbot``"
 msgstr ""
 
-#: ../../start.rst:9
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:9
 msgid "Both commands are exactly the same thing, accept the same flags, run the same code. The latter is only a backup in case the former does not work."
 msgstr ""
 
-#: ../../start.rst:14
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:14
 msgid "Options"
 msgstr ""
 
-#: ../../start.rst:16
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:16
 msgid "``-h``, ``--help``: Show help message"
 msgstr ""
 
-#: ../../start.rst:18
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:18
 msgid ":samp:`-p {PROFILE}`, :samp:`--profile {PROFILE}`: Switch :doc:`profile <profile>`"
 msgstr ""
 
-#: ../../start.rst:20
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:20
 msgid "From version 2, EFB supports running different instances under the same user, identified by their profiles. The default profile is named ``default``."
 msgstr ""
 
-#: ../../start.rst:24
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:24
 msgid "``-V``, ``--version``: Print version information"
 msgstr ""
 
-#: ../../start.rst:26
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:26
 msgid "This shows version number of Python you are using, the EFB framework, and all channels and middlewares enabled."
 msgstr ""
 
-#: ../../start.rst:30
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:30
 msgid "``-v``, ``--verbose``: Print verbose log"
 msgstr ""
 
-#: ../../start.rst:32
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:32
 msgid "This option enables verbose log of EFB and all enabled modules. This, together with ``-V``, is particularly useful in debugging and issue reporting."
 msgstr ""
 
-#: ../../start.rst:37
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:37
 msgid "Quitting EFB"
 msgstr ""
 
-#: ../../start.rst:39
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:39
 msgid "If you started EFB in a shell, you can simply press Control-C to trigger the quit process. Otherwise, ask your service manager to issue a ``SIGTERM`` for a graceful exit. The exit process may take a few second to complete."
 msgstr ""
 
-#: ../../start.rst:44
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:44
 msgid "It is important for you to issue a graceful termination signal (e.g. ``SIGTERM``), and **NOT** to use ``SIGKILL``. Otherwise you may face the risk of losing data and breaking programs."
 msgstr ""
 

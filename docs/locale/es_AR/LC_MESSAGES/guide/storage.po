@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2020-01-01 07:16\n"
+"POT-Creation-Date: 2020-01-01 21:02+0800\n"
+"PO-Revision-Date: 2020-01-03 13:50\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish, Argentina\n"
 "MIME-Version: 1.0\n"
@@ -15,71 +15,71 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/storage.pot\n"
 "Language: es_AR\n"
 
-#: ../../guide/storage.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:2
 msgid "Configurations and storage"
 msgstr ""
 
-#: ../../guide/storage.rst:5
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:5
 msgid "Configurations and Permanent Storage"
 msgstr ""
 
-#: ../../guide/storage.rst:7
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:7
 msgid "As described in :doc:`/directories`, each module has been allocated with a folder per profile for configurations and other storage. The path can be obtained using :meth:`~.ehforwarderbot.utils.get_data_path` with your module ID. All such storage is specific to only one profile."
 msgstr ""
 
-#: ../../guide/storage.rst:14
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:14
 msgid "For configurations, we recommend to use ``<module_data_path>/config.yaml``. Similarly, we prepared :meth:`~.ehforwarderbot.utils.get_config_path` to get the path for default config file. Again, you are not forced to use this name or YAML as the format of your config file."
 msgstr ""
 
-#: ../../guide/storage.rst:20
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:20
 msgid "Usually in the storage folder lives:"
 msgstr ""
 
-#: ../../guide/storage.rst:22
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:22
 msgid "Configuration files"
 msgstr ""
 
-#: ../../guide/storage.rst:23
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:23
 msgid "User credentials / Session storage"
 msgstr ""
 
-#: ../../guide/storage.rst:24
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:24
 msgid "Databases"
 msgstr ""
 
-#: ../../guide/storage.rst:27
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:27
 msgid "Temporary Storage"
 msgstr ""
 
-#: ../../guide/storage.rst:29
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:29
 msgid "While processing multimedia messages, we inevitably need to store certain files temporarily, either within the channel or across channels. Usually, temporary files can be handled with Python's ``tempfile`` library."
 msgstr ""
 
-#: ../../guide/storage.rst:35
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:35
 msgid "Wizard"
 msgstr ""
 
-#: ../../guide/storage.rst:37
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:37
 msgid "If your module requires relatively complicated configuration, it would be helpful to provide users with a wizard to *prerequisite of your module* and *guide them to setup your module for use*."
 msgstr ""
 
-#: ../../guide/storage.rst:41
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:41
 msgid "From version 2.0.0b12, EFB introduced a centralised wizard program to allow users to enable or disable modules in a text-based user interface (TUI). If you want to include your wizard program as a part of the wizard, you can include a new entry point in your ``setup.py`` with `Setuptools' Entry Point feature`__."
 msgstr ""
 
-#: ../../guide/storage.rst:49
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:49
 msgid "The group for wizard program is ``ehforwarderbot.wizard``, and the entry point function must accept 2 positional arguments: profile ID and instance ID."
 msgstr ""
 
-#: ../../guide/storage.rst:54
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:54
 msgid "Example"
 msgstr ""
 
-#: ../../guide/storage.rst:56
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:56
 msgid "``setup.py`` script"
 msgstr ""
 
-#: ../../guide/storage.rst:58
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:58
 msgid "setup(\n"
 "    # ...\n"
 "    entry_points={\n"
@@ -89,20 +89,20 @@ msgid "setup(\n"
 ")"
 msgstr ""
 
-#: ../../guide/storage.rst:68
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:68
 msgid "``.egg-info/entry_points.txt``"
 msgstr ""
 
-#: ../../guide/storage.rst:70
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:70
 msgid "[ehforwarderbot.wizard]\n"
 "alice.irc = efb_irc_slave.wizard:main"
 msgstr ""
 
-#: ../../guide/storage.rst:75
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:75
 msgid "``efb_irc_slave/wizard.py``"
 msgstr ""
 
-#: ../../guide/storage.rst:77
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:77
 msgid "# ...\n\n"
 "def main(profile, instance):\n"
 "    print(\"Welcome to the setup wizard of my channel.\")\n"

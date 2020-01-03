@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2020-01-01 07:16\n"
+"POT-Creation-Date: 2020-01-01 21:02+0800\n"
+"PO-Revision-Date: 2020-01-03 13:50\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -15,15 +15,15 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/donate.pot\n"
 "Language: ms_MY\n"
 
-#: ../../donate.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/donate.rst:2
 msgid "Donate"
 msgstr ""
 
-#: ../../donate.rst:4
+#: /Users/blueset/Codebase/ehForwarderBot/docs/donate.rst:4
 msgid "`Donate links`_"
 msgstr ""
 
-#: ../../donate.rst:5
+#: /Users/blueset/Codebase/ehForwarderBot/docs/donate.rst:5
 msgid "`Supporters`_"
 msgstr ""
 

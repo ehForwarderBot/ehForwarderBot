@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2020-01-01 07:16\n"
+"POT-Creation-Date: 2020-01-01 21:02+0800\n"
+"PO-Revision-Date: 2020-01-03 13:50\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -15,184 +15,184 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/walkthrough.pot\n"
 "Language: es_VE\n"
 
-#: ../../guide/walkthrough.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:2
 msgid "Walk-through — How EFB works"
 msgstr "Tutorial — Cómo funciona EFB"
 
-#: ../../guide/walkthrough.rst:4
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:4
 msgid "EH Forwarder Bot is an extensible framework that allows user to control and manage accounts from different chat platforms in a unified interface. It consists of 4 parts: a Master Channel, some Slave Channels, some Middlewares and a Coordinator."
 msgstr "EH Forwarder Bot es un marco de desarrollo extensible que permite al usuario controlar y administrar las cuentas de diferentes plataformas de chat en una interfaz unificada. Consta de 4 partes: Un canal maestro, algunos canales esclavos, algunos middlewares y un coordinador."
 
-#: ../../guide/walkthrough.rst:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:None
 msgid ".. image:: guide/../_static/EFB-docs-0.png\n"
 "   :alt: EFB Project Structure"
 msgstr ""
 
-#: ../../guide/walkthrough.rst:17
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:17
 msgid "Master Channel"
 msgstr "Canal Maestro"
 
-#: ../../guide/walkthrough.rst:15
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:15
 msgid "The channel that directly interact with the user. There is guaranteed to have one and only one master channel in an EFB Session."
 msgstr "El canal que interactúa directamente con el usuario. Se garantiza que tendrá uno y solo un canal principal en una sesión de EFB."
 
-#: ../../guide/walkthrough.rst:22
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:22
 msgid "Slave Channel"
 msgstr "Canal Esclavo"
 
-#: ../../guide/walkthrough.rst:20
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:20
 msgid "The channel that delivers messages to and from their relative platform. There should be at lease one slave channel in an EFB Session."
 msgstr "El canal que entrega mensajes hacia y desde su plataforma relativa. Debería haber al menos un canal esclavo en una sesión de EFB."
 
-#: ../../guide/walkthrough.rst:27
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:27
 msgid "Coordinator"
 msgstr "Coordinador"
 
-#: ../../guide/walkthrough.rst:25
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:25
 msgid "Component of the framework that maintains the instances of channels, and delivers messages between channels."
 msgstr "Componente del framework que mantiene las instancias de canales y la entrega de mensajes entre los canales."
 
-#: ../../guide/walkthrough.rst:32
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:32
 msgid "Middleware"
 msgstr "Middleware"
 
-#: ../../guide/walkthrough.rst:30
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:30
 msgid "Module that processes messages and statuses delivered between channels, and make modifications where needed."
 msgstr "Módulo que procesa los mensajes y estados entregados entre canales, y realiza modificaciones cuando es necesario."
 
-#: ../../guide/walkthrough.rst:35
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:35
 msgid "Concepts to know"
 msgstr "Conceptos a saber"
 
-#: ../../guide/walkthrough.rst:39
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:39
 msgid "Module"
 msgstr "Módulo"
 
-#: ../../guide/walkthrough.rst:38
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:38
 msgid "A common term that means both channels and middlewares."
 msgstr "Un término común que se refiere a ambos canales y middlewares."
 
-#: ../../guide/walkthrough.rst:44
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:44
 msgid "Chat"
 msgstr "Chat"
 
-#: ../../guide/walkthrough.rst:42
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:42
 msgid "A place where conversations happen. Consists of User Chats (private messages), Group Chats, and System Chats."
 msgstr "Un lugar donde ocurren conversaciones. Consta de Usuarios de Chat (mensajes privados), Grupos de Chat y Sistemas de Chat."
 
-#: ../../guide/walkthrough.rst:61
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:61
 msgid "User / User Chat"
 msgstr "Usuario / Usuario de Chat"
 
-#: ../../guide/walkthrough.rst:47
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:47
 msgid "A user of the IM platform that the user can possibly chat with, or a conversation with them. Messages from such conversation has one and only one unique author. *(Except messages that are from the user themself, or from the system.)*"
 msgstr "Un usuario de la plataforma de mensajería instantánea con el que el usuario puede chatear, o una conversación con ellos. Los mensajes de dicha conversación tienen uno y sólo un autor único. *(Excepto mensajes que son del usuario mismo, o del sistema.)*"
 
-#: ../../guide/walkthrough.rst:53
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:53
 msgid "For platforms that support bot or something similar, they would also be considered as a \"user\", unless messages in such chat can be sent from any user other than the bot."
 msgstr "Para plataformas compatibles con bot o algo similar, también serían considerados como un \"usuario\", a menos que los mensajes en dicho chat puedan ser enviados desde cualquier usuario que no sea el bot."
 
-#: ../../guide/walkthrough.rst:58
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:58
 msgid "For chats that the user receive messages, but cannot send message to, it should also be considered as a user chat, only to raise an exception when messages was trying to send to the chat."
 msgstr "Para los chats en los que el usuario recibe mensajes, pero no pueden enviar mensajes, también puede considerarse un chat de usuario, haciendo una excepción cuando se intentan enviar mensajes al chat."
 
-#: ../../guide/walkthrough.rst:66
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:66
 msgid "Group chat"
 msgstr "Grupo de chat"
 
-#: ../../guide/walkthrough.rst:64
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:64
 msgid "A chat that involves more than one user. A group chat should have a list of members (users) that can involve in the conversation."
 msgstr "Un chat quen involucra a más de un usuario. Un grupo de chat debe tener una lista de miembros (usuarios) que estén presentes en la conversación."
 
-#: ../../guide/walkthrough.rst:73
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:73
 msgid "System chat"
 msgstr "Sistema de chat"
 
-#: ../../guide/walkthrough.rst:69
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:69
 msgid "A chat that is a part of the system. Usually used for chats that are either a part of the IM platform, or the channel. Slave channels can use this feature to send system message and notifications to the master channel."
 msgstr "Un chat que es parte del sistema. Usualmente se usa para chats que son parte de la plataforma de mensajería instantánea o del canal. Los canales esclavos pueden usar esta función para enviar mensajes del sistema y notificaciones al canal maestro."
 
-#: ../../guide/walkthrough.rst:83
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:83
 msgid "Message"
 msgstr "Mensaje"
 
-#: ../../guide/walkthrough.rst:76
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:76
 msgid "Messages are delivered strictly between the master channel and a slave channel. It usually carries an information of a certain type."
 msgstr "Los mensajes son entregados estrictamente entre el canal maestro y el canal esclavo. Usualmente lleva información de cierto tipo."
 
-#: ../../guide/walkthrough.rst:80
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:80
 msgid "Each message should at least have a unique ID that is distinct within the slave channel related to it. Any edited message should be able to be identified with the same unique ID."
 msgstr "Cada mensaje debe tener al menos una ID única que sea distinta dentro del canal esclavo relacionado con ella. Cualquier mensaje editado debe identificarse con la misma ID única."
 
-#: ../../guide/walkthrough.rst:88
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:88
 msgid "Status"
 msgstr "Estado"
 
-#: ../../guide/walkthrough.rst:86
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:86
 msgid "Information that is not formatted into a message. Usually includes updates of chats and members of chats, and removal of messages."
 msgstr "Información que no está formateada en un mensaje. Usualmente incluye actualizaciones de chats y miembros de chats, y eliminación de mensajes."
 
-#: ../../guide/walkthrough.rst:91
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:91
 msgid "Slave Channels"
 msgstr "Canales Esclavos"
 
-#: ../../guide/walkthrough.rst:93
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:93
 msgid "The job of slave channels is relatively simple."
 msgstr "El trabajo de los canales esclavos es relativamente simple."
 
-#: ../../guide/walkthrough.rst:95
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:95
 msgid "Deliver messages to and from the master channel."
 msgstr "Entrega mensajes para y desde el canal principal."
 
-#: ../../guide/walkthrough.rst:96
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:96
 msgid "Maintains a list of all available chats, and group members."
 msgstr "Mantiene una lista de todos los chats disponibles, y los miembros del grupo."
 
-#: ../../guide/walkthrough.rst:97
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:97
 msgid "Monitors changes of chats and notify the master channel."
 msgstr "Monitorea los cambios de los chat y notifica al canal principal."
 
-#: ../../guide/walkthrough.rst:99
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:99
 msgid "Features that does not fit into the standard EFB Slave Channel model can be offered as :ref:`slave-additional-features`."
 msgstr "Las características que no encajen dentro del modelo estándar del canal esclavo EFB pueden ser ofrecidas como :ref:`slave-additional-features`."
 
-#: ../../guide/walkthrough.rst:103
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:103
 msgid "Master Channels"
 msgstr "Canales Maestros"
 
-#: ../../guide/walkthrough.rst:105
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:105
 msgid "Master channels is relatively more complicated and also more flexible. As it directly faces the user, its user interface should be user-friendly, or at least friendly to the targeted users."
 msgstr "Los canales maestros son relativamente más complicados y también más flexibles. Como está directamente con el usuario, su interfaz debe ser simple de usar, o al menos amistoso para los usuarios específicos."
 
-#: ../../guide/walkthrough.rst:110
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:110
 msgid "The job of the master channel includes:"
 msgstr "El trabajo del canal maestro incluye:"
 
-#: ../../guide/walkthrough.rst:112
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:112
 msgid "Receive, process and display messages from slave channels."
 msgstr "Recibe, procesa y muestra mensajes de los canales esclavos."
 
-#: ../../guide/walkthrough.rst:114
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:114
 msgid "Display a full list of chats from all slave channels."
 msgstr "Muestra una lista completa de todos los chats de los canales esclavos."
 
-#: ../../guide/walkthrough.rst:115
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:115
 msgid "Offer an interface for the user to use \"extra functions\" from slave channels."
 msgstr "Ofrecer una interfaz para que el usuario use \"funcionalidades adicionales\" de los canales esclavos."
 
-#: ../../guide/walkthrough.rst:117
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:117
 msgid "Process updates from slave channels."
 msgstr "Procesar las actualizaciones de canales esclavos."
 
-#: ../../guide/walkthrough.rst:118
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:118
 msgid "Provide a user-friendly interface as far as possible."
 msgstr "Proporcionar una interfaz fácil de usar en la medida de lo posible."
 
-#: ../../guide/walkthrough.rst:121
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:121
 msgid "Middlewares"
 msgstr "Middlewares"
 
-#: ../../guide/walkthrough.rst:123
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:123
 msgid "Middlewares can monitor and make changes to or nullify messages and statuses delivered between channels. Middlewares are executed in order of registration, one after another. A middleware will always receive the messages processed by the preceding middleware if available. Once a middleware nullify a message or status, the message will not be processed and delivered any further."
 msgstr "Los middleewares pueden monitorear y hacer cambios para anular mensajes y estados entregados entre canales. Los middlewares son ejecutados por orden de registro, uno tras otro. Un middleware siempre va a recibir los mensajes procesados por el middleware anterior si está disponible. Una vez que un middleware anule un mensaje o un estado, el mensaje no será procesado ni entregado."
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 15:13+0800\n"
-"PO-Revision-Date: 2020-01-01 07:15\n"
+"POT-Creation-Date: 2020-01-03 21:47+0800\n"
+"PO-Revision-Date: 2020-01-03 13:49\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -15,193 +15,193 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/API/chat.pot\n"
 "Language: zh_CN\n"
 
-#: ../../API/chat.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/chat.rst:2
 msgid "EFBChat"
 msgstr "EFBChat"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:1
 msgid "EFB Chat object. This is used to represent a chat or a group member."
 msgstr "EFBChat 对象。表示一个聊天或群组成员。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:5
 msgid "``EFBChat`` objects are picklable, thus it is strongly recommended to keep any object of its subclass also picklable."
 msgstr "``EFBChat`` 对象是可序列化的，因此我们强烈建议保持它的子类对象可序列化。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:10
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:10
 msgid "Unique ID of the module."
 msgstr "组件的唯一 ID。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:0
 msgid "type"
 msgstr "类型"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:12
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:18
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:24
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:30
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:48
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:55
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:12
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:19
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:25
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:31
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:49
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:56
 msgid "str"
 msgstr "str"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:16
-msgid "Emoji of the channel, if available."
-msgstr "信道的 emoji（如果可用）。"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:16
+msgid "Emoji of the channel, empty string if the chat is from a middleware."
+msgstr ""
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:22
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:23
 msgid "Name of the module."
 msgstr "组件名称。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:28
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:29
 msgid "Name of the chat."
 msgstr "会话名称"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:34
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:35
 msgid "Alternative name of the chat, usually set by user."
 msgstr "会话的别名，通常由用户设置。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:36
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:37
 msgid "Optional[str]"
-msgstr ""
+msgstr "Optional[str]"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:40
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:41
 msgid "Type of the chat."
 msgstr "会话类型"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:42
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:43
 msgid ":obj:`.ChatType`"
 msgstr ":obj:`.ChatType`"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:46
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:47
 msgid "Unique ID of the chat. This should be unique within the channel."
 msgstr "会话的唯一 ID。该 ID 应在信道内唯一。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:52
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:53
 msgid "A text description of the chat, usually known as “bio”, “description”, “purpose”, or “topic” of the chat."
-msgstr ""
+msgstr "会话附带的文字说明，通常也称作「简介」、「自我介绍」、「群公告」、「个性签名」等。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:59
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:60
 msgid "Indicate if this object represents a chat. Defaulted to ``True``. This should be set to ``False`` when used on a group member."
 msgstr "标记该对象是否代表一个会话。默认值为 ``True``\\ 。如果在群组成员上使用时应设置为 ``False``\\ 。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:62
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:73
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:63
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:74
 msgid "bool"
 msgstr "bool"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:66
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:67
 msgid "Indicate if this chat has yourself. Defaulted to ``True``."
-msgstr ""
+msgstr "标记自己是否加入了该会话。默认值为 \\ ``True``\\ 。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:68
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:69
 msgid "This should be set to ``False`` when the user is not a member of a group, or when you cannot send messages to this chat at the moment. It should also be ``False`` when this object represents a group member instead of a chat."
-msgstr ""
+msgstr "当用户不是群组的成员，或者用户当前无法向此会话发送消息时，此属性应该为 \\ ``False``\\ 。当此对象代表的是群组成员而不是独立会话时，此属性的值也应为 \\ ``False``\\ 。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:77
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:78
 msgid "Indicate the notification settings of the chat in its slave channel (or middleware), defaulted to ``ALL``."
 msgstr "指定此会话在对应从端（或中间件）中的通知设定。默认为 ``ALL``。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:80
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:81
 msgid "EFBChatNotificationState"
 msgstr "EFBChatNotificationState"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:84
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:85
 msgid "The parent chat of the member. Only available to chat member objects. Defaulted to ``None``."
 msgstr "成员的所在的群组对象。只对聊天组成员可用。默认值为 ``None``。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:87
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:88
 msgid ":obj:`.EFBChat` or None"
 msgstr ":obj:`.EFBChat` 或空值"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:91
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:92
 msgid "Provide a list of members in the group. Defaulted to an empty ``list``. You may want to extend this object and implement a ``@property`` method set for loading members on demand."
 msgstr "提供群组中成员的列表。默认值为一个空的 ``list``。你可以扩展这个对象并实现一个 ``@property`` 方法从而在需要的时候装载会话。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:96
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:97
 msgid "list of :obj:`.EFBChat`"
 msgstr ":obj:`.EFBChat` 列表"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:100
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:101
 msgid "Any vendor specific attributes."
 msgstr "任何供应商特定属性。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:102
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:103
 msgid "Dict[str, Any]"
 msgstr "Dict[str, Any]"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.__init__:0
 msgid "Parameters"
 msgstr "参数"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.__init__:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.__init__:1
 msgid "Provide the channel object to fill :attr:`module_name`, :attr:`channel_emoji`, and :attr:`module_id` automatically."
 msgstr "提供信道对象来自动填充 :attr:`module_name`\\ 、\\ :attr:`channel_emoji`\\ 、以及 :attr:`module_id`。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.__init__:4
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.__init__:4
 msgid "Provide the middleware object to fill :attr:`module_name`, and :attr:`module_id` automatically."
 msgstr "提供中间软件对象来自动填充 :attr:`module_name` 和 :attr:`module_id`\\ 。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.display_name:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.display_name:1
 msgid "Shortcut property, equivalent to ``chat_alias or chat_name``"
 msgstr "快捷属性，等同于 ``chat_alias or chat_name``"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.is_self:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.is_self:1
 msgid "If this chat represents the user"
 msgstr "是否这个会话代表用户自己"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.is_system:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.is_system:1
 msgid "If this chat is a system chat"
 msgstr "是否这个会话是一个系统会话"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.long_name:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.long_name:1
 msgid "Shortcut property, if alias exists, this will provide the alias with name in parenthesis. Otherwise, this will return the name"
 msgstr "快捷属性。如果存在别名，此属性将返回别名，并在括号内提供原名；否则此属性将返回原名。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.self:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.self:1
 msgid "Set the chat as yourself. In this context, \"yourself\" means the user behind the master channel. Every channel should relate this to the corresponding target."
 msgstr "设置会话为用户自己。在这里“自己”代表的是主端对应的用户。每一个信道都应该将这个和对象的相应的会话关联。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.self:0
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.system:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.self:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.system:0
 msgid "Returns"
 msgstr "返回"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.self:5
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.system:4
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.self:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.system:4
 msgid "This object."
 msgstr "这个对象。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.self:0
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.system:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.self:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.system:0
 msgid "Return type"
 msgstr "返回类型"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.system:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.system:1
 msgid "Set the chat as a system chat. Only set for channel-level and group-level system chats."
 msgstr "设置会话为系统会话。仅适用于信道级别和群组级别的系统会话。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.verify:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.verify:1
 msgid "Verify the completeness of the data."
 msgstr "验证数据的完整性。"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.verify:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.verify:0
 msgid "Raises"
 msgstr "抛出"
 
-#: ../../../ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.verify:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat.verify:3
 msgid "When this chat is invalid."
 msgstr "当此会话无效时。"
 

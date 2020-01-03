@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2020-01-01 07:16\n"
+"POT-Creation-Date: 2020-01-01 21:02+0800\n"
+"PO-Revision-Date: 2020-01-03 13:50\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -15,31 +15,31 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/misc.pot\n"
 "Language: id_ID\n"
 
-#: ../../guide/misc.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:2
 msgid "Miscellaneous"
 msgstr ""
 
-#: ../../guide/misc.rst:5
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:5
 msgid "Logging"
 msgstr ""
 
-#: ../../guide/misc.rst:7
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:7
 msgid "In complex modules, you should have detailed logs in DEBUG level and maybe INFO level, and all your log handlers should follow that of the root logger, which is controlled by the framework. This could be helpful when for you to locate issues reported by users."
 msgstr "Dalam modul yang kompleks, anda harus memiliki log terperinci di tingkat DEBUG dan mungkin tingkat INFO, dan semua penangan log anda harus mengikuti logger akar, yang dikendalikan oleh kerangka kerja. Ini bisa membantu anda menemukan masalah saat dilaporkan oleh pengguna."
 
-#: ../../guide/misc.rst:14
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:14
 msgid "Vendor-specifics"
 msgstr ""
 
-#: ../../guide/misc.rst:16
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:16
 msgid "If you are going to include vendor specific information in messages and/or chats, please make your effort to document them in your README or documentation, so that other developers can refer to it when adapting your module."
 msgstr "Jika anda memuat informasi khusus untuk vendor dalam pesan dan/atau obrolan, tolong buat upaya anda untuk mengumpulkan di README atau dokumentasi, sehingga pengembang lain dapat mengambilnya ketika menyesuaikan dengan modul anda."
 
-#: ../../guide/misc.rst:23
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:23
 msgid "Threading"
 msgstr ""
 
-#: ../../guide/misc.rst:25
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:25
 msgid "All channels are recommended a separate thread while processing a new message, so as to prevent unexpectedly long thread blocking."
 msgstr "Semua saluran direkomendasikan sebagai berkas terpisah saat memproses pesan baru, sehingga mencegah pemblokiran berkas tak terduga."
 

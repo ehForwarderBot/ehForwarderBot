@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2020-01-01 07:16\n"
+"POT-Creation-Date: 2020-01-01 21:02+0800\n"
+"PO-Revision-Date: 2020-01-03 13:50\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -15,11 +15,11 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/index.pot\n"
 "Language: ms_MY\n"
 
-#: ../../guide/index.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/index.rst:2
 msgid "Development guide"
 msgstr ""
 
-#: ../../guide/index.rst:4
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/index.rst:4
 msgid "This is a section that guides you on how to develop channels and middlewares for EH Forwarder Bot."
 msgstr ""
 

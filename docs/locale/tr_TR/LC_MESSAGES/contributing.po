@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 15:13+0800\n"
-"PO-Revision-Date: 2020-01-01 07:16\n"
+"POT-Creation-Date: 2020-01-01 21:02+0800\n"
+"PO-Revision-Date: 2020-01-03 13:51\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -15,159 +15,159 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/contributing.pot\n"
 "Language: tr_TR\n"
 
-#: ../../contributing.rst:3
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:3
 msgid "How to contribute"
 msgstr "Nasıl katkıda bulunulur"
 
-#: ../../contributing.rst:5
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:5
 msgid "First of all, thanks for taking your time to contribute!"
 msgstr "Öncelikle, katkıda bulunmak için zaman harcadığınızdan dolayı teşekkürler!"
 
-#: ../../contributing.rst:7
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:7
 msgid "Please note that only questions on the framework will be answered here. For issue related with any module, please contact their respective authors or post in their corresponding repositories."
 msgstr "Burada sadece iş ile ilgili soruların yanıtlanacağını lütfen unutmayın. Herhangi bir modül ile ilgili sorunlar için lütfen ilgili yazarlarına başvurun veya ilgili depolarında yayınlayın."
 
-#: ../../contributing.rst:12
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:12
 msgid "Here is a simple guide on how you can file in an issue, or submit a pull request that is useful and effective."
 msgstr "Aşağıda, bir konuyla nasıl dosya indirebileceğinizle ilgili basit bir kılavuz veya yararlı ve etkili bir çekme isteği gönderin."
 
-#: ../../contributing.rst:15
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:15
 msgid "If you need help, or want to talk to the authors, feel free to chat with us at our `Gitter chat`_ or `Telegram support group`_."
 msgstr "Eğer yardıma ihtiyacınız varsa veya yazarlarla konuşmak istiyorsanız, lütfen bizle `Gitter chat`_ veya `Telegram support group`_ üzerinden sohbet etmekten çekinmeyiniz."
 
-#: ../../contributing.rst:23
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:23
 msgid "Reporting bugs"
 msgstr "Arıza bildirme"
 
-#: ../../contributing.rst:25
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:25
 msgid "Before submitting a bug report"
 msgstr "Arıza raporunu bildirmeden önce"
 
-#: ../../contributing.rst:26
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:26
 msgid "Please ensure if your issue is about the framework itself, not about any module. Reports about module should be sent to their respective places."
 msgstr "Lütfen sorununuzun herhangi bir modül değil, işin kendisi ile ilgili olup olmadığını kontrol edin. Modülle ilgili raporlar ilgili yerlere gönderilmelidir."
 
-#: ../../contributing.rst:29
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:29
 msgid "Read through the documentation to see if it has covered your question."
 msgstr "Sorunuzu kapsamış olup olmadığını görmek için belgeleri okuyun."
 
-#: ../../contributing.rst:30
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:30
 msgid "Check the `current issue list`__ to see if it's been reported."
 msgstr "Bildirinizi görmek için `current issue list`__ 'i kontrol edin."
 
-#: ../../contributing.rst:35
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:35
 msgid "How Do I Submit A (Good) Bug Report?"
 msgstr "Nasıl (İyi) Bir Hata Raporu Gönderirim?"
 
-#: ../../contributing.rst:36
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:36
 msgid "**Use a clear and descriptive title** for the issue to identify the problem."
 msgstr "Konuyla alakalı probleminizi tanımlarken **net ve betimleyici bir başlık kullanın**."
 
-#: ../../contributing.rst:37
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:37
 msgid "**Describe the exact steps which reproduce the problem** in as many details as possible."
 msgstr "Mümkün olduğunca detaylı olarak **probleme sebep olan adımları tarif ediniz**."
 
-#: ../../contributing.rst:39
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:39
 msgid "**Provide specific examples to demonstrate the steps.**"
 msgstr "**Adımları göstermek için spesifik örnekler temin ediniz.**"
 
-#: ../../contributing.rst:40
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:40
 msgid "**Describe the behavior you observed after following the steps** and point out what exactly is the problem with that behavior."
 msgstr "**Adımları takip ettikten sonra gözlemlediğiniz davranışı tarif ediniz** ve bu davranışla ilgili problemin ne olduğunu tam olarak ifade ediniz."
 
-#: ../../contributing.rst:42
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:42
 msgid "**Explain which behavior you expected to see instead and why.**"
 msgstr "**Bunun yerine nasıl bir davranış görmeyi beklerdiniz ve neden.**"
 
-#: ../../contributing.rst:43
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:43
 msgid "**If the problem wasn't triggered by a specific action**, describe what you were doing before the problem happened and share more information using the guidelines below."
 msgstr "**eğer problem spesifik bir işlemle tetiklenmemişse**, bu problem olmadan önce ne yaptığınızı betimleyiniz ve alttaki kılavuzu kullanarak daha çok bilgi paylaşın."
 
-#: ../../contributing.rst:46
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:46
 msgid "**Provide log related to the issue.** Use the verbose flag to start the logging process, and submit the entire log from the first step you performed."
 msgstr "** Soruna ilişkin günlüğü sağlayın ** Günlüğe kaydetme işlemini başlatmak için ayrıntılı bayrağı kullanın ve yaptığınız ilk adımdan tüm günlük dosyasını gönderin."
 
-#: ../../contributing.rst:50
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:50
 msgid "Provide more context by answering these questions:"
 msgstr "Bu sorulara cevap vererek daha fazla içerik sağlayın:"
 
-#: ../../contributing.rst:52
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:52
 msgid "**Did the problem start happening recently** (e.g. after updating to the latest version) or was this always a problem?"
 msgstr "**Bu problem yakın zamanda mı oluşmaya başladı** (örneğin sürümü en sonuncuya güncelledikten sonra) ya da bu problem her zaman var mıydı?"
 
-#: ../../contributing.rst:54
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:54
 msgid "**Can you reliably reproduce the issue?** If not, provide details about how often the problem happens and under which conditions it normally happens."
 msgstr "** Sorunun güvenilir bir şekilde çoğaltılabilir misiniz? ** Değilse, sorunun ne sıklıkla yaşandığı ve hangi koşullar altında normalde gerçekleştiği hakkında ayrıntılı bilgi verin."
 
-#: ../../contributing.rst:58
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:58
 msgid "Include details about your configuration and environment:"
 msgstr "Konfigürasyonunuz ve ortamınız hakkında ayrıntı ekleyin:"
 
-#: ../../contributing.rst:60
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:60
 msgid "**What version of EFB are you using?** You can get the version by using the flag `-V`."
 msgstr "**EFB'nin hangi sürümünü kullanıyorsunuz?** Sürümü `-V` bayrağını kullanarak alabilirsiniz."
 
-#: ../../contributing.rst:62
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:62
 msgid "**What's the name and version of the OS you're using?**"
 msgstr "**Kullandığınız OS'nin adı ve sürümü nedir?**"
 
-#: ../../contributing.rst:65
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:65
 msgid "When submitting your log, please remember to hide your private information."
 msgstr "Günlüğünüzü gönderirken lütfen kişisel bilgilerinizi gizlemeyi unutmayın."
 
-#: ../../contributing.rst:69
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:69
 msgid "Suggesting enhancements"
 msgstr "Geliştirme önerilerinde bulunma"
 
-#: ../../contributing.rst:71
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:71
 msgid "If you have any suggestions, feel free to raise it up in the issue list. Please try to provide as much details as you can, that includes:"
 msgstr "Eğer önerileriniz varsa, sorun listesinde belirtmekten çekinmeyin. Lütfen mümkün olduğunca çok detay vermeye çalışın, dahil edin:"
 
-#: ../../contributing.rst:75
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:75
 msgid "**Use a clear and descriptive title** for the issue to identify the suggestion."
 msgstr "Öneriyi tanımlayan konu için **net ve betimleyici bir başlık kullanın**."
 
-#: ../../contributing.rst:76
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:76
 msgid "**Give details on how the enhancement behave**."
 msgstr "** Geliştirmenin nasıl davrandığına ilişkin ayrıntıları ver **."
 
-#: ../../contributing.rst:77
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:77
 msgid "**Provide specific examples to demonstrate the abstraction**."
 msgstr ""
 
-#: ../../contributing.rst:78
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:78
 msgid "The enhancement to the framework must be applicable to considerably many IM platforms, not just for a single IM. Suggestions for a specific IM should be made to their relative channel."
 msgstr ""
 
-#: ../../contributing.rst:83
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:83
 msgid "Adapted from `Atom contribution guide`__ by GitHub Inc."
 msgstr "GitHub Inc. tarafından `Atom katkı rehberi`__ 'dan uyarlanmıştır."
 
-#: ../../contributing.rst:88
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:88
 msgid "Pull requests"
 msgstr "Çekme istekleri"
 
-#: ../../contributing.rst:89
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:89
 msgid "When you have done some changes and want to submit it to us, fork it to your account and submit a GitHub pull request. Please write a detailed description for your pull request on:"
 msgstr "Bazı değişiklikler yaptıysanız ve bize göndermek istiyorsanız, hesabınıza gönderin ve bir GitHub çekme isteği gönderin. Çekme isteğiniz için lütfen ayrıntılı bir açıklama yazın:"
 
-#: ../../contributing.rst:93
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:93
 msgid "**What changes have you made?**"
 msgstr "**Ne değişiklikler yaptınız?**"
 
-#: ../../contributing.rst:94
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:94
 msgid "**What problem have you solved?**"
 msgstr "**Hangi problemleri çözdünüz?**"
 
-#: ../../contributing.rst:95
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:95
 msgid "**Which issue have you addressed** if applicable."
 msgstr "** Uygulanabilir ise ** hangi konuyu konuştunuz **."
 
-#: ../../contributing.rst:97
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:97
 msgid "Always write a clear log message for your commits. One-line messages are fine for small changes, but bigger changes needs a detailed description after the one-liner."
 msgstr "İşlemleriniz için daima net bir günlük mesajı yazın. Tek satırlı mesajlar küçük değişiklikler için uygundur, ancak daha büyük değişikliklerin tek satırdan sonra ayrıntılı bir açıklamaya ihtiyacı vardır."
 
-#: ../../contributing.rst:101
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:101
 msgid "Adapted from `OpenGovernment contribution guide`__ by Participatory Politics Foundation"
 msgstr "Katılımcı Siyaset Vakfı tarafından hazırlanan `OpenGovernment contribution guide`__ dan uyarlanmıştır."
 

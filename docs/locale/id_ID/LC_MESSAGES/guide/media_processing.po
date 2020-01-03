@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2020-01-01 07:16\n"
+"POT-Creation-Date: 2020-01-01 21:02+0800\n"
+"PO-Revision-Date: 2020-01-03 13:50\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -15,55 +15,55 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/media_processing.pot\n"
 "Language: id_ID\n"
 
-#: ../../guide/media_processing.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:2
 msgid "Media processing"
 msgstr ""
 
-#: ../../guide/media_processing.rst:5
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:5
 msgid "Choosing media formats"
 msgstr "Memilih format media"
 
-#: ../../guide/media_processing.rst:7
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:7
 msgid "Both Master and Slave channel can take their charges to convert media files they send or receive. In general: **if a media file received from remote server is not a common format, convert it before deliver it on; if a media file sent to remote server requires to be in a specific format, it should be converted before sending out**. Nevertheless, this is only a guideline on channels' responsibility regarding media processing, and everyone has their own opinion on what is a common format / encoding. Therefore we only recommend this behaviour, but do not force in our code. This is to say that, you still have to take care of the accepted type of media encoding of your corresponding method of presentation, and convert and/or fallback to different type of representation if necessary. After all, the delivery of information is more important."
 msgstr "Saluran Induk dan Slave dapat mengambil dakwaan mereka untuk mengkonversi berkas media yang mereka kirim atau terima. Secara umum: **apabila berkas media yang diterima dari server jarak jauh bukan merupakan format yang umum, konversikan terlebih dahulu sebelum mengirimkannya; apabila berkas media yang dikirim ke server jarak jauh mengharuskan dalam format tertentu, maka berkas tersebut harus dikonversi sebelum dikirim**. Walaupun demikian, ini hanya sebuah pedoman tanggung jawab saluran mengenai pengolahan media, dan setiap orang memiliki pendapat mereka sendiri mengenai format umum / pengkodean. Oleh karena itu kami hanya menyarankan perilaku ini, tapi jangan memaksakan kode kami. Ini merupakan untuk mengatakan bahwa, anda masih harus memperhatikan jenis pengkodean media yang diterima dari metode penyajian yang cocok, dan mengubah dan/atau mengganti jenis representasi yang berbeda apabila diperlukan. Bagaimanapun juga, penyampaian informasi itu lebih penting."
 
-#: ../../guide/media_processing.rst:25
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:25
 msgid "Media encoders"
 msgstr ""
 
-#: ../../guide/media_processing.rst:27
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:27
 msgid "Similarly, we will also not put a strict limit on this as well, but just a recommendation. As you might have already know, there are few mature pure Python media processing libraries, most of them will more or less requires internal or external binary dependencies."
 msgstr "Begitu pula, kita juga tidak akan membatasi hal ini juga, tapi hanya sebuah saran. Seperti yang mungkin sudah anda ketahui, ada beberapa pengolahan perpustakaan Python yang murni, kebanyakan dari mereka akan sedikit banyak membutuhkan terhadap internal atau eksternal."
 
-#: ../../guide/media_processing.rst:33
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:33
 msgid "We try to aim to use as few different libraries as we can, as more library to install means more space, install time, and complexity. While processing media files, we recommend to use the following libraries if possible:"
 msgstr "Kami mencoba untuk menggunakan beberapa pustaka yang berbeda sebisa kami, ketika lebih banyak pustaka yang dipasang berarti akan lebih banyak ruang, waktu pasang, dan kompleksitas. Saat memproses berkas media, kami menyarankan untuk menggunakan pustaka berikut jika memungkinkan:"
 
-#: ../../guide/media_processing.rst:39
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:39
 msgid "pillow"
 msgstr ""
 
-#: ../../guide/media_processing.rst:40
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:40
 msgid "ffmpeg"
 msgstr ""
 
-#: ../../guide/media_processing.rst:43
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:43
 msgid "Files in messages"
 msgstr "File dalam pesan"
 
-#: ../../guide/media_processing.rst:45
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:45
 msgid "When a file sent out from a channel, it should be open, sought back to 0 ( ``file.seek(0)`` ) before sending."
 msgstr "Saat sebuah file dikirim dari sebuah saluran, itu harus terbuka, kembali ke 0 (`` file.seek (0) ``) sebelum mengirim."
 
-#: ../../guide/media_processing.rst:48
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:48
 msgid "Files sent should be able to be located somewhere in the file system, better with a appropriate extension name, but not required. All files should also have its MIME type specified in the message object. If the channel is not sure about the correct MIME type, it can try to guess with ``libmagic``, or fallback to ``application/octet-stream``. Always try the best to provide the most suitable MIME type when sending."
 msgstr "Berkas yang dikirim harus bisa ditempatkan di suatu tempat dalam sistem berkas, akan lebih baik dengan nama ekstensi yang sesuai, tapi tidak diperlukan. Semua berkas juga harus memiliki tipe MIME yang ditentukan pada objek pesan. Apabila saluran tidak begitu yakin tentang tipe MIME yang benar, itu dapat di coba taksirkan dengan ``libmagic``, atau kembali ke ``application/octet-stream``. Selalu mencoba yang terbaik untuk memberikan tipe MIME yang paling cocok saat mengirim."
 
-#: ../../guide/media_processing.rst:57
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:57
 msgid "For such files, we use ``close`` to signify the end of its lifecycle. If the file is not required by the sender's channel anymore, it can be safely discarded."
 msgstr "Untuk file yang demikian, kami menggunakan ``tutup`` untuk menandakan akhir siklus hidupnya. Apabila file tidak dibutuhkan oleh saluran pengirim lagi, itu dapat dibuang dengan aman."
 
-#: ../../guide/media_processing.rst:61
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:61
 msgid "Generally, ``tempfile.NamedTemporaryFile`` should work for ordinary cases."
 msgstr "Biasanya, ``tempfile.NamedTemporaryFile`` harus bekerja untuk kasus-kasus biasa."
 

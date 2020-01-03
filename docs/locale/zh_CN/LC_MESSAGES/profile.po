@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 15:13+0800\n"
-"PO-Revision-Date: 2020-01-01 07:15\n"
+"POT-Creation-Date: 2020-01-01 21:02+0800\n"
+"PO-Revision-Date: 2020-01-03 13:49\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -15,31 +15,31 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/profile.pot\n"
 "Language: zh_CN\n"
 
-#: ../../profile.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/profile.rst:2
 msgid "Profiles"
 msgstr "配置档案"
 
-#: ../../profile.rst:4
+#: /Users/blueset/Codebase/ehForwarderBot/docs/profile.rst:4
 msgid "Starting from EFB version 2, profiles are introduced to allow users in need to run multiple EFB instances simultaneously without affecting each other."
 msgstr "从 EFB v2 开始，您可以根据需要同时运行多个不同的配置档案，而不会互相产生干扰。"
 
-#: ../../profile.rst:8
+#: /Users/blueset/Codebase/ehForwarderBot/docs/profile.rst:8
 msgid "Each profile has its own set of configuration files a set of channels that share the same code, but has different data files, so that they can run on their own."
 msgstr "每一套配置档案都工作在相同的代码上，但各自拥有不同的配置文件、数据文件，所以它们可以同时独立运行。"
 
-#: ../../profile.rst:13
+#: /Users/blueset/Codebase/ehForwarderBot/docs/profile.rst:13
 msgid "The default profile name is called ``default``. To switch to a different profile, specify the profile name in ``--profile`` flag while starting EFB."
 msgstr "默认的配置档案名为 ``default`` 。如要使用不同的配置档案，请在启动 EFB 时在 ``--profile`` 后指定配置档案名称。"
 
-#: ../../profile.rst:19
+#: /Users/blueset/Codebase/ehForwarderBot/docs/profile.rst:19
 msgid "Start a new profile"
 msgstr "创建新配置文档"
 
-#: ../../profile.rst:21
+#: /Users/blueset/Codebase/ehForwarderBot/docs/profile.rst:21
 msgid "To create a new profile, you need to create a directory in the :file:`{EFB_DATA_PATH}/profiles`, and create a new configuration file as described in chapter :doc:`getting-started`."
-msgstr ""
+msgstr "如需创建新的配置档案，您需要在 \\ :file:`{EFB_DATA_PATH}/profiles` \\ 中创建新文件夹，并根据\\ :doc:`getting-started`\\ 中的方法来创建配置档案。"
 
-#: ../../profile.rst:26
+#: /Users/blueset/Codebase/ehForwarderBot/docs/profile.rst:26
 msgid "When everything is configured properly, you are good to go."
 msgstr "当一切都配置好后，你就可以随时启动了。"
 

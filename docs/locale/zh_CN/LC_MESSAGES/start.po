@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 15:13+0800\n"
-"PO-Revision-Date: 2020-01-01 07:15\n"
+"POT-Creation-Date: 2020-01-01 21:02+0800\n"
+"PO-Revision-Date: 2020-01-03 13:49\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -15,67 +15,67 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/start.pot\n"
 "Language: zh_CN\n"
 
-#: ../../start.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:2
 msgid "Launch the framework"
 msgstr "启动框架"
 
-#: ../../start.rst:4
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:4
 msgid "EH Forwarder Bot offered 2 ways to launch the framework:"
 msgstr "EFB 提供了两种方法来启动框架："
 
-#: ../../start.rst:6
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:6
 msgid "``ehforwarderbot``"
 msgstr "``ehforwarderbot``"
 
-#: ../../start.rst:7
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:7
 msgid "``python3 -m ehforwarderbot``"
 msgstr "``python3 -m ehforwarderbot``"
 
-#: ../../start.rst:9
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:9
 msgid "Both commands are exactly the same thing, accept the same flags, run the same code. The latter is only a backup in case the former does not work."
 msgstr "两个命令的功能及用法完全一致, 运行相同的代码。后者只是一个备份，以防前者不起作用。"
 
-#: ../../start.rst:14
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:14
 msgid "Options"
 msgstr "选项"
 
-#: ../../start.rst:16
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:16
 msgid "``-h``, ``--help``: Show help message"
 msgstr "``-h``, ``--help``：显示帮助信息"
 
-#: ../../start.rst:18
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:18
 msgid ":samp:`-p {PROFILE}`, :samp:`--profile {PROFILE}`: Switch :doc:`profile <profile>`"
-msgstr ""
+msgstr ":samp:`-p {PROFILE}`, :samp:`--profile {PROFILE}`: 切换\\ :doc:`配置档案 <profile>`"
 
-#: ../../start.rst:20
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:20
 msgid "From version 2, EFB supports running different instances under the same user, identified by their profiles. The default profile is named ``default``."
 msgstr "从 2.0 版本开始，EFB 支持在同一用户下运行多个实例（根据配置档案进行区分）。默认的配置档案名称为 ``default`` 。"
 
-#: ../../start.rst:24
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:24
 msgid "``-V``, ``--version``: Print version information"
 msgstr "``-V``, ``--version``: 打印版本信息"
 
-#: ../../start.rst:26
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:26
 msgid "This shows version number of Python you are using, the EFB framework, and all channels and middlewares enabled."
 msgstr "显示您的 Python、EFB 框架、以及所有已启用的信道和中间件的版本号。"
 
-#: ../../start.rst:30
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:30
 msgid "``-v``, ``--verbose``: Print verbose log"
 msgstr "``-v``, ``--verbose``: 打印详细日志"
 
-#: ../../start.rst:32
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:32
 msgid "This option enables verbose log of EFB and all enabled modules. This, together with ``-V``, is particularly useful in debugging and issue reporting."
 msgstr "开启该选项会记录 EFB 及所有已启用的模块的详细日志。该选项与 ``-V`` 一样，对于调试及问题反馈有着极大帮助。"
 
-#: ../../start.rst:37
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:37
 msgid "Quitting EFB"
 msgstr "退出 EFB"
 
-#: ../../start.rst:39
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:39
 msgid "If you started EFB in a shell, you can simply press Control-C to trigger the quit process. Otherwise, ask your service manager to issue a ``SIGTERM`` for a graceful exit. The exit process may take a few second to complete."
 msgstr "如果您在 shell 中启动了 EFB， 您可以简单地通过 Control-C 来开始退出进程。否则，请使用您的服务管理器发送 ``SIGTERM`` 信号。完全退出进程可能会耗时数秒种。"
 
-#: ../../start.rst:44
+#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:44
 msgid "It is important for you to issue a graceful termination signal (e.g. ``SIGTERM``), and **NOT** to use ``SIGKILL``. Otherwise you may face the risk of losing data and breaking programs."
 msgstr "使用优雅终止信号（例如 ``SIGTERM``\\ ）十分重要。请\\ **不要**\\ 使用 ``SIGKILL``，否则可能会导致数据丢失或程序异常。"
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-03 15:32+0800\n"
-"PO-Revision-Date: 2020-01-01 07:15\n"
+"POT-Creation-Date: 2020-01-01 21:02+0800\n"
+"PO-Revision-Date: 2020-01-03 13:49\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -15,185 +15,185 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/walkthrough.pot\n"
 "Language: zh_CN\n"
 
-#: ../../guide/walkthrough.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:2
 msgid "Walk-through — How EFB works"
 msgstr "EFB 工作原理"
 
-#: ../../guide/walkthrough.rst:4
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:4
 msgid "EH Forwarder Bot is an extensible framework that allows user to control and manage accounts from different chat platforms in a unified interface. It consists of 4 parts: a Master Channel, some Slave Channels, some Middlewares and a Coordinator."
 msgstr "EH Forwarder Bot 是一个可扩展的框架，允许用户使用统一的接口来控制和管理不同聊天平台的账户。它包含四个部分：一个主端，一些从端，一些中间件和一个协调器。"
 
-#: ../../guide/walkthrough.rst:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:None
 msgid ".. image:: guide/../_static/EFB-docs-0.png\n"
 "   :alt: EFB Project Structure"
 msgstr ".. image:: guide/../_static/EFB-docs-0.png\n"
 "   :alt: EFB 项目结构"
 
-#: ../../guide/walkthrough.rst:17
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:17
 msgid "Master Channel"
 msgstr "主端"
 
-#: ../../guide/walkthrough.rst:15
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:15
 msgid "The channel that directly interact with the user. There is guaranteed to have one and only one master channel in an EFB Session."
 msgstr "直接和用户交互的信道。在 EFB 会话中保证有且只有一个主端。"
 
-#: ../../guide/walkthrough.rst:22
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:22
 msgid "Slave Channel"
 msgstr "从端"
 
-#: ../../guide/walkthrough.rst:20
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:20
 msgid "The channel that delivers messages to and from their relative platform. There should be at lease one slave channel in an EFB Session."
 msgstr "该信道向相关平台发送和接收消息。在一个 EFB 会话中应该有至少一个从端。"
 
-#: ../../guide/walkthrough.rst:27
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:27
 msgid "Coordinator"
 msgstr "协调器"
 
-#: ../../guide/walkthrough.rst:25
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:25
 msgid "Component of the framework that maintains the instances of channels, and delivers messages between channels."
 msgstr "框架中用来维护信道实例的组件，同时负责在信道间传递消息。"
 
-#: ../../guide/walkthrough.rst:32
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:32
 msgid "Middleware"
 msgstr "中间件"
 
-#: ../../guide/walkthrough.rst:30
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:30
 msgid "Module that processes messages and statuses delivered between channels, and make modifications where needed."
 msgstr "用来在信道间处理消息及状态的组件，同时会在需要时做出相应的修改。"
 
-#: ../../guide/walkthrough.rst:35
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:35
 msgid "Concepts to know"
 msgstr "需要了解的概念"
 
-#: ../../guide/walkthrough.rst:39
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:39
 msgid "Module"
 msgstr "模块"
 
-#: ../../guide/walkthrough.rst:38
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:38
 msgid "A common term that means both channels and middlewares."
 msgstr "指代信道和中间件的通称。"
 
-#: ../../guide/walkthrough.rst:44
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:44
 msgid "Chat"
 msgstr "会话"
 
-#: ../../guide/walkthrough.rst:42
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:42
 msgid "A place where conversations happen. Consists of User Chats (private messages), Group Chats, and System Chats."
 msgstr "对话发生的场所。包含用户聊天（私聊）、群组、和系统会话。"
 
-#: ../../guide/walkthrough.rst:61
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:61
 msgid "User / User Chat"
 msgstr "用户、用户会话"
 
-#: ../../guide/walkthrough.rst:47
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:47
 msgid "A user of the IM platform that the user can possibly chat with, or a conversation with them. Messages from such conversation has one and only one unique author. *(Except messages that are from the user themself, or from the system.)*"
 msgstr "可以与其产生会话的即时通讯平台账户。来自于这些会话的消息有且仅有一个唯一的作者。 *（除了来自用户自己或系统的消息）*"
 
-#: ../../guide/walkthrough.rst:53
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:53
 msgid "For platforms that support bot or something similar, they would also be considered as a \"user\", unless messages in such chat can be sent from any user other than the bot."
 msgstr "对于支持机器人或者类似功能的平台，它们也应该被看作为一个「用户」，除非机器人不能发送消息。"
 
-#: ../../guide/walkthrough.rst:58
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:58
 msgid "For chats that the user receive messages, but cannot send message to, it should also be considered as a user chat, only to raise an exception when messages was trying to send to the chat."
 msgstr "对于用户只能接受而不能发送消息的会话，它也应该被视为一个「用户会话」，且在发送消息至这些会话时抛出异常。"
 
-#: ../../guide/walkthrough.rst:66
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:66
 msgid "Group chat"
 msgstr "群组会话"
 
-#: ../../guide/walkthrough.rst:64
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:64
 msgid "A chat that involves more than one user. A group chat should have a list of members (users) that can involve in the conversation."
 msgstr "涉及多个用户的会话。群聊应该有一个可以参与对话的成员（用户）列表。"
 
-#: ../../guide/walkthrough.rst:73
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:73
 msgid "System chat"
 msgstr "系统会话"
 
-#: ../../guide/walkthrough.rst:69
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:69
 msgid "A chat that is a part of the system. Usually used for chats that are either a part of the IM platform, or the channel. Slave channels can use this feature to send system message and notifications to the master channel."
 msgstr "作为系统构成部分的会话。通常用于平台或通道内的聊天。从端可以使用这个功能来发送系统消息和通知给主端。"
 
-#: ../../guide/walkthrough.rst:83
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:83
 msgid "Message"
 msgstr "消息"
 
-#: ../../guide/walkthrough.rst:76
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:76
 msgid "Messages are delivered strictly between the master channel and a slave channel. It usually carries an information of a certain type."
 msgstr "消息只能在主端与从端之间传递。它通常包含特定类型的信息。"
 
-#: ../../guide/walkthrough.rst:80
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:80
 msgid "Each message should at least have a unique ID that is distinct within the slave channel related to it. Any edited message should be able to be identified with the same unique ID."
 msgstr "每个消息都至少含有一个在该从端内的唯一 ID。任何编辑过的消息应该可以通过相同的唯一 ID 被识别。"
 
-#: ../../guide/walkthrough.rst:88
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:88
 msgid "Status"
 msgstr "状态"
 
-#: ../../guide/walkthrough.rst:86
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:86
 msgid "Information that is not formatted into a message. Usually includes updates of chats and members of chats, and removal of messages."
 msgstr "不能包装为消息的其他信息。通常包含聊天和聊天成员的更新，以及消息的删除。"
 
-#: ../../guide/walkthrough.rst:91
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:91
 msgid "Slave Channels"
 msgstr "从端"
 
-#: ../../guide/walkthrough.rst:93
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:93
 msgid "The job of slave channels is relatively simple."
 msgstr "从端的工作相对简单。"
 
-#: ../../guide/walkthrough.rst:95
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:95
 msgid "Deliver messages to and from the master channel."
 msgstr "传递来往于主端的消息。"
 
-#: ../../guide/walkthrough.rst:96
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:96
 msgid "Maintains a list of all available chats, and group members."
 msgstr "维护所有可用会话和群组成员的列表。"
 
-#: ../../guide/walkthrough.rst:97
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:97
 msgid "Monitors changes of chats and notify the master channel."
 msgstr "监视会话信息的变更并通知主端。"
 
-#: ../../guide/walkthrough.rst:99
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:99
 msgid "Features that does not fit into the standard EFB Slave Channel model can be offered as :ref:`slave-additional-features`."
 msgstr "在标准的 EFB 从端模型外的附加功能可以通过 :ref:`slave-additional-features` 来提供。"
 
-#: ../../guide/walkthrough.rst:103
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:103
 msgid "Master Channels"
 msgstr "主端"
 
-#: ../../guide/walkthrough.rst:105
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:105
 msgid "Master channels is relatively more complicated and also more flexible. As it directly faces the user, its user interface should be user-friendly, or at least friendly to the targeted users."
 msgstr "主端相对来说更加复杂同时也更灵活。由于它直接面向用户，它的界面应该对用户友好，至少对于目标用户友好。"
 
-#: ../../guide/walkthrough.rst:110
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:110
 msgid "The job of the master channel includes:"
 msgstr "主端的工作包括："
 
-#: ../../guide/walkthrough.rst:112
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:112
 msgid "Receive, process and display messages from slave channels."
 msgstr "接收，处理和显示来自从端的消息。"
 
-#: ../../guide/walkthrough.rst:114
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:114
 msgid "Display a full list of chats from all slave channels."
 msgstr "显示来自所有从端的完整会话列表。"
 
-#: ../../guide/walkthrough.rst:115
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:115
 msgid "Offer an interface for the user to use \"extra functions\" from slave channels."
 msgstr "提供一个让用户使用来自从端的「附加功能」的界面。"
 
-#: ../../guide/walkthrough.rst:117
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:117
 msgid "Process updates from slave channels."
 msgstr "处理来自从端的更新。"
 
-#: ../../guide/walkthrough.rst:118
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:118
 msgid "Provide a user-friendly interface as far as possible."
 msgstr "尽可能提供一个用户友好的界面。"
 
-#: ../../guide/walkthrough.rst:121
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:121
 msgid "Middlewares"
 msgstr "中间件"
 
-#: ../../guide/walkthrough.rst:123
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/walkthrough.rst:123
 msgid "Middlewares can monitor and make changes to or nullify messages and statuses delivered between channels. Middlewares are executed in order of registration, one after another. A middleware will always receive the messages processed by the preceding middleware if available. Once a middleware nullify a message or status, the message will not be processed and delivered any further."
 msgstr "中间件可以监视，更改或拦截在通道间传递的消息和状态。中间件按照注册的顺序一个接一个的执行。 如果存在，中间件会始终接受被上一个中间件处理过的消息。一旦中间件拦截了消息或状态，该消息将不再被进一步处理。"
 
