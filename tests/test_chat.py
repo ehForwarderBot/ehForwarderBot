@@ -6,7 +6,7 @@ from ehforwarderbot import EFBChat, ChatType
 
 
 def test_generate_with_channel(slave_channel):
-    chat = EFBChat(slave_channel)
+    chat = EFBChat(channel=slave_channel)
     assert chat.module_id == slave_channel.channel_id
     assert chat.module_name == slave_channel.channel_name
     assert chat.channel_emoji == slave_channel.channel_emoji
@@ -35,7 +35,7 @@ def test_normal_chat():
 
 
 def test_copy(slave_channel):
-    chat = EFBChat(slave_channel)
+    chat = EFBChat(channel=slave_channel)
     chat.chat_uid = "00001"
     chat.chat_name = "Chat"
     chat.chat_alias = "chaT"
@@ -46,7 +46,16 @@ def test_copy(slave_channel):
 
 
 def test_verify_valid_chat(slave_channel):
-    chat = EFBChat(slave_channel)
+    chat = EFBChat(channel=slave_channel)
+    chat.chat_uid = "00001"
+    chat.chat_name = "Chat"
+    chat.chat_alias = "chaT"
+    chat.chat_type = ChatType.User
+    chat.verify()
+
+
+def test_verify_valid_chat_middleware(middleware):
+    chat = EFBChat(middleware=middleware)
     chat.chat_uid = "00001"
     chat.chat_name = "Chat"
     chat.chat_alias = "chaT"
@@ -55,7 +64,7 @@ def test_verify_valid_chat(slave_channel):
 
 
 def test_verify_missing_uid(slave_channel):
-    chat = EFBChat(slave_channel)
+    chat = EFBChat(channel=slave_channel)
     chat.chat_name = "Chat"
     chat.chat_type = ChatType.User
     with pytest.raises(ValueError):
@@ -63,7 +72,7 @@ def test_verify_missing_uid(slave_channel):
 
 
 def test_verify_wrong_chat_type(slave_channel):
-    chat = EFBChat(slave_channel)
+    chat = EFBChat(channel=slave_channel)
     chat.chat_uid = "00001"
     chat.chat_name = "Chat"
     chat.chat_type = "user"
@@ -72,7 +81,7 @@ def test_verify_wrong_chat_type(slave_channel):
 
 
 def test_pickle(slave_channel):
-    chat = EFBChat(slave_channel)
+    chat = EFBChat(channel=slave_channel)
     chat.chat_uid = "00001"
     chat.chat_name = "Chat"
     chat.chat_alias = "chaT"

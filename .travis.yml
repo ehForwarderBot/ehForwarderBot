@@ -1,12 +1,12 @@
-dist: xenial
+dist: bionic
 language: python
 cache: pip
 python:
   - 3.6
   - 3.7
+  - 3.8
 install:
-  - pip install -Ue .
-  - pip install -U pytest mypy 1a23_telemetry doit coverage
+  - pip install -Ue '.[tests]'
 script:
-  - doit mypy
-  - doit test
+  - mypy -p ehforwarderbot
+  - pytest -vv -r a -l --color=yes

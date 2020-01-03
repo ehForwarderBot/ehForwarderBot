@@ -44,7 +44,8 @@ class EFBChat:
 
     Attributes:
         module_id (str): Unique ID of the module.
-        channel_emoji (str): Emoji of the channel, if available.
+        channel_emoji (str): Emoji of the channel, empty string if the chat
+            is from a middleware.
         module_name (str): Name of the module.
         chat_name (str): Name of the chat.
         chat_alias (Optional[str]): Alternative name of the chat, usually set by user.
@@ -106,6 +107,7 @@ class EFBChat:
         elif isinstance(middleware, EFBMiddleware):
             self.module_id = middleware.middleware_id
             self.module_name = middleware.middleware_name
+            self.channel_emoji = ""
         else:
             self.module_name = module_name
             self.channel_emoji = channel_emoji
