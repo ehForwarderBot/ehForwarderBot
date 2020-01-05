@@ -1,7 +1,6 @@
 # coding=utf-8
 
 import copy
-import warnings
 from enum import Enum
 from typing import Dict, Any, Optional, TypeVar, Sequence
 
@@ -9,6 +8,7 @@ from .channel import EFBChannel
 from .constants import ChatType
 from .middleware import EFBMiddleware
 from .types import ModuleID, ChatID
+from .coordinator import translator
 
 __all__ = ['EFBChat', 'EFBChatNotificationState']
 
@@ -134,7 +134,7 @@ class EFBChat:
         Returns:
             EFBChat: This object.
         """
-        self.chat_name = "You"
+        self.chat_name = translator.gettext("You")
         self.chat_alias = None
         self.chat_uid = EFBChat.SELF_ID
         self.chat_type = ChatType.User
@@ -148,7 +148,7 @@ class EFBChat:
         Returns:
             EFBChat: This object.
         """
-        self.chat_name = "System"
+        self.chat_name = translator.gettext("System")
         self.chat_alias = None
         self.chat_uid = EFBChat.SYSTEM_ID
         self.chat_type = ChatType.System
