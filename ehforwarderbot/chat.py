@@ -17,9 +17,6 @@ __all__ = ['Chat', 'PrivateChat', 'SystemChat', 'GroupChat',
            'ChatMember', 'SelfChatMember', 'SystemChatMember',
            'ChatNotificationState']
 
-# Allow mypy to recognize subclass output for `return self` methods.
-ChatMemberSelf = TypeVar('ChatMemberSelf', bound='ChatMember', covariant=True)
-
 
 class ChatNotificationState(Enum):
     """
@@ -61,6 +58,9 @@ class BaseChat(ABC):
             “description”, “purpose”, or “topic” of the chat.
         vendor_specific (Dict[str, Any]): Any vendor specific attributes.
     """
+
+    # Allow mypy to recognize subclass output for `return self` methods.
+    _BaseChatSelf = TypeVar('_BaseChatSelf', bound='BaseChat')
 
     def __init__(self, *, channel: Optional[SlaveChannel] = None,
                  middleware: Optional[Middleware] = None,
@@ -130,7 +130,7 @@ class BaseChat(ABC):
         else:
             return self.name
 
-    def copy(self) -> 'Chat':
+    def copy(self: _BaseChatSelf) -> _BaseChatSelf:
         """Return a shallow copy of the object."""
         return copy.copy(self)
 
@@ -191,7 +191,7 @@ class ChatMember(BaseChat):
         vendor_specific (Dict[str, Any]): Any vendor specific attributes.
     """
 
-    def __init__(self, chat: 'Chat' = None, *,
+    def __init__(self, chat: 'Chat', *,
                  name: str = "", alias: Optional[str] = None, id: ChatID = ChatID(""),
                  vendor_specific: Dict[str, Any] = None, description: str = ""):
         """
@@ -240,7 +240,7 @@ class SelfChatMember(ChatMember):
 
     SELF_ID = ChatID("__self__")
 
-    def __init__(self, chat: 'Chat' = None, *,
+    def __init__(self, chat: 'Chat', *,
                  name: str = "", alias: Optional[str] = None, id: ChatID = ChatID(""),
                  vendor_specific: Dict[str, Any] = None, description: str = ""):
         """
@@ -272,7 +272,7 @@ class SystemChatMember(ChatMember):
 
     SYSTEM_ID = ChatID("__system__")
 
-    def __init__(self, chat: 'Chat' = None, *,
+    def __init__(self, chat: 'Chat', *,
                  name: str = "", alias: Optional[str] = None, id: ChatID = ChatID(""),
                  vendor_specific: Dict[str, Any] = None, description: str = ""):
         """
@@ -290,15 +290,6 @@ class SystemChatMember(ChatMember):
         id = id or self.SYSTEM_ID
         super().__init__(chat, name=name, alias=alias, id=id,
                          vendor_specific=vendor_specific, description=description)
-
-    @property
-    @deprecated(details="is_chat is deprecated, use new class-based API to check types instead.")
-    def is_chat(self) -> bool:
-        """Indicate if this object represents a chat. **Deprecated**.
-        """
-        warnings.warn("is_chat is deprecated, use new class-based API to check types instead.",
-                      DeprecationWarning)
-        return False
 
 
 class Chat(BaseChat, ABC):

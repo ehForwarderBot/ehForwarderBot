@@ -460,18 +460,21 @@ class Message:
         """Get the status attributes of the current message, if available."""
         if isinstance(self.attributes, StatusAttribute):
             return self.attributes
+        return None
 
     @property
     def link(self) -> Optional[LinkAttribute]:
         """Get the link attributes of the current message, if available."""
         if isinstance(self.attributes, LinkAttribute):
             return self.attributes
+        return None
 
     @property
     def location(self) -> Optional[LocationAttribute]:
         """Get the location attributes of the current message, if available."""
         if isinstance(self.attributes, LocationAttribute):
             return self.attributes
+        return None
 
     def __str__(self):
         return "<Message, {msg.author}@{msg.chat} [{msg.type.name}]: {msg.text}; {msg.uid}>".format(msg=self)
