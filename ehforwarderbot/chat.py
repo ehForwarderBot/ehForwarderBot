@@ -212,6 +212,13 @@ class ChatMember(BaseChat):
         super().verify()
         assert isinstance(self.chat, Chat)
 
+    def __eq__(self, other):
+        return (
+                isinstance(other, ChatMember) and
+                other.id == self.id and
+                other.chat == self.chat
+        )
+
     def __str__(self):
         return f"<{self.__class__.__name__}: {self.long_name} ({self.id}) @ {self.chat}>"
 
@@ -353,8 +360,7 @@ class Chat(BaseChat, ABC):
                          vendor_specific=vendor_specific, description=description)
         self.members: List[ChatMember] = members if members is not None else []
         if with_self:
-            self.self = SelfChatMember(self)
-            self.members.append(self.self)
+            self.self = self.add_self()
         else:
             self.self = None
         self.notification: ChatNotificationState = notification
@@ -363,6 +369,17 @@ class Chat(BaseChat, ABC):
     def has_self(self) -> bool:
         """Indicate if this chat has yourself."""
         return any(isinstance(member, SelfChatMember) for member in self.members)
+
+    def add_self(self) -> SelfChatMember:
+        """Add self to the list of members.
+
+        Raises:
+            AssertionError: When there is already a self in the list of members.
+        """
+        assert not any(isinstance(i, SelfChatMember) for i in self.members)
+        s = SelfChatMember(self)
+        self.members.append(s)
+        return s
 
     def add_member(self, name: str, id: ChatID, alias: Optional[str] = None,
                    vendor_specific: Dict[str, Any] = None, description: str = "") -> ChatMember:

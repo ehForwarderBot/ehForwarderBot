@@ -412,9 +412,10 @@ class Message:
     """
 
     def __init__(self,
+                 *,
                  attributes: Optional[MessageAttribute] = None,
-                 author: Chat = None,
-                 chat: ChatMember = None,
+                 chat: Chat = None,
+                 author: ChatMember = None,
                  commands: Optional[MessageCommands] = None,
                  deliver_to: Channel = None,
                  edit: bool = False,
