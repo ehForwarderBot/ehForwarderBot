@@ -56,8 +56,8 @@ msgid "Convention for object names is ``<author>.<platform>``, e.g. ``alice.irc`
 msgstr "La convención para nombres de objetos es `` <author>.<platform>``, p. Ej. `` alice.irc``. Esta también debería ser la identificación de su módulo."
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:37
-msgid "Object reference should point to your module's class, which extends either ``EFBChannel`` or ``EFBMiddleware``."
-msgstr "La referencia de objeto debe apuntar a la clase de su módulo, que se extiende ya sea ``EFBChannel`` o `` EFBMiddleware``."
+msgid "Object reference should point to your module's class, which extends either ``Channel`` or ``Middleware``."
+msgstr "La referencia de objeto debe apuntar a la clase de su módulo, que se extiende ya sea ``Channel`` o `` Middleware``."
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:41
 msgid "Example"

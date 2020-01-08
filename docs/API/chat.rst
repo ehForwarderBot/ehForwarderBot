@@ -1,4 +1,4 @@
-EFBChat
+Chat
 =======
-.. autoclass:: ehforwarderbot.EFBChat
+.. automodule:: ehforwarderbot.chat
     :members:

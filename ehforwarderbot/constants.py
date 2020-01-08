@@ -2,6 +2,8 @@
 
 from enum import Enum
 
+__all__ = ["MsgType"]
+
 
 class MsgType(Enum):
     Text = "Text"
@@ -66,21 +68,3 @@ class MsgType(Enum):
     Any type of message that is not listed above.
     A text representation is required.
     """
-
-
-class ChatType(Enum):
-    User = "User"
-    Group = "Group"
-    System = "System"
-    Unknown = "Unknown"
-
-
-class TargetType(Enum):
-    Member = "Member"
-    Message = "Message"
-    Substitution = "Substitution"
-
-
-class ChannelType(Enum):
-    Master = "Master"
-    Slave = "Slave"

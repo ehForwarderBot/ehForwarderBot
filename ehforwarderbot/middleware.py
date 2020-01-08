@@ -5,13 +5,13 @@ from typing import Optional, Dict, Callable, TYPE_CHECKING
 from .types import ModuleID, InstanceID, ExtraCommandName
 
 if TYPE_CHECKING:
-    from .message import EFBMsg
-    from .status import EFBStatus
+    from .message import Message
+    from .status import Status
 
-__all__ = ['EFBMiddleware']
+__all__ = ['Middleware']
 
 
-class EFBMiddleware(ABC):
+class Middleware(ABC):
     """
     Middleware class.
 
@@ -56,26 +56,26 @@ class EFBMiddleware(ABC):
                 methods[ExtraCommandName(mName)] = m
         return methods
 
-    def process_message(self, message: 'EFBMsg') -> Optional['EFBMsg']:
+    def process_message(self, message: 'Message') -> Optional['Message']:
         """
         Process a message with middleware
 
         Args:
-            message (:obj:`.EFBMsg`): Message object to process
+            message (:obj:`~.message.Message`): Message object to process
 
         Returns:
-            Optional[:obj:`.EFBMsg`]: Processed message or None if discarded.
+            Optional[:obj:`~.message.Message`]: Processed message or None if discarded.
         """
         return message
 
-    def process_status(self, status: 'EFBStatus') -> Optional['EFBStatus']:
+    def process_status(self, status: 'Status') -> Optional['Status']:
         """
         Process a status update with middleware
 
         Args:
-            status (:obj:`.EFBStatus`): Message object to process
+            status (:obj:`~.status.Status`): Message object to process
 
         Returns:
-            Optional[:obj:`.EFBStatus`]: Processed status or None if discarded.
+            Optional[:obj:`~.status.Status`]: Processed status or None if discarded.
         """
         return status

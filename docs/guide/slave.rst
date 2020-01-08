@@ -28,12 +28,12 @@ Methods to be implemented
 Below is a list of methods that are required to be 
 implemented by the slave channel.
 
-* :meth:`.EFBChannel.get_chat_picture`
-* :meth:`.EFBChannel.get_chat`
-* :meth:`.EFBChannel.get_chats`
-* :meth:`.EFBChannel.poll`
-* :meth:`.EFBChannel.send_message`
-* :meth:`.EFBChannel.send_status`
+* :meth:`.Channel.get_chat_picture`
+* :meth:`.Channel.get_chat`
+* :meth:`.Channel.get_chats`
+* :meth:`.Channel.poll`
+* :meth:`.Channel.send_message`
+* :meth:`.Channel.send_status`
 
 .. _slave-additional-features:
 
@@ -147,4 +147,4 @@ settings user had in the IM platform, but you can:
 Implementation details
 ----------------------
 
-See :class:`EFBChannel`.
+See :class:`.SlaveChannel`.

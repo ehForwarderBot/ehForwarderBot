@@ -52,7 +52,7 @@ msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:4
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:4
-msgid "Can be raised in :meth:`.EFBChannel.send_message` and :meth:`.EFBChannel.send_status`."
+msgid "Can be raised in :meth:`.Channel.send_message` and :meth:`.Channel.send_status`."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:1
@@ -66,7 +66,7 @@ msgid "Raised by a slave channel when a message indicated is not found."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:3
-msgid "Can be raised in :meth:`.EFBChannel.send_message` (edited message / target message not found) and in :meth:`.EFBChannel.send_status` (message to delete is not found)."
+msgid "Can be raised in :meth:`.Channel.send_message` (edited message / target message not found) and in :meth:`.Channel.send_status` (message to delete is not found)."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:1
@@ -74,7 +74,7 @@ msgid "Raised by a slave channel when the indicated message type is not supporte
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:3
-msgid "Can be raised in :meth:`.EFBChannel.send_message`."
+msgid "Can be raised in :meth:`.Channel.send_message`."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:1
@@ -86,6 +86,6 @@ msgid "Raised by slave channel when a message reaction request from master chann
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageReactionNotPossible:4
-msgid "Can be raised in :meth:`.EFBChannel.send_status`."
+msgid "Can be raised in :meth:`.Channel.send_status`."
 msgstr ""
 

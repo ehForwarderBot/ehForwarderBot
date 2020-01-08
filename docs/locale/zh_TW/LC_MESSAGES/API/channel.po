@@ -16,7 +16,7 @@ msgstr ""
 "Language: zh_TW\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:2
-msgid "EFBChannel"
+msgid "Channel"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:1
@@ -247,7 +247,7 @@ msgid "The same message object with message ID from the recipient."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:9
-msgid ":obj:`.EFBMsg`"
+msgid ":obj:`.Message`"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:12
@@ -259,7 +259,7 @@ msgid "Raised when an message edit request is sent, but not     supported by the
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:14
-msgid "Raised when an existing message indicated is not found.     E.g.: The message to be edited, the message referred     in the :attr:`msg.target <.EFBMsg.target>`     attribute."
+msgid "Raised when an existing message indicated is not found.     E.g.: The message to be edited, the message referred     in the :attr:`msg.target <.Message.target>`     attribute."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:15
@@ -311,7 +311,7 @@ msgid "Sending messages and statuses"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:13
-msgid "Sending messages and statuses to other channels is the most common operation of a channel. When the channel has gathered enough information from external sources, it should be further processed and packed into the relative objects, i.e. :obj:`.EFBMsg` and :obj:`.EFBStatus`."
+msgid "Sending messages and statuses to other channels is the most common operation of a channel. When the channel has gathered enough information from external sources, it should be further processed and packed into the relative objects, i.e. :obj:`.Message` and :obj:`.Status`."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:19
@@ -319,7 +319,7 @@ msgid "When the related information is packed into their relative objects, it ca
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:23
-msgid "For now, both :obj:`.EFBMsg` and :obj:`.EFBStatus` has an attribute that indicates that where this object should be delivered to (:attr:`.EFBMsg.deliver_to` and :attr:`.EFBStatus.destination_channel`). This is used by the coordinator when delivering the message."
+msgid "For now, both :obj:`.Message` and :obj:`.Status` has an attribute that indicates that where this object should be delivered to (:attr:`.Message.deliver_to` and :attr:`.Status.destination_channel`). This is used by the coordinator when delivering the message."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:29

@@ -7,9 +7,8 @@ from ruamel.yaml import YAML
 from typing_extensions import Final
 
 from . import utils, coordinator
-from .channel import EFBChannel
-from .constants import ChannelType
-from .middleware import EFBMiddleware
+from .channel import MasterChannel, SlaveChannel
+from .middleware import Middleware
 
 OPTIONAL_DEFAULTS: Final[Dict[str, Any]] = {
     "logging": {},
@@ -46,11 +45,8 @@ def load_config() -> Dict[str, Any]:
         channel = utils.locate_module(data['master_channel'], 'master')
         if not channel:
             raise ValueError(_("\"{}\" is not found.").format(master_channel_id))
-        if not issubclass(channel, EFBChannel):
-            raise ValueError(_("\"{0}\" is not a channel, but a {1}.").format(master_channel_id, channel))
-        if not channel.channel_type == ChannelType.Master:
-            raise ValueError(_("\"{0}\" is not a master channel, but a {1}.")
-                             .format(master_channel_id, channel.channel_type))
+        if not issubclass(channel, MasterChannel):
+            raise ValueError(_("\"{0}\" is not a master channel, but a {1}.").format(master_channel_id, channel))
 
         # - Slave channels
         slave_channels_list = data.get("slave_channels", None)
@@ -64,11 +60,8 @@ def load_config() -> Dict[str, Any]:
             channel = utils.locate_module(i, 'slave')
             if not channel:
                 raise ValueError(_("\"{}\" is not found.").format(i))
-            if not issubclass(channel, EFBChannel):
-                raise ValueError(_("\"{0}\" is not a channel, but a {1}.").format(i, channel))
-            if not channel.channel_type == ChannelType.Slave:
-                raise ValueError(_("\"{0}\" is not a slave channel, but a {1}.")
-                                 .format(i, channel.channel_type))
+            if not issubclass(channel, SlaveChannel):
+                raise ValueError(_("\"{0}\" is not a slave channel, but a {1}.").format(i, channel))
 
         # - Middlewares
         middlewares_list = data.get("middlewares", None)
@@ -80,7 +73,7 @@ def load_config() -> Dict[str, Any]:
                 middleware = utils.locate_module(i, 'middleware')
                 if not middleware:
                     raise ValueError(_("\"{}\" is not found.").format(i))
-                if not issubclass(middleware, EFBMiddleware):
+                if not issubclass(middleware, Middleware):
                     raise ValueError(_("\"{0}\" is not a middleware, but a {1}.")
                                      .format(i, middleware))
         else:

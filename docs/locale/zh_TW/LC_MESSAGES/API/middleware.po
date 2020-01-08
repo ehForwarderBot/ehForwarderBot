@@ -16,7 +16,7 @@ msgstr ""
 "Language: zh_TW\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:2
-msgid "EFBMiddleware"
+msgid "Middleware"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:1
@@ -95,7 +95,7 @@ msgid "Processed message or None if discarded."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:7
-msgid "Optional[:obj:`.EFBMsg`]"
+msgid "Optional[:obj:`.Message`]"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:1
@@ -107,7 +107,7 @@ msgid "Processed status or None if discarded."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:7
-msgid "Optional[:obj:`.EFBStatus`]"
+msgid "Optional[:obj:`.Status`]"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:8

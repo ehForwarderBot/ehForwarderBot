@@ -6,10 +6,10 @@ Coordinator among channels.
 Attributes:
     profile (str): Name of current profile..
     mutex (threading.Lock): Global interaction thread lock.
-    master (EFBChannel): The running master channel object.
+    master (Channel): The running master channel object.
     slaves (Dict[str, EFBChannel]): Dictionary of running slave channel object.
         Keys are the unique identifier of the channel.
-    middlewares (List[EFBMiddleware]): List of middlewares
+    middlewares (List[Middleware]): List of middlewares
 """
 
 import threading
@@ -17,15 +17,14 @@ from contextlib import suppress
 from gettext import NullTranslations
 from typing import List, Dict, Optional, cast, TYPE_CHECKING, Union
 
-from .channel import EFBChannel
-from .constants import ChannelType
+from .channel import Channel, MasterChannel, SlaveChannel
 from .exceptions import EFBChannelNotFound
-from .middleware import EFBMiddleware
+from .middleware import Middleware
 from .types import ModuleID
 
 if TYPE_CHECKING:
-    from . import EFBMsg
-    from .status import EFBStatus
+    from . import Message
+    from .status import Status
 
 profile: str = "default"
 """Current running profile name"""
@@ -33,13 +32,13 @@ profile: str = "default"
 mutex: threading.Lock = threading.Lock()
 """Mutual exclusive lock for user interaction through CLI interface"""
 
-master: EFBChannel  # late init
+master: MasterChannel  # late init
 """The instance of the master channel."""
 
-slaves: Dict[ModuleID, EFBChannel] = dict()
+slaves: Dict[ModuleID, SlaveChannel] = dict()
 """Instances of slave channels. Keys are the channel IDs."""
 
-middlewares: List[EFBMiddleware] = list()
+middlewares: List[Middleware] = list()
 """Instances of middlewares. Sorted in the order of execution."""
 
 master_thread: Optional[threading.Thread] = None
@@ -52,43 +51,42 @@ translator: NullTranslations = NullTranslations()
 """Internal GNU gettext translator."""
 
 
-def add_channel(channel: EFBChannel):
+def add_channel(channel: Channel):
     """
     Register the channel with the coordinator.
 
     Args:
-        channel (EFBChannel): Channel to register
+        channel (Channel): Channel to register
     """
     global master, slaves
-    if isinstance(channel, EFBChannel):
-        if channel.channel_type == ChannelType.Slave:
-            slaves[channel.channel_id] = channel
-        else:
-            master = channel
+    if isinstance(channel, MasterChannel):
+        master = channel
+    elif isinstance(channel, SlaveChannel):
+        slaves[channel.channel_id] = channel
     else:
         raise TypeError("Channel instance is expected")
 
 
-def add_middleware(middleware: EFBMiddleware):
+def add_middleware(middleware: Middleware):
     """
     Register a middleware with the coordinator.
 
     Args:
-        middleware (EFBMiddleware): Middleware to register
+        middleware (Middleware): Middleware to register
     """
     global middlewares
-    if isinstance(middleware, EFBMiddleware):
+    if isinstance(middleware, Middleware):
         middlewares.append(middleware)
     else:
         raise TypeError("Middleware instance is expected")
 
 
-def send_message(msg: 'EFBMsg') -> Optional['EFBMsg']:
+def send_message(msg: 'Message') -> Optional['Message']:
     """
     Deliver a message to the destination channel.
 
     Args:
-        msg (EFBMsg): The message
+        msg (Message): The message
 
     Returns:
         The message sent by the destination channel,
@@ -119,33 +117,33 @@ def send_message(msg: 'EFBMsg') -> Optional['EFBMsg']:
         raise EFBChannelNotFound()
 
 
-def send_status(status: 'EFBStatus'):
+def send_status(status: 'Status'):
     """
     Deliver a message to the destination channel.
 
     Args:
-        status (EFBStatus): The status
+        status (Status): The status
     """
     global middlewares, master
     if status is None:
         return
 
-    s: 'Optional[EFBStatus]' = status
+    s: 'Optional[Status]' = status
 
     # Go through middlewares
     for i in middlewares:
-        s = i.process_status(cast('EFBStatus', s))
+        s = i.process_status(cast('Status', s))
         if s is None:
             return
 
-    status = cast('EFBStatus', s)
+    status = cast('Status', s)
 
     status.verify()
 
     status.destination_channel.send_status(status)
 
 
-def get_module_by_id(module_id: ModuleID) -> Union[EFBChannel, EFBMiddleware]:
+def get_module_by_id(module_id: ModuleID) -> Union[Channel, Middleware]:
     """
     Return the module instance of a provided module ID
 

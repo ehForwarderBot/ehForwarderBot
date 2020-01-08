@@ -48,7 +48,7 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:7
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:17
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:23
-msgid ":obj:`.EFBChannel`"
+msgid ":obj:`.Channel`"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:1
@@ -137,7 +137,7 @@ msgid "Some channels may not support removal of messages, and raises a :obj:`.ex
 msgstr "Bazı kanallar, mesajların kaldırılmasını desteklemeyebilir ve bir :obj:`.exceptions.EFBOperationNotSupported` istisnası yüksektir."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:9
-msgid "Feedback by sending another ``EFBMessageRemoval`` back is not required when this object is sent from a master channel. Master channels should treat a successful delivery of this status as a successful removal."
+msgid "Feedback by sending another ``MessageRemoval`` back is not required when this object is sent from a master channel. Master channels should treat a successful delivery of this status as a successful removal."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:15
@@ -151,11 +151,11 @@ msgid "Channel the status is issued to"
 msgstr "Durumun yayınlandığı kanal"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:27
-msgid "Message to remove. This may not be a complete :obj:`.EFBMsg` object."
+msgid "Message to remove. This may not be a complete :obj:`.Message` object."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:30
-msgid ":obj:`.EFBMsg`"
+msgid ":obj:`.Message`"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:0
@@ -176,12 +176,12 @@ msgid "Try to provided as much as you can, if not, provide a minimum information
 msgstr "Mümkün olduğu kadar temin etmeye çalışın, eğer olmazsa, kanal içinde asgari bilgi temin edin:"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:6
-msgid "Slave channel ID and chat ID (:attr:`message.chat.module_id <.EFBChat.module_id>` and :attr:`message.chat.chat_uid <.EFBChat.chat_uid>`)"
+msgid "Slave channel ID and chat ID (:attr:`message.chat.module_id <.Chat.module_id>` and :attr:`message.chat.chat_uid <.Chat.chat_uid>`)"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:8
-msgid "Message unique ID from the slave channel (:attr:`message.uid <.EFBMsg.uid>`)"
-msgstr "Bağımlı kanaldan benzersiz kimlik mesajı (:attr:`message.uid <.EFBMsg.uid>`)"
+msgid "Message unique ID from the slave channel (:attr:`message.uid <.Message.uid>`)"
+msgstr "Bağımlı kanaldan benzersiz kimlik mesajı (:attr:`message.uid <.Message.uid>`)"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:14
 msgid "Message to remove."
@@ -192,7 +192,7 @@ msgid "Created when user react to a message, issued from master channel."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:3
-msgid "When this status is sent, a :obj:`.status.EFBMessageReactionsUpdate` is recommended to be issued back to master channel."
+msgid "When this status is sent, a :obj:`.status.MessageReactionsUpdate` is recommended to be issued back to master channel."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:6
@@ -238,7 +238,7 @@ msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate:7
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate.__init__:5
-msgid "Indicate reactions to the message. Dictionary key represents the reaction name, usually an emoji. Value is a collection of users who reacted to the message with that certain emoji. All :obj:`EFBChat` objects in this dict must be of a user or a group member."
+msgid "Indicate reactions to the message. Dictionary key represents the reaction name, usually an emoji. Value is a collection of users who reacted to the message with that certain emoji. All :obj:`Chat` objects in this dict must be of a user or a group member."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate:13

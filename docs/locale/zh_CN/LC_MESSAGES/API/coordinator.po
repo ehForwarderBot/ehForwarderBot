@@ -52,24 +52,24 @@ msgid "The running master channel object."
 msgstr "正在运行的主端对象。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:19
-msgid "EFBChannel"
-msgstr "EFBChannel"
+msgid "Channel"
+msgstr "Channel"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:23
 msgid "Dictionary of running slave channel object. Keys are the unique identifier of the channel."
 msgstr "正在运行的从端的字典。键值为信道的唯一标识符。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:26
-msgid "Dict[str, EFBChannel]"
-msgstr "Dict[str, EFBChannel]"
+msgid "Dict[str, Channel]"
+msgstr "Dict[str, Channel]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:30
 msgid "List of middlewares"
 msgstr "中间件列表"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:32
-msgid "List[EFBMiddleware]"
-msgstr "List[EFBMiddleware]"
+msgid "List[Middleware]"
+msgstr "List[Middleware]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_channel:1
 msgid "Register the channel with the coordinator."

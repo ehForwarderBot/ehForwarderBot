@@ -1,20 +1,20 @@
 # coding=utf-8
 
 from abc import ABC, abstractmethod
-from typing import Optional, Dict, List, Set, Callable, IO, TYPE_CHECKING
+from typing import Optional, Dict, List, Set, Callable, IO, TYPE_CHECKING, Sequence
 
+from .constants import MsgType
 from .types import ModuleID, InstanceID, ExtraCommandName, ReactionName, ChatID, MessageID
-from .constants import ChannelType, MsgType
 
 if TYPE_CHECKING:
-    from .chat import EFBChat
-    from .message import EFBMsg
-    from .status import EFBStatus
+    from .chat import Chat
+    from .message import Message
+    from .status import Status
 
-__all__ = ["EFBChannel"]
+__all__ = ["Channel", "MasterChannel", "SlaveChannel"]
 
 
-class EFBChannel(ABC):
+class Channel(ABC):
     """
     The abstract channel class.
 
@@ -25,38 +25,18 @@ class EFBChannel(ABC):
             Emoji icon of the channel. Recommended to use a
             visually-length-one emoji that represents
             the channel best.
-        channel_type (:obj:`.ChannelType`): Type of the channel.
-        supported_message_types (Set[:obj:`.MsgType`]):
-            Types of messages that the channel accepts as incoming messages.
         channel_id (str):
             Unique identifier of the channel.
             Convention of IDs is specified in :doc:`/guide/packaging`.
             This ID will be appended with its instance ID when available.
         instance_id (str):
             The instance ID if available.
-        suggested_reactions (Optional[List[str]]):
-            A list of suggested reactions to be applied to messages. Valid to
-            slave channels only, master channels should leave this value as
-            ``None``.
-
-            Reactions should be ordered in a meaningful way, e.g., the order
-            used by the IM platform, or frequency of usage. Note that it is
-            not necessary to list all suggested reactions if that is too long,
-            or not feasible.
-
-            Set to ``None`` when it is known that no reaction is supported to
-            ANY message in the channel. Set to empty list when it is not feasible
-            to provide a list of suggested reactions, for example, the list of
-            reactions is different for each chat or message.
     """
 
     channel_name: str = "Empty channel"
     channel_emoji: str = "�"
     channel_id: ModuleID = ModuleID("efb.empty_channel")
-    channel_type: ChannelType
     instance_id: Optional[InstanceID] = None
-    supported_message_types: Set[MsgType] = set()
-    suggested_reactions: Optional[List[ReactionName]] = None
     __version__: str = 'undefined version'
 
     def __init__(self, instance_id: InstanceID = None):
@@ -72,34 +52,18 @@ class EFBChannel(ABC):
             self.instance_id = InstanceID(instance_id)
             self.channel_id = ModuleID(self.channel_id + "#" + instance_id)
 
-    def get_extra_functions(self) -> Dict[ExtraCommandName, Callable]:
-        """Get a list of additional features
-
-        Returns:
-            Dict[str, Callable]: A dict of methods marked as additional features.
-            Method can be called with ``get_extra_functions()["methodName"]()``.
-        """
-        if self.channel_type == ChannelType.Master:
-            raise TypeError("get_extra_function is not available on master channels.")
-        methods = {}
-        for mName in dir(self):
-            m = getattr(self, mName)
-            if callable(m) and getattr(m, "extra_fn", False):
-                methods[ExtraCommandName(mName)] = m
-        return methods
-
     @abstractmethod
-    def send_message(self, msg: 'EFBMsg') -> 'EFBMsg':
-        """send_message(msg: EFBMsg) -> EFBMsg
+    def send_message(self, msg: 'Message') -> 'Message':
+        """send_message(msg: Message) -> Message
 
         Send a message to, or edit a sent message in
         the channel.
 
         Args:
-            msg (:obj:`.EFBMsg`): Message object to be processed.
+            msg (:obj:`~.message.Message`): Message object to be processed.
 
         Returns:
-            :obj:`.EFBMsg`:
+            :obj:`~.message.Message`:
                 The same message object with message ID from the
                 recipient.
 
@@ -118,7 +82,7 @@ class EFBChannel(ABC):
             EFBMessageNotFound:
                 Raised when an existing message indicated is not found.
                 E.g.: The message to be edited, the message referred
-                in the :attr:`msg.target <.EFBMsg.target>`
+                in the :attr:`msg.target <.Message.target>`
                 attribute.
 
             EFBMessageError:
@@ -136,48 +100,12 @@ class EFBChannel(ABC):
         raise NotImplementedError()
 
     @abstractmethod
-    def get_chats(self) -> List['EFBChat']:
-        """get_chats() -> List[EFBChat]
-
-        Return a list of available chats in the channel.
-
-        Returns:
-            List[.EFBChat]: a list of available chats in the channel.
-
-        Note:
-            This is not required by Master Channels
-        """
-        raise NotImplementedError()
-
-    @abstractmethod
-    def get_chat(self, chat_uid: ChatID, member_uid: Optional[ChatID] = None) -> 'EFBChat':
-        """
-        Get the chat object from a slave channel.
-
-        Args:
-            chat_uid (str): UID of the chat.
-            member_uid (Optional[str]): UID of group member,
-                only when the selected chat is a group.
-
-        Returns:
-           .EFBChat: The chat found.
-
-        Raises:
-            EFBChatNotFound:
-                Raised when a chat required is not found.
-
-        Note:
-            This is not required by Master Channels
-        """
-        raise NotImplementedError()
-
-    @abstractmethod
-    def send_status(self, status: 'EFBStatus'):
+    def send_status(self, status: 'Status'):
         """
         Send a status to the channel.
 
         Args:
-            status (:obj:`.EFBStatus`): the status
+            status (:obj:`~.status.Status`): the status
 
         Raises:
             EFBChatNotFound:
@@ -203,16 +131,97 @@ class EFBChannel(ABC):
         """
         raise NotImplementedError()
 
+    def stop_polling(self):
+        """
+        When EFB framework is asked to stop gracefully,
+        this method is called to each channel object to
+        stop all processes in the channel, save all
+        status if necessary, and terminate polling.
+
+        When the channel is ready to stop, the polling
+        function must stop blocking. EFB framework will
+        quit completely when all polling threads end.
+        """
+        raise NotImplementedError()
+
+    def get_message_by_id(self, chat: 'Chat', msg_id: MessageID) -> Optional['Message']:
+        """
+        Get message entity by its ID.
+        Applicable to both master channels and slave channels.
+        Return ``None`` when message not found.
+
+        Override this method and raise
+        :exc:`~.exceptions.EFBOperationNotSupported`
+        if it is not feasible to perform this for your platform.
+
+        Args:
+            chat: Chat in slave channel / middleware.
+            msg_id: ID of message from the chat in slave channel / middleware.
+        """
+        raise NotImplementedError()
+
+
+class MasterChannel(Channel, ABC):
+    """The abstract master channel class. All master channels shall inherit
+    this class.
+    """
+
+
+class SlaveChannel(Channel, ABC):
+    """The abstract master channel class. All master channels shall inherit
+    this class.
+
+    Attributes:
+        supported_message_types (Set[:class:`~.constants.MsgType`]):
+            Types of messages that the slave channel accepts as incoming messages.
+            Master channels may use this value to decide what type of messages
+            to send to your slave channel.
+
+            Leaving this empty may cause the master channel to refuse sending
+            anything to your slave channel.
+        suggested_reactions (Optional[Sequence[str]]):
+            A list of suggested reactions to be applied to messages. Valid to
+            slave channels only, master channels should leave this value as
+            ``None``.
+
+            Reactions should be ordered in a meaningful way, e.g., the order
+            used by the IM platform, or frequency of usage. Note that it is
+            not necessary to list all suggested reactions if that is too long,
+            or not feasible.
+
+            Set to ``None`` when it is known that no reaction is supported to
+            ANY message in the channel. Set to empty list when it is not feasible
+            to provide a list of suggested reactions, for example, the list of
+            reactions is different for each chat or message.
+    """
+
+    supported_message_types: Set[MsgType] = set()
+    suggested_reactions: Optional[Sequence[ReactionName]] = None
+
+    def get_extra_functions(self) -> Dict[ExtraCommandName, Callable]:
+        """Get a list of additional features
+
+        Returns:
+            Dict[str, Callable]: A dict of methods marked as additional features.
+            Method can be called with ``get_extra_functions()["methodName"]()``.
+        """
+        methods = {}
+        for mName in dir(self):
+            m = getattr(self, mName)
+            if callable(m) and getattr(m, "extra_fn", False):
+                methods[ExtraCommandName(mName)] = m
+        return methods
+
     @abstractmethod
-    def get_chat_picture(self, chat: 'EFBChat') -> IO[bytes]:
-        """get_chat_picture(chat: EFBChat) -> IO[bytes]
+    def get_chat_picture(self, chat: 'Chat') -> IO[bytes]:
+        """get_chat_picture(chat: Chat) -> IO[bytes]
 
         Get the profile picture of a chat. Profile picture is
         also referred as profile photo, avatar, "head image"
         sometimes.
 
         Args:
-            chat (.EFBChat): Chat to get picture from.
+            chat (.Chat): Chat to get picture from.
 
         Returns:
             IO[bytes]: Opened temporary file object.
@@ -241,37 +250,33 @@ class EFBChannel(ABC):
                 file.write(response.content)
                 file.seek(0)
                 return file
-
-        Note:
-            This is not required by Master Channels
         """
         raise NotImplementedError()
 
-    def stop_polling(self):
+    @abstractmethod
+    def get_chat(self, chat_uid: ChatID) -> 'Chat':
         """
-        When EFB framework is asked to stop gracefully,
-        this method is called to each channel object to
-        stop all processes in the channel, save all
-        status if necessary, and terminate polling.
-
-        When the channel is ready to stop, the polling
-        function must stop blocking. EFB framework will
-        quit completely when all polling threads end.
-        """
-        raise NotImplementedError()
-
-    def get_message_by_id(self, chat: 'EFBChat', msg_id: MessageID) -> Optional['EFBMsg']:
-        """
-        Get message entity by its ID.
-        Applicable to both master channels and slave channels.
-        Return ``None`` when message not found.
-
-        Override this method and raise
-        :exc:`~.exceptions.EFBOperationNotSupported`
-        if it is not feasible to perform this for your platform.
+        Get the chat object from a slave channel.
 
         Args:
-            chat: Chat in slave channel / middleware.
-            msg_id: ID of message from the chat in slave channel / middleware.
+            chat_uid (str): UID of the chat.
+
+        Returns:
+           .Chat: The chat found.
+
+        Raises:
+            EFBChatNotFound:
+                Raised when a chat required is not found.
+        """
+        raise NotImplementedError()
+
+    @abstractmethod
+    def get_chats(self) -> List['Chat']:
+        """get_chats() -> List[Chat]
+
+        Return a list of available chats in the channel.
+
+        Returns:
+            List[.Chat]: a list of available chats in the channel.
         """
         raise NotImplementedError()

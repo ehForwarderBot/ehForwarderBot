@@ -56,7 +56,7 @@ msgid "Convention for object names is ``<author>.<platform>``, e.g. ``alice.irc`
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:37
-msgid "Object reference should point to your module's class, which extends either ``EFBChannel`` or ``EFBMiddleware``."
+msgid "Object reference should point to your module's class, which extends either ``Channel`` or ``Middleware``."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:41

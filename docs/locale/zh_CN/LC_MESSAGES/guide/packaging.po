@@ -56,8 +56,8 @@ msgid "Convention for object names is ``<author>.<platform>``, e.g. ``alice.irc`
 msgstr "对象名称的格式推荐使用 ``<author>.<platform>``，如 ``alice.irc``，同时该名称应与组件 ID 相同。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:37
-msgid "Object reference should point to your module's class, which extends either ``EFBChannel`` or ``EFBMiddleware``."
-msgstr "对象引用应该指向组件的主类，这个类应继承 ``EFBChannel`` 或 ``EFBMiddleware`` 其中之一。"
+msgid "Object reference should point to your module's class, which extends either ``Channel`` or ``Middleware``."
+msgstr "对象引用应该指向组件的主类，这个类应继承 ``Channel`` 或 ``Middleware`` 其中之一。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:41
 msgid "Example"

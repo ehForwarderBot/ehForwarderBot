@@ -1,9 +1,9 @@
 Status
 ======
 
-.. autoclass:: ehforwarderbot.EFBStatus
+.. autoclass:: ehforwarderbot.status.Status
     :members:
 
 .. automodule:: ehforwarderbot.status
     :members:
-    :exclude-members: EFBStatus
+    :exclude-members: Status

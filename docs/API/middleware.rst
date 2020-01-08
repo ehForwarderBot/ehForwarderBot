@@ -1,7 +1,7 @@
-EFBMiddleware
+Middleware
 =============
 
-.. autoclass:: ehforwarderbot.EFBMiddleware
+.. autoclass:: ehforwarderbot.Middleware
     :members:
 
 About Middleware ID

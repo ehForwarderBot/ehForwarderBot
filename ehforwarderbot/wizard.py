@@ -279,15 +279,15 @@ class ReorderBullet(Bullet):
                  word_on_switch: str = colors.REVERSE, background_color: str = colors.background["default"],
                  background_on_switch: str = colors.REVERSE, pad_right=0, indent: int = 0, align=0, margin: int = 0,
                  shift: int = 0):
-        super().__init__(prompt, choices, bullet, bullet_color, word_color, word_on_switch, background_color,
-                         background_on_switch, pad_right, indent, align, margin, shift)
-        self.prompt += "\n" + _(
+        prompt += "\n" + _(
             "[ =: Shift up; -: Shift down; Backspace: Remove ]"
         )
-        self.choices.extend((
+        choices.extend((
             _("+ Add"),
             _("✓ Submit")
         ))
+        super().__init__(prompt, choices, bullet, bullet_color, word_color, word_on_switch, background_color,
+                         background_on_switch, pad_right, indent, align, margin, shift)
         self.choices_id = choices_id
         self.choices_id.extend((
             "add",

@@ -52,7 +52,7 @@ msgid "The running master channel object."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:19
-msgid "EFBChannel"
+msgid "Channel"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:23
@@ -60,7 +60,7 @@ msgid "Dictionary of running slave channel object. Keys are the unique identifie
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:26
-msgid "Dict[str, EFBChannel]"
+msgid "Dict[str, Channel]"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:30
@@ -68,7 +68,7 @@ msgid "List of middlewares"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:32
-msgid "List[EFBMiddleware]"
+msgid "List[Middleware]"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_channel:1

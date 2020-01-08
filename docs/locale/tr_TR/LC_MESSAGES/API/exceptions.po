@@ -52,8 +52,8 @@ msgstr "Bir mesaj veya bir durum gönderirken meydana gelen herhangi bir hata i�
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:4
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:4
-msgid "Can be raised in :meth:`.EFBChannel.send_message` and :meth:`.EFBChannel.send_status`."
-msgstr ":meth:`.EFBChannel.send_message` ve :meth:`.EFBChannel.send_status` 'da yükseltilebilir."
+msgid "Can be raised in :meth:`.Channel.send_message` and :meth:`.Channel.send_status`."
+msgstr ":meth:`.Channel.send_message` ve :meth:`.Channel.send_status` 'da yükseltilebilir."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:1
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:1
@@ -66,16 +66,16 @@ msgid "Raised by a slave channel when a message indicated is not found."
 msgstr "Belirtilen bir mesaj bulunamadığında bağımlı kanal tarafından yükseltilir."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:3
-msgid "Can be raised in :meth:`.EFBChannel.send_message` (edited message / target message not found) and in :meth:`.EFBChannel.send_status` (message to delete is not found)."
-msgstr ":meth:`.EFBChannel.send_message` (düzenlenmiş mesaj / hedef mesaj bulunamadı) ve :meth:`.EFBChannel.send_status` (silinecek mesaj bulunamadığında) içerisinde yükseltilebilir."
+msgid "Can be raised in :meth:`.Channel.send_message` (edited message / target message not found) and in :meth:`.Channel.send_status` (message to delete is not found)."
+msgstr ":meth:`.Channel.send_message` (düzenlenmiş mesaj / hedef mesaj bulunamadı) ve :meth:`.Channel.send_status` (silinecek mesaj bulunamadığında) içerisinde yükseltilebilir."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:1
 msgid "Raised by a slave channel when the indicated message type is not supported."
 msgstr "Belirtilen mesaj türü desteklenmediğinde bağımlı kanal tarafından yükseltilir."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:3
-msgid "Can be raised in :meth:`.EFBChannel.send_message`."
-msgstr ":meth:`.EFBChannel.send_message` 'da yükseltilebilir."
+msgid "Can be raised in :meth:`.Channel.send_message`."
+msgstr ":meth:`.Channel.send_message` 'da yükseltilebilir."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:1
 msgid "Raised by slave channels when a chat operation is not supported. E.g.: cannot edit message, cannot delete message."
@@ -86,6 +86,6 @@ msgid "Raised by slave channel when a message reaction request from master chann
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageReactionNotPossible:4
-msgid "Can be raised in :meth:`.EFBChannel.send_status`."
+msgid "Can be raised in :meth:`.Channel.send_status`."
 msgstr ""
 

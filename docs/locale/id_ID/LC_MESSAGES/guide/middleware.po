@@ -32,8 +32,8 @@ msgid "Message and Status Processing"
 msgstr "Pemrosesan Pesan dan Status"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:19
-msgid "Each middleware by default has 2 methods, :meth:`~.ehforwarderbot.EFBMiddleware.process_message` which processes message objects, and :meth:`~.ehforwarderbot.EFBMiddleware.process_status` which processes status objects. If they are not overridden, they will not touch on the object and pass it on as is."
-msgstr "Setiap middleware bawaan mempunyai 2 metode, :meth:`~.ehforwarderbot.EFBMiddleware.process_message` yang memproses objek-objek pesan, dan :meth:`~.ehforwarderbot.EFBMiddleware.process_status` yang memproses objek-objek status. apabila mereka tidak diganti, mereka tidak akan menyentuh pada objek tersebut dan menyebarkannya seperti apa adanya."
+msgid "Each middleware by default has 2 methods, :meth:`~.ehforwarderbot.Middleware.process_message` which processes message objects, and :meth:`~.ehforwarderbot.Middleware.process_status` which processes status objects. If they are not overridden, they will not touch on the object and pass it on as is."
+msgstr "Setiap middleware bawaan mempunyai 2 metode, :meth:`~.ehforwarderbot.Middleware.process_message` yang memproses objek-objek pesan, dan :meth:`~.ehforwarderbot.Middleware.process_status` yang memproses objek-objek status. apabila mereka tidak diganti, mereka tidak akan menyentuh pada objek tersebut dan menyebarkannya seperti apa adanya."
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:24
 msgid "To modify an object, just override the relative method and make changes to it. To discard an object, simply return ``None``. When an object is discarded, it will not be passed further to other middlewares or channels, which means a middleware or a channel should never receive a ``None`` message or status."

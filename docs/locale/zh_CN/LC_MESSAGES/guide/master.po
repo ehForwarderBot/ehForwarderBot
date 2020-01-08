@@ -100,6 +100,6 @@ msgid "Implementation details"
 msgstr "实现细节"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:63
-msgid "See :class:`EFBChannel`."
-msgstr "见 :class:`EFBChannel`。"
+msgid "See :class:`Channel`."
+msgstr "见 :class:`Channel`。"
 

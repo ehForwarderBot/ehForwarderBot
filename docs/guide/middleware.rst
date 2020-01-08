@@ -16,8 +16,8 @@ using Python's ``atexit`` or otherwise.
 Message and Status Processing
 -----------------------------
 
-Each middleware by default has 2 methods, :meth:`~.ehforwarderbot.EFBMiddleware.process_message`
-which processes message objects, and :meth:`~.ehforwarderbot.EFBMiddleware.process_status`
+Each middleware by default has 2 methods, :meth:`~.ehforwarderbot.Middleware.process_message`
+which processes message objects, and :meth:`~.ehforwarderbot.Middleware.process_status`
 which processes status objects. If they are not overridden,
 they will not touch on the object and pass it on as is.
 

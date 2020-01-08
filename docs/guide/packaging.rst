@@ -35,7 +35,7 @@ Convention for object names is ``<author>.<platform>``,
 e.g. ``alice.irc``. This should also be your module's ID.
 
 Object reference should point to your module's class,
-which extends either ``EFBChannel`` or ``EFBMiddleware``.
+which extends either ``Channel`` or ``Middleware``.
 
 Example
 -------

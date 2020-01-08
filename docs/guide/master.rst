@@ -60,4 +60,4 @@ message has its author marked as "self".
 Implementation details
 ----------------------
 
-See :class:`EFBChannel`.
+See :class:`.MasterChannel`.

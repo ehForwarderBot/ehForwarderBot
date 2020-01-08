@@ -1,19 +1,19 @@
 import threading
-from typing import Set, Optional, List
 from logging import getLogger
+from typing import Set, Optional, List
 
-from ehforwarderbot import EFBChannel, EFBMsg, EFBStatus, ChannelType, MsgType, EFBChat, ChatType
+from ehforwarderbot import Message, Status, MsgType, Chat
+from ehforwarderbot.channel import SlaveChannel
+from ehforwarderbot.chat import PrivateChat, GroupChat
 from ehforwarderbot.exceptions import EFBChatNotFound
-from ehforwarderbot.utils import extra
 from ehforwarderbot.types import ModuleID, MessageID
+from ehforwarderbot.utils import extra
 
 
-class MockSlaveChannel(EFBChannel):
-
+class MockSlaveChannel(SlaveChannel):
     channel_name: str = "Mock Slave"
     channel_emoji: str = "➖"
     channel_id: ModuleID = ModuleID("tests.mocks.slave.MockSlaveChannel")
-    channel_type: ChannelType = ChannelType.Slave
     supported_message_types: Set[MsgType] = {MsgType.Text, MsgType.Link}
     __version__: str = '0.0.1'
 
@@ -31,72 +31,43 @@ class MockSlaveChannel(EFBChannel):
 
     def __init__(self, instance_id=None):
         super().__init__(instance_id)
-        alice = EFBChat(self)
-        alice.chat_name = "Alice"
-        alice.chat_uid = "alice"
-        alice.chat_type = ChatType.User
-        self.alice = alice
-        bob = EFBChat(self)
-        bob.chat_name = "Bob"
-        bob.chat_alias = "Little bobby"
-        bob.chat_uid = "bob"
-        bob.chat_type = ChatType.User
-        self.bob = bob
-        carol = EFBChat(self)
-        carol.chat_name = "Carol"
-        carol.chat_uid = "carol"
-        carol.chat_type = ChatType.User
-        self.carol = carol
-        dave = EFBChat(self)
-        dave.chat_name = "デブ"  # Nah, that's a joke
-        dave.chat_uid = "dave"
-        dave.chat_type = ChatType.User
-        self.dave = dave
-        wonderland = EFBChat(self)
-        wonderland.chat_name = "Wonderland"
-        wonderland.chat_uid = "wonderland001"
-        wonderland.chat_type = ChatType.Group
-        wonderland.members = [bob.copy(), carol.copy(), dave.copy()]
-        for i in wonderland.members:
-            i.group = wonderland
-        self.wonderland = wonderland
-        self.chats: List[EFBChat] = [alice, bob, wonderland]
+        self.alice = PrivateChat(channel=self, name="Alice", id="alice")
+        self.bob = PrivateChat(channel=self, name="Bob", alias="Little bobby", id="bob")
+
+        self.wonderland = GroupChat(channel=self, name="Wonderland", id="wonderland001")
+        self.wonderland.add_member(name="bob", alias="Bob James", id="bob")
+        self.carol = self.wonderland.add_member(name="Carol", id="carol")
+        self.dave = self.wonderland.add_member(name="デブ", id="dave")  # Nah, that's a joke
+
+        self.chats: List[Chat] = [self.alice, self.bob, self.wonderland]
 
     def poll(self):
         self.polling.wait()
 
-    def send_status(self, status: EFBStatus):
+    def send_status(self, status: Status):
         self.logger.debug("Received status: %r", status)
 
-    def send_message(self, msg: EFBMsg) -> EFBMsg:
+    def send_message(self, msg: Message) -> Message:
         self.logger.debug("Received message: %r", msg)
         return msg
 
     def stop_polling(self):
         self.polling.set()
 
-    def get_chat(self, chat_uid: str, member_uid: Optional[str] = None) -> EFBChat:
+    def get_chat(self, chat_uid: str) -> Chat:
         for i in self.chats:
-            if chat_uid == i.chat_uid:
-                if member_uid:
-                    if i.chat_type == ChatType.Group:
-                        for j in i.members:
-                            if j.chat_uid == member_uid:
-                                return j
-                        raise EFBChatNotFound()
-                    else:
-                        raise EFBChatNotFound()
+            if chat_uid == i.id:
                 return i
         raise EFBChatNotFound()
 
-    def get_chats(self) -> List[EFBChat]:
+    def get_chats(self) -> List[Chat]:
         return self.chats.copy()
 
-    def get_chat_picture(self, chat: EFBChat):
-        if chat.chat_uid in self.__picture_dict:
-            return open('tests/mocks/' + self.__picture_dict[chat.chat_uid], 'rb')
+    def get_chat_picture(self, chat: Chat):
+        if chat.id in self.__picture_dict:
+            return open('tests/mocks/' + self.__picture_dict[chat.id], 'rb')
 
-    def get_message_by_id(self, chat: EFBChat, msg_id: MessageID) -> Optional['EFBMsg']:
+    def get_message_by_id(self, chat: Chat, msg_id: MessageID) -> Optional['Message']:
         pass
 
     @extra(name="Echo",

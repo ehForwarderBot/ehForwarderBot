@@ -1,6 +1,3 @@
-import pytest
-
-
 def test_get_extra_functions(slave_channel):
     extras = slave_channel.get_extra_functions()
     assert len(extras) == 3
@@ -10,11 +7,6 @@ def test_get_extra_functions(slave_channel):
     assert extras['function_b'] == slave_channel.function_b
     assert "echo" in extras
     assert extras['echo'] == slave_channel.echo
-
-
-def test_master_get_extra_functions(master_channel):
-    with pytest.raises(TypeError):
-        master_channel.get_extra_functions()
 
 
 def test_set_extra_function(slave_channel):

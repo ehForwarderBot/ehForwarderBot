@@ -56,8 +56,8 @@ msgid "Convention for object names is ``<author>.<platform>``, e.g. ``alice.irc`
 msgstr "Konvensi untuk nama objek adalah ``<author>.<platform>``, misalnya ``alice.irc``. Ini juga harus menjadi ID modul anda."
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:37
-msgid "Object reference should point to your module's class, which extends either ``EFBChannel`` or ``EFBMiddleware``."
-msgstr "Referensi objek harus menunjuk ke modul kelas, yang meluas baik `EFBChannel` atau `EFBMiddleware`."
+msgid "Object reference should point to your module's class, which extends either ``Channel`` or ``Middleware``."
+msgstr "Referensi objek harus menunjuk ke modul kelas, yang meluas baik `Channel` atau `Middleware`."
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:41
 msgid "Example"

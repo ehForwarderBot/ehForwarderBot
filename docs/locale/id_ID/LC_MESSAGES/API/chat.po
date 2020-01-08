@@ -16,15 +16,15 @@ msgstr ""
 "Language: id_ID\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/chat.rst:2
-msgid "EFBChat"
-msgstr "EFBChat"
+msgid "Chat"
+msgstr "Chat"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:1
 msgid "EFB Chat object. This is used to represent a chat or a group member."
 msgstr "Objek Obrolan EFB Ini digunakan untuk mewakili obrolan atau anggota grup."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:5
-msgid "``EFBChat`` objects are picklable, thus it is strongly recommended to keep any object of its subclass also picklable."
+msgid "``Chat`` objects are picklable, thus it is strongly recommended to keep any object of its subclass also picklable."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:10
@@ -115,7 +115,7 @@ msgid "Indicate the notification settings of the chat in its slave channel (or m
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:81
-msgid "EFBChatNotificationState"
+msgid "ChatNotificationState"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:85
@@ -123,7 +123,7 @@ msgid "The parent chat of the member. Only available to chat member objects. Def
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:88
-msgid ":obj:`.EFBChat` or None"
+msgid ":obj:`.Chat` or None"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:92
@@ -131,7 +131,7 @@ msgid "Provide a list of members in the group. Defaulted to an empty ``list``. Y
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:97
-msgid "list of :obj:`.EFBChat`"
+msgid "list of :obj:`.Chat`"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:101

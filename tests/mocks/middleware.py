@@ -1,12 +1,12 @@
 import logging
 from typing import Optional
 
-from ehforwarderbot import EFBMiddleware, EFBMsg, EFBStatus, MsgType
+from ehforwarderbot import Middleware, Message, Status, MsgType
 from ehforwarderbot.types import ModuleID, InstanceID
 from ehforwarderbot.utils import extra
 
 
-class MockMiddleware(EFBMiddleware):
+class MockMiddleware(Middleware):
     """
     Attributes:
         mode:
@@ -26,7 +26,7 @@ class MockMiddleware(EFBMiddleware):
         super().__init__(instance_id=instance_id)
         self.mode: str = mode
 
-    def process_message(self, message: EFBMsg) -> Optional[EFBMsg]:
+    def process_message(self, message: Message) -> Optional[Message]:
         self.logger.debug("Processing Message %s", message)
         if self.mode == "append_text":
             message.text += " (Processed by " + self.middleware_id + ")"
@@ -36,7 +36,7 @@ class MockMiddleware(EFBMiddleware):
             return None
         return message
 
-    def process_status(self, status: EFBStatus) -> Optional[EFBStatus]:
+    def process_status(self, status: Status) -> Optional[Status]:
         if self.mode == "interrupt":
             return None
         return status

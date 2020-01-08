@@ -48,27 +48,27 @@ msgid "Below is a list of methods that are required to be implemented by the sla
 msgstr "Di bawah adalah senarai kaedah yang diperlukan untuk dilaksanakan oleh saluran hamba."
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:31
-msgid ":meth:`.EFBChannel.get_chat_picture`"
+msgid ":meth:`.Channel.get_chat_picture`"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:32
-msgid ":meth:`.EFBChannel.get_chat`"
+msgid ":meth:`.Channel.get_chat`"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:33
-msgid ":meth:`.EFBChannel.get_chats`"
+msgid ":meth:`.Channel.get_chats`"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:34
-msgid ":meth:`.EFBChannel.poll`"
+msgid ":meth:`.Channel.poll`"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:35
-msgid ":meth:`.EFBChannel.send_message`"
+msgid ":meth:`.Channel.send_message`"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:36
-msgid ":meth:`.EFBChannel.send_status`"
+msgid ":meth:`.Channel.send_status`"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:41
@@ -221,6 +221,6 @@ msgid "Implementation details"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:150
-msgid "See :class:`EFBChannel`."
+msgid "See :class:`Channel`."
 msgstr ""
 

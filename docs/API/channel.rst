@@ -1,7 +1,7 @@
-EFBChannel
+Channel
 ==========
 
-.. autoclass:: ehforwarderbot.EFBChannel
+.. automodule:: ehforwarderbot.channel
     :members:
 
 Common operations
@@ -14,16 +14,16 @@ Sending messages and statuses to other channels is the most
 common operation of a channel. When the channel has gathered 
 enough information from external sources, it should be
 further processed and packed into the relative objects, 
-i.e. :obj:`.EFBMsg` and :obj:`.EFBStatus`.
+i.e. :py:class:`~.message.Message` and :py:class:`~.status.Status`.
 
 When the related information is packed into their relative 
 objects, it can be sent to the coordinator for the next
 step. 
 
-For now, both :obj:`.EFBMsg` and :obj:`.EFBStatus` has an
+For now, both :obj:`~.message.Message` and :obj:`~.status.Status` has an
 attribute that indicates that where this object should be
-delivered to (:attr:`.EFBMsg.deliver_to` and 
-:attr:`.EFBStatus.destination_channel`). This is used by
+delivered to (:attr:`~.message.Message.deliver_to` and
+:attr:`~.status.Status.destination_channel`). This is used by
 the coordinator when delivering the message. 
 
 For messages, it can be delivered with :meth:`.coordinator.send_message`,

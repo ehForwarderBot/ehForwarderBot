@@ -16,8 +16,8 @@ msgstr ""
 "Language: es_VE\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:2
-msgid "EFBChannel"
-msgstr "EFBChannel"
+msgid "Channel"
+msgstr "Channel"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:1
 msgid "The abstract channel class."
@@ -247,8 +247,8 @@ msgid "The same message object with message ID from the recipient."
 msgstr "El objeto mensaje con el mismo ID de mensaje que el destinatario."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:9
-msgid ":obj:`.EFBMsg`"
-msgstr ":obj:`.EFBMsg`"
+msgid ":obj:`.Message`"
+msgstr ":obj:`.Message`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:12
 msgid "Raised when the message type sent is not supported by the     channel."
@@ -259,7 +259,7 @@ msgid "Raised when an message edit request is sent, but not     supported by the
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:14
-msgid "Raised when an existing message indicated is not found.     E.g.: The message to be edited, the message referred     in the :attr:`msg.target <.EFBMsg.target>`     attribute."
+msgid "Raised when an existing message indicated is not found.     E.g.: The message to be edited, the message referred     in the :attr:`msg.target <.Message.target>`     attribute."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:15
@@ -311,16 +311,16 @@ msgid "Sending messages and statuses"
 msgstr "Enviando mensajes y estados"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:13
-msgid "Sending messages and statuses to other channels is the most common operation of a channel. When the channel has gathered enough information from external sources, it should be further processed and packed into the relative objects, i.e. :obj:`.EFBMsg` and :obj:`.EFBStatus`."
-msgstr "Enviar mensajes y estados a otros canales es la operación más común del canal. Cuando el canal ha recolectado suficiente información de fuentes externas, debe ser procesado y empaquetado dentro de sus objetos respectivos, i.e. :obj:`.EFBMsg` and :obj:`.EFBStatus`."
+msgid "Sending messages and statuses to other channels is the most common operation of a channel. When the channel has gathered enough information from external sources, it should be further processed and packed into the relative objects, i.e. :obj:`.Message` and :obj:`.Status`."
+msgstr "Enviar mensajes y estados a otros canales es la operación más común del canal. Cuando el canal ha recolectado suficiente información de fuentes externas, debe ser procesado y empaquetado dentro de sus objetos respectivos, i.e. :obj:`.Message` and :obj:`.Status`."
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:19
 msgid "When the related information is packed into their relative objects, it can be sent to the coordinator for the next step."
 msgstr "Cuando la información es empaquetada en sus respectivos objetos, puede ser enviada al coordinador para el siguiente paso."
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:23
-msgid "For now, both :obj:`.EFBMsg` and :obj:`.EFBStatus` has an attribute that indicates that where this object should be delivered to (:attr:`.EFBMsg.deliver_to` and :attr:`.EFBStatus.destination_channel`). This is used by the coordinator when delivering the message."
-msgstr "Por ahora, los objetos :obj:`.EFBMsg` and :obj:`.EFBStatus` tienen un atributo que indica donde debe ser entregado este objeto (:attr:`.EFBMsg.deliver_to` y :attr:`.EFBStatus.destination_channel`). Estos son usados por el coordinador cuando esta enviando el mensaje."
+msgid "For now, both :obj:`.Message` and :obj:`.Status` has an attribute that indicates that where this object should be delivered to (:attr:`.Message.deliver_to` and :attr:`.Status.destination_channel`). This is used by the coordinator when delivering the message."
+msgstr "Por ahora, los objetos :obj:`.Message` and :obj:`.Status` tienen un atributo que indica donde debe ser entregado este objeto (:attr:`.Message.deliver_to` y :attr:`.Status.destination_channel`). Estos son usados por el coordinador cuando esta enviando el mensaje."
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:29
 msgid "For messages, it can be delivered with :meth:`.coordinator.send_message`, and statuses can be delivered with :meth:`.coordinator.send_status`."

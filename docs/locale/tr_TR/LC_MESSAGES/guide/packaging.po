@@ -56,8 +56,8 @@ msgid "Convention for object names is ``<author>.<platform>``, e.g. ``alice.irc`
 msgstr "Nesne adları için kural ``<author>.<platform>``, örneğin ``alice.irc``. Bu da modülünüzün kimliği olmalıdır."
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:37
-msgid "Object reference should point to your module's class, which extends either ``EFBChannel`` or ``EFBMiddleware``."
-msgstr "Nesne referansı, ``EFBChannel`` veya ``EFBMiddleware`` uzanan modülünüzün sınıfa işaret etmelidir."
+msgid "Object reference should point to your module's class, which extends either ``Channel`` or ``Middleware``."
+msgstr "Nesne referansı, ``Channel`` veya ``Middleware`` uzanan modülünüzün sınıfa işaret etmelidir."
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:41
 msgid "Example"

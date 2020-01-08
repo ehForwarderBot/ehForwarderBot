@@ -52,8 +52,8 @@ msgstr "Excepción llamada por el canal esclavo al ocurrir cualquier otro error 
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:4
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:4
-msgid "Can be raised in :meth:`.EFBChannel.send_message` and :meth:`.EFBChannel.send_status`."
-msgstr "Puede ser llamada en :meth:`.EFBChannel.send_message` y :meth:`.EFBChannel.send_status`."
+msgid "Can be raised in :meth:`.Channel.send_message` and :meth:`.Channel.send_status`."
+msgstr "Puede ser llamada en :meth:`.Channel.send_message` y :meth:`.Channel.send_status`."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:1
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:1
@@ -66,16 +66,16 @@ msgid "Raised by a slave channel when a message indicated is not found."
 msgstr "Excepción llamada por un canal esclavo cuando no se encuentra el mensaje indicado."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:3
-msgid "Can be raised in :meth:`.EFBChannel.send_message` (edited message / target message not found) and in :meth:`.EFBChannel.send_status` (message to delete is not found)."
-msgstr "Puede ser llamada en :meth:`.EFBChannel.send_message` (mensajes editados / mensaje destino no encontrado) y en :meth:`.EFBChannel.send_status` (el mensaje ha eliminar no ha sido encontrado)."
+msgid "Can be raised in :meth:`.Channel.send_message` (edited message / target message not found) and in :meth:`.Channel.send_status` (message to delete is not found)."
+msgstr "Puede ser llamada en :meth:`.Channel.send_message` (mensajes editados / mensaje destino no encontrado) y en :meth:`.Channel.send_status` (el mensaje ha eliminar no ha sido encontrado)."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:1
 msgid "Raised by a slave channel when the indicated message type is not supported."
 msgstr "Excepción llamada por el canal esclavo cuando el tipo de mensaje seleccionado no es soportado."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:3
-msgid "Can be raised in :meth:`.EFBChannel.send_message`."
-msgstr "Puede ser llamada en :meth:`.EFBChannel.send_message`."
+msgid "Can be raised in :meth:`.Channel.send_message`."
+msgstr "Puede ser llamada en :meth:`.Channel.send_message`."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:1
 msgid "Raised by slave channels when a chat operation is not supported. E.g.: cannot edit message, cannot delete message."
@@ -86,6 +86,6 @@ msgid "Raised by slave channel when a message reaction request from master chann
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageReactionNotPossible:4
-msgid "Can be raised in :meth:`.EFBChannel.send_status`."
+msgid "Can be raised in :meth:`.Channel.send_status`."
 msgstr ""
 

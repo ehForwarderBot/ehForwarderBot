@@ -12,13 +12,13 @@ from typing import Collection, TYPE_CHECKING, Mapping
 from typing_extensions import NewType
 
 if TYPE_CHECKING:
-    from .chat import EFBChat
+    from .chat import Chat
 
 
 ReactionName = NewType('ReactionName', str)
 """Canonical representation of a reaction, usually an emoji."""
 
-Reactions = Mapping[ReactionName, Collection['EFBChat']]
+Reactions = Mapping[ReactionName, Collection['Chat']]
 """Reactions to a message."""
 
 ModuleID = NewType('ModuleID', str)
@@ -28,7 +28,7 @@ InstanceID = NewType('InstanceID', str)
 "Instance ID of a module."
 
 ChatID = NewType('ChatID', str)
-"Chat ID from slave channel or middleware."
+"Chat ID from slave channel or middleware, applicable to both chat and chat members."
 
 MessageID = NewType('MessageID', str)
 "Message ID from slave channel or middleware."

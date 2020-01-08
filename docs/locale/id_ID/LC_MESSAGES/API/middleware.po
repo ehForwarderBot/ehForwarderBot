@@ -16,8 +16,8 @@ msgstr ""
 "Language: id_ID\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:2
-msgid "EFBMiddleware"
-msgstr "EFBMiddleware"
+msgid "Middleware"
+msgstr "Middleware"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:1
 msgid "Middleware class."
@@ -95,8 +95,8 @@ msgid "Processed message or None if discarded."
 msgstr "Pesan yang diproses atau Tidak ada jika dibuang."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:7
-msgid "Optional[:obj:`.EFBMsg`]"
-msgstr "Optional [:obj:`.EFBMsg`]"
+msgid "Optional[:obj:`.Message`]"
+msgstr "Optional [:obj:`.Message`]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:1
 msgid "Process a status update with middleware"
@@ -107,8 +107,8 @@ msgid "Processed status or None if discarded."
 msgstr "Status yang diproses atau Tidak ada jika dibuang."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:7
-msgid "Optional[:obj:`.EFBStatus`]"
-msgstr "Optional[:obj:`.EFBStatus`]"
+msgid "Optional[:obj:`.Status`]"
+msgstr "Optional[:obj:`.Status`]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:8
 msgid "About Middleware ID"

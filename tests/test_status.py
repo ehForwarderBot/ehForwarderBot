@@ -2,13 +2,13 @@ import pickle
 
 import pytest
 
-from ehforwarderbot import EFBMsg
-from ehforwarderbot.status import EFBChatUpdates, EFBMemberUpdates, EFBMessageRemoval, EFBReactToMessage, \
-    EFBMessageReactionsUpdate
+from ehforwarderbot import Message
+from ehforwarderbot.status import ChatUpdates, MemberUpdates, MessageRemoval, ReactToMessage, \
+    MessageReactionsUpdate
 
 
 def test_pickle_chat_updates(slave_channel):
-    chat_update = EFBChatUpdates(
+    chat_update = ChatUpdates(
         channel=slave_channel,
         new_chats=["1", "2"],
         removed_chats=["3", "4"],
@@ -21,7 +21,7 @@ def test_pickle_chat_updates(slave_channel):
 
 
 def test_pickle_member_updates(slave_channel):
-    member_updates = EFBMemberUpdates(
+    member_updates = MemberUpdates(
         channel=slave_channel,
         chat_id="chat_id",
         new_members=["1", "2"],
@@ -35,33 +35,33 @@ def test_pickle_member_updates(slave_channel):
 
 
 def test_pickle_message_removal(slave_channel, master_channel):
-    msg = EFBMsg()
+    msg = Message()
     msg.chat = slave_channel.alice
     msg.uid = "uid"
-    msg_removal = EFBMessageRemoval(
+    msg_removal = MessageRemoval(
         source_channel=master_channel,
         destination_channel=slave_channel,
         message=msg
     )
     msg_removal_dup = pickle.loads(pickle.dumps(msg_removal))
 
-    # Assume EFBMsg is picklable
+    # Assume Message is picklable
     for i in ("source_channel", "destination_channel"):
         assert getattr(msg_removal, i) == getattr(msg_removal_dup, i)
 
 
 def test_verify_react_to_message(slave_channel):
-    EFBReactToMessage(slave_channel.alice, "message_id", ":)")
+    ReactToMessage(slave_channel.alice, "message_id", ":)")
 
-    with pytest.raises(ValueError):
-        EFBReactToMessage(None, "message_id", ":)")
+    with pytest.raises(AssertionError):
+        ReactToMessage(None, "message_id", ":)")
 
-    with pytest.raises(ValueError):
-        EFBReactToMessage(slave_channel.alice, "", ":)")
+    with pytest.raises(AssertionError):
+        ReactToMessage(slave_channel.alice, "", ":)")
 
 
 def test_pickle_react_to_message(slave_channel):
-    status = EFBReactToMessage(slave_channel.alice, "message_id", ":)")
+    status = ReactToMessage(slave_channel.alice, "message_id", ":)")
     d_status = pickle.loads(pickle.dumps(status))
     assert status.chat == d_status.chat
     assert status.msg_id == d_status.msg_id
@@ -69,29 +69,29 @@ def test_pickle_react_to_message(slave_channel):
 
 
 def test_verify_reactions_update(slave_channel):
-    EFBMessageReactionsUpdate(slave_channel.alice, "message_id", {
-        ":)": [slave_channel.alice, slave_channel.bob]
+    MessageReactionsUpdate(slave_channel.alice, "message_id", {
+        ":)": [slave_channel.alice.opponent, slave_channel.bob.opponent]
     })
 
-    with pytest.raises(ValueError):
-        EFBMessageReactionsUpdate(None, "message_id", {
-            ":)": [slave_channel.alice, slave_channel.bob]
+    with pytest.raises(AssertionError):
+        MessageReactionsUpdate(None, "message_id", {
+            ":)": [slave_channel.alice.opponent, slave_channel.bob.opponent]
         })
 
-    with pytest.raises(ValueError):
-        EFBMessageReactionsUpdate(slave_channel.alice, None, {
-            ":)": [slave_channel.alice, slave_channel.bob]
+    with pytest.raises(AssertionError):
+        MessageReactionsUpdate(slave_channel.alice, None, {
+            ":)": [slave_channel.alice.opponent, slave_channel.bob.opponent]
         })
 
-    with pytest.raises(ValueError):
-        EFBMessageReactionsUpdate(slave_channel.alice, "message_id", {
-            ":)": [slave_channel.alice, slave_channel.wonderland]
+    with pytest.raises(AssertionError):
+        MessageReactionsUpdate(slave_channel.alice, "message_id", {
+            ":)": [slave_channel.alice.opponent, slave_channel.wonderland]
         })
 
 
 def test_pickle_reactions_update(slave_channel):
-    status = EFBMessageReactionsUpdate(slave_channel.alice, "message_id", {
-            ":)": [slave_channel.alice, slave_channel.bob]
+    status = MessageReactionsUpdate(slave_channel.alice, "message_id", {
+            ":)": [slave_channel.alice.opponent, slave_channel.bob.opponent]
         })
     d_status = pickle.loads(pickle.dumps(status))
     assert status.chat == d_status.chat

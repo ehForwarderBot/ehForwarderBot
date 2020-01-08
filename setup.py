@@ -37,7 +37,7 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Topic :: Communications :: Chat",
         "Topic :: Software Development :: Libraries :: Application Frameworks",
-        "Topic :: Utilities"
+        "Typing :: Typed"
     ],
     install_requires=[
         "ruamel.yaml",

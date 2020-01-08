@@ -16,15 +16,15 @@ msgstr ""
 "Language: tr_TR\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:2
-msgid "EFBMsg"
-msgstr "EFBMsg"
+msgid "Message"
+msgstr "Message"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:1
 msgid "A message."
 msgstr "Bir mesaj."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:5
-msgid "``EFBMsg`` objects are picklable, thus it is strongly recommended to keep any object of its subclass also picklable."
+msgid "``Message`` objects are picklable, thus it is strongly recommended to keep any object of its subclass also picklable."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:10
@@ -32,20 +32,20 @@ msgid "Attributes used for a specific message type. Only specific message type r
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:14
-msgid "Link: :obj:`.EFBMsgLinkAttribute`"
-msgstr "Bağlantı: :obj:`.EFBMsgLinkAttribute`"
+msgid "Link: :obj:`.LinkAttribute`"
+msgstr "Bağlantı: :obj:`.LinkAttribute`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:15
-msgid "Location: :obj:`.EFBMsgLocationAttribute`"
-msgstr "Konum: :obj:`.EFBMsgLocationAttribute`"
+msgid "Location: :obj:`.LocationAttribute`"
+msgstr "Konum: :obj:`.LocationAttribute`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:16
-msgid "Status: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`"
-msgstr "Durum: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`"
+msgid "Status: Typing/Sending files/etc.: :obj:`.StatusAttribute`"
+msgstr "Durum: Typing/Sending files/etc.: :obj:`.StatusAttribute`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:19
-msgid "Do NOT use object of the abstract class :class:`.EFBMsgAttribute` for ``attributes``, but object of specific class instead."
-msgstr "Soyut sınıfın nesnesini KULLANMAYIN :class:`.EFBMsgAttribute` `attributes` için değil, bunun yerine özel sınıfın nesnesi."
+msgid "Do NOT use object of the abstract class :class:`.MessageAttribute` for ``attributes``, but object of specific class instead."
+msgstr "Soyut sınıfın nesnesini KULLANMAYIN :class:`.MessageAttribute` `attributes` için değil, bunun yerine özel sınıfın nesnesi."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
@@ -82,7 +82,7 @@ msgid "type"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:23
-msgid "Optional[:obj:`.EFBMsgAttribute`]"
+msgid "Optional[:obj:`.MessageAttribute`]"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:27
@@ -91,7 +91,7 @@ msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:29
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:35
-msgid ":obj:`.EFBChat`"
+msgid ":obj:`.Chat`"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:33
@@ -113,7 +113,7 @@ msgid "This attribute will be ignored in _Status_ messages."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:43
-msgid "Optional[:obj:`EFBMsgCommands`]"
+msgid "Optional[:obj:`MessageCommands`]"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:47
@@ -121,7 +121,7 @@ msgid "The channel that the message is to be delivered to."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:49
-msgid ":obj:`.EFBChannel`"
+msgid ":obj:`.Channel`"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:53
@@ -176,11 +176,11 @@ msgid "Optional[Path]"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:110
-msgid "Indicate reactions to the message. Dictionary key is the canonical name of reaction, usually an emoji. Value is a collection of users who reacted to the message with that certain emoji. All :obj:`EFBChat` objects in this dict must be of a user or a group member."
+msgid "Indicate reactions to the message. Dictionary key is the canonical name of reaction, usually an emoji. Value is a collection of users who reacted to the message with that certain emoji. All :obj:`Chat` objects in this dict must be of a user or a group member."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:118
-msgid "Dict[str, Collection[:obj:`EFBChat`]]"
+msgid "Dict[str, Collection[:obj:`Chat`]]"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:122
@@ -188,7 +188,7 @@ msgid "Substitutions of messages, usually used when the some parts of the text o
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:128
-msgid "Optional[:obj:`EFBMsgSubstitutions`]"
+msgid "Optional[:obj:`Substitutions`]"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:132
@@ -200,27 +200,27 @@ msgid "This message may be a \"minimum message\", with only required fields:"
 msgstr "Bu mesaj, sadece gereken alanlar ile birlikte \"minimum mesaj\" olabilir:"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:141
-msgid ":attr:`.EFBMsg.chat`"
-msgstr ":attr:`.EFBMsg.chat`"
+msgid ":attr:`.Message.chat`"
+msgstr ":attr:`.Message.chat`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:142
-msgid ":attr:`.EFBMsg.author`"
-msgstr ":attr:`.EFBMsg.author`"
+msgid ":attr:`.Message.author`"
+msgstr ":attr:`.Message.author`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:143
-msgid ":attr:`.EFBMsg.text`"
-msgstr ":attr:'. EFBMsg.text'"
+msgid ":attr:`.Message.text`"
+msgstr ":attr:'. Message.text'"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:144
-msgid ":attr:`.EFBMsg.type`"
-msgstr ":attr:'. EFBMsg.type'"
+msgid ":attr:`.Message.type`"
+msgstr ":attr:'. Message.type'"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:145
-msgid ":attr:`.EFBMsg.uid`"
-msgstr ":attr:'. EFBMsg.uid'"
+msgid ":attr:`.Message.uid`"
+msgstr ":attr:'. Message.uid'"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:147
-msgid "Optional[:obj:`EFBMsg`]"
+msgid "Optional[:obj:`Message`]"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:151
@@ -275,8 +275,8 @@ msgstr "Bir ileti özniteliği Özet sınıfı."
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
-msgid "Bases: :class:`ehforwarderbot.message.EFBMsgAttribute`"
-msgstr "Bases: :class:`ehforwarderbot.message.EFBMsgAttribute`"
+msgid "Bases: :class:`ehforwarderbot.message.MessageAttribute`"
+msgstr "Bases: :class:`ehforwarderbot.message.MessageAttribute`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
 msgid "EFB link message attribute."
@@ -391,7 +391,7 @@ msgid "Commands for the message."
 msgstr "Mesaj için komutlar."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:9
-msgid "list of :obj:`EFBMsgCommand`"
+msgid "list of :obj:`MessageCommand`"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
@@ -399,8 +399,8 @@ msgid "EFB Message status attribute. Message with type ``Status`` notifies the o
 msgstr "EFB Mesaj durumu özelliği. ``Status`` türünde mesaj, yazma, dosya gönderme vb. gibi sohbete özgü durum güncellemesini diğer tarafa bildirir."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:7
-msgid "Type of status, possible values are defined in the ``EFBMsgStatusAttribute``."
-msgstr "Durum türü, olası değerler ``EFBMsgStatusAttribute`` içinde tanımlanır."
+msgid "Type of status, possible values are defined in the ``StatusAttribute``."
+msgstr "Durum türü, olası değerler ``StatusAttribute`` içinde tanımlanır."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:12
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:2
@@ -420,24 +420,24 @@ msgid "Bases: :class:`enum.Enum`"
 msgstr "Düzlemler: :class:`sırala.Sırala`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:3
-msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of typing."
-msgstr "Kullanılan :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, yazma durumunu gösterir."
+msgid "Used in :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, represent the status of typing."
+msgstr "Kullanılan :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, yazma durumunu gösterir."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:8
-msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading file."
-msgstr "Kullanılan :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, dosya yükleme durumunu gösterir."
+msgid "Used in :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, represent the status of uploading file."
+msgstr "Kullanılan :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, dosya yükleme durumunu gösterir."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:13
-msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading image."
-msgstr "Kullanılan :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, görüntü yükleme durumunu gösterir."
+msgid "Used in :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, represent the status of uploading image."
+msgstr "Kullanılan :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, görüntü yükleme durumunu gösterir."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:18
-msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading voice."
+msgid "Used in :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, represent the status of uploading voice."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:23
-msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading video."
-msgstr "Kullanılan :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, video yükleme durumunu gösterir."
+msgid "Used in :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, represent the status of uploading video."
+msgstr "Kullanılan :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, video yükleme durumunu gösterir."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:1
 msgid "Type of status."
@@ -464,16 +464,16 @@ msgid "A key in this dictionary shall be a tuple of two :obj:`int`\\ s, where fi
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:19
-msgid "Value of the dict may be any user of the chat, or a member of a group. Notice that the :obj:`EFBChat` object here must NOT be a group."
-msgstr "Sözlüğün değeri, sohbetin herhangi bir kullanıcısı veya bir grubun üyesi olabilir.Buradaki :obj:`EFBChat` nesnesinin bir grup olmamasına dikkat edin."
+msgid "Value of the dict may be any user of the chat, or a member of a group. Notice that the :obj:`Chat` object here must NOT be a group."
+msgstr "Sözlüğün değeri, sohbetin herhangi bir kullanıcısı veya bir grubun üyesi olabilir.Buradaki :obj:`Chat` nesnesinin bir grup olmamasına dikkat edin."
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:25
 msgid "Type:"
 msgstr "Tür:"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:24
-msgid "Dict[Tuple[int, int], :obj:`.EFBChat`]"
-msgstr "Dict[Tuple[int, int], :obj:`.EFBChat`]"
+msgid "Dict[Tuple[int, int], :obj:`.Chat`]"
+msgstr "Dict[Tuple[int, int], :obj:`.Chat`]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions.is_mentioned:1
 msgid "Returns ``True`` if you are mentioned in this message."
@@ -504,7 +504,7 @@ msgid "Initialization and marking chats"
 msgstr "Başlatma ve işaretleme sohbetleri"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:30
-msgid "message = EFBMsg()\n\n"
+msgid "message = Message()\n\n"
 "# 1. a chat delivered from slave to master, or\n"
 "message.deliver_to = master\n"
 "message.chat = wonderland\n"
@@ -512,7 +512,7 @@ msgid "message = EFBMsg()\n\n"
 "# 2. a chat delivered from master to slave\n"
 "message.deliver_to = slave\n"
 "message.chat = alice\n"
-"message.author = EFBChat(slave).self()"
+"message.author = Chat(slave).self()"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:45
@@ -522,7 +522,7 @@ msgstr "Mesaj referanslarını işaretleme (hedeflenmiş mesaj)"
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:47
 msgid "# Information in this part should be retrieved\n"
 "# from recorded historical data.\n"
-"message.target = EFBMsg()\n"
+"message.target = Message()\n"
 "message.target.chat = alice\n"
 "message.target.author = alice\n"
 "message.target.text = \"Hello, world.\"\n"
@@ -589,7 +589,7 @@ msgstr "Konum mesajı"
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:98
 msgid "message.type = MsgType.Location\n"
 "message.text = \"I'm here! Come and find me!\"\n"
-"message.attributes = EFBMsgLocationAttribute(51.4826, -0.0077)"
+"message.attributes = LocationAttribute(51.4826, -0.0077)"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:116
@@ -599,7 +599,7 @@ msgstr "Bağlantı mesajı"
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:107
 msgid "message.type = MsgType.Link\n"
 "message.text = \"Check it out!\"\n"
-"message.attributes = EFBMsgLinkAttribute(\n"
+"message.attributes = LinkAttribute(\n"
 "    title=\"Example Domain\",\n"
 "    description=\"This domain is established to be used for illustrative examples in documents.\",\n"
 "    image=\"https://example.com/thumbnail.png\",\n"
@@ -613,7 +613,7 @@ msgstr "Durum"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:121
 msgid "message.type = MsgType.Status\n"
-"message.attributes = EFBMsgStatusAttribute(EFBMsgStatusAttribute.TYPING)"
+"message.attributes = StatusAttribute(StatusAttribute.TYPING)"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:133
@@ -640,10 +640,10 @@ msgstr "Değişim"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:139
 msgid "message.text = \"Hey @alice, @bob, and @all. Attention!\"\n"
-"message.substitutions = EFBMsgSubstitutions({\n"
+"message.substitutions = Substitutions({\n"
 "    (4, 10): alice,\n"
 "    (12, 16): bob,\n"
-"    (22, 26): EFBChat(slave).self()\n"
+"    (22, 26): Chat(slave).self()\n"
 "})"
 msgstr ""
 
@@ -653,7 +653,7 @@ msgstr "Komutlar"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:149
 msgid "message.text = \"Carol sent you a friend request.\"\n"
-"message.commands = EFBMsgCommands([\n"
+"message.commands = MessageCommands([\n"
 "    EFBCommand(name=\"Accept\", callable_name=\"accept_friend_request\",\n"
 "               kwargs={\"username\": \"carol_jhonos\", \"hash\": \"2a9329bd93f\"}),\n"
 "    EFBCommand(name=\"Decline\", callable_name=\"decline_friend_request\",\n"

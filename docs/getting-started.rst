@@ -82,6 +82,9 @@ You can choose the channels that fits your need the best.
 Instructions about installing each channel is available at
 their respective documentations.
 
+Set up with the configuration wizard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 When you have successfully installed the modules of your choices, you can
 the use the configuration wizard which guides you to enable channels and
 middlewares, and continue to setup those modules if they also have provided a
@@ -96,6 +99,9 @@ If you want to start the wizard of a module for a profile individually, run::
 
     efb-wizard -p <profile name> -m <module ID>
 
+
+Set up manually
+~~~~~~~~~~~~~~~
 
 Alternatively, you can enable those modules manually
 it by listing its Channel ID in the :doc:`configuration file <config>`.
@@ -133,6 +139,9 @@ running in one profile. Meanwhile, middlewares are completely optional.
 
 .. _modules repository: https://efb-modules.1a23.studio
 
+If you have enabled modules manually, you might also need configure each
+module manually too. Please consult the documentation of each module for
+instructions.
 
 Launch EFB
 ----------

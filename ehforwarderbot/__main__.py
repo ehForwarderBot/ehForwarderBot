@@ -16,8 +16,8 @@ from typing import Dict
 from . import config, utils
 from . import coordinator
 from .__version__ import __version__
-from .channel import EFBChannel
-from .middleware import EFBMiddleware
+from .channel import Channel, MasterChannel, SlaveChannel
+from .middleware import Middleware
 from .utils import LogLevelFilter
 
 
@@ -52,13 +52,13 @@ telemetry = None  # type: ignore
 
 def stop_gracefully(*_, **__):
     logger = logging.getLogger(__name__)
-    if hasattr(coordinator, "master") and isinstance(coordinator.master, EFBChannel):
+    if hasattr(coordinator, "master") and isinstance(coordinator.master, MasterChannel):
         coordinator.master.stop_polling()
         logger.debug("Stop signal sent to master: %s" % coordinator.master.channel_name)
     else:
         logger.info("Valid master channel is not found.")
     for i in coordinator.slaves:
-        if isinstance(coordinator.slaves[i], EFBChannel):
+        if isinstance(coordinator.slaves[i], SlaveChannel):
             coordinator.slaves[i].stop_polling()
             logger.debug("Stop signal sent to slave: %s" % coordinator.slaves[i].channel_name)
     if coordinator.master_thread and coordinator.master_thread.is_alive():
@@ -223,7 +223,7 @@ def main():
 
             conf = config.load_config()
             # Master channel
-            master_channel: EFBChannel = utils.locate_module(conf['master_channel'], 'master')
+            master_channel: MasterChannel = utils.locate_module(conf['master_channel'], 'master')
             instance_id = conf['master_channel'].split('#', 1)[1:]
             instance_id = (instance_id and instance_id[0]) or _("Default instance")
             versions += "\n\n" + _("Master channel:") + "\n    " + _("{name} ({id}) {version} # {instance_id}") \
@@ -235,7 +235,7 @@ def main():
             for i in conf['slave_channels']:
                 instance_id = i.split('#', 1)[1:]
                 instance_id = (instance_id and instance_id[0]) or _("Default instance")
-                slave_channel: EFBChannel = utils.locate_module(i, 'slave')
+                slave_channel: SlaveChannel = utils.locate_module(i, 'slave')
                 versions += "\n    " + _("{name} ({id}) {version} # {instance_id}") \
                             .format(name=slave_channel.channel_name,
                                     id=slave_channel.channel_id,
@@ -246,7 +246,7 @@ def main():
                 for i in conf['middlewares']:
                     instance_id = i.split('#', 1)[1:]
                     instance_id = (instance_id and instance_id[0]) or _("Default instance")
-                    middleware: EFBMiddleware = utils.locate_module(i, 'middleware')
+                    middleware: Middleware = utils.locate_module(i, 'middleware')
                     versions += "\n    " + _("{name} ({id}) {version} # {instance_id}") \
                                 .format(name=middleware.middleware_name,
                                         id=middleware.middleware_id,

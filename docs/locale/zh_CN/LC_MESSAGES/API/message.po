@@ -16,36 +16,36 @@ msgstr ""
 "Language: zh_CN\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:2
-msgid "EFBMsg"
-msgstr "EFBMsg"
+msgid "Message"
+msgstr "Message"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:1
 msgid "A message."
 msgstr "一条消息。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:5
-msgid "``EFBMsg`` objects are picklable, thus it is strongly recommended to keep any object of its subclass also picklable."
-msgstr "``EFBMsg`` 对象是可序列化的，因此我们强烈建议保持它的子类对象可序列化。"
+msgid "``Message`` objects are picklable, thus it is strongly recommended to keep any object of its subclass also picklable."
+msgstr "``Message`` 对象是可序列化的，因此我们强烈建议保持它的子类对象可序列化。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:10
 msgid "Attributes used for a specific message type. Only specific message type requires this attribute. Defaulted to ``None``."
 msgstr "用于特定消息类型的属性。只有特定的消息类型需要此属性。默认值为 ``None`` 。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:14
-msgid "Link: :obj:`.EFBMsgLinkAttribute`"
-msgstr "链接: :obj:`.EFBMsgLinkAttribute`"
+msgid "Link: :obj:`.LinkAttribute`"
+msgstr "链接: :obj:`.LinkAttribute`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:15
-msgid "Location: :obj:`.EFBMsgLocationAttribute`"
-msgstr "位置: :obj:`.EFBMsgLocationAttribute`"
+msgid "Location: :obj:`.LocationAttribute`"
+msgstr "位置: :obj:`.LocationAttribute`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:16
-msgid "Status: Typing/Sending files/etc.: :obj:`.EFBMsgStatusAttribute`"
-msgstr "状态：正在输入、发送文件等。: :obj:`.EFBMsgStatusAttribute`"
+msgid "Status: Typing/Sending files/etc.: :obj:`.StatusAttribute`"
+msgstr "状态：正在输入、发送文件等。: :obj:`.StatusAttribute`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:19
-msgid "Do NOT use object of the abstract class :class:`.EFBMsgAttribute` for ``attributes``, but object of specific class instead."
-msgstr "不要在 ``attributes`` 中使用抽象类 :class:`.EFBMsgAttribute` 的对象，而应该使用具体类的对象。"
+msgid "Do NOT use object of the abstract class :class:`.MessageAttribute` for ``attributes``, but object of specific class instead."
+msgstr "不要在 ``attributes`` 中使用抽象类 :class:`.MessageAttribute` 的对象，而应该使用具体类的对象。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
@@ -82,8 +82,8 @@ msgid "type"
 msgstr "类型"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:23
-msgid "Optional[:obj:`.EFBMsgAttribute`]"
-msgstr "Optional[:obj:`.EFBMsgAttribute`]"
+msgid "Optional[:obj:`.MessageAttribute`]"
+msgstr "Optional[:obj:`.MessageAttribute`]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:27
 msgid "Author of this message."
@@ -91,8 +91,8 @@ msgstr "该消息的作者。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:29
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:35
-msgid ":obj:`.EFBChat`"
-msgstr ":obj:`.EFBChat`"
+msgid ":obj:`.Chat`"
+msgstr ":obj:`.Chat`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:33
 msgid "Sender of the message."
@@ -113,16 +113,16 @@ msgid "This attribute will be ignored in _Status_ messages."
 msgstr "此属性将在 \\ _Status_\\  类消息中被忽略。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:43
-msgid "Optional[:obj:`EFBMsgCommands`]"
-msgstr "Optional[:obj:`EFBMsgCommands`]"
+msgid "Optional[:obj:`MessageCommands`]"
+msgstr "Optional[:obj:`MessageCommands`]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:47
 msgid "The channel that the message is to be delivered to."
 msgstr "接收消息的信道。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:49
-msgid ":obj:`.EFBChannel`"
-msgstr ":obj:`.EFBChannel`"
+msgid ":obj:`.Channel`"
+msgstr ":obj:`.Channel`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:53
 msgid "Flag this up if the message is edited. Flag only this if no multimedia file is modified, otherwise flag up both this one and ``edit_media`` as well."
@@ -176,20 +176,20 @@ msgid "Optional[Path]"
 msgstr "Optional[Path]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:110
-msgid "Indicate reactions to the message. Dictionary key is the canonical name of reaction, usually an emoji. Value is a collection of users who reacted to the message with that certain emoji. All :obj:`EFBChat` objects in this dict must be of a user or a group member."
-msgstr "指定对消息的回应。字典的键表示回应名，通常是一个 emoji。值为使用此 emoji 对该消息作出回应的用户列表。字典中所有 :obj:`EFBChat` 对象必须为一个用户或群组成员。"
+msgid "Indicate reactions to the message. Dictionary key is the canonical name of reaction, usually an emoji. Value is a collection of users who reacted to the message with that certain emoji. All :obj:`Chat` objects in this dict must be of a user or a group member."
+msgstr "指定对消息的回应。字典的键表示回应名，通常是一个 emoji。值为使用此 emoji 对该消息作出回应的用户列表。字典中所有 :obj:`Chat` 对象必须为一个用户或群组成员。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:118
-msgid "Dict[str, Collection[:obj:`EFBChat`]]"
-msgstr "Dict[str, Collection[:obj:`EFBChat`]]"
+msgid "Dict[str, Collection[:obj:`Chat`]]"
+msgstr "Dict[str, Collection[:obj:`Chat`]]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:122
 msgid "Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat."
 msgstr "消息的替换信息。通常在消息的部分文本引用另一个用户或会话时使用。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:128
-msgid "Optional[:obj:`EFBMsgSubstitutions`]"
-msgstr "Optional[:obj:`EFBMsgSubstitutions`]"
+msgid "Optional[:obj:`Substitutions`]"
+msgstr "Optional[:obj:`Substitutions`]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:132
 msgid "Target message (usually for messages that \"replies to\" another message)."
@@ -200,28 +200,28 @@ msgid "This message may be a \"minimum message\", with only required fields:"
 msgstr "该消息可能为一个「最小消息对象」，只包含必填字段："
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:141
-msgid ":attr:`.EFBMsg.chat`"
-msgstr ":attr:`.EFBMsg.chat`"
+msgid ":attr:`.Message.chat`"
+msgstr ":attr:`.Message.chat`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:142
-msgid ":attr:`.EFBMsg.author`"
-msgstr ":attr:`.EFBMsg.author`"
+msgid ":attr:`.Message.author`"
+msgstr ":attr:`.Message.author`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:143
-msgid ":attr:`.EFBMsg.text`"
-msgstr ":attr:`.EFBMsg.text`"
+msgid ":attr:`.Message.text`"
+msgstr ":attr:`.Message.text`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:144
-msgid ":attr:`.EFBMsg.type`"
-msgstr ":attr:`.EFBMsg.type`"
+msgid ":attr:`.Message.type`"
+msgstr ":attr:`.Message.type`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:145
-msgid ":attr:`.EFBMsg.uid`"
-msgstr ":attr:`.EFBMsg.uid`"
+msgid ":attr:`.Message.uid`"
+msgstr ":attr:`.Message.uid`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:147
-msgid "Optional[:obj:`EFBMsg`]"
-msgstr "Optional[:obj:`EFBMsg`]"
+msgid "Optional[:obj:`Message`]"
+msgstr "Optional[:obj:`Message`]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:151
 msgid "text of the message"
@@ -275,8 +275,8 @@ msgstr "消息属性的抽象类。"
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
-msgid "Bases: :class:`ehforwarderbot.message.EFBMsgAttribute`"
-msgstr "父类: :class:`ehforwarderbot.message.EFBMsgAttribute`"
+msgid "Bases: :class:`ehforwarderbot.message.MessageAttribute`"
+msgstr "父类: :class:`ehforwarderbot.message.MessageAttribute`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
 msgid "EFB link message attribute."
@@ -391,16 +391,16 @@ msgid "Commands for the message."
 msgstr "消息命令。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:9
-msgid "list of :obj:`EFBMsgCommand`"
-msgstr ":obj:`EFBMsgCommand` 列表"
+msgid "list of :obj:`MessageCommand`"
+msgstr ":obj:`MessageCommand` 列表"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
 msgid "EFB Message status attribute. Message with type ``Status`` notifies the other end to update a chat-specific status, such as typing, send files, etc."
 msgstr "EFB 消息状态属性。包含``Status``类型的消息会通知另一端来更新聊天的特定状态，例如正在输入，发送文件等。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:7
-msgid "Type of status, possible values are defined in the ``EFBMsgStatusAttribute``."
-msgstr "状态的类型，仅可以为 ``EFBMsgStatusAttribute`` 中定义的值。"
+msgid "Type of status, possible values are defined in the ``StatusAttribute``."
+msgstr "状态的类型，仅可以为 ``StatusAttribute`` 中定义的值。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:12
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:2
@@ -420,24 +420,24 @@ msgid "Bases: :class:`enum.Enum`"
 msgstr "父类: :class:`enum.Enum`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:3
-msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of typing."
-msgstr "在 :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type` 中使用。代表正在输入状态。"
+msgid "Used in :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, represent the status of typing."
+msgstr "在 :attr:`~.ehforwarderbot.message.StatusAttribute.status_type` 中使用。代表正在输入状态。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:8
-msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading file."
-msgstr "在 :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type` 中使用。代表正在上传文件状态。"
+msgid "Used in :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, represent the status of uploading file."
+msgstr "在 :attr:`~.ehforwarderbot.message.StatusAttribute.status_type` 中使用。代表正在上传文件状态。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:13
-msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading image."
-msgstr "在 :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type` 中使用，代表上传图像状态。"
+msgid "Used in :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, represent the status of uploading image."
+msgstr "在 :attr:`~.ehforwarderbot.message.StatusAttribute.status_type` 中使用，代表上传图像状态。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:18
-msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading voice."
-msgstr "在 \\ :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`\\  中使用。代表正在上传语音消息状态。"
+msgid "Used in :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, represent the status of uploading voice."
+msgstr "在 \\ :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`\\  中使用。代表正在上传语音消息状态。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:23
-msgid "Used in :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type`, represent the status of uploading video."
-msgstr "在 :attr:`~.ehforwarderbot.message.EFBMsgStatusAttribute.status_type` 中使用，代表上传视频状态。"
+msgid "Used in :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, represent the status of uploading video."
+msgstr "在 :attr:`~.ehforwarderbot.message.StatusAttribute.status_type` 中使用，代表上传视频状态。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:1
 msgid "Type of status."
@@ -464,16 +464,16 @@ msgid "A key in this dictionary shall be a tuple of two :obj:`int`\\ s, where fi
 msgstr "字典的键值为一个包含两个 \\ :obj:`int`\\  的元组，其中第一个是在字符串中的起始位置，第二个则是和 Python 中的 substring 函数功能类似的结束位置。元组 \\ ``(3, 15)``\\  对应于 \\ ``msg.text[3:15]``。元组 \\ ``(a, b)``\\  必须介于 \\ ``a ∈ [0, l)``, ``b ∈ (a, l]``\\  之间，其中 \\ ``l``\\  为消息文本的长度。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:19
-msgid "Value of the dict may be any user of the chat, or a member of a group. Notice that the :obj:`EFBChat` object here must NOT be a group."
-msgstr "字典的值可能是聊天中的任何用户，或者群组中的成员。注意这里的 :obj:`EFBChat` 对象不可以赋值为群组。"
+msgid "Value of the dict may be any user of the chat, or a member of a group. Notice that the :obj:`Chat` object here must NOT be a group."
+msgstr "字典的值可能是聊天中的任何用户，或者群组中的成员。注意这里的 :obj:`Chat` 对象不可以赋值为群组。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:25
 msgid "Type:"
 msgstr "类型："
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:24
-msgid "Dict[Tuple[int, int], :obj:`.EFBChat`]"
-msgstr "Dict[Tuple[int, int], :obj:`.EFBChat`]"
+msgid "Dict[Tuple[int, int], :obj:`.Chat`]"
+msgstr "Dict[Tuple[int, int], :obj:`.Chat`]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions.is_mentioned:1
 msgid "Returns ``True`` if you are mentioned in this message."
@@ -508,7 +508,7 @@ msgid "Initialization and marking chats"
 msgstr "初始化和标记会话"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:30
-msgid "message = EFBMsg()\n\n"
+msgid "message = Message()\n\n"
 "# 1. a chat delivered from slave to master, or\n"
 "message.deliver_to = master\n"
 "message.chat = wonderland\n"
@@ -516,8 +516,8 @@ msgid "message = EFBMsg()\n\n"
 "# 2. a chat delivered from master to slave\n"
 "message.deliver_to = slave\n"
 "message.chat = alice\n"
-"message.author = EFBChat(slave).self()"
-msgstr "message = EFBMsg()\n\n"
+"message.author = Chat(slave).self()"
+msgstr "message = Message()\n\n"
 "# 1. 一个从从端到主端的会话，或者\n"
 "message.deliver_to = master\n"
 "message.chat = wonderland\n"
@@ -525,7 +525,7 @@ msgstr "message = EFBMsg()\n\n"
 "# 2. 一个从主端到从端的会话\n"
 "message.deliver_to = slave\n"
 "message.chat = alice\n"
-"message.author = EFBChat(slave).self()"
+"message.author = Chat(slave).self()"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:45
 msgid "Marking message references (targeted message)"
@@ -534,14 +534,14 @@ msgstr "标记聊天引用（目标消息）"
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:47
 msgid "# Information in this part should be retrieved\n"
 "# from recorded historical data.\n"
-"message.target = EFBMsg()\n"
+"message.target = Message()\n"
 "message.target.chat = alice\n"
 "message.target.author = alice\n"
 "message.target.text = \"Hello, world.\"\n"
 "message.target.type = MsgType.Text\n"
 "message.target.uid = \"100000002\""
 msgstr "# 此部分的信息应该从记录的历史数据中检索\n"
-"message.target = EFBMsg()\n"
+"message.target = Message()\n"
 "message.target.chat = alice\n"
 "message.target.author = alice\n"
 "message.target.text = \"Hello, world.\"\n"
@@ -616,10 +616,10 @@ msgstr "位置消息"
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:98
 msgid "message.type = MsgType.Location\n"
 "message.text = \"I'm here! Come and find me!\"\n"
-"message.attributes = EFBMsgLocationAttribute(51.4826, -0.0077)"
+"message.attributes = LocationAttribute(51.4826, -0.0077)"
 msgstr "message.type = MsgType.Location\n"
 "message.text = \"I'm here! Come and find me!\"\n"
-"message.attributes = EFBMsgLocationAttribute(51.4826, -0.0077)"
+"message.attributes = LocationAttribute(51.4826, -0.0077)"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:116
 msgid "Link message"
@@ -628,7 +628,7 @@ msgstr "链接消息"
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:107
 msgid "message.type = MsgType.Link\n"
 "message.text = \"Check it out!\"\n"
-"message.attributes = EFBMsgLinkAttribute(\n"
+"message.attributes = LinkAttribute(\n"
 "    title=\"Example Domain\",\n"
 "    description=\"This domain is established to be used for illustrative examples in documents.\",\n"
 "    image=\"https://example.com/thumbnail.png\",\n"
@@ -636,7 +636,7 @@ msgid "message.type = MsgType.Link\n"
 ")"
 msgstr "message.type = MsgType.Link\n"
 "message.text = \"来看看这个！\"\n"
-"message.attributes = EFBMsgLinkAttribute(\n"
+"message.attributes = LinkAttribute(\n"
 "    title=\"示例域\",\n"
 "    description=\"此域旨在用于文档中的说明性示例。\",\n"
 "    image=\"https://example.com/thumbnail.png\",\n"
@@ -649,9 +649,9 @@ msgstr "状态"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:121
 msgid "message.type = MsgType.Status\n"
-"message.attributes = EFBMsgStatusAttribute(EFBMsgStatusAttribute.TYPING)"
+"message.attributes = StatusAttribute(StatusAttribute.TYPING)"
 msgstr "message.type = MsgType.Status\n"
-"message.attributes = EFBMsgStatusAttribute(EFBMsgStatusAttribute.TYPING)"
+"message.attributes = StatusAttribute(StatusAttribute.TYPING)"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:133
 msgid "Unsupported message"
@@ -679,16 +679,16 @@ msgstr "替代"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:139
 msgid "message.text = \"Hey @alice, @bob, and @all. Attention!\"\n"
-"message.substitutions = EFBMsgSubstitutions({\n"
+"message.substitutions = Substitutions({\n"
 "    (4, 10): alice,\n"
 "    (12, 16): bob,\n"
-"    (22, 26): EFBChat(slave).self()\n"
+"    (22, 26): Chat(slave).self()\n"
 "})"
 msgstr "message.text = \"@alice、@bob、@所有人，注意！\"\n"
-"message.substitutions = EFBMsgSubstitutions({\n"
+"message.substitutions = Substitutions({\n"
 "    (0, 6): alice,\n"
 "    (7, 11): bob,\n"
-"    (12, 16): EFBChat(slave).self()\n"
+"    (12, 16): Chat(slave).self()\n"
 "})"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:156
@@ -697,14 +697,14 @@ msgstr "命令"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:149
 msgid "message.text = \"Carol sent you a friend request.\"\n"
-"message.commands = EFBMsgCommands([\n"
+"message.commands = MessageCommands([\n"
 "    EFBCommand(name=\"Accept\", callable_name=\"accept_friend_request\",\n"
 "               kwargs={\"username\": \"carol_jhonos\", \"hash\": \"2a9329bd93f\"}),\n"
 "    EFBCommand(name=\"Decline\", callable_name=\"decline_friend_request\",\n"
 "               kwargs={\"username\": \"carol_jhonos\", \"hash\": \"2a9329bd93f\"})\n"
 "])"
 msgstr "message.text = \"Carol 向您发送了好友请求。\"\n"
-"message.commands = EFBMsgCommands([\n"
+"message.commands = MessageCommands([\n"
 "    EFBCommand(name=\"接受\", callable_name=\"accept_friend_request\",\n"
 "               kwargs={\"username\": \"carol_jhonos\", \"hash\": \"2a9329bd93f\"}),\n"
 "    EFBCommand(name=\"拒绝\", callable_name=\"decline_friend_request\",\n"

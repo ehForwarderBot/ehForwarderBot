@@ -16,16 +16,16 @@ msgstr ""
 "Language: zh_CN\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/chat.rst:2
-msgid "EFBChat"
-msgstr "EFBChat"
+msgid "Chat"
+msgstr "Chat"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:1
 msgid "EFB Chat object. This is used to represent a chat or a group member."
-msgstr "EFBChat 对象。表示一个聊天或群组成员。"
+msgstr "Chat 对象。表示一个聊天或群组成员。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:5
-msgid "``EFBChat`` objects are picklable, thus it is strongly recommended to keep any object of its subclass also picklable."
-msgstr "``EFBChat`` 对象是可序列化的，因此我们强烈建议保持它的子类对象可序列化。"
+msgid "``Chat`` objects are picklable, thus it is strongly recommended to keep any object of its subclass also picklable."
+msgstr "``Chat`` 对象是可序列化的，因此我们强烈建议保持它的子类对象可序列化。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:10
 msgid "Unique ID of the module."
@@ -115,24 +115,24 @@ msgid "Indicate the notification settings of the chat in its slave channel (or m
 msgstr "指定此会话在对应从端（或中间件）中的通知设定。默认为 ``ALL``。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:81
-msgid "EFBChatNotificationState"
-msgstr "EFBChatNotificationState"
+msgid "ChatNotificationState"
+msgstr "ChatNotificationState"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:85
 msgid "The parent chat of the member. Only available to chat member objects. Defaulted to ``None``."
 msgstr "成员的所在的群组对象。只对聊天组成员可用。默认值为 ``None``。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:88
-msgid ":obj:`.EFBChat` or None"
-msgstr ":obj:`.EFBChat` 或空值"
+msgid ":obj:`.Chat` or None"
+msgstr ":obj:`.Chat` 或空值"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:92
 msgid "Provide a list of members in the group. Defaulted to an empty ``list``. You may want to extend this object and implement a ``@property`` method set for loading members on demand."
 msgstr "提供群组中成员的列表。默认值为一个空的 ``list``。你可以扩展这个对象并实现一个 ``@property`` 方法从而在需要的时候装载会话。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:97
-msgid "list of :obj:`.EFBChat`"
-msgstr ":obj:`.EFBChat` 列表"
+msgid "list of :obj:`.Chat`"
+msgstr ":obj:`.Chat` 列表"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.EFBChat:101
 msgid "Any vendor specific attributes."

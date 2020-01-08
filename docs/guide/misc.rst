@@ -25,3 +25,18 @@ Threading
 All channels are recommended a separate thread while
 processing a new message, so as to prevent unexpectedly
 long thread blocking.
+
+We are also considering to move completely to asynchronous
+programming when most channels are ready for the change.
+
+
+Static type checking
+--------------------
+
+EH Forwarder Bot is fully labeled in the Python 3 type
+hint notations. Since sometimes maintaining a module with
+high complexity could be difficult, we recommend you to
+type your module too and use tools like mypy_ to check your
+code statically.
+
+.. _mypy: https://github.com/python/mypy
