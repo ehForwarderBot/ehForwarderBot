@@ -1,19 +1,17 @@
 # coding=utf-8
 
 import copy
-import warnings
 from abc import ABC, abstractmethod
 from enum import Enum
 from typing import Dict, Any, Optional, TypeVar, List
-
-from deprecation import deprecated
 
 from .channel import SlaveChannel
 from .coordinator import translator
 from .middleware import Middleware
 from .types import ModuleID, ChatID
 
-__all__ = ['Chat', 'PrivateChat', 'SystemChat', 'GroupChat',
+__all__ = ['BaseChat',
+           'Chat', 'PrivateChat', 'SystemChat', 'GroupChat',
            'ChatMember', 'SelfChatMember', 'SystemChatMember',
            'ChatNotificationState']
 
