@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 21:02+0800\n"
-"PO-Revision-Date: 2020-01-03 13:50\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:32\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -19,173 +19,267 @@ msgstr ""
 msgid "Channel"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:1
 msgid "The abstract channel class."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:5
 msgid "A human-friendly name of the channel."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:0
 msgid "type"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:7
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:15
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:35
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:41
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:15
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:29
 msgid "str"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:11
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:11
 msgid "Emoji icon of the channel. Recommended to use a visually-length-one emoji that represents the channel best."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:19
-msgid "Type of the channel."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:21
-msgid ":obj:`.ChannelType`"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:25
-msgid "Types of messages that the channel accepts as incoming messages."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:27
-msgid "Set[:obj:`.MsgType`]"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:31
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:19
 msgid "Unique identifier of the channel. Convention of IDs is specified in :doc:`/guide/packaging`. This ID will be appended with its instance ID when available."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:39
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:23
+msgid ":obj:`.ModuleID` (str)"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:27
 msgid "The instance ID if available."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:45
-msgid "A list of suggested reactions to be applied to messages. Valid to slave channels only, master channels should leave this value as ``None``."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:49
-msgid "Reactions should be ordered in a meaningful way, e.g., the order used by the IM platform, or frequency of usage. Note that it is not necessary to list all suggested reactions if that is too long, or not feasible."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:54
-msgid "Set to ``None`` when it is known that no reaction is supported to ANY message in the channel. Set to empty list when it is not feasible to provide a list of suggested reactions, for example, the list of reactions is different for each chat or message."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel:59
-msgid "Optional[List[str]]"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.__init__:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.__init__:1
 msgid "Initialize the channel. Inherited initializer must call the \"super init\" method at the beginning."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.__init__:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_message_by_id:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:0
 msgid "Parameters"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.__init__:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.__init__:6
 msgid "Instance ID of the channel."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:1
-msgid "Get the chat object from a slave channel."
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:1
+msgid "Get message entity by its ID. Applicable to both master channels and slave channels. Return ``None`` when message not found."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:3
-msgid "UID of the chat."
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:5
+msgid "Override this method and raise :exc:`~.exceptions.EFBOperationNotSupported` if it is not feasible to perform this for your platform."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:5
-msgid "UID of group member, only when the selected chat is a group."
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:10
+msgid "Chat in slave channel / middleware."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chats:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_extra_functions:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:0
-msgid "Returns"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:12
+msgid "ID of message from the chat in slave channel / middleware."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:9
-msgid "The chat found."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chats:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_extra_functions:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chats:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_extra_functions:0
 msgid "Return type"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:15
+msgid ":py:data:`~typing.Optional`\\[:py:class:`~typing.ForwardRef`]"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.poll:1
+msgid "Method to poll for messages. This method is called when the framework is initialized. This method should be blocking."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:1
+msgid "Process a message that is sent to, or edited in this channel."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:3
+msgid "Notes"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:5
+msgid "Master channel shall take care of the returned object that contains the updated message ID. Depends on the implementation of slave channels, he message ID may change even after being edited. The old message ID shall be disregarded for the new one."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:11
+msgid "Message object to be processed."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chats:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_extra_functions:0
+msgid "Returns"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:14
+msgid "The same message object. Message ID shall be updated if sent to the slave channel even when edited."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:16
+msgid ":obj:`~.message.Message`"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:0
 msgid "Raises"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:12
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:16
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:11
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:6
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:18
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:9
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:17
 msgid "Raised when a chat required is not found."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat:14
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:34
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chats:6
-msgid "This is not required by Master Channels"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:19
+msgid "Raised when the message type sent is not supported by the     channel."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:20
+msgid "Raised when an message edit request is sent, but not     supported by the channel."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:21
+msgid "Raised when an existing message indicated is not found.     E.g.: The message to be edited, the message referred     in the :attr:`msg.target <.Message.target>`     attribute."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:22
+msgid "Raised when other error occurred while sending or editing the     message."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:1
+msgid "Process a status that is sent to this channel."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:4
+msgid "the status object."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:8
+msgid "Raised when an existing message indicated is not found.     E.g.: The message to be removed."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:9
+msgid "Raised when the channel does not support message removal."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:10
+msgid "Raised when other error occurred while removing the message."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:14
+msgid "Avoid raising exceptions from this method in Master Channels as it would be hard for a Slave Channel to process the exception."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:19
+msgid "This method is not applicable to Slave Channels."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.stop_polling:1
+msgid "When EFB framework is asked to stop gracefully, this method is called to each channel object to stop all processes in the channel, save all status if necessary, and terminate polling."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.stop_polling:6
+msgid "When the channel is ready to stop, the polling function must stop blocking. EFB framework will quit completely when all polling threads end."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.MasterChannel:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:1
+msgid "The abstract master channel class. All master channels shall inherit this class."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:6
+msgid "Types of messages that the slave channel accepts as incoming messages. Master channels may use this value to decide what type of messages to send to your slave channel."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:10
+msgid "Leaving this empty may cause the master channel to refuse sending anything to your slave channel."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:13
+msgid "Set[:class:`~.constants.MsgType`]"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:17
+msgid "A list of suggested reactions to be applied to messages. Valid to slave channels only, master channels should leave this value as ``None``."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:21
+msgid "Reactions should be ordered in a meaningful way, e.g., the order used by the IM platform, or frequency of usage. Note that it is not necessary to list all suggested reactions if that is too long, or not feasible."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:26
+msgid "Set to ``None`` when it is known that no reaction is supported to ANY message in the channel. Set to empty list when it is not feasible to provide a list of suggested reactions, for example, the list of reactions is different for each chat or message."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:31
+msgid "Optional[Sequence[str]]"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:1
+msgid "Get the chat object from a slave channel."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:4
+msgid "UID of the chat."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:6
+msgid "The chat found."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:1
 msgid "Get the profile picture of a chat. Profile picture is also referred as profile photo, avatar, \"head image\" sometimes."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:6
 msgid "Chat to get picture from."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:8
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:9
 msgid "Opened temporary file object. The file object must have appropriate extension name that matches to the format of picture sent, and seek to position 0.  It can be deleted when closed if not required otherwise."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:8
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:9
 msgid "Opened temporary file object. The file object must have appropriate extension name that matches to the format of picture sent, and seek to position 0."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:13
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:14
 msgid "It can be deleted when closed if not required otherwise."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:17
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:18
 msgid "Raised when the chat does not offer a profile picture."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:20
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:21
 msgid "Examples"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chat_picture:21
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:22
 msgid "if chat.channel_uid != self.channel_uid:\n"
 "    raise EFBChannelNotFound()\n"
 "file = tempfile.NamedTemporaryFile(suffix=\".png\")\n"
@@ -198,108 +292,28 @@ msgid "if chat.channel_uid != self.channel_uid:\n"
 "return file"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chats:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chats:1
 msgid "Return a list of available chats in the channel."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_chats:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chats:3
 msgid "a list of available chats in the channel."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_extra_functions:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chats:4
+msgid "Collection[:class:`.Chat`]"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_extra_functions:1
 msgid "Get a list of additional features"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_extra_functions:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_extra_functions:3
+msgid ":py:class:`~typing.Dict`\\[:py:func:`~typing.NewType`\\(:py:data:`~ExtraCommandName`, :py:class:`str`), :py:data:`~typing.Callable`]"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_extra_functions:4
 msgid "A dict of methods marked as additional features. Method can be called with ``get_extra_functions()[\"methodName\"]()``."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_message_by_id:1
-msgid "Get message entity by its ID. Applicable to both master channels and slave channels. Return ``None`` when message not found."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_message_by_id:5
-msgid "Override this method and raise :exc:`~.exceptions.EFBOperationNotSupported` if it is not feasible to perform this for your platform."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_message_by_id:9
-msgid "Chat in slave channel / middleware."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.get_message_by_id:10
-msgid "ID of message from the chat in slave channel / middleware."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.poll:1
-msgid "Method to poll for messages. This method is called when the framework is initialized. This method should be blocking."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:1
-msgid "Send a message to, or edit a sent message in the channel."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:4
-msgid "Message object to be processed."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:7
-msgid "The same message object with message ID from the recipient."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:9
-msgid ":obj:`.Message`"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:12
-msgid "Raised when the message type sent is not supported by the     channel."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:13
-msgid "Raised when an message edit request is sent, but not     supported by the channel."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:14
-msgid "Raised when an existing message indicated is not found.     E.g.: The message to be edited, the message referred     in the :attr:`msg.target <.Message.target>`     attribute."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_message:15
-msgid "Raised when other error occurred while sending or editing the     message."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:1
-msgid "Send a status to the channel."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:3
-msgid "the status"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:7
-msgid "Raised when an existing message indicated is not found.     E.g.: The message to be removed."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:8
-msgid "Raised when the channel does not support message removal."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:9
-msgid "Raised when other error occurred while removing the message."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:13
-msgid "Avoid raising exceptions from this method in Master Channels as it would be hard for a Slave Channel to process the exception."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.send_status:18
-msgid "This method is not applicable to Slave Channels."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.stop_polling:1
-msgid "When EFB framework is asked to stop gracefully, this method is called to each channel object to stop all processes in the channel, save all status if necessary, and terminate polling."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.EFBChannel.stop_polling:6
-msgid "When the channel is ready to stop, the polling function must stop blocking. EFB framework will quit completely when all polling threads end."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:8
@@ -311,7 +325,7 @@ msgid "Sending messages and statuses"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:13
-msgid "Sending messages and statuses to other channels is the most common operation of a channel. When the channel has gathered enough information from external sources, it should be further processed and packed into the relative objects, i.e. :obj:`.Message` and :obj:`.Status`."
+msgid "Sending messages and statuses to other channels is the most common operation of a channel. When the channel has gathered enough information from external sources, it should be further processed and packed into the relative objects, i.e. :py:class:`~.message.Message` and :py:class:`~.status.Status`."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:19
@@ -319,7 +333,7 @@ msgid "When the related information is packed into their relative objects, it ca
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:23
-msgid "For now, both :obj:`.Message` and :obj:`.Status` has an attribute that indicates that where this object should be delivered to (:attr:`.Message.deliver_to` and :attr:`.Status.destination_channel`). This is used by the coordinator when delivering the message."
+msgid "For now, both :obj:`~.message.Message` and :obj:`~.status.Status` has an attribute that indicates that where this object should be delivered to (:attr:`~.message.Message.deliver_to` and :attr:`~.status.Status.destination_channel`). This is used by the coordinator when delivering the message."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:29

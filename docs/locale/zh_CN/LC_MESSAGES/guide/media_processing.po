@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 21:02+0800\n"
-"PO-Revision-Date: 2020-01-03 13:49\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:32\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -40,30 +40,30 @@ msgid "We try to aim to use as few different libraries as we can, as more librar
 msgstr "尽可能少地使用不同的外部代码库。多一个外部代码库依赖就意味着用户需要更多的时间和空间，并且提升了安装的复杂性。在处理媒体文件时，我们建议尽可能使用以下的库："
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:39
-msgid "pillow"
-msgstr "pillow"
+msgid "Pillow_"
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:40
-msgid "ffmpeg"
-msgstr "ffmpeg"
+msgid "FFmpeg_"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:43
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:46
 msgid "Files in messages"
 msgstr "消息中的文件"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:45
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:48
 msgid "When a file sent out from a channel, it should be open, sought back to 0 ( ``file.seek(0)`` ) before sending."
 msgstr "从信道发出的文件对象都应该为打开的状态、且文件指针应该定位于 0（``file.seek(0)``）。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:48
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:51
 msgid "Files sent should be able to be located somewhere in the file system, better with a appropriate extension name, but not required. All files should also have its MIME type specified in the message object. If the channel is not sure about the correct MIME type, it can try to guess with ``libmagic``, or fallback to ``application/octet-stream``. Always try the best to provide the most suitable MIME type when sending."
 msgstr "所有发出的都应该能在文件系统中找到，并最好有附有相应的扩展名。在发送文件的同时也应该在消息对象中指定其 MIME 类型。如果文件的 MIME 类型不明确，可以尝试用 ``libmagic`` 猜测，或者使用最基本的 ``application/octet-stream``。发送文件是应尽可能提供准确的 MIME 类型。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:57
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:60
 msgid "For such files, we use ``close`` to signify the end of its lifecycle. If the file is not required by the sender's channel anymore, it can be safely discarded."
 msgstr "发出的文件会通过 ``close`` 来标记其的生命周期的结束。如果消息的来源信道也不再需要它的话，该文件此时就被安全地丢弃了。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:61
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:64
 msgid "Generally, ``tempfile.NamedTemporaryFile`` should work for ordinary cases."
 msgstr "一般来讲，``tempfile.NamedTemporaryFile`` 应该能适用于大多数情况。"
 

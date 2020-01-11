@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 21:02+0800\n"
-"PO-Revision-Date: 2020-01-03 13:49\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:32\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Azerbaijani\n"
 "MIME-Version: 1.0\n"
@@ -19,95 +19,95 @@ msgstr ""
 msgid "Middleware"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware:1
 msgid "Middleware class."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware:5
 msgid "Unique ID of the middleware. Convention of IDs is specified in :doc:`/guide/packaging`. This ID will be appended with its instance ID when available."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware:0
 msgid "type"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:9
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:15
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:21
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware:9
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware:15
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware:21
 msgid "str"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:13
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware:13
 msgid "Human-readable name of the middleware."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware:19
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware:19
 msgid "The instance ID if available."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.__init__:1
 msgid "Initialize the middleware. Inherited initializer must call the \"super init\" method at the beginning."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.process_message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.process_status:0
 msgid "Parameters"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.__init__:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.__init__:6
 msgid "Instance ID of the middleware."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.get_extra_functions:1
 msgid "Get a list of additional features"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.get_extra_functions:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.process_message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.process_status:0
 msgid "Returns"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.get_extra_functions:3
 msgid "A dict of methods marked as additional features. Method can be called with ``get_extra_functions()[\"methodName\"]()``."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.get_extra_functions:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.get_extra_functions:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.process_message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.process_status:0
 msgid "Return type"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.process_message:1
 msgid "Process a message with middleware"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:3
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.process_message:4
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.process_status:4
 msgid "Message object to process"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:6
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.process_message:7
 msgid "Processed message or None if discarded."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_message:7
-msgid "Optional[:obj:`.Message`]"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.process_message:8
+msgid "Optional[:obj:`~.message.Message`]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.process_status:1
 msgid "Process a status update with middleware"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:6
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.process_status:7
 msgid "Processed status or None if discarded."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.EFBMiddleware.process_status:7
-msgid "Optional[:obj:`.Status`]"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/middleware.py:docstring of ehforwarderbot.Middleware.process_status:8
+msgid "Optional[:obj:`~.status.Status`]"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/middleware.rst:8

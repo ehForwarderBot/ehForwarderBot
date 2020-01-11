@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 21:02+0800\n"
-"PO-Revision-Date: 2020-01-03 13:50\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:32\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgid "Donate"
 msgstr "Donasi"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/donate.rst:4
-msgid "`Donate links`_"
+msgid "`Donate to Eana`_"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/donate.rst:5

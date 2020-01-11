@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 21:02+0800\n"
-"PO-Revision-Date: 2020-01-03 13:50\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:33\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -40,30 +40,30 @@ msgid "We try to aim to use as few different libraries as we can, as more librar
 msgstr "Tratamos de apuntar al uso de la menor cantidad de librerías posibles, dado que una mayor cantidad significa mayor espacio, tiempo de instalación, y complejidad. Al procesar los archivos multimedia, recomendamos el uso de las siguientes librerias de ser posible:"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:39
-msgid "pillow"
-msgstr "pillow"
+msgid "Pillow_"
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:40
-msgid "ffmpeg"
-msgstr "ffmpeg"
+msgid "FFmpeg_"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:43
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:46
 msgid "Files in messages"
 msgstr "Archivos en mensajes"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:45
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:48
 msgid "When a file sent out from a channel, it should be open, sought back to 0 ( ``file.seek(0)`` ) before sending."
 msgstr "Cuando un archivo es enviado desde un canal, debe ser abierto y devuelto 0 ( ``file.seek(0)`` ) antes de enviar."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:48
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:51
 msgid "Files sent should be able to be located somewhere in the file system, better with a appropriate extension name, but not required. All files should also have its MIME type specified in the message object. If the channel is not sure about the correct MIME type, it can try to guess with ``libmagic``, or fallback to ``application/octet-stream``. Always try the best to provide the most suitable MIME type when sending."
 msgstr "Los archivos enviados deben poder ser localizados en algún lugar del archivo de sistema., mucho mejor con un nombre de extensión adecuado, aunque no es requerido. Todos los archivos deben tener su tipo de MIME especificado en el objeto mensaje correspondiente. Si el canal no esta seguro acerca del tipo de MIME correcto, el puede tratar de suponerlo con `libmagic``, o como segunda opción ``application/octet-stream``. Siempre trata de utilizar el tipo MIME más adecuado al enviar el mensaje."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:57
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:60
 msgid "For such files, we use ``close`` to signify the end of its lifecycle. If the file is not required by the sender's channel anymore, it can be safely discarded."
 msgstr "Para esos archivos, utilizamos ``close`` para señalar el final del ciclo de vida. Si el archivo ya no es requerido por el canal de envío, puede ser descartado de manera segura."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:61
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:64
 msgid "Generally, ``tempfile.NamedTemporaryFile`` should work for ordinary cases."
 msgstr "Generalmente, ``tempfile.NamedTemporaryFile`` debería funcionar para los casos convencionales."
 

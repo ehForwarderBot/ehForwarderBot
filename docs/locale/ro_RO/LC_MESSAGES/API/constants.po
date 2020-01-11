@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 21:02+0800\n"
-"PO-Revision-Date: 2020-01-03 13:50\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:33\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Romanian\n"
 "MIME-Version: 1.0\n"
@@ -19,70 +19,67 @@ msgstr ""
 msgid "Constants"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType:1
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.ChatType:1
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.TargetType:1
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.ChannelType:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType:1
 msgid "An enumeration."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Animation:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Animation:1
 msgid "Message with an animation, usually in the form of GIF or soundless video."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Audio:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Audio:1
 msgid "Audio messages (deprecated)."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Audio:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Audio:3
 msgid ":attr:`.Voice` if the message has a voice message (usually recorded). Use :attr:`.File` if the message has a music file (usually uploaded)."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.File:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.File:1
 msgid "File message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Image:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Image:1
 msgid "Image (picture) message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Image:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Image:3
 msgid "Notes"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Image:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Image:5
 msgid "Animated GIF images shall use :attr:`Animation` type instead."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Link:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Link:1
 msgid "Message that is mainly one specific link, or a text message with one link preview."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Location:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Location:1
 msgid "Location message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Status:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Status:1
 msgid "Status from a user in a chat, usually typing and uploading."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Sticker:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Sticker:1
 msgid "Pictures sent with few text caption, usually a transparent background, and a limited number of options that is usually not from the user's photo gallery."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Text:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Text:1
 msgid "Text message"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Unsupported:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Unsupported:1
 msgid "Any type of message that is not listed above. A text representation is required."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Video:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Video:1
 msgid "Video message"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.MsgType.Voice:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Voice:1
 msgid "Voice messages, usually recorded right before sending."
 msgstr ""
 

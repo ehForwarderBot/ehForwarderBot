@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 21:02+0800\n"
-"PO-Revision-Date: 2020-01-03 13:50\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:33\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -21,65 +21,65 @@ msgstr "Excepciones"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBException:1
 msgid "Bases: :class:`Exception`"
-msgstr "Bases: :class:`Exception`"
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBException:1
 msgid "A general class to indicate that the exception is from EFB framework."
-msgstr "Una clase general para indicar que la excepción proviene del framework EFB."
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChatNotFound:1
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChannelNotFound:1
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:1
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageReactionNotPossible:1
 msgid "Bases: :class:`ehforwarderbot.exceptions.EFBException`"
-msgstr "Bases: :class:`ehforwarderbot.exceptions.EFBException`"
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChatNotFound:1
 msgid "Raised by a slave channel when a chat indicated is not found."
-msgstr "Llamada por el canal esclavo cuando el chat indicado no ha sido encontrado."
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChatNotFound:3
 msgid "Can be raised by any method that involves a chat or a message."
-msgstr "Puede ser llamada por cualquier método que involucre un chat o un mensaje."
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChannelNotFound:1
 msgid "Raised by the coordinator when the message sent delivers to a missing channel."
-msgstr "Excepción llamada por el coordinador cuando el mensaje es enviado a un canal no encontrado."
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:1
 msgid "Raised by slave channel for any other error occurred when sending a message or a status."
-msgstr "Excepción llamada por el canal esclavo al ocurrir cualquier otro error al enviar un mensaje o un estado."
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:4
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:4
 msgid "Can be raised in :meth:`.Channel.send_message` and :meth:`.Channel.send_status`."
-msgstr "Puede ser llamada en :meth:`.Channel.send_message` y :meth:`.Channel.send_status`."
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:1
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:1
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:1
 msgid "Bases: :class:`ehforwarderbot.exceptions.EFBMessageError`"
-msgstr "Bases: :class:`ehforwarderbot.exceptions.EFBMessageError`"
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:1
 msgid "Raised by a slave channel when a message indicated is not found."
-msgstr "Excepción llamada por un canal esclavo cuando no se encuentra el mensaje indicado."
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:3
 msgid "Can be raised in :meth:`.Channel.send_message` (edited message / target message not found) and in :meth:`.Channel.send_status` (message to delete is not found)."
-msgstr "Puede ser llamada en :meth:`.Channel.send_message` (mensajes editados / mensaje destino no encontrado) y en :meth:`.Channel.send_status` (el mensaje ha eliminar no ha sido encontrado)."
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:1
 msgid "Raised by a slave channel when the indicated message type is not supported."
-msgstr "Excepción llamada por el canal esclavo cuando el tipo de mensaje seleccionado no es soportado."
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:3
 msgid "Can be raised in :meth:`.Channel.send_message`."
-msgstr "Puede ser llamada en :meth:`.Channel.send_message`."
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:1
 msgid "Raised by slave channels when a chat operation is not supported. E.g.: cannot edit message, cannot delete message."
-msgstr "Excepción llamada en los canales esclavos cuando se realiza una operación en el chat que no es soportada. Ejemplo: no se pueden editar los mensajes, no se pueden eliminar los mensajes."
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageReactionNotPossible:1
 msgid "Raised by slave channel when a message reaction request from master channel is not possible to be processed."

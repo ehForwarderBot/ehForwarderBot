@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 21:02+0800\n"
-"PO-Revision-Date: 2020-01-03 13:51\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:33\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -49,27 +49,27 @@ msgstr "Bağımlı kanal tarafından uygulanması gereken yöntemlerin listesi a
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:31
 msgid ":meth:`.Channel.get_chat_picture`"
-msgstr ":meth:`.Channel.get_chat_picture`"
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:32
 msgid ":meth:`.Channel.get_chat`"
-msgstr ":meth:`.Channel.get_chat_picture`"
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:33
 msgid ":meth:`.Channel.get_chats`"
-msgstr ":meth:`.Channel.get_chats`"
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:34
 msgid ":meth:`.Channel.poll`"
-msgstr ":meth:`.Channel.poll`"
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:35
 msgid ":meth:`.Channel.send_message`"
-msgstr ":meth:`.Channel.send_message`"
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:36
 msgid ":meth:`.Channel.send_status`"
-msgstr ":meth:`.Channel.send_status`"
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:41
 msgid "Additional features"
@@ -221,6 +221,6 @@ msgid "Implementation details"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:150
-msgid "See :class:`Channel`."
+msgid "See :class:`.SlaveChannel`."
 msgstr ""
 

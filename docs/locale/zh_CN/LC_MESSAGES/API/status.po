@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 21:02+0800\n"
-"PO-Revision-Date: 2020-01-03 13:49\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:32\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -19,229 +19,232 @@ msgstr ""
 msgid "Status"
 msgstr "状态"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.EFBStatus:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.Status:1
 msgid "Abstract class of a status"
-msgstr "状态的抽象类"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.EFBStatus:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.Status:5
 msgid "The channel that this status is sent to, usually the master channel."
-msgstr "收到这条状态的信道，通常是主端。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.EFBStatus:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.Status:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:0
 msgid "type"
-msgstr "类型"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.EFBStatus:9
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:7
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:7
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:17
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:23
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.Status:9
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:18
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:24
 msgid ":obj:`.Channel`"
-msgstr ":obj:`.Channel`"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:1
 msgid "Inform the master channel on updates of slave chats."
-msgstr "通知主端关于从端会话的更新。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:5
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates.__init__:1
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:5
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates.__init__:2
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:2
 msgid "Slave channel that issues the update"
-msgstr "发送更新的从端"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:11
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates.__init__:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:7
+msgid ":obj:`.SlaveChannel`"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:11
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates.__init__:5
 msgid "Unique ID of new chats"
-msgstr "新会话的唯一 ID"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:13
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:19
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:25
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:19
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:25
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:31
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:13
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:19
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:25
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:19
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:25
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:31
 msgid "Optional[Collection[str]]"
-msgstr "Optional[Collection[str]]"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:17
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates.__init__:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:17
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates.__init__:8
 msgid "Unique ID of removed chats"
-msgstr "已移除会话的唯一 ID"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates:23
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates.__init__:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:23
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates.__init__:11
 msgid "Unique ID of modified chats"
-msgstr "已变更会话的唯一 ID"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBChatUpdates.__init__:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage.__init__:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate.__init__:0
 msgid "Parameters"
-msgstr "参数"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:1
 msgid "Inform the master channel on updates of members in a slave chat."
-msgstr "通知主端关于从端群组成员的更新。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:11
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:11
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:5
 msgid "Unique ID of the chat."
-msgstr "会话的唯一 ID。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:13
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:13
 msgid "str"
-msgstr "str"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:17
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:17
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:8
 msgid "Unique ID of new members"
-msgstr "新成员的唯一 ID"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:23
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:23
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:11
 msgid "Unique ID of removed members"
-msgstr "已移除成员的唯一 ID"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates:29
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMemberUpdates.__init__:9
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:29
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:14
 msgid "Unique ID of modified members"
-msgstr "已变更成员的唯一 ID"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:1
 msgid "Inform a channel to remove a certain message."
-msgstr "通知信道删除特定消息。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:3
-msgid "This is usually known as “delete from everyone”, “delete from recipient”, “recall a message”, or “revoke a message” as well, depends on the IM."
-msgstr "在不同的即时通讯平台，该操作通常被称为「从所有人删除」、「从收件人处删除」、「撤回」等。"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:3
+msgid "This is usually known as “delete from everyone”, “delete from recipient”, “recall a message”, “unsend”, or “revoke a message” as well, depends on the IM platform."
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:6
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:7
 msgid "Some channels may not support removal of messages, and raises a :obj:`.exceptions.EFBOperationNotSupported` exception."
-msgstr "某些信道可能不支持删除消息，并会抛出 :obj:`.exceptions.EFBOperationNotSupported` 异常。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:9
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:10
 msgid "Feedback by sending another ``MessageRemoval`` back is not required when this object is sent from a master channel. Master channels should treat a successful delivery of this status as a successful removal."
-msgstr "当此对象来自主端时，从端不需要再次发送 ``MessageRemoval`` 作为反馈。主端应将成功递送此对象视为消息被成功移除的信号。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:15
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:10
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:16
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:11
 msgid "Channel issued the status"
-msgstr "发送状态的信道"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:21
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:12
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:22
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:14
 msgid "Channel the status is issued to"
-msgstr "接收状态的信道"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:27
-msgid "Message to remove. This may not be a complete :obj:`.Message` object."
-msgstr "要删除的消息。该对象可能不是一个完整的 :obj:`.Message` 对象。"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:28
+msgid "Message to remove. This may not be a complete :obj:`.message.Message` object."
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:30
-msgid ":obj:`.Message`"
-msgstr ":obj:`.Message`"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:31
+msgid ":obj:`~.message.Message`"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:0
 msgid "Raises"
-msgstr "抛出"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval:32
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:33
 msgid "When message removal is not supported in the channel."
-msgstr "当该信道不支持信息移除时。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:1
 msgid "Create a message removal status"
-msgstr "创建消息删除状态"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:3
 msgid "Try to provided as much as you can, if not, provide a minimum information in the channel:"
-msgstr "尝试提供尽可能多的信息，但必须保证如下信息存在："
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:6
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:6
 msgid "Slave channel ID and chat ID (:attr:`message.chat.module_id <.Chat.module_id>` and :attr:`message.chat.chat_uid <.Chat.chat_uid>`)"
-msgstr "从端 ID 与会话 ID (:attr:`message.chat.module_id <.Chat.module_id>` 和 :attr:`message.chat.chat_uid <.Chat.chat_uid>`\\ )"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:8
-msgid "Message unique ID from the slave channel (:attr:`message.uid <.Message.uid>`)"
-msgstr "来自该从端的消息唯一 ID (:attr:`message.uid <.Message.uid>`)"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:8
+msgid "Message unique ID from the slave channel (:attr:`message.uid <.message.Message.uid>`)"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageRemoval.__init__:14
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:17
 msgid "Message to remove."
-msgstr "要移除的消息。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:1
 msgid "Created when user react to a message, issued from master channel."
-msgstr "当用户向消息发出回应时被创建，由主端发送。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:3
 msgid "When this status is sent, a :obj:`.status.MessageReactionsUpdate` is recommended to be issued back to master channel."
-msgstr "当此状态被发送时，建议向主端发送 :obj:`.status.MessageReactionsUpdate`。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:6
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage.__init__:1
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate:3
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate.__init__:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage.__init__:2
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:4
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate.__init__:2
 msgid "The chat where message is sent"
-msgstr "发送消息的会话"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:8
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage.__init__:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:10
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage.__init__:5
 msgid "ID of the message to react to"
-msgstr "被回应的消息 ID"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:10
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:13
 msgid "The reaction name to be sent, usually an emoji. Set to ``None`` to remove reaction."
-msgstr "将发送的回应名，通常是一个 emoji。发送 ``None`` 来移除回应。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:13
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:16
 msgid "Channel the status is issued to, extracted from the chat object."
-msgstr "状态发送至的信道，从会话对象中抽出。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:16
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:19
 msgid "Raised when the reaction is not valid (e.g. the specific reaction is not     in the list of possible reactions)."
-msgstr "当回应无效时（例如，该回应不在支持的回应列表中）抛出。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage:17
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:20
 msgid "Raised when reaction in any form is not supported to the message at all."
-msgstr "当该消息不支持任何形式的回应时抛出。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBReactToMessage.__init__:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage.__init__:8
 msgid "The reaction name to be sent, usually an emoji"
-msgstr "要发送的回应名，通常是一个 emoji。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:1
 msgid "Update reacts of a message, issued from slave channel to master channel."
-msgstr "更新一条消息附带的回应，由从端发送至主端。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate:5
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate.__init__:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate.__init__:5
 msgid "ID of the message for the reacts"
-msgstr "被回应的消息 ID"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate:7
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate.__init__:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:10
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate.__init__:8
 msgid "Indicate reactions to the message. Dictionary key represents the reaction name, usually an emoji. Value is a collection of users who reacted to the message with that certain emoji. All :obj:`Chat` objects in this dict must be of a user or a group member."
-msgstr "该消息的回应。字典的键值表示回应名，通常是一个 emoji。值为使用此 emoji 对该消息作出回应的用户列表。字典中所有 :obj:`Chat` 对象必须为一个用户或群组成员。"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.EFBMessageReactionsUpdate:13
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:15
 msgid "Channel the status is issued to, which is always the master channel."
-msgstr "状态发送至的信道，通常为主端。"
+msgstr ""
 

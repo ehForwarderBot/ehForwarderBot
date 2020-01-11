@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 21:02+0800\n"
-"PO-Revision-Date: 2020-01-03 13:50\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:33\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -19,468 +19,517 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:1
 msgid "A message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:5
 msgid "``Message`` objects are picklable, thus it is strongly recommended to keep any object of its subclass also picklable."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:10
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:10
 msgid "Attributes used for a specific message type. Only specific message type requires this attribute. Defaulted to ``None``."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:14
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:14
 msgid "Link: :obj:`.LinkAttribute`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:15
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:15
 msgid "Location: :obj:`.LocationAttribute`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:16
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:16
 msgid "Status: Typing/Sending files/etc.: :obj:`.StatusAttribute`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:19
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:19
 msgid "Do NOT use object of the abstract class :class:`.MessageAttribute` for ``attributes``, but object of specific class instead."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommands:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute:0
 msgid "type"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:23
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:23
 msgid "Optional[:obj:`.MessageAttribute`]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:27
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:27
 msgid "Author of this message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:29
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:35
-msgid ":obj:`.Chat`"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:29
+msgid ":obj:`.ChatMember`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:33
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:33
 msgid "Sender of the message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:39
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:35
+msgid ":obj:`.Chat`"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:39
 msgid "Commands attached to the message"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:41
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:60
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:71
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:116
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:126
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:135
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:153
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:41
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:60
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:71
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:117
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:127
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:136
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:154
 msgid "This attribute will be ignored in _Status_ messages."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:43
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:43
 msgid "Optional[:obj:`MessageCommands`]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:47
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:47
 msgid "The channel that the message is to be delivered to."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:49
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:49
 msgid ":obj:`.Channel`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:53
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:53
 msgid "Flag this up if the message is edited. Flag only this if no multimedia file is modified, otherwise flag up both this one and ``edit_media`` as well."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:57
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:57
 msgid "If no media file is modified, the edited message may carry no information about the file."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:62
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:73
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:94
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:62
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:73
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:95
 msgid "bool"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:66
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:66
 msgid "Flag this up if any file attached to the message is modified. If this value is true, ``edit`` must also be ``True``. This attribute is ignored if the message type is not supposed to contain any media file, e.g. :attr:`~MsgType.Text`, :attr:`~MsgType.Location`, etc."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:77
-msgid "File object to multimedia file, type \"rb\". ``None`` if N/A. recommended to use ``NamedTemporaryFile`` object, the file can be deleted when closed, if not used otherwise. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:77
+msgid "File object to multimedia file, type \"rb\". ``None`` if N/A. Recommended to use :class:`NamedTemporaryFile`. The file can be should be able to be deleted (or otherwise discarded) safely once closed. All file object must be rewind back to 0 (``file.seek(0)``) before sending."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:82
-msgid "Optional[IO[bytes]]"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:83
+msgid "Optional[BinaryIO]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:86
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:87
 msgid "File name of the multimedia file. ``None`` if N/A"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:88
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:100
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:89
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:101
 msgid "Optional[str]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:92
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:93
 msgid "Mark as true if this message is a system message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:98
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:99
 msgid "MIME type of the file. ``None`` if N/A"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:104
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:105
 msgid "Local path of multimedia file. ``None`` if N/A"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:106
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:107
 msgid "Optional[Path]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:110
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:111
 msgid "Indicate reactions to the message. Dictionary key is the canonical name of reaction, usually an emoji. Value is a collection of users who reacted to the message with that certain emoji. All :obj:`Chat` objects in this dict must be of a user or a group member."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:118
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:119
 msgid "Dict[str, Collection[:obj:`Chat`]]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:122
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:123
 msgid "Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:128
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:129
 msgid "Optional[:obj:`Substitutions`]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:132
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:133
 msgid "Target message (usually for messages that \"replies to\" another message)."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:139
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:140
 msgid "This message may be a \"minimum message\", with only required fields:"
-msgstr "Mesej ini mungkin \"mesej minimum\", dengan hanya bidang yang diperlukan:"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:141
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:142
 msgid ":attr:`.Message.chat`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:142
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:143
 msgid ":attr:`.Message.author`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:143
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:144
 msgid ":attr:`.Message.text`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:144
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:145
 msgid ":attr:`.Message.type`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:145
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:146
 msgid ":attr:`.Message.uid`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:147
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:148
 msgid "Optional[:obj:`Message`]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:151
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:152
 msgid "text of the message"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:155
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:173
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:7
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:25
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:14
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:20
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:156
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:174
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:25
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:15
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:21
 msgid "str"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:159
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:160
 msgid "Type of message"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:161
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:162
 msgid ":obj:`.MsgType`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:165
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:166
 msgid "Unique ID of message. Usually stores the message ID from slave channel. This ID must be unique among all chats in the same channel."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:170
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:171
 msgid "Some channels may not support message editing. Some channels may issue a new uid for edited message."
-msgstr "Beberapa saluran mungkin tidak menyokong penyuntingan mesej. Sesetengah saluran boleh mengeluarkan uid baru untuk mesej yang diedit."
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:177
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:178
 msgid "A series of vendor specific attributes attached. This can be used by any other channels or middlewares that is compatible with such information. Note that no guarantee is provided for information in this section."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg:182
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:183
 msgid "Dict[str, Any]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.EFBMsg.verify:1
-msgid "Verify the validity of message."
-msgstr "Sahkan kesahihan mesej."
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message.link:1
+msgid "Get the link attributes of the current message, if available."
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgAttribute:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message.link:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message.location:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message.status:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Substitutions.is_mentioned:0
+msgid "Return type"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message.link:3
+msgid ":py:data:`~typing.Optional`\\[:py:class:`~ehforwarderbot.message.LinkAttribute`]"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message.location:1
+msgid "Get the location attributes of the current message, if available."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message.location:3
+msgid ":py:data:`~typing.Optional`\\[:py:class:`~ehforwarderbot.message.LocationAttribute`]"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message.status:1
+msgid "Get the status attributes of the current message, if available."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message.status:3
+msgid ":py:data:`~typing.Optional`\\[:py:class:`~ehforwarderbot.message.StatusAttribute`]"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message.verify:1
+msgid "Verify the validity of message."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message.verify:0
+msgid "Raises"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message.verify:3
+msgid "when the message is not valid"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageAttribute:1
 msgid "Bases: :class:`abc.ABC`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgAttribute:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageAttribute:1
 msgid "Abstract class of a message attribute."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute:1
 msgid "Bases: :class:`ehforwarderbot.message.MessageAttribute`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:1
 msgid "EFB link message attribute."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:5
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute.__init__:2
 msgid "Title of the link."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:11
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:11
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute.__init__:5
 msgid "Description of the link."
-msgstr "Penerangan pautan."
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:13
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:19
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:13
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:19
 msgid "str, optional"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:17
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:17
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute.__init__:8
 msgid "Image/thumbnail URL of the link."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute:23
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:23
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute.__init__:11
 msgid "URL of the link."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLinkAttribute.__init__:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands.__init__:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommands.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute.__init__:0
 msgid "Parameters"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:1
 msgid "EFB location message attribute."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:5
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute.__init__:2
 msgid "Latitude of the location."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:7
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:13
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:13
 msgid "float"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute:11
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgLocationAttribute.__init__:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:11
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute.__init__:5
 msgid "Longitude of the location."
-msgstr "Bujur lokasi."
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:1
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:1
 msgid "Bases: :class:`object`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:1
-msgid "EFB message command. This object records a way to call a method in the module object. In case where the message has an ``author`` from a different module from the ``chat``, this function should be called on the ``author``'s module."
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:1
+msgid "Message command."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:3
+msgid "This object records a way to call a method in the module object. In case where the message has an ``author`` from a different module from the ``chat``, this function should be called on the ``author``'s module."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:8
 msgid "The method specified must return either a ``str`` as result or ``None`` if this message will be further edited or deleted for interactions."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:12
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:13
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand.__init__:2
 msgid "Human-friendly name of the command."
-msgstr "Nama manusia yang mesra arahan itu."
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:18
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:19
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand.__init__:5
 msgid "Callable name of the command."
-msgstr "Nama panggilan yang boleh dipanggil."
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:24
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:25
 msgid "Arguments passed to the function."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:26
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:27
 msgid "Collection[Any]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:30
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:31
 msgid "Keyword arguments passed to the function."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand:32
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:33
 msgid "Mapping[str, Any]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand.__init__:8
 msgid "Arguments passed to the function. Defaulted to empty list;"
-msgstr "Argumen dihantar kepada fungsi. Lalai ke senarai kosong;"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommand.__init__:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand.__init__:11
 msgid "Keyword arguments passed to the function. Defaulted to empty dict."
-msgstr "Argumen kata kunci diluluskan kepada fungsi. Dikesampingkan kepada dict kosong."
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:1
-msgid "EFB message commands. Message commands allow user to take action to a specific message, including vote, add friends, etc."
-msgstr "Perintah mesej EFB. Perintah mesej membolehkan pengguna mengambil tindakan ke mesej tertentu, termasuk mengundi, menambah rakan, dan lain-lain."
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommands:1
+msgid "Bases: :class:`list`, :class:`typing.Generic`"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:7
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands.__init__:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommands:1
+msgid "Message commands. Message commands allow user to take action to a specific message, including vote, add friends, etc."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommands:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommands.__init__:2
 msgid "Commands for the message."
-msgstr "Arahan untuk pesan."
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgCommands:9
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommands:9
 msgid "list of :obj:`MessageCommand`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute:1
 msgid "EFB Message status attribute. Message with type ``Status`` notifies the other end to update a chat-specific status, such as typing, send files, etc."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute:7
 msgid "Type of status, possible values are defined in the ``StatusAttribute``."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:12
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:2
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute:12
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute.__init__:4
 msgid "Number of milliseconds for this status to expire. Default to 5 seconds."
-msgstr "Bilangan milisaat untuk status ini habis tempoh. Lalai hingga 5 saat."
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:15
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute:15
 msgid "Optional[int]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute:19
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute:19
 msgid "List of status types supported"
-msgstr "Senarai jenis status yang disokong"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute.Types:1
 msgid "Bases: :class:`enum.Enum`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute.Types:3
 msgid "Used in :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, represent the status of typing."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:8
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute.Types:8
 msgid "Used in :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, represent the status of uploading file."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:13
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute.Types:13
 msgid "Used in :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, represent the status of uploading image."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:18
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute.Types:18
 msgid "Used in :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, represent the status of uploading voice."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.Types:23
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute.Types:23
 msgid "Used in :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, represent the status of uploading video."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgStatusAttribute.__init__:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute.__init__:2
 msgid "Type of status."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Substitutions:1
 msgid "Bases: :class:`dict`, :class:`typing.Generic`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Substitutions:1
 msgid "EFB message substitutions."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Substitutions:3
 msgid "This is for the case when user \"@-referred\" a list of users in the message. Substitutions here is a dict of correspondence between the index of substring used to refer to a user/chat in the message and the chat object it referred to."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:8
-msgid "Values of the dictionary shall be either a member of the chat (``self`` or the opponent for private chats, group members for group chats) or another chat of the slave channel."
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Substitutions:8
+msgid "Values of the dictionary shall be either a member of the chat (``self`` or the other for private chats, group members for group chats) or another chat of the slave channel."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:12
-msgid "A key in this dictionary shall be a tuple of two :obj:`int`\\ s, where first of it is the starting position in the string, and the second is the ending position defined similar to Python's substring. A tuple of ``(3, 15)`` corresponds to ``msg.text[3:15]``. The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``, ``b ∈ (a, l]``, where ``l`` is the length of the message text."
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Substitutions:12
+msgid "A key in this dictionary shall be a tuple of two :obj:`int`\\ s, where first of it is the starting position in the string, and the second is the ending position defined similar to Python's substring. A tuple of ``(3, 15)`` corresponds to ``msg.text[3:15]``. The value of the tuple ``(a, b)`` must satisfy :math:`0 ≤ a < b ≤ l`, where :math:`l` is the length of the message text."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:19
-msgid "Value of the dict may be any user of the chat, or a member of a group. Notice that the :obj:`Chat` object here must NOT be a group."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:25
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Substitutions:21
 msgid "Type:"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions:24
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Substitutions:20
 msgid "Dict[Tuple[int, int], :obj:`.Chat`]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions.is_mentioned:1
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Substitutions.is_mentioned:1
 msgid "Returns ``True`` if you are mentioned in this message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.EFBMsgSubstitutions.is_mentioned:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Substitutions.is_mentioned:3
 msgid "In the case where a chat (private or group) is mentioned in this message instead of a group member, you would also be considered mentioned if you are a member of the chat."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Substitutions.is_mentioned:7
+msgid ":py:class:`bool`"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:14
@@ -492,111 +541,132 @@ msgid "Prelude: Defining related chats"
 msgstr "Permulaan: Menentukan sembang yang berkaitan"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:19
-msgid "master = coordinator.master\n"
-"slave = coordinator.slave['ehforwarderbot.channels.slave.eh.demo']\n"
-"alice = slave.get_chat(chat_uid=\"alice101\")\n"
-"bob = slave.get_chat(chat_uid=\"bobrocks\")\n"
-"wonderland = slave.get_chat(chat_uid=\"thewonderlandgroup\")"
+msgid "master: MasterChannel = coordinator.master\n"
+"slave: SlaveChannel = coordinator.slave['demo.slave']\n"
+"alice: PrivateChat = slave.get_chat(chat_uid=\"alice101\")\n"
+"bob: PrivateChat = slave.get_chat(chat_uid=\"bobrocks\")\n"
+"wonderland: GroupChat = slave.get_chat(chat_uid=\"thewonderlandgroup\")\n"
+"wonderland_alice: ChatMember = wonderland.get_member(\"alice101\")"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:28
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:29
 msgid "Initialization and marking chats"
 msgstr "Inisialisasi dan menandakan sembang"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:30
-msgid "message = Message()\n\n"
-"# 1. a chat delivered from slave to master, or\n"
-"message.deliver_to = master\n"
-"message.chat = wonderland\n"
-"message.author = alice\n\n"
-"# 2. a chat delivered from master to slave\n"
-"message.deliver_to = slave\n"
-"message.chat = alice\n"
-"message.author = Chat(slave).self()"
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:31
+msgid "A message delivered from slave channel to master channel"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:45
-msgid "Marking message references (targeted message)"
-msgstr "Menandakan rujukan mesej (mesej disasarkan)"
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:33
+msgid "message = Message(\n"
+"    deliver_to=master,\n"
+"    chat=wonderland,\n"
+"    author=wonderland_alice,\n"
+"    # More attributes go here...\n"
+")"
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:47
-msgid "# Information in this part should be retrieved\n"
-"# from recorded historical data.\n"
-"message.target = Message()\n"
-"message.target.chat = alice\n"
-"message.target.author = alice\n"
-"message.target.text = \"Hello, world.\"\n"
-"message.target.type = MsgType.Text\n"
-"message.target.uid = \"100000002\""
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:42
+msgid "A message delivered from master channel to slave channel"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:44
+msgid "message = Message(\n"
+"    deliver_to=slave,\n"
+"    chat=alice,\n"
+"    author=alice.self,\n"
+"    # More attributes go here...\n"
+")"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:54
+msgid "Quoting a previous message (targeted message)"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:55
+msgid "Information in this part should be retrieved from recorded historical data. :attr:`.Message.deliver_to` is not required for quoted message, and complete data is not required here. For details, see :attr:`.Message.target`."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:59
+msgid "message.target = Message(\n"
+"    chat=alice,\n"
+"    author=alice.other,\n"
+"    text=\"Hello, world.\",\n"
+"    type=MsgType.Text,\n"
+"    uid=MessageID(\"100000002\")\n"
+")"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:70
 msgid "Edit a previously sent message"
 msgstr "Mengedit mesej yang dihantar sebelum ini"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:61
-msgid "message.edit = True\n"
-"message.uid = \"100000003\"\n"
-"# Message UID should be the UID from the slave channel\n"
-"# regardless of where the message is delivered to."
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:71
+msgid "Message ID should be the ID from the slave channel regardless of where the message is delivered to."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:69
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:74
+msgid "message.edit = True\n"
+"message.uid = MessageID(\"100000003\")"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:80
 msgid "Type-specific Information"
 msgstr "Maklumat khusus jenis"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:75
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:82
 msgid "Text message"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:72
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:84
 msgid "message.type = MsgType.Text\n"
 "message.text = \"Hello, Wonderland.\""
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:93
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:89
 msgid "Media message"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:78
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:91
 msgid "Information related to media processing is described in :doc:`/guide/media_processing`."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:81
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:94
 msgid "The example below is for image (picture) messages. Audio, file, video, sticker works in the same way."
 msgstr "Contoh di bawah adalah untuk mesej imej (gambar). Audio, fail, video, pelekat berfungsi dengan cara yang sama."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:84
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:96
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:105
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:119
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:97
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:111
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:121
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:136
 msgid "In non-text messages, the ``text`` attribute is optional."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:86
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:99
 msgid "message.type = MsgType.Image\n"
 "message.text = \"Image caption\"\n"
 "message.file = NamedTemporaryFile(suffix=\".png\")\n"
 "message.file.write(binary_data)\n"
+"message.file.seek(0)\n"
 "message.filename = \"holiday photo.png\"\n"
 "message.mime = \"image/png\""
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:102
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:109
 msgid "Location message"
 msgstr "Mesej lokasi"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:98
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:113
 msgid "message.type = MsgType.Location\n"
 "message.text = \"I'm here! Come and find me!\"\n"
 "message.attributes = LocationAttribute(51.4826, -0.0077)"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:116
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:119
 msgid "Link message"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:107
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:123
 msgid "message.type = MsgType.Link\n"
 "message.text = \"Check it out!\"\n"
 "message.attributes = LinkAttribute(\n"
@@ -607,38 +677,38 @@ msgid "message.type = MsgType.Link\n"
 ")"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:124
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:134
 msgid "Status"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:121
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:138
 msgid "message.type = MsgType.Status\n"
 "message.attributes = StatusAttribute(StatusAttribute.TYPING)"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:133
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:143
 msgid "Unsupported message"
 msgstr "Mesej tidak disokong"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:127
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:145
 msgid "``text`` attribute is required for this type of message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:129
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:147
 msgid "message.type = MsgType.Unsupported\n"
 "message.text = \"Alice requested USD 10.00 from you. \"\n"
-"               \"Please continue from your client.\""
+"               \"Please continue with your Bazinga App.\""
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:136
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:154
 msgid "Additional information"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:146
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:156
 msgid "Substitution"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:139
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:158
 msgid "message.text = \"Hey @alice, @bob, and @all. Attention!\"\n"
 "message.substitutions = Substitutions({\n"
 "    (4, 10): alice,\n"
@@ -647,11 +717,11 @@ msgid "message.text = \"Hey @alice, @bob, and @all. Attention!\"\n"
 "})"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:156
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:167
 msgid "Commands"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:149
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:169
 msgid "message.text = \"Carol sent you a friend request.\"\n"
 "message.commands = MessageCommands([\n"
 "    EFBCommand(name=\"Accept\", callable_name=\"accept_friend_request\",\n"

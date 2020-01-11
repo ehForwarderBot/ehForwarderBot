@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 21:02+0800\n"
-"PO-Revision-Date: 2020-01-03 13:49\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:32\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Azerbaijani\n"
 "MIME-Version: 1.0\n"
@@ -40,30 +40,30 @@ msgid "We try to aim to use as few different libraries as we can, as more librar
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:39
-msgid "pillow"
+msgid "Pillow_"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:40
-msgid "ffmpeg"
+msgid "FFmpeg_"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:43
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:46
 msgid "Files in messages"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:45
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:48
 msgid "When a file sent out from a channel, it should be open, sought back to 0 ( ``file.seek(0)`` ) before sending."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:48
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:51
 msgid "Files sent should be able to be located somewhere in the file system, better with a appropriate extension name, but not required. All files should also have its MIME type specified in the message object. If the channel is not sure about the correct MIME type, it can try to guess with ``libmagic``, or fallback to ``application/octet-stream``. Always try the best to provide the most suitable MIME type when sending."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:57
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:60
 msgid "For such files, we use ``close`` to signify the end of its lifecycle. If the file is not required by the sender's channel anymore, it can be safely discarded."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:61
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:64
 msgid "Generally, ``tempfile.NamedTemporaryFile`` should work for ordinary cases."
 msgstr ""
 

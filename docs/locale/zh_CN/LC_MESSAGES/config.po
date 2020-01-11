@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 21:02+0800\n"
-"PO-Revision-Date: 2020-01-03 13:49\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:32\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -48,8 +48,8 @@ msgid "Instance ID"
 msgstr "实例 ID"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:27
-msgid "To have multiple accounts running simultaneously, you can appoint an instance ID to a module. Instance ID can be defined by the user, and if defined, it must has nothing other than letters, numbers and underscores, i.e. in regular expressions :regex:`[a-zA-Z0-9_]+`. When instance ID is not defined, the channel will run in the \"default\" instance with no instance ID."
-msgstr "若要同时运行多个帐户，您可以为模块指定一个实例 ID。实例 ID 的值可以自行定义，但必须由字母、数字和下划线构成，正则表达式表示为 \\ :regex:`[a-zA-Z0-9_]+`\\ 。当实例 ID 未定义时，该信道将在「默认（\\ ``default``\\ ）」实例中运行，且不具有实例 ID。"
+msgid "To have multiple accounts running simultaneously, you can appoint an instance ID to a module. Instance ID can be defined by the user, and if defined, it must has nothing other than letters, numbers and underscores, i.e. in regular expressions :regexp:`[a-zA-Z0-9_]+`. When instance ID is not defined, the channel will run in the \"default\" instance with no instance ID."
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:33
 msgid "To indicate the instance ID of an instance, append ``#`` following by the instance ID to the module ID. For example, slave channel ``bar.dummy`` running with instance ID ``alice`` should be defined as ``bar.dummy#alice``. If the channel requires configurations, it should be done in the directory with the same name (e.g. :file:`EFB_DATA_PATH/profiles/{PROFILE}/bar.dummy#alice`), so as to isolate instances."

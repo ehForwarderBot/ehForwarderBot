@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 21:02+0800\n"
-"PO-Revision-Date: 2020-01-03 13:50\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:33\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Romanian\n"
 "MIME-Version: 1.0\n"
@@ -60,7 +60,7 @@ msgid "Dictionary of running slave channel object. Keys are the unique identifie
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:26
-msgid "Dict[str, Channel]"
+msgid "Dict[str, EFBChannel]"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:30
@@ -83,7 +83,7 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_channel:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_channel:4
 msgid "Channel to register"
 msgstr ""
 
@@ -91,7 +91,7 @@ msgstr ""
 msgid "Register a middleware with the coordinator."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_middleware:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_middleware:4
 msgid "Middleware to register"
 msgstr ""
 
@@ -99,8 +99,17 @@ msgstr ""
 msgid "Return the module instance of a provided module ID"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:4
 msgid "Module ID, with instance ID if available."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:0
+msgid "Return type"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:6
+msgid ":py:data:`~typing.Union`\\[:py:class:`~ehforwarderbot.channel.Channel`, :py:class:`~ehforwarderbot.middleware.Middleware`]"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:0
@@ -108,7 +117,7 @@ msgstr ""
 msgid "Returns"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:7
 msgid "Module instance requested."
 msgstr ""
 
@@ -116,7 +125,7 @@ msgstr ""
 msgid "Raises"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:9
 msgid "When the module is not found."
 msgstr ""
 
@@ -137,19 +146,26 @@ msgid "Current running profile name"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:1
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_status:1
-msgid "Deliver a message to the destination channel."
+msgid "Deliver a new message or edited message to the destination channel."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:4
 msgid "The message"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:6
-msgid "The message sent by the destination channel, includes the updated message ID from there. Returns ``None`` if the message is not sent."
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:7
+msgid ":py:data:`~typing.Optional`\\[:py:class:`~typing.ForwardRef`]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_status:3
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:8
+msgid "The message processed and delivered by the destination channel, includes the updated message ID if sent to a slave channel. Returns ``None`` if the message is not sent."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_status:1
+msgid "Deliver a status to the destination channel."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_status:4
 msgid "The status"
 msgstr ""
 

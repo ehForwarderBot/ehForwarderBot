@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 21:02+0800\n"
-"PO-Revision-Date: 2020-01-03 13:49\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:32\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -42,4 +42,16 @@ msgstr "线程"
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:25
 msgid "All channels are recommended a separate thread while processing a new message, so as to prevent unexpectedly long thread blocking."
 msgstr "在处理新消息时，建议给每个信道分配一条单独的线程，以防止线程堵塞。"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:29
+msgid "We are also considering to move completely to asynchronous programming when most channels are ready for the change."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:34
+msgid "Static type checking"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:36
+msgid "EH Forwarder Bot is fully labeled in the Python 3 type hint notations. Since sometimes maintaining a module with high complexity could be difficult, we recommend you to type your module too and use tools like mypy_ to check your code statically."
+msgstr ""
 

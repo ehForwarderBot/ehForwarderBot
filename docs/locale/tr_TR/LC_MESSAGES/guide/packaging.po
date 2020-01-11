@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 21:02+0800\n"
-"PO-Revision-Date: 2020-01-03 13:51\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:33\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgstr "Nesne adları için kural ``<author>.<platform>``, örneğin ``alice.irc
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:37
 msgid "Object reference should point to your module's class, which extends either ``Channel`` or ``Middleware``."
-msgstr "Nesne referansı, ``Channel`` veya ``Middleware`` uzanan modülünüzün sınıfa işaret etmelidir."
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:41
 msgid "Example"

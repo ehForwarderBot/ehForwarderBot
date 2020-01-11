@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-01 21:02+0800\n"
-"PO-Revision-Date: 2020-01-03 13:49\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:32\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -33,7 +33,7 @@ msgstr "消息和状态处理"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:19
 msgid "Each middleware by default has 2 methods, :meth:`~.ehforwarderbot.Middleware.process_message` which processes message objects, and :meth:`~.ehforwarderbot.Middleware.process_status` which processes status objects. If they are not overridden, they will not touch on the object and pass it on as is."
-msgstr "默认情况下，每个中间件都有两个方法：:meth:`~.ehforwarderbot.Middleware.process_message` 处理消息对象, 以及 :meth:`~.ehforwarderbot.Middleware.process_status` 处理状态对象。这两个方法默认继承的行为是不对传入的消息或状态进行更改。"
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:24
 msgid "To modify an object, just override the relative method and make changes to it. To discard an object, simply return ``None``. When an object is discarded, it will not be passed further to other middlewares or channels, which means a middleware or a channel should never receive a ``None`` message or status."

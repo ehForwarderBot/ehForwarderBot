@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-03 21:47+0800\n"
-"PO-Revision-Date: 2020-01-03 13:49\n"
+"POT-Creation-Date: 2020-01-12 01:30+0800\n"
+"PO-Revision-Date: 2020-01-11 17:32\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -15,52 +15,47 @@ msgstr ""
 "X-Crowdin-Language: zh-CN\n"
 "X-Crowdin-File: /ehForwarderBot/ehforwarderbot/locale/ehforwarderbot.pot\n"
 
-#: ehforwarderbot/config.py:32
+#: ehforwarderbot/config.py:31
 msgid "Config File does not exist. ({})"
 msgstr "缺少配置文件。 ({})"
 
-#: ehforwarderbot/config.py:42
+#: ehforwarderbot/config.py:41
 msgid "Master Channel is not specified in the profile config."
 msgstr "未在配置档案中指定主端。"
 
-#: ehforwarderbot/config.py:44
+#: ehforwarderbot/config.py:43
 #, python-brace-format
 msgid "Master Channel ID is expected to be a string, but \"{0}\" is of type {1}."
 msgstr "主端 ID 应为字符串, 但此时「{0}」的类型为 {1} 。"
 
-#: ehforwarderbot/config.py:48 ehforwarderbot/config.py:66
-#: ehforwarderbot/config.py:82
+#: ehforwarderbot/config.py:47 ehforwarderbot/config.py:62
+#: ehforwarderbot/config.py:75
 msgid "\"{}\" is not found."
 msgstr "未找到「{}」 。"
 
-#: ehforwarderbot/config.py:50 ehforwarderbot/config.py:68
-#, python-brace-format
-msgid "\"{0}\" is not a channel, but a {1}."
-msgstr "「{0}」是 {1} ，而不是信道。"
-
-#: ehforwarderbot/config.py:52
+#: ehforwarderbot/config.py:49
 #, python-brace-format
 msgid "\"{0}\" is not a master channel, but a {1}."
 msgstr "「{0}」是 {1} ，而不是主端。"
 
-#: ehforwarderbot/config.py:59
+#: ehforwarderbot/config.py:55
 msgid "Slave Channels are not specified in the profile config."
 msgstr "配置文件中未指定从端。"
 
-#: ehforwarderbot/config.py:61
+#: ehforwarderbot/config.py:57
 msgid "Slave Channel IDs are expected to be a list, but {} is found."
 msgstr "从端 ID 应为一个列表，但您填入了一个 {}。"
 
-#: ehforwarderbot/config.py:70
+#: ehforwarderbot/config.py:64
 #, python-brace-format
 msgid "\"{0}\" is not a slave channel, but a {1}."
 msgstr "「{0}」是 {1} ，而不是从端。"
 
-#: ehforwarderbot/config.py:77
+#: ehforwarderbot/config.py:70
 msgid "Middleware IDs must be a list, but a {} is found."
 msgstr "中间件 ID 应为一个列表，但您填入了一个 {}。"
 
-#: ehforwarderbot/config.py:84
+#: ehforwarderbot/config.py:77
 #, python-brace-format
 msgid "\"{0}\" is not a middleware, but a {1}."
 msgstr "「{0}」是 {1} ，而不是中间件。"
@@ -141,15 +136,15 @@ msgstr "未知/自定义组件（{channel_id}）"
 msgid "Unknown/custom middleware ({middleware_id})"
 msgstr "未知/自定义中间件 ({middleware_id})"
 
-#: ehforwarderbot/wizard.py:285
+#: ehforwarderbot/wizard.py:283
 msgid "[ =: Shift up; -: Shift down; Backspace: Remove ]"
 msgstr "[ =：上移；-：下移；退格键：删除 ]"
 
-#: ehforwarderbot/wizard.py:288
+#: ehforwarderbot/wizard.py:286
 msgid "+ Add"
 msgstr "+ 新增"
 
-#: ehforwarderbot/wizard.py:289
+#: ehforwarderbot/wizard.py:287
 msgid "✓ Submit"
 msgstr "✓ 提交"
 
@@ -341,6 +336,14 @@ msgstr "按 ENTER/RETURN 开始设置 {0}。"
 #: ehforwarderbot/wizard.py:696
 msgid "Congratulations! You have now finished all wizard-enabled modules. If you did not configure some modules enabled, you might need to configure them manually."
 msgstr "恭喜！您已完成了所有附带向导的组件。如果您之前没有配置剩余的组件，您可能需要手动配置它们。"
+
+#: ehforwarderbot/chat.py:274
+msgid "You"
+msgstr "您"
+
+#: ehforwarderbot/chat.py:312
+msgid "System"
+msgstr "系统"
 
 #: ehforwarderbot/__main__.py:33
 #, python-brace-format
