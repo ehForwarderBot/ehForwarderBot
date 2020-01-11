@@ -2,13 +2,12 @@
 
 from abc import abstractmethod, ABC
 from contextlib import suppress
-from typing import Dict, Collection, TYPE_CHECKING, Any, Optional
+from typing import Dict, Collection, Any, Optional
 
 from . import Channel, Message, coordinator
 from .channel import SlaveChannel
-from .chat import ChatMember
+from .chat import Chat, ChatMember
 from .types import Reactions, ReactionName, ChatID, MessageID
-from . import Chat
 
 __all__ = ["Status", "ChatUpdates", "MemberUpdates", "MessageRemoval",
            "ReactToMessage", "MessageReactionsUpdate"]
@@ -154,7 +153,8 @@ class MessageRemoval(Status):
     """Inform a channel to remove a certain message.
 
     This is usually known as “delete from everyone”, “delete from recipient”,
-    “recall a message”, or “revoke a message” as well, depends on the IM.
+    “recall a message”, “unsend”, or “revoke a message” as well, depends on
+    the IM platform.
 
     Some channels may not support removal of messages, and raises a
     :obj:`.exceptions.EFBOperationNotSupported` exception.
@@ -250,9 +250,9 @@ class ReactToMessage(Status):
     def __init__(self, chat: 'Chat', msg_id: str, reaction: Optional[ReactionName]):
         """
         Args:
-            chat (:obj:`Chat`): The chat where message is sent
+            chat (:obj:`.Chat`): The chat where message is sent
             msg_id (str): ID of the message to react to
-            reaction (Optional[str]): The reaction name to be sent, usually an emoji
+            reaction: The reaction name to be sent, usually an emoji
         """
         self.chat: 'Chat' = chat
         self.msg_id: str = msg_id
@@ -273,9 +273,9 @@ class MessageReactionsUpdate(Status):
     Update reacts of a message, issued from slave channel to master channel.
 
     Args:
-        chat (:obj:`Chat`): The chat where message is sent
+        chat (:obj:`.Chat`): The chat where message is sent
         msg_id (str): ID of the message for the reacts
-        reactions (Dict[str, Collection[:obj:`Chat`]]):
+        reactions:
             Indicate reactions to the message. Dictionary key represents the
             reaction name, usually an emoji. Value is a collection of users
             who reacted to the message with that certain emoji.
@@ -289,9 +289,9 @@ class MessageReactionsUpdate(Status):
     def __init__(self, chat: 'Chat', msg_id: MessageID, reactions: Reactions):
         """
         Args:
-            chat (:obj:`Chat`): The chat where message is sent
+            chat (:obj:`.Chat`): The chat where message is sent
             msg_id (str): ID of the message for the reacts
-            reactions (Dict[str, Collection[:obj:`Chat`]]):
+            reactions:
                 Indicate reactions to the message. Dictionary key represents the
                 reaction name, usually an emoji. Value is a collection of users
                 who reacted to the message with that certain emoji.

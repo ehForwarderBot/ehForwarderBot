@@ -73,7 +73,7 @@ def get_data_path(module_id: ModuleID) -> Path:
     This method creates the queried path if not existing.
 
     Args:
-        module_id (str): Module ID
+        module_id: Module ID
 
     Returns:
         The data path of indicated module.
@@ -88,15 +88,14 @@ def get_data_path(module_id: ModuleID) -> Path:
 def get_config_path(module_id: ModuleID = None, ext: str = 'yaml') -> Path:
     """
     Get path for configuration file. Defaulted to
-    ``~/.ehforwarderbot/profiles/profile_name/channel_id/config.yaml``.
+    :file:`~/.ehforwarderbot/profiles/{profile_name}/{module_id}/config.yaml`.
 
     This method creates the queried path if not existing. The config file will
     not be created, however.
 
     Args:
-        module_id (str): Module ID.
-        ext (Optional[Str]): Extension name of the config file.
-            Defaulted to ``"yaml"``.
+        module_id: Module ID.
+        ext: Extension name of the config file. Defaulted to ``"yaml"``.
 
     Returns:
         The path to the configuration file.

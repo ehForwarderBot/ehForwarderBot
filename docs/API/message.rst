@@ -28,61 +28,66 @@ Prelude: Defining related chats
 Initialization and marking chats
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: python
+1. A message delivered from slave channel to master channel
 
-    message = Message()
+    .. code-block:: python
 
-    # 1. a chat delivered from slave to master
-    message = Message(
-        deliver_to=master,
-        chat=wonderland,
-        author=wonderland_alice,
-        # More attributes go here...
-    )
+        message = Message(
+            deliver_to=master,
+            chat=wonderland,
+            author=wonderland_alice,
+            # More attributes go here...
+        )
 
-    # 2. a chat delivered from master to slave
-    message = Message(
-        deliver_to=slave,
-        chat=alice,
-        author=alice.self,
-        # More attributes go here...
-    )
+2. A message delivered from master channel to slave channel
 
-Marking message references (targeted message)
+    .. code-block:: python
+
+        message = Message(
+            deliver_to=slave,
+            chat=alice,
+            author=alice.self,
+            # More attributes go here...
+        )
+
+Quoting a previous message (targeted message)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Information in this part should be retrieved from recorded historical data.
+:attr:`.Message.deliver_to` is not required for quoted message, and
+complete data is not required here. For details, see :attr:`.Message.target`.
 
 .. code-block:: python
 
-    # Information in this part should be retrieved 
-    # from recorded historical data.
     message.target = Message(
         chat=alice,
-        author=alice.opponent,
+        author=alice.other,
         text="Hello, world.",
         type=MsgType.Text,
-        uid="100000002"
+        uid=MessageID("100000002")
     )
 
 Edit a previously sent message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Message ID should be the ID from the slave channel regardless of where the
+message is delivered to.
 
 .. code-block:: python
 
     message.edit = True
-    message.uid = "100000003"
-    # Message UID should be the UID from the slave channel
-    # regardless of where the message is delivered to.
+    message.uid = MessageID("100000003")
 
 Type-specific Information
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Text message
+
     .. code-block:: python
     
         message.type = MsgType.Text
         message.text = "Hello, Wonderland."
 
 2. Media message
+
     Information related to media processing is described
     in :doc:`/guide/media_processing`.
 
@@ -102,6 +107,7 @@ Type-specific Information
         message.mime = "image/png"
 
 3. Location message
+
     In non-text messages, the ``text`` attribute is optional.
 
     .. code-block:: python
@@ -111,6 +117,7 @@ Type-specific Information
         message.attributes = LocationAttribute(51.4826, -0.0077)
 
 4. Link message
+
     In non-text messages, the ``text`` attribute is optional.
 
     .. code-block:: python
@@ -125,6 +132,7 @@ Type-specific Information
         )
 
 5. Status
+
     In non-text messages, the ``text`` attribute is optional.
 
     .. code-block:: python
@@ -133,6 +141,7 @@ Type-specific Information
         message.attributes = StatusAttribute(StatusAttribute.TYPING)
 
 6. Unsupported message
+
     ``text`` attribute is required for this type of message.
 
     .. code-block:: python
@@ -145,6 +154,7 @@ Additional information
 ~~~~~~~~~~~~~~~~~~~~~~
 
 1. Substitution
+
     .. code-block:: python
 
         message.text = "Hey @alice, @bob, and @all. Attention!"
@@ -155,6 +165,7 @@ Additional information
         })
 
 2. Commands
+
     .. code-block:: python
 
         message.text = "Carol sent you a friend request."

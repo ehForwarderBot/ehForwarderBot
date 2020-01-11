@@ -89,12 +89,3 @@ class MockMasterChannel(MasterChannel):
 
     def get_message_by_id(self, chat: Chat, msg_id: MessageID) -> Optional['Message']:
         pass
-
-    def get_chats(self) -> List['Chat']:
-        raise NotImplementedError()
-
-    def get_chat(self, chat_uid: ChatID, member_uid: Optional[ChatID] = None) -> 'Chat':
-        raise NotImplementedError()
-
-    def get_chat_picture(self, chat: 'Chat') -> IO[bytes]:
-        raise NotImplementedError()

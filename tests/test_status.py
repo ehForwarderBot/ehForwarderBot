@@ -70,28 +70,28 @@ def test_pickle_react_to_message(slave_channel):
 
 def test_verify_reactions_update(slave_channel):
     MessageReactionsUpdate(slave_channel.alice, "message_id", {
-        ":)": [slave_channel.alice.opponent, slave_channel.bob.opponent]
+        ":)": [slave_channel.alice.other, slave_channel.bob.other]
     })
 
     with pytest.raises(AssertionError):
         MessageReactionsUpdate(None, "message_id", {
-            ":)": [slave_channel.alice.opponent, slave_channel.bob.opponent]
+            ":)": [slave_channel.alice.other, slave_channel.bob.other]
         })
 
     with pytest.raises(AssertionError):
         MessageReactionsUpdate(slave_channel.alice, None, {
-            ":)": [slave_channel.alice.opponent, slave_channel.bob.opponent]
+            ":)": [slave_channel.alice.other, slave_channel.bob.other]
         })
 
     with pytest.raises(AssertionError):
         MessageReactionsUpdate(slave_channel.alice, "message_id", {
-            ":)": [slave_channel.alice.opponent, slave_channel.wonderland]
+            ":)": [slave_channel.alice.other, slave_channel.wonderland]
         })
 
 
 def test_pickle_reactions_update(slave_channel):
     status = MessageReactionsUpdate(slave_channel.alice, "message_id", {
-            ":)": [slave_channel.alice.opponent, slave_channel.bob.opponent]
+            ":)": [slave_channel.alice.other, slave_channel.bob.other]
         })
     d_status = pickle.loads(pickle.dumps(status))
     assert status.chat == d_status.chat

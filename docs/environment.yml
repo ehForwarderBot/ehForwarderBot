@@ -7,10 +7,11 @@ dependencies:
 - sphinx>=1.5.1
 - pip
 - pip:
-  - sphinx-readable-theme
   - sphinxcontrib-restbuilder
+  - sphinx-autodoc-typehints
   - sphinx-intl
   - ruamel.yaml
   - bullet
   - cjkwrap
   - typing_extensions
+#  - sphinx-readable-theme

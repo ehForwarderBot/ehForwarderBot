@@ -97,24 +97,24 @@ def test_with_self(slave_channel, constructor: Type[Chat]):
     assert not any(isinstance(i, SelfChatMember) for i in without_self.members)
 
 
-def test_private_opponent(slave_channel):
+def test_private_other(slave_channel):
     chat = PrivateChat(channel=slave_channel, name="__name__", alias="__alias__", id="__id__")
-    assert isinstance(chat.opponent, ChatMember)
-    assert not isinstance(chat.opponent, SelfChatMember)
-    assert not isinstance(chat.opponent, SystemChatMember)
-    assert chat.opponent in chat.members
-    assert chat.name == chat.opponent.name
-    assert chat.alias == chat.opponent.alias
-    assert chat.id == chat.opponent.id
+    assert isinstance(chat.other, ChatMember)
+    assert not isinstance(chat.other, SelfChatMember)
+    assert not isinstance(chat.other, SystemChatMember)
+    assert chat.other in chat.members
+    assert chat.name == chat.other.name
+    assert chat.alias == chat.other.alias
+    assert chat.id == chat.other.id
 
 
-def test_system_opponent(slave_channel):
+def test_system_other(slave_channel):
     chat = SystemChat(channel=slave_channel, name="__name__", alias="__alias__", id="__id__")
-    assert isinstance(chat.opponent, SystemChatMember)
-    assert chat.opponent in chat.members
-    assert chat.name == chat.opponent.name
-    assert chat.alias == chat.opponent.alias
-    assert chat.id == chat.opponent.id
+    assert isinstance(chat.other, SystemChatMember)
+    assert chat.other in chat.members
+    assert chat.name == chat.other.name
+    assert chat.alias == chat.other.alias
+    assert chat.id == chat.other.id
 
 
 def test_add_member(slave_channel):

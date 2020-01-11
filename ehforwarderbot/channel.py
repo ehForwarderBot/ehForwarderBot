@@ -1,7 +1,7 @@
 # coding=utf-8
 
 from abc import ABC, abstractmethod
-from typing import Optional, Dict, List, Set, Callable, IO, TYPE_CHECKING, Sequence
+from typing import Optional, Dict, List, Set, Callable, TYPE_CHECKING, Sequence, BinaryIO, Collection
 
 from .constants import MsgType
 from .types import ModuleID, InstanceID, ExtraCommandName, ReactionName, ChatID, MessageID
@@ -25,7 +25,7 @@ class Channel(ABC):
             Emoji icon of the channel. Recommended to use a
             visually-length-one emoji that represents
             the channel best.
-        channel_id (str):
+        channel_id (:obj:`.ModuleID` (str)):
             Unique identifier of the channel.
             Convention of IDs is specified in :doc:`/guide/packaging`.
             This ID will be appended with its instance ID when available.
@@ -56,16 +56,21 @@ class Channel(ABC):
     def send_message(self, msg: 'Message') -> 'Message':
         """send_message(msg: Message) -> Message
 
-        Send a message to, or edit a sent message in
-        the channel.
+        Process a message that is sent to, or edited in this channel.
+
+        Notes:
+            Master channel shall take care of the returned object that contains
+            the updated message ID. Depends on the implementation of slave
+            channels, he message ID may change even after being edited. The old
+            message ID shall be disregarded for the new one.
 
         Args:
             msg (:obj:`~.message.Message`): Message object to be processed.
 
         Returns:
             :obj:`~.message.Message`:
-                The same message object with message ID from the
-                recipient.
+                The same message object. Message ID shall be updated if sent
+                to the slave channel even when edited.
 
         Raises:
             EFBChatNotFound:
@@ -102,10 +107,10 @@ class Channel(ABC):
     @abstractmethod
     def send_status(self, status: 'Status'):
         """
-        Send a status to the channel.
+        Process a status that is sent to this channel.
 
         Args:
-            status (:obj:`~.status.Status`): the status
+            status (:obj:`~.status.Status`): the status object.
 
         Raises:
             EFBChatNotFound:
@@ -202,7 +207,7 @@ class SlaveChannel(Channel, ABC):
         """Get a list of additional features
 
         Returns:
-            Dict[str, Callable]: A dict of methods marked as additional features.
+            A dict of methods marked as additional features.
             Method can be called with ``get_extra_functions()["methodName"]()``.
         """
         methods = {}
@@ -213,8 +218,8 @@ class SlaveChannel(Channel, ABC):
         return methods
 
     @abstractmethod
-    def get_chat_picture(self, chat: 'Chat') -> IO[bytes]:
-        """get_chat_picture(chat: Chat) -> IO[bytes]
+    def get_chat_picture(self, chat: 'Chat') -> BinaryIO:
+        """get_chat_picture(chat: Chat) -> BinaryIO
 
         Get the profile picture of a chat. Profile picture is
         also referred as profile photo, avatar, "head image"
@@ -224,7 +229,7 @@ class SlaveChannel(Channel, ABC):
             chat (.Chat): Chat to get picture from.
 
         Returns:
-            IO[bytes]: Opened temporary file object.
+            BinaryIO: Opened temporary file object.
             The file object must have appropriate extension name
             that matches to the format of picture sent,
             and seek to position 0.
@@ -259,7 +264,7 @@ class SlaveChannel(Channel, ABC):
         Get the chat object from a slave channel.
 
         Args:
-            chat_uid (str): UID of the chat.
+            chat_uid: UID of the chat.
 
         Returns:
            .Chat: The chat found.
@@ -271,12 +276,11 @@ class SlaveChannel(Channel, ABC):
         raise NotImplementedError()
 
     @abstractmethod
-    def get_chats(self) -> List['Chat']:
-        """get_chats() -> List[Chat]
-
+    def get_chats(self) -> Collection['Chat']:
+        """
         Return a list of available chats in the channel.
 
         Returns:
-            List[.Chat]: a list of available chats in the channel.
+            Collection[:class:`.Chat`]: a list of available chats in the channel.
         """
         raise NotImplementedError()

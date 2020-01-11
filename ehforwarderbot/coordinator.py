@@ -83,14 +83,14 @@ def add_middleware(middleware: Middleware):
 
 def send_message(msg: 'Message') -> Optional['Message']:
     """
-    Deliver a message to the destination channel.
+    Deliver a new message or edited message to the destination channel.
 
     Args:
         msg (Message): The message
 
     Returns:
-        The message sent by the destination channel,
-        includes the updated message ID from there.
+        The message processed and delivered by the destination channel,
+        includes the updated message ID if sent to a slave channel.
         Returns ``None`` if the message is not sent.
     """
     global middlewares, master, slaves
@@ -119,7 +119,7 @@ def send_message(msg: 'Message') -> Optional['Message']:
 
 def send_status(status: 'Status'):
     """
-    Deliver a message to the destination channel.
+    Deliver a status to the destination channel.
 
     Args:
         status (Status): The status

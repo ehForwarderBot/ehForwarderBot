@@ -17,6 +17,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
+from __future__ import annotations
 import os
 import sys
 
@@ -43,6 +44,8 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.githubpages',
               'sphinx.ext.napoleon',
               'sphinx.ext.autosectionlabel',
+              'sphinx.ext.intersphinx',
+              'sphinx_autodoc_typehints',
               'sphinxcontrib.restbuilder']
 
 # Add any paths that contain templates here, relative to this directory.
@@ -59,7 +62,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'EH Forwarder Bot'
-copyright = '2016 — 2020, Eana Hufwe, and the EH Forwarder Bot contributors'
+copyright = '2016 — 2020 Eana Hufwe and the EH Forwarder Bot contributors'
 author = 'Eana Hufwe, and the EH Forwarder Bot contributors'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -103,16 +106,30 @@ todo_include_todos = False
 # documentation.
 #
 # html_theme_options = {}
+html_static_path = ['_static']
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-# html_static_path = ['_static']
 # html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 
-html_theme_path = [sphinx_readable_theme.get_html_theme_path()]
-html_theme = 'readable'
+# html_theme_path = [sphinx_readable_theme.get_html_theme_path()]
+# html_theme = 'readable'
+# html_logo = "_static/logo.png"
+html_theme_options = {
+    'logo': 'logo.png',
+    'logo_name': True,
+    'logo_text_align': 'left; font-size: 1.5em',
+    'touch_icon': 'logo.png',
+    'github_button': True,
+    'github_type':  'star',
+    'github_user': 'blueset',
+    'github_repo': 'ehforwarderbot',
+    'description': 'An extensible chat bot tunneling framework.',
+    'donate_url': 'https://github.com/blueset/.github',
+    'github_banner': "github_banner.svg",
+}
 
 # import sphinx_py3doc_enhanced_theme
 # html_theme = "sphinx_py3doc_enhanced_theme"
@@ -200,7 +217,6 @@ conversion = {
     'en': 'en_US'
 }
 
-
 # # Locale fallback settings
 # def locale_fallback_decorator(fun):
 #
@@ -213,6 +229,17 @@ conversion = {
 # sphinx.application.Sphinx._init_i18n = locale_fallback_decorator(sphinx.application.Sphinx._init_i18n)
 
 autosectionlabel_prefix_document = True
+
+# This config value contains the locations and names of other projects that
+# should be linked to in this documentation.
+#
+# Relative local paths for target locations are taken as relative to the base
+# of the built documentation, while relative local paths for inventory
+# locations are taken as relative to the source directory.
+#
+# When fetching remote inventory files, proxy settings will be read from the
+# $HTTP_PROXY environment variable.
+intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
 
 def setup(self):
     self.config.language = conversion.get(self.config.language, self.config.language)

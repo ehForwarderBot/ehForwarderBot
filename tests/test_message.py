@@ -22,7 +22,7 @@ media_types = (MsgType.Image, MsgType.Audio, MsgType.File, MsgType.Sticker)
 def test_verify_text_msg(chat):
     msg = Message(
         deliver_to=coordinator.master,
-        author=chat.opponent,
+        author=chat.other,
         chat=chat,
         type=MsgType.Text,
         text="Message",
@@ -35,7 +35,7 @@ def test_verify_media_msg(chat, master_channel, media_type):
     with NamedTemporaryFile() as f:
         msg = Message(
             deliver_to=master_channel,
-            author=chat.opponent,
+            author=chat.other,
             chat=chat,
             type=media_type,
             file=f,
@@ -48,7 +48,7 @@ def test_verify_media_msg(chat, master_channel, media_type):
 
 def test_verify_missing_deliver_to(chat):
     msg = Message(
-        author=chat.opponent,
+        author=chat.other,
         chat=chat,
         type=MsgType.Text,
         text="Message",
@@ -72,7 +72,7 @@ def test_verify_missing_chat(chat):
     with pytest.raises(AssertionError):
         msg = Message(
             deliver_to=coordinator.master,
-            author=chat.opponent,
+            author=chat.other,
             type=MsgType.Text,
             text="Message",
         )
@@ -110,7 +110,7 @@ def test_verify_different_author_and_chat(patch_chat, patch_chat_member, master_
 def base_message(chat, master_channel):
     msg = Message(
         deliver_to=master_channel,
-        author=chat.opponent,
+        author=chat.other,
         chat=chat,
         text="Message",
         uid="0",

@@ -7,12 +7,12 @@ from contextlib import suppress
 from enum import Enum
 from os import PathLike
 from pathlib import Path
-from typing import IO, Dict, Optional, List, Any, Tuple, Mapping, Collection, Union
+from typing import Dict, Optional, List, Any, Tuple, Mapping, Collection, Union, BinaryIO
 
 from . import coordinator
-from .constants import *
-from .chat import Chat, ChatMember, SelfChatMember
 from .channel import Channel
+from .chat import Chat, ChatMember, SelfChatMember
+from .constants import MsgType
 from .types import Reactions, MessageID
 
 
@@ -255,25 +255,21 @@ class Substitutions(Dict[Tuple[int, int], Union[Chat, ChatMember]]):
     it referred to.
 
     Values of the dictionary shall be either a member of the chat (``self`` or
-    the opponent for private chats, group members for group chats) or another
+    the other for private chats, group members for group chats) or another
     chat of the slave channel.
 
     A key in this dictionary shall be a tuple of two :obj:`int`\\ s, where first
     of it is the starting position in the string, and the second is the
     ending position defined similar to Python's substring. A tuple of
     ``(3, 15)`` corresponds to ``msg.text[3:15]``.
-    The value of the tuple ``(a, b)`` must lie within ``a ∈ [0, l)``,
-    ``b ∈ (a, l]``, where ``l`` is the length of the message text.
-
-    Value of the dict may be any user of the chat, or a member of a
-    group. Notice that the :obj:`Chat` object here must NOT be a
-    group.
+    The value of the tuple ``(a, b)`` must satisfy :math:`0 ≤ a < b ≤ l`,
+    where :math:`l` is the length of the message text.
 
     Type:
         Dict[Tuple[int, int], :obj:`.Chat`]
     """
 
-    def __init__(self, substitutions: Dict[Tuple[int, int], Union[Chat, ChatMember]]):
+    def __init__(self, substitutions: Mapping[Tuple[int, int], Union[Chat, ChatMember]]):
         assert isinstance(substitutions, dict), "Substitutions must be a dict."
         super().__init__(substitutions)
         self.verify()
@@ -334,7 +330,7 @@ class Message:
                 :class:`.MessageAttribute` for
                 ``attributes``, but object of specific class instead.
 
-        author (:obj:`.Chat`): Author of this message.
+        author (:obj:`.ChatMember`): Author of this message.
         chat (:obj:`.Chat`): Sender of the message.
         commands (Optional[:obj:`MessageCommands`]): Commands attached to the message
 
@@ -354,10 +350,11 @@ class Message:
             media file, e.g. :attr:`~MsgType.Text`, :attr:`~MsgType.Location`, etc.
 
             This attribute will be ignored in _Status_ messages.
-        file (Optional[IO[bytes]]): File object to multimedia file, type "rb". ``None`` if N/A.
-            recommended to use ``NamedTemporaryFile`` object, the file can be
-            deleted when closed, if not used otherwise.
-            All file object must be rewind back to 0 (``file.seek(0)``) before sending.
+        file (Optional[BinaryIO]): File object to multimedia file, type "rb". ``None`` if N/A.
+            Recommended to use :class:`NamedTemporaryFile`.
+            The file can be should be able to be deleted (or otherwise discarded)
+            safely once closed. All file object must be rewind back to 0
+            (``file.seek(0)``) before sending.
         filename (Optional[str]): File name of the multimedia file. ``None`` if N/A
         is_system (bool): Mark as true if this message is a system message.
         mime (Optional[str]): MIME type of the file. ``None`` if N/A
@@ -420,7 +417,7 @@ class Message:
                  deliver_to: Channel = None,
                  edit: bool = False,
                  edit_media: bool = False,
-                 file: Optional[IO[bytes]] = None,
+                 file: Optional[BinaryIO] = None,
                  filename: Optional[str] = None,
                  is_system: bool = False,
                  mime: Optional[str] = None,
@@ -433,13 +430,13 @@ class Message:
                  uid: Optional[MessageID] = None,
                  vendor_specific: Dict[str, Any] = None, ):
         self.attributes: Optional[MessageAttribute] = attributes
-        self.author: Chat = author  # type: ignore
         self.chat: Chat = chat  # type: ignore
+        self.author: ChatMember = author  # type: ignore
         self.commands: Optional[MessageCommands] = commands
         self.deliver_to: Channel = deliver_to  # type: ignore
         self.edit: bool = edit
         self.edit_media: bool = edit_media
-        self.file: Optional[IO[bytes]] = file
+        self.file: Optional[BinaryIO] = file
         self.filename: Optional[str] = filename
         self.is_system: bool = is_system
         self.mime: Optional[str] = mime

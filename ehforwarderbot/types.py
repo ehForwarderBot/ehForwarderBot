@@ -12,13 +12,13 @@ from typing import Collection, TYPE_CHECKING, Mapping
 from typing_extensions import NewType
 
 if TYPE_CHECKING:
-    from .chat import Chat
+    from .chat import ChatMember
 
 
 ReactionName = NewType('ReactionName', str)
 """Canonical representation of a reaction, usually an emoji."""
 
-Reactions = Mapping[ReactionName, Collection['Chat']]
+Reactions = Mapping[ReactionName, Collection['ChatMember']]
 """Reactions to a message."""
 
 ModuleID = NewType('ModuleID', str)

@@ -36,8 +36,11 @@ install time, and complexity. While processing media
 files, we recommend to use the following libraries
 if possible:
 
-- pillow
-- ffmpeg
+- Pillow_
+- FFmpeg_
+
+.. _Pillow: https://pillow.readthedocs.io/en/stable/
+.. _FFmpeg: shttps://www.ffmpeg.org/
 
 Files in messages
 -----------------
