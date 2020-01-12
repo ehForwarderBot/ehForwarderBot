@@ -114,6 +114,7 @@ html_static_path = ['_static']
 # html_theme_path = [sphinx_readable_theme.get_html_theme_path()]
 # html_theme = 'readable'
 # html_logo = "_static/logo.png"
+html_theme = 'alabaster'
 html_theme_options = {
     'logo': 'logo.png',
     'logo_name': True,
