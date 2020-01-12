@@ -1,4 +1,4 @@
-pandoc
+pandoc==1.0.2
 sphinx
 sphinxcontrib-restbuilder
 sphinx-autodoc-typehints==1.10.3
