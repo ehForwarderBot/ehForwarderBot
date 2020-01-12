@@ -2,4 +2,4 @@ pandoc
 sphinx
 sphinxcontrib-restbuilder
 sphinx-autodoc-typehints
-sphinx-intl
+sphinx-intl==2.0.0
