@@ -1,5 +1,5 @@
 pandoc
-sphinx
+sphinx==2.3.1
 sphinxcontrib-restbuilder
 sphinx-autodoc-typehints
 sphinx-intl
