@@ -34,10 +34,9 @@ EH Forwarder Bot
    :alt: Banner
 
 
-*Codename* **EH Forwarder Bot** (EFB) is an extensible
-chat tunneling framework allowing users to contact
-people from multiple chat platforms and remotely
-control their accounts in one stop.
+*Codename* **EH Forwarder Bot** (EFB) is an extensible message tunneling chat
+bot framework which delivers messages to and from multiple platforms and
+remotely control your accounts.
 
 For tips, tricks and community contributed articles, see
 `project wiki`_.
@@ -87,7 +86,7 @@ License
 EFB framework is licensed under `GNU Affero General Public License 3.0`_ or
 later versions::
 
-    EH Forwarder Bot: An extensible chat tunneling bot framework.
+    EH Forwarder Bot: An extensible message tunneling chat bot framework.
     Copyright (C) 2016 - 2020 Eana Hufwe, and the EH Forwarder Bot contributors
     All rights reserved.
 

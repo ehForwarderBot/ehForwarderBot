@@ -1,0 +1,5 @@
+pandoc
+sphinx
+sphinxcontrib-restbuilder
+sphinx-autodoc-typehints
+sphinx-intl

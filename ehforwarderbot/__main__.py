@@ -32,9 +32,9 @@ ngettext = coordinator.translator.ngettext
 if sys.version_info < (3, 6):
     raise Exception(_("Python 3.6 or higher is required. Your version is {version}.").format(version=sys.version))
 
-description = _("EH Forwarder Bot is an extensible chat tunnel framework which allows "
-                "users to contact people from other chat platforms, and ultimately "
-                "remotely control their accounts in other platforms.")
+description = _("EH Forwarder Bot is an extensible message tunneling chat bot "
+                "framework which delivers messages to and from multiple "
+                "platforms and remotely control your accounts.")
 
 parser = argparse.ArgumentParser(description=description,
                                  epilog="GitHub: https://efb.1a23.studio")

@@ -17,11 +17,8 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-from __future__ import annotations
 import os
 import sys
-
-import sphinx_readable_theme
 
 sys.path.insert(0, os.path.abspath('..'))
 
@@ -126,7 +123,7 @@ html_theme_options = {
     'github_type':  'star',
     'github_user': 'blueset',
     'github_repo': 'ehforwarderbot',
-    'description': 'An extensible chat bot tunneling framework.',
+    'description': 'An extensible message tunneling chat bot framework.',
     'donate_url': 'https://github.com/blueset/.github',
     'github_banner': "github_banner.svg",
 }
