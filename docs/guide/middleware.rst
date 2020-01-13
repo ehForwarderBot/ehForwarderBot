@@ -44,3 +44,7 @@ Some ideas:
 - Share user session from slave channel with other
   programs
 - etc...
+
+API
+---
+See :class:`.Middleware`.

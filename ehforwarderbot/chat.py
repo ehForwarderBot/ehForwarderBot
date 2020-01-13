@@ -468,6 +468,10 @@ class Chat(BaseChat, ABC):
                            middleware: Optional[Middleware] = None) -> SystemChatMember:
         """Make a system member for this chat.
 
+        Useful for slave channels and middlewares to create an author of a message from
+        a system member when the “system” member is NOT intended to become a member of
+        the chat.
+
         Args:
             name (str): Name of the member.
             uid: ID of the member.
@@ -488,6 +492,10 @@ class Chat(BaseChat, ABC):
                           vendor_specific: Dict[str, Any] = None, description: str = "",
                           middleware: Optional[Middleware] = None) -> SystemChatMember:
         """Add a system member to the chat.
+
+        Useful for slave channels and middlewares to create an author of a message from
+        a system member when the “system” member is intended to become a member of
+        the chat.
 
         Args:
             name (str): Name of the member.
