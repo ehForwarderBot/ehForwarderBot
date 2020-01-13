@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-12 01:30+0800\n"
-"PO-Revision-Date: 2020-01-13 02:01\n"
+"POT-Creation-Date: 2020-01-13 15:32+0800\n"
+"PO-Revision-Date: 2020-01-13 07:34\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -53,12 +53,6 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:0
 msgid "type"
 msgstr ""
 
@@ -82,8 +76,6 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:25
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:31
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:50
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:18
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:37
 msgid "str"
 msgstr ""
 
@@ -98,7 +90,6 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat.__init__:19
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:29
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:11
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:16
 msgid "Name of the chat."
 msgstr ""
 
@@ -106,13 +97,11 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat.__init__:22
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:35
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:14
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:22
 msgid "Alternative name of the chat, usually set by user."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat:38
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:37
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:24
 msgid "Optional[str]"
 msgstr ""
 
@@ -120,12 +109,10 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat.__init__:25
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:41
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:17
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:28
 msgid "Unique ID of the chat. This should be unique within the channel."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat:44
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:30
 msgid ":obj:`.ChatID` (str)"
 msgstr ""
 
@@ -136,10 +123,6 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:15
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:15
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:15
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:34
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:16
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:16
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:16
 msgid "A text description of the chat, usually known as “bio”, “description”, “purpose”, or “topic” of the chat."
 msgstr ""
 
@@ -150,16 +133,11 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:12
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:12
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:12
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:41
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:13
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:13
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:13
 msgid "Any vendor specific attributes."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat:57
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:72
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:43
 msgid "Dict[str, Any]"
 msgstr ""
 
@@ -295,6 +273,9 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:4
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:4
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:4
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:5
 msgid "Name of the member."
 msgstr ""
 
@@ -313,9 +294,9 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:19
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:19
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:19
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:20
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:20
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:20
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:19
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:19
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:19
 msgid "Initialize this chat as a part of a middleware."
 msgstr ""
 
@@ -404,6 +385,10 @@ msgstr ""
 msgid "the other participant of the chat as a member"
 msgstr ""
 
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.PrivateChat:18
+msgid "``PrivateChat`` objects are picklable, thus it is strongly recommended to keep any object of its subclass also picklable."
+msgstr ""
+
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChat:1
 msgid "A system chat, where usually only the user themself and the other participant (system chat member) are in the chat. This object is used to represent system chat where the other participant is neither a user nor a chat bot of the remote IM."
 msgstr ""
@@ -414,6 +399,10 @@ msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChat:9
 msgid "This object is by default initialized with the system participant as its member."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChat:19
+msgid "``SystemChat`` objects are picklable, thus it is strongly recommended to keep any object of its subclass also picklable."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.GroupChat:1
@@ -428,41 +417,32 @@ msgstr ""
 msgid "Examples"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:1
-msgid "Member of a chat."
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.GroupChat:23
+msgid "``GroupChat`` objects are picklable, thus it is strongly recommended to keep any object of its subclass also picklable."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:5
-msgid "``ChatMember`` objects are picklable, thus it is strongly recommended to keep any object of its subclass also picklable."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:10
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:2
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:2
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:2
 msgid "Chat associated with this member."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember:12
-msgid ":obj:`.Chat`"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:5
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:5
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:5
-msgid "Name of the chat member."
-msgstr ""
-
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:8
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:8
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:8
-msgid "Alias of the chat member, optional."
+msgid "Alternative name of the member, usually set by user."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:11
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:11
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:11
-msgid "Unique ID of the chat member."
+msgid "Unique ID of the member. This should be unique within the channel. This ID can be the same with a private chat of the same person."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:15
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:15
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:15
+msgid "A text description of the member, usually known as “bio”, “description”, “summary” or “introduction” of the member."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember:1

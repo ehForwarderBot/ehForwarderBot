@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-13 10:00+0800\n"
-"PO-Revision-Date: 2020-01-13 02:02\n"
+"POT-Creation-Date: 2020-01-13 15:32+0800\n"
+"PO-Revision-Date: 2020-01-13 07:35\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Turkish\n"
 "Language: tr_TR\n"
@@ -316,11 +316,11 @@ msgstr ""
 msgid "Congratulations! You have now finished all wizard-enabled modules. If you did not configure some modules enabled, you might need to configure them manually."
 msgstr ""
 
-#: ehforwarderbot/chat.py:274
+#: ehforwarderbot/chat.py:304
 msgid "You"
 msgstr ""
 
-#: ehforwarderbot/chat.py:312
+#: ehforwarderbot/chat.py:344
 msgid "System"
 msgstr ""
 
