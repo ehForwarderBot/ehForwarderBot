@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-12 01:30+0800\n"
-"PO-Revision-Date: 2020-01-11 17:33\n"
+"POT-Creation-Date: 2020-01-13 10:00+0800\n"
+"PO-Revision-Date: 2020-01-13 02:02\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish, Argentina\n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/index.pot\n"
 "Language: es_AR\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:2
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:3
 msgid "EH Forwarder Bot"
 msgstr ""
 
@@ -69,8 +69,8 @@ msgid ".. image:: https://raw.githubusercontent.com/blueset/ehForwarderBot/maste
 "   :alt: Banner"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:37
-msgid "*Codename* **EH Forwarder Bot** (EFB) is an extensible chat tunneling framework allowing users to contact people from multiple chat platforms and remotely control their accounts in one stop."
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:38
+msgid "*Codename* **EH Forwarder Bot** (EFB) is an extensible message tunneling chat bot framework which delivers messages to and from multiple platforms and remotely control your accounts."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:57
@@ -122,7 +122,7 @@ msgid "EFB framework is licensed under `GNU Affero General Public License 3.0`_ 
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:91
-msgid "EH Forwarder Bot: An extensible chat tunneling bot framework.\n"
+msgid "EH Forwarder Bot: An extensible message tunneling chat bot framework.\n"
 "Copyright (C) 2016 - 2020 Eana Hufwe, and the EH Forwarder Bot contributors\n"
 "All rights reserved.\n\n"
 "This program is free software: you can redistribute it and/or modify\n"

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-12 01:30+0800\n"
-"PO-Revision-Date: 2020-01-11 17:32\n"
+"PO-Revision-Date: 2020-01-13 02:01\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -41,11 +41,11 @@ msgstr "尽可能少地使用不同的外部代码库。多一个外部代码库
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:39
 msgid "Pillow_"
-msgstr ""
+msgstr "Pillow_"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:40
 msgid "FFmpeg_"
-msgstr ""
+msgstr "FFmpeg_"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:46
 msgid "Files in messages"
