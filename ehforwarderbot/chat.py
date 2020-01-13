@@ -1,6 +1,7 @@
 # coding=utf-8
 
 import copy
+import warnings
 from abc import ABC, abstractmethod
 from enum import Enum
 from typing import Dict, Any, Optional, TypeVar, MutableSequence
@@ -50,7 +51,7 @@ class BaseChat(ABC):
         module_name (:obj:`.ModuleID` (str)): Name of the module.
         name (str): Name of the chat.
         alias (Optional[str]): Alternative name of the chat, usually set by user.
-        id (:obj:`.ChatID` (str)): Unique ID of the chat. This should be unique within the channel.
+        uid (:obj:`.ChatID` (str)): Unique ID of the chat. This should be unique within the channel.
         description (str):
             A text description of the chat, usually known as “bio”,
             “description”, “purpose”, or “topic” of the chat.
@@ -67,6 +68,7 @@ class BaseChat(ABC):
                  module_id: ModuleID = ModuleID(""),
                  name: str = "",
                  alias: Optional[str] = None,
+                 uid: ChatID = ChatID(""),
                  id: ChatID = ChatID(""),
                  vendor_specific: Dict[str, Any] = None,
                  description: str = ""):
@@ -84,7 +86,7 @@ class BaseChat(ABC):
             module_name (str): Name of the module.
             name (str): Name of the chat.
             alias (Optional[str]): Alternative name of the chat, usually set by user.
-            id: Unique ID of the chat. This should be unique within the channel.
+            uid: Unique ID of the chat. This should be unique within the channel.
             description (str):
                 A text description of the chat, usually known as “bio”,
                 “description”, “purpose”, or “topic” of the chat.
@@ -109,10 +111,24 @@ class BaseChat(ABC):
 
         self.name: str = name
         self.alias: Optional[str] = alias
-        self.id: ChatID = id
+        if id:
+            warnings.warn("`id` argument is deprecated, use `uid` instead.", DeprecationWarning)
+            self.uid: ChatID = id
+        else:
+            self.uid = uid
         self.vendor_specific: Dict[str,
                                    Any] = vendor_specific if vendor_specific is not None else dict()
         self.description: str = description
+
+    @property
+    def id(self) -> ChatID:
+        warnings.warn("`id` property of a chat/member is deprecated, use `uid` instead.", DeprecationWarning)
+        return self.uid
+
+    @id.setter
+    def id(self, val: ChatID):
+        warnings.warn("`id` property of a chat/member is deprecated, use `uid` instead.", DeprecationWarning)
+        self.uid = val
 
     @property
     def display_name(self) -> str:
@@ -149,9 +165,9 @@ class BaseChat(ABC):
             self.module_name, str), f"Module Name should be a string, {self.module_name!r} found."
         assert isinstance(
             self.channel_emoji, str), f"Channel emoji should be a string, {self.channel_emoji!r} found."
-        assert self.id, "Entity ID should not be empty"
+        assert self.uid, "Entity ID should not be empty"
         assert isinstance(
-            self.id, str), f"Entity id should be a string, {self.id!r} found."
+            self.uid, str), f"Entity id should be a string, {self.uid!r} found."
         assert isinstance(
             self.name, str), f"Entity name should be a string, {self.name!r} found."
         assert isinstance(self.alias,
@@ -160,10 +176,10 @@ class BaseChat(ABC):
             self.description, str), f"Entity description should be a string, {self.description!r} found."
 
     def __eq__(self, other):
-        return self.module_id == other.module_id and self.id == other.id
+        return self.module_id == other.module_id and self.uid == other.uid
 
     def __str__(self):
-        return f"<{self.__class__.__name__}: {self.long_name} ({self.id}) @ {self.module_name}>"
+        return f"<{self.__class__.__name__}: {self.long_name} ({self.uid}) @ {self.module_name}>"
 
     def __repr__(self):
         return (
@@ -173,7 +189,7 @@ class BaseChat(ABC):
             f"channel_emoji={self.channel_emoji!r}, "
             f"name={self.name!r}, "
             f"alias={self.alias!r}, "
-            f"id={self.id!r}, "
+            f"uid={self.uid!r}, "
             f"vendor_specific={self.vendor_specific!r}, "
             f"description={self.description!r}"
             f")"
@@ -181,27 +197,9 @@ class BaseChat(ABC):
 
 
 class ChatMember(BaseChat):
-    """Member of a chat.
-
-    Note:
-        ``ChatMember`` objects are picklable, thus it is strongly recommended
-        to keep any object of its subclass also picklable.
-
-    Attributes:
-        chat (:obj:`.Chat`): Chat associated with this member.
-        name (str): Name of the member.
-        alias (Optional[str]): Alternative name of the member, usually set by user.
-        id (:obj:`.ChatID` (str)):
-            Unique ID of the member. This should be unique within the channel.
-            This ID can be the same with a private chat of the same person.
-        description (str):
-            A text description of the member, usually known as “bio”,
-            “description”, “summary” or “introduction” of the member.
-        vendor_specific (Dict[str, Any]): Any vendor specific attributes.
-    """
-
     def __init__(self, chat: 'Chat', *,
-                 name: str = "", alias: Optional[str] = None, id: ChatID = ChatID(""),
+                 name: str = "", alias: Optional[str] = None, uid: ChatID = ChatID(""),
+                 id: ChatID = ChatID(""),
                  vendor_specific: Dict[str, Any] = None, description: str = "",
                  middleware: Optional[Middleware] = None):
         """
@@ -209,7 +207,7 @@ class ChatMember(BaseChat):
             chat (:class:`~.chat.Chat`): Chat associated with this member.
             name (str): Name of the member.
             alias (Optional[str]): Alternative name of the member, usually set by user.
-            id (:obj:`.ChatID` (str)):
+            uid (:obj:`.ChatID` (str)):
                 Unique ID of the member. This should be unique within the channel.
                 This ID can be the same with a private chat of the same person.
             description (str):
@@ -220,13 +218,32 @@ class ChatMember(BaseChat):
         """
         if middleware:
             super().__init__(module_name=middleware.middleware_name, channel_emoji="",
-                             module_id=middleware.middleware_id, name=name, alias=alias, id=id,
+                             module_id=middleware.middleware_id, name=name, alias=alias, id=id, uid=uid,
                              vendor_specific=vendor_specific, description=description)
         else:
             super().__init__(module_name=chat.module_name, channel_emoji=chat.channel_emoji,
-                             module_id=chat.module_id, name=name, alias=alias, id=id,
+                             module_id=chat.module_id, name=name, alias=alias, id=id, uid=uid,
                              vendor_specific=vendor_specific, description=description)
         self.chat: 'Chat' = chat
+
+    """Member of a chat.
+
+    Note:
+        ``ChatMember`` objects are picklable, thus it is strongly recommended
+        to keep any object of its subclass also picklable.
+
+    Attributes:
+        chat (:obj:`.Chat`): Chat associated with this member.
+        name (str): Name of the member.
+        alias (Optional[str]): Alternative name of the member, usually set by user.
+        uid (:obj:`.ChatID` (str)):
+            Unique ID of the member. This should be unique within the channel.
+            This ID can be the same with a private chat of the same person.
+        description (str):
+            A text description of the member, usually known as “bio”,
+            “description”, “summary” or “introduction” of the member.
+        vendor_specific (Dict[str, Any]): Any vendor specific attributes.
+    """
 
     def verify(self):
         super().verify()
@@ -234,13 +251,13 @@ class ChatMember(BaseChat):
 
     def __eq__(self, other):
         return (
-            isinstance(other, ChatMember) and
-            other.id == self.id and
-            other.chat == self.chat
+                isinstance(other, ChatMember) and
+                other.uid == self.uid and
+                other.chat == self.chat
         )
 
     def __str__(self):
-        return f"<{self.__class__.__name__}: {self.long_name} ({self.id}) @ {self.chat}>"
+        return f"<{self.__class__.__name__}: {self.long_name} ({self.uid}) @ {self.chat}>"
 
     def __repr__(self):
         return (
@@ -248,7 +265,7 @@ class ChatMember(BaseChat):
             f"chat={self.chat}, "
             f"name={self.name!r}, "
             f"alias={self.alias!r}, "
-            f"id={self.id!r}, "
+            f"uid={self.uid!r}, "
             f"vendor_specific={self.vendor_specific!r}, "
             f"description={self.description!r}"
             f")"
@@ -267,6 +284,7 @@ class SelfChatMember(ChatMember):
 
     def __init__(self, chat: 'Chat', *,
                  name: str = "", alias: Optional[str] = None, id: ChatID = ChatID(""),
+                 uid: ChatID = ChatID(""),
                  vendor_specific: Dict[str, Any] = None, description: str = "",
                  middleware: Optional[Middleware] = None):
         """
@@ -274,7 +292,7 @@ class SelfChatMember(ChatMember):
             chat (:class:`~.chat.Chat`): Chat associated with this member.
             name (str): Name of the member.
             alias (Optional[str]): Alternative name of the member, usually set by user.
-            id (:obj:`.ChatID` (str)):
+            uid (:obj:`.ChatID` (str)):
                 Unique ID of the member. This should be unique within the channel.
                 This ID can be the same with a private chat of the same person.
             description (str):
@@ -284,8 +302,8 @@ class SelfChatMember(ChatMember):
                 of a middleware.
         """
         name = name or translator.gettext("You")
-        id = id or self.SELF_ID
-        super().__init__(chat, name=name, alias=alias, id=id,
+        uid = uid or id or self.SELF_ID
+        super().__init__(chat, name=name, alias=alias, id=id, uid=uid,
                          vendor_specific=vendor_specific, description=description,
                          middleware=middleware)
 
@@ -306,6 +324,7 @@ class SystemChatMember(ChatMember):
 
     def __init__(self, chat: 'Chat', *,
                  name: str = "", alias: Optional[str] = None, id: ChatID = ChatID(""),
+                 uid: ChatID = ChatID(""),
                  vendor_specific: Dict[str, Any] = None, description: str = "",
                  middleware: Optional[Middleware] = None):
         """
@@ -313,7 +332,7 @@ class SystemChatMember(ChatMember):
             chat (:class:`~.chat.Chat`): Chat associated with this member.
             name (str): Name of the member.
             alias (Optional[str]): Alternative name of the member, usually set by user.
-            id (:obj:`.ChatID` (str)):
+            uid (:obj:`.ChatID` (str)):
                 Unique ID of the member. This should be unique within the channel.
                 This ID can be the same with a private chat of the same person.
             description (str):
@@ -323,8 +342,8 @@ class SystemChatMember(ChatMember):
                 of a middleware.
         """
         name = name or translator.gettext("System")
-        id = id or self.SYSTEM_ID
-        super().__init__(chat, name=name, alias=alias, id=id,
+        uid = uid or id or self.SYSTEM_ID
+        super().__init__(chat, name=name, alias=alias, id=id, uid=uid,
                          vendor_specific=vendor_specific, description=description,
                          middleware=middleware)
 
@@ -344,7 +363,7 @@ class Chat(BaseChat, ABC):
         module_name (str): Name of the module.
         name (str): Name of the chat.
         alias (Optional[str]): Alternative name of the chat, usually set by user.
-        id (:obj:`~.ChatID` (str)): Unique ID of the chat. This should be unique within the channel.
+        uid (:obj:`~.ChatID` (str)): Unique ID of the chat. This should be unique within the channel.
         description (str):
             A text description of the chat, usually known as “bio”,
             “description”, “purpose”, or “topic” of the chat.
@@ -364,6 +383,7 @@ class Chat(BaseChat, ABC):
     def __init__(self, *, channel: Optional[SlaveChannel] = None, middleware: Optional[Middleware] = None,
                  module_name: str = "", channel_emoji: str = "", module_id: ModuleID = ModuleID(""),
                  name: str = "", alias: Optional[str] = None, id: ChatID = ChatID(""),
+                 uid: ChatID = ChatID(""),
                  vendor_specific: Dict[str, Any] = None, description: str = "",
                  members: MutableSequence[ChatMember] = None,
                  notification: ChatNotificationState = ChatNotificationState.ALL,
@@ -388,7 +408,7 @@ class Chat(BaseChat, ABC):
             with_self (bool): Initialize the chat with the user themself as a member.
         """
         super().__init__(channel=channel, middleware=middleware, module_name=module_name, channel_emoji=channel_emoji,
-                         module_id=module_id, name=name, alias=alias, id=id,
+                         module_id=module_id, name=name, alias=alias, id=id, uid=uid,
                          vendor_specific=vendor_specific, description=description)
         self.members: MutableSequence[ChatMember] = members if members is not None else [
         ]
@@ -416,14 +436,15 @@ class Chat(BaseChat, ABC):
         self.members.append(s)
         return s
 
-    def add_member(self, name: str, id: ChatID, alias: Optional[str] = None,
+    def add_member(self, name: str, uid: ChatID, alias: Optional[str] = None,
+                   id: ChatID = ChatID(""),
                    vendor_specific: Dict[str, Any] = None, description: str = "",
                    middleware: Optional[Middleware] = None) -> ChatMember:
         """Add a member to the chat.
 
         Args:
             name (str): Name of the member.
-            id: ID of the member.
+            uid: ID of the member.
             alias (Optional[str]): Alias of the member.
             vendor_specific (Dict[str, Any]): Any vendor specific attributes.
             description (str):
@@ -432,20 +453,24 @@ class Chat(BaseChat, ABC):
             middleware (Optional[:class:`.Middleware`]): Initialize this chat as a part
                 of a middleware.
         """
-        member = ChatMember(self, name=name, alias=alias, id=id,
+        if id:
+            warnings.warn("`id` argument is deprecated, use `uid` instead.", DeprecationWarning)
+            uid = uid or id
+        member = ChatMember(self, name=name, alias=alias, uid=uid,
                             vendor_specific=vendor_specific, description=description,
                             middleware=middleware)
         self.members.append(member)
         return member
 
     def make_system_member(self, name: str = "", alias: Optional[str] = None, id: ChatID = ChatID(""),
+                           uid: ChatID = ChatID(""),
                            vendor_specific: Dict[str, Any] = None, description: str = "",
                            middleware: Optional[Middleware] = None) -> SystemChatMember:
         """Make a system member for this chat.
 
         Args:
             name (str): Name of the member.
-            id: ID of the member.
+            uid: ID of the member.
             alias (Optional[str]): Alias of the member.
             vendor_specific (Dict[str, Any]): Any vendor specific attributes.
             description (str):
@@ -454,18 +479,19 @@ class Chat(BaseChat, ABC):
             middleware (Optional[:class:`.Middleware`]): Initialize this chat as a part
                 of a middleware.
         """
-        return SystemChatMember(self, name=name, alias=alias, id=id,
+        return SystemChatMember(self, name=name, alias=alias, id=id, uid=uid,
                                 vendor_specific=vendor_specific, description=description,
                                 middleware=middleware)
 
     def add_system_member(self, name: str = "", alias: Optional[str] = None, id: ChatID = ChatID(""),
+                          uid: ChatID = ChatID(""),
                           vendor_specific: Dict[str, Any] = None, description: str = "",
                           middleware: Optional[Middleware] = None) -> SystemChatMember:
         """Add a system member to the chat.
 
         Args:
             name (str): Name of the member.
-            id: ID of the member.
+            uid: ID of the member.
             alias (Optional[str]): Alias of the member.
             vendor_specific (Dict[str, Any]): Any vendor specific attributes.
             description (str):
@@ -474,7 +500,7 @@ class Chat(BaseChat, ABC):
             middleware (Optional[:class:`.Middleware`]): Initialize this chat as a part
                 of a middleware.
         """
-        member = self.make_system_member(name=name, alias=alias, id=id,
+        member = self.make_system_member(name=name, alias=alias, id=id, uid=uid,
                                          vendor_specific=vendor_specific, description=description,
                                          middleware=middleware)
         self.members.append(member)
@@ -493,12 +519,12 @@ class Chat(BaseChat, ABC):
             KeyError: when the ID provided is not found.
         """
         for i in self.members:
-            if i.id == member_id:
+            if i.uid == member_id:
                 return i
         raise KeyError
 
     def __str__(self):
-        return f"<{self.__class__.__name__}: {self.long_name} ({self.id}) @ {self.channel_emoji}{self.module_name} ({self.module_id})>"
+        return f"<{self.__class__.__name__}: {self.long_name} ({self.uid}) @ {self.channel_emoji}{self.module_name} ({self.module_id})>"
 
     def __repr__(self):
         return (
@@ -508,7 +534,7 @@ class Chat(BaseChat, ABC):
             f"channel_emoji={self.channel_emoji!r}, "
             f"name={self.name!r}, "
             f"alias={self.alias!r}, "
-            f"id={self.id!r}, "
+            f"uid={self.uid!r}, "
             f"vendor_specific={self.vendor_specific!r}, "
             f"members={self.members!r}, "
             f"notification={self.notification!r}, "
@@ -542,17 +568,18 @@ class PrivateChat(Chat):
 
     def __init__(self, *, channel: Optional[SlaveChannel] = None, middleware: Optional[Middleware] = None,
                  module_name: str = "", channel_emoji: str = "", module_id: ModuleID = ModuleID(""), name: str = "",
-                 alias: Optional[str] = None, id: ChatID = ChatID(""), vendor_specific: Dict[str, Any] = None,
+                 alias: Optional[str] = None, id: ChatID = ChatID(""), uid: ChatID = ChatID(""),
+                 vendor_specific: Dict[str, Any] = None,
                  description: str = "", notification: ChatNotificationState = ChatNotificationState.ALL,
                  with_self: bool = True, other_is_self: bool = False):
         super().__init__(channel=channel, middleware=middleware, module_name=module_name, channel_emoji=channel_emoji,
-                         module_id=module_id, name=name, alias=alias, id=id, vendor_specific=vendor_specific,
+                         module_id=module_id, name=name, alias=alias, id=id, uid=uid, vendor_specific=vendor_specific,
                          description=description, notification=notification, with_self=with_self)
         if other_is_self and with_self:
             assert self.self is not None
             self.other = self.self
         else:
-            self.other = self.add_member(name=name, alias=alias, id=id, vendor_specific=vendor_specific,
+            self.other = self.add_member(name=name, alias=alias, uid=uid, vendor_specific=vendor_specific,
                                          description=description)
         self.verify()
 
@@ -589,13 +616,14 @@ class SystemChat(Chat):
 
     def __init__(self, *, channel: Optional[SlaveChannel] = None, middleware: Optional[Middleware] = None,
                  module_name: str = "", channel_emoji: str = "", module_id: ModuleID = ModuleID(""), name: str = "",
-                 alias: Optional[str] = None, id: ChatID = ChatID(""), vendor_specific: Dict[str, Any] = None,
+                 alias: Optional[str] = None, id: ChatID = ChatID(""), uid: ChatID = ChatID(""),
+                 vendor_specific: Dict[str, Any] = None,
                  description: str = "", notification: ChatNotificationState = ChatNotificationState.ALL,
                  with_self: bool = True):
         super().__init__(channel=channel, middleware=middleware, module_name=module_name, channel_emoji=channel_emoji,
-                         module_id=module_id, name=name, alias=alias, id=id, vendor_specific=vendor_specific,
+                         module_id=module_id, name=name, alias=alias, id=id, uid=uid, vendor_specific=vendor_specific,
                          description=description, notification=notification, with_self=with_self)
-        self.other = self.add_system_member(name=name, alias=alias, id=id, vendor_specific=vendor_specific,
+        self.other = self.add_system_member(name=name, alias=alias, id=id, uid=uid, vendor_specific=vendor_specific,
                                             description=description)
         self.verify()
 
@@ -614,16 +642,16 @@ class GroupChat(Chat):
 
     Examples:
 
-        >>> group = GroupChat(channel=slave_channel, name="Wonderland", id=ChatID("wonderland001"))
-        >>> group.add_member(name="Alice", id=ChatID("alice"))
-        ChatMember(chat=<GroupChat: Wonderland (wonderland001) @ Example slave channel>, name='Alice', alias=None, id='alice', vendor_specific={}, description='')
-        >>> group.add_member(name="bob", alias="Bob James", id=ChatID("bob"))
-        ChatMember(chat=<GroupChat: Wonderland (wonderland001) @ Example slave channel>, name='bob', alias='Bob James', id='bob', vendor_specific={}, description='')
+        >>> group = GroupChat(channel=slave_channel, name="Wonderland", uid=ChatID("wonderland001"))
+        >>> group.add_member(name="Alice", uid=ChatID("alice"))
+        ChatMember(chat=<GroupChat: Wonderland (wonderland001) @ Example slave channel>, name='Alice', alias=None, uid='alice', vendor_specific={}, description='')
+        >>> group.add_member(name="bob", alias="Bob James", uid=ChatID("bob"))
+        ChatMember(chat=<GroupChat: Wonderland (wonderland001) @ Example slave channel>, name='bob', alias='Bob James', uid='bob', vendor_specific={}, description='')
         >>> from pprint import pprint
         >>> pprint(group.members)
-        [SelfChatMember(chat=<GroupChat: Wonderland (wonderland001) @ Example slave channel>, name='You', alias=None, id='__self__', vendor_specific={}, description=''),
-         ChatMember(chat=<GroupChat: Wonderland (wonderland001) @ Example slave channel>, name='Alice', alias=None, id='alice', vendor_specific={}, description=''),
-         ChatMember(chat=<GroupChat: Wonderland (wonderland001) @ Example slave channel>, name='bob', alias='Bob James', id='bob', vendor_specific={}, description='')]
+        [SelfChatMember(chat=<GroupChat: Wonderland (wonderland001) @ Example slave channel>, name='You', alias=None, uid='__self__', vendor_specific={}, description=''),
+         ChatMember(chat=<GroupChat: Wonderland (wonderland001) @ Example slave channel>, name='Alice', alias=None, uid='alice', vendor_specific={}, description=''),
+         ChatMember(chat=<GroupChat: Wonderland (wonderland001) @ Example slave channel>, name='bob', alias='Bob James', uid='bob', vendor_specific={}, description='')]
 
     Note:
         ``GroupChat`` objects are picklable, thus it is strongly recommended
@@ -632,11 +660,11 @@ class GroupChat(Chat):
 
     def __init__(self, *, channel: Optional[SlaveChannel] = None, middleware: Optional[Middleware] = None,
                  module_name: str = "", channel_emoji: str = "", module_id: ModuleID = ModuleID(""), name: str = "",
-                 alias: Optional[str] = None, id: ChatID = ChatID(""), vendor_specific: Dict[str, Any] = None,
+                 alias: Optional[str] = None, id: ChatID = ChatID(""), uid: ChatID = ChatID(""), vendor_specific: Dict[str, Any] = None,
                  description: str = "", notification: ChatNotificationState = ChatNotificationState.ALL,
                  with_self: bool = True):
         super().__init__(channel=channel, middleware=middleware, module_name=module_name, channel_emoji=channel_emoji,
-                         module_id=module_id, name=name, alias=alias, id=id, vendor_specific=vendor_specific,
+                         module_id=module_id, name=name, alias=alias, id=id, uid=uid, vendor_specific=vendor_specific,
                          description=description, notification=notification, with_self=with_self)
         self.verify()
 

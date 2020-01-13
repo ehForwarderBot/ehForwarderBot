@@ -31,13 +31,13 @@ class MockSlaveChannel(SlaveChannel):
 
     def __init__(self, instance_id=None):
         super().__init__(instance_id)
-        self.alice = PrivateChat(channel=self, name="Alice", id="alice")
-        self.bob = PrivateChat(channel=self, name="Bob", alias="Little bobby", id="bob")
+        self.alice = PrivateChat(channel=self, name="Alice", uid="alice")
+        self.bob = PrivateChat(channel=self, name="Bob", alias="Little bobby", uid="bob")
 
-        self.wonderland = GroupChat(channel=self, name="Wonderland", id="wonderland001")
-        self.wonderland.add_member(name="bob", alias="Bob James", id="bob")
-        self.carol = self.wonderland.add_member(name="Carol", id="carol")
-        self.dave = self.wonderland.add_member(name="デブ", id="dave")  # Nah, that's a joke
+        self.wonderland = GroupChat(channel=self, name="Wonderland", uid="wonderland001")
+        self.wonderland.add_member(name="bob", alias="Bob James", uid="bob")
+        self.carol = self.wonderland.add_member(name="Carol", uid="carol")
+        self.dave = self.wonderland.add_member(name="デブ", uid="dave")  # Nah, that's a joke
 
         self.chats: List[Chat] = [self.alice, self.bob, self.wonderland]
 
@@ -56,7 +56,7 @@ class MockSlaveChannel(SlaveChannel):
 
     def get_chat(self, chat_uid: str) -> Chat:
         for i in self.chats:
-            if chat_uid == i.id:
+            if chat_uid == i.uid:
                 return i
         raise EFBChatNotFound()
 
@@ -64,8 +64,8 @@ class MockSlaveChannel(SlaveChannel):
         return self.chats.copy()
 
     def get_chat_picture(self, chat: Chat):
-        if chat.id in self.__picture_dict:
-            return open('tests/mocks/' + self.__picture_dict[chat.id], 'rb')
+        if chat.uid in self.__picture_dict:
+            return open('tests/mocks/' + self.__picture_dict[chat.uid], 'rb')
 
     def get_message_by_id(self, chat: Chat, msg_id: MessageID) -> Optional['Message']:
         pass

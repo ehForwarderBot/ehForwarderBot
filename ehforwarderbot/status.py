@@ -206,7 +206,7 @@ class MessageRemoval(Status):
             f"Destination channel {self.destination_channel!r} is not valid."
         assert isinstance(self.message, Message), \
             f"Message {self.message!r} is not valid."
-        assert self.message.chat.module_id and self.message.chat.id and self.message.uid, \
+        assert self.message.chat.module_id and self.message.chat.uid and self.message.uid, \
             f"Message does not contain the minimum information required: {self.message!r}"
 
     def __getstate__(self):

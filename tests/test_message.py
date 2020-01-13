@@ -184,7 +184,7 @@ def test_substitution(base_message, chat):
         Substitutions({(1, 2, 3): chat})
 
     with pytest.raises(AssertionError):
-        Substitutions({(1, 2, 3): chat.id})
+        Substitutions({(1, 2, 3): chat.uid})
 
     with pytest.raises(AssertionError):
         Substitutions({(2, 1): chat})

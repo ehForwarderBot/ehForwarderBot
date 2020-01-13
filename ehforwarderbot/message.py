@@ -352,7 +352,7 @@ class Message:
             This attribute will be ignored in _Status_ messages.
         file (Optional[BinaryIO]): File object to multimedia file, type "rb". ``None`` if N/A.
             Recommended to use :class:`NamedTemporaryFile`.
-            The file can be should be able to be deleted (or otherwise discarded)
+            The file should be able to be deleted (or otherwise discarded)
             safely once closed. All file object must be rewind back to 0
             (``file.seek(0)``) before sending.
         filename (Optional[str]): File name of the multimedia file. ``None`` if N/A
