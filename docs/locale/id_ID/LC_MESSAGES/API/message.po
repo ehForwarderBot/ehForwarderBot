@@ -543,9 +543,9 @@ msgstr "Pendahuluan: Mendefinisikan obrolan terkait"
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:19
 msgid "master: MasterChannel = coordinator.master\n"
 "slave: SlaveChannel = coordinator.slave['demo.slave']\n"
-"alice: PrivateChat = slave.get_chat(chat_uid=\"alice101\")\n"
-"bob: PrivateChat = slave.get_chat(chat_uid=\"bobrocks\")\n"
-"wonderland: GroupChat = slave.get_chat(chat_uid=\"thewonderlandgroup\")\n"
+"alice: PrivateChat = slave.get_chat(\"alice101\")\n"
+"bob: PrivateChat = slave.get_chat(\"bobrocks\")\n"
+"wonderland: GroupChat = slave.get_chat(\"thewonderlandgroup\")\n"
 "wonderland_alice: ChatMember = wonderland.get_member(\"alice101\")"
 msgstr ""
 

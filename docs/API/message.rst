@@ -20,9 +20,9 @@ Prelude: Defining related chats
 
     master: MasterChannel = coordinator.master
     slave: SlaveChannel = coordinator.slave['demo.slave']
-    alice: PrivateChat = slave.get_chat(chat_uid="alice101")
-    bob: PrivateChat = slave.get_chat(chat_uid="bobrocks")
-    wonderland: GroupChat = slave.get_chat(chat_uid="thewonderlandgroup")
+    alice: PrivateChat = slave.get_chat("alice101")
+    bob: PrivateChat = slave.get_chat("bobrocks")
+    wonderland: GroupChat = slave.get_chat("thewonderlandgroup")
     wonderland_alice: ChatMember = wonderland.get_member("alice101")
 
 Initialization and marking chats

@@ -264,7 +264,7 @@ class SlaveChannel(Channel, ABC):
         Get the chat object from a slave channel.
 
         Args:
-            chat_uid: UID of the chat.
+            chat_uid: ID of the chat.
 
         Returns:
            .Chat: The chat found.
