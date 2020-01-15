@@ -61,7 +61,7 @@ class Channel(ABC):
         Notes:
             Master channel shall take care of the returned object that contains
             the updated message ID. Depends on the implementation of slave
-            channels, he message ID may change even after being edited. The old
+            channels, the message ID may change even after being edited. The old
             message ID shall be disregarded for the new one.
 
         Args:
@@ -173,7 +173,7 @@ class MasterChannel(Channel, ABC):
 
 
 class SlaveChannel(Channel, ABC):
-    """The abstract master channel class. All master channels shall inherit
+    """The abstract slave channel class. All slave channels shall inherit
     this class.
 
     Attributes:
