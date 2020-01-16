@@ -25,7 +25,7 @@ To modify an object, just override the relative method and
 make changes to it. To discard an object, simply return ``None``.
 When an object is discarded, it will not be passed further
 to other middlewares or channels, which means a middleware
-or a channel should never receive a ``None`` message or
+or a channel will never receive a ``None`` message or
 status.
 
 Other Usages

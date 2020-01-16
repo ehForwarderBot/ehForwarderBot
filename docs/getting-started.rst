@@ -125,7 +125,7 @@ running in one profile. Meanwhile, middlewares are completely optional.
     * Middlewares
         * Null Middleware (``foo.null``)
 
-    In the ``config.yaml`` it should have the following lines:
+    ``config.yaml`` should have the following lines:
 
     .. code-block:: yaml
 

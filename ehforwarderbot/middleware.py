@@ -32,7 +32,7 @@ class Middleware(ABC):
     def __init__(self, instance_id: Optional[InstanceID] = None):
         """
         Initialize the middleware.
-        Inherited initializer must call the "super init" method
+        Inherited initializer MUST call the "super init" method
         at the beginning.
 
         Args:

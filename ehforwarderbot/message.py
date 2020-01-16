@@ -103,12 +103,12 @@ class MessageCommand:
     Message command.
 
     This object records a way to call a method in the module object.
-    In case where the message has an ``author`` from a different module
-    from the ``chat``, this function should be called on the ``author``'s
-    module.
+    In case where the message has an :attr:`~.Message.author` from a different
+    module from the :attr:`~.Message.chat`, this function MUST be called on
+    the :attr:`~.Message.author`’s module.
 
-    The method specified must return either a ``str`` as result or ``None``
-    if this message will be further edited or deleted for interactions.
+    The method specified MUST return either a ``str`` as result or ``None``
+    if this message will be edited or deleted for further interactions.
 
     Attributes:
         name (str): Human-friendly name of the command.
@@ -254,15 +254,15 @@ class Substitutions(Dict[Tuple[int, int], Union[Chat, ChatMember]]):
     substring used to refer to a user/chat in the message and the chat object
     it referred to.
 
-    Values of the dictionary shall be either a member of the chat (``self`` or
+    Values of the dictionary MUST be either a member of the chat (``self`` or
     the other for private chats, group members for group chats) or another
     chat of the slave channel.
 
-    A key in this dictionary shall be a tuple of two :obj:`int`\\ s, where first
+    A key in this dictionary is a tuple of two :obj:`int`\\ s, where first
     of it is the starting position in the string, and the second is the
     ending position defined similar to Python's substring. A tuple of
     ``(3, 15)`` corresponds to ``msg.text[3:15]``.
-    The value of the tuple ``(a, b)`` must satisfy :math:`0 ≤ a < b ≤ l`,
+    The value of the tuple ``(a, b)`` MUST satisfy :math:`0 ≤ a < b ≤ l`,
     where :math:`l` is the length of the message text.
 
     Type:
@@ -276,7 +276,7 @@ class Substitutions(Dict[Tuple[int, int], Union[Chat, ChatMember]]):
 
     @staticmethod
     def _is_has_self(i: Union[Chat, ChatMember]) -> bool:
-        """Check if a chat / chat member is/has the user themself."""
+        """Check if a chat / chat member is/has the User Themself."""
         if isinstance(i, Chat):
             return i.has_self
         return isinstance(i, SelfChatMember)
@@ -286,7 +286,7 @@ class Substitutions(Dict[Tuple[int, int], Union[Chat, ChatMember]]):
         """Returns ``True`` if you are mentioned in this message.
 
         In the case where a chat (private or group) is mentioned in this
-        message instead of a group member, you would also be considered
+        message instead of a group member, you will also be considered
         mentioned if you are a member of the chat.
         """
         return any(self._is_has_self(i) for i in self.values())
@@ -312,7 +312,7 @@ class Message:
     """A message.
 
     Note:
-        ``Message`` objects are picklable, thus it is strongly recommended
+        ``Message`` objects are picklable, thus it is strongly RECOMMENDED
         to keep any object of its subclass also picklable.
 
     Attributes:
@@ -330,8 +330,11 @@ class Message:
                 :class:`.MessageAttribute` for
                 ``attributes``, but object of specific class instead.
 
-        author (:obj:`.ChatMember`): Author of this message.
         chat (:obj:`.Chat`): Sender of the message.
+        author (:obj:`.ChatMember`): Author of this message. Author of the message
+            MUST be a part of the same :attr:`~.message.Message.chat` this message
+            is in. If the message is sent from the User Themself, this MUST be
+            an object of :class:`.SelfChatMember`.
         commands (Optional[:obj:`MessageCommands`]): Commands attached to the message
 
             This attribute will be ignored in _Status_ messages.
@@ -340,20 +343,20 @@ class Message:
             Flag only this if no multimedia file is modified, otherwise flag up both
             this one and ``edit_media`` as well.
 
-            If no media file is modified, the edited message may carry no information about
+            If no media file is modified, the edited message MAY carry no information about
             the file.
 
             This attribute will be ignored in _Status_ messages.
         edit_media (bool): Flag this up if any file attached to the message is modified.
-            If this value is true, ``edit`` must also be ``True``.
+            If this value is true, ``edit`` MUST also be ``True``.
             This attribute is ignored if the message type is not supposed to contain any
             media file, e.g. :attr:`~MsgType.Text`, :attr:`~MsgType.Location`, etc.
 
             This attribute will be ignored in _Status_ messages.
         file (Optional[BinaryIO]): File object to multimedia file, type "rb". ``None`` if N/A.
             Recommended to use :class:`NamedTemporaryFile`.
-            The file should be able to be deleted (or otherwise discarded)
-            safely once closed. All file object must be rewind back to 0
+            The file SHOULD be able to be safely deleted (or otherwise discarded)
+            once closed. All file object MUST be sought back to 0
             (``file.seek(0)``) before sending.
         filename (Optional[str]): File name of the multimedia file. ``None`` if N/A
         is_system (bool): Mark as true if this message is a system message.
@@ -363,8 +366,8 @@ class Message:
             Indicate reactions to the message. Dictionary key is the canonical name
             of reaction, usually an emoji. Value is a collection of users
             who reacted to the message with that certain emoji.
-            All :obj:`Chat` objects in this dict must be of a user or a
-            group member.
+            All :obj:`Chat` objects in this dict MUST be members in the
+            chat of this message.
 
             This attribute will be ignored in _Status_ messages.
         substitutions (Optional[:obj:`Substitutions`]):
@@ -381,7 +384,7 @@ class Message:
 
             .. note::
 
-                This message may be a "minimum message", with only required fields:
+                This message MAY be a "minimum message", with only required fields:
 
                 - :attr:`.Message.chat`
                 - :attr:`.Message.author`
@@ -395,7 +398,7 @@ class Message:
         type (:obj:`.MsgType`): Type of message
         uid (str): Unique ID of message.
             Usually stores the message ID from slave channel.
-            This ID must be unique among all chats in the same channel.
+            This ID MUST be unique among all chats in the same channel.
 
             .. Note::
                 Some channels may not support message editing.

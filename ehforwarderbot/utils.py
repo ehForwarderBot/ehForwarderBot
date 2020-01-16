@@ -27,7 +27,7 @@ def extra(name: str, desc: str) -> Callable[..., Optional[str]]:
 
     Example:
 
-        .. code:: python
+        .. code-block:: python
 
             @extra(name="Echo", desc="Return the text entered.\\n\\nUsage:\\n    {function_name} text")
             def echo(self, text: str) -> Optional[str]:

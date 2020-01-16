@@ -13,3 +13,11 @@ channels and middlewares for EH Forwarder Bot.
     storage
     packaging
     misc
+
+About key words
+---------------
+
+The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL
+NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and
+“OPTIONAL” (in upper cases) in this document are to be
+interpreted as described in :rfc:`2119`.

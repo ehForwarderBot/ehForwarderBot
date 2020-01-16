@@ -42,7 +42,7 @@ class Channel(ABC):
     def __init__(self, instance_id: InstanceID = None):
         """
         Initialize the channel.
-        Inherited initializer must call the "super init" method
+        Inherited initializer MUST call the "super init" method
         at the beginning.
 
         Args:
@@ -54,23 +54,22 @@ class Channel(ABC):
 
     @abstractmethod
     def send_message(self, msg: 'Message') -> 'Message':
-        """send_message(msg: Message) -> Message
-
-        Process a message that is sent to, or edited in this channel.
+        """Process a message that is sent to, or edited in this channel.
 
         Notes:
-            Master channel shall take care of the returned object that contains
+            Master channel MUST take care of the returned object that contains
             the updated message ID. Depends on the implementation of slave
-            channels, the message ID may change even after being edited. The old
-            message ID shall be disregarded for the new one.
+            channels, the message ID MAY change even after being edited. The old
+            message ID MAY be disregarded for the new one.
 
         Args:
             msg (:obj:`~.message.Message`): Message object to be processed.
 
         Returns:
             :obj:`~.message.Message`:
-                The same message object. Message ID shall be updated if sent
-                to the slave channel even when edited.
+                The same message object. Message ID of the object MAY be
+                changed by the slave channel once sent. This can happen even
+                when the message sent is an edited message.
 
         Raises:
             EFBChatNotFound:
@@ -100,7 +99,7 @@ class Channel(ABC):
     def poll(self):
         """
         Method to poll for messages. This method is called when
-        the framework is initialized. This method should be blocking.
+        the framework is initialized. This method SHOULD be blocking.
         """
         raise NotImplementedError()
 
@@ -127,10 +126,9 @@ class Channel(ABC):
                 Raised when other error occurred while removing the message.
 
         Note:
-            Avoid raising exceptions from this method
-            in Master Channels as it would be hard
-            for a Slave Channel to process the
-            exception.
+            Exceptions SHOULD NOT be raised from this method
+            by master channels as it would be hard for a slave channel
+            to process the exception.
 
             This method is not applicable to Slave Channels.
         """
@@ -144,7 +142,7 @@ class Channel(ABC):
         status if necessary, and terminate polling.
 
         When the channel is ready to stop, the polling
-        function must stop blocking. EFB framework will
+        function MUST stop blocking. EFB framework will
         quit completely when all polling threads end.
         """
         raise NotImplementedError()
@@ -167,13 +165,13 @@ class Channel(ABC):
 
 
 class MasterChannel(Channel, ABC):
-    """The abstract master channel class. All master channels shall inherit
+    """The abstract master channel class. All master channels MUST inherit
     this class.
     """
 
 
 class SlaveChannel(Channel, ABC):
-    """The abstract slave channel class. All slave channels shall inherit
+    """The abstract slave channel class. All slave channels MUST inherit
     this class.
 
     Attributes:
@@ -185,11 +183,9 @@ class SlaveChannel(Channel, ABC):
             Leaving this empty may cause the master channel to refuse sending
             anything to your slave channel.
         suggested_reactions (Optional[Sequence[str]]):
-            A list of suggested reactions to be applied to messages. Valid to
-            slave channels only, master channels should leave this value as
-            ``None``.
+            A list of suggested reactions to be applied to messages.
 
-            Reactions should be ordered in a meaningful way, e.g., the order
+            Reactions SHOULD be ordered in a meaningful way, e.g., the order
             used by the IM platform, or frequency of usage. Note that it is
             not necessary to list all suggested reactions if that is too long,
             or not feasible.
@@ -230,11 +226,11 @@ class SlaveChannel(Channel, ABC):
 
         Returns:
             BinaryIO: Opened temporary file object.
-            The file object must have appropriate extension name
+            The file object MUST have appropriate extension name
             that matches to the format of picture sent,
             and seek to position 0.
 
-            It can be deleted when closed if not required otherwise.
+            It MAY be deleted or discarded once closed, if not needed otherwise.
 
         Raises:
             EFBChatNotFound:
@@ -243,7 +239,7 @@ class SlaveChannel(Channel, ABC):
                 Raised when the chat does not offer a profile picture.
 
         Examples:
-            .. code:: Python
+            .. code-block:: Python
 
                 if chat.channel_uid != self.channel_uid:
                     raise EFBChannelNotFound()

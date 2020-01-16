@@ -52,9 +52,13 @@ Initialization and marking chats
 
 Quoting a previous message (targeted message)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Information in this part should be retrieved from recorded historical data.
+Data of the quoted message SHOULD be retrieved from recorded historical data.
 :attr:`.Message.deliver_to` is not required for quoted message, and
 complete data is not required here. For details, see :attr:`.Message.target`.
+
+You MAY use the :meth:`.Channel.get_message` method to get the message object
+from the sending channel, but this might not always be possible depending on
+the implementation of the channel.
 
 .. code-block:: python
 
@@ -68,7 +72,7 @@ complete data is not required here. For details, see :attr:`.Message.target`.
 
 Edit a previously sent message
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Message ID should be the ID from the slave channel regardless of where the
+Message ID MUST be the ID from the slave channel regardless of where the
 message is delivered to.
 
 .. code-block:: python
@@ -94,7 +98,7 @@ Type-specific Information
     The example below is for image (picture) messages.
     Audio, file, video, sticker works in the same way.
 
-    In non-text messages, the ``text`` attribute is optional.
+    In non-text messages, the ``text`` attribute MAY be an empty string.
 
     .. code-block:: python
 
@@ -108,7 +112,7 @@ Type-specific Information
 
 3. Location message
 
-    In non-text messages, the ``text`` attribute is optional.
+    In non-text messages, the ``text`` attribute MAY be an empty string.
 
     .. code-block:: python
 
@@ -118,7 +122,7 @@ Type-specific Information
 
 4. Link message
 
-    In non-text messages, the ``text`` attribute is optional.
+    In non-text messages, the ``text`` attribute MAY be an empty string.
 
     .. code-block:: python
 
@@ -133,7 +137,7 @@ Type-specific Information
 
 5. Status
 
-    In non-text messages, the ``text`` attribute is optional.
+    In status messages, the ``text`` attribute is disregarded.
 
     .. code-block:: python
 
@@ -155,13 +159,20 @@ Additional information
 
 1. Substitution
 
+    @-reference the User Themself, another member in the same chat, and the
+    entire chat in the message text.
+
     .. code-block:: python
 
-        message.text = "Hey @alice, @bob, and @all. Attention!"
+        message.text = "Hey @david, @bob, and @all. Attention!"
         message.substitutions = Substitutions({
-            (4, 10): alice,
-            (12, 16): bob,
-            (22, 26): Chat(slave).self()
+            # text[4:10] = "@david", here David is the user.
+            (4, 10): wonderland.self,
+            # text[12:16] = "@bob", Bob is another member of the chat.
+            (12, 16): wonderland.get_member("bob"),
+            # text[22:126] = "@all", this calls the entire group chat, hence the
+            # chat object is set as the value instead.
+            (22, 26): wonderland
         })
 
 2. Commands

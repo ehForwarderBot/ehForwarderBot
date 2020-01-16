@@ -45,12 +45,12 @@ if possible:
 Files in messages
 -----------------
 
-When a file sent out from a channel, it should be open,
-sought back to 0 ( ``file.seek(0)`` ) before sending.
+When a file sent out from a channel, it MUST be open,
+and sought back to 0 ( ``file.seek(0)`` ) before sending.
 
-Files sent should be able to be located somewhere in
-the file system, better with a appropriate extension
-name, but not required. All files should also have its
+Files sent MUST be able to be located somewhere in
+the file system, and SHOULD with a appropriate extension
+name, but not required. All files MUST also have its
 MIME type specified in the message object. If the channel
 is not sure about the correct MIME type, it can try to
 guess with ``libmagic``, or fallback to ``application/octet-stream``.

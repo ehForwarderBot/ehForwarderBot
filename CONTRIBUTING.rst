@@ -30,8 +30,8 @@ Reporting bugs
 Before submitting a bug report
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Please ensure if your issue is about the framework itself,
-  not about any module. Reports about modules should goes
-  to their respective places.
+  not about any module. Reports about modules should go
+  to their respective issue trackers.
 * Read through the documentation to see if it has covered your question.
 * Check the `current issue list`__ to see if it's been reported.
 
@@ -64,7 +64,7 @@ Provide more context by answering these questions:
 Include details about your configuration and environment:
 
 * **What version of EFB are you using?** You can get the
-  version by using the flag `-V`.
+  version by using the flag `--version`.
 * **What's the name and version of the OS you're using?**
 
 .. attention::

@@ -1,6 +1,6 @@
 """A list of type aliases when no separate class is defined for some types of
-values. User-facing types (display names, descriptions, message text, etc.)
-shall not be included here.
+values. Types for user-facing values (display names, descriptions, message text,
+etc.) are not otherwise defined.
 
 Most of types listed here are defined under the "NewType" syntax in order to
 clarify some ambiguous values not covered by simple type checking. This is only

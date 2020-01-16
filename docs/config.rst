@@ -32,7 +32,7 @@ the channel will run in the "default" instance with no instance ID.
 
 To indicate the instance ID of an instance, append ``#`` following by the
 instance ID to the module ID. For example, slave channel ``bar.dummy``
-running with instance ID ``alice`` should be defined as ``bar.dummy#alice``.
+running with instance ID ``alice`` should be written as ``bar.dummy#alice``.
 If the channel requires configurations, it should be done in the directory
 with the same name (e.g. :file:`EFB_DATA_PATH/profiles/{PROFILE}/bar.dummy#alice`),
 so as to isolate instances.
@@ -56,7 +56,7 @@ as it may leads to unexpected results.
         * Message Archiver (``foo.msg_archiver``)
         * Null Middleware (``foo.null``)
 
-    In the ``config.yaml`` it should have the following lines:
+    ``config.yaml`` should have the following lines:
 
     .. code-block:: yaml
 

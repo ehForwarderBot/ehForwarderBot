@@ -56,7 +56,7 @@ class DataModel:
 
     @staticmethod
     def default_config():
-        # TRANSLATORS: This part of text must be formatted in a monospaced font, and no line shall exceed the width of a 70-cell-wide terminal.
+        # TRANSLATORS: This part of text must be formatted in a monospaced font, and all lines must not exceed the width of a 70-cell-wide terminal.
         config = _(
             "# ===================================\n"
             "# EH Forwarder Bot Configuration File\n"
@@ -72,7 +72,7 @@ class DataModel:
             "# Fill in the module ID and instance ID (if needed) below.\n"
         )
         config += "\nmaster_channel:\n\n"
-        # TRANSLATORS: This part of text must be formatted in a monospaced font, and no line shall exceed the width of a 70-cell-wide terminal.
+        # TRANSLATORS: This part of text must be formatted in a monospaced font, and all lines must not exceed the width of a 70-cell-wide terminal.
         config += _(
             "# Slave Channels\n"
             "# --------------\n"
@@ -82,7 +82,7 @@ class DataModel:
             "# to be enabled below.\n"
         )
         config += "\nslave_channels: []\n\n"
-        # TRANSLATORS: This part of text must be formatted in a monospaced font, and no line shall exceed the width of a 70-cell-wide terminal.
+        # TRANSLATORS: This part of text must be formatted in a monospaced font, and all lines must not exceed the width of a 70-cell-wide terminal.
         config += _(
             "# Middlewares\n"
             "# -----------\n"

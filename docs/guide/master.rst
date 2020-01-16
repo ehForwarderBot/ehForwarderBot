@@ -20,7 +20,7 @@ Design guideline
 
 When the master channel is implemented on an existing
 protocol or platform, as far as possible, while
-considering the user experience, a master channel should:
+considering the user experience, a master channel SHOULD:
 
 * maintain one conversation thread per chat, indicating
   its name, source channel and type;
@@ -30,7 +30,7 @@ considering the user experience, a master channel should:
 * support all, if not most, features of messages,
   including: targeted message reply, chat substitution
   in text (usually used in @ references), commands, etc.
-  Master channel should be able to process incoming
+  Master channel SHOULD be able to process incoming
   messages with such features, and send messages with
   such features to slave channels if applicable;
 * be able to invoke and process "additional features"
@@ -53,9 +53,9 @@ for presentation or other purposes.
 Message delivery
 ----------------
 
-Note that sometimes users may send messages outside of
-this EFB session, so that slave channels might provide a
-message has its author marked as "self".
+Note that sometimes the User may send messages outside of
+this EFB session, so that slave channels MAY provide a
+message with its author in the “self” type.
 
 Implementation details
 ----------------------

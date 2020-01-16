@@ -27,7 +27,7 @@ class ChatNotificationState(Enum):
     """No notification is sent to slave IM channel at all."""
 
     MENTIONS = 1
-    """Notifications are sent only when the user is mentioned in the message,
+    """Notifications are sent only when the User is mentioned in the message,
     in the form of @-references or quote-reply (message target).
     """
 
@@ -38,10 +38,10 @@ class ChatNotificationState(Enum):
 class BaseChat(ABC):
     """
     Base chat class, this is an abstract class sharing properties among all
-    chats, and users.
+    chats and members. No instance can be created directly from this class.
 
     Note:
-        ``BaseChat`` objects are picklable, thus it is strongly recommended
+        ``BaseChat`` objects are picklable, thus it is RECOMMENDED
         to keep any object of its subclass also picklable.
 
     Attributes:
@@ -51,7 +51,7 @@ class BaseChat(ABC):
         module_name (:obj:`.ModuleID` (str)): Name of the module.
         name (str): Name of the chat.
         alias (Optional[str]): Alternative name of the chat, usually set by user.
-        uid (:obj:`.ChatID` (str)): Unique ID of the chat. This should be unique within the channel.
+        uid (:obj:`.ChatID` (str)): Unique ID of the chat. This MUST be unique within the channel.
         description (str):
             A text description of the chat, usually known as “bio”,
             “description”, “purpose”, or “topic” of the chat.
@@ -86,7 +86,7 @@ class BaseChat(ABC):
             module_name (str): Name of the module.
             name (str): Name of the chat.
             alias (Optional[str]): Alternative name of the chat, usually set by user.
-            uid: Unique ID of the chat. This should be unique within the channel.
+            uid: Unique ID of the chat. This MUST be unique within the channel.
             description (str):
                 A text description of the chat, usually known as “bio”,
                 “description”, “purpose”, or “topic” of the chat.
@@ -197,6 +197,26 @@ class BaseChat(ABC):
 
 
 class ChatMember(BaseChat):
+    """Member of a chat. Usually indicates a member in a group, or the other
+    participant in a private chat. Chat bots created by the users of the
+    IM platform is also considered as a plain :class:`.ChatMember`.
+
+    To represent the User Themself, use :class:`.SelfChatMember`.
+
+    To represent a chat member that is a part of the system, the slave channel,
+    or a middleware, use :class:`.SystemChatMember`.
+
+    :class:`.ChatMember`\\ s MUST be created with reference of the chat it
+    belongs to. Different objects MUST be created even when the same person
+    appears in different groups or in a private chat.
+
+    :class:`.ChatMember`\\ s are RECOMMENDED to be created using
+    :meth:`.Chat.add_member` method.
+
+    Note:
+        ``ChatMember`` objects are picklable, thus it is RECOMMENDED
+        to keep any object of its subclass also picklable.
+    """
     def __init__(self, chat: 'Chat', *,
                  name: str = "", alias: Optional[str] = None, uid: ChatID = ChatID(""),
                  id: ChatID = ChatID(""),
@@ -208,7 +228,7 @@ class ChatMember(BaseChat):
             name (str): Name of the member.
             alias (Optional[str]): Alternative name of the member, usually set by user.
             uid (:obj:`.ChatID` (str)):
-                Unique ID of the member. This should be unique within the channel.
+                Unique ID of the member. This MUST be unique within the channel.
                 This ID can be the same with a private chat of the same person.
             description (str):
                 A text description of the member, usually known as “bio”,
@@ -225,25 +245,6 @@ class ChatMember(BaseChat):
                              module_id=chat.module_id, name=name, alias=alias, id=id, uid=uid,
                              vendor_specific=vendor_specific, description=description)
         self.chat: 'Chat' = chat
-
-    """Member of a chat.
-
-    Note:
-        ``ChatMember`` objects are picklable, thus it is strongly recommended
-        to keep any object of its subclass also picklable.
-
-    Attributes:
-        chat (:obj:`.Chat`): Chat associated with this member.
-        name (str): Name of the member.
-        alias (Optional[str]): Alternative name of the member, usually set by user.
-        uid (:obj:`.ChatID` (str)):
-            Unique ID of the member. This should be unique within the channel.
-            This ID can be the same with a private chat of the same person.
-        description (str):
-            A text description of the member, usually known as “bio”,
-            “description”, “summary” or “introduction” of the member.
-        vendor_specific (Dict[str, Any]): Any vendor specific attributes.
-    """
 
     def verify(self):
         super().verify()
@@ -273,11 +274,26 @@ class ChatMember(BaseChat):
 
 
 class SelfChatMember(ChatMember):
-    """The user themself as member of a chat.
+    """The User Themself as member of a chat.
+
+    :class:`.SelfChatMember`\\ s are RECOMMENDED to be created together with a
+    chat object by setting ``with_self`` value to ``True``. The created object
+    is accessible at :attr:`.Chat.self`.
+
+    The default ID of a :class:`.SelfChatMember` object is
+    :attr:`.SelfChatMember.SELF_ID`, and the default name is a translated
+    version of the word “You”.
+
+    You are RECOMMENDED to change the ID of this object if provided by your IM
+    platform, and you MAY change the name or alias of this object depending on
+    your needs.
 
     Note:
-        ``SelfChatMember`` objects are picklable, thus it is strongly recommended
+        ``SelfChatMember`` objects are picklable, thus it is RECOMMENDED
         to keep any object of its subclass also picklable.
+
+    Attributes:
+        SELF_ID: The default ID of a :class:`.SelfChatMember`.
     """
 
     SELF_ID = ChatID("__self__")
@@ -293,7 +309,7 @@ class SelfChatMember(ChatMember):
             name (str): Name of the member.
             alias (Optional[str]): Alternative name of the member, usually set by user.
             uid (:obj:`.ChatID` (str)):
-                Unique ID of the member. This should be unique within the channel.
+                Unique ID of the member. This MUST be unique within the channel.
                 This ID can be the same with a private chat of the same person.
             description (str):
                 A text description of the member, usually known as “bio”,
@@ -312,11 +328,14 @@ class SystemChatMember(ChatMember):
     """A system account/prompt as member of a chat.
 
     Use this chat to send messages that is not from any specific member.
-    Middlewares are recommended to use this member type to communicate with
-    the user in an existing chat.
+    Middlewares are RECOMMENDED to use this member type to communicate with
+    the User in an existing chat.
+
+    Chat bots created by the users of the IM platform SHOULD NOT be created
+    as a :class:`.SystemChatMember`, but a plain :class:`.ChatMember` instead.
 
     Note:
-        ``SystemChatMember`` objects are picklable, thus it is strongly recommended
+        ``SystemChatMember`` objects are picklable, thus it is RECOMMENDED
         to keep any object of its subclass also picklable.
     """
 
@@ -333,7 +352,7 @@ class SystemChatMember(ChatMember):
             name (str): Name of the member.
             alias (Optional[str]): Alternative name of the member, usually set by user.
             uid (:obj:`.ChatID` (str)):
-                Unique ID of the member. This should be unique within the channel.
+                Unique ID of the member. This MUST be unique within the channel.
                 This ID can be the same with a private chat of the same person.
             description (str):
                 A text description of the member, usually known as “bio”,
@@ -350,10 +369,37 @@ class SystemChatMember(ChatMember):
 
 class Chat(BaseChat, ABC):
     """
-    A chat object, indicates a user, a group, or a system chat.
+    A chat object, indicates a user, a group, or a system chat. This class is
+    abstract. No instance can be created directly from this class.
+
+    If your IM platform is providing an ID of the User Themself, and it is using
+    this ID to indicate the author of a message, you SHOULD update
+    :attr:`Chat.self.uid <.BaseChat.uid>` accordingly.
+
+    .. code-block:: python
+
+        >>> channel.my_chat_id
+        "david_divad"
+        >>> chat = Chat(channel=channel, name="Alice", id=ChatID("alice123"))
+        >>> chat.self.id = channel.my_chat_id
+
+    By doing so, you can get the author in one step:
+
+    .. code-block:: python
+
+        author = chat.get_member(author_id)
+
+    ... instead of using a condition check:
+
+    .. code-block:: python
+
+        if author_id == channel.my_chat_id:
+            author = chat.self
+        else:
+            author = chat.get_member(author_id)
 
     Note:
-        ``Chat`` objects are picklable, thus it is strongly recommended
+        ``Chat`` objects are picklable, thus it is RECOMMENDED
         to keep any object of its subclass also picklable.
 
     Attributes:
@@ -363,7 +409,7 @@ class Chat(BaseChat, ABC):
         module_name (str): Name of the module.
         name (str): Name of the chat.
         alias (Optional[str]): Alternative name of the chat, usually set by user.
-        uid (:obj:`~.ChatID` (str)): Unique ID of the chat. This should be unique within the channel.
+        uid (:obj:`~.ChatID` (str)): Unique ID of the chat. This MUST be unique within the channel.
         description (str):
             A text description of the chat, usually known as “bio”,
             “description”, “purpose”, or “topic” of the chat.
@@ -374,7 +420,7 @@ class Chat(BaseChat, ABC):
             object and implement a ``@property`` method set for loading members on
             demand.
         vendor_specific (Dict[str, Any]): Any vendor specific attributes.
-        self (Optional[:obj:`SelfChatMember`]): the user as a member of the chat (if available).
+        self (Optional[:obj:`SelfChatMember`]): the User as a member of the chat (if available).
     """
 
     self: Optional[SelfChatMember]
@@ -396,7 +442,7 @@ class Chat(BaseChat, ABC):
             module_name: Name of the module.
             name (str): Name of the chat.
             alias (Optional[str]): Alternative name of the chat, usually set by user.
-            id: Unique ID of the chat. This should be unique within the channel.
+            id: Unique ID of the chat. This MUST be unique within the channel.
             description (str):
                 A text description of the chat, usually known as “bio”,
                 “description”, “purpose”, or “topic” of the chat.
@@ -405,7 +451,7 @@ class Chat(BaseChat, ABC):
             members (MutableSequence[:obj:`.ChatMember`]): Provide a list of members of the chat.
                 Defaulted to an empty :obj:`list`.
             vendor_specific (Dict[str, Any]): Any vendor specific attributes.
-            with_self (bool): Initialize the chat with the user themself as a member.
+            with_self (bool): Initialize the chat with the User Themself as a member.
         """
         super().__init__(channel=channel, middleware=middleware, module_name=module_name, channel_emoji=channel_emoji,
                          module_id=module_id, name=name, alias=alias, id=id, uid=uid,
@@ -552,24 +598,24 @@ class Chat(BaseChat, ABC):
 
 
 class PrivateChat(Chat):
-    """A private chat, where usually only the user themself and the other
-    participant are in the chat. Chat bots shall also be categorized under this
+    """A private chat, where usually only the User Themself and the other
+    participant are in the chat. Chat bots SHOULD also be categorized under this
     type.
 
-    There should only be at most one non-system member of the chat apart from
-    the user themself, otherwise it might lead to unintended behavior.
+    There SHOULD only be at most one non-system member of the chat apart from
+    the User Themself, otherwise it might lead to unintended behavior.
 
     This object is by default initialized with the other participant as its
     member.
 
     If the ``with_self`` argument is ``True`` (which is the default setting),
-    the user themself would also be initialized as a member of the chat.
+    the User Themself would also be initialized as a member of the chat.
 
     Args:
         other: the other participant of the chat as a member
 
     Note:
-        ``PrivateChat`` objects are picklable, thus it is strongly recommended
+        ``PrivateChat`` objects are picklable, thus it is RECOMMENDED
         to keep any object of its subclass also picklable.
     """
     other: ChatMember
@@ -598,25 +644,25 @@ class PrivateChat(Chat):
 
 
 class SystemChat(Chat):
-    """A system chat, where usually only the user themself and the other
+    """A system chat, where usually only the User Themself and the other
     participant (system chat member) are in the chat. This object is used to
     represent system chat where the other participant is neither a user nor a
     chat bot of the remote IM.
 
-    Middlewares are recommended to create chats with this type when they want
+    Middlewares are RECOMMENDED to create chats with this type when they want
     to send messages in this type.
 
     This object is by default initialized with the system participant as its
     member.
 
     If the ``with_self`` argument is ``True`` (which is the default setting),
-    the user themself would also be initialized as a member of the chat.
+    the User Themself would also be initialized as a member of the chat.
 
     Args:
         other: the other participant of the chat as a member
 
     Note:
-        ``SystemChat`` objects are picklable, thus it is strongly recommended
+        ``SystemChat`` objects are picklable, thus it is RECOMMENDED
         to keep any object of its subclass also picklable.
     """
 
@@ -646,7 +692,7 @@ class GroupChat(Chat):
     Members can be added with the :meth:`.add_member` method.
 
     If the ``with_self`` argument is ``True`` (which is the default setting),
-    the user themself would also be initialized as a member of the chat.
+    the User Themself would also be initialized as a member of the chat.
 
     Examples:
 
@@ -662,7 +708,7 @@ class GroupChat(Chat):
          ChatMember(chat=<GroupChat: Wonderland (wonderland001) @ Example slave channel>, name='bob', alias='Bob James', uid='bob', vendor_specific={}, description='')]
 
     Note:
-        ``GroupChat`` objects are picklable, thus it is strongly recommended
+        ``GroupChat`` objects are picklable, thus it is RECOMMENDED
         to keep any object of its subclass also picklable.
     """
 

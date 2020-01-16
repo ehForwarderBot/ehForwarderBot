@@ -156,18 +156,18 @@ class MessageRemoval(Status):
     “recall a message”, “unsend”, or “revoke a message” as well, depends on
     the IM platform.
 
-    Some channels may not support removal of messages, and raises a
+    Some channels MAY not support removal of messages, and raises a
     :obj:`.exceptions.EFBOperationNotSupported` exception.
 
     Feedback by sending another ``MessageRemoval`` back is not required
-    when this object is sent from a master channel. Master channels should
+    when this object is sent from a master channel. Master channels SHOULD
     treat a successful delivery of this status as a successful removal.
 
     Attributes:
         source_channel (:obj:`.Channel`): Channel issued the status
         destination_channel (:obj:`.Channel`): Channel the status is issued to
         message (:obj:`~.message.Message`): Message to remove.
-            This may not be a complete :obj:`.message.Message` object.
+            This MAY not be a complete :obj:`.message.Message` object.
 
     Raises:
         :obj:`.exceptions.EFBOperationNotSupported`:
@@ -228,7 +228,7 @@ class ReactToMessage(Status):
     Created when user react to a message, issued from master channel.
 
     When this status is sent, a :obj:`.status.MessageReactionsUpdate` is
-    recommended to be issued back to master channel.
+    RECOMMENDED to be issued back to master channel.
 
     Args:
         chat (:obj:`Chat`): The chat where message is sent
@@ -279,8 +279,8 @@ class MessageReactionsUpdate(Status):
             Indicate reactions to the message. Dictionary key represents the
             reaction name, usually an emoji. Value is a collection of users
             who reacted to the message with that certain emoji.
-            All :obj:`Chat` objects in this dict must be of a user or a
-            group member.
+            All :obj:`Chat` objects in this dict MUST be members in the chat
+            of the message.
         destination_channel (:obj:`.MasterChannel`):
             Channel the status is issued to, which is always the master channel.
     """
@@ -295,8 +295,8 @@ class MessageReactionsUpdate(Status):
                 Indicate reactions to the message. Dictionary key represents the
                 reaction name, usually an emoji. Value is a collection of users
                 who reacted to the message with that certain emoji.
-                All :obj:`Chat` objects in this dict must be of a user or a
-                group member.
+                All :obj:`Chat` objects in this dict MUST be members in the chat
+                of the message.
         """
         self.chat: 'Chat' = chat
         self.msg_id: MessageID = msg_id

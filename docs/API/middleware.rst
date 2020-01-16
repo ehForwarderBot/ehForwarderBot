@@ -15,19 +15,19 @@ retrieving the path to the configuration files, etc).
 Accept commands from user through Master Channel
 ------------------------------------------------
 
-Despite we do not limit how users can perform actions to your
+Despite we do not limit how the User interact with your
 middleware, there are 2 common ways to do it through a
 master channel.
 
 Capture messages
 ~~~~~~~~~~~~~~~~
-If the action is chat-specific, you might want to catch
-messages that match specific pattern. Try to make the pattern
-easy to type but unique enough so that you don't accidentally
-catch messages that were meant to sent to the chat.
+If the action is chat-specific, you can capture messages with a
+specific pattern. Try to make the pattern easy to type but unique
+enough so that you don't accidentally catch messages that were
+meant to sent to the chat.
 
-You may also construct a virtual sender of type "System" to
-give response to the user.
+You may also construct a virtual chat or chat member of type "System"
+to give responses to the User.
 
 “Additional features”
 ~~~~~~~~~~~~~~~~~~~~~
@@ -39,7 +39,7 @@ at :ref:`slave-additional-features`.
 Chat-specific interactions
 --------------------------
 
-Middlewares can do chat-specific interactions through capturing messages
+Middlewares can have chat-specific interactions through capturing messages
 and reply to them with a chat member created by the middleware.
 
 .. admonition:: Example

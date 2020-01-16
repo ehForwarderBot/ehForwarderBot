@@ -9,13 +9,18 @@ users to install your package.  Please refer to related
 documentation and tutorials about PyPI and pip for
 publishing packages.
 
-For EFB modules, the package is recommended to have
+For EFB modules, the package is RECOMMENDED to have
 a name starts with ``efb-``, or in the format of
 ``efb-platform-type``, e.g. ``efb-irc-slave`` or
 ``efb-wechat-mp-filter-middleware``. If there is a
-collision of name, you can adjust the package name
-accordingly, but please start the package name with
-``efb-``.
+collision of name, you MAY adjust the package name
+accordingly while keeping the package name starting
+with ``efb-``.
+
+When you are ready, you may also want to add your module to
+the `Modules Repository`_ of EFB.
+
+.. _Modules Repository: https://efb-modules.1a23.studio
 
 Module discovery
 ----------------
@@ -32,10 +37,10 @@ specify the group and object as follows:
 * Group for middlewares: ``ehforwarderbot.middleware``
 
 Convention for object names is ``<author>.<platform>``,
-e.g. ``alice.irc``. This should also be your module's ID.
+e.g. ``alice.irc``. This MUST also be your module's ID.
 
-Object reference should point to your module's class,
-which extends either ``Channel`` or ``Middleware``.
+Object reference MUST point to your module's class,
+which is a subclass of either :class:`.Channel` or :class:`.Middleware`.
 
 Example
 -------
@@ -66,8 +71,8 @@ If you want to extend from, or make changes on existing
 modules for your own use, you can have your modules in
 the private modules :doc:`directory <../directories>`.
 
-For such modules, your channel ID must be the fully-qualified
+For such modules, your channel ID MUST be the fully-qualified
 name of the class. For example, if your class is located
 at ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``,
-the channel must have ID ``bob_ric_mod.IRCChannel`` for the
+the channel MUST have ID ``bob_ric_mod.IRCChannel`` for the
 framework to recognise it.

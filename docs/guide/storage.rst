@@ -36,7 +36,7 @@ Wizard
 
 If your module requires relatively complicated configuration, 
 it would be helpful to provide users with a wizard to 
-*prerequisite of your module* and *guide them to setup your module for use*.
+*check prerequisites of your module* and *guide them to setup your module for use*.
 
 From version 2.0.0b12, EFB introduced a centralised wizard program
 to allow users to enable or disable modules in a text-based user 
@@ -47,7 +47,7 @@ with `Setuptools' Entry Point feature`__.
 .. __: https://setuptools.readthedocs.io/en/latest/setuptools.html#dynamic-discovery-of-services-and-plugins
 
 The group for wizard program is ``ehforwarderbot.wizard``, and
-the entry point function must accept 2 positional arguments:
+the entry point function MUST accept 2 positional arguments:
 profile ID and instance ID.
 
 Example
@@ -86,4 +86,6 @@ Example
         input()
 
         step1()
+
+        # ...
         

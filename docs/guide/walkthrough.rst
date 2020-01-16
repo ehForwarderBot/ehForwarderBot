@@ -35,42 +35,52 @@ Concepts to know
 ----------------
 
 Module
-    A common term that means both channels and
+    A common term that refers to both channels and
     middlewares.
 
-Chat
-    A place where conversations happen. Consists of User
-    Chats (private messages), Group Chats, and System
-    Chats.
+The User (Themself) [#f1]_
+    This term can refer to the user of the current instance
+    of EH Forwarder Bot, operating the master channel, and
+    the account of an IM platform logged in by a slave
+    channel.
 
-User / User Chat
-    A user of the IM platform that the user can possibly
-    chat with, or a conversation with them. Messages from
-    such conversation has one and only one unique author.
-    *(Except messages that are from the user themself, or
-    from the system.)*
+Chat
+    A place where conversations happen, it can be either a
+    private chat, a proup chat, or a system chat.
+
+Private chat
+    A conversation with a single person on the IM platform.
+    Messages from a private conversation shall only has an
+    author of the User Themself, the other person, or a
+    “system member”.
 
     For platforms that support bot or something similar,
     they would also be considered as a "user", unless
     messages in such chat can be sent from any user other
     than the bot.
 
-    For chats that the user receive messages, but cannot
+    For chats that the User receive messages, but cannot
     send message to, it should also be considered as a
-    user chat, only to raise an exception when messages
+    private chat, only to raise an exception when messages
     was trying to send to the chat.
 
 Group chat
     A chat that involves more than one user. A group chat
-    should have a list of members (users) that can involve
-    in the conversation.
+    MUST provide a list of members that can involve in the
+    conversation.
 
 System chat
     A chat that is a part of the system. Usually used for
-    chats that are either a part of the IM platform, or
-    the channel. Slave channels can use this feature to
-    send system message and notifications to the master
-    channel.
+    chats that are either a part of the IM platform, the
+    slave channel, or a middleware. Slave channels can
+    use this chat type to send system message and
+    notifications to the master channel.
+
+Chat member
+    A participant of a chat. It can be the User Themself,
+    another person or bot in the chat, or a virtual one
+    created by the IM platform, the slave channel, or a
+    middleware.
 
 Message
     Messages are delivered strictly between the master
@@ -103,7 +113,7 @@ Master Channels
 ---------------
 
 Master channels is relatively more complicated and also
-more flexible. As it directly faces the user, its user
+more flexible. As it directly faces the User, its user
 interface should be user-friendly, or at least friendly
 to the targeted users.
 
@@ -112,7 +122,7 @@ The job of the master channel includes:
 1. Receive, process and display messages from slave
    channels.
 2. Display a full list of chats from all slave channels.
-3. Offer an interface for the user to use "extra functions"
+3. Offer an interface for the User to use "extra functions"
    from slave channels.
 4. Process updates from slave channels.
 5. Provide a user-friendly interface as far as possible.
@@ -128,3 +138,7 @@ messages processed by the preceding middleware if
 available. Once a middleware nullify a message or status,
 the message will not be processed and delivered any
 further.
+
+
+.. [#f1] “Themself” here is used as a derived form of a
+    gender-neutral singular third-person pronoun.
