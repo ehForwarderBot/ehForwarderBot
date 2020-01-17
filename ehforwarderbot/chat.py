@@ -159,21 +159,21 @@ class BaseChat(ABC):
             AssertionError: When this chat is invalid.
         """
         assert self.module_id, "Module ID should not be empty"
-        assert isinstance(
-            self.module_id, str), f"Module ID should be a string, {self.module_id!r} found."
-        assert isinstance(
-            self.module_name, str), f"Module Name should be a string, {self.module_name!r} found."
-        assert isinstance(
-            self.channel_emoji, str), f"Channel emoji should be a string, {self.channel_emoji!r} found."
+        assert isinstance(self.module_id, str), \
+            f"Module ID should be a string, {self.module_id!r} found."
+        assert isinstance(self.module_name, str), \
+            f"Module Name should be a string, {self.module_name!r} found."
+        assert isinstance(self.channel_emoji, str), \
+            f"Channel emoji should be a string, {self.channel_emoji!r} found."
         assert self.uid, "Entity ID should not be empty"
-        assert isinstance(
-            self.uid, str), f"Entity id should be a string, {self.uid!r} found."
-        assert isinstance(
-            self.name, str), f"Entity name should be a string, {self.name!r} found."
-        assert isinstance(self.alias,
-                          (str, type(None))), f"Entity alias should be either a string or None, {self.name!r} found."
-        assert isinstance(
-            self.description, str), f"Entity description should be a string, {self.description!r} found."
+        assert isinstance(self.uid, str), \
+            f"Entity id should be a string, {self.uid!r} found."
+        assert isinstance(self.name, str), \
+            f"Entity name should be a string, {self.name!r} found."
+        assert isinstance(self.alias, (str, type(None))), \
+            f"Entity alias should be either a string or None, {self.name!r} found."
+        assert isinstance(self.description, str), \
+            f"Entity description should be a string, {self.description!r} found."
 
     def __eq__(self, other):
         return self.module_id == other.module_id and self.uid == other.uid
