@@ -59,7 +59,7 @@ and reply to them with a chat member created by the middleware.
                 # For difference between `make_system_member()` and `add_system_member()`,
                 # see their descriptions above.
                 author = message.chat.make_system_member(
-                    id="__middleware_example_time_reporter__",
+                    uid="__middleware_example_time_reporter__",
                     name="Time reporter",
                     middleware=self
                 )
@@ -81,6 +81,5 @@ and reply to them with a chat member created by the middleware.
                 # and the slave channel.
                 return None
 
-            # Continue to deliver messages not matching the pattern above.
             # Continue to deliver messages not matching the pattern above.
             return message

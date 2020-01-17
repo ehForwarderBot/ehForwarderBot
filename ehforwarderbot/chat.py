@@ -380,8 +380,8 @@ class Chat(BaseChat, ABC):
 
         >>> channel.my_chat_id
         "david_divad"
-        >>> chat = Chat(channel=channel, name="Alice", id=ChatID("alice123"))
-        >>> chat.self.id = channel.my_chat_id
+        >>> chat = Chat(channel=channel, name="Alice", uid=ChatID("alice123"))
+        >>> chat.self.uid = channel.my_chat_id
 
     By doing so, you can get the author in one step:
 
