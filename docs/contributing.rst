@@ -64,7 +64,7 @@ Provide more context by answering these questions:
 Include details about your configuration and environment:
 
 * **What version of EFB are you using?** You can get the
-  version by using the flag `--version`.
+  version by using the flag ``--version``.
 * **What's the name and version of the OS you're using?**
 
 .. attention::

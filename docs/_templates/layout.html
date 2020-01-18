@@ -9,7 +9,7 @@
 <div
   id="crowdjet-container"
   data-project-id="299617"
-  {% if language and language != 'en' -%}
+  {% if language and not language.startswith('en') -%}
   data-language-code="{{ language.replace('_', '-') }}"
   {%- endif %}
   style="bottom: 90px; left: 20px;">
