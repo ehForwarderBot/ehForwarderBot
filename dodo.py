@@ -28,7 +28,7 @@ def task_gettext():
     # sphinx_template_sources = glob.glob("./docs/_templates/*.html")
     # sphinx_template_sources.append("./docs/conf.py")
     sphinx_template_sources = ["./docs/conf.py"]
-    extract_sphinx_conf = (f"xgettext -L Python -o {sphinx_template_dest} " +
+    extract_sphinx_conf = (f"xgettext -o {sphinx_template_dest} " +
                            " ".join(sphinx_template_sources))
     sources.extend(sphinx_template_sources)
     sources.append("docs/conf.py")
