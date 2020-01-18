@@ -73,19 +73,6 @@ Everyone is welcomed to raise an issue or submit a pull request,
 just remember to read through and follow the
 :doc:`contribution guideline <./contributing>` before you do so.
 
-.. tabs::
-
-   .. tab:: Apples
-
-      Apples are green, or sometimes red.
-
-   .. tab:: Pears
-
-      Pears are green.
-
-   .. tab:: Oranges
-
-      Oranges are orange.
 
 Related articles
 ================
