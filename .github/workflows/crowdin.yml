@@ -5,6 +5,8 @@ on:
     paths:
       - 'ehforwarderbot/**.py'
       - 'docs/**.rst'
+      - 'docs/conf.py'
+      - 'dodo.py'
 
 jobs:
   crowdin:
