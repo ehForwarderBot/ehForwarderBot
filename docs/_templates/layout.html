@@ -1,0 +1,21 @@
+{%- extends "alabaster/layout.html" %}
+
+{%- block footer %}
+  {{ super() }}
+<script
+  type="text/javascript"
+  src="https://crowdin.com/js/crowdjet/crowdjet.js">
+</script>
+<div
+  id="crowdjet-container"
+  data-project-id="299617"
+  {% if language and language != 'en' -%}
+  data-language-code="{{ language.replace('_', '-') }}"
+  {%- endif %}
+  style="bottom: 90px; right: 20px;">
+</div>
+<div
+  id="crowdjet-expand-container"
+  style="bottom: 10px; right: 20px;">
+</div>
+{% endblock %}
