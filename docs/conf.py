@@ -318,7 +318,6 @@ def setup(self):
     locale_dir = os.path.join(package_dir, 'locale')
     self.add_message_catalog(MESSAGE_CATALOG_NAME, locale_dir)
     self.add_message_catalog("sphinx", locale_dir)
-    print("==== loaded message catalog")
     self.config.language = conversion.get(self.config.language, self.config.language)
     self.config.overrides['language'] = conversion.get(self.config.overrides.get('language', None),
                                                        self.config.overrides.get('language', None))
