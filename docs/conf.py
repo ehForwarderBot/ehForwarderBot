@@ -19,12 +19,20 @@
 #
 import os
 import sys
+from os import path
+
+import sphinxcontrib.plantuml
+from sphinx import addnodes
+from typing import Sequence
+from sphinx.locale import get_translation
 
 sys.path.insert(0, os.path.abspath('..'))
 
 __version__ = "0.0.0"
 
 exec(open('../ehforwarderbot/__version__.py').read())
+MESSAGE_CATALOG_NAME = "efb_docs_config"
+_ = get_translation(MESSAGE_CATALOG_NAME)
 
 # -- General configuration ------------------------------------------------
 
@@ -63,8 +71,10 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'EH Forwarder Bot'
-copyright = '2016 — 2020 Eana Hufwe and the EH Forwarder Bot contributors'
-author = 'Eana Hufwe, and the EH Forwarder Bot contributors'
+copyright = _('2016 — 2020 Eana Hufwe and the EH Forwarder Bot contributors')
+author = _('Eana Hufwe, and the EH Forwarder Bot contributors')
+docs_title = _('EH Forwarder Bot Documentation')
+description = _('An extensible message tunneling chat bot framework.')
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -120,12 +130,20 @@ html_static_path = ['_static']
 # html_logo = "_static/logo.png"
 html_theme = 'alabaster'
 html_sidebars = {
+    'index': [
+        'about_index.html',
+        'navigation.html',
+        'searchbox.html',
+        'donate.html',
+        'translate.html',
+    ],
     '**': [
         'about.html',
         'navigation.html',
         'relations.html',
         'searchbox.html',
         'donate.html',
+        'translate.html',
     ]
 }
 html_theme_options = {
@@ -134,17 +152,17 @@ html_theme_options = {
     'logo_text_align': 'left; font-size: 1.5em',
     'touch_icon': 'logo.png',
     'github_button': True,
-    'github_type':  'star',
+    'github_type': 'star',
     'github_user': 'blueset',
     'github_repo': 'ehforwarderbot',
-    'description': 'An extensible message tunneling chat bot framework.',
+    'description': description,
     'donate_url': 'https://github.com/blueset/.github',
     'github_banner': "github_banner.svg",
     'show_related': True,
     'show_relbars': True,
     'extra_nav_links': {
-        'Community wiki': 'https://efb.1a23.studio/wiki',
-        'Modules repository': 'https://efb-modules.1a23.studio/',
+        _('Community wiki'): 'https://efb.1a23.studio/wiki',
+        _('Modules repository'): 'https://efb-modules.1a23.studio/',
     }
 }
 
@@ -185,8 +203,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'ehForwarderBot.tex', 'EH Forwarder Bot Documentation',
-     'Eana Hufwe', 'manual'),
+    (master_doc, 'ehForwarderBot.tex', docs_title, author, 'manual'),
 ]
 
 # -- Options for manual page output ---------------------------------------
@@ -194,8 +211,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'ehforwarderbot', 'EH Forwarder Bot Documentation',
-     [author], 1)
+    (master_doc, 'ehforwarderbot', docs_title, author, 1)
 ]
 
 # -- Options for Texinfo output -------------------------------------------
@@ -204,8 +220,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'ehForwarderBot', 'EH Forwarder Bot Documentation',
-     author, 'ehForwarderBot', 'One line description of project.',
+    (master_doc, 'ehForwarderBot', docs_title,
+     author, 'ehForwarderBot', description,
      'Miscellaneous'),
 ]
 
@@ -262,7 +278,46 @@ graphviz_output_format = "svg"
 plantuml_output_format = "svg"
 plantuml_latex_output_format = "pdf"
 
+_plantuml_node = sphinxcontrib.plantuml.plantuml
+
+
+def preserve_original_messages(self) -> None:
+    """Preserve original translatable messages."""
+    self.original_uml = self['uml']
+    self.original_caption = self.get('caption', None)
+
+
+def apply_translated_message(self, original_message: str, translated_message: str) -> None:
+    """Apply translated message."""
+    if self.original_uml == original_message:
+        self['uml'] = translated_message
+    elif self.original_caption == original_message:
+        self['caption'] = translated_message
+
+
+def extract_original_messages(self) -> Sequence[str]:
+    """Extract translation messages.
+
+    :returns: list of extracted messages or messages generator
+    """
+    l = (self['uml'],)
+    if 'caption' in self:
+        l += (self['caption'],)
+    return l
+
+
+sphinxcontrib.plantuml.plantuml.__bases__ = (addnodes.translatable,) + sphinxcontrib.plantuml.plantuml.__bases__
+sphinxcontrib.plantuml.plantuml.preserve_original_messages = preserve_original_messages
+sphinxcontrib.plantuml.plantuml.apply_translated_message = apply_translated_message
+sphinxcontrib.plantuml.plantuml.extract_original_messages = extract_original_messages
+
+
 def setup(self):
+    package_dir = path.abspath(path.dirname(__file__))
+    locale_dir = os.path.join(package_dir, 'locale')
+    self.add_message_catalog(MESSAGE_CATALOG_NAME, locale_dir)
+    self.add_message_catalog("sphinx", locale_dir)
+    print("==== loaded message catalog")
     self.config.language = conversion.get(self.config.language, self.config.language)
     self.config.overrides['language'] = conversion.get(self.config.overrides.get('language', None),
                                                        self.config.overrides.get('language', None))

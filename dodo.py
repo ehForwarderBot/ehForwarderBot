@@ -23,10 +23,21 @@ def task_gettext():
     command = "xgettext --add-comments=TRANSLATORS -o " + pot + " " + " ".join(sources)
     sources += glob.glob("./docs/**/*.rst", recursive=True)
     targets = [pot] + glob.glob("./docs/_build/locale/**/*.pot", recursive=True)
+    sphinx_template_dest = "./docs/_build/locale/sphinx.pot"
+    sphinx_template_dest = "./docs/_build/locale/efb_docs_config.pot"
+    # sphinx_template_sources = glob.glob("./docs/_templates/*.html")
+    # sphinx_template_sources.append("./docs/conf.py")
+    sphinx_template_sources = ["./docs/conf.py"]
+    extract_sphinx_conf = (f"xgettext -L Python -o {sphinx_template_dest} " +
+                           " ".join(sphinx_template_sources))
+    sources.extend(sphinx_template_sources)
+    sources.append("docs/conf.py")
+    targets.append("docs/_build/locale/sphinx.pot")
     return {
         "actions": [
             command,
-            "sphinx-build -b gettext ./docs docs/_build/locale/"
+            extract_sphinx_conf,
+            "sphinx-build -b gettext ./docs docs/_build/locale/",
         ],
         "targets": targets,
         "file_dep": sources

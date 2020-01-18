@@ -1,0 +1,20 @@
+{%- set previous_chapter, next_chapter = _('previous chapter'), _('next chapter') -%}
+<div class="relations">
+<h3>{{ _("Related Topics") }}</h3>
+<ul>
+  <li><a href="{{ pathto(master_doc) }}">{{ _("Documentation overview") }}</a><ul>
+  {%- for parent in parents %}
+  <li><a href="{{ parent.link|e }}">{{ parent.title }}</a><ul>
+  {%- endfor %}
+    {%- if prev %}
+      <li>{{ _("Previous: ") }}<a href="{{ prev.link|e }}" title="{{ previous_chapter }}">{{ prev.title }}</a></li>
+    {%- endif %}
+    {%- if next %}
+      <li>{{ _("Next: ") }}<a href="{{ next.link|e }}" title="{{ next_chapter }}">{{ next.title }}</a></li>
+    {%- endif %}
+  {%- for parent in parents %}
+  </ul></li>
+  {%- endfor %}
+  </ul></li>
+</ul>
+</div>
