@@ -1,11 +1,15 @@
 {%- extends "!layout.html" %}
 
-{%- block footer %}
-  {{ super() }}
+{%- block extrahead %}
+{{ super() }}
 <script
   type="text/javascript"
   src="https://crowdin.com/js/crowdjet/crowdjet.js">
 </script>
+{% endblock %}
+
+{%- block footer %}
+  {{ super() }}
 <div
   id="crowdjet-container"
   data-project-id="299617"
