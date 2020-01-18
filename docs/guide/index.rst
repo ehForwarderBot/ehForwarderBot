@@ -1,14 +1,17 @@
 Development guide
 =================
 
-This is a section that guides you on how to develop
+This section includes guides on how to develop
 channels and middlewares for EH Forwarder Bot.
 
 .. toctree::
+    :maxdepth: 2
+
     walkthrough
     slave
     master
     middleware
+    lifecycle
     media_processing
     storage
     packaging

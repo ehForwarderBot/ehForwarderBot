@@ -40,34 +40,30 @@ so as to isolate instances.
 Please avoid having two modules with the same set of module ID and instance ID
 as it may leads to unexpected results.
 
+For example, To enable the following modules:
 
-.. admonition:: Example
-    :class: tip
+* Master channel
+    * Demo Master (``foo.demo_master``)
+* Slave channels
+    * Demo Slave (``foo.demo_slave``)
+    * Dummy Slave (``bar.dummy``)
+    * Dummy Slave (``bar.dummy``) at ``alt`` instance
+* Middlewares
+    * Message Archiver (``foo.msg_archiver``)
+    * Null Middleware (``foo.null``)
 
-    To enable the following modules:
+``config.yaml`` should have the following lines:
 
-    * Master channel
-        * Demo Master (``foo.demo_master``)
-    * Slave channels
-        * Demo Slave (``foo.demo_slave``)
-        * Dummy Slave (``bar.dummy``)
-        * Dummy Slave (``bar.dummy``) at ``alt`` instance
-    * Middlewares
-        * Message Archiver (``foo.msg_archiver``)
-        * Null Middleware (``foo.null``)
+.. code-block:: yaml
 
-    ``config.yaml`` should have the following lines:
-
-    .. code-block:: yaml
-
-        master_channel: foo.demo_master
-        slave_channels:
-        - foo.demo_slave
-        - bar.dummy
-        - bar.dummy#alt
-        middlewares:
-        - foo.msg_archiver
-        - foo.null
+    master_channel: foo.demo_master
+    slave_channels:
+    - foo.demo_slave
+    - bar.dummy
+    - bar.dummy#alt
+    middlewares:
+    - foo.msg_archiver
+    - foo.null
 
 Granulated logging control
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -77,31 +73,31 @@ by the framework and running modules, you can use specify the log
 configuration with `Python's configuration dictionary schema`_ under
 section ``logging``.
 
-.. admonition:: Example
+An example of logging control settings:
 
-    .. code-block:: yaml
+.. code-block:: yaml
 
-        logging:
-            version: 1
-            disable_existing_loggers: false
-            formatters:
-                standard:
-                    format: '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
-            handlers:
-                default:
+    logging:
+        version: 1
+        disable_existing_loggers: false
+        formatters:
+            standard:
+                format: '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+        handlers:
+            default:
+                level: INFO
+                formatter: standard
+                class: logging.StreamHandler
+                stream: ext://sys.stdout
+        loggers:
+              '':
+                    handlers: [default,]
                     level: INFO
-                    formatter: standard
-                    class: logging.StreamHandler
-                    stream: ext://sys.stdout
-            loggers:
-                  '':
-                        handlers: [default,]
-                        level: INFO
-                        propagate: true
-                  AliceIRCChannel:
-                        handlers: [default, ]
-                        level: WARN
-                        propagate: false
+                    propagate: true
+              AliceIRCChannel:
+                    handlers: [default, ]
+                    level: WARN
+                    propagate: false
 
 
 .. _Python's configuration dictionary schema: https://docs.python.org/3.7/library/logging.config.html#logging-config-dictschema

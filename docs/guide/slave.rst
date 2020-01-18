@@ -84,17 +84,16 @@ It can be expressed in a regular expression as::
 
     ^[A-Za-z][A-Za-z0-9_]{0,19}$
 
-.. admonition:: Example
-    :class: tip
+An example is as follows:
 
-    .. code-block:: python
-    
-        @extra(name="Echo",
-               desc="Return back the same string from input.\n"
-                    "Usage:\n"
-                    "    {function_name} text")
-        def echo(self, arguments: str = "") -> str:
-            return arguments
+.. code-block:: python
+
+    @extra(name="Echo",
+           desc="Return back the same string from input.\n"
+                "Usage:\n"
+                "    {function_name} text")
+    def echo(self, arguments: str = "") -> str:
+        return arguments
 
 Message commands
 ----------------

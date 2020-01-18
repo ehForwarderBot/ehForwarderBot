@@ -40,10 +40,14 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.viewcode',
               'sphinx.ext.githubpages',
               'sphinx.ext.napoleon',
+              'sphinx.ext.autosummary',
+              'sphinx.ext.graphviz',
+              'sphinx.ext.inheritance_diagram',
               'sphinx.ext.autosectionlabel',
               'sphinx.ext.intersphinx',
               'sphinx_autodoc_typehints',
-              'sphinxcontrib.restbuilder']
+              'sphinxcontrib.restbuilder',
+              'sphinxcontrib.plantuml']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -115,6 +119,15 @@ html_static_path = ['_static']
 # html_theme = 'readable'
 # html_logo = "_static/logo.png"
 html_theme = 'alabaster'
+html_sidebars = {
+    '**': [
+        'about.html',
+        'navigation.html',
+        'relations.html',
+        'searchbox.html',
+        'donate.html',
+    ]
+}
 html_theme_options = {
     'logo': 'logo.png',
     'logo_name': True,
@@ -127,6 +140,12 @@ html_theme_options = {
     'description': 'An extensible message tunneling chat bot framework.',
     'donate_url': 'https://github.com/blueset/.github',
     'github_banner': "github_banner.svg",
+    'show_related': True,
+    'show_relbars': True,
+    'extra_nav_links': {
+        'Community wiki': 'https://efb.1a23.studio/wiki',
+        'Modules repository': 'https://efb-modules.1a23.studio/',
+    }
 }
 
 # import sphinx_py3doc_enhanced_theme
@@ -238,6 +257,10 @@ autosectionlabel_prefix_document = True
 # When fetching remote inventory files, proxy settings will be read from the
 # $HTTP_PROXY environment variable.
 intersphinx_mapping = {'python': ('https://docs.python.org/3', None)}
+
+graphviz_output_format = "svg"
+plantuml_output_format = "svg"
+plantuml_latex_output_format = "pdf"
 
 def setup(self):
     self.config.language = conversion.get(self.config.language, self.config.language)

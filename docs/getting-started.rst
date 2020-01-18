@@ -112,29 +112,26 @@ Please note that although you can have more than one slaves channels
 running at the same time, you can only have exactly one master channels
 running in one profile. Meanwhile, middlewares are completely optional.
 
-.. admonition:: Example
-    :class: tip
+For example, to enable the following modules:
 
-    To enable the following modules:
+* Master channel
+    * Demo Master (``foo.demo_master``)
+* Slave channels
+    * Demo Slave (``foo.demo_slave``)
+    * Dummy Slave (``bar.dummy``)
+* Middlewares
+    * Null Middleware (``foo.null``)
 
-    * Master channel
-        * Demo Master (``foo.demo_master``)
-    * Slave channels
-        * Demo Slave (``foo.demo_slave``)
-        * Dummy Slave (``bar.dummy``)
-    * Middlewares
-        * Null Middleware (``foo.null``)
+``config.yaml`` should have the following lines:
 
-    ``config.yaml`` should have the following lines:
+.. code-block:: yaml
 
-    .. code-block:: yaml
-
-        master_channel: foo.demo_master
-        slave_channels:
-        - foo.demo_slave
-        - bar.dummy
-        middlewares:
-        - foo.null
+    master_channel: foo.demo_master
+    slave_channels:
+    - foo.demo_slave
+    - bar.dummy
+    middlewares:
+    - foo.null
 
 
 .. _modules repository: https://efb-modules.1a23.studio

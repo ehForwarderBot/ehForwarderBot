@@ -42,44 +42,45 @@ Chat-specific interactions
 Middlewares can have chat-specific interactions through capturing messages
 and reply to them with a chat member created by the middleware.
 
-.. admonition:: Example
+The following code is an example of a middleware that interact with the user
+by capturing messages.
 
-    When the master channel sends a message with a text starts with ``time```,
-    the middleware captures this message and reply with the name of the chat
-    and current time on the server. The message captured is not delivered to
-    any following middlewares or the slave channel.
+When the master channel sends a message with a text starts with ``time```,
+the middleware captures this message and reply with the name of the chat
+and current time on the server. The message captured is not delivered to
+any following middlewares or the slave channel.
 
-    .. code-block:: python
+.. code-block:: python
 
-        def process_message(self: Middleware, message: Message) -> Optional[Message]:
-            if message.deliver_to != coordinator.master and \  # sent from master channel
-                text.startswith('time`'):
+    def process_message(self: Middleware, message: Message) -> Optional[Message]:
+        if message.deliver_to != coordinator.master and \  # sent from master channel
+            text.startswith('time`'):
 
-                # Make a system chat object.
-                # For difference between `make_system_member()` and `add_system_member()`,
-                # see their descriptions above.
-                author = message.chat.make_system_member(
-                    uid="__middleware_example_time_reporter__",
-                    name="Time reporter",
-                    middleware=self
-                )
+            # Make a system chat object.
+            # For difference between `make_system_member()` and `add_system_member()`,
+            # see their descriptions above.
+            author = message.chat.make_system_member(
+                uid="__middleware_example_time_reporter__",
+                name="Time reporter",
+                middleware=self
+            )
 
-                # Make a reply message
-                reply = Message(
-                    uid=f"__middleware_example_{uuid.uuid4()}__",
-                    text=f"Greetings from chat {message.chat.name} on {datetime.now().strftime('%c')}.",
-                    chat=chat,
-                    author=author,  # Using the new chat we created before
-                    type=MsgType.Text,
-                    target=message,  # Quoting the incoming message
-                    deliver_to=coordinator.master  # message is to be delivered to master
-                )
-                # Send the message back to master channel
-                coordinator.send_message(reply)
+            # Make a reply message
+            reply = Message(
+                uid=f"__middleware_example_{uuid.uuid4()}__",
+                text=f"Greetings from chat {message.chat.name} on {datetime.now().strftime('%c')}.",
+                chat=chat,
+                author=author,  # Using the new chat we created before
+                type=MsgType.Text,
+                target=message,  # Quoting the incoming message
+                deliver_to=coordinator.master  # message is to be delivered to master
+            )
+            # Send the message back to master channel
+            coordinator.send_message(reply)
 
-                # Capture the message to prevent it from being delivered to following middlewares
-                # and the slave channel.
-                return None
+            # Capture the message to prevent it from being delivered to following middlewares
+            # and the slave channel.
+            return None
 
-            # Continue to deliver messages not matching the pattern above.
-            return message
+        # Continue to deliver messages not matching the pattern above.
+        return message

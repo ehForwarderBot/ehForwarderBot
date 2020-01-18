@@ -30,7 +30,7 @@ class MessageAttribute(ABC):
 
 class LinkAttribute(MessageAttribute):
     """
-    EFB link message attribute.
+    Attributes for link messages.
 
     Attributes:
         title (str): Title of the link.
@@ -70,7 +70,7 @@ class LinkAttribute(MessageAttribute):
 
 class LocationAttribute(MessageAttribute):
     """
-    EFB location message attribute.
+    Attributes for location messages.
 
     Attributes:
         latitude (float): Latitude of the location.
@@ -100,7 +100,7 @@ class LocationAttribute(MessageAttribute):
 
 class MessageCommand:
     """
-    Message command.
+    A message command.
 
     This object records a way to call a method in the module object.
     In case where the message has an :attr:`~.Message.author` from a different
@@ -158,8 +158,8 @@ class MessageCommand:
 
 
 class MessageCommands(List[MessageCommand]):
-    """
-    Message commands.
+    """Message commands.
+
     Message commands allow user to take action to
     a specific message, including vote, add friends, etc.
 
@@ -183,8 +183,8 @@ class MessageCommands(List[MessageCommand]):
 
 
 class StatusAttribute(MessageAttribute):
-    """
-    EFB Message status attribute.
+    """Attributes for status messages.
+
     Message with type ``Status`` notifies the other end to update a chat-specific
     status, such as typing, send files, etc.
 
@@ -247,7 +247,7 @@ class StatusAttribute(MessageAttribute):
 
 class Substitutions(Dict[Tuple[int, int], Union[Chat, ChatMember]]):
     """
-    EFB message substitutions.
+    Message text substitutions, or “@-references”.
 
     This is for the case when user "@-referred" a list of users in the message.
     Substitutions here is a dict of correspondence between the index of

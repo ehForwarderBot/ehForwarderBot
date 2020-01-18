@@ -6,6 +6,7 @@ current API of EH Forwarder Bot.
 
 .. toctree::
     :glob:
+    :maxdepth: 2
 
     *
 

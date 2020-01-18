@@ -11,91 +11,96 @@ and a Coordinator.
     :align: center
     :alt: EFB Project Structure
 
-Master Channel
-    The channel that directly interact with the user.
-    There is guaranteed to have one and only one master
-    channel in an EFB Session.
+.. glossary::
 
-Slave Channel
-    The channel that delivers messages to and from
-    their relative platform. There should be at lease one
-    slave channel in an EFB Session.
+    master channel
+        The channel that directly interact with :term:`the User`.
+        It is guaranteed to have one and only one master
+        channel in an EFB session.
 
-Coordinator
-    Component of the framework that maintains the
-    instances of channels, and delivers messages between
-    channels.
+    slave channel
+        The channel that delivers messages to and from
+        their relative platform. There is at lease one
+        slave channel in an EFB session.
 
-Middleware
-    Module that processes messages and statuses
-    delivered between channels, and make modifications
-    where needed.
+    coordinator
+        Component of the framework that maintains the
+        instances of channels, and delivers messages between
+        channels.
+
+    middleware
+        Module that processes messages and statuses
+        delivered between channels, and make modifications
+        where needed.
 
 Concepts to know
 ----------------
 
-Module
-    A common term that refers to both channels and
-    middlewares.
+.. glossary::
+    module
+        A common term that refers to both channels and
+        middlewares.
 
-The User (Themself) [#f1]_
-    This term can refer to the user of the current instance
-    of EH Forwarder Bot, operating the master channel, and
-    the account of an IM platform logged in by a slave
-    channel.
+    the User
+    the User Themself
+        This term [#f1]_ can refer to the user of the current instance
+        of EH Forwarder Bot, operating the master channel, and
+        the account of an IM platform logged in by a slave
+        channel.
 
-Chat
-    A place where conversations happen, it can be either a
-    private chat, a proup chat, or a system chat.
+    chat
+        A place where conversations happen, it can be either a
+        :term:`private chat`, a :term:`group chat`, or a
+        :term:`system chat`.
 
-Private chat
-    A conversation with a single person on the IM platform.
-    Messages from a private conversation shall only has an
-    author of the User Themself, the other person, or a
-    “system member”.
+    private chat
+        A conversation with a single person on the IM platform.
+        Messages from a private conversation shall only has an
+        author of :term:`the User Themself`, the other person, or a
+        “system member”.
 
-    For platforms that support bot or something similar,
-    they would also be considered as a "user", unless
-    messages in such chat can be sent from any user other
-    than the bot.
+        For platforms that support bot or something similar,
+        they would also be considered as a “user”, unless
+        messages in such chat can be sent from any user other
+        than the bot.
 
-    For chats that the User receive messages, but cannot
-    send message to, it should also be considered as a
-    private chat, only to raise an exception when messages
-    was trying to send to the chat.
+        For chats that :term:`the User` receive messages, but cannot
+        send message to, it should also be considered as a
+        private chat, only to raise an exception when messages
+        was trying to send to the chat.
 
-Group chat
-    A chat that involves more than one user. A group chat
-    MUST provide a list of members that can involve in the
-    conversation.
+    group chat
+        A chat that involves more than two members. A group chat
+        MUST provide a list of members that is involved in the
+        conversation.
 
-System chat
-    A chat that is a part of the system. Usually used for
-    chats that are either a part of the IM platform, the
-    slave channel, or a middleware. Slave channels can
-    use this chat type to send system message and
-    notifications to the master channel.
+    system chat
+        A chat that is a part of the system. Usually used for
+        chats that are either a part of the IM platform, the
+        :term:`slave channel`, or a :term:`middleware`.
+        :term:`Slave channel`\ s can use this chat type to send
+        system message and notifications to the master channel.
 
-Chat member
-    A participant of a chat. It can be the User Themself,
-    another person or bot in the chat, or a virtual one
-    created by the IM platform, the slave channel, or a
-    middleware.
+    chat member
+        A participant of a chat. It can be :term:`the User Themself`,
+        another person or bot in the chat, or a virtual one
+        created by the IM platform, the :term:`slave channel`, or a
+        :term:`middleware`.
 
-Message
-    Messages are delivered strictly between the master
-    channel and a slave channel. It usually carries
-    an information of a certain type.
+    message
+        Messages are delivered strictly between the master
+        channel and a slave channel. It usually carries
+        an information of a certain type.
 
-    Each message should at least have a unique ID that is
-    distinct within the slave channel related to it. Any
-    edited message should be able to be identified with
-    the same unique ID.
+        Each message should at least have a unique ID that is
+        distinct within the slave channel related to it. Any
+        edited message should be able to be identified with
+        the same unique ID.
 
-Status
-    Information that is not formatted into a message. Usually
-    includes updates of chats and members of chats, and
-    removal of messages.
+    status
+        Information that is not formatted into a message. Usually
+        includes updates of chats and members of chats, and
+        removal of messages.
 
 Slave Channels
 --------------
@@ -139,6 +144,7 @@ available. Once a middleware nullify a message or status,
 the message will not be processed and delivered any
 further.
 
+.. rubric:: Footnotes
 
 .. [#f1] “Themself” here is used as a derived form of a
     gender-neutral singular third-person pronoun.

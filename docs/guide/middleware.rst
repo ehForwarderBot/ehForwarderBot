@@ -45,6 +45,6 @@ Some ideas:
   programs
 - etc...
 
-API
----
+Implementation details
+----------------------
 See :class:`.Middleware`.

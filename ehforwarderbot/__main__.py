@@ -166,14 +166,14 @@ CAPTURE_LOG_ANALYSIS = "I agree to surrender my immortal soul and endless knowle
 
 
 def setup_telemetry(key: str):
-    """
-    Setup telemetry
+    """Setup telemetry.
 
     EH Forwarder Bot framework includes NO code that uploads your log
     or any other data to anywhere.
 
     To enable telemetry functionality, additional modules need to be
-    installed manually. See :doc:`telemetry` for details.
+    installed manually, and explicit settings must be added in the configuration
+    file. See :doc:`telemetry` for details.
     """
 
     if not isinstance(key, str):
@@ -207,70 +207,75 @@ def telemetry_set_metadata(metadata: Dict[str, str]):
         telemetry.set_metadata(metadata)  # type: ignore
 
 
-def main():
-    args = parser.parse_args()
-
-    if getattr(args, "version", None):
-        versions = _("EH Forwarder Bot\n"
-                     "Version: {version}\n"
-                     "Python version:\n"
-                     "{py_version}\n"
-                     "Running on profile \"{profile}\"."
-                     ).format(version=__version__, py_version=sys.version, profile=args.profile)
-        try:
-            if args.profile:
-                coordinator.profile = str(args.profile)
-
-            conf = config.load_config()
-            # Master channel
-            master_channel: MasterChannel = utils.locate_module(conf['master_channel'], 'master')
-            instance_id = conf['master_channel'].split('#', 1)[1:]
-            instance_id = (instance_id and instance_id[0]) or _("Default instance")
-            versions += "\n\n" + _("Master channel:") + "\n    " + _("{name} ({id}) {version} # {instance_id}") \
-                .format(name=master_channel.channel_name,
-                        id=master_channel.channel_id,
-                        version=master_channel.__version__,
-                        instance_id=instance_id)
-            versions += "\n\n" + ngettext("Slave channel:", "Slave channels:", len(conf['slave_channels']))
-            for i in conf['slave_channels']:
-                instance_id = i.split('#', 1)[1:]
-                instance_id = (instance_id and instance_id[0]) or _("Default instance")
-                slave_channel: SlaveChannel = utils.locate_module(i, 'slave')
-                versions += "\n    " + _("{name} ({id}) {version} # {instance_id}") \
-                            .format(name=slave_channel.channel_name,
-                                    id=slave_channel.channel_id,
-                                    version=slave_channel.__version__,
-                                    instance_id=instance_id)
-            versions += "\n\n" + ngettext("Middleware:", "Middlewares:", len(conf['middlewares']))
-            if conf['middlewares']:
-                for i in conf['middlewares']:
-                    instance_id = i.split('#', 1)[1:]
-                    instance_id = (instance_id and instance_id[0]) or _("Default instance")
-                    middleware: Middleware = utils.locate_module(i, 'middleware')
-                    versions += "\n    " + _("{name} ({id}) {version} # {instance_id}") \
-                                .format(name=middleware.middleware_name,
-                                        id=middleware.middleware_id,
-                                        version=middleware.__version__,
-                                        instance_id=instance_id)
-            else:
-                versions += "\n    " + _("No middleware is enabled.")
-        finally:
-            print(versions)
-    else:
+def print_versions(args):
+    """Print versions and exit."""
+    versions = _("EH Forwarder Bot\n"
+                 "Version: {version}\n"
+                 "Python version:\n"
+                 "{py_version}\n"
+                 "Running on profile \"{profile}\"."
+                 ).format(version=__version__, py_version=sys.version, profile=args.profile)
+    try:
         if args.profile:
             coordinator.profile = str(args.profile)
 
         conf = config.load_config()
+        # Master channel
+        master_channel: MasterChannel = utils.locate_module(conf['master_channel'], 'master')
+        instance_id = conf['master_channel'].split('#', 1)[1:]
+        instance_id = (instance_id and instance_id[0]) or _("Default instance")
+        versions += "\n\n" + _("Master channel:") + "\n    " + _("{name} ({id}) {version} # {instance_id}") \
+            .format(name=master_channel.channel_name,
+                    id=master_channel.channel_id,
+                    version=master_channel.__version__,
+                    instance_id=instance_id)
+        versions += "\n\n" + ngettext("Slave channel:", "Slave channels:", len(conf['slave_channels']))
+        for i in conf['slave_channels']:
+            instance_id = i.split('#', 1)[1:]
+            instance_id = (instance_id and instance_id[0]) or _("Default instance")
+            slave_channel: SlaveChannel = utils.locate_module(i, 'slave')
+            versions += "\n    " + _("{name} ({id}) {version} # {instance_id}") \
+                .format(name=slave_channel.channel_name,
+                        id=slave_channel.channel_id,
+                        version=slave_channel.__version__,
+                        instance_id=instance_id)
+        versions += "\n\n" + ngettext("Middleware:", "Middlewares:", len(conf['middlewares']))
+        if conf['middlewares']:
+            for i in conf['middlewares']:
+                instance_id = i.split('#', 1)[1:]
+                instance_id = (instance_id and instance_id[0]) or _("Default instance")
+                middleware: Middleware = utils.locate_module(i, 'middleware')
+                versions += "\n    " + _("{name} ({id}) {version} # {instance_id}") \
+                    .format(name=middleware.middleware_name,
+                            id=middleware.middleware_id,
+                            version=middleware.__version__,
+                            instance_id=instance_id)
+        else:
+            versions += "\n    " + _("No middleware is enabled.")
+    finally:
+        print(versions)
 
-        setup_logging(args, conf)
-        setup_telemetry(conf['telemetry'])
 
-        atexit.register(stop_gracefully)
-        signal.signal(signal.SIGTERM, stop_gracefully)
-        signal.signal(signal.SIGINT, stop_gracefully)
+def main():
+    args = parser.parse_args()
 
-        init(conf)
-        poll()
+    if getattr(args, "version", None):
+        return print_versions(args)
+
+    if args.profile:
+        coordinator.profile = str(args.profile)
+
+    conf = config.load_config()
+
+    setup_logging(args, conf)
+    setup_telemetry(conf['telemetry'])
+
+    atexit.register(stop_gracefully)
+    signal.signal(signal.SIGTERM, stop_gracefully)
+    signal.signal(signal.SIGINT, stop_gracefully)
+
+    init(conf)
+    poll()
 
 
 if __name__ == '__main__':

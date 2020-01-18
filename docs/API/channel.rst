@@ -31,28 +31,25 @@ Statuses MUST be sent using :meth:`.coordinator.send_status`.
 When the object is passed onto the coordinator, it will be
 further processed by the middleware and then to its destination.
 
+For example, to send a message to the master channel
 
-.. admonition:: Example
+.. code-block:: python
 
-    To send a message to the master channel
-
-    .. code-block:: python
-
-        def on_message(self, data: Dict[str, Any]):
-            """Callback when a message is received by the slave channel from
-            the IM platform.
-            """
-            # Prepare message content ...
-            message = coordinator.send_message(Message(
-                chat=chat,
-                author=author,
-                type=message_type,
-                text=text,
-                # more details ...
-                uid=data['uid'],
-                deliver_to=coordinator.master
-            ))
-            # Post-processing ...
+    def on_message(self, data: Dict[str, Any]):
+        """Callback when a message is received by the slave channel from
+        the IM platform.
+        """
+        # Prepare message content ...
+        message = coordinator.send_message(Message(
+            chat=chat,
+            author=author,
+            type=message_type,
+            text=text,
+            # more details ...
+            uid=data['uid'],
+            deliver_to=coordinator.master
+        ))
+        # Post-processing ...
 
 About Channel ID
 ----------------

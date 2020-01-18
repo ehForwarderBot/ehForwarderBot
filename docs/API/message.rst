@@ -1,5 +1,20 @@
 Message
 =======
+.. py:currentmodule:: ehforwarderbot.message
+
+.. rubric:: Summary
+
+.. autosummary::
+
+    Message
+    LinkAttribute
+    LocationAttribute
+    StatusAttribute
+    MessageCommands
+    MessageCommand
+    Substitutions
+
+.. rubric:: Classes
 
 .. autoclass:: ehforwarderbot.message.Message
     :members:
