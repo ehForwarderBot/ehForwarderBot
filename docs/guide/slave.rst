@@ -22,19 +22,6 @@ slave channels when:
   if not more, as a user, and bots can be created
   easier than user account.
 
-Methods to be implemented
--------------------------
-
-Below is a list of methods that are required to be 
-implemented by the slave channel.
-
-* :meth:`.Channel.get_chat_picture`
-* :meth:`.Channel.get_chat`
-* :meth:`.Channel.get_chats`
-* :meth:`.Channel.poll`
-* :meth:`.Channel.send_message`
-* :meth:`.Channel.send_status`
-
 .. _slave-additional-features:
 
 Additional features
