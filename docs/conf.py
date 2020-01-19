@@ -317,19 +317,22 @@ sphinxcontrib.plantuml.plantuml.apply_translated_message = apply_translated_mess
 sphinxcontrib.plantuml.plantuml.extract_original_messages = extract_original_messages
 
 
-def setup(self):
-    package_dir = path.abspath(path.dirname(__file__))
-    locale_dir = os.path.join(package_dir, 'locale')
-    print("locale_dir exists:", os.path.exists(locale_dir), locale_dir)
-    print(locale.init([locale_dir], self.config.language, MESSAGE_CATALOG_NAME))
-    try:
-        print(gettext.find(MESSAGE_CATALOG_NAME, locale_dir, [self.config.language], all=True))
-    except Exception as e:
-        print("gettext.find emits", e)
-        traceback.print_exc(limit=2, file=sys.stdout)
+def html_page_context(self, pagename, templatename, context, doctree):
+    # Workaround to only add extra catalog after .mo files are built.
+    # This would happen on readthedocs server as .mo files are only built
+    # during compile time. Adding extra catalog to the theme only works
+    # after .mo is built.
+    if not self.catalog_added:
+        package_dir = path.abspath(path.dirname(__file__))
+        locale_dir = os.path.join(package_dir, 'locale')
+        self.add_message_catalog(MESSAGE_CATALOG_NAME, locale_dir)
+        self.add_message_catalog("sphinx", locale_dir)
+        self.catalog_added = True
 
-    self.add_message_catalog(MESSAGE_CATALOG_NAME, locale_dir)
-    self.add_message_catalog("sphinx", locale_dir)
+
+def setup(self):
+    self.catalog_added = False
+    self.connect("html-page-context", html_page_context)
     self.config.language = conversion.get(self.config.language, self.config.language)
     self.config.overrides['language'] = conversion.get(self.config.overrides.get('language', None),
                                                        self.config.overrides.get('language', None))
