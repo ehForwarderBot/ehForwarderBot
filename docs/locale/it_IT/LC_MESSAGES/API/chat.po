@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-19 17:20\n"
+"POT-Creation-Date: 2020-01-20 02:57+0800\n"
+"PO-Revision-Date: 2020-01-19 19:06\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -107,8 +107,8 @@ msgid "Indicates the notifications settings of a chat in its slave channel or mi
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/chat.rst:24
-#: 3fc083081d9d4b03b57f6136aedec1f7
-msgid "Modules"
+#: baef2382561e40518cadd9078106c708
+msgid "Classes"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat:1

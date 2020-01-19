@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-19 17:20\n"
+"PO-Revision-Date: 2020-01-19 19:06\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -99,7 +99,7 @@ msgstr "@extra(name=\"复读机\", desc=\"返回输入的文本。\\n\\n用法�
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:1
 #: 5ad3d4d345c94c0880c32b54eb4c6ecd
 msgid "Get the base data path for EFB. This can be defined by the environment variable ``EFB_DATA_PATH``."
-msgstr "获取 EFB 数据目录的路径。该路径可由环境变量 \\ ``EFB_DATA_PATH``\\  定义。"
+msgstr "获取 EFB 数据目录的路径。该路径可由环境变量 \\ ``EFB_DATA_PATH``\\  定义。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:4
 #: cd8a7918da6f41189160287afa53f9f2

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-19 17:20\n"
+"PO-Revision-Date: 2020-01-19 19:06\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr "打包与发布"
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:5
 #: 155e6fffb03b4a06b3dfe1263ffb2009
 msgid "Publish your module on PyPI"
-msgstr "将您的模块发布在 PyPI 上"
+msgstr "将您的模块发布在 PyPI 上"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:7
 #: 62337c094baa4661a34253733f42b14c

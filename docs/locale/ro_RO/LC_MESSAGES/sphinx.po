@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-19 17:21\n"
+"POT-Creation-Date: 2020-01-20 02:57+0800\n"
+"PO-Revision-Date: 2020-01-19 19:07\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Romanian\n"
 "MIME-Version: 1.0\n"
@@ -16,47 +16,47 @@ msgstr ""
 "Language: ro_RO\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/donate.html:2
-#: 4b6f5cd624d746118fe3384aab5b14ab
+#: 798669a9e01e4908a45a5014ae264d96
 msgid "Donate/support"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:1
-#: 0d1aea68cb0b4db4bd81e680b2972c7b
+#: fbbede932ae14f2ba2d9d407e6b52253
 msgid "previous chapter"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:1
-#: 241d8e8d0b5f45caa3fdd117533896c4
+#: 94c6cb419d8447acbd1b40329adee474
 msgid "next chapter"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:3
-#: 64f0f476063b486996831539ddbd0b99
+#: e12ed81f85384036863be982060d0e1c
 msgid "Related Topics"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:5
-#: 0ee5e7abc7c04cbaa2d0731646c47d3e
+#: 97408cb637824e4b85b53e410c58d5ab
 msgid "Documentation overview"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:10
-#: 13ed41a191604cac9f8444696992ba7d
+#: 52c31283f3cb4b24ae0ee48039ec3375
 msgid "Previous: "
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:13
-#: 50be1d4524f3474a9921c5ab1b0667de
+#: e190bb6e88c242a69bb4c8330aad8dfd
 msgid "Next: "
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/translate.html:2
-#: 432aa75824084ddabd3ac726765a6cbf
+#: a545ca9b28ed45638ea68b50af37c1fb
 msgid "Contribute translations"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/translate.html:3
-#: e8b28267259d42febf8ccb820ee0d48d
+#: b2508087572c44609739f47291d4cec5
 msgid "Help translate this docs on Crowdin"
 msgstr ""
 

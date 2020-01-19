@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-19 17:20\n"
+"PO-Revision-Date: 2020-01-19 19:06\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgstr "在稳定版本发布前，以下选项有可能无法正常工作。因
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:19
 #: 1a193b51e0d44d9299e8d76661050422
 msgid "Install from PyPI"
-msgstr "从 PyPI 安装"
+msgstr "从 PyPI 安装"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:21
 #: f82c78cb746a4807b9de88edc8a985ec
@@ -248,7 +248,7 @@ msgstr "ehforwarderbot"
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:150
 #: 27f6abc02e034301b62f8771c3e6492f
 msgid "This will launch EFB directly in the current environment. The default :doc:`profile` is named ``default``, to launch EFB in a different profile, append ``--profile <profile-name>`` to the command."
-msgstr "这会直接在目前的环境下启动 EFB。默认的\\ :doc:`profile`\\ 名称为 ``default``。若要使用不同的配置档案，请在命令后面加上 ``--profile <profile-name>`` 。"
+msgstr "此指令可以直接在目前的环境下启动 EFB。默认的\\ :doc:`profile`\\ 名称为 \\ ``default``\\ 。若要使用不同的配置档案，请在命令后面加上 \\ ``--profile <配置档案名称>``\\ 。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:154
 #: fc0d44becb7743d4a3f083ee2dbd0330
