@@ -242,6 +242,7 @@ napoleon_use_rtype = True
 
 # Sphinx-intl settings
 locale_dirs = ['locale/']
+gettext_uuid = True
 gettext_compact = False
 gettext_additional_targets = ['literal-block', 'image']
 
