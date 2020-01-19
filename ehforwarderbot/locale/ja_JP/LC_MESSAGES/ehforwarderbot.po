@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-13 15:32+0800\n"
-"PO-Revision-Date: 2020-01-13 07:35\n"
+"POT-Creation-Date: 2020-01-20 01:17+0800\n"
+"PO-Revision-Date: 2020-01-19 17:21\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -269,12 +269,12 @@ msgstr "プロファイル「{profile}」で、以下のモジュールを使用
 msgid "Master channel: {channel_name}"
 msgstr "マスターチャネル：{channel_name}"
 
-#: ehforwarderbot/wizard.py:565 ehforwarderbot/__main__.py:234
+#: ehforwarderbot/wizard.py:565 ehforwarderbot/__main__.py:232
 msgid "Slave channel:"
 msgid_plural "Slave channels:"
 msgstr[0] "スレーブチャネル:"
 
-#: ehforwarderbot/wizard.py:573 ehforwarderbot/__main__.py:244
+#: ehforwarderbot/wizard.py:573 ehforwarderbot/__main__.py:242
 msgid "Middleware:"
 msgid_plural "Middlewares:"
 msgstr[0] "ミドルウェア:"
@@ -329,24 +329,24 @@ msgstr "おめでとうございます！指定したプロファイルの EFB
 
 #: ehforwarderbot/wizard.py:681
 msgid "We will now guide you to set up some modules you have enabled. But you may still need to configure other modules manually if necessary."
-msgstr ""
+msgstr "ここからは、有効にした一部のモジュールの設定をご案内します。 ただし、必要に応じて他のモジュールを手動で設定する必要がある場合もあります。"
 
 #: ehforwarderbot/wizard.py:696
 #, python-brace-format
 msgid "Press ENTER/RETURN to start setting up {0}."
-msgstr ""
+msgstr "Enter キーを押して {0} の設定を開始します。"
 
 #: ehforwarderbot/wizard.py:701
 msgid "Congratulations! You have now finished all wizard-enabled modules. If you did not configure some modules enabled, you might need to configure them manually."
-msgstr ""
+msgstr "おめでとうございます！これで、すべてのウィザード対応モジュールの設定が完成しました。また設定してないモジュールがある場合は、別途設定の必要がある可能性があります。"
 
-#: ehforwarderbot/chat.py:304
+#: ehforwarderbot/chat.py:320
 msgid "You"
-msgstr ""
+msgstr "あなた"
 
-#: ehforwarderbot/chat.py:344
+#: ehforwarderbot/chat.py:363
 msgid "System"
-msgstr ""
+msgstr "システム"
 
 #: ehforwarderbot/__main__.py:33
 #, python-brace-format
@@ -355,7 +355,7 @@ msgstr "Python 3.6 以上のバージョンが必要です。お使いバージ�
 
 #: ehforwarderbot/__main__.py:35
 msgid "EH Forwarder Bot is an extensible message tunneling chat bot framework which delivers messages to and from multiple platforms and remotely control your accounts."
-msgstr ""
+msgstr "EH Forwarder Bot は、複数のプラットフォームの間でメッセージを配信し、リモートでアカウントを制御する拡張可能なメッセージトンネリングチャットボットフレームワークです。"
 
 #: ehforwarderbot/__main__.py:43
 msgid "Enable verbose mode. (Level: Debug)"
@@ -405,7 +405,7 @@ msgstr "ミドルウェア {name} ({id}) # {instance_id} を初期化されま�
 msgid "All middlewares are initialized."
 msgstr "すべてのミドルウェアが初期化されました。"
 
-#: ehforwarderbot/__main__.py:214
+#: ehforwarderbot/__main__.py:212
 #, python-brace-format
 msgid "EH Forwarder Bot\n"
 "Version: {version}\n"
@@ -418,22 +418,22 @@ msgstr "EH Forwarder Bot\n"
 "{py_version}\n"
 "プロファイル：{profile}"
 
-#: ehforwarderbot/__main__.py:228 ehforwarderbot/__main__.py:237
-#: ehforwarderbot/__main__.py:248
+#: ehforwarderbot/__main__.py:226 ehforwarderbot/__main__.py:235
+#: ehforwarderbot/__main__.py:246
 msgid "Default instance"
 msgstr "デフォルトインスタンス"
 
-#: ehforwarderbot/__main__.py:229
+#: ehforwarderbot/__main__.py:227
 msgid "Master channel:"
 msgstr "マスターチャネル:"
 
-#: ehforwarderbot/__main__.py:229 ehforwarderbot/__main__.py:239
-#: ehforwarderbot/__main__.py:250
+#: ehforwarderbot/__main__.py:227 ehforwarderbot/__main__.py:237
+#: ehforwarderbot/__main__.py:248
 #, python-brace-format
 msgid "{name} ({id}) {version} # {instance_id}"
 msgstr "{name} ({id}) {version} # {instance_id}"
 
-#: ehforwarderbot/__main__.py:256
+#: ehforwarderbot/__main__.py:254
 msgid "No middleware is enabled."
 msgstr "ミドルウェアなし。"
 

@@ -1,0 +1,62 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-20 01:17+0800\n"
+"PO-Revision-Date: 2020-01-19 17:21\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Acholi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: ach\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/sphinx.pot\n"
+"Language: ach_UG\n"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/donate.html:2
+#: 4b6f5cd624d746118fe3384aab5b14ab
+msgid "Donate/support"
+msgstr "crwdns9215:0crwdne9215:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:1
+#: 0d1aea68cb0b4db4bd81e680b2972c7b
+msgid "previous chapter"
+msgstr "crwdns9217:0crwdne9217:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:1
+#: 241d8e8d0b5f45caa3fdd117533896c4
+msgid "next chapter"
+msgstr "crwdns9219:0crwdne9219:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:3
+#: 64f0f476063b486996831539ddbd0b99
+msgid "Related Topics"
+msgstr "crwdns9221:0crwdne9221:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:5
+#: 0ee5e7abc7c04cbaa2d0731646c47d3e
+msgid "Documentation overview"
+msgstr "crwdns9223:0crwdne9223:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:10
+#: 13ed41a191604cac9f8444696992ba7d
+msgid "Previous: "
+msgstr "crwdns9225:0crwdne9225:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:13
+#: 50be1d4524f3474a9921c5ab1b0667de
+msgid "Next: "
+msgstr "crwdns9227:0crwdne9227:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/translate.html:2
+#: 432aa75824084ddabd3ac726765a6cbf
+msgid "Contribute translations"
+msgstr "crwdns9229:0crwdne9229:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/translate.html:3
+#: e8b28267259d42febf8ccb820ee0d48d
+msgid "Help translate this docs on Crowdin"
+msgstr "crwdns9231:0crwdne9231:0"
+

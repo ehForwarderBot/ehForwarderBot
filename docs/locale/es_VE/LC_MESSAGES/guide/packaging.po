@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-12 01:30+0800\n"
-"PO-Revision-Date: 2020-01-13 07:35\n"
+"POT-Creation-Date: 2020-01-20 01:17+0800\n"
+"PO-Revision-Date: 2020-01-19 17:21\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
@@ -16,58 +16,77 @@ msgstr ""
 "Language: es_VE\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:2
+#: 040a32e6f22d40b69433813fde2e91ca
 msgid "Packaging and Publish"
 msgstr "Empaque y Publicación"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:5
+#: 155e6fffb03b4a06b3dfe1263ffb2009
 msgid "Publish your module on PyPI"
 msgstr "Publica tu módulo en PyPI"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:7
+#: 62337c094baa4661a34253733f42b14c
 msgid "Publish modules on PyPI is one of the easiest way for users to install your package.  Please refer to related documentation and tutorials about PyPI and pip for publishing packages."
 msgstr "Publicar módulos en PyPI es una de las maneras más sencillas para que los usuarios instalen su paquete. Consulte la documentación relacionada y tutoriales sobre PyPI y pip para publicar paquetes."
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:12
-msgid "For EFB modules, the package is recommended to have a name starts with ``efb-``, or in the format of ``efb-platform-type``, e.g. ``efb-irc-slave`` or ``efb-wechat-mp-filter-middleware``. If there is a collision of name, you can adjust the package name accordingly, but please start the package name with ``efb-``."
-msgstr "Para los módulos de EFB, se recomienda que el paquete tenga un nombre que empiece por `` efb-``, o en el formato de `` efb-platform-type``, p. `` efb-irc-slave`` o `` efb-wechat-mp-filter-middleware``. Si hay una colisión de nombre, puede ajustar el nombre del paquete en consecuencia, pero empiece el nombre del paquete con `` efb-``."
+#: 775a957c6712437cbf2d08c769488281
+msgid "For EFB modules, the package is RECOMMENDED to have a name starts with ``efb-``, or in the format of ``efb-platform-type``, e.g. ``efb-irc-slave`` or ``efb-wechat-mp-filter-middleware``. If there is a collision of name, you MAY adjust the package name accordingly while keeping the package name starting with ``efb-``."
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:21
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:20
+#: 3ca4cc69e48542d688bcd0d3ca465ed9
+msgid "When you are ready, you may also want to add your module to the `Modules Repository`_ of EFB."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:26
+#: 8c2d005200da4d8db18f46eabd34fb20
 msgid "Module discovery"
 msgstr "Descubrimiento de módulo"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:23
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:28
+#: aa26f0ea8c5b4949bc41306e17de81fb
 msgid "EH Forwarder Bot uses `Setuptools' Entry Point feature`__ to discover and manage channels and middlewares. In your ``setup.py`` script or ``.egg-info/entry_points.txt``, specify the group and object as follows:"
 msgstr "EH Forwarder Bot utiliza la función de punto de entrada`Setuptools` __ para descubrir y administrar canales y middlewares. En su escritura `` setup.py`` o ``.egg-info / entry_points.txt``, especifique el grupo y el objeto de la siguiente manera:"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:30
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:35
+#: a81fc2b3c347433bb4b7bd1084eded8e
 msgid "Group for master channels: ``ehforwarderbot.master``"
 msgstr "Grupo para canales maestros: `` ehforwarderbot.master``"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:31
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:36
+#: e8fa646b0b78468194392eb050e3b8b0
 msgid "Group for slave channels: ``ehforwarderbot.slave``"
 msgstr "Grupo para canales esclavos: `` ehforwarderbot.slave``"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:32
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:37
+#: 0d6d917faeea4dbda17d74829a6056c5
 msgid "Group for middlewares: ``ehforwarderbot.middleware``"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:34
-msgid "Convention for object names is ``<author>.<platform>``, e.g. ``alice.irc``. This should also be your module's ID."
-msgstr "La convención para nombres de objetos es `` <author>.<platform>``, p. Ej. `` alice.irc``. Esta también debería ser la identificación de su módulo."
-
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:37
-msgid "Object reference should point to your module's class, which extends either ``Channel`` or ``Middleware``."
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:39
+#: 826483595b4a4734a12fd1a0b0a94cf2
+msgid "Convention for object names is ``<author>.<platform>``, e.g. ``alice.irc``. This MUST also be your module's ID."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:41
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:42
+#: a420a9321b144213b09718a071f9e5da
+msgid "Object reference MUST point to your module's class, which is a subclass of either :class:`.Channel` or :class:`.Middleware`."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:46
+#: 35481489e3cc41e19afde75155a7a60d
 msgid "Example"
 msgstr "Ejemplo"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:43
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:48
+#: 38a549bd43de4aae9a2f730cf7f057ba
 msgid "``setup.py`` script"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:45
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:50
+#: a8fd681006b6420faa7582d72a0dcf4f
 msgid "setup(\n"
 "    # ...\n"
 "    entry_points={\n"
@@ -77,24 +96,29 @@ msgid "setup(\n"
 ")"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:55
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:60
+#: cb59dd5eb72245508f5de56f1a2f831b
 msgid "``.egg-info/entry_points.txt``"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:57
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:62
+#: f5203f95e63447d390412eb9ed80fdf8
 msgid "[ehforwarderbot.slave]\n"
 "alice.irc = efb_irc_slave:IRCChannel"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:63
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:68
+#: aba889410f86467c915a9e0947fac46b
 msgid "Private modules"
 msgstr "Módulos privados"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:65
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:70
+#: 4734f08cc2a5436a8ddf02d89c5e5b9a
 msgid "If you want to extend from, or make changes on existing modules for your own use, you can have your modules in the private modules :doc:`directory <../directories>`."
 msgstr "Si desea extender o hacer cambios en los módulos existentes para su propio uso, puede tener sus módulos en los módulos privados: :doc: `directorio <../ directories>`."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:69
-msgid "For such modules, your channel ID must be the fully-qualified name of the class. For example, if your class is located at ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``, the channel must have ID ``bob_ric_mod.IRCChannel`` for the framework to recognise it."
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:74
+#: c8b737f2bca74357bf97220e2e46cc02
+msgid "For such modules, your channel ID MUST be the fully-qualified name of the class. For example, if your class is located at ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``, the channel MUST have ID ``bob_ric_mod.IRCChannel`` for the framework to recognise it."
 msgstr ""
 

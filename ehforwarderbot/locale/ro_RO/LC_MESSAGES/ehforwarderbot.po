@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-13 15:32+0800\n"
-"PO-Revision-Date: 2020-01-13 07:35\n"
+"POT-Creation-Date: 2020-01-20 01:17+0800\n"
+"PO-Revision-Date: 2020-01-19 17:21\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Romanian\n"
 "Language: ro_RO\n"
@@ -246,14 +246,14 @@ msgstr ""
 msgid "Master channel: {channel_name}"
 msgstr ""
 
-#: ehforwarderbot/wizard.py:565 ehforwarderbot/__main__.py:234
+#: ehforwarderbot/wizard.py:565 ehforwarderbot/__main__.py:232
 msgid "Slave channel:"
 msgid_plural "Slave channels:"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: ehforwarderbot/wizard.py:573 ehforwarderbot/__main__.py:244
+#: ehforwarderbot/wizard.py:573 ehforwarderbot/__main__.py:242
 msgid "Middleware:"
 msgid_plural "Middlewares:"
 msgstr[0] ""
@@ -319,11 +319,11 @@ msgstr ""
 msgid "Congratulations! You have now finished all wizard-enabled modules. If you did not configure some modules enabled, you might need to configure them manually."
 msgstr ""
 
-#: ehforwarderbot/chat.py:304
+#: ehforwarderbot/chat.py:320
 msgid "You"
 msgstr ""
 
-#: ehforwarderbot/chat.py:344
+#: ehforwarderbot/chat.py:363
 msgid "System"
 msgstr ""
 
@@ -384,7 +384,7 @@ msgstr ""
 msgid "All middlewares are initialized."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:214
+#: ehforwarderbot/__main__.py:212
 #, python-brace-format
 msgid "EH Forwarder Bot\n"
 "Version: {version}\n"
@@ -393,22 +393,22 @@ msgid "EH Forwarder Bot\n"
 "Running on profile \"{profile}\"."
 msgstr ""
 
-#: ehforwarderbot/__main__.py:228 ehforwarderbot/__main__.py:237
-#: ehforwarderbot/__main__.py:248
+#: ehforwarderbot/__main__.py:226 ehforwarderbot/__main__.py:235
+#: ehforwarderbot/__main__.py:246
 msgid "Default instance"
 msgstr ""
 
-#: ehforwarderbot/__main__.py:229
+#: ehforwarderbot/__main__.py:227
 msgid "Master channel:"
 msgstr ""
 
-#: ehforwarderbot/__main__.py:229 ehforwarderbot/__main__.py:239
-#: ehforwarderbot/__main__.py:250
+#: ehforwarderbot/__main__.py:227 ehforwarderbot/__main__.py:237
+#: ehforwarderbot/__main__.py:248
 #, python-brace-format
 msgid "{name} ({id}) {version} # {instance_id}"
 msgstr ""
 
-#: ehforwarderbot/__main__.py:256
+#: ehforwarderbot/__main__.py:254
 msgid "No middleware is enabled."
 msgstr ""
 

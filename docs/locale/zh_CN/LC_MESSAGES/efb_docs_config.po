@@ -1,0 +1,41 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-19 00:10+0800\n"
+"PO-Revision-Date: 2020-01-19 17:20\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese Simplified\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: zh-CN\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/efb_docs_config.pot\n"
+
+#: docs/conf.py:75
+msgid "2016 — 2020 Eana Hufwe and the EH Forwarder Bot contributors"
+msgstr "2016 — 2020 Eana Hufwe 及 EH Forwarder Bot 贡献者"
+
+#: docs/conf.py:76
+msgid "Eana Hufwe, and the EH Forwarder Bot contributors"
+msgstr "Eana Hufwe 及 EH Forwarder Bot 贡献者"
+
+#: docs/conf.py:77
+msgid "EH Forwarder Bot Documentation"
+msgstr "EH Forwarder Bot 项目文档"
+
+#: docs/conf.py:78
+msgid "An extensible message tunneling chat bot framework."
+msgstr "可扩展的消息隧道聊天机器人框架。"
+
+#: docs/conf.py:165
+msgid "Community wiki"
+msgstr "社区 Wiki"
+
+#: docs/conf.py:166
+msgid "Modules repository"
+msgstr "组件仓库"
+

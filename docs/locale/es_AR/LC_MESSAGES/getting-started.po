@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-12 01:30+0800\n"
-"PO-Revision-Date: 2020-01-13 07:35\n"
+"POT-Creation-Date: 2020-01-20 01:17+0800\n"
+"PO-Revision-Date: 2020-01-19 17:21\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish, Argentina\n"
 "MIME-Version: 1.0\n"
@@ -16,170 +16,207 @@ msgstr ""
 "Language: es_AR\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:2
+#: 258139aadd0c4d96a3eb36509e188094
 msgid "Getting started"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:4
+#: b4cb7c9fd65340828e8e5e945526f083
 msgid "A few simple steps to get started with EFB."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:7
+#: f84d9a57319e4c18a844d95cf5ce9a99
 msgid "Install EH Forwarder Bot"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:9
+#: c6cd4892ef864475be084d82c29041cf
 msgid "EH Forwarder Bot can be installed in the following ways:"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:13
+#: 0e1d8b0f520744adb51d32b7b1f6ca1f
 msgid "The following instructions may not work properly until a stable release is uploaded. As you are in the beta version documentation, I assume you know what to do."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:19
+#: 1a193b51e0d44d9299e8d76661050422
 msgid "Install from PyPI"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:21
+#: f82c78cb746a4807b9de88edc8a985ec
 msgid "``pip`` will by default install the latest stable version from PyPI, but development versions are available at PyPI as well."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:25
+#: b8b81fc242034bedbdd3c428b9eb2e02
 msgid "pip3 install ehforwarderbot"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:31
+#: bc5ae6f229274168a97d38266e14231f
 msgid "Install from GitHub"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:33
+#: 9ef17fde4066477abf40a7d61362f9a5
 msgid "This will install the latest commit from GitHub. It might not be stable, so proceed with caution."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:36
+#: f851381b1c8947be8fffbcb3133372bc
 msgid "pip3 install git+https://github.com/blueset/ehforwarderbot.git"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:42
+#: c022658db116408c999cecfbaf4cac9d
 msgid "Alternative installation methods"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:44
+#: f4cf752d9b334cf68d5f16c2bf61eed6
 msgid "You can find a list of alternative installation methods contributed by the community in the `project wiki`_."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:47
+#: b7d181fea3644a7699a4ae6efce63560
 msgid "For scripts, containers (e.g. Docker), etc. that may include one or more external modules, please visit the `modules repository`_."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:52
+#: 05b9221258c744dd9a10e7e32855a133
 msgid "These alternative installation methods are maintained by the community, please consult their respective author or maintainer for help related to those methods."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:60
+#: f00127e723604bf7b6dc98c9b6fb0f10
 msgid "A stable internet connection"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:62
+#: 649bb0b2c08a46ef96b4a432d911062f
 msgid "Since the majority of our channels are using polling for message retrieval, a stable internet connection is necessary for channels to run smoothly. An unstable connection may lead to slow response, or loss of messages."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:68
+#: 93054cb2f143446b9c8f606304d6db98
 msgid "Create local directories"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:70
+#: 38831a79b5e8426eab607783bfa4b2d3
 msgid "EFB uses a \\*nix user configuration style, which is described in details in :doc:`directories`. In short, if you are using the default configuration, you need to create ``~/.ehforwarderbot``, and give read and write permission to the user running EFB."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:76
+#: 01ec517ce9b442049ba4eb699fbfa4ad
 msgid "Choose, install and enable modules"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:78
+#: cfa3bd6993dd40c995d169fd55c351c8
 msgid "Currently, all modules that was submitted to us are recorded in the `modules repository`_. You can choose the channels that fits your need the best."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:82
+#: d901b14b51e0498ca0efe02bce7d448d
 msgid "Instructions about installing each channel is available at their respective documentations."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:86
+#: e388dc8ebdc043ada745815a6ec065c1
 msgid "Set up with the configuration wizard"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:88
+#: d2c39536932b45bcaa9f537347093254
 msgid "When you have successfully installed the modules of your choices, you can the use the configuration wizard which guides you to enable channels and middlewares, and continue to setup those modules if they also have provided a similar wizard."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:93
+#: 23634221fa7b42aabdc8d0e50db4e2c5
 msgid "You can start the wizard by running the following command in a compatible console or terminal emulator::"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:96
+#: fcfbb27796e149ccadcf050f3fdc60f5
 msgid "efb-wizard"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:98
+#: e974dac72d464aae87be5672d0b26e8c
 msgid "If you want to start the wizard of a module for a profile individually, run::"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:100
+#: 1ee8047207b3471b859cc0500fc16fa4
 msgid "efb-wizard -p <profile name> -m <module ID>"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:104
+#: 99f24cc2580548ab9532e218e942e76f
 msgid "Set up manually"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:106
+#: 5cdc88e93a004880ba27f06d2cf63c55
 msgid "Alternatively, you can enable those modules manually it by listing its Channel ID in the :doc:`configuration file <config>`. The default path is ``~/.ehforwarderbot/profiles/default/config.yaml``. Please refer to :doc:`directories` if you have configured otherwise."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:111
+#: f30ff0467fd74ee690f4342f2d716fb7
 msgid "Please note that although you can have more than one slaves channels running at the same time, you can only have exactly one master channels running in one profile. Meanwhile, middlewares are completely optional."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:115
-msgid "Example"
+#: eec3370357be4f8aac1063ae370441da
+msgid "For example, to enable the following modules:"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:118
-msgid "To enable the following modules:"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:120
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:117
+#: 0bb0c1610cef47f6a249f5562829cb6d
 msgid "Master channel"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:121
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:118
+#: 3e72ae0754fb47af85699ff6315610f1
 msgid "Demo Master (``foo.demo_master``)"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:123
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:120
+#: 7ffa3b934422479a95a73ab307a93e6a
 msgid "Slave channels"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:123
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:120
+#: e144638ab35945128c499652402a9cd8
 msgid "Demo Slave (``foo.demo_slave``)"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:124
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:121
+#: 10db956da3cf46499ea234f5942320a2
 msgid "Dummy Slave (``bar.dummy``)"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:126
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:123
+#: b22b9063f268408cb8c7d9088760e501
 msgid "Middlewares"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:126
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:123
+#: c6b1aafee7a146dc9af87b141cf2d40e
 msgid "Null Middleware (``foo.null``)"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:128
-msgid "In the ``config.yaml`` it should have the following lines:"
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:125
+#: 754889cb8c2b4f2b95ae269cd5059fef
+msgid "``config.yaml`` should have the following lines:"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:130
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:127
+#: 4e716080ac054ba4a92a0c83f4bbf849
 msgid "master_channel: foo.demo_master\n"
 "slave_channels:\n"
 "- foo.demo_slave\n"
@@ -188,47 +225,58 @@ msgid "master_channel: foo.demo_master\n"
 "- foo.null"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:142
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:139
+#: b86b953fe1784f7381233d4ac66dcdeb
 msgid "If you have enabled modules manually, you might also need configure each module manually too. Please consult the documentation of each module for instructions."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:147
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:144
+#: a1e42eba0a9a46d39c245fe464157b5b
 msgid "Launch EFB"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:149
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:146
+#: 62056aa6535c4cfb8d9907fb98fdb419
 msgid "ehforwarderbot"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:153
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:150
+#: 27f6abc02e034301b62f8771c3e6492f
 msgid "This will launch EFB directly in the current environment. The default :doc:`profile` is named ``default``, to launch EFB in a different profile, append ``--profile <profile-name>`` to the command."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:157
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:154
+#: fc0d44becb7743d4a3f083ee2dbd0330
 msgid "For more command line options, use ``--help`` option."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:160
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:157
+#: 370d5ea913c94269b7cbe8ba4f4791e2
 msgid "Use EFB in another language"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:162
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:159
+#: f6d137c9a8cd49e591d13300a1b34713
 msgid "EFB supports translated user interface and prompts. You can set your system language or locale environmental variables (``LANGUAGE``, ``LC_ALL``, ``LC_MESSAGES`` or ``LANG``) to one of our `supported languages`_ to switch language."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:167
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:164
+#: 905a514abf5243e992dbb3afd4d1c485
 msgid "You can help to translate this project into your languages on `our Crowdin page`_."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:175
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:172
+#: 48b68d3320094634b800d5cdc765bb0f
 msgid "If your are installing from source code, you will not get translations of the user interface without manual compile of message catalogs (``.mo``) prior to installation."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:180
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:177
+#: 120834a5da6f4c04a62ed3e537e70f26
 msgid "Launch EFB as a daemon process"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:182
+#: /Users/blueset/Codebase/ehForwarderBot/docs/getting-started.rst:179
+#: 81aaee4d182c46d5bc1d73151ac7bfaa
 msgid "Since version 2, EH Forwarder Bot has removed the daemon helper as it is unstable to use.  We recommend you to use mature solutions for daemon management, such as systemd_, upstart_, or pm2_."
 msgstr ""
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-12 01:30+0800\n"
-"PO-Revision-Date: 2020-01-13 07:34\n"
+"POT-Creation-Date: 2020-01-20 01:17+0800\n"
+"PO-Revision-Date: 2020-01-19 17:20\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -16,58 +16,77 @@ msgstr ""
 "Language: zh_CN\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:2
+#: 040a32e6f22d40b69433813fde2e91ca
 msgid "Packaging and Publish"
 msgstr "打包与发布"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:5
+#: 155e6fffb03b4a06b3dfe1263ffb2009
 msgid "Publish your module on PyPI"
 msgstr "将您的模块发布在 PyPI 上"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:7
+#: 62337c094baa4661a34253733f42b14c
 msgid "Publish modules on PyPI is one of the easiest way for users to install your package.  Please refer to related documentation and tutorials about PyPI and pip for publishing packages."
 msgstr "在 PyPI 上发布模块是让用户最快使用您的模块的方法之一。有关如何发布模块，请参阅 PyPI 及 pip 的相关文档。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:12
-msgid "For EFB modules, the package is recommended to have a name starts with ``efb-``, or in the format of ``efb-platform-type``, e.g. ``efb-irc-slave`` or ``efb-wechat-mp-filter-middleware``. If there is a collision of name, you can adjust the package name accordingly, but please start the package name with ``efb-``."
-msgstr "我们建议将 EFB 模块名以 ``efb-`` 为前缀，或是按 ``efb-平台-类型`` 的格式来命名您的模块（例如 ``efb-irc-slave`` 或 ``efb-wechat-mp-filter-middleware`` ）。如果名称发生冲突，您可以更改您的包名，但请继续使用 ``efb-`` 作为前缀。"
+#: 775a957c6712437cbf2d08c769488281
+msgid "For EFB modules, the package is RECOMMENDED to have a name starts with ``efb-``, or in the format of ``efb-platform-type``, e.g. ``efb-irc-slave`` or ``efb-wechat-mp-filter-middleware``. If there is a collision of name, you MAY adjust the package name accordingly while keeping the package name starting with ``efb-``."
+msgstr "我们建议（RECOMMEND）将 EFB 组件名以 \\ ``efb-``\\  为前缀，或是按 \\ ``efb-平台-类型``\\  的格式来命名您的模块（例如 \\ ``efb-irc-slave``\\  或 \\ ``efb-wechat-mp-filter-middleware``\\ ）。如果名称发生冲突，您可以（MAY）更改您的包名并保留 \\ ``efb-``\\  作为前缀。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:21
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:20
+#: 3ca4cc69e48542d688bcd0d3ca465ed9
+msgid "When you are ready, you may also want to add your module to the `Modules Repository`_ of EFB."
+msgstr "准备就绪后，您还可以将您的组件添加到 EFB 的\\ `组件仓库`_\\ 。"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:26
+#: 8c2d005200da4d8db18f46eabd34fb20
 msgid "Module discovery"
 msgstr "组件发现机制"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:23
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:28
+#: aa26f0ea8c5b4949bc41306e17de81fb
 msgid "EH Forwarder Bot uses `Setuptools' Entry Point feature`__ to discover and manage channels and middlewares. In your ``setup.py`` script or ``.egg-info/entry_points.txt``, specify the group and object as follows:"
 msgstr "EH Forwarder Bot 使用 `Setuptools 的 Entry Point 特性`__ 来寻找及管理信道和中间件。在您的 ``setup.py`` 脚本或是 ``.egg-info/entry_points.txt`` 中，可通过如下方法来指定组和对象："
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:30
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:35
+#: a81fc2b3c347433bb4b7bd1084eded8e
 msgid "Group for master channels: ``ehforwarderbot.master``"
 msgstr "主端组：``ehforwarderbot.master``"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:31
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:36
+#: e8fa646b0b78468194392eb050e3b8b0
 msgid "Group for slave channels: ``ehforwarderbot.slave``"
 msgstr "从端组： ``ehforwarderbot.slave``"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:32
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:37
+#: 0d6d917faeea4dbda17d74829a6056c5
 msgid "Group for middlewares: ``ehforwarderbot.middleware``"
 msgstr "中间件组：``ehforwarderbot.middleware``"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:34
-msgid "Convention for object names is ``<author>.<platform>``, e.g. ``alice.irc``. This should also be your module's ID."
-msgstr "对象名称的格式推荐使用 ``<author>.<platform>``，如 ``alice.irc``，同时该名称应与组件 ID 相同。"
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:39
+#: 826483595b4a4734a12fd1a0b0a94cf2
+msgid "Convention for object names is ``<author>.<platform>``, e.g. ``alice.irc``. This MUST also be your module's ID."
+msgstr "对象名称的格式推荐（RECOMMEND）使用 \\ ``<author>.<platform>``\\ ，如 \\ ``alice.irc``\\ 。该名称必须（MUST）与组件 ID 相同。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:37
-msgid "Object reference should point to your module's class, which extends either ``Channel`` or ``Middleware``."
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:42
+#: a420a9321b144213b09718a071f9e5da
+msgid "Object reference MUST point to your module's class, which is a subclass of either :class:`.Channel` or :class:`.Middleware`."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:41
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:46
+#: 35481489e3cc41e19afde75155a7a60d
 msgid "Example"
 msgstr "示例"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:43
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:48
+#: 38a549bd43de4aae9a2f730cf7f057ba
 msgid "``setup.py`` script"
 msgstr "``setup.py`` 脚本"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:45
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:50
+#: a8fd681006b6420faa7582d72a0dcf4f
 msgid "setup(\n"
 "    # ...\n"
 "    entry_points={\n"
@@ -83,25 +102,30 @@ msgstr "setup(\n"
 "    # ...\n"
 ")"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:55
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:60
+#: cb59dd5eb72245508f5de56f1a2f831b
 msgid "``.egg-info/entry_points.txt``"
 msgstr "`.egg-info/entry_points.txt``"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:57
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:62
+#: f5203f95e63447d390412eb9ed80fdf8
 msgid "[ehforwarderbot.slave]\n"
 "alice.irc = efb_irc_slave:IRCChannel"
 msgstr "[ehforwarderbot.slave]\n"
 "alice.irc = efb_irc_slave:IRCChannel"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:63
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:68
+#: aba889410f86467c915a9e0947fac46b
 msgid "Private modules"
 msgstr "私有模块"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:65
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:70
+#: 4734f08cc2a5436a8ddf02d89c5e5b9a
 msgid "If you want to extend from, or make changes on existing modules for your own use, you can have your modules in the private modules :doc:`directory <../directories>`."
-msgstr "如果您想要对现有组件做出更改或是扩展以满足个人使用，您可以将其放入私有组件:doc:`目录 <../directories>`中。"
+msgstr "如果您想要对现有组件做出更改或是扩展以满足个人使用，您可以将其放入私有组件\\ :doc:`目录 <../directories>`\\ 中。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:69
-msgid "For such modules, your channel ID must be the fully-qualified name of the class. For example, if your class is located at ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``, the channel must have ID ``bob_ric_mod.IRCChannel`` for the framework to recognise it."
-msgstr "对于这些组件，您的通道 ID 必须是类的完全限定名称。例如，如果类位于 ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``\\ 。这个通道的 ID 应为 ``bob_ric_mod.IRCChannel``，以供框架识别。"
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:74
+#: c8b737f2bca74357bf97220e2e46cc02
+msgid "For such modules, your channel ID MUST be the fully-qualified name of the class. For example, if your class is located at ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``, the channel MUST have ID ``bob_ric_mod.IRCChannel`` for the framework to recognise it."
+msgstr ""
 

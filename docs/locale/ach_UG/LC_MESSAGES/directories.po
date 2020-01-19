@@ -1,0 +1,63 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-20 01:17+0800\n"
+"PO-Revision-Date: 2020-01-19 17:21\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Acholi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: ach\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/directories.pot\n"
+"Language: ach_UG\n"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/directories.rst:2
+#: e615eb4abaa543aa84457d55606acaed
+msgid "Directories"
+msgstr "crwdns2125:0crwdne2125:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/directories.rst:4
+#: 07f9d35a9e9f4b89ad82838fc664f997
+msgid "Since EH Forwarder Bot 2.0, most modules should be installed with the Python Package Manager ``pip``, while configurations and data are stored in the \"EFB data directory\"."
+msgstr "crwdns2126:0crwdne2126:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/directories.rst:9
+#: 964349d29d2346939ec530904a1d9241
+msgid "By default, the data directory is user specific, located in the user's home directory, ``~/.ehforwarderbot``.  This can be overridden with the environment variable ``EFB_DATA_PATH``. This path defined here should be an **absolute path**."
+msgstr "crwdns2127:0crwdne2127:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/directories.rst:16
+#: fbf1d5e5a9274218aad0f84248aac769
+msgid "Directory structure"
+msgstr "crwdns2129:0crwdne2129:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/directories.rst:18
+#: b167d13cd34c4fe7842c85ffdd658705
+msgid "Using the default configuration as an example, this section will introduce about the structure of EFB data directory."
+msgstr "crwdns2130:0crwdne2130:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/directories.rst:23
+#: f41ad90395a848b18adcbff2ff9bd937
+msgid "./ehforwarderbot                or $EFB_DATA_PATH\n"
+"|- profiles\n"
+"|  |- default                   The default profile.\n"
+"|  |  |- config.yaml            Main configuration file.\n"
+"|  |  |- dummy_ch_master        Directory for data of the channel\n"
+"|  |  |  |- config.yaml         Config file of the channel. (example)\n"
+"|  |  |  |- ...\n"
+"|  |  |- random_ch_slave\n"
+"|  |  |  |- ...\n"
+"|  |- profile2                  Alternative profile\n"
+"|  |  |- config.yaml\n"
+"|  |  |- ...\n"
+"|  |- ...\n"
+"|- modules                      Place for source code of your own channels/middlewares\n"
+"|  |- random_ch_mod_slave       Channels here have a higher priority while importing\n"
+"|  |  |- __init__.py\n"
+"|  |  |- ..."
+msgstr "crwdns6034:0$EFB_DATA_PATHcrwdnd6034:0__init__crwdne6034:0"
+

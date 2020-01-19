@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-12 01:30+0800\n"
-"PO-Revision-Date: 2020-01-13 07:35\n"
+"POT-Creation-Date: 2020-01-20 01:17+0800\n"
+"PO-Revision-Date: 2020-01-19 17:21\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -16,10 +16,17 @@ msgstr ""
 "Language: ms_MY\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/index.rst:2
+#: 3843b9f0a0954b6babffdd911865fafc
 msgid "API Documentations"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/index.rst:4
+#: 041f74be657040bd8fd7aaedd635f72b
 msgid "This section contains documentations for the current API of EH Forwarder Bot."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/API/index.rst:7
+#: b7faa3baec4d40ea9fa4cbcd41933638
+msgid "The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “NOT RECOMMENDED”, \"MAY”, and “OPTIONAL” in this document are to be interpreted as described in `BCP 14`_ [:rfc:`2119`] [:rfc:`8174`] when, and only when, they appear in all capitals, as shown here."
 msgstr ""
 

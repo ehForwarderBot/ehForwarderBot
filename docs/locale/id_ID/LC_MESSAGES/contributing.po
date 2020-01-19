@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-12 01:30+0800\n"
-"PO-Revision-Date: 2020-01-13 07:35\n"
+"POT-Creation-Date: 2020-01-20 01:17+0800\n"
+"PO-Revision-Date: 2020-01-19 17:20\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
@@ -16,158 +16,202 @@ msgstr ""
 "Language: id_ID\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:3
+#: 63f849b7a282449e8209cc0539899bca
 msgid "How to contribute"
 msgstr "Bagaimana cara berkontribusi"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:5
+#: b605f1ee2b6b4b798a6e06e11d80cebe
 msgid "First of all, thanks for taking your time to contribute!"
 msgstr "Pertama-tama, terima kasih karena telah meluangkan waktu anda untuk berkontribusi!"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:7
-msgid "Please note that only questions on the framework will be answered here. For issue related with any module, please contact their respective authors or post in their corresponding repositories."
-msgstr "Perlu diperhatikan bahwa hanya pertanyaan tentang kerangka kerja yang akan dijawab di sini. Untuk masalah yang berhubungan dengan setiap modul, silahkan menghubungi pengarang atau pos mereka masing-masing di repositori mereka yang sesuai."
+#: 6afca3fd13b444628dd90b4a373059f9
+msgid "Please note that only questions on the framework will be answered here. For issue related with any channels, please contact their respective authors or post in their corresponding repositories."
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:12
+#: b8a80d0db7d9423d9e1cfd9d1446438f
 msgid "Here is a simple guide on how you can file in an issue, or submit a pull request that is useful and effective."
 msgstr "Inilah panduan sederhana tentang bagaimana anda dapat mengajukan suatu masalah, atau mengajukan pull request yang berguna dan efektif."
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:15
+#: 26e4de73b1474eff9f843a866c1fa048
 msgid "If you need help, or want to talk to the authors, feel free to chat with us at our `Gitter chat`_ or `Telegram support group`_."
 msgstr "Jika anda membutuhkan bantuan, atau ingin berbicara dengan pengarang, jangan ragu untuk mengobrol dengan kami di `Gitter chat`_ atau`grup dukungan Telegram kami`_."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:23
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:19
+#: 89e9ea36184e414d9ed0975e1296d707
+msgid "Before you ask a question, please read and follow `this guide`_ as far as possible. Without doing so might lead to unfriendly or no response from the community, although we try to refrain from doing so."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:29
+#: db7e0d5c0218413ca9686b594234dec6
 msgid "Reporting bugs"
 msgstr "Melaporkan bug"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:25
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:31
+#: be35bdbcfea0411cbe29d0a8a342481a
 msgid "Before submitting a bug report"
 msgstr "Sebelum mengajukan laporan bug"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:26
-msgid "Please ensure if your issue is about the framework itself, not about any module. Reports about module should be sent to their respective places."
-msgstr "Harap pastikan apabila masalah anda mengenai kerangka kerja itu sendiri, bukan mengenai setiap modul. Laporan mengenai modul harus dikirimkan ke tempat masing-masing."
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:32
+#: c903d136736e4f7d858763d5a1e5402d
+msgid "Please ensure if your issue is about the framework itself, not about any module. Reports about modules should go to their respective issue trackers."
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:29
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:35
+#: fbbec411d06247958cf5f1fc9397b230
 msgid "Read through the documentation to see if it has covered your question."
 msgstr "Baca melalui dokumentasi untuk mengetahui jika itu telah mencakup pertanyaan anda."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:30
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:36
+#: a283c41dfe1f4771885ab626a0b8015a
 msgid "Check the `current issue list`__ to see if it's been reported."
 msgstr "Periksa daftar `masalah baru-baru ini`__ untuk mengetahui jika telah dilaporkan."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:35
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:41
+#: e0384118a23743a2bef3f87f234e9a00
 msgid "How Do I Submit A (Good) Bug Report?"
 msgstr "Bagaimana saya mengajukan laporan bug yang (baik)?"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:36
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:42
+#: 8d9e938978714bcd96077a9809befd7f
 msgid "**Use a clear and descriptive title** for the issue to identify the problem."
 msgstr "**Gunakan judul yang jelas dan deskriptif** untuk masalah tersebut untuk mengidentifikasi masalah."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:37
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:43
+#: 8a2c1a14e07d41a6a13c48be4bccb9a5
 msgid "**Describe the exact steps which reproduce the problem** in as many details as possible."
 msgstr "**Deskripsikan langkah-langkah yang tepat yang mereproduksi masalah** dalam rincian sebanyak mungkin."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:39
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:45
+#: ee4b10fa35e2490d984109a213e77535
 msgid "**Provide specific examples to demonstrate the steps.**"
 msgstr "**Berikan contoh yang spesifik untuk menunjukkan langkah-langkahnya.**"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:40
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:46
+#: cd8aebaefdc2470d8e9625068b1ba729
 msgid "**Describe the behavior you observed after following the steps** and point out what exactly is the problem with that behavior."
 msgstr "**Deskripsikan perilaku yang telah anda amati setelah mengikuti langkah-langkah tersebut** dan tunjukkan masalah apa sebenarnya dengan perilaku itu."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:42
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:48
+#: 01ac89a91fbd40078b3ce9e93870511a
 msgid "**Explain which behavior you expected to see instead and why.**"
 msgstr "**Deskripsikan perilaku mana yang ingin anda ketahui dan mengapa.**"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:43
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:49
+#: 7df677d1fb554348a6b3a7d6455a12d0
 msgid "**If the problem wasn't triggered by a specific action**, describe what you were doing before the problem happened and share more information using the guidelines below."
 msgstr "**Jika masalah tersebut tidak dicetus oleh tindakan tertentu**, deskripsikan apa yang anda lakukan sebelum masalah itu terjadi dan bagikan informasi lebih banyak dengan menggunakan panduan di bawah ini."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:46
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:52
+#: 2c3db6c71fab4ab98ec8c676650bba65
 msgid "**Provide log related to the issue.** Use the verbose flag to start the logging process, and submit the entire log from the first step you performed."
 msgstr "**Berikan log yang terkait dengan masalah ini.** Gunakan bendera verbose untuk memulai proses masuk, dan ajukan seluruh log dari langkah pertama yang anda lakukan."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:50
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:56
+#: 0e226d7104bc4221ab72650a884f1c12
 msgid "Provide more context by answering these questions:"
 msgstr "Berikan konteks lebih banyak dengan menjawab pertanyaan-pertanyaan ini:"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:52
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:58
+#: 9a5d061cb0964bf9b0964a708d1776d6
 msgid "**Did the problem start happening recently** (e.g. after updating to the latest version) or was this always a problem?"
 msgstr "**Apakah masalah tersebut mulai terjadi baru-baru ini** (misalnya setelah memperbarui ke versi terbaru) atau apakah ini selalu menjadi masalah?"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:54
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:60
+#: 6d13d357033c4139a06759619679a638
 msgid "**Can you reliably reproduce the issue?** If not, provide details about how often the problem happens and under which conditions it normally happens."
 msgstr "**Bisakah anda dapat dipercaya mereproduksi masalah ini?** Jika tidak, berikan rincian tentang seberapa sering masalah tersebut terjadi dan dalam kondisi mana biasanya itu terjadi."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:58
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:64
+#: d35a9aa70d964aed90c661b06a7cabe3
 msgid "Include details about your configuration and environment:"
 msgstr "Masukkan rincian tentang konfigurasi dan lingkungan anda:"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:60
-msgid "**What version of EFB are you using?** You can get the version by using the flag `-V`."
-msgstr "**Versi EFB apa yang anda gunakan?** Anda bisa mendapatkan versi tersebut dengan menggunakan flag `-V`."
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:66
+#: 1633bc254c584d6aa2f4526173acce52
+msgid "**What version of EFB are you using?** You can get the version by using the flag ``--version``."
+msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:62
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:68
+#: 34f16cbdb56348a6bf3115b8449fa76c
 msgid "**What's the name and version of the OS you're using?**"
 msgstr "**Apakah nama dan versi OS yang anda gunakan?**"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:65
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:71
+#: ec2531a86a914422a131efc7828bac9c
 msgid "When submitting your log, please remember to hide your private information."
 msgstr "Saat mengajukan log anda, harap ingat untuk menyembunyikan informasi pribadi anda."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:69
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:75
+#: a7e389a7851c4ca381467512ed2954d2
 msgid "Suggesting enhancements"
 msgstr "Menyarankan perbaikan"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:71
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:77
+#: e6aa477f900e4b6b8f792711bedeb504
 msgid "If you have any suggestions, feel free to raise it up in the issue list. Please try to provide as much details as you can, that includes:"
 msgstr "Jika anda memiliki saran, jangan ragu untuk mengajukannya dalam daftar masalah. harap coba untuk memberikan rincian sebanyak mungkin yang anda bisa, yang mana termasuk:"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:75
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:81
+#: 15c52910c2b84b918cf9d0178e756078
 msgid "**Use a clear and descriptive title** for the issue to identify the suggestion."
 msgstr "** Gunakan judul yang jelas dan deskriptif ** untuk masalah ini untuk mengidentifikasi sarannya."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:76
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:82
+#: 321c592355dd4facbc58aaa5691db29e
 msgid "**Give details on how the enhancement behave**."
 msgstr "**Berikan rincian tentang bagaimana perbaikan berperilaku**."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:77
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:83
+#: 4817bdb782084324a65d3e6e3dded6d6
 msgid "**Provide specific examples to demonstrate the abstraction**."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:78
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:84
+#: f6160b3e42e64482b9c6fa688d5eebe2
 msgid "The enhancement to the framework must be applicable to considerably many IM platforms, not just for a single IM. Suggestions for a specific IM should be made to their relative channel."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:83
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:88
+#: 093ed23eb4ff44848643800ddd829480
 msgid "Adapted from `Atom contribution guide`__ by GitHub Inc."
 msgstr "Diadaptasi dari 'Panduan kontribusi Atom`__ oleh GitHub Inc."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:88
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:93
+#: 84cb01bcd00f4a9dbee7fb23d6940360
 msgid "Pull requests"
 msgstr "Tarik permintaan"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:89
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:94
+#: 7decd08615ee48b0986c43419aa97c3d
 msgid "When you have done some changes and want to submit it to us, fork it to your account and submit a GitHub pull request. Please write a detailed description for your pull request on:"
 msgstr "Saat anda sudah melakukan beberapa perubahan dan ingin mengajukannya kepada kami, salin itu ke akun anda dan ajukan pull request Github. harap tulis deskripsi yang terperinci untuk pull request anda pada:"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:93
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:98
+#: 1f590a20a5a849c997be34d50ccdf149
 msgid "**What changes have you made?**"
 msgstr "**Perubahan apa yang sudah anda lakukan?**"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:94
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:99
+#: b1b5dd7f70314ffb97a63fcf6b2c6849
 msgid "**What problem have you solved?**"
 msgstr "**Masalah apa yang sudah anda selesaikan?**"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:95
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:100
+#: 1f5ed52370404bfc8fd87ef5bc98ce09
 msgid "**Which issue have you addressed** if applicable."
 msgstr "**Masalah yang mana yang anda tujukan** jika berlaku."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:97
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:102
+#: 86a45004e2244b218fd6527ee96aabd2
 msgid "Always write a clear log message for your commits. One-line messages are fine for small changes, but bigger changes needs a detailed description after the one-liner."
 msgstr "Selalu tulis pesan log yang jelas untuk komit anda. Pesan satu baris baik untuk perubahan kecil, namun perubahan yang lebih besar memerlukan penjelasan rinci setelah satu baris."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:101
+#: /Users/blueset/Codebase/ehForwarderBot/docs/contributing.rst:106
+#: 9de640d432aa47e1b98a82602044f04e
 msgid "Adapted from `OpenGovernment contribution guide`__ by Participatory Politics Foundation"
 msgstr ""
 

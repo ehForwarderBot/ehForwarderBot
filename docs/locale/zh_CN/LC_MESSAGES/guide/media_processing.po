@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-12 01:30+0800\n"
-"PO-Revision-Date: 2020-01-13 07:34\n"
+"POT-Creation-Date: 2020-01-20 01:17+0800\n"
+"PO-Revision-Date: 2020-01-19 17:20\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -16,54 +16,67 @@ msgstr ""
 "Language: zh_CN\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:2
+#: f1eee1890f67492b908a5b82ca4e9a24
 msgid "Media processing"
 msgstr "媒体处理"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:5
+#: 06bc6cd5cb2e4368a0ba4a3758230645
 msgid "Choosing media formats"
 msgstr "选择媒体格式"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:7
+#: 984f3672af364f5a896dbbba6e039e53
 msgid "Both Master and Slave channel can take their charges to convert media files they send or receive. In general: **if a media file received from remote server is not a common format, convert it before deliver it on; if a media file sent to remote server requires to be in a specific format, it should be converted before sending out**. Nevertheless, this is only a guideline on channels' responsibility regarding media processing, and everyone has their own opinion on what is a common format / encoding. Therefore we only recommend this behaviour, but do not force in our code. This is to say that, you still have to take care of the accepted type of media encoding of your corresponding method of presentation, and convert and/or fallback to different type of representation if necessary. After all, the delivery of information is more important."
 msgstr "主端和从端都应该对收发的媒体文件的格式负责。一般来说：如果从远程服务器收到的媒体文件不是一个常见的格式，这个文件应该在传递给其他信道之前转码。如果发送到远程服务器的媒体文件有格式要求，则应在发出之前进行转换。然而，我们只提供一个关于媒体格式转换责任的指导建议，毕竟每个人对于常见格式、编码的定义不尽相同。故我们只提供推荐行为，而不在框架内做出强制限制。也就是说，如果信道向框架外输出的媒体文件对格式有所要求，信道仍旧需要检查文件格式，并在必要时转换。毕竟保证信息的传递更为重要。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:25
+#: 921fa94f87454147a971a04dfb6a6acb
 msgid "Media encoders"
 msgstr "媒体编码器"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:27
+#: c6c0481b40fc4f8e8e8a118853ea6510
 msgid "Similarly, we will also not put a strict limit on this as well, but just a recommendation. As you might have already know, there are few mature pure Python media processing libraries, most of them will more or less requires internal or external binary dependencies."
 msgstr "类似地，我们不会对它做出明确的限制，我们只是提出建议。或许您已经知道了，目前 Python 平台已有数个成熟的媒体处理库，其中大多数都需要用到内置的或是附加的二进制依赖。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:33
+#: ef759db35409406cba53a81950120770
 msgid "We try to aim to use as few different libraries as we can, as more library to install means more space, install time, and complexity. While processing media files, we recommend to use the following libraries if possible:"
 msgstr "尽可能少地使用不同的外部代码库。多一个外部代码库依赖就意味着用户需要更多的时间和空间，并且提升了安装的复杂性。在处理媒体文件时，我们建议尽可能使用以下的库："
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:39
+#: 10617d9121e04cc196bad6c407cfe618
 msgid "Pillow_"
 msgstr "Pillow_"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:40
+#: aa941a9650c04ae6907383f44b7e7e74
 msgid "FFmpeg_"
 msgstr "FFmpeg_"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:46
+#: a5b52886ab4f4fa98027ca2250f9c2af
 msgid "Files in messages"
 msgstr "消息中的文件"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:48
-msgid "When a file sent out from a channel, it should be open, sought back to 0 ( ``file.seek(0)`` ) before sending."
-msgstr "从信道发出的文件对象都应该为打开的状态、且文件指针应该定位于 0（``file.seek(0)``）。"
+#: 395e8a77d8c6420791212441aa69594b
+msgid "When a file sent out from a channel, it MUST be open, and sought back to 0 ( ``file.seek(0)`` ) before sending."
+msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:51
-msgid "Files sent should be able to be located somewhere in the file system, better with a appropriate extension name, but not required. All files should also have its MIME type specified in the message object. If the channel is not sure about the correct MIME type, it can try to guess with ``libmagic``, or fallback to ``application/octet-stream``. Always try the best to provide the most suitable MIME type when sending."
-msgstr "所有发出的都应该能在文件系统中找到，并最好有附有相应的扩展名。在发送文件的同时也应该在消息对象中指定其 MIME 类型。如果文件的 MIME 类型不明确，可以尝试用 ``libmagic`` 猜测，或者使用最基本的 ``application/octet-stream``。发送文件是应尽可能提供准确的 MIME 类型。"
+#: 71cd144965a648bc99d0ebd0e9912d24
+msgid "Files sent MUST be able to be located somewhere in the file system, and SHOULD with a appropriate extension name, but not required. All files MUST also have its MIME type specified in the message object. If the channel is not sure about the correct MIME type, it can try to guess with ``libmagic``, or fallback to ``application/octet-stream``. Always try the best to provide the most suitable MIME type when sending."
+msgstr "所有发出的都必须（MUST）能在文件系统中找到，并应当（SHOULD）有附有相应的扩展名。在发送文件的同时也必须（MUST）在消息对象中指定其 MIME 类型。如果文件的 MIME 类型不明确，可以尝试用 \\ ``libmagic``\\  猜测，或者使用最基本的 \\ ``application/octet-stream``\\ 。发送文件时应尽可能提供准确的 MIME 类型。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:60
+#: 59539c56b0d247cdbd10f7e8347fc7ee
 msgid "For such files, we use ``close`` to signify the end of its lifecycle. If the file is not required by the sender's channel anymore, it can be safely discarded."
 msgstr "发出的文件会通过 ``close`` 来标记其的生命周期的结束。如果消息的来源信道也不再需要它的话，该文件此时就被安全地丢弃了。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:64
+#: f2ba27435f84493482eb98f08b760b7d
 msgid "Generally, ``tempfile.NamedTemporaryFile`` should work for ordinary cases."
 msgstr "一般来讲，``tempfile.NamedTemporaryFile`` 应该能适用于大多数情况。"
 

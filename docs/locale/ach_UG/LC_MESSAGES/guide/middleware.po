@@ -1,0 +1,97 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ehforwarderbot\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-20 01:17+0800\n"
+"PO-Revision-Date: 2020-01-19 17:21\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Acholi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Language: ach\n"
+"X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/middleware.pot\n"
+"Language: ach_UG\n"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:2
+#: 7325145c2fb14e3ebe9dd693f48d3b24
+msgid "Middlewares"
+msgstr "crwdns2191:0crwdne2191:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:4
+#: e3c2cd0fe1bb41ada6d9bcc4dd0008b3
+msgid "Middlewares works in between the master channel and slave channels, they look through messages and statuses delivered between channels, passing them on, make changes or discarding them, one after another."
+msgstr "crwdns2192:0crwdne2192:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:9
+#: 3c4e3cadf190437b98f1d07064c147ee
+msgid "Like channels, middlewares will also each have an instance per EFB session, managed by the coordinator. However, they don't have centrally polling threads, which means if a middleware wants to have a polling thread or something similar running in the background, it has to stop the thread using Python's ``atexit`` or otherwise."
+msgstr "crwdns2193:0crwdne2193:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:17
+#: e93bdd40418c4011b62d8fff3c0d533a
+msgid "Message and Status Processing"
+msgstr "crwdns2194:0crwdne2194:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:19
+#: eb701d3d8c104f7c80a661a96274ba23
+msgid "Each middleware by default has 2 methods, :meth:`~.ehforwarderbot.Middleware.process_message` which processes message objects, and :meth:`~.ehforwarderbot.Middleware.process_status` which processes status objects. If they are not overridden, they will not touch on the object and pass it on as is."
+msgstr "crwdns7761:0:meth:crwdnd7761:0:meth:crwdne7761:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:24
+#: 2b6af1b8733c49108496521d10e68e2d
+msgid "To modify an object, just override the relative method and make changes to it. To discard an object, simply return ``None``. When an object is discarded, it will not be passed further to other middlewares or channels, which means a middleware or a channel will never receive a ``None`` message or status."
+msgstr "crwdns9025:0crwdne9025:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:32
+#: 9186b3fbcb2b463d9d1ac4e0bbd98ecf
+msgid "Other Usages"
+msgstr "crwdns2197:0crwdne2197:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:34
+#: f6e72f1df74c4a21b5c30e1ce9713e54
+msgid "Having rather few limitation compare to channels, middlewares are rather easy to write, which allows it to do more than just intercept messages and statuses."
+msgstr "crwdns2198:0crwdne2198:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:38
+#: 21f315ffa2f849099316be9156c02452
+msgid "Some ideas:"
+msgstr "crwdns2199:0crwdne2199:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:40
+#: 6cda8f112cbd4d75ae590baf4511f6f7
+msgid "Periodic broadcast to master / slave channels"
+msgstr "crwdns2200:0crwdne2200:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:41
+#: 8312ba8c34cb4759a8ffc728ab19fe58
+msgid "Integration with chat bots"
+msgstr "crwdns2201:0crwdne2201:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:42
+#: bff2dfa213d54083a57e25758b89d222
+msgid "Automated operations on vendor-specific commands / additional features"
+msgstr "crwdns3067:0crwdne3067:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:44
+#: 237afd996c764d5fa4ec35adaeff93fe
+msgid "Share user session from slave channel with other programs"
+msgstr "crwdns2203:0crwdne2203:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:46
+#: bc4b47e1a6194958bca9ad3d262f2ca7
+msgid "etc..."
+msgstr "crwdns2204:0crwdne2204:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:49
+#: faf87e47b78e49b2baa56f9c528f1d98
+msgid "Implementation details"
+msgstr "crwdns9197:0crwdne9197:0"
+
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/middleware.rst:50
+#: 71dbb9271a1f4184ba685052f3456029
+msgid "See :class:`.Middleware`."
+msgstr "crwdns8759:0:class:crwdne8759:0"
+

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-12 01:30+0800\n"
-"PO-Revision-Date: 2020-01-13 07:34\n"
+"POT-Creation-Date: 2020-01-20 01:17+0800\n"
+"PO-Revision-Date: 2020-01-19 17:20\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -16,168 +16,217 @@ msgstr ""
 "Language: zh_CN\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/coordinator.rst:2
+#: 7e56d43258394568b46bdcf0e6cf4576
 msgid "Coordinator"
 msgstr "协调器"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:1
+#: 9edbc5133ec944648bafa1e0cd355ca7
 msgid "Coordinator among channels."
-msgstr ""
+msgstr "通道间的协调器。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:5
+#: a879ef3e9362446a9fbd802e11119baf
 msgid "Name of current profile.."
-msgstr ""
+msgstr "当前配置档案的名称"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:0
+#: 343ea8acb01c489f9e786ea865c978a8
+#: 8dfff2cdacc24778abde2a38e236a5a8
+#: faa868a4c2b54395942d7f73e5513d52
+#: 349f9ad2c50445a1866401f9bc6d240e
+#: 6df0faf8105f43be80f4440dd90eef44
 msgid "type"
-msgstr ""
+msgstr "类型"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:7
+#: 695a0993dbf94ed3a4aa0ff07d1acf20
 msgid "str"
-msgstr ""
+msgstr "str"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:11
+#: dffbdb0361bc4779a47dc2f9bb75d67a
 msgid "Global interaction thread lock."
-msgstr ""
+msgstr "全局交互线程锁。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:13
+#: 401369bb43884fe9a2abb21b56302746
 msgid "threading.Lock"
-msgstr ""
+msgstr "threading.Lock"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:17
+#: 3714e3ef0d5d4955838b5dce43bdf876
 msgid "The running master channel object."
-msgstr ""
+msgstr "正在运行的主端对象。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:19
+#: 8c96da9f3ee54dd8be2536f71d40c00b
 msgid "Channel"
-msgstr ""
+msgstr "信道"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:23
+#: e0bf8e9e2bc245dbb7dbeac443d1c5bc
 msgid "Dictionary of running slave channel object. Keys are the unique identifier of the channel."
-msgstr ""
+msgstr "正在运行的从端的字典。键值为信道的唯一标识符。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:26
+#: f9d7103b8b4f43dd92f75c105465dc4f
 msgid "Dict[str, EFBChannel]"
-msgstr ""
+msgstr "Dict[str, EFBChannel]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:30
+#: 3c068739e483425aae7421aaf32d01a8
 msgid "List of middlewares"
-msgstr ""
+msgstr "中间件列表"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator:32
+#: efe9a45a0a444832b93e2d281e7e1531
 msgid "List[Middleware]"
-msgstr ""
+msgstr "List[Middleware]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_channel:1
+#: c2bf672be0b74ae1b2825eb087e2da7f
 msgid "Register the channel with the coordinator."
-msgstr ""
+msgstr "向协调器注册信道。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_channel:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_middleware:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_status:0
+#: eba7755aeabe4677b26e89ccc68ac25a
+#: 1cd175df997a4de394b20d03c06b2199
+#: 15dcdd316825469594b1d06dc2f4a607
+#: 39151a6e05cb4fb3a319523511e35310
+#: c0eabe1b915648f8ba789a9957963c9c
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_channel:4
+#: 3616bf7530024150a4beb505cfa6a6e9
 msgid "Channel to register"
-msgstr ""
+msgstr "需注册的信道"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_middleware:1
+#: a518d086dc4b43908b726de5b12518e6
 msgid "Register a middleware with the coordinator."
-msgstr ""
+msgstr "向协调器注册一个中间件。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.add_middleware:4
+#: b583a68377c448c19133c344f30ed648
 msgid "Middleware to register"
-msgstr ""
+msgstr "需要注册的中间件"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:1
+#: fb9bd2bfd85645c289bd56295445b8bd
 msgid "Return the module instance of a provided module ID"
-msgstr ""
+msgstr "返回该组件 ID 对应的实例。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:4
+#: 4cdd045ae9cd4821ba70d071ac4ead5e
 msgid "Module ID, with instance ID if available."
-msgstr ""
+msgstr "组件 ID，包含实例 ID（若有）。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:0
+#: 3e1c0b718ec04be78723a1cdf73bc43a
+#: c64db800110e4c42962e3224b8236301
 msgid "Return type"
-msgstr ""
+msgstr "返回类型"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:6
+#: af7f1a59813a430f9b2ebebd311f7d93
 msgid ":py:data:`~typing.Union`\\[:py:class:`~ehforwarderbot.channel.Channel`, :py:class:`~ehforwarderbot.middleware.Middleware`]"
-msgstr ""
+msgstr ":py:data:`~typing.Union`\\[:py:class:`~ehforwarderbot.channel.Channel`, :py:class:`~ehforwarderbot.middleware.Middleware`]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:0
+#: bb02f0283eca4d2c96fec84d136af967
+#: fa8760191b2948e386d386d49c6366ee
 msgid "Returns"
-msgstr ""
+msgstr "返回"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:7
+#: 5e1e3508e0c94b32a225b5ce126c5c7f
 msgid "Module instance requested."
-msgstr ""
+msgstr "请求的组件实例。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:0
+#: d3e5b90a11624075b245624e5724f2d5
 msgid "Raises"
-msgstr ""
+msgstr "抛出"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.get_module_by_id:9
+#: 294020aeb3a5478babe0bc39f728bcd8
 msgid "When the module is not found."
-msgstr ""
+msgstr "当组件无法找到时。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.master_thread:1
+#: 1689bcd0862543188a28eeaba0adf3fd
 msgid "The thread running poll() of the master channel."
-msgstr ""
+msgstr "运行主端 poll() 函数的线程。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.middlewares:1
+#: 4200f903301b4923893822369a173daa
 msgid "Instances of middlewares. Sorted in the order of execution."
-msgstr ""
+msgstr "中间件实例，按执行顺序排序"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.mutex:1
+#: 96f1d6f66af84bedaef07070298ff27b
 msgid "Mutual exclusive lock for user interaction through CLI interface"
-msgstr ""
+msgstr "CLI 界面中用户交互的独占锁"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.profile:1
+#: 47bc66b960264c62b24a7dad87bc1f3d
 msgid "Current running profile name"
-msgstr ""
+msgstr "当前配置档案的名称"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:1
+#: 6eb5e6eea4ab4e5798f5dd8c67aa60b3
 msgid "Deliver a new message or edited message to the destination channel."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:4
+#: 4e669bf37dff4eaebfb385d669281f53
 msgid "The message"
-msgstr ""
+msgstr "消息"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:7
+#: 5fb64d7e5e504b4d9660ecfbdf2e7457
 msgid ":py:data:`~typing.Optional`\\[:py:class:`~typing.ForwardRef`]"
-msgstr ""
+msgstr ":py:data:`~typing.Optional`\\[:py:class:`~typing.ForwardRef`]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_message:8
+#: 82d5696602ae4060a177e48f90019f00
 msgid "The message processed and delivered by the destination channel, includes the updated message ID if sent to a slave channel. Returns ``None`` if the message is not sent."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_status:1
+#: cd4e6fb601f541f09f5a63c4702d4b01
 msgid "Deliver a status to the destination channel."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_status:4
+#: 75c8bddc3dff4ac29613d28fcd720fef
 msgid "The status"
-msgstr ""
+msgstr "状态"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.slave_threads:1
+#: 9b4b21df40e241c98f0dd1abdb272381
 msgid "Threads running poll() from slave channels. Keys are the channel IDs."
-msgstr ""
+msgstr "运行从端 poll() 函数的线程。键值为信道 ID。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.slaves:1
+#: 853521bed7fe45c6bb9810601a335da6
 msgid "Instances of slave channels. Keys are the channel IDs."
-msgstr ""
+msgstr "从端实例，键值为信道 ID。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.translator:1
+#: ac36119064344891bfcfba33db918d91
 msgid "Internal GNU gettext translator."
-msgstr ""
+msgstr "内部 GNU gettext 翻译器。"
 
