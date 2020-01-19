@@ -20,7 +20,7 @@ Chat and Chat Members
     SystemChatMember
     ChatNotificationState
 
-.. rubric:: Modules
+.. rubric:: Classes
 
 .. automodule:: ehforwarderbot.chat
     :members:
