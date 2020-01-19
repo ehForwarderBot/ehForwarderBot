@@ -17,12 +17,13 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
+import gettext
 import os
 import sys
 from os import path
 
 import sphinxcontrib.plantuml
-from sphinx import addnodes
+from sphinx import addnodes, locale
 from typing import Sequence
 from sphinx.locale import get_translation
 
@@ -318,6 +319,9 @@ sphinxcontrib.plantuml.plantuml.extract_original_messages = extract_original_mes
 def setup(self):
     package_dir = path.abspath(path.dirname(__file__))
     locale_dir = os.path.join(package_dir, 'locale')
+    print("locale_dir exists:", os.path.exists(locale_dir), locale_dir)
+    print(locale.init([locale_dir], self.config.language, MESSAGE_CATALOG_NAME))
+    print(gettext.find(MESSAGE_CATALOG_NAME, locale_dir, [self.config.language], all=True))
     self.add_message_catalog(MESSAGE_CATALOG_NAME, locale_dir)
     self.add_message_catalog("sphinx", locale_dir)
     self.config.language = conversion.get(self.config.language, self.config.language)
