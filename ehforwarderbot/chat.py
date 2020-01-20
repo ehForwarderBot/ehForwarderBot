@@ -225,6 +225,8 @@ class ChatMember(BaseChat):
         """
         Args:
             chat (:class:`~.chat.Chat`): Chat associated with this member.
+
+        Keyword Args:
             name (str): Name of the member.
             alias (Optional[str]): Alternative name of the member, usually set by user.
             uid (:obj:`.ChatID` (str)):
@@ -306,6 +308,8 @@ class SelfChatMember(ChatMember):
         """
         Args:
             chat (:class:`~.chat.Chat`): Chat associated with this member.
+
+        Keyword Args:
             name (str): Name of the member.
             alias (Optional[str]): Alternative name of the member, usually set by user.
             uid (:obj:`.ChatID` (str)):
@@ -334,9 +338,15 @@ class SystemChatMember(ChatMember):
     Chat bots created by the users of the IM platform SHOULD NOT be created
     as a :class:`.SystemChatMember`, but a plain :class:`.ChatMember` instead.
 
+    :class:`.SystemChatMember`\\ s are RECOMMENDED to be created using
+    :meth:`.Chat.add_system_member` or :meth:`.Chat.make_system_member` method.
+
     Note:
         ``SystemChatMember`` objects are picklable, thus it is RECOMMENDED
         to keep any object of its subclass also picklable.
+
+    Attributes:
+        SYSTEM_ID: The default ID of a :class:`.SystemChatMember`.
     """
 
     SYSTEM_ID = ChatID("__system__")
@@ -349,6 +359,8 @@ class SystemChatMember(ChatMember):
         """
         Args:
             chat (:class:`~.chat.Chat`): Chat associated with this member.
+
+        Keyword Args:
             name (str): Name of the member.
             alias (Optional[str]): Alternative name of the member, usually set by user.
             uid (:obj:`.ChatID` (str)):
@@ -416,9 +428,15 @@ class Chat(BaseChat, ABC):
         notification (:class:`ChatNotificationState`): Indicate the notification settings of the chat in
             its slave channel (or middleware), defaulted to :const:`~.ChatNotificationState.ALL`.
         members (list of :obj:`.ChatMember`): Provide a list of members
-            in the chat. Defaulted to an empty ``list``. You may want to extend this
-            object and implement a ``@property`` method set for loading members on
-            demand.
+            in the chat. Defaulted to an empty ``list``.
+
+            You can extend this object and implement a ``@property`` method
+            set for loading members on demand.
+
+            Note that this list may include members created by middlewares when the object is
+            a part of a message, and these members MAY not appear when trying to retrieve
+            from the slave channel directly. These members would have a different
+            :attr:`~.BaseChat.module_id` specified from the chat.
         vendor_specific (Dict[str, Any]): Any vendor specific attributes.
         self (Optional[:obj:`SelfChatMember`]): the User as a member of the chat (if available).
     """
@@ -435,7 +453,7 @@ class Chat(BaseChat, ABC):
                  notification: ChatNotificationState = ChatNotificationState.ALL,
                  with_self: bool = True):
         """
-        Args:
+        Keyword Args:
             module_id (str): Unique ID of the module.
             channel_emoji (str): Emoji of the channel, empty string if the chat
                 is from a middleware.
@@ -488,9 +506,23 @@ class Chat(BaseChat, ABC):
                    middleware: Optional[Middleware] = None) -> ChatMember:
         """Add a member to the chat.
 
+        Tip:
+            This method does not check for duplicates. Only add members with this
+            method if you are sure that they are not added yet. To check if
+            the member is already added before adding, you can do something like
+            this:
+
+            .. code-block:: python
+
+                with contextlib.suppress(KeyError):
+                    return chat.get_member(uid)
+                return chat.add_member(name, uid, alias=..., vendor_specific=...)
+
         Args:
             name (str): Name of the member.
             uid: ID of the member.
+
+        Keyword Args:
             alias (Optional[str]): Alias of the member.
             vendor_specific (Dict[str, Any]): Any vendor specific attributes.
             description (str):
@@ -518,7 +550,7 @@ class Chat(BaseChat, ABC):
         a system member when the “system” member is NOT intended to become a member of
         the chat.
 
-        Args:
+        Keyword Args:
             name (str): Name of the member.
             uid: ID of the member.
             alias (Optional[str]): Alias of the member.
@@ -543,7 +575,11 @@ class Chat(BaseChat, ABC):
         a system member when the “system” member is intended to become a member of
         the chat.
 
-        Args:
+        Tip:
+            This method does not check for duplicates. Only add members with this
+            method if you are sure that they are not added yet.
+
+        Keyword Args:
             name (str): Name of the member.
             uid: ID of the member.
             alias (Optional[str]): Alias of the member.

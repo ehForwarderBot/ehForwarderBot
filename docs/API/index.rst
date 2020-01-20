@@ -1,4 +1,4 @@
-API Documentations
+API documentations
 ==================
 
 This section contains documentations for the

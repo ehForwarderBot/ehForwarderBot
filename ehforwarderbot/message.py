@@ -315,7 +315,7 @@ class Message:
         ``Message`` objects are picklable, thus it is strongly RECOMMENDED
         to keep any object of its subclass also picklable.
 
-    Attributes:
+    Keyword Args:
         attributes (Optional[:obj:`.MessageAttribute`]):
             Attributes used for a specific message type.
             Only specific message type requires this attribute. Defaulted to
@@ -332,9 +332,14 @@ class Message:
 
         chat (:obj:`.Chat`): Sender of the message.
         author (:obj:`.ChatMember`): Author of this message. Author of the message
-            MUST be a part of the same :attr:`~.message.Message.chat` this message
-            is in. If the message is sent from the User Themself, this MUST be
-            an object of :class:`.SelfChatMember`.
+            MUST be indicated as a part of the same :attr:`~.message.Message.chat`
+            this message is from. If the message is sent from the User Themself,
+            this MUST be an object of :class:`.SelfChatMember`.
+
+            Note that the author MAY not be inside :attr:`~.Chat.members` of the
+            chat of this message. The author MAY have a different
+            :attr:`~.BaseChat.module_id` from the :attr:`~.Message.chat`, and
+            could be unretrievable otherwise.
         commands (Optional[:obj:`MessageCommands`]): Commands attached to the message
 
             This attribute will be ignored in _Status_ messages.
