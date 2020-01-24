@@ -340,5 +340,5 @@ def setup(self):
     self.config.language = conversion.get(self.config.language, self.config.language)
     self.config.overrides['language'] = conversion.get(self.config.overrides.get('language', None),
                                                        self.config.overrides.get('language', None))
-    if self.config.language.startswith("zh"):
+    if self.config.language and self.config.language.startswith("zh"):
         self.config.latex_elements['fontpkg'] = "\usepackage{xeCJK}"
