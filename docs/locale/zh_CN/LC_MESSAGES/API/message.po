@@ -727,7 +727,7 @@ msgstr "在 \\ :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`\\ 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute.Types:23
 #: cfcd4c1d2dfb439aaefeb295a5fff2c2
 msgid "Used in :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`, represent the status of uploading video."
-msgstr "在 \\ :attr:`~.ehforwarderbot.message.StatusAttribute.status_type`\\  中使用，代表上传视频状态。"
+msgstr "在 :attr:`~.ehforwarderbot.message.StatusAttribute.status_type` 中使用，代表上传视频状态。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute.__init__:2
 #: 3a102bcf3c2147599b3f7693194383ef
@@ -737,7 +737,7 @@ msgstr "状态类型。"
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Substitutions:1
 #: 71eeec7c7a2b4a8790b89f85c0bdf5c7
 msgid "Bases: :class:`dict`, :class:`typing.Generic`"
-msgstr "基类：\\ :class:`dict`\\ 、\\ :class:`typing.Generic`"
+msgstr "基类：:class:`dict`、:class:`typing.Generic`"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Substitutions:3
 #: 7710c341ae3f4281b75e0217dfbb0e8a

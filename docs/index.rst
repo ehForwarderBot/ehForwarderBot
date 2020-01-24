@@ -4,33 +4,37 @@ EH Forwarder Bot
 
 .. only:: not latex
 
-    .. image:: https://img.shields.io/badge/Python->%3D%203.6-blue.svg
-       :alt: Python >= 3.6
-       :target: https://www.python.org/
-    .. image:: https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg
-       :alt: Gitter
-       :target: https://gitter.im/blueset/ehForwarderBot
-    .. image:: https://img.shields.io/badge/-Telegram-blue.svg?logo=data:image/svg%2Bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTkuNzgsMTguNjVMMTAuMDYsMTQuNDJMMTcuNzQsNy41QzE4LjA4LDcuMTkgMTcuNjcsNy4wNCAxNy4yMiw3LjMxTDcuNzQsMTMuM0wzLjY0LDEyQzIuNzYsMTEuNzUgMi43NSwxMS4xNCAzLjg0LDEwLjdMMTkuODEsNC41NEMyMC41NCw0LjIxIDIxLjI0LDQuNzIgMjAuOTYsNS44NEwxOC4yNCwxOC42NUMxOC4wNSwxOS41NiAxNy41LDE5Ljc4IDE2Ljc0LDE5LjM2TDEyLjYsMTYuM0wxMC42MSwxOC4yM0MxMC4zOCwxOC40NiAxMC4xOSwxOC42NSA5Ljc4LDE4LjY1WiIgLz48L3N2Zz4=
-       :alt: Telegram
-       :target: https://telegram.me/efbsupport
-    .. image:: https://readthedocs.org/projects/ehforwarderbot/badge/?version=latest
-       :alt: Documentation
-       :target: https://ehforwarderbot.readthedocs.io/en/latest/
-    .. image:: https://github.com/blueset/ehforwarderbot/workflows/Tests/badge.svg
-       :alt: Tests status
-       :target: https://github.com/blueset/ehforwarderbot/actions
-    .. image:: https://img.shields.io/pypi/v/ehforwarderbot.svg
-       :alt: PyPI release
-       :target: https://pypi.org/project/ehforwarderbot/
-    .. image:: https://pepy.tech/badge/ehforwarderbot/month
-       :alt: Downloads per month
-       :target: https://pepy.tech/project/ehforwarderbot
-    .. image:: https://img.shields.io/codacy/grade/3b2555f9134844e3b01b00700bc43eeb.svg
-       :alt: Codacy grade
-       :target: https://www.codacy.com/app/blueset/ehForwarderBot
-    .. image:: https://d322cqt584bo4o.cloudfront.net/ehforwarderbot/localized.svg
-       :alt: Translate this project
-       :target: https://crowdin.com/project/ehforwarderbot/
+    :Versions:
+        .. image:: https://img.shields.io/badge/Python->%3D%203.6-blue.svg
+           :alt: Python >= 3.6
+           :target: https://www.python.org/
+        .. image:: https://img.shields.io/pypi/v/ehforwarderbot.svg
+           :alt: PyPI release
+           :target: https://pypi.org/project/ehforwarderbot/
+    :Build:
+        .. image:: https://readthedocs.org/projects/ehforwarderbot/badge/?version=latest
+           :alt: Documentation
+           :target: https://ehforwarderbot.readthedocs.io/en/latest/
+        .. image:: https://github.com/blueset/ehforwarderbot/workflows/Tests/badge.svg
+           :alt: Tests status
+           :target: https://github.com/blueset/ehforwarderbot/actions
+    :Community:
+        .. image:: https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg
+           :alt: Gitter
+           :target: https://gitter.im/blueset/ehForwarderBot
+        .. image:: https://img.shields.io/badge/-Telegram-blue.svg?logo=data:image/svg%2Bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTkuNzgsMTguNjVMMTAuMDYsMTQuNDJMMTcuNzQsNy41QzE4LjA4LDcuMTkgMTcuNjcsNy4wNCAxNy4yMiw3LjMxTDcuNzQsMTMuM0wzLjY0LDEyQzIuNzYsMTEuNzUgMi43NSwxMS4xNCAzLjg0LDEwLjdMMTkuODEsNC41NEMyMC41NCw0LjIxIDIxLjI0LDQuNzIgMjAuOTYsNS44NEwxOC4yNCwxOC42NUMxOC4wNSwxOS41NiAxNy41LDE5Ljc4IDE2Ljc0LDE5LjM2TDEyLjYsMTYuM0wxMC42MSwxOC4yM0MxMC4zOCwxOC40NiAxMC4xOSwxOC42NSA5Ljc4LDE4LjY1WiIgLz48L3N2Zz4=
+           :alt: Telegram
+           :target: https://telegram.me/efbsupport
+    :Stats:
+        .. image:: https://pepy.tech/badge/ehforwarderbot/month
+           :alt: Downloads per month
+           :target: https://pepy.tech/project/ehforwarderbot
+        .. image:: https://img.shields.io/codacy/grade/3b2555f9134844e3b01b00700bc43eeb.svg
+           :alt: Codacy grade
+           :target: https://www.codacy.com/app/blueset/ehForwarderBot
+        .. image:: https://d322cqt584bo4o.cloudfront.net/ehforwarderbot/localized.svg
+           :alt: Translate this project
+           :target: https://crowdin.com/project/ehforwarderbot/
 
 
 .. image:: https://raw.githubusercontent.com/blueset/ehForwarderBot/master/banner.png

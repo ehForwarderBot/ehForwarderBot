@@ -1,0 +1,9 @@
+em:lang(zh), em:lang(zh_TW), em:lang(zh_CN) {
+    font-family: "Kaiti TC Regular", STKaiTi-TC-Regular, "Kaiti TC", "Kaiti SC", STKaiti, BiauKai, "標楷體", DFKaiShu-SB-Estd-BF, Kaiti, DFKai-SB, serif;
+    font-style: normal;
+}
+
+em:lang(zh-cn), em:lang(zh_CN) {
+    font-family: "Kaiti SC Regular", STKaiTi-SC-Regular, "Kaiti SC", "Kaiti TC", STKaiti, DFKaiShu-SB-Estd-BF, Kaiti, DFKai-SB, Kai, serif;
+    font-style: normal;
+}

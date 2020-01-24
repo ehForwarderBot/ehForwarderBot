@@ -121,6 +121,7 @@ todo_include_todos = False
 #
 # html_theme_options = {}
 html_static_path = ['_static']
+html_css_files = ["styles/style.css"]
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -185,6 +186,7 @@ htmlhelp_basename = 'ehForwarderBotDoc'
 # -- Options for LaTeX output ---------------------------------------------
 
 latex_engine = "xelatex"
+latex_logo = "_static/logo.png"
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
@@ -196,7 +198,7 @@ latex_elements = {
 
     # Additional stuff for the LaTeX preamble.
     #
-    # 'preamble': '',
+    'preamble': r'\usepackage{unicode-math}',
 
     # Latex figure (float) alignment
     #
@@ -328,6 +330,8 @@ def html_page_context(self, pagename, templatename, context, doctree):
         self.add_message_catalog(MESSAGE_CATALOG_NAME, locale_dir)
         self.add_message_catalog("sphinx", locale_dir)
         self.catalog_added = True
+    if context.get("language"):
+        context["language"] = context["language"].replace("_", "-")
 
 
 def setup(self):
@@ -336,3 +340,5 @@ def setup(self):
     self.config.language = conversion.get(self.config.language, self.config.language)
     self.config.overrides['language'] = conversion.get(self.config.overrides.get('language', None),
                                                        self.config.overrides.get('language', None))
+    if self.config.language.startswith("zh"):
+        self.config.latex_elements['fontpkg'] = "\usepackage{xeCJK}"

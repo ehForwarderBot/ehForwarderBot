@@ -23,7 +23,7 @@ msgstr "目录"
 #: /Users/blueset/Codebase/ehForwarderBot/docs/directories.rst:4
 #: 07f9d35a9e9f4b89ad82838fc664f997
 msgid "Since EH Forwarder Bot 2.0, most modules should be installed with the Python Package Manager ``pip``, while configurations and data are stored in the \"EFB data directory\"."
-msgstr "从 2.0 版本开始，多数 EFB 模块应使用 Python 包管理器 \\ ``pip``\\  来安装，而配置文件和数据被储存于「EFB 数据目录」。"
+msgstr "从 2.0 版本开始，多数 EFB 模块应使用 Python 包管理器 ``pip`` 来安装，而配置文件和数据被储存于「EFB 数据目录」。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/directories.rst:9
 #: 964349d29d2346939ec530904a1d9241
