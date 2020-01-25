@@ -13,8 +13,8 @@ to and from as chats.
 
 In most of the cases, slave channels SHOULD be
 identified as one single user from the IM platform,
-instead of a bot.  You should only use a bot for
-slave channels when:
+instead of a bot. You should only use a bot for slave
+channels when:
 
 - the IM platform puts no difference between a user
   and a bot, or
@@ -32,7 +32,7 @@ requires, such as creating groups, search for friends,
 etc, via *additional features*.
 
 Such features are accessed by the user in a CLI-like
-style. An "additional feature" method MUST only take one
+style. An “additional feature” method MUST only take one
 string parameter aside from ``self``, and wrap it with 
 :meth:`~ehforwarderbot.utils.extra` decorator. The ``extra``
 decorator takes 2 arguments: ``name`` -- a short name of the

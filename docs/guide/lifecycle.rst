@@ -58,7 +58,7 @@ and middlewares are involved in it.
         are initialized and available.
 
         This is useful when a middleware would have
-        channel-specific behavior or would monkey-patch
+        channel-specific behaviors or would monkey-patch
         code in channels.
     end note
     :Poll master channel

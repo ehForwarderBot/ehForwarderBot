@@ -182,7 +182,7 @@ class MessageRemoval(Status):
         in the channel:
 
         * Slave channel ID and chat ID (:attr:`message.chat.module_id <.Chat.module_id>`
-          and :attr:`message.chat.chat_uid <.Chat.chat_uid>`)
+          and :attr:`message.chat.uid <.Chat.uid>`)
         * Message unique ID from the slave channel (:attr:`message.uid <.message.Message.uid>`)
 
         Args:

@@ -397,7 +397,7 @@ class Message:
                 - :attr:`.Message.type`
                 - :attr:`.Message.uid`
 
-        text (str): text of the message
+        text (str): Text of the message.
 
             This attribute will be ignored in _Status_ messages.
         type (:obj:`.MsgType`): Type of message

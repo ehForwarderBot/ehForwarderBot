@@ -245,7 +245,7 @@ class SlaveChannel(Channel, ABC):
                     raise EFBChannelNotFound()
                 file = tempfile.NamedTemporaryFile(suffix=".png")
                 response = requests.post("https://api.example.com/get_profile_picture/png",
-                                         data={"uid": chat.chat_uid})
+                                         data={"uid": chat.uid})
                 if response.status_code == 404:
                     raise EFBChatNotFound()
                 file.write(response.content)
