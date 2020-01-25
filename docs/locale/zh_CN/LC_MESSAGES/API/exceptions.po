@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-19 19:06\n"
+"PO-Revision-Date: 2020-01-25 06:22\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -66,7 +66,7 @@ msgstr "在发送消息或状态的过程中发生其他错误时，由从端抛
 #: 31d5b4d61a534a6e8ac5fdf8c1723c31
 #: fde38ca8910344d4a6be93c30ef090e8
 msgid "Can be raised in :meth:`.Channel.send_message` and :meth:`.Channel.send_status`."
-msgstr ""
+msgstr "可以在 :meth:`.Channel.send_message` 和 :meth:`.Channel.send_status` 中被抛出。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:1
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:1
@@ -85,7 +85,7 @@ msgstr "当指定的消息无法找到时由从端抛出。"
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:3
 #: a4e319420e0a4389bd793c612dfd1506
 msgid "Can be raised in :meth:`.Channel.send_message` (edited message / target message not found) and in :meth:`.Channel.send_status` (message to delete is not found)."
-msgstr ""
+msgstr "可以在 :meth:`.Channel.send_message`（需要编辑的消息、目标消息无法找到）和 :meth:`.EFBChannel.send_status`（需要删除的消息无法找到）中被抛出。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:1
 #: 763c1a1ece2d455d8d70cdc0aec819a7
@@ -95,7 +95,7 @@ msgstr "当指定的消息类型不被支持时由从端抛出。"
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:3
 #: fde24e7f52b14266975fae85b0a9c7c5
 msgid "Can be raised in :meth:`.Channel.send_message`."
-msgstr ""
+msgstr "可以在 :meth:`.Channel.send_message` 中被抛出。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:1
 #: 6e8eb3f724f641199630844749f88f46
@@ -110,5 +110,5 @@ msgstr "当主端发出的对消息回应的请求无法被处理时，由从端
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageReactionNotPossible:4
 #: cda8cbe6c54948358777503582e4044e
 msgid "Can be raised in :meth:`.Channel.send_status`."
-msgstr ""
+msgstr "可以在 :meth:`.Channel.send_status` 中被抛出。"
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-19 19:06\n"
+"POT-Creation-Date: 2020-01-25 14:18+0800\n"
+"PO-Revision-Date: 2020-01-25 06:22\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -119,332 +119,236 @@ msgstr ""
 msgid "``Message`` objects are picklable, thus it is strongly RECOMMENDED to keep any object of its subclass also picklable."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:10
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
+#: 67b56b890e704d76800eee449b047511
+msgid "Keyword Arguments"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:8
+#: 7cb1a125e64e46f2b20c1f9c753bb250
+msgid "Attributes used for a specific message type. Only specific message type requires this attribute. Defaulted to ``None``.  - Link: :obj:`.LinkAttribute` - Location: :obj:`.LocationAttribute` - Status: Typing/Sending files/etc.: :obj:`.StatusAttribute`  .. Note::     Do NOT use object of the abstract class     :class:`.MessageAttribute` for     ``attributes``, but object of specific class instead."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:8
 #: c43eb0c7cca64a3296b60cdd9c321361
 msgid "Attributes used for a specific message type. Only specific message type requires this attribute. Defaulted to ``None``."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:14
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:12
 #: 77625245383145318bf824e48b95c378
 msgid "Link: :obj:`.LinkAttribute`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:15
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:13
 #: 13eb673afce744b1915e04173f57879f
 msgid "Location: :obj:`.LocationAttribute`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:16
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:14
 #: a51c915e1dc74135b89ffaaf4a626425
 msgid "Status: Typing/Sending files/etc.: :obj:`.StatusAttribute`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:19
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:17
 #: 95005376b8c846bb979665c4627e79d8
 msgid "Do NOT use object of the abstract class :class:`.MessageAttribute` for ``attributes``, but object of specific class instead."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommands:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute:0
-#: 8fa6ef0c89f64ce59e8a41b1c6036d94
-#: a5d206045f5d499ba3057a869a0f2885
-#: 010907ecd01a49bb89cfd55392ebfc97
-#: ce5945705a174d019311cb677f18fc74
-#: 4a760bdeac1e4ae0aae893de6849412e
-#: b68c3d9912074aef8795f03ad76935bc
-#: d2eede55ee9a4d37bbcbf8d3ce0d6246
-#: 666ac82b2576494eabda4dad1299990d
-#: 8384130720634fe38147222ca937fe32
-#: 01dafecb6f2441df89bc4231c4476820
-#: fba2ac9c0db74e93b34dc41b294d4196
-#: 96f05b6f24f9470bb97e99712be2465a
-#: 9b0d48120970430aaec4978119cc78f2
-#: 390a4810143b4f998d71aab7103a922c
-#: b2a422d2c9b947909cd9e2eb8b66c44d
-#: 7d0bfca01361484085cb7a1a4b4e22de
-#: 73cdc6b8571f49c78b77a59cfee21b71
-#: 301b80892e464514a738bdaf37831953
-#: ab53b2cd658343e899b8f38fd42c9ec6
-#: 31b93c3dde0e457fa3d84a4654666612
-#: eaadede844c4453ab05382ca047490a0
-#: e117bd206ef44a85a1d4a1ea7b2fc973
-#: a29d1dd7285a418cafb947072592c2d0
-#: 24487011c4bf4acdb2cb9beb491b07ff
-#: e1cc30c1e2734403b784a329b9ed655d
-#: ea26d7b26a794d4e8706152a54f9ce1b
-#: b6c61589b14e4efaa58b5d11642168c3
-#: b5fb7e5afe0e40068d48570af2596d63
-#: 3fff37995b724a9c8eeb487127414eb8
-#: 24e8962502b14aaeaee56497e6eadfc2
-#: e6e1b22b2ac44f67b1b994d448c5498f
-msgid "type"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:23
-#: 504e44811fe748ea8c8048bda7c5ab4c
-msgid "Optional[:obj:`.MessageAttribute`]"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:27
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:21
 #: 154b08b1880d4afea3c71d530cbd2214
 msgid "Sender of the message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:29
-#: 80d97be8ad8e4c3a83debbde895308c0
-msgid ":obj:`.Chat`"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:23
+#: dca75a3981e045f1ac3b15ac0d787a60
+msgid "Author of this message. Author of the message MUST be indicated as a part of the same :attr:`~.message.Message.chat` this message is from. If the message is sent from the User Themself, this MUST be an object of :class:`.SelfChatMember`.  Note that the author MAY not be inside :attr:`~.Chat.members` of the chat of this message. The author MAY have a different :attr:`~.BaseChat.module_id` from the :attr:`~.Message.chat`, and could be unretrievable otherwise."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:23
+#: 5f9d5eea6e4e4f1b83bd5fdfe5fa69c4
+msgid "Author of this message. Author of the message MUST be indicated as a part of the same :attr:`~.message.Message.chat` this message is from. If the message is sent from the User Themself, this MUST be an object of :class:`.SelfChatMember`."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:28
+#: f8cfcfdb61334310a3276f9298d802f2
+msgid "Note that the author MAY not be inside :attr:`~.Chat.members` of the chat of this message. The author MAY have a different :attr:`~.BaseChat.module_id` from the :attr:`~.Message.chat`, and could be unretrievable otherwise."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:33
-#: 5f9d5eea6e4e4f1b83bd5fdfe5fa69c4
-msgid "Author of this message. Author of the message MUST be a part of the same :attr:`~.message.Message.chat` this message is in. If the message is sent from the User Themself, this MUST be an object of :class:`.SelfChatMember`."
+#: 348701e7475249899feb8c081ad95cfd
+msgid "Commands attached to the message  This attribute will be ignored in _Status_ messages."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:38
-#: 9034be7c94864a31b4c0e7b3348f4b0f
-msgid ":obj:`.ChatMember`"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:42
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:33
 #: 248904faa24c48d78fbefccb0c76f97c
 msgid "Commands attached to the message"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:44
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:63
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:74
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:120
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:130
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:139
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:157
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:35
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:46
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:53
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:75
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:81
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:86
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:100
 #: 7047a09af0e745a7ad7493b9d3e1a45d
-#: acb20193b96340b59f551bfe8efd97d4
-#: 1724f4ab62344200ae2eb934af1cbc07
-#: f1d31fa8c34f49e3bf19af6b6b54cd68
-#: b56f1f5bdeb0477cb9ba8012b5ccd35e
-#: 0fae650c9fc24e659d73cf95eaad1929
-#: 9ed90b9ccc984f408c5f736b3f5c860e
+#: 7047a09af0e745a7ad7493b9d3e1a45d
+#: 7047a09af0e745a7ad7493b9d3e1a45d
+#: 7047a09af0e745a7ad7493b9d3e1a45d
+#: 7047a09af0e745a7ad7493b9d3e1a45d
+#: 7047a09af0e745a7ad7493b9d3e1a45d
+#: 7047a09af0e745a7ad7493b9d3e1a45d
 msgid "This attribute will be ignored in _Status_ messages."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:46
-#: d618178c920648b4b05b32d98ce92a3c
-msgid "Optional[:obj:`MessageCommands`]"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:50
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:37
 #: 0de220d3ed3a4b68b2ba87c6e6a02409
 msgid "The channel that the message is to be delivered to."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:52
-#: 3eae40a2beda4445ab8577451dd55f95
-msgid ":obj:`.Channel`"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:39
+#: 7f35b02821c14b7d9d878a2105130549
+msgid "Flag this up if the message is edited. Flag only this if no multimedia file is modified, otherwise flag up both this one and ``edit_media`` as well.  If no media file is modified, the edited message MAY carry no information about the file.  This attribute will be ignored in _Status_ messages."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:56
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:39
 #: d795780e131c4e8294b8bd2e826ac106
 msgid "Flag this up if the message is edited. Flag only this if no multimedia file is modified, otherwise flag up both this one and ``edit_media`` as well."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:60
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:43
 #: 85de7b2e17dd418d96fc70f7411ecef9
 msgid "If no media file is modified, the edited message MAY carry no information about the file."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:65
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:76
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:98
-#: e70e52405d3b4a81ae7785abde33c905
-#: 351826433171454287115c566eeff5de
-#: 0262318970de4ac5be33bd1f95746961
-msgid "bool"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:48
+#: dd3bfc324b304c9495363c48bcab30b2
+msgid "Flag this up if any file attached to the message is modified. If this value is true, ``edit`` MUST also be ``True``. This attribute is ignored if the message type is not supposed to contain any media file, e.g. :attr:`~MsgType.Text`, :attr:`~MsgType.Location`, etc.  This attribute will be ignored in _Status_ messages."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:69
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:48
 #: dd3bfc324b304c9495363c48bcab30b2
 msgid "Flag this up if any file attached to the message is modified. If this value is true, ``edit`` MUST also be ``True``. This attribute is ignored if the message type is not supposed to contain any media file, e.g. :attr:`~MsgType.Text`, :attr:`~MsgType.Location`, etc."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:80
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:55
 #: dbc71915d7f54b39835a192044d1c33d
 msgid "File object to multimedia file, type \"rb\". ``None`` if N/A. Recommended to use :class:`NamedTemporaryFile`. The file SHOULD be able to be safely deleted (or otherwise discarded) once closed. All file object MUST be sought back to 0 (``file.seek(0)``) before sending."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:86
-#: 69fa870f26d040449daaa89102a5cae7
-msgid "Optional[BinaryIO]"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:90
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:61
 #: d9b88c8f59d64b50a57274a5d8ab1f55
 msgid "File name of the multimedia file. ``None`` if N/A"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:92
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:104
-#: 0d9276c737544cf7aad85c9d3397422a
-#: 9bca582639d24384ae89ea5e334805af
-msgid "Optional[str]"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:96
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:63
 #: b2ddb14ccce94d12bd89a5fb7cb9e793
 msgid "Mark as true if this message is a system message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:102
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:65
 #: 1abca237c94d4134b7f0cdbf132b8c2a
 msgid "MIME type of the file. ``None`` if N/A"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:108
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:67
 #: 9a73ed9984784ce8ba376382d944c37b
 msgid "Local path of multimedia file. ``None`` if N/A"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:110
-#: 3f17cf4d06b94f1a838ad4e88e2d2cc3
-msgid "Optional[Path]"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:69
+#: c39cdbec84ba46a9825b85687fef59dc
+msgid "Indicate reactions to the message. Dictionary key is the canonical name of reaction, usually an emoji. Value is a collection of users who reacted to the message with that certain emoji. All :obj:`Chat` objects in this dict MUST be members in the chat of this message.  This attribute will be ignored in _Status_ messages."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:114
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:69
 #: c39cdbec84ba46a9825b85687fef59dc
 msgid "Indicate reactions to the message. Dictionary key is the canonical name of reaction, usually an emoji. Value is a collection of users who reacted to the message with that certain emoji. All :obj:`Chat` objects in this dict MUST be members in the chat of this message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:122
-#: ef5dff92955c490b8d47eb1c845d5e7e
-msgid "Dict[str, Collection[:obj:`Chat`]]"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:77
+#: 7ed4ab7bfbf5456bb42650dcdfc95149
+msgid "Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat.  This attribute will be ignored in _Status_ messages."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:126
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:77
 #: 7ed4ab7bfbf5456bb42650dcdfc95149
 msgid "Substitutions of messages, usually used when the some parts of the text of the message refers to another user or chat."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:132
-#: 3f62e4e78bb646e591e764aa0f3c086e
-msgid "Optional[:obj:`Substitutions`]"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:83
+#: d15df16109734765a1bc3e81812addbc
+msgid "Target message (usually for messages that \"replies to\" another message).  This attribute will be ignored in _Status_ messages.  .. note::      This message MAY be a \"minimum message\", with only required fields:      - :attr:`.Message.chat`     - :attr:`.Message.author`     - :attr:`.Message.text`     - :attr:`.Message.type`     - :attr:`.Message.uid`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:136
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:83
 #: fb187fccd235448e9c8fa5493c3c31f8
 msgid "Target message (usually for messages that \"replies to\" another message)."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:143
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:90
 #: 84a7bcaca71645b6bdb0eac304895995
 msgid "This message MAY be a \"minimum message\", with only required fields:"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:145
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:92
 #: 141c8cf72cce42649f4f305de30a7284
 msgid ":attr:`.Message.chat`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:146
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:93
 #: 1437e1cb7d444020ac7e521815ba3faa
 msgid ":attr:`.Message.author`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:147
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:94
 #: 2e95373656454096a2c78358561ac55c
 msgid ":attr:`.Message.text`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:148
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:95
 #: a6fb12906057469e8efb88ae3798287e
 msgid ":attr:`.Message.type`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:149
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:96
 #: ea45517de2f946c8ae012043a08399df
 msgid ":attr:`.Message.uid`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:151
-#: 9b34f5ef9ee649b3aabb01498706c3d0
-msgid "Optional[:obj:`Message`]"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:98
+#: 7047a09af0e745a7ad7493b9d3e1a45d
+msgid "Text of the message.  This attribute will be ignored in _Status_ messages."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:155
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:98
 #: b7617e5998ae460a949a465c77889a10
-msgid "text of the message"
+msgid "Text of the message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:159
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:177
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:7
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:25
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:15
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:21
-#: dd27f329fc354daf9d94a9da7f0f6c1d
-#: 05b3c8e1402c43c8b216c13eb3547112
-#: 53b295ac3cc941abb3c43e9f11d9aceb
-#: b14d571c1b454adaa2b669d5f0f4e353
-#: 1eecfe1fac90411c82604d56f31f4650
-#: 4bae501550c347a795a5ea061d31479e
-msgid "str"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:163
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:102
 #: fa7e44fc97cb419ca6d4c4b9a520059e
 msgid "Type of message"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:165
-#: a4db54e52ae54a7b83c70b23212970be
-msgid ":obj:`.MsgType`"
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:104
+#: 138947e0c87d44738f9079820bbafa40
+msgid "Unique ID of message. Usually stores the message ID from slave channel. This ID MUST be unique among all chats in the same channel.  .. Note::     Some channels may not support message editing.     Some channels may issue a new uid for edited message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:169
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:104
 #: 65f7aa0732ba48ca8d9b37dc322abb45
 msgid "Unique ID of message. Usually stores the message ID from slave channel. This ID MUST be unique among all chats in the same channel."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:174
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:109
 #: 737306d184c240d2bd35088505356d84
 msgid "Some channels may not support message editing. Some channels may issue a new uid for edited message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:181
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:112
 #: b05aa3326ea147c59ddd05592d7b95d2
 msgid "A series of vendor specific attributes attached. This can be used by any other channels or middlewares that is compatible with such information. Note that no guarantee is provided for information in this section."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:186
-#: ed896e778ece414bae15b39af8d46f15
-msgid "Dict[str, Any]"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message.link:1
@@ -457,9 +361,9 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message.status:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Substitutions.is_mentioned:0
 #: 30244d69dfae422f88cf62c403040b63
-#: 687fd1049fa048cfa698d3b0beac0943
-#: 8db73609da8e44a7bbbe626400dd4f67
-#: f2172fc6a8dc45d8ac58e593d748612b
+#: 30244d69dfae422f88cf62c403040b63
+#: 30244d69dfae422f88cf62c403040b63
+#: 30244d69dfae422f88cf62c403040b63
 msgid "Return type"
 msgstr ""
 
@@ -517,43 +421,81 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:1
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute:1
 #: a7fe41ae575b4e86a9e4766c7d41096a
-#: 2e95ec961f9a4f09b798e0364c4a1738
-#: 9fd992d121af4f138fc0b6bad30c2884
+#: a7fe41ae575b4e86a9e4766c7d41096a
+#: a7fe41ae575b4e86a9e4766c7d41096a
 msgid "Bases: :class:`ehforwarderbot.message.MessageAttribute`"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:5
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute.__init__:2
 #: eb6ac5a2c33e4b94b3db2f2093194f17
-#: fd8c5d5ec3624aabac81fb6d56640268
+#: eb6ac5a2c33e4b94b3db2f2093194f17
 msgid "Title of the link."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommands:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute:0
+#: 73cdc6b8571f49c78b77a59cfee21b71
+#: 8fa6ef0c89f64ce59e8a41b1c6036d94
+#: 8fa6ef0c89f64ce59e8a41b1c6036d94
+#: 8fa6ef0c89f64ce59e8a41b1c6036d94
+#: 8fa6ef0c89f64ce59e8a41b1c6036d94
+#: 8fa6ef0c89f64ce59e8a41b1c6036d94
+#: e117bd206ef44a85a1d4a1ea7b2fc973
+#: a29d1dd7285a418cafb947072592c2d0
+#: 8fa6ef0c89f64ce59e8a41b1c6036d94
+#: 8fa6ef0c89f64ce59e8a41b1c6036d94
+#: 8fa6ef0c89f64ce59e8a41b1c6036d94
+#: b6c61589b14e4efaa58b5d11642168c3
+msgid "type"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:25
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:15
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:21
+#: dd27f329fc354daf9d94a9da7f0f6c1d
+#: dd27f329fc354daf9d94a9da7f0f6c1d
+#: dd27f329fc354daf9d94a9da7f0f6c1d
+#: b14d571c1b454adaa2b669d5f0f4e353
+msgid "str"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:11
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute.__init__:5
 #: 602dcaf94d834748915f154195069068
-#: 7de3929e10644732a897560a1b54daa9
+#: 602dcaf94d834748915f154195069068
 msgid "Description of the link."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:13
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:19
 #: 696fb795acce4ee5b6c329e98ab4fae7
-#: bbe0599032c149d5855c84348100bb8e
+#: 696fb795acce4ee5b6c329e98ab4fae7
 msgid "str, optional"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:17
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute.__init__:8
 #: 582b86722b0c44e7a62dfe91194ef77a
-#: 8e593a3ffd1d4b69a337fc5f4a80b2f8
+#: 582b86722b0c44e7a62dfe91194ef77a
 msgid "Image/thumbnail URL of the link."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute:23
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LinkAttribute.__init__:11
 #: e2a03286536143edb18633eb0d02881e
-#: 006cc7e6320f4897a39791df021c45c8
+#: e2a03286536143edb18633eb0d02881e
 msgid "URL of the link."
 msgstr ""
 
@@ -563,31 +505,31 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommands.__init__:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute.__init__:0
 #: 396c9d331484464a8e3483d6569a57af
-#: 14fbdba1956e407ba8514e86280a8378
-#: 2fb3ee2ca602477a8918f3408868c96d
-#: b6d94773afae4ae9a6d36dc1f2e5d431
-#: a31d97754369472291fe6e95e1c88a70
+#: 396c9d331484464a8e3483d6569a57af
+#: 396c9d331484464a8e3483d6569a57af
+#: 396c9d331484464a8e3483d6569a57af
+#: 396c9d331484464a8e3483d6569a57af
 msgid "Parameters"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:5
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute.__init__:2
 #: e5eadd202b10471e83d9ce1c21f8a6c4
-#: 47827039e5e5400e979efae44e4d54c3
+#: e5eadd202b10471e83d9ce1c21f8a6c4
 msgid "Latitude of the location."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:7
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:13
 #: c0cebfed4cbe4d70b364e2a97d36f2a1
-#: 38ad0419f12744d99a791abb540fd7e0
+#: c0cebfed4cbe4d70b364e2a97d36f2a1
 msgid "float"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute:11
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.LocationAttribute.__init__:5
 #: 31e04baafcce4dcab4356d2b246d6000
-#: 5f1cfd44c537406b890aabdddc747061
+#: 31e04baafcce4dcab4356d2b246d6000
 msgid "Longitude of the location."
 msgstr ""
 
@@ -609,14 +551,14 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:13
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand.__init__:2
 #: d4ee6be634984efab871f7c01f6ca22a
-#: bd0d7b3b0ee7417588e6e1cfc74fc729
+#: d4ee6be634984efab871f7c01f6ca22a
 msgid "Human-friendly name of the command."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand:19
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommand.__init__:5
 #: e883781504a64832aaa604bde0b6a11b
-#: 1f37a877269b466a983980a285b2af21
+#: e883781504a64832aaa604bde0b6a11b
 msgid "Callable name of the command."
 msgstr ""
 
@@ -663,7 +605,7 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommands:8
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommands.__init__:2
 #: 765e5caf78ee4b8dbb4f1d1fd43eb6c4
-#: 82533784b74f42668f6b9b5f2d753927
+#: 765e5caf78ee4b8dbb4f1d1fd43eb6c4
 msgid "Commands for the message."
 msgstr ""
 
@@ -685,7 +627,7 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute:13
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.StatusAttribute.__init__:4
 #: 5d0d9570f2b0443f90a98cf80efe7a28
-#: 22c4a5794f0343dc801ee8ddec8b18c1
+#: 5d0d9570f2b0443f90a98cf80efe7a28
 msgid "Number of milliseconds for this status to expire. Default to 5 seconds."
 msgstr ""
 
@@ -911,8 +853,8 @@ msgstr "Contoh di bawah adalah untuk mesej imej (gambar). Audio, fail, video, pe
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:130
 #: /Users/blueset/Codebase/ehForwarderBot/docs/API/message.rst:140
 #: fbcf28f396734423b4c7e42d29208135
-#: ecb49c34aa284d28a74834a31e022a41
-#: 8bfc654997094b27a6cf8a71e4665c78
+#: fbcf28f396734423b4c7e42d29208135
+#: fbcf28f396734423b4c7e42d29208135
 msgid "In non-text messages, the ``text`` attribute MAY be an empty string."
 msgstr ""
 

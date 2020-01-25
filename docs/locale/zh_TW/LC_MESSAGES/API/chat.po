@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 02:57+0800\n"
-"PO-Revision-Date: 2020-01-19 19:06\n"
+"POT-Creation-Date: 2020-01-25 14:13+0800\n"
+"PO-Revision-Date: 2020-01-25 06:22\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -129,7 +129,7 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat:11
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat.__init__:10
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:37
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:2
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:1
 #: f8260d4608a747e3bde065408bca6d27
 #: dd9cf3d33f2b48168fd53add6348217e
 #: b1d2088f3a6248e38925a00211f6ddab
@@ -173,8 +173,8 @@ msgstr ""
 #: 473b81679c504f1a9643420b8802715c
 #: 3c3a706b342247d3863fa99a3a119acb
 #: c784bfce16334173add8bb1a5245e781
-#: 763e7f08bf404630aa474d308d646d48
-#: 418248c153804517b182c9e1d6113800
+#: c784bfce16334173add8bb1a5245e781
+#: c784bfce16334173add8bb1a5245e781
 msgid "type"
 msgstr ""
 
@@ -190,7 +190,7 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat:17
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat.__init__:12
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:43
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:5
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:3
 #: cbb4eb8f12ce4571b247df48af1db3a9
 #: 4fc157a42af241e09176550dff0c848b
 #: 7649f257fbe345819c9d1a7f3ea63694
@@ -218,7 +218,7 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat:24
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat.__init__:16
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:50
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:9
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:6
 #: 187d864c5f7b4602b602726762af0d2b
 #: 58985b1d227443babc30caf8ef37b77c
 #: a9dfbbf6be0049fab45ed726c6c84228
@@ -229,7 +229,7 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat:30
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat.__init__:19
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:56
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:11
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:7
 #: a2fae91f86ea4954a4dbfe768e84958e
 #: 21a97c1e9fc942be9c10d36fc27808e0
 #: e15a61169d2048bc8962df17944e1376
@@ -240,7 +240,7 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat:36
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat.__init__:22
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:62
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:14
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:9
 #: 00fe336976e64aa6b94871b3e389260d
 #: 9e37efaa4405406099196b3ea265a482
 #: 73054296373147189cf31d624da23486
@@ -258,7 +258,7 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat:42
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat.__init__:25
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:68
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:17
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:11
 #: 05e1c63fb3aa4c97b262e8e63c2bddd2
 #: d576af32999549039d6aa0ff2717868f
 #: ab3f2155807b48c58a63c58ce5610574
@@ -274,50 +274,47 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat:48
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat.__init__:27
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:74
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:19
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:15
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:12
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:26
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:19
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:19
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:14
 #: 43284ab713ea4a1bae6535280b5bfbf7
 #: 6fb1941357e14cb18b2caab3a263289d
 #: bca81ab02e7e41be86a9b485c6911e71
 #: 4d92ea70c27e4ab4806fd17fcbe5da5a
-#: 28ce501cf00042d6a6a492711aae6b5f
-#: 97f3c3a9115b4f21a2ce779cbe488504
-#: c51350fc63464216b340560c10d4674e
+#: 4d92ea70c27e4ab4806fd17fcbe5da5a
+#: 4d92ea70c27e4ab4806fd17fcbe5da5a
+#: 4d92ea70c27e4ab4806fd17fcbe5da5a
 msgid "A text description of the chat, usually known as “bio”, “description”, “purpose”, or “topic” of the chat."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat:55
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat.__init__:31
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:97
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:31
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:12
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:16
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:16
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:103
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:21
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:24
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:17
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:12
 #: 16a9b9596f0f4c1080f5785e8a15ba5f
 #: 37edb25358e34f969111ddaeca6562a6
 #: 2fdc734732fa4773a4def61c125e5899
-#: 3fd7b6681c784a4da587ac58c7babd0f
-#: 7ac9988aea9c45c3ada5cd0b5fefd1ed
-#: f37f705b4d0b417285d638336ce276a1
-#: 32b68e528e5a4460af6033ffa88cbc44
+#: 2fdc734732fa4773a4def61c125e5899
+#: 2fdc734732fa4773a4def61c125e5899
+#: 2fdc734732fa4773a4def61c125e5899
+#: 2fdc734732fa4773a4def61c125e5899
 msgid "Any vendor specific attributes."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat:57
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:99
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:105
 #: 3a1b864e0c6f43398a6b36d14acd3ac0
 #: f89ee4d831a643f995187cb10421809a
 msgid "Dict[str, Any]"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.BaseChat.__init__:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.get_member:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.PrivateChat:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChat:0
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:0
@@ -325,15 +322,12 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:0
 #: 49a5d39200da4e4eba2eeae0cb8cd361
 #: 242dae9dafa545c5976c0f8d8feaa12c
-#: bb46ac49427a45959d19f53477206611
-#: 29457ae020cc4b27ba6ea6a10e9d1c89
-#: 5ab77efee0924f51ac5e2ab5b073a466
-#: 987865f65a4044ffa0a211deb14cb726
-#: 1497421ab8fd4a378d62f5bb19ddf87a
-#: 246787ada78d4ac2af7f542b21259bb4
-#: 4c5a95a611a4487bb86c76cefc2ef9c8
-#: ff461cb9664b43e78c0480f7378e281f
-#: 7fee594b8835451db758540b481442b4
+#: 242dae9dafa545c5976c0f8d8feaa12c
+#: 242dae9dafa545c5976c0f8d8feaa12c
+#: 242dae9dafa545c5976c0f8d8feaa12c
+#: 242dae9dafa545c5976c0f8d8feaa12c
+#: 242dae9dafa545c5976c0f8d8feaa12c
+#: 242dae9dafa545c5976c0f8d8feaa12c
 msgid "Parameters"
 msgstr ""
 
@@ -364,12 +358,12 @@ msgstr ""
 #: 5e936a146c7941dbb3bde7aa8fd25418
 #: 09af3f2f3b564e51ad67dddf97c30972
 #: ccca8c3ff3e54dc3a43cde727c8cd1ce
-#: 2ba848cc4d8345dcb6fd5851a9882fc1
 #: b1453c1cdc184d55b6cae209dce44a74
-#: d7d147ab16d640eab0748c3eb9319bad
-#: ab9fc451fd0c4b4e838509305067a029
-#: 6577bba0f3c54060b634ab56b7599245
-#: 31b14b11f54b4e0791090f108e60a099
+#: 2ba848cc4d8345dcb6fd5851a9882fc1
+#: 2ba848cc4d8345dcb6fd5851a9882fc1
+#: 2ba848cc4d8345dcb6fd5851a9882fc1
+#: 2ba848cc4d8345dcb6fd5851a9882fc1
+#: 2ba848cc4d8345dcb6fd5851a9882fc1
 msgid "Return type"
 msgstr ""
 
@@ -397,9 +391,9 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.verify:1
 #: 0ef4e84673254295a6d8f9861c4785a8
 #: c934126e94b74950ad18002e11b0a838
-#: b1040c98642c4938885f4200408e48a0
-#: 0ff7b70f224a46469a8632a9d677f2f9
-#: 7fcdaba8e4654bd689c8f902bdf471a1
+#: c934126e94b74950ad18002e11b0a838
+#: c934126e94b74950ad18002e11b0a838
+#: c934126e94b74950ad18002e11b0a838
 msgid "Verify the completeness of the data."
 msgstr ""
 
@@ -412,11 +406,11 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.verify:0
 #: 999755e5e9fb4c66b3416563ec6366e2
 #: c6e9f2295d904d58915d612d3745d035
-#: 8e5c8d68f21d4db59dadb9a7a50293f3
-#: ca7678e58eaf45d892be91337c8f2c21
-#: 9bfba258f1084da488297af554b30813
-#: 6febd8d514e74bf29ff671f67fb840a0
-#: faad30f421c5455ca7ece213aef35cd8
+#: c6e9f2295d904d58915d612d3745d035
+#: c6e9f2295d904d58915d612d3745d035
+#: c6e9f2295d904d58915d612d3745d035
+#: c6e9f2295d904d58915d612d3745d035
+#: c6e9f2295d904d58915d612d3745d035
 msgid "Raises"
 msgstr ""
 
@@ -427,9 +421,9 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.verify:3
 #: c3bad62f43a84f7bb12f1af27698be67
 #: ba0ef6b82c8542a38ed222e6a4a83f14
-#: fef1880594ef475899ccd61819f27110
-#: 6115bcd47c8248a3b1db99b4732cb61d
-#: 7d05de1e1b0e4bce8b4a6e23e44386b9
+#: ba0ef6b82c8542a38ed222e6a4a83f14
+#: ba0ef6b82c8542a38ed222e6a4a83f14
+#: ba0ef6b82c8542a38ed222e6a4a83f14
 msgid "When this chat is invalid."
 msgstr ""
 
@@ -500,36 +494,63 @@ msgid ":class:`ChatNotificationState`"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:88
-#: e1b650f8cf5e4ac6b71101132450e833
-msgid "Provide a list of members in the chat. Defaulted to an empty ``list``. You may want to extend this object and implement a ``@property`` method set for loading members on demand."
+#: 560940a31c85487996fa32510e7ad6a8
+msgid "Provide a list of members in the chat. Defaulted to an empty ``list``."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:93
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:91
+#: e1b650f8cf5e4ac6b71101132450e833
+msgid "You can extend this object and implement a ``@property`` method set for loading members on demand."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:94
+#: 8869dba76ede477f89455809f508e439
+msgid "Note that this list may include members created by middlewares when the object is a part of a message, and these members MAY not appear when trying to retrieve from the slave channel directly. These members would have a different :attr:`~.BaseChat.module_id` specified from the chat."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:99
 #: 4a1931630b154b22acbd2e2cbad3e257
 msgid "list of :obj:`.ChatMember`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:103
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:109
 #: 951776f90aff4c50b936a0486d0189dd
 msgid "the User as a member of the chat (if available)."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:105
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat:111
 #: 99e9a5eac693421d921e93adf4baf6f4
 msgid "Optional[:obj:`SelfChatMember`]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:23
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:0
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:0
+#: 5fd5f15bbf8042428d9c34240fa1c472
+#: e629c5ce0a21421b8993ed58a45c80ae
+#: b07ee02d3e1744b59a4219b5a9d7cba0
+#: e8ab4c59b7db4d8bba56776687ecb109
+#: b86bac96758447d19aaaf33292834d6e
+#: f7a4a35ddbc3440395d5761ec54a406d
+#: 85154e6c9b624bcbb896db9a0aa69154
+msgid "Keyword Arguments"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:15
 #: 62a2710928dd47e1b854c99cc4bc4c78
 msgid "Indicate the notification settings of the chat in its slave channel (or middleware), defaulted to ``ALL``."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:27
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:18
 #: 560940a31c85487996fa32510e7ad6a8
 msgid "Provide a list of members of the chat. Defaulted to an empty :obj:`list`."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:34
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.__init__:23
 #: b221e9a87d6d4c7383ab6517085138b3
 msgid "Initialize the chat with the User Themself as a member."
 msgstr ""
@@ -539,58 +560,70 @@ msgstr ""
 msgid "Add a member to the chat."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:4
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:8
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:8
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:5
+#: 9f77eda58d22472280b9040d39f71410
+msgid "This method does not check for duplicates. Only add members with this method if you are sure that they are not added yet. To check if the member is already added before adding, you can do something like this:"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:10
+#: 85ff85278a0c4689b250beb1dc57af88
+msgid "with contextlib.suppress(KeyError):\n"
+"    return chat.get_member(uid)\n"
+"return chat.add_member(name, uid, alias=..., vendor_specific=...)"
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:17
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:12
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:7
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:5
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:5
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:5
 #: 4b7bbe1723334abd8a41f858436851fa
-#: dd597ef5cb6d4c609a82c0fcddac3584
-#: 09d057745f4440569ac96537276fb2fa
-#: 770b3ad632674b0c85e854ded9be7e53
-#: 82dbdcd4bbf444409cf738b3ab1aae05
-#: c4b41ac1904c4cd7aec91f7dfe58f0a8
+#: 4b7bbe1723334abd8a41f858436851fa
+#: 4b7bbe1723334abd8a41f858436851fa
+#: 4b7bbe1723334abd8a41f858436851fa
+#: 4b7bbe1723334abd8a41f858436851fa
+#: 4b7bbe1723334abd8a41f858436851fa
 msgid "Name of the member."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:7
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:11
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:11
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:20
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:14
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:9
 #: b6e351a87b834c33abf0ca885aeef216
-#: 0569489487b745e091c5e265a1f02ce0
-#: 40ee8519456e4791950ef482683b224b
+#: b6e351a87b834c33abf0ca885aeef216
+#: b6e351a87b834c33abf0ca885aeef216
 msgid "ID of the member."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:9
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:13
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:13
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:22
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:15
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:10
 #: 6a7767401f554a6a8657d57964e6aa4c
-#: 8cc05319836f4feebf3584636641fdff
-#: d99965a806e54a019ff8e9aa5958a81a
+#: 6a7767401f554a6a8657d57964e6aa4c
+#: 6a7767401f554a6a8657d57964e6aa4c
 msgid "Alias of the member."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:19
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:23
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:23
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:19
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:19
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:19
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:29
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:22
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:17
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:15
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:15
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:15
 #: 8f1f1bc12e1c43af9381f8ce71257261
-#: 5d0861c06ed14528b1f19d34aaee465f
-#: 97a804a982f74c3eac9210a786ea804c
-#: 397b4a6cb38c4fd7bbca55e50c5ace36
-#: 9fe998352052454cb30f1c24eebe7e78
-#: 14ca567325804cfaab0c46dc94ce560b
+#: 8f1f1bc12e1c43af9381f8ce71257261
+#: 8f1f1bc12e1c43af9381f8ce71257261
+#: 8f1f1bc12e1c43af9381f8ce71257261
+#: 8f1f1bc12e1c43af9381f8ce71257261
+#: 8f1f1bc12e1c43af9381f8ce71257261
 msgid "Initialize this chat as a part of a middleware."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:24
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_member:34
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.get_member:6
 #: c63ad04a003c4ee58d7425a5b7cd16d8
-#: 22e6d3ee8c0c469989db8607914879d1
+#: c63ad04a003c4ee58d7425a5b7cd16d8
 msgid ":py:class:`~ehforwarderbot.chat.ChatMember`"
 msgstr ""
 
@@ -619,10 +652,15 @@ msgstr ""
 msgid "Useful for slave channels and middlewares to create an author of a message from a system member when the “system” member is intended to become a member of the chat."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:28
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:28
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:9
+#: 5f937517565849fd94af13366977294e
+msgid "This method does not check for duplicates. Only add members with this method if you are sure that they are not added yet."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.add_system_member:27
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.Chat.make_system_member:22
 #: 2a34f34bf37c49fd9e6d612b17a0b767
-#: 07a4cc80c0fd43c4a53b6115b4a60a1e
+#: 2a34f34bf37c49fd9e6d612b17a0b767
 msgid ":py:class:`~ehforwarderbot.chat.SystemChatMember`"
 msgstr ""
 
@@ -680,8 +718,8 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChat:1
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.GroupChat:1
 #: 46c084bff8af4f0e8299cb43858c40df
-#: e23b14636ff54967ab51e2f5ad9dbd6a
-#: 5f6555ca5c1940f6904a9dcbe77b07df
+#: 46c084bff8af4f0e8299cb43858c40df
+#: 46c084bff8af4f0e8299cb43858c40df
 msgid "Bases: :class:`ehforwarderbot.chat.Chat`"
 msgstr ""
 
@@ -704,15 +742,15 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChat:12
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.GroupChat:5
 #: 7dc1ca3374364dd4b03d1c029c175762
-#: 6cf426123a894d87a1604265608e96db
-#: 4ae57d2857b7413bb4b5d49f7ab8c937
+#: 7dc1ca3374364dd4b03d1c029c175762
+#: 7dc1ca3374364dd4b03d1c029c175762
 msgid "If the ``with_self`` argument is ``True`` (which is the default setting), the User Themself would also be initialized as a member of the chat."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.PrivateChat:14
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChat:15
 #: 105085455b25471db6ee75f6cb7222c5
-#: 202f5a78ad3749ca9a5f4c771c79cb5d
+#: 105085455b25471db6ee75f6cb7222c5
 msgid "the other participant of the chat as a member"
 msgstr ""
 
@@ -795,42 +833,42 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:2
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:2
 #: 298be98472d44a5fbedb8f68cb5fafa5
-#: ee03cd0a2d784489bb08383cf7dff51c
-#: 17c7e58d3b8c43a68fd2791c22efe4aa
+#: 298be98472d44a5fbedb8f68cb5fafa5
+#: 298be98472d44a5fbedb8f68cb5fafa5
 msgid "Chat associated with this member."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:8
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:8
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:8
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:7
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:7
 #: 33b20092dbb6422a9569531147948130
-#: 0f017132cdfe4a39b549553cc68a2d48
-#: 302924693a4b421c8655e48b4a575162
+#: 33b20092dbb6422a9569531147948130
+#: 33b20092dbb6422a9569531147948130
 msgid "Alternative name of the member, usually set by user."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:11
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:11
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:11
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:9
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:9
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:9
 #: f5f341c11e514cfab5d49f657e19e596
-#: 3fc7275cafd64cc6b94bee32b271f35a
-#: 6d9f06ff1edb45f4ba6b66f5c1f8752b
+#: f5f341c11e514cfab5d49f657e19e596
+#: f5f341c11e514cfab5d49f657e19e596
 msgid "Unique ID of the member. This MUST be unique within the channel. This ID can be the same with a private chat of the same person."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:15
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:15
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:15
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatMember.__init__:12
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember.__init__:12
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember.__init__:12
 #: 22a7ab8b89a74ca58038a1a939390435
-#: 3c4199c8bf2141219044339b8077c6d8
-#: b7295ce48f784709b91b4bd3d2f9a545
+#: 22a7ab8b89a74ca58038a1a939390435
+#: 22a7ab8b89a74ca58038a1a939390435
 msgid "A text description of the member, usually known as “bio”, “description”, “summary” or “introduction” of the member."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SelfChatMember:1
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember:1
 #: c6833da7f96048f89b1d1d99bcb98721
-#: 9b51b258ae34446cabf6ef6a9a61774f
+#: c6833da7f96048f89b1d1d99bcb98721
 msgid "Bases: :class:`ehforwarderbot.chat.ChatMember`"
 msgstr ""
 
@@ -869,9 +907,19 @@ msgstr ""
 msgid "Chat bots created by the users of the IM platform SHOULD NOT be created as a :class:`.SystemChatMember`, but a plain :class:`.ChatMember` instead."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember:12
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember:10
+#: e589edffd8ea43bb8517a111e747ca8e
+msgid ":class:`.SystemChatMember`\\ s are RECOMMENDED to be created using :meth:`.Chat.add_system_member` or :meth:`.Chat.make_system_member` method."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember:15
 #: 7c4d28a9d6e24649944e2d67b72abb7b
 msgid "``SystemChatMember`` objects are picklable, thus it is RECOMMENDED to keep any object of its subclass also picklable."
+msgstr ""
+
+#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.SystemChatMember:20
+#: e1f39ff639d547c498cf7b1a491adc13
+msgid "The default ID of a :class:`.SystemChatMember`."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/chat.py:docstring of ehforwarderbot.chat.ChatNotificationState:1

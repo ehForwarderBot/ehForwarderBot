@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-19 19:06\n"
+"PO-Revision-Date: 2020-01-25 06:22\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -208,7 +208,7 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_status:1
 #: cd4e6fb601f541f09f5a63c4702d4b01
 msgid "Deliver a status to the destination channel."
-msgstr ""
+msgstr "向目标信道传送一个状态。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/coordinator.py:docstring of ehforwarderbot.coordinator.send_status:4
 #: 75c8bddc3dff4ac29613d28fcd720fef

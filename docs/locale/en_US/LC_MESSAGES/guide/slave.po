@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-19 19:06\n"
+"POT-Creation-Date: 2020-01-25 14:13+0800\n"
+"PO-Revision-Date: 2020-01-25 06:22\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:14
 #: 6b44ab973c63402ebdcde5a34f64c6e2
-msgid "In most of the cases, slave channels SHOULD be identified as one single user from the IM platform, instead of a bot.  You should only use a bot for slave channels when:"
+msgid "In most of the cases, slave channels SHOULD be identified as one single user from the IM platform, instead of a bot. You should only use a bot for slave channels when:"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:19
@@ -57,7 +57,7 @@ msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:34
 #: 98fb752dfe3d4ddbb0e9465b7c3a8a45
-msgid "Such features are accessed by the user in a CLI-like style. An \"additional feature\" method MUST only take one string parameter aside from ``self``, and wrap it with :meth:`~ehforwarderbot.utils.extra` decorator. The ``extra`` decorator takes 2 arguments: ``name`` -- a short name of the feature, and ``desc`` -- a description of the feature with its usage."
+msgid "Such features are accessed by the user in a CLI-like style. An “additional feature” method MUST only take one string parameter aside from ``self``, and wrap it with :meth:`~ehforwarderbot.utils.extra` decorator. The ``extra`` decorator takes 2 arguments: ``name`` -- a short name of the feature, and ``desc`` -- a description of the feature with its usage."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:42

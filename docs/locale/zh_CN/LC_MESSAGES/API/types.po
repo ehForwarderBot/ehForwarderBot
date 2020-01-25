@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-19 19:06\n"
+"PO-Revision-Date: 2020-01-25 06:22\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -23,12 +23,12 @@ msgstr "定制的类型提示"
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/types.py:docstring of ehforwarderbot.types:1
 #: 44002b36f2e74720afd6d2ba7d9405dd
 msgid "A list of type aliases when no separate class is defined for some types of values. Types for user-facing values (display names, descriptions, message text, etc.) are not otherwise defined."
-msgstr ""
+msgstr "对部分没有定义单独的类值创建的类型别名之列表。面向用户数据的类型（显示名称、说明、消息文本等）不再另行定义。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/types.py:docstring of ehforwarderbot.types:5
 #: b263d3c19ad84e79b3efa53f15ac2268
 msgid "Most of types listed here are defined under the \"NewType\" syntax in order to clarify some ambiguous values not covered by simple type checking. This is only useful if you are using static type checking in your development. If you are not using type checking of any kind, you can simply ignore values in this module."
-msgstr "此处列出的大多数类型均使用「NewType」语法作为定义，以便澄清普通类型检查未涵盖的一些不明确的值。这些类型仅当在开发中使用静态类型检查时起作用。如果您在开发时不使用任何类型检查，只需忽略此模块中的值即可。"
+msgstr "此处列出的大多数类型均使用「NewType」语法作为定义，以便澄清普通类型检查未涵盖的一些不明确的值。这些类型仅当在开发中使用静态类型检查时起作用。如果您在开发时不使用任何类型检查，只需忽略此组件中的值即可。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/types.py:docstring of ehforwarderbot.types.ChatID:1
 #: b842132b414b49a5997a32775e975d3a

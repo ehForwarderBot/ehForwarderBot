@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-19 19:06\n"
+"PO-Revision-Date: 2020-01-25 06:21\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -73,7 +73,7 @@ msgstr "向导"
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:37
 #: 39dae1cf4f6a4a238150cf65469ea880
 msgid "If your module requires relatively complicated configuration, it would be helpful to provide users with a wizard to *check prerequisites of your module* and *guide them to setup your module for use*."
-msgstr ""
+msgstr "如果您的组件需要相对复杂的配置，最好向用户提供一个向导，以\\ *检查你的组件的必备条件*\\ ，并且\\ *指导他们设置您的组件*\\ 。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:41
 #: 8dc0f597e4b94309b1298e9c3592dc1c
@@ -83,7 +83,7 @@ msgstr "从版本 2.0.0b12 T开始，EFB 引入了一个中心向导程序，让
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:49
 #: 4a97fe454f0b4b48a2fa34df04b4391e
 msgid "The group for wizard program is ``ehforwarderbot.wizard``, and the entry point function MUST accept 2 positional arguments: profile ID and instance ID."
-msgstr ""
+msgstr "向导程序的组名为 ``ehforwarderbot.wizard``，入口函数必须（MUST）接受两个位置参数：配置档案 ID 和 实例 ID。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:54
 #: 68c1abf5472e4e8d8c6c06d8128e3433

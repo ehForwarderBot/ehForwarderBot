@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-19 17:55+0000\n"
-"PO-Revision-Date: 2020-01-19 19:06\n"
+"POT-Creation-Date: 2020-01-24 11:36+0000\n"
+"PO-Revision-Date: 2020-01-25 06:22\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -31,11 +31,11 @@ msgstr "EH Forwarder Bot 项目文档"
 msgid "An extensible message tunneling chat bot framework."
 msgstr "可扩展的消息隧道聊天机器人框架。"
 
-#: docs/conf.py:167
+#: docs/conf.py:168
 msgid "Community wiki"
 msgstr "社区 Wiki"
 
-#: docs/conf.py:168
+#: docs/conf.py:169
 msgid "Modules repository"
 msgstr "组件仓库"
 

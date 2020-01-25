@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 02:57+0800\n"
-"PO-Revision-Date: 2020-01-19 19:06\n"
+"POT-Creation-Date: 2020-01-25 14:13+0800\n"
+"PO-Revision-Date: 2020-01-25 06:21\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -337,11 +337,11 @@ msgstr "按 ENTER/RETURN 开始设置 {0}。"
 msgid "Congratulations! You have now finished all wizard-enabled modules. If you did not configure some modules enabled, you might need to configure them manually."
 msgstr "恭喜！您已完成了所有附带向导的组件。如果您之前没有配置剩余的组件，您可能需要手动配置它们。"
 
-#: ehforwarderbot/chat.py:320
+#: ehforwarderbot/chat.py:324
 msgid "You"
 msgstr "您"
 
-#: ehforwarderbot/chat.py:363
+#: ehforwarderbot/chat.py:375
 msgid "System"
 msgstr "系统"
 
