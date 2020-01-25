@@ -38,17 +38,11 @@ EH Forwarder Bot
 bot framework which delivers messages to and from multiple platforms and
 remotely control your accounts.
 
-For tips, tricks and community contributed articles, see
+Read the `Documentation`_. For tips, tricks and community contributed articles, see
 `project wiki`_.
 
 .. _project wiki: https://efb.1a23.studio/wiki
 
-v2.0 beta release
-------------------
-This is a beta release of EFB version 2 for test only.
-Framework API may subject to change.
-
-`Documentation`_.
 
 Getting Started
 ---------------

@@ -8,12 +8,6 @@ Install EH Forwarder Bot
 
 EH Forwarder Bot can be installed in the following ways:
 
-.. note::
-
-    The following instructions may not work properly
-    until a stable release is uploaded. As you are in
-    the beta version documentation, I assume you know
-    what to do.
 
 Install from PyPI
 ~~~~~~~~~~~~~~~~~
