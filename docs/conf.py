@@ -27,6 +27,7 @@ import sphinxcontrib.plantuml
 from sphinx import addnodes, locale
 from typing import Sequence
 from sphinx.locale import get_translation
+from docutils.utils.smartquotes import smartchars
 
 sys.path.insert(0, os.path.abspath('..'))
 
@@ -107,6 +108,8 @@ pygments_style = 'sphinx'
 # If true, `to\do` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
+smartquotes = True
+
 # -- Options for HTML output ----------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -169,6 +172,7 @@ html_theme_options = {
         _('Modules repository'): 'https://efb-modules.1a23.studio/',
     }
 }
+html_last_updated_fmt = ""
 
 # import sphinx_py3doc_enhanced_theme
 # html_theme = "sphinx_py3doc_enhanced_theme"
@@ -341,4 +345,5 @@ def setup(self):
     self.config.overrides['language'] = conversion.get(self.config.overrides.get('language', None),
                                                        self.config.overrides.get('language', None))
     if self.config.language and self.config.language.startswith("zh"):
-        self.config.latex_elements['fontpkg'] = "\usepackage{xeCJK}"
+        self.config.latex_elements['fontpkg'] = r"\usepackage{xeCJK}"
+    smartchars.quotes['zh-cn'] = smartchars.quotes['zh-tw']

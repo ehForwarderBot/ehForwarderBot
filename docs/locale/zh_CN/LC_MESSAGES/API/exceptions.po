@@ -85,7 +85,7 @@ msgstr "当指定的消息无法找到时由从端抛出。"
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:3
 #: a4e319420e0a4389bd793c612dfd1506
 msgid "Can be raised in :meth:`.Channel.send_message` (edited message / target message not found) and in :meth:`.Channel.send_status` (message to delete is not found)."
-msgstr "可以在 :meth:`.Channel.send_message`（需要编辑的消息、目标消息无法找到）和 :meth:`.EFBChannel.send_status`（需要删除的消息无法找到）中被抛出。"
+msgstr "可以在 :meth:`.Channel.send_message`\ （需要编辑的消息、目标消息无法找到）和 :meth:`.EFBChannel.send_status`\ （需要删除的消息无法找到）中被抛出。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:1
 #: 763c1a1ece2d455d8d70cdc0aec819a7
