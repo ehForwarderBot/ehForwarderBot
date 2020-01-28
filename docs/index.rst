@@ -55,6 +55,7 @@ remotely control your accounts.
     start
     directories
     profile
+    support
     guide/walkthrough
     guide/index
     contributing
