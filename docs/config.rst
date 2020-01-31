@@ -40,7 +40,7 @@ so as to isolate instances.
 Please avoid having two modules with the same set of module ID and instance ID
 as it may leads to unexpected results.
 
-For example, To enable the following modules:
+For example, to enable the following modules:
 
 * Master channel
     * Demo Master (``foo.demo_master``)

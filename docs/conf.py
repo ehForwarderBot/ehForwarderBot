@@ -17,17 +17,17 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import gettext
 import os
 import sys
-import traceback
 from os import path
+from typing import Sequence
 
 import sphinxcontrib.plantuml
-from sphinx import addnodes, locale
-from typing import Sequence
-from sphinx.locale import get_translation
+from docutils import nodes
 from docutils.utils.smartquotes import smartchars
+from sphinx import addnodes
+from sphinx.locale import get_translation
+
 
 sys.path.insert(0, os.path.abspath('..'))
 
@@ -323,6 +323,58 @@ sphinxcontrib.plantuml.plantuml.apply_translated_message = apply_translated_mess
 sphinxcontrib.plantuml.plantuml.extract_original_messages = extract_original_messages
 
 
+def run(self):
+    from sphinx.util.nodes import set_source_info
+    from sphinx.util.i18n import search_image_for_language
+    warning = self.state.document.reporter.warning
+    env = self.state.document.settings.env
+    if self.arguments and self.content:
+        return [warning('uml directive cannot have both content and '
+                        'a filename argument', line=self.lineno)]
+    if self.arguments:
+        fn = search_image_for_language(self.arguments[0], env)
+        relfn, absfn = env.relfn2path(fn)
+        env.note_dependency(relfn)
+        try:
+            umlcode = sphinxcontrib.plantuml._read_utf8(absfn)
+        except (IOError, UnicodeDecodeError) as err:
+            return [warning('PlantUML file "%s" cannot be read: %s'
+                            % (fn, err), line=self.lineno)]
+        source = absfn
+        line = 1
+    else:
+        relfn = env.doc2path(env.docname, base=None)
+        umlcode = '\n'.join(self.content)
+        source, line = self.state_machine.get_source_and_line(self.content_offset)
+
+    node = sphinxcontrib.plantuml.plantuml(self.block_text, **self.options)
+    node['uml'] = umlcode
+    node['incdir'] = os.path.dirname(relfn)
+    node['filename'] = os.path.split(relfn)[1]
+    node.source, node.line = source, line
+
+    # XXX maybe this should be moved to _visit_plantuml functions. it
+    # seems wrong to insert "figure" node by "plantuml" directive.
+    if 'caption' in self.options or 'align' in self.options:
+        node = nodes.figure('', node)
+        if 'align' in self.options:
+            node['align'] = self.options['align']
+    if 'caption' in self.options:
+        inodes, messages = self.state.inline_text(self.options['caption'],
+                                                  self.lineno)
+        caption_node = nodes.caption(self.options['caption'], '', *inodes)
+        caption_node.extend(messages)
+        set_source_info(self, caption_node)
+        node += caption_node
+    self.add_name(node)
+    if 'html_format' in self.options:
+        node['html_format'] = self.options['html_format']
+    if 'latex_format' in self.options:
+        node['latex_format'] = self.options['latex_format']
+
+    return [node]
+
+
 def html_page_context(self, pagename, templatename, context, doctree):
     # Workaround to only add extra catalog after .mo files are built.
     # This would happen on readthedocs server as .mo files are only built
@@ -336,6 +388,9 @@ def html_page_context(self, pagename, templatename, context, doctree):
         self.catalog_added = True
     if context.get("language"):
         context["language"] = context["language"].replace("_", "-")
+
+
+sphinxcontrib.plantuml.UmlDirective.run = run
 
 
 def setup(self):
