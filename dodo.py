@@ -82,7 +82,7 @@ def task_commit_lang_file():
 
 def task_bump_version():
     def gen_bump_version(mode=DEFAULT_BUMP_MODE):
-        return './bump.py ' + mode
+        return './bump.py --tag ' + mode
 
     return {
         "actions": [CmdAction(gen_bump_version)],
