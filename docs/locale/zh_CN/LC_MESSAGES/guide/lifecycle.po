@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-25 14:13+0800\n"
-"PO-Revision-Date: 2020-01-25 06:21\n"
+"POT-Creation-Date: 2020-01-31 14:14+0800\n"
+"PO-Revision-Date: 2020-01-31 06:48\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgid "This section talks about the lifecycle of an EFB instance, and that of a 
 msgstr "本章节介绍 EH Forwarder Bot 示例，以及消息/状态对象的生命周期。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:8
-#: None:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:16
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:13
 #: 28bb4afe4b2d4c2fbd81363c916c8551
 #: 1e662997793340fc8d402191492b8fa3
@@ -39,7 +39,7 @@ msgstr "EFB 实例的生命周期"
 msgid "The diagram below outlines the lifecycle of an EFB instance, and how channels and middlewares are involved in it."
 msgstr "下图概述了一个 EFB 实例的生命周期，以及信道和中间件如何参与其中。"
 
-#: None:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:16
 #: 1e662997793340fc8d402191492b8fa3
 msgid "@startuml\n"
 "start\n"
@@ -109,10 +109,67 @@ msgid "@startuml\n"
 "end note\n"
 "stop\n"
 "@enduml"
-msgstr ""
+msgstr "@startuml\n"
+"start\n"
+":用户启动 EFB 实例;\n"
+":读取配置档案设定;\n"
+":导入启用的组件;\n"
+"note right\n"
+"    按照配置档案中指定的顺序导入模块，首先是主端，然\n"
+"    后是从端和中间件。\n"
+"end note\n"
+":初始化从端;\n"
+"note right\n"
+"    按照配置文件配置中指定的顺序进行初始化从端。\n\n"
+"    完成后，从端应准备通过方法调用（\"\"get_chats()\"\"、\n"
+"    \"\"get_chat_picture()\"\" 等）来响应所有请求。\n\n"
+"    从端准备发送给主端的消息，应保留到调用 \"\"poll()\"\" 之后\n"
+"    再发送。\n\n"
+"    请注意，此时主端尚未准备就绪，因此无法通过框架与用\n"
+"    户进行互动。虽然从端可以通过检查主端的配置文件以进\n"
+"    行某些特定的交互，但不建议（NOT RECOMMEND）这\n"
+"    样做。如果有其他解决。在有其他解决方法的情况下，\n"
+"    应（SHOULD）尽量避免直接对主端操作。\n"
+"end note\n"
+":初始化主端;\n"
+"note right\n"
+"    主端此时可以从启用的从端中加载数据，但中间件尚未就\n"
+"    绪。\n\n"
+"    来自主端的消息在调用 \"\"poll()\"\" 后发出。\n"
+"end note\n"
+":初始化中间件;\n"
+"note right\n"
+"    按照配置文件配置中指定的顺序进行初始化中间件。此时，\n"
+"    所有的主端和从端均已初始化完毕。\n\n"
+"    中间件可以在初始化时检测启用的信道以变更其行为或对\n"
+"    于信道进行猴子补丁（monkey-patching）。\n"
+"end note\n"
+":开始主端和从端轮询;\n"
+"note right\n"
+"    在分别的 Python 线程中调用每个从端的 \"\"poll()\"\" 方法。\n"
+"    信道之间传递的消息应（SHOULD）**仅在此方法被调**\n"
+"    **用之后**发出。\n"
+"end note\n"
+":用户触发终止指令|\n"
+":调用主端和从端的\n"
+"\"\"stop_polling()\"\" 方法;\n"
+"note right\n"
+"    当调用 \"\"stop_polling()\"\" 时，信道应（SHOULD）\n"
+"    进行适当的善后处理工作，并准备结束进程。\n\n"
+"    在善后处理结束后，\"\"poll\"\" 线程运行的代码必须\n"
+"    （MUST）停止运行，以保证顺当的「优雅中止」\n"
+"    （graceful exit）。\n"
+"end note\n"
+":\"\"join\"\" 所有轮询线程;\n"
+"note right\n"
+"    框架会等待所有 \"\"poll\"\" 线程终止，以保证完整的「优雅中\n"
+"    止」状态。\n"
+"end note\n"
+"stop\n"
+"@enduml"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:93
-#: None:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:102
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:99
 #: c24adff5cc9a47878e66dbcd7d1811aa
 #: d7e5af40569f4e209ae8492f193d0f0d
@@ -125,7 +182,7 @@ msgstr "消息的生命周期"
 msgid "The diagram below outlines the lifecycle of a message sending from a channel, going through all middlewares, sent to the destination channel, and returned back to the sending channel."
 msgstr "下图概述了一条消息的生命周期：从发件信道发出，通过所有中间件、发送到收件信道并返回到发件通道。"
 
-#: None:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:102
 #: d7e5af40569f4e209ae8492f193d0f0d
 msgid "@startuml\n"
 "start\n"

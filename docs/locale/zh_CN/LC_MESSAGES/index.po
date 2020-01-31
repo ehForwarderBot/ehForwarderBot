@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-25 14:13+0800\n"
-"PO-Revision-Date: 2020-01-25 06:21\n"
+"POT-Creation-Date: 2020-01-31 13:44+0800\n"
+"PO-Revision-Date: 2020-01-31 06:48\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -115,67 +115,67 @@ msgstr ".. image:: https://raw.githubusercontent.com/blueset/ehForwarderBot/mast
 msgid "*Codename* **EH Forwarder Bot** (EFB) is an extensible message tunneling chat bot framework which delivers messages to and from multiple platforms and remotely control your accounts."
 msgstr "*开发代号* \\ **EH Forwarder Bot**\\ （EFB）是一个可扩展的消息隧道聊天机器人框架。EFB 能够可从多个平台收发消息，并远程控制您的帐户。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:65
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:66
 #: 3ab392a0d31a44c1b5f2633a5d9e8d5b
 msgid "Indices and tables"
 msgstr "索引和列表"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:67
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:68
 #: 76c1dc124676443c8298a7e9ca64964d
 msgid ":ref:`genindex`"
 msgstr ":ref:`genindex`"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:68
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:69
 #: 6e6ae48a586f4fcf9d7c1ba0f8a984d8
 msgid ":ref:`modindex`"
 msgstr ":ref:`modindex`"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:69
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:70
 #: a6f96402298842d58ad48c8cacf641e6
 msgid ":ref:`search`"
 msgstr ":ref:`search`"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:73
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:74
 #: 59e936a2700f418f9f4397703565ae23
 msgid "Feel like contributing?"
 msgstr "想参与贡献吗？"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:75
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:76
 #: ae46b836df96403a9abd13ec2a5fe3c4
 msgid "Everyone is welcomed to raise an issue or submit a pull request, just remember to read through and follow the :doc:`contribution guideline <./contributing>` before you do so."
 msgstr "我们欢迎任何人提出问题或是提交请求，但请务必先阅读并根据\\ :doc:`贡献指南 <./contributing>`\\ 的提示来进行操作。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:81
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:82
 #: 8603b155408c4da08659df23576637f3
 msgid "Related articles"
 msgstr "相关文章"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:83
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:84
 #: 7e7bb5d769e649838c2dc14700286d5f
 msgid "`Idea: Group Chat Tunneling (Sync) with EH Forwarder Bot`_"
 msgstr "`设想：使用 EH Forwarder Bot 进行群组消息同步`_"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:84
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:85
 #: 8fa8914698e74fc8b5e15423a436514c
 msgid "`What’s so new in EH Forwarder Bot 2 (and its modules)`_"
 msgstr "`EH Forwarder Bot 2（及其组件）有什么新功能`_"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:86
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:87
 #: 9cf4e6407f614d54a9167e31e4eb9a60
 msgid "For tips, tricks and community contributed articles, see `project wiki`_."
 msgstr "如需提示、相关技巧及社区文章，请参阅\\ `项目 Wiki`_\\ 。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:93
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:94
 #: a3196e8e12b54c6785409a40e48ff408
 msgid "License"
 msgstr "许可协议"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:95
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:96
 #: 5e14dc05117548e686f2c33732b6f2bb
 msgid "EFB framework is licensed under `GNU Affero General Public License 3.0`_ or later versions."
 msgstr "EFB 框架使用 `GNU Affero General Public License 3.0`_ 许可证。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:98
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:99
 #: 391cda3dd13a4a5381b34b7afa17d2d9
 msgid "EH Forwarder Bot: An extensible message tunneling chat bot framework.\n"
 "Copyright (C) 2016 - 2020 Eana Hufwe, and the EH Forwarder Bot contributors\n"
@@ -201,7 +201,7 @@ msgstr "EH Forwarder Bot：一个可扩展的消息隧道聊天机器人框架�
 "您应该已经随收到一份 GNU Affero 通用公共许可协议；如果没有，请查阅\n"
 "<http://www.gnu.org/licenses/>。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:118
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:119
 #: dc9b81e036704189b396a392cd359608
 msgid ":doc:`Donate <donate>`."
 msgstr ":doc:`捐赠 <donate>`."

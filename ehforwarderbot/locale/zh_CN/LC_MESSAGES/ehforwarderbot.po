@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-25 14:13+0800\n"
-"PO-Revision-Date: 2020-01-25 06:21\n"
+"POT-Creation-Date: 2020-01-31 14:46+0800\n"
+"PO-Revision-Date: 2020-01-31 06:48\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
@@ -26,7 +26,7 @@ msgstr "未在配置档案中指定主端。"
 #: ehforwarderbot/config.py:43
 #, python-brace-format
 msgid "Master Channel ID is expected to be a string, but \"{0}\" is of type {1}."
-msgstr "主端 ID 应为字符串, 但此时「{0}」的类型为 {1} 。"
+msgstr "主端 ID 应为字符串，但此时「{0}」的类型为 {1} 。"
 
 #: ehforwarderbot/config.py:47 ehforwarderbot/config.py:62
 #: ehforwarderbot/config.py:75
@@ -356,7 +356,7 @@ msgstr "EH Forwarder Bot 是一个可扩展的消息隧道聊天机器人框�
 
 #: ehforwarderbot/__main__.py:43
 msgid "Enable verbose mode. (Level: Debug)"
-msgstr "启用详细输出模式。(日志级别: 调试, Debug)"
+msgstr "启用详细输出模式。(日志级别：调试，Debug)"
 
 #: ehforwarderbot/__main__.py:45
 msgid "Show version numbers and exit."

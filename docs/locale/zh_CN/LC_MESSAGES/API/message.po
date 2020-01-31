@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-25 14:18+0800\n"
-"PO-Revision-Date: 2020-01-25 06:21\n"
+"PO-Revision-Date: 2020-01-31 06:48\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -324,7 +324,7 @@ msgstr ""
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:98
 #: b7617e5998ae460a949a465c77889a10
 msgid "Text of the message."
-msgstr ""
+msgstr "消息文本。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/message.py:docstring of ehforwarderbot.message.Message:102
 #: fa7e44fc97cb419ca6d4c4b9a520059e

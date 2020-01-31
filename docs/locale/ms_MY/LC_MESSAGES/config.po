@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-25 06:22\n"
+"POT-Creation-Date: 2020-01-31 13:44+0800\n"
+"PO-Revision-Date: 2020-01-31 06:50\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -72,7 +72,7 @@ msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:43
 #: 3534d221ed544aa6802b501d41343d76
-msgid "For example, To enable the following modules:"
+msgid "For example, to enable the following modules:"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:45

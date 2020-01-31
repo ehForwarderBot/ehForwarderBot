@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-24 11:36+0000\n"
-"PO-Revision-Date: 2020-01-25 06:22\n"
+"POT-Creation-Date: 2020-01-26 05:36+0000\n"
+"PO-Revision-Date: 2020-01-31 06:49\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Indonesian\n"
 "Language: id_ID\n"
@@ -15,27 +15,27 @@ msgstr ""
 "X-Crowdin-Language: id\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/efb_docs_config.pot\n"
 
-#: docs/conf.py:77
+#: docs/conf.py:78
 msgid "2016 — 2020 Eana Hufwe and the EH Forwarder Bot contributors"
 msgstr ""
 
-#: docs/conf.py:78
+#: docs/conf.py:79
 msgid "Eana Hufwe, and the EH Forwarder Bot contributors"
 msgstr ""
 
-#: docs/conf.py:79
+#: docs/conf.py:80
 msgid "EH Forwarder Bot Documentation"
 msgstr ""
 
-#: docs/conf.py:80
+#: docs/conf.py:81
 msgid "An extensible message tunneling chat bot framework."
 msgstr ""
 
-#: docs/conf.py:168
+#: docs/conf.py:171
 msgid "Community wiki"
 msgstr ""
 
-#: docs/conf.py:169
+#: docs/conf.py:172
 msgid "Modules repository"
 msgstr ""
 

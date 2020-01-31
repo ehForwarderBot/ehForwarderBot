@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-25 14:13+0800\n"
-"PO-Revision-Date: 2020-01-25 06:22\n"
+"POT-Creation-Date: 2020-01-31 13:44+0800\n"
+"PO-Revision-Date: 2020-01-31 06:48\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English\n"
 "MIME-Version: 1.0\n"
@@ -105,67 +105,67 @@ msgstr ""
 msgid "*Codename* **EH Forwarder Bot** (EFB) is an extensible message tunneling chat bot framework which delivers messages to and from multiple platforms and remotely control your accounts."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:65
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:66
 #: 3ab392a0d31a44c1b5f2633a5d9e8d5b
 msgid "Indices and tables"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:67
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:68
 #: 76c1dc124676443c8298a7e9ca64964d
 msgid ":ref:`genindex`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:68
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:69
 #: 6e6ae48a586f4fcf9d7c1ba0f8a984d8
 msgid ":ref:`modindex`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:69
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:70
 #: a6f96402298842d58ad48c8cacf641e6
 msgid ":ref:`search`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:73
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:74
 #: 59e936a2700f418f9f4397703565ae23
 msgid "Feel like contributing?"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:75
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:76
 #: ae46b836df96403a9abd13ec2a5fe3c4
 msgid "Everyone is welcomed to raise an issue or submit a pull request, just remember to read through and follow the :doc:`contribution guideline <./contributing>` before you do so."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:81
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:82
 #: 8603b155408c4da08659df23576637f3
 msgid "Related articles"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:83
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:84
 #: 7e7bb5d769e649838c2dc14700286d5f
 msgid "`Idea: Group Chat Tunneling (Sync) with EH Forwarder Bot`_"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:84
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:85
 #: 8fa8914698e74fc8b5e15423a436514c
 msgid "`What’s so new in EH Forwarder Bot 2 (and its modules)`_"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:86
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:87
 #: 9cf4e6407f614d54a9167e31e4eb9a60
 msgid "For tips, tricks and community contributed articles, see `project wiki`_."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:93
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:94
 #: a3196e8e12b54c6785409a40e48ff408
 msgid "License"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:95
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:96
 #: 5e14dc05117548e686f2c33732b6f2bb
 msgid "EFB framework is licensed under `GNU Affero General Public License 3.0`_ or later versions."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:98
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:99
 #: 391cda3dd13a4a5381b34b7afa17d2d9
 msgid "EH Forwarder Bot: An extensible message tunneling chat bot framework.\n"
 "Copyright (C) 2016 - 2020 Eana Hufwe, and the EH Forwarder Bot contributors\n"
@@ -182,7 +182,7 @@ msgid "EH Forwarder Bot: An extensible message tunneling chat bot framework.\n"
 "along with this program.  If not, see <http://www.gnu.org/licenses/>."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:118
+#: /Users/blueset/Codebase/ehForwarderBot/docs/index.rst:119
 #: dc9b81e036704189b396a392cd359608
 msgid ":doc:`Donate <donate>`."
 msgstr ""

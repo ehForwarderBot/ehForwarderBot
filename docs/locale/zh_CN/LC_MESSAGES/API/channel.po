@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-25 14:13+0800\n"
-"PO-Revision-Date: 2020-01-25 06:22\n"
+"PO-Revision-Date: 2020-01-31 06:48\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -137,7 +137,7 @@ msgstr "返回类型"
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:15
 #: 5dbdecfb0608473b94dcb92b752f0bb7
 msgid ":py:data:`~typing.Optional`\\[:py:class:`~typing.ForwardRef`]"
-msgstr ":py:class:`~pathlib.Path`"
+msgstr ":py:data:`~typing.Optional`\\[:py:class:`~typing.ForwardRef`]"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.poll:1
 #: c2c3d339f69846b4b2904fda1f086f45
@@ -232,7 +232,7 @@ msgstr "当在发送或编辑消息过程中有其他错误发生时被抛出。
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:1
 #: d0744ec7d9844c829240d5a4ab883fb6
 msgid "Process a status that is sent to this channel."
-msgstr ""
+msgstr "处理发送到此信道的状态。"
 
 #: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:4
 #: 8eac3576cd804559a9926c1b0873b7db

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-25 14:13+0800\n"
-"PO-Revision-Date: 2020-01-25 06:22\n"
+"POT-Creation-Date: 2020-01-31 14:14+0800\n"
+"PO-Revision-Date: 2020-01-31 06:50\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Spanish, Argentina\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgid "This section talks about the lifecycle of an EFB instance, and that of a 
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:8
-#: None:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:16
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:13
 #: 28bb4afe4b2d4c2fbd81363c916c8551
 #: 1e662997793340fc8d402191492b8fa3
@@ -39,7 +39,7 @@ msgstr ""
 msgid "The diagram below outlines the lifecycle of an EFB instance, and how channels and middlewares are involved in it."
 msgstr ""
 
-#: None:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:16
 #: 1e662997793340fc8d402191492b8fa3
 msgid "@startuml\n"
 "start\n"
@@ -112,7 +112,7 @@ msgid "@startuml\n"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:93
-#: None:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:102
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:99
 #: c24adff5cc9a47878e66dbcd7d1811aa
 #: d7e5af40569f4e209ae8492f193d0f0d
@@ -125,7 +125,7 @@ msgstr ""
 msgid "The diagram below outlines the lifecycle of a message sending from a channel, going through all middlewares, sent to the destination channel, and returned back to the sending channel."
 msgstr ""
 
-#: None:None
+#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:102
 #: d7e5af40569f4e209ae8492f193d0f0d
 msgid "@startuml\n"
 "start\n"
