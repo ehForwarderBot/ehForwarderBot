@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 14:46+0800\n"
-"PO-Revision-Date: 2020-01-31 06:49\n"
+"POT-Creation-Date: 2020-01-31 16:51+0800\n"
+"PO-Revision-Date: 2020-01-31 08:55\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -16,67 +16,67 @@ msgstr ""
 "Language: ja_JP\n"
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/donate.html:2
-#: 36045bcdc60e4762893a20014bfbfe96
+#: 32f226ab3aff42ae80bb4194b199faa1
 msgid "Donate/support"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/layout.html:19
-#: d1a6a5f85d6f4153b1dbe22fb1adcef9
+#: 85ea168d45b44d758e7e4062e32c80e8
 msgid "Build"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/layout.html:24
-#: dcfa514e74bf410bbb10277e49e7a021
+#: 9693096c9cd541c8bc0dfcf4a1e540f9
 msgid "Revision"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/layout.html:28
-#: dfc10247b34343bb8f8b41a2f0715110
+#: 427d913687cf43e18488831559b0d38f
 msgid "Last updated on %(last_updated)s."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/layout.html:37
-#: df7ac1f7c6d44467942a7d0240176045
+#: e59ba370050743cd9721e7e5f0fb6894
 msgid "Page source"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:1
-#: aefe5bb7d648452baad8dcb09b1fdeb3
+#: ed7fb20c35f14bd28c475822dff0f39d
 msgid "previous chapter"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:1
-#: 6f9796de41904c49b55540594852706c
+#: 2e39e11b0f5e414aa864ed0cc77cb451
 msgid "next chapter"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:3
-#: 1fe8a730b8da468da48cb437e614e96c
+#: c0b5ac8d4dab499d8d8c2c77036807a8
 msgid "Related Topics"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:5
-#: 504fcadbe13d46fe9951a656980a86ae
+#: 695924a8a7194ed28f1f96cc60972aa1
 msgid "Documentation overview"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:10
-#: ec2d25fc86474512805b65be452a4247
+#: 99b4d97efb2149acab6e0f0d85a7cc50
 msgid "Previous: "
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:13
-#: c7c0d25716fc48d38e5591455ba390f6
+#: 67e5e2814af543ddad16b3dc7d77643e
 msgid "Next: "
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/translate.html:2
-#: da20125284fc40f298f47566bbd9d1d1
+#: 94f56388dfe14dc2980f0edfb2213179
 msgid "Contribute translations"
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/translate.html:3
-#: 643490a0ebf64a598a6df2eb48f1ff85
+#: 727bb1b5b5b6442c9ab36bcffd42125e
 msgid "Help translate this docs on Crowdin"
 msgstr ""
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-31 06:49\n"
+"POT-Creation-Date: 2020-01-31 16:51+0800\n"
+"PO-Revision-Date: 2020-01-31 08:55\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -77,7 +77,7 @@ msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:41
 #: 8dc0f597e4b94309b1298e9c3592dc1c
-msgid "From version 2.0.0b12, EFB introduced a centralised wizard program to allow users to enable or disable modules in a text-based user interface (TUI). If you want to include your wizard program as a part of the wizard, you can include a new entry point in your ``setup.py`` with `Setuptools' Entry Point feature`__."
+msgid "From version 2, EFB introduced a centralised wizard program to allow users to enable or disable modules in a text-based user interface (TUI). If you want to include your wizard program as a part of the wizard, you can include a new entry point in your ``setup.py`` with `Setuptools' Entry Point feature`__."
 msgstr ""
 
 #: /Users/blueset/Codebase/ehForwarderBot/docs/guide/storage.rst:49
