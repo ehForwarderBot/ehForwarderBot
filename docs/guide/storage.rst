@@ -38,7 +38,7 @@ If your module requires relatively complicated configuration,
 it would be helpful to provide users with a wizard to 
 *check prerequisites of your module* and *guide them to setup your module for use*.
 
-From version 2.0.0b12, EFB introduced a centralised wizard program
+From version 2, EFB introduced a centralised wizard program
 to allow users to enable or disable modules in a text-based user 
 interface (TUI). If you want to include your wizard program as a part
 of the wizard, you can include a new entry point in your ``setup.py``
