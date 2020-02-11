@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+    <title>fb-messenger</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="100.025462%" x2="50%" y2="0.0167139273%" id="linearGradient-1">
+            <stop stop-color="#006DFF" offset="0%"></stop>
+            <stop stop-color="#006DFF" offset="11.37%"></stop>
+            <stop stop-color="#00C6FF" offset="94.93%"></stop>
+            <stop stop-color="#00C6FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="fb-messenger" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Facebook-messenger-01" transform="translate(5.000000, 5.000000)" fill="url(#linearGradient-1)" fill-rule="nonzero">
+            <path d="M26.8324324,0 C12.0121081,0 0,11.2328649 0,25.0975135 C0,32.9781622 3.88151351,40.0207568 9.96843243,44.608 L9.96843243,54.2088649 L19.1282162,49.1364324 C21.5688649,49.8127568 24.1565405,50.1803243 26.8324324,50.1803243 C41.6527568,50.1803243 53.6648649,38.9474595 53.6648649,25.0828108 C53.6648649,11.2181622 41.6527568,0 26.8324324,0 Z M29.6553514,33.6544865 L22.7156757,26.4501622 L9.35091892,33.8456216 L24.0095135,18.2901622 L30.9491892,25.4944865 L44.3139459,18.099027 L29.6553514,33.6544865 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

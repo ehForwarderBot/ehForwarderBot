@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+    <title>EFB</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#0C83BA" offset="0%"></stop>
+            <stop stop-color="#01A4B9" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="EFB" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group">
+            <rect id="Rectangle-3" fill="url(#linearGradient-1)" x="0" y="0" width="64.5" height="64.5"></rect>
+            <g id="Group-2" transform="translate(5.522260, 12.369863)" fill="#FFFFFF">
+                <path d="M19.1070205,15.7108305 C19.1070205,15.2506384 19.3371124,15.0205479 19.7973031,15.0205479 L41.1960616,15.0205479 L41.1960616,9.49828767 L52.2405822,17.7816781 L41.1960616,26.0650685 L41.1960616,20.5428082 L19.7973031,20.5428082 C19.3371124,20.5428082 19.1070205,20.3127177 19.1070205,19.8525257 L19.1070205,15.7108305 Z" id="Page-1" transform="translate(35.673801, 17.781678) rotate(-45.000000) translate(-35.673801, -17.781678) "></path>
+                <path d="M34.3484589,24.0494435 C34.3484589,24.5096355 34.1183684,24.739726 33.6581764,24.739726 L12.2594178,24.739726 L12.2594178,30.2619863 L1.21489726,21.9785959 L12.2594178,13.6952055 L12.2594178,19.2174658 L33.6581764,19.2174658 C34.1183684,19.2174658 34.3484589,19.4475562 34.3484589,19.9077483 L34.3484589,24.0494435 Z" id="Path" transform="translate(17.781678, 21.978596) rotate(-45.000000) translate(-17.781678, -21.978596) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

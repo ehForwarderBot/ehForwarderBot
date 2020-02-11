@@ -1,6 +1,5 @@
 EH Forwarder Bot
 ================
-
 .. image:: https://img.shields.io/badge/Python->%3D%203.6-blue.svg
    :alt: Python >= 3.6
    :target: https://www.python.org/
@@ -38,10 +37,24 @@ EH Forwarder Bot
 bot framework which delivers messages to and from multiple platforms and
 remotely control your accounts.
 
-Read the `Documentation`_. For tips, tricks and community contributed articles, see
-`project wiki`_.
+Read the `Documentation`_. For tips, tricks and community contributed 
+articles, see `project wiki`_.
 
 .. _project wiki: https://efb.1a23.studio/wiki
+
+
+.. raw:: html
+
+   <div style="text-align: center" align="center">
+      <img src="https://github.com/blueset/ehforwarderbot/raw/master/assets/EFB.svg" style="height: 64px;" height="64" alt="EH Forwarder Bot"/>
+      <img src="https://github.com/blueset/ehforwarderbot/raw/master/assets/supports.svg" style="height: 64px;" height="64" alt="supports" />
+      <a href="https://etm.1a23.studio"><img src="https://github.com/blueset/ehforwarderbot/raw/master/assets/telegram.svg" style="height: 64px;" height="64" alt="Telegram" /></a>
+      <img src="https://github.com/blueset/ehforwarderbot/raw/master/assets/plus.svg" style="height: 64px;" height="64" alt="and"/>
+      <a href="https://ews.1a23.studio"><img src="https://github.com/blueset/ehforwarderbot/raw/master/assets/wechat.svg" style="height: 64px;" height="64" alt="Wechat"/></a>
+      <a href="https://efms.1a23.studio"><img src="https://github.com/blueset/ehforwarderbot/raw/master/assets/fb-messenger.svg" style="height: 64px;" height="64" alt="Facebook Messenger"/></a>
+      <a href="https://github.com/milkice233/efb-qq-slave/"><img src="https://github.com/blueset/ehforwarderbot/raw/master/assets/qq.svg" style="height: 64px;" height="64" alt="QQ"/></a>
+      <img src="https://github.com/blueset/ehforwarderbot/raw/master/assets/and-more.svg" style="height: 64px;" height="64" alt="and more..."/>
+   </div>
 
 
 Getting Started
