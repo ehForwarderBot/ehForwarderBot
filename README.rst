@@ -51,9 +51,13 @@ Getting Started
 
     pip3 install ehforwarderbot
 
-2. `Install and enable channels`_ from the `channels repository`_.
+2. `Install modules`_ from the `module repository`_.
 
-3. Launch EFB::
+3. Enable and set up modules::
+
+    efb-wizard
+
+4. Launch EFB::
 
     ehforwarderbot
 
@@ -110,7 +114,7 @@ this project into your languages on `our Crowdin page`_.
 .. _supported languages: https://crowdin.com/project/ehforwarderbot/
 .. _our Crowdin page: https://crowdin.com/project/ehforwarderbot/
 
-.. _Install and enable channels: https://ehforwarderbot.readthedocs.io/en/latest/getting-started.html
-.. _channels repository: https://efb-modules.1a23.studio
+.. _Install modules: https://ehforwarderbot.readthedocs.io/en/latest/getting-started.html
+.. _module repository: https://efb-modules.1a23.studio
 .. _Documentation: https://ehforwarderbot.readthedocs.io/
 .. _GNU Affero General Public License 3.0: https://www.gnu.org/licenses/agpl-3.0.txt
