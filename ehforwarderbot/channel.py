@@ -23,14 +23,16 @@ class Channel(ABC):
             A human-friendly name of the channel.
         channel_emoji (str):
             Emoji icon of the channel. Recommended to use a
-            visually-length-one emoji that represents
-            the channel best.
+            visually-length-one (i.e. a single `grapheme cluster`_) emoji or
+            other symbol that represents the channel best.
         channel_id (:obj:`.ModuleID` (str)):
             Unique identifier of the channel.
             Convention of IDs is specified in :doc:`/guide/packaging`.
             This ID will be appended with its instance ID when available.
         instance_id (str):
             The instance ID if available.
+
+    .. _grapheme cluster: http://unicode.org/reports/tr29/
     """
 
     channel_name: str = "Empty channel"
