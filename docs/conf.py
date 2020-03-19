@@ -400,5 +400,13 @@ def setup(self):
     self.config.overrides['language'] = conversion.get(self.config.overrides.get('language', None),
                                                        self.config.overrides.get('language', None))
     if self.config.language and self.config.language.startswith("zh"):
-        self.config.latex_elements['fontpkg'] = r"\usepackage{xeCJK}"
+        self.config.latex_elements['fontpkg'] = r"""
+        \usepackage[AutoFallBack=true]{xeCJK}
+        \setCJKmainfont{Noto Serif CJK SC}[Language=Chinese Simplified, BoldFont={* Bold}, ItalicFont=AR PL KaitiM GB]
+        \setCJKsansfont{Noto Sans CJK SC}[Language=Chinese Simplified, BoldFont={* Bold}, ItalicFont=AR PL KaitiM GB]
+        \setCJKmonofont{Noto Sans CJK SC}[Language=Chinese Simplified, BoldFont={* Bold}, ItalicFont=AR PL KaitiM GB]
+        \setCJKfallbackfamilyfont{\CJKrmdefault}[AutoFakeBold]{{HanaMinA},{HanaMinB}}
+        \setCJKfallbackfamilyfont{\CJKsfdefault}[AutoFakeBold]{{HanaMinA},{HanaMinB}}
+        \setCJKfallbackfamilyfont{\CJKttdefault}[AutoFakeBold]{{HanaMinA},{HanaMinB}}
+        """
     smartchars.quotes['zh-cn'] = smartchars.quotes['zh-tw']
