@@ -400,7 +400,11 @@ def setup(self):
     self.config.overrides['language'] = conversion.get(self.config.overrides.get('language', None),
                                                        self.config.overrides.get('language', None))
     if self.config.language and self.config.language.startswith("zh"):
-        self.config.latex_elements['fontpkg'] = r"""
+        from pprint import pprint
+        # pprint(self.config.__getstate__())
+        latex_elements = globals().get("latex_elements", None)
+        pprint(latex_elements)
+        latex_elements['preamble'] += r"""
         \usepackage[AutoFallBack=true]{xeCJK}
         \setCJKmainfont{Noto Serif CJK SC}[Language=Chinese Simplified, BoldFont={* Bold}, ItalicFont=AR PL KaitiM GB]
         \setCJKsansfont{Noto Sans CJK SC}[Language=Chinese Simplified, BoldFont={* Bold}, ItalicFont=AR PL KaitiM GB]
