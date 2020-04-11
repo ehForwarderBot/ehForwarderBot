@@ -2,7 +2,7 @@
 name: Framework feature request
 about: Suggest an idea for this framework
 title: "[FR] "
-labels: ''
+labels: enhancement
 assignees: ''
 
 ---
