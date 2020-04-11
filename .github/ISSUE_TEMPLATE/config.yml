@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Issues related to modules
+    url: https://efb-modules.1a23.studio/
+    about: Modules-related issues must go to their respective repositories.
+  - name: 中文问题汇报
+    url: https://efb.1a23.studio/
+    about: 汇报问题【请使用英语】，且仅汇报【框架本身】的问题。任何于您安装的组件相关的问题，请到各组件的页面进行汇报。
+  - name: Telegram discussion group
+    url: https://t.me/EFBSupport
+    about: Please visit the discussion group on Telegram if you have any issue about usage of EFB.
+  - name: Gitter discussion group
+    url: https://gitter.im/blueset/ehForwarderBot
+    about: If you have difficulties joining us on Telegram, you may also use Gitter.
