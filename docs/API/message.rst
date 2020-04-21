@@ -181,12 +181,12 @@ Additional information
 
         message.text = "Hey @david, @bob, and @all. Attention!"
         message.substitutions = Substitutions({
-            # text[4:10] = "@david", here David is the user.
+            # text[4:10] == "@david", here David is the user.
             (4, 10): wonderland.self,
-            # text[12:16] = "@bob", Bob is another member of the chat.
+            # text[12:16] == "@bob", Bob is another member of the chat.
             (12, 16): wonderland.get_member("bob"),
-            # text[22:126] = "@all", this calls the entire group chat, hence the
-            # chat object is set as the value instead.
+            # text[22:26] == "@all", this calls the entire group chat, hence the
+            # chat object is set as the following value instead.
             (22, 26): wonderland
         })
 
