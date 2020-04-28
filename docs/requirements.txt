@@ -1,6 +1,6 @@
 sphinx==3.0.3
 sphinxcontrib-restbuilder==0.2
 sphinx-autodoc-typehints==1.10.3
-sphinx-intl==2.0.0
+sphinx-intl==2.0.1
 sphinxcontrib-plantuml==0.18
 git+https://github.com/readthedocs/readthedocs-sphinx-search@master
