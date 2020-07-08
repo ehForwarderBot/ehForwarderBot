@@ -51,8 +51,7 @@ def load_config() -> Dict[str, Any]:
         # - Slave channels
         slave_channels_list = data.get("slave_channels", None)
         if not slave_channels_list:
-            if not master_channel_id:
-                raise ValueError(_("Slave Channels are not specified in the profile config."))
+            raise ValueError(_("Slave Channels are not specified in the profile config."))
         elif not isinstance(slave_channels_list, list):
             raise ValueError(_("Slave Channel IDs are expected to be a list, but {} is found.")
                              .format(slave_channels_list))

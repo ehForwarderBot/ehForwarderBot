@@ -1,25 +1,23 @@
 # coding=utf-8
-import signal
-import threading
-import logging
 import argparse
-import sys
 import atexit
+import gettext
+import logging
+import logging.config
 import mimetypes
+import signal
+import sys
+import threading
+from typing import Dict
 
 import pkg_resources
-import gettext
-import logging.config
-
-from typing import Dict
 
 from . import config, utils
 from . import coordinator
 from .__version__ import __version__
-from .channel import Channel, MasterChannel, SlaveChannel
+from .channel import MasterChannel, SlaveChannel
 from .middleware import Middleware
 from .utils import LogLevelFilter
-
 
 # gettext.install('ehforwarderbot', 'locale')
 coordinator.translator = gettext.translation('ehforwarderbot',

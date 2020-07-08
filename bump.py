@@ -51,7 +51,7 @@ def bump_version(v: version.Version, level: str) -> str:
         else:
             release[segments - 1] += 1
         release[segments:] = [0] * max(len(release) - segments, 0)
-        stage = pre = post = dev = None
+        stage = pre = post = dev = None  # lgtm [py/unused-local-variable]
     elif level == "alpha":
         if stage is None:
             if dev is None:

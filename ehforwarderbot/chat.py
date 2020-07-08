@@ -379,7 +379,7 @@ class SystemChatMember(ChatMember):
                          middleware=middleware)
 
 
-class Chat(BaseChat, ABC):
+class Chat(BaseChat, ABC):  # lgtm [py/missing-equals]
     """
     A chat object, indicates a user, a group, or a system chat. This class is
     abstract. No instance can be created directly from this class.
@@ -474,8 +474,7 @@ class Chat(BaseChat, ABC):
         super().__init__(channel=channel, middleware=middleware, module_name=module_name, channel_emoji=channel_emoji,
                          module_id=module_id, name=name, alias=alias, id=id, uid=uid,
                          vendor_specific=vendor_specific, description=description)
-        self.members: MutableSequence[ChatMember] = members if members is not None else [
-        ]
+        self.members: MutableSequence[ChatMember] = members if members is not None else []
         if with_self:
             self.self = self.add_self()
         else:

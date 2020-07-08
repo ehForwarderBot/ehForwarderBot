@@ -274,11 +274,15 @@ class KeyValueBullet(Bullet):
 
 class ReorderBullet(Bullet):
 
-    def __init__(self, prompt: str = "", choices: list = [], choices_id: list = [], bullet: str = "●",
+    def __init__(self, prompt: str = "", choices: list = None, choices_id: list = None, bullet: str = "●",
                  bullet_color: str = colors.foreground["default"], word_color: str = colors.foreground["default"],
                  word_on_switch: str = colors.REVERSE, background_color: str = colors.background["default"],
                  background_on_switch: str = colors.REVERSE, pad_right=0, indent: int = 0, align=0, margin: int = 0,
                  shift: int = 0, required: bool = False):
+        if choices is None:
+            choices = []
+        if choices_id is None:
+            choices_id = []
         prompt += "\n" + _(
             "[ =: Shift up; -: Shift down; Backspace: Remove ]"
         )
@@ -363,7 +367,7 @@ def get_platform_name():
         try:
             # noinspection PyDeprecation
             return ' '.join(platform.linux_distribution()[:2])
-        except:
+        except:  # lgtm [py/catch-base-exception]
             # noinspection PyDeprecation
             return ' '.join(platform.dist()[:2])
     elif p == "Darwin":

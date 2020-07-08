@@ -1,7 +1,7 @@
 # coding=utf-8
 
 from abc import ABC, abstractmethod
-from typing import Optional, Dict, List, Set, Callable, TYPE_CHECKING, Sequence, BinaryIO, Collection
+from typing import Optional, Dict, Set, Callable, TYPE_CHECKING, Sequence, BinaryIO, Collection
 
 from .constants import MsgType
 from .types import ModuleID, InstanceID, ExtraCommandName, ReactionName, ChatID, MessageID
