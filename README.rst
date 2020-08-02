@@ -43,8 +43,7 @@ articles, see `project wiki`_.
 .. _project wiki: https://efb.1a23.studio/wiki
 
 
-.. raw:: html
-
+.. a raw:: html
    <div style="text-align: center" align="center">
       <img src="https://github.com/blueset/ehforwarderbot/raw/master/assets/EFB.svg?sanitize=true" style="height: 64px;" height="64" alt="EH Forwarder Bot"/>
       <img src="https://github.com/blueset/ehforwarderbot/raw/master/assets/supports.svg?sanitize=true" style="height: 64px;" height="64" alt="supports" />
