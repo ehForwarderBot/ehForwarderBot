@@ -46,10 +46,29 @@ parser.add_argument("-p", "--profile",
                     default="default")
 
 telemetry = None  # type: ignore
+signal_call_counter = 0
+MAX_SIG_CALL_BEFORE_FORCE_EXIT = 5
 
 
 def stop_gracefully(*_, **__):
+    global signal_call_counter
+    signal_call_counter += 1
     logger = logging.getLogger(__name__)
+
+    # print("SIGNAL_CALL_COUNTER", signal_call_counter)
+
+    if signal_call_counter >= MAX_SIG_CALL_BEFORE_FORCE_EXIT:
+        logger.error(
+            "5 consequent exit signals detected.\n"
+            "Force exiting EFB without cleaning up.\n"
+            "\n"
+            "If it has taken you too long to quit EFB, "
+            "it is most likely a bug with EFB or some of the modules enabled. "
+            "Please consider tracing the hanging thread using --trace-thread "
+            "argument, and report a bug to the developers."
+        )
+        exit(1)
+
     if hasattr(coordinator, "master") and isinstance(coordinator.master, MasterChannel):
         coordinator.master.stop_polling()
         logger.debug("Stop signal sent to master: %s" % coordinator.master.channel_name)
