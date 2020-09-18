@@ -38,7 +38,7 @@ Options
     This option is useful to identify source of the issue
     when you encounter situations where you had to force quit
     EFB. When this option is enabled, once the first stop signal (``SIGINT`` or
-    ``SIGKILL``) is sent, threads that are *asleep* will be identified and
+    ``SIGTERM``) is sent, threads that are *asleep* will be identified and
     reported every 10 seconds, until a second stop signal is seen.
 
     In order to use this option, you need to install extra Python dependencies
