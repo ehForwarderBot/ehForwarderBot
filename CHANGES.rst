@@ -17,6 +17,7 @@ Unreleased
 Added
 -----
 - 5 consequent SIGTERM or SIGINT will trigger a force quit.
+- Allow user to trace hanging threads to debug *graceful exit*-related issues.
 
 Changed
 -------

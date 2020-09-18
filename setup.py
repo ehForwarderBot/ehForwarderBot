@@ -48,6 +48,7 @@ setup(
     tests_require=tests_require,
     extras_require={
         'telemetry': ['1a23-telemetry'],
+        'trace': ['hanging-threads'],
         'tests': tests_require
     },
     entry_points={

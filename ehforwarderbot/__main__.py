@@ -44,16 +44,39 @@ parser.add_argument("-V", "--version", action='store_true',
 parser.add_argument("-p", "--profile",
                     help=_("Choose a profile to start with."),
                     default="default")
+parser.add_argument("--trace-threads", action='store_true',
+                    help=_("Trace hanging threads which are preventing EFB from stopping."))
 
 telemetry = None  # type: ignore
 signal_call_counter = 0
 MAX_SIG_CALL_BEFORE_FORCE_EXIT = 5
+trace_threads = False
+monitoring_thread = None
 
 
 def stop_gracefully(*_, **__):
-    global signal_call_counter
+    global signal_call_counter, trace_threads, monitoring_thread
     signal_call_counter += 1
     logger = logging.getLogger(__name__)
+
+    if trace_threads:
+        from hanging_threads import start_monitoring
+        if signal_call_counter == 1:
+            logger.critical(
+                "Thread monitoring is started. "
+                "Hanging threads will be reported every 10 seconds.\n"
+                "If you see a thread keeps showing for multiple "
+                "occurrences, please report it to the developer.\n\n"
+                "Press Ctrl-C again to stop reporting, "
+                "press another 3 times to force quit EFB."
+            )
+            monitoring_thread = start_monitoring()
+        elif monitoring_thread is not None and monitoring_thread.is_alive():
+            monitoring_thread.stop()
+            logger.critical(
+                "Thread report is now stopped, "
+                "press Ctrl-C for 3 times to force quit EFB."
+            )
 
     # print("SIGNAL_CALL_COUNTER", signal_call_counter)
 
@@ -64,7 +87,7 @@ def stop_gracefully(*_, **__):
             "\n"
             "If it has taken you too long to quit EFB, "
             "it is most likely a bug with EFB or some of the modules enabled. "
-            "Please consider tracing the hanging thread using --trace-thread "
+            "Please consider tracing the hanging thread using --trace-threads "
             "argument, and report a bug to the developers."
         )
         exit(1)
@@ -141,7 +164,8 @@ def init(conf):
 
     logger.log(99, "\x1b[1;37;42m %s \x1b[0m", _("All middlewares are initialized."))
 
-    coordinator.master_thread = threading.Thread(target=coordinator.master.poll, name=f"{coordinator.master.channel_id} polling thread")
+    coordinator.master_thread = threading.Thread(target=coordinator.master.poll,
+                                                 name=f"{coordinator.master.channel_id} polling thread")
     coordinator.slave_threads = {key: threading.Thread(target=coordinator.slaves[key].poll,
                                                        name=f"{key} polling thread")
                                  for key in coordinator.slaves}
@@ -278,6 +302,21 @@ def main():
 
     if getattr(args, "version", None):
         return print_versions(args)
+
+    if args.trace_threads:
+        try:
+            import hanging_threads
+            global trace_threads
+            trace_threads = True
+        except ModuleNotFoundError:
+            print(_(
+                "Required dependencies are not found. Please install them with "
+                "the following command:"
+            ))
+            print()
+            print(f"    ${sys.executable} -m pip install 'ehforwarderbot[trace]'")
+            print()
+            exit(1)
 
     if args.profile:
         coordinator.profile = str(args.profile)
