@@ -52,6 +52,7 @@ signal_call_counter = 0
 MAX_SIG_CALL_BEFORE_FORCE_EXIT = 5
 trace_threads = False
 monitoring_thread = None
+exit_event = threading.Event()  # triggered on exit to block the main thread
 
 
 def stop_gracefully(*_, **__):
@@ -78,8 +79,6 @@ def stop_gracefully(*_, **__):
                 "press Ctrl-C for 3 times to force quit EFB."
             )
 
-    # print("SIGNAL_CALL_COUNTER", signal_call_counter)
-
     if signal_call_counter >= MAX_SIG_CALL_BEFORE_FORCE_EXIT:
         logger.error(
             "5 consequent exit signals detected.\n"
@@ -92,6 +91,11 @@ def stop_gracefully(*_, **__):
         )
         exit(1)
 
+    # Stop the main thread from blocking.
+    if not exit_event.is_set():
+        exit_event.set()
+
+    # Wait for channels to stop polling.
     if hasattr(coordinator, "master") and isinstance(coordinator.master, MasterChannel):
         coordinator.master.stop_polling()
         logger.debug("Stop signal sent to master: %s" % coordinator.master.channel_name)
@@ -178,6 +182,8 @@ def poll():
     coordinator.master_thread.start()
     for i in coordinator.slave_threads:
         coordinator.slave_threads[i].start()
+
+    exit_event.wait()
 
 
 def setup_logging(args, conf):

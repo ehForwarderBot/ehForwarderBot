@@ -27,6 +27,7 @@ Removed
 
 Fixed
 -----
+- Blocking main thread to keep thread pools running throughout the session (`#225`_)
 
 Known issue
 -----------
@@ -37,3 +38,4 @@ First release.
 
 .. _2.0.0: https://efb.1a23.studio/releases/tag/v2.0.0
 .. _2.0.1: https://efb.1a23.studio/compare/v2.0.0...v2.0.1
+.. _#225: https://efb.1a23.studio/issues/225
