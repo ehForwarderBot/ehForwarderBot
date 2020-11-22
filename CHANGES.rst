@@ -16,8 +16,6 @@ Unreleased
 
 Added
 -----
-- 5 consequent SIGTERM or SIGINT will trigger a force quit.
-- Allow user to trace hanging threads to debug *graceful exit*-related issues.
 
 Changed
 -------
@@ -27,15 +25,26 @@ Removed
 
 Fixed
 -----
-- Blocking main thread to keep thread pools running throughout the session (`#225`_)
 
 Known issue
 -----------
+
+2.1.0_ - 2020-11-23
+===================
+
+Added
+-----
+- 5 consequent SIGTERM or SIGINT will trigger a force quit.
+- Allow user to trace hanging threads to debug *graceful exit*-related issues.
+
+Fixed
+-----
+- Blocking main thread to keep thread pools running throughout the session (`#225`_)
 
 2.0.0_ - 2020-01-31
 ===================
 First release.
 
 .. _2.0.0: https://efb.1a23.studio/releases/tag/v2.0.0
-.. _2.0.1: https://efb.1a23.studio/compare/v2.0.0...v2.0.1
+.. _2.1.0: https://efb.1a23.studio/compare/v2.0.0...v2.1.0
 .. _#225: https://efb.1a23.studio/issues/225
