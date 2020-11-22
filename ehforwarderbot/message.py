@@ -520,8 +520,13 @@ class Message:
                 f"File ({self.file!r}) is not valid."
             assert self.mime or not isinstance(self.mime, str), \
                 f"MIME ({self.mime!r}) is not valid."
-            assert self.path or not isinstance(self.path, (str, PathLike)), \
-                f"Path ({self.path!r}) is not valid."
+            # Upstream type definition issue in python/typeshed
+            # TODO: remove `type: ignore` on next mypy update.
+            # Current mypy 0.790 includes typeshed from 28 Aug 2020 (5be9c71)
+            # https://github.com/python/mypy/tree/v0.790/mypy
+            # Fixed typeshed commit is on 27 Sep 2020 (076983e)
+            # https://github.com/python/typeshed/commit/076983eec45e739c68551cb6119fd7d85fd4afa9
+            assert self.path or not isinstance(self.path, (str, PathLike)), f"Path ({self.path!r}) is not valid."  # type: ignore
         assert self.type != MsgType.Location or isinstance(self.attributes, LocationAttribute), \
             f"Attribute of location message ({self.attributes!r}) is invalid."
         assert self.type != MsgType.Link or isinstance(self.attributes, LinkAttribute), \
