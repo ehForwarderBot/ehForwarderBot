@@ -2,65 +2,67 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-31 08:53\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Azerbaijani\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: az\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/misc.pot\n"
+"X-Crowdin-File-ID: 82\n"
 "Language: az_AZ\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:2
+#: ../../guide/misc.rst:2
 #: 34aa2b6de40445d5a210373500bc1bb0
 msgid "Miscellaneous"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:5
+#: ../../guide/misc.rst:5
 #: fb12a296ee0545a0ad1bb33df40ea8f6
 msgid "Logging"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:7
+#: ../../guide/misc.rst:7
 #: 3d9d56c5b4a94caa8e3bdf49c98082e2
 msgid "In complex modules, you should have detailed logs in DEBUG level and optionally INFO level. All your log handlers SHOULD follow that of the root logger, which is controlled by the framework. This could be helpful when for you to locate issues reported by users."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:14
+#: ../../guide/misc.rst:14
 #: 3b46a567631c47ac921f80c63d1a3eea
 msgid "Vendor-specifics"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:16
+#: ../../guide/misc.rst:16
 #: 35db493648f4452a9c5891dc08bd127d
 msgid "If you are going to include vendor specific information in messages and/or chats, please make your effort to document them in your README or documentation, so that other developers can refer to it when adapting your module."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:23
+#: ../../guide/misc.rst:23
 #: 96464429bd90457886a9dd6f56730901
 msgid "Threading"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:25
+#: ../../guide/misc.rst:25
 #: 779eced40a624828a32bdc78b06509a0
 msgid "All channels are RECOMMENDED a separate thread while processing a new message, so as to prevent unexpectedly long thread blocking."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:29
+#: ../../guide/misc.rst:29
 #: ff4f1b8f23184bf3baa1060892435ecc
 msgid "We are also considering to move completely to asynchronous programming when most channels are ready for the change."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:34
+#: ../../guide/misc.rst:34
 #: 2f6054525a684b188d84af3cb520fbcd
 msgid "Static type checking"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:36
+#: ../../guide/misc.rst:36
 #: 76a0f2aa927a42368fcc889d84413a53
 msgid "EH Forwarder Bot is fully labeled in the Python 3 type hint notations. Since sometimes maintaining a module with high complexity could be difficult, we RECOMMEND you to type your module too and use tools like mypy_ to check your code statically."
 msgstr ""

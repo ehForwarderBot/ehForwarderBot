@@ -2,44 +2,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 14:14+0800\n"
-"PO-Revision-Date: 2020-01-31 08:54\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: zh-TW\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/lifecycle.pot\n"
+"X-Crowdin-File-ID: 153\n"
 "Language: zh_TW\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:2
+#: ../../guide/lifecycle.rst:2
 #: d8624db33a7c4419a9274750379355f3
 msgid "Lifecycle"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:4
+#: ../../guide/lifecycle.rst:4
 #: 978ac0a2681a400d8caaebf5fffb07ee
 msgid "This section talks about the lifecycle of an EFB instance, and that of a message / status."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:8
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:16
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:13
+#: ../../guide/lifecycle.rst:8
+#: ../../guide/lifecycle.rst:16
+#: ../../guide/lifecycle.rst:13
 #: 28bb4afe4b2d4c2fbd81363c916c8551
 #: 1e662997793340fc8d402191492b8fa3
 #: e3d597f7ee1948b8840a2fc4785a0dd1
 msgid "Lifecycle of an EFB instance"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:10
+#: ../../guide/lifecycle.rst:10
 #: 02a09d15f1cf43f6a11e5ff9efae0667
 msgid "The diagram below outlines the lifecycle of an EFB instance, and how channels and middlewares are involved in it."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:16
+#: ../../guide/lifecycle.rst:16
 #: 1e662997793340fc8d402191492b8fa3
 msgid "@startuml\n"
 "start\n"
@@ -111,21 +113,21 @@ msgid "@startuml\n"
 "@enduml"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:93
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:102
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:99
+#: ../../guide/lifecycle.rst:93
+#: ../../guide/lifecycle.rst:102
+#: ../../guide/lifecycle.rst:99
 #: c24adff5cc9a47878e66dbcd7d1811aa
 #: d7e5af40569f4e209ae8492f193d0f0d
 #: b81c253598e24edda0872c4981e447df
 msgid "Lifecycle of a message"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:95
+#: ../../guide/lifecycle.rst:95
 #: 51a9e6e91e824e9dba273bf3dd665186
 msgid "The diagram below outlines the lifecycle of a message sending from a channel, going through all middlewares, sent to the destination channel, and returned back to the sending channel."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:102
+#: ../../guide/lifecycle.rst:102
 #: d7e5af40569f4e209ae8492f193d0f0d
 msgid "@startuml\n"
 "start\n"
@@ -154,7 +156,7 @@ msgid "@startuml\n"
 "@enduml"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/lifecycle.rst:129
+#: ../../guide/lifecycle.rst:129
 #: 63dfe6d99bad4f2c85e59bb9f1499099
 msgid "Status objects processed in the same way."
 msgstr ""

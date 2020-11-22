@@ -2,81 +2,83 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 16:51+0800\n"
-"PO-Revision-Date: 2020-01-31 08:56\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: es-VE\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/sphinx.pot\n"
+"X-Crowdin-File-ID: 155\n"
 "Language: es_VE\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/donate.html:2
-#: 32f226ab3aff42ae80bb4194b199faa1
+#: ../../_templates/donate.html:2
+#: 156eb9006a1c44be89191fb7201449a5
 msgid "Donate/support"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/layout.html:19
-#: 85ea168d45b44d758e7e4062e32c80e8
+#: ../../_templates/layout.html:19
+#: dcece0e0df484735b6423c70550574d2
 msgid "Build"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/layout.html:24
-#: 9693096c9cd541c8bc0dfcf4a1e540f9
+#: ../../_templates/layout.html:24
+#: 90b61537e2b247bd82fd6a6095412a84
 msgid "Revision"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/layout.html:28
-#: 427d913687cf43e18488831559b0d38f
+#: ../../_templates/layout.html:28
+#: fdb7ec9ffaa14774b4e7da942fb3e3df
 msgid "Last updated on %(last_updated)s."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/layout.html:37
-#: e59ba370050743cd9721e7e5f0fb6894
+#: ../../_templates/layout.html:37
+#: 29160f920c6d46cca2b6e5d8f0953d35
 msgid "Page source"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:1
-#: ed7fb20c35f14bd28c475822dff0f39d
+#: ../../_templates/relations.html:1
+#: bb95f873fc7b4ea6bae1f2eeada770eb
 msgid "previous chapter"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:1
-#: 2e39e11b0f5e414aa864ed0cc77cb451
+#: ../../_templates/relations.html:1
+#: 8b482318916e4365a357991203973131
 msgid "next chapter"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:3
-#: c0b5ac8d4dab499d8d8c2c77036807a8
+#: ../../_templates/relations.html:3
+#: 861c0543a7da443d91752b588ea5e4dd
 msgid "Related Topics"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:5
-#: 695924a8a7194ed28f1f96cc60972aa1
+#: ../../_templates/relations.html:5
+#: fa4b926ed52e4da0b9ec58289a71fc31
 msgid "Documentation overview"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:10
-#: 99b4d97efb2149acab6e0f0d85a7cc50
+#: ../../_templates/relations.html:10
+#: 4912189beae544c795a328ba66b58143
 msgid "Previous: "
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/relations.html:13
-#: 67e5e2814af543ddad16b3dc7d77643e
+#: ../../_templates/relations.html:13
+#: abf5776150fd4d3bb7a3027204618138
 msgid "Next: "
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/translate.html:2
-#: 94f56388dfe14dc2980f0edfb2213179
+#: ../../_templates/translate.html:2
+#: 3bd14187461844c286c6f305c74854c2
 msgid "Contribute translations"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/_templates/translate.html:3
-#: 727bb1b5b5b6442c9ab36bcffd42125e
+#: ../../_templates/translate.html:3
+#: b16b822e99f64fe6a58625d421bff86e
 msgid "Help translate this docs on Crowdin"
 msgstr ""
 

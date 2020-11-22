@@ -2,130 +2,132 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 13:44+0800\n"
-"PO-Revision-Date: 2020-01-31 08:56\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: es-VE\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/config.pot\n"
+"X-Crowdin-File-ID: 122\n"
 "Language: es_VE\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:2
+#: ../../config.rst:2
 #: 0824b7268b57472e8ffd978de3144544
 msgid "Configuration File"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:4
+#: ../../config.rst:4
 #: 98d92e2f139540adb95e17dd29bd1305
 msgid "EFB has an overall configuration file to manage all enabled modules. It is located under the :doc:`directory <directories>` of current profile, and named :file:`config.yaml`."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:9
+#: ../../config.rst:9
 #: 559e50a4eaf1429cba5a3cfe0f8657bf
 msgid "Syntax"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:11
+#: ../../config.rst:11
 #: 6be522b6f71b40d4af52b4e7c5daf664
 msgid "The configuration file is in the YAML syntax. If you are not familiar with its syntax, please check its documentations and tutorials for details."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:15
+#: ../../config.rst:15
 #: ed1eb5e347ba4e8cb196d6a985687860
 msgid "The ID of the master channel enabled is under the key ``master_channel``"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:16
+#: ../../config.rst:16
 #: 892eccbfc6fc41ca804c96b701dd8235
 msgid "The ID of slave channels enabled is listed under the key ``slave_channels``. It has to be a list even if just one channel is to be enabled."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:19
+#: ../../config.rst:19
 #: b71b0c33918449e8abbf59dbd24b692e
 msgid "The ID of middlewares enabled are listed under the key ``middlewares``. It has to be a list even if just one middleware is to be enabled. However, if you don't want to enable any middleware, just omit the section completely."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:25
+#: ../../config.rst:25
 #: 46a08d27e5004f08a0cc714cc900b9f7
 msgid "Instance ID"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:27
+#: ../../config.rst:27
 #: 66924b4e6b9b4e84b5b7b0c2f783404b
 msgid "To have multiple accounts running simultaneously, you can appoint an instance ID to a module. Instance ID can be defined by the user, and if defined, it must has nothing other than letters, numbers and underscores, i.e. in regular expressions :regexp:`[a-zA-Z0-9_]+`. When instance ID is not defined, the channel will run in the \"default\" instance with no instance ID."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:33
+#: ../../config.rst:33
 #: c641378e6f01474190a1bb156182dcc6
 msgid "To indicate the instance ID of an instance, append ``#`` following by the instance ID to the module ID. For example, slave channel ``bar.dummy`` running with instance ID ``alice`` should be written as ``bar.dummy#alice``. If the channel requires configurations, it should be done in the directory with the same name (e.g. :file:`EFB_DATA_PATH/profiles/{PROFILE}/bar.dummy#alice`), so as to isolate instances."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:40
+#: ../../config.rst:40
 #: 11998b48e9fa443ba3ab691583d5c3a4
 msgid "Please avoid having two modules with the same set of module ID and instance ID as it may leads to unexpected results."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:43
+#: ../../config.rst:43
 #: 3534d221ed544aa6802b501d41343d76
 msgid "For example, to enable the following modules:"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:45
+#: ../../config.rst:45
 #: 1659ed4cca0d4f8395bea7215ddf7407
 msgid "Master channel"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:46
+#: ../../config.rst:46
 #: 44ef9108b1424e11bba9df7d876d2976
 msgid "Demo Master (``foo.demo_master``)"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:49
+#: ../../config.rst:49
 #: 81dc6fc19d424cf797548d86f1c918ef
 msgid "Slave channels"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:48
+#: ../../config.rst:48
 #: d77994c70e5143e0ab0d881c9dfe5046
 msgid "Demo Slave (``foo.demo_slave``)"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:49
+#: ../../config.rst:49
 #: ca56f4402a87400994658038fb82cf5e
 msgid "Dummy Slave (``bar.dummy``)"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:50
+#: ../../config.rst:50
 #: 7e1f721f8ef94c78bddf79fa47237381
 msgid "Dummy Slave (``bar.dummy``) at ``alt`` instance"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:53
+#: ../../config.rst:53
 #: 76eaff343f7b445cadb370193a5590b0
 msgid "Middlewares"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:52
+#: ../../config.rst:52
 #: 4b3be594d4514374a39719408db34947
 msgid "Message Archiver (``foo.msg_archiver``)"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:53
+#: ../../config.rst:53
 #: c07964a25ba446c8b28cac99c3679b6a
 msgid "Null Middleware (``foo.null``)"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:55
+#: ../../config.rst:55
 #: ce1babbf04b149d68bb1a9b2b8364523
 msgid "``config.yaml`` should have the following lines:"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:57
+#: ../../config.rst:57
 #: ef2a28f8359240feb3c349e5d0fc49d5
 msgid "master_channel: foo.demo_master\n"
 "slave_channels:\n"
@@ -137,22 +139,22 @@ msgid "master_channel: foo.demo_master\n"
 "- foo.null"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:69
+#: ../../config.rst:69
 #: b8f3cceac4f9454fb802b81d73f602b1
 msgid "Granulated logging control"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:71
+#: ../../config.rst:71
 #: c1e1b82c56f74943b4df1e1b6b4123ce
 msgid "If you have special needs on processing and controlling the log produced by the framework and running modules, you can use specify the log configuration with `Python's configuration dictionary schema`_ under section ``logging``."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:76
+#: ../../config.rst:76
 #: 4bd164e5d2f74135a8e53a0adfec8245
 msgid "An example of logging control settings:"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/config.rst:78
+#: ../../config.rst:78
 #: c524aee99d7d4e30bba9dd7e744ef039
 msgid "logging:\n"
 "    version: 1\n"

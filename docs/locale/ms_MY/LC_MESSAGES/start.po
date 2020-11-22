@@ -2,96 +2,123 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-31 08:55\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: ms\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/start.pot\n"
+"X-Crowdin-File-ID: 75\n"
 "Language: ms_MY\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:2
+#: ../../start.rst:2
 #: 8d47ba3dfffe4ac1ac4fba49316ef6a3
 msgid "Launch the framework"
 msgstr "Pelancaran rangka"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:4
+#: ../../start.rst:4
 #: c2d7c074bdb04800aaa0a4899314257d
 msgid "EH Forwarder Bot offered 2 ways to launch the framework:"
 msgstr "EH Syarikat Bot yang ditawarkan 2 cara untuk melancarkan rangka:"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:6
+#: ../../start.rst:6
 #: a0a030b2ac434fa2982b442609ce57ac
 msgid "``ehforwarderbot``"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:7
+#: ../../start.rst:7
 #: 31746eeb452f4dfc95094f0ccd37abac
 msgid "``python3 -m ehforwarderbot``"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:9
+#: ../../start.rst:9
 #: 9465fde15ab04f5f946bb00330ab04f6
 msgid "Both commands are exactly the same thing, accept the same flags, run the same code. The latter is only a backup in case the former does not work."
 msgstr "Kedua-dua perintah adalah hal yang persis sama, menerima sama bendera, lari kod yang sama. Yang kedua adalah hanya sandaran dalam hal bekas tidak bekerja."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:14
+#: ../../start.rst:14
 #: 832c78c523a746d9a9b1639e57fbb66d
 msgid "Options"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:16
+#: ../../start.rst:16
 #: b0c8da2655cb420ca28af71558f44a03
 msgid "``-h``, ``--help``: Show help message"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:18
+#: ../../start.rst:18
 #: 905f26106dac4fd2886de79eea08e601
 msgid ":samp:`-p {PROFILE}`, :samp:`--profile {PROFILE}`: Switch :doc:`profile <profile>`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:20
+#: ../../start.rst:20
 #: c71b0748cae64d17998256137141c9be
 msgid "From version 2, EFB supports running different instances under the same user, identified by their profiles. The default profile is named ``default``."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:24
+#: ../../start.rst:24
 #: 2bdd0a0a32ff4159b2bb9679f5f34264
 msgid "``-V``, ``--version``: Print version information"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:26
+#: ../../start.rst:26
 #: 7f15fb9bf368415cb05c92b51fd92b31
 msgid "This shows version number of Python you are using, the EFB framework, and all channels and middlewares enabled."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:30
+#: ../../start.rst:30
 #: cdafd79c489d431f90a0fc3960e7cb2a
 msgid "``-v``, ``--verbose``: Print verbose log"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:32
+#: ../../start.rst:32
 #: 52fc17f8399a4d4dbd3a8149f6312533
-msgid "This option enables verbose log of EFB and all enabled modules. This, together with ``-V``, is particularly useful in debugging and issue reporting."
+msgid "This option enables verbose log of EFB and all enabled modules. This, together with ``--version``, is particularly useful in debugging and issue reporting."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:37
+#: ../../start.rst:36
+#: c7e6357e43ac4f08950b8b2f5e2261b1
+msgid "``--trace-threads``: Trace hanging threads"
+msgstr ""
+
+#: ../../start.rst:38
+#: a8ee0016336645039e7f52d55f33523d
+msgid "This option is useful to identify source of the issue when you encounter situations where you had to force quit EFB. When this option is enabled, once the first stop signal (``SIGINT`` or ``SIGTERM``) is sent, threads that are *asleep* will be identified and reported every 10 seconds, until a second stop signal is seen."
+msgstr ""
+
+#: ../../start.rst:44
+#: ba4592daa66a49d2aa46136ce2adfa1e
+msgid "In order to use this option, you need to install extra Python dependencies using the following command."
+msgstr ""
+
+#: ../../start.rst:47
+#: d8d8c06744bc4b2f8db0ac4759e6d409
+msgid "pip3 install 'ehforwarderbot[trace]'"
+msgstr ""
+
+#: ../../start.rst:53
 #: 1abc734d11ac457b8d850c59a0adce58
 msgid "Quitting EFB"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:39
+#: ../../start.rst:55
 #: c6457b403107411bb24fe8af9eef40ee
-msgid "If you started EFB in a shell, you can simply press Control-C to trigger the quit process. Otherwise, ask your service manager to issue a ``SIGTERM`` for a graceful exit. The exit process may take a few second to complete."
+msgid "If you started EFB in a shell, you can simply press :kbd:`Control-c` to trigger the quit process. Otherwise, ask your service manager to issue a ``SIGTERM`` for a graceful exit. The exit process may take a few second to complete."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:44
+#: ../../start.rst:60
 #: 58a91590184f434fbb68777c5e83b938
 msgid "It is important for you to issue a graceful termination signal (e.g. ``SIGTERM``), and **NOT** to use ``SIGKILL``. Otherwise you may face the risk of losing data and breaking programs."
+msgstr ""
+
+#: ../../start.rst:64
+#: 73792599cf254624b6d95ba1c66a111f
+msgid "If you have encountered any issue quitting EFB, press :kbd:`Control-c` for 5 times consecutively to trigger a force quit. In case you have frequently encountered situations where you had to force quit EFB, there might be a bug with EFB or any modules enabled. You may want to use the ``--trace-threads`` option described above to identify the source of issue, and report this to relevant developers."
 msgstr ""
 

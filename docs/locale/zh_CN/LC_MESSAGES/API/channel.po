@@ -2,40 +2,42 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-25 14:13+0800\n"
-"PO-Revision-Date: 2020-01-31 08:54\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: zh-CN\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/API/channel.pot\n"
+"X-Crowdin-File-ID: 99\n"
 "Language: zh_CN\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:2
+#: ../../API/channel.rst:2
 #: 21bb3634b2924a60863eaee1c3aa84cf
 msgid "Channel"
 msgstr "信道"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:1
 #: 28fe9ec2bd8b4737ab256eddee85502a
 msgid "The abstract channel class."
 msgstr "抽象信道类。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:5
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:5
 #: 3521f2101fe34ea191dcc0882eb50087
 msgid "A human-friendly name of the channel."
 msgstr "面向用户的信道名称。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:0
 #: aa71ce6484cd408b8484db5e0cde48ec
 #: 92079a91c47c4988acbb434381da94be
 #: affd6ea002314799bedde9d383ca29dd
@@ -45,46 +47,46 @@ msgstr "面向用户的信道名称。"
 msgid "type"
 msgstr "类型"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:7
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:15
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:29
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:7
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:15
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:29
 #: db56c72d730540e6863f87511ee90dde
 #: 903b17cd90594d77b8098a22bac7d79e
 #: 41b3609dde01444fae2ee662608e7206
 msgid "str"
 msgstr "str"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:11
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:11
 #: a384d0b3afef43cca17f7677909b7e74
-msgid "Emoji icon of the channel. Recommended to use a visually-length-one emoji that represents the channel best."
-msgstr "信道的 emoji 图标。建议使用最能代表信道的视觉长度为 1 的 Emoji 图标。"
+msgid "Emoji icon of the channel. Recommended to use a visually-length-one (i.e. a single `grapheme cluster`_) emoji or other symbol that represents the channel best."
+msgstr "信道的 emoji 图标。建议使用视觉长度为一（即单个\\ `字形簇（grapheme cluster）`_）的 emoji 或其他最能代表此信道的符号。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:19
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:19
 #: 470d6639f26c474994cbe53f74a62cba
 msgid "Unique identifier of the channel. Convention of IDs is specified in :doc:`/guide/packaging`. This ID will be appended with its instance ID when available."
 msgstr "信道的唯一标识符。ID 的命名规范在\\ :doc:`/guide/packaging`\\ 中有说明。在适当的时候，这个 ID 将被附加实例 ID。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:23
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:23
 #: f85b03c14ee74dc6a9533d8bad8ba8eb
 msgid ":obj:`.ModuleID` (str)"
 msgstr ":obj:`.ModuleID` (str)"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:27
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel:27
 #: 356f004c36fd4e0881388ec7af190c0c
 msgid "The instance ID if available."
 msgstr "实例 ID（若可用）。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.__init__:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.__init__:1
 #: 05ced985713845348031d97b5c8ba800
 msgid "Initialize the channel. Inherited initializer MUST call the \"super init\" method at the beginning."
 msgstr "初始化信道。继承初始化方法必须（MUST）在最初调用父类的初始化方法。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.__init__:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.__init__:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:0
 #: 0fe175ff325d43fabfabf285f597f2a8
 #: f36e4e29c6324c14bd65518af16bb17f
 #: 30e4f73dbc31426f8398870563e45419
@@ -94,37 +96,37 @@ msgstr "初始化信道。继承初始化方法必须（MUST）在最初调用�
 msgid "Parameters"
 msgstr "参数"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.__init__:6
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.__init__:6
 #: a045db5e62d74f30a30fe583be0b4f2e
 msgid "Instance ID of the channel."
 msgstr "信道的实例 ID。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:1
 #: 04848e96217b4169b34f7fa8a5197c4b
 msgid "Get message entity by its ID. Applicable to both master channels and slave channels. Return ``None`` when message not found."
 msgstr "按照 ID 获取消息实体，适用于主端和从端。若无结果，返回 \\ ``None``\\ 。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:5
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:5
 #: a11e4a0247684f69ad63d9ffabfd4412
 msgid "Override this method and raise :exc:`~.exceptions.EFBOperationNotSupported` if it is not feasible to perform this for your platform."
 msgstr "如果该操作无法在你的平台上执行，覆盖该方法并抛出 \\ :exc:`~.exceptions.EFBOperationNotSupported`\\ 。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:10
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:10
 #: f5e5094631f149b9b8507c2f1c7b6116
 msgid "Chat in slave channel / middleware."
 msgstr "从端 / 中间件中的会话。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:12
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:12
 #: bd8677c2c0d8431ca3fa2315fa11c2ff
 msgid "ID of message from the chat in slave channel / middleware."
 msgstr "从端 / 中间件中会话的消息 ID 。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chats:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_extra_functions:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chats:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_extra_functions:0
 #: 3b1561bbccc3464a9eea3c00a18af0a7
 #: 364a20527ea0448aab932d29a378031d
 #: b77f4e8be8f64ddca78c946e32b2f965
@@ -134,41 +136,41 @@ msgstr "从端 / 中间件中会话的消息 ID 。"
 msgid "Return type"
 msgstr "返回类型"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:15
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.get_message_by_id:15
 #: 5dbdecfb0608473b94dcb92b752f0bb7
 msgid ":py:data:`~typing.Optional`\\[:py:class:`~typing.ForwardRef`]"
 msgstr ":py:data:`~typing.Optional`\\[:py:class:`~typing.ForwardRef`]"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.poll:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.poll:1
 #: c2c3d339f69846b4b2904fda1f086f45
 msgid "Method to poll for messages. This method is called when the framework is initialized. This method SHOULD be blocking."
 msgstr "用来轮询消息的方法。在初始化框架时被调用。此方法应（SHOULD）为阻塞型方法。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:1
 #: 2cde22b9fbfd4633a00ee218a8bcaabd
 msgid "Process a message that is sent to, or edited in this channel."
-msgstr ""
+msgstr "处理发送到此信道或在此信道中编辑的消息。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:3
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:3
 #: 1957ffb0ed634ad9be9f46241b74ac8b
 msgid "Notes"
 msgstr "备注"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:5
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:5
 #: be6fe45ca76443c1bedf22bdc88fb754
 msgid "Master channel MUST take care of the returned object that contains the updated message ID. Depends on the implementation of slave channels, the message ID MAY change even after being edited. The old message ID MAY be disregarded for the new one."
-msgstr ""
+msgstr "主端必须处理包含新消息 ID 的返回对象。取决于从端的实现，消息 ID 在编辑后也可能被更改。新消息 ID 可能（MAY）会取代旧消息 ID。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:11
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:11
 #: 78879e1374da4d7597e6cf9157950e2a
 msgid "Message object to be processed."
 msgstr "需要处理的消息对象。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chats:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_extra_functions:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chats:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_extra_functions:0
 #: ec8acdd164d34f818c837e16d253d778
 #: d4b49f8b706c433397ccc753e6315496
 #: 6b7bd3e7be224764a2018164b81427f3
@@ -177,20 +179,20 @@ msgstr "需要处理的消息对象。"
 msgid "Returns"
 msgstr "返回"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:14
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:14
 #: 800d6673973f4658b7794e6f4573abe0
 msgid "The same message object. Message ID of the object MAY be changed by the slave channel once sent. This can happen even when the message sent is an edited message."
-msgstr ""
+msgstr "相同的消息对象。对象的消息 ID 在发送后可能会被从端更新。即使发送的消息是经过编辑的消息，也可能会有消息 ID 变更。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:17
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:17
 #: 862bec068cb743a3b89ff9e44e92c7ba
 msgid ":obj:`~.message.Message`"
 msgstr ":obj:`~.message.Message`"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:0
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:0
 #: 7e8710527f594d3bb864bef2f28cf0c2
 #: 45f0582f318d4b23876428085303c9c9
 #: 2451a0a4d9f8499293b5dcb59aa77936
@@ -198,10 +200,10 @@ msgstr ":obj:`~.message.Message`"
 msgid "Raises"
 msgstr "抛出"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:19
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:7
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:9
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:17
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:19
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:7
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:9
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:17
 #: 36649a750c884dd3853342de7f7d356b
 #: b0f3c7c72a3c4afca83899979ff9c400
 #: 775f4ea90070491d985274c789680fa5
@@ -209,167 +211,167 @@ msgstr "抛出"
 msgid "Raised when a chat required is not found."
 msgstr "当请求当会话无法找到时被抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:20
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:20
 #: 8816b41e265f428f81ee17b11f83fcfa
 msgid "Raised when the message type sent is not supported by the     channel."
 msgstr "当此信道不支持发出当消息类型时被抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:21
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:21
 #: 54ef87189cc24edf8d8f0b0393e2aafd
 msgid "Raised when an message edit request is sent, but not     supported by the channel."
 msgstr "当发出编辑消息的请求，但此信道不支持此功能时被抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:22
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:22
 #: c59cc2404e7e4a16b676ab137e9b7042
 msgid "Raised when an existing message indicated is not found.     E.g.: The message to be edited, the message referred     in the :attr:`msg.target <.Message.target>`     attribute."
 msgstr "当应该存在的指定消息（例如将被编辑的消息，或者在 :attr:`msg.target <.Message.target>` 属性中被引用的消息）无法找到时被抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:23
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_message:23
 #: b56307c752974b6daca995bc8f66dc2c
 msgid "Raised when other error occurred while sending or editing the     message."
 msgstr "当在发送或编辑消息过程中有其他错误发生时被抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:1
 #: d0744ec7d9844c829240d5a4ab883fb6
 msgid "Process a status that is sent to this channel."
 msgstr "处理发送到此信道的状态。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:4
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:4
 #: 8eac3576cd804559a9926c1b0873b7db
 msgid "the status object."
 msgstr "状态对象。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:8
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:8
 #: 235eacf24fab49fab949c344c95e5e76
 msgid "Raised when an existing message indicated is not found.     E.g.: The message to be removed."
 msgstr "当应该存在的指定消息（例如将被移除的消息）无法找到时被抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:9
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:9
 #: 2c6aaa5787774e2fbeb76fb17a45ad65
 msgid "Raised when the channel does not support message removal."
 msgstr "当此信道不支持移除消息功能时被抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:10
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:10
 #: 67c6c9cfd1364b9c8a1c4a3d8ec456df
 msgid "Raised when other error occurred while removing the message."
 msgstr "当在移除消息消息的过程中有发生其他错误时被抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:14
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:14
 #: f2854982ac0542c78d0ade8f77a9a38e
 msgid "Exceptions SHOULD NOT be raised from this method by master channels as it would be hard for a slave channel to process the exception."
 msgstr "主端不应（SHOULD NOT）在这个方法中抛出异常。此类异常在从端中很难妥善处理。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:18
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.send_status:18
 #: b8dae355711047d9b0cfd285155fc053
 msgid "This method is not applicable to Slave Channels."
 msgstr "从端不需要继承该方法。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.stop_polling:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.stop_polling:1
 #: 2a41659c40314035b7e72b399e3b242a
 msgid "When EFB framework is asked to stop gracefully, this method is called to each channel object to stop all processes in the channel, save all status if necessary, and terminate polling."
 msgstr "当 EFB 框架被要求正常停止时，此方法用于停止信道中的所有进程，并根据需要保存所有状态且终止轮询。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.stop_polling:6
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.Channel.stop_polling:6
 #: 91d15b8245614fbfaed75a64782c7ad4
 msgid "When the channel is ready to stop, the polling function MUST stop blocking. EFB framework will quit completely when all polling threads end."
-msgstr ""
+msgstr "当信道准备停止时，轮询功能必须停止阻塞。当所有轮询线程结束时，EFB 框架将完全退出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.MasterChannel:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.MasterChannel:1
 #: a17245d11c594d24b40d5431facf7f42
 msgid "The abstract master channel class. All master channels MUST inherit this class."
-msgstr ""
+msgstr "抽象主端类。所有主端必须（MUST）继承此类。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:1
 #: bb79f14576ea4aaca8b90da3cd9d0a65
 msgid "The abstract slave channel class. All slave channels MUST inherit this class."
-msgstr ""
+msgstr "抽象从端类。所有从端必须（MUST）继承此类。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:6
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:6
 #: 9d6f2463758b488e9e87957888622056
 msgid "Types of messages that the slave channel accepts as incoming messages. Master channels may use this value to decide what type of messages to send to your slave channel."
-msgstr ""
+msgstr "从端能够接受的传入消息类型。主端可能使用此值来决定要发送到从端的消息类型。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:10
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:10
 #: fb95cc65ffdb4da6a14f77dc3b1d3cb4
 msgid "Leaving this empty may cause the master channel to refuse sending anything to your slave channel."
-msgstr ""
+msgstr "将此留空可能会导致主端拒绝向从端发送任何内容。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:13
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:13
 #: 3243d15e8bd2471cad5bdeb471130c9d
 msgid "Set[:class:`~.constants.MsgType`]"
 msgstr "Set[:class:`~.constants.MsgType`]"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:17
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:17
 #: fbc99fab73954162ad87f5bc880e9405
 msgid "A list of suggested reactions to be applied to messages."
-msgstr ""
+msgstr "从端默认建议使用的消息回应的列表。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:19
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:19
 #: d06e6f14e2f8433f9a37cf387c8b3368
 msgid "Reactions SHOULD be ordered in a meaningful way, e.g., the order used by the IM platform, or frequency of usage. Note that it is not necessary to list all suggested reactions if that is too long, or not feasible."
 msgstr "回应应该（SHOULD）按照某种有意义的方式排序，例如，对应 IM 平台所使用的顺序，或者按照使用频率的排序。请注意，如果建议的回应列表过长，或在其他完全列举不可行的情况下，没有必要列出所有建议的回应。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:24
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:24
 #: 42c6c1bfe366494aafd0fa581b3f23dd
 msgid "Set to ``None`` when it is known that no reaction is supported to ANY message in the channel. Set to empty list when it is not feasible to provide a list of suggested reactions, for example, the list of reactions is different for each chat or message."
 msgstr "若已知在此信道中任何消息均不支持回应，设置此值为 \\ ``None``\\ 。在无法提供建议回应列表时，例如当对每个会话或消息的回应均不同时，设置此值为空列表，"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:29
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel:29
 #: 03c8d031117b44f6bb7dbf4e2b622141
 msgid "Optional[Sequence[str]]"
 msgstr "Optional[Sequence[str]]"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:1
 #: 1712c56aacbb4bccb28c1cd72d5e68ff
 msgid "Get the chat object from a slave channel."
 msgstr "获取来自从端的会话对象。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:4
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:4
 #: 2463f7f271c046d187f7f84f2ca5ceab
 msgid "ID of the chat."
 msgstr "会话的 ID。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:6
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat:6
 #: 15c69a4b6e2947b090c510a77c9c921a
 msgid "The chat found."
 msgstr "获取到的会话。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:1
 #: c1d82295c2d7491fb8243f9fac17bdb4
 msgid "Get the profile picture of a chat. Profile picture is also referred as profile photo, avatar, \"head image\" sometimes."
 msgstr "获取一个会话的头像。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:6
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:6
 #: 4eb468489fb8467c906296178c5f3aa9
 msgid "Chat to get picture from."
 msgstr "需要获取头像的会话。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:9
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:9
 #: 97f088e5315f43e39952a34b0cc225c6
 msgid "Opened temporary file object. The file object MUST have appropriate extension name that matches to the format of picture sent, and seek to position 0.  It MAY be deleted or discarded once closed, if not needed otherwise."
 msgstr "已打开的临时文件对象。文件对象必须（MUST）具有和发送的图片格式相匹配的文件扩展名，并文件指针移动（seek）到 0。如果该文件在消息被处理后不再需要，可以（MAY）选择在文件被关闭时删除该文件。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:9
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:9
 #: 41d3f53a080743f191beaf4700b64bfb
 msgid "Opened temporary file object. The file object MUST have appropriate extension name that matches to the format of picture sent, and seek to position 0."
 msgstr "已打开的临时文件对象。文件对象必须（MUST）具有和发送的图片相匹配的文件扩展名，并文件指针移动（seek）到 0。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:14
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:14
 #: 1196555cc8e846eeb3ec248f5a43dbc0
 msgid "It MAY be deleted or discarded once closed, if not needed otherwise."
 msgstr "如果该文件在消息被处理后不再需要，可以（MAY）选择在文件被关闭时删除该文件。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:18
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:18
 #: d7c7cf13013f424c85eb4ed131c2a5de
 msgid "Raised when the chat does not offer a profile picture."
 msgstr "当此会话不提供头像时被抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:21
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:21
 #: 163a052afec14b2f80d41064e1f27220
 msgid "Examples"
 msgstr "示例"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:22
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chat_picture:22
 #: 91ebb7f6a878404bbd88febef3c7830b
 msgid "if chat.channel_uid != self.channel_uid:\n"
 "    raise EFBChannelNotFound()\n"
@@ -381,79 +383,88 @@ msgid "if chat.channel_uid != self.channel_uid:\n"
 "file.write(response.content)\n"
 "file.seek(0)\n"
 "return file"
-msgstr ""
+msgstr "if chat.channel_uid != self.channel_uid:\n"
+"    raise EFBChannelNotFound()\n"
+"file = tempfile.NamedTemporaryFile(suffix=\".png\")\n"
+"response = requests.post(\"https://api.example.com/get_profile_picture/png\",\n"
+"                         data={\"uid\": chat.uid})\n"
+"if response.status_code == 404:\n"
+"    raise EFBChatNotFound()\n"
+"file.write(response.content)\n"
+"file.seek(0)\n"
+"return file"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chats:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chats:1
 #: 4cd971d1cfe34b0e938edd7fac05236b
 msgid "Return a list of available chats in the channel."
 msgstr "返回信道中可用的会话列表。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chats:3
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chats:3
 #: 3ba75d8741a54ba59e50cb4fa8efa639
 msgid "a list of available chats in the channel."
 msgstr "信道中可用会话列表。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chats:4
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_chats:4
 #: b5c37aac0c4f490b935fc2eb7ad6ef31
 msgid "Collection[:class:`.Chat`]"
 msgstr "Collection[:class:`.Chat`]"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_extra_functions:1
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_extra_functions:1
 #: 13a74b716e764a65b45561300b581689
 msgid "Get a list of additional features"
 msgstr "获取附加功能列表"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_extra_functions:3
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_extra_functions:3
 #: 30fc6d57a72845e788b4d819b328a283
 msgid ":py:class:`~typing.Dict`\\[:py:func:`~typing.NewType`\\(:py:data:`~ExtraCommandName`, :py:class:`str`), :py:data:`~typing.Callable`]"
 msgstr ":py:class:`~typing.Dict`\\[:py:func:`~typing.NewType`\\(:py:data:`~ExtraCommandName`, :py:class:`str`), :py:data:`~typing.Callable`]"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_extra_functions:4
+#: ../../../ehforwarderbot/channel.py:docstring of ehforwarderbot.channel.SlaveChannel.get_extra_functions:4
 #: 472bef0f6e48476b8a5a6ed8b94fb69e
 msgid "A dict of methods marked as additional features. Method can be called with ``get_extra_functions()[\"methodName\"]()``."
 msgstr "被标记为附加功能的方法的字典。这些方法可以通过 \\ ``get_extra_functions()[\"methodName\"]()``\\  调用。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:8
+#: ../../API/channel.rst:8
 #: 5be8a3a2307a4af3b1ea8a8481dbfe32
 msgid "Common operations"
 msgstr "通用操作"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:11
+#: ../../API/channel.rst:11
 #: 7b1e787b1ba641f3afd33cb247fbcd41
 msgid "Sending messages and statuses"
 msgstr "发送消息和状态"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:13
+#: ../../API/channel.rst:13
 #: 82e50038ba3347cfbdc82a22ca3b7e2e
 msgid "Sending messages and statuses to other channels is the most common operation of a channel. When enough information is gathered from external sources, the channel would then further process and pack them into the relevant objects, i.e. :py:class:`~.message.Message` and :py:class:`~.status.Status`."
-msgstr ""
+msgstr "发送消息和状态给其他信道是最常见的操作。当信道从外部获取到足够信息时，信道应该进一步处理并打包这些信息到相应的对象中，即 :py:class:`~.message.Message` 与 :py:class:`~.status.Status`。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:19
+#: ../../API/channel.rst:19
 #: e6708e623548485287659ec4c7319a83
 msgid "When the object is built, the channel should sent it to the coordinator for following steps."
-msgstr ""
+msgstr "构建对象时，信道应将对象发送给协调器进行后续处理。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:22
+#: ../../API/channel.rst:22
 #: 67324aa19e69484da9702ac22f74f756
 msgid "For now, both :obj:`~.message.Message` and :obj:`~.status.Status` has an attribute that indicates that where this object would be delivered to (:attr:`~.message.Message.deliver_to` and :attr:`~.status.Status.destination_channel`). This is used by the coordinator when delivering the message."
-msgstr ""
+msgstr "就目前而言，:obj:`.message.Message` 和 :obj:`.status.Status` 都包含有一个属性来指明此对象的目的地信道（:attr:`.Message.Message.deliver_to` 和 :attr:`.status.Status.destination_channel`）。在发送消息时,协调器会使用这些属性。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:28
+#: ../../API/channel.rst:28
 #: a370615b823a4fdebf855e938c4d4a35
 msgid "Messages MUST be sent using :meth:`.coordinator.send_message`. Statuses MUST be sent using :meth:`.coordinator.send_status`."
-msgstr ""
+msgstr "消息必须（MUST）使用 :meth:`.coordinator.send_message` 发送。状态必须（MUST）使用 :meth:`.coordinator.send_status` 发送。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:31
+#: ../../API/channel.rst:31
 #: e343d290de4f4c519dff01922f4d6b0a
 msgid "When the object is passed onto the coordinator, it will be further processed by the middleware and then to its destination."
 msgstr "当对象被传递给了协调器，它会被中间件做进一步的处理，最终递送给收件信道。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:34
+#: ../../API/channel.rst:34
 #: d5d3e55586544954a4be0b6af3c50f04
 msgid "For example, to send a message to the master channel"
-msgstr ""
+msgstr "例如，要向主端发送消息"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:36
+#: ../../API/channel.rst:36
 #: cda73494a3cd4c5a9f43dfe42f045a6c
 msgid "def on_message(self, data: Dict[str, Any]):\n"
 "    \"\"\"Callback when a message is received by the slave channel from\n"
@@ -484,12 +495,12 @@ msgstr "def on_message(self, data: Dict[str, Any]):\n"
 "    ))\n"
 "    # 善后处理……"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:55
+#: ../../API/channel.rst:55
 #: 3d8134f600f14add9e624531f3ce989a
 msgid "About Channel ID"
 msgstr "关于信道 ID"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/channel.rst:57
+#: ../../API/channel.rst:57
 #: e30083246e8b4647af644b8246773207
 msgid "With the introduction of instance IDs, it is required to use the ``self.channel_id`` or equivalent instead of any hard-coded ID or constants while referring to the channel (e.g. while retrieving the path to the configuration files, creating chat and message objects, etc)."
 msgstr "随着实例 ID 的引入，在程序代码中需要使用信道 ID 时，如检索配置文件的路径、创建会话和消息对象等情况时，需动态调用 ``self.channel_id`` 或其他等效变量，避免任何硬编码或常量 ID。"

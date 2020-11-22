@@ -2,90 +2,92 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-31 08:55\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: ms\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/packaging.pot\n"
+"X-Crowdin-File-ID: 83\n"
 "Language: ms_MY\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:2
+#: ../../guide/packaging.rst:2
 #: 040a32e6f22d40b69433813fde2e91ca
 msgid "Packaging and Publish"
 msgstr "Pembungkusan dan Menerbitkan"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:5
+#: ../../guide/packaging.rst:5
 #: 155e6fffb03b4a06b3dfe1263ffb2009
 msgid "Publish your module on PyPI"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:7
+#: ../../guide/packaging.rst:7
 #: 62337c094baa4661a34253733f42b14c
 msgid "Publish modules on PyPI is one of the easiest way for users to install your package.  Please refer to related documentation and tutorials about PyPI and pip for publishing packages."
 msgstr "Menerbitkan modul pada PyPI adalah salah satu cara termudah untuk pengguna memasang pakej anda. Sila rujuk dokumentasi dan tutorial yang berkaitan dengan PyPI dan pip untuk pakej penerbitan."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:12
+#: ../../guide/packaging.rst:12
 #: 775a957c6712437cbf2d08c769488281
 msgid "For EFB modules, the package is RECOMMENDED to have a name starts with ``efb-``, or in the format of ``efb-platform-type``, e.g. ``efb-irc-slave`` or ``efb-wechat-mp-filter-middleware``. If there is a collision of name, you MAY adjust the package name accordingly while keeping the package name starting with ``efb-``."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:20
+#: ../../guide/packaging.rst:20
 #: 3ca4cc69e48542d688bcd0d3ca465ed9
 msgid "When you are ready, you may also want to add your module to the `Modules Repository`_ of EFB."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:26
+#: ../../guide/packaging.rst:26
 #: 8c2d005200da4d8db18f46eabd34fb20
 msgid "Module discovery"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:28
+#: ../../guide/packaging.rst:28
 #: aa26f0ea8c5b4949bc41306e17de81fb
 msgid "EH Forwarder Bot uses `Setuptools' Entry Point feature`__ to discover and manage channels and middlewares. In your ``setup.py`` script or ``.egg-info/entry_points.txt``, specify the group and object as follows:"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:35
+#: ../../guide/packaging.rst:35
 #: a81fc2b3c347433bb4b7bd1084eded8e
 msgid "Group for master channels: ``ehforwarderbot.master``"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:36
+#: ../../guide/packaging.rst:36
 #: e8fa646b0b78468194392eb050e3b8b0
 msgid "Group for slave channels: ``ehforwarderbot.slave``"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:37
+#: ../../guide/packaging.rst:37
 #: 0d6d917faeea4dbda17d74829a6056c5
 msgid "Group for middlewares: ``ehforwarderbot.middleware``"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:39
+#: ../../guide/packaging.rst:39
 #: 826483595b4a4734a12fd1a0b0a94cf2
 msgid "Convention for object names is ``<author>.<platform>``, e.g. ``alice.irc``. This MUST also be your module's ID."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:42
+#: ../../guide/packaging.rst:42
 #: a420a9321b144213b09718a071f9e5da
 msgid "Object reference MUST point to your module's class, which is a subclass of either :class:`.Channel` or :class:`.Middleware`."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:46
+#: ../../guide/packaging.rst:46
 #: 35481489e3cc41e19afde75155a7a60d
 msgid "Example"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:48
+#: ../../guide/packaging.rst:48
 #: 38a549bd43de4aae9a2f730cf7f057ba
 msgid "``setup.py`` script"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:50
+#: ../../guide/packaging.rst:50
 #: a8fd681006b6420faa7582d72a0dcf4f
 msgid "setup(\n"
 "    # ...\n"
@@ -96,28 +98,28 @@ msgid "setup(\n"
 ")"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:60
+#: ../../guide/packaging.rst:60
 #: cb59dd5eb72245508f5de56f1a2f831b
 msgid "``.egg-info/entry_points.txt``"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:62
+#: ../../guide/packaging.rst:62
 #: f5203f95e63447d390412eb9ed80fdf8
 msgid "[ehforwarderbot.slave]\n"
 "alice.irc = efb_irc_slave:IRCChannel"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:68
+#: ../../guide/packaging.rst:68
 #: aba889410f86467c915a9e0947fac46b
 msgid "Private modules"
 msgstr "Modul peribadi"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:70
+#: ../../guide/packaging.rst:70
 #: 4734f08cc2a5436a8ddf02d89c5e5b9a
 msgid "If you want to extend from, or make changes on existing modules for your own use, you can have your modules in the private modules :doc:`directory <../directories>`."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/packaging.rst:74
+#: ../../guide/packaging.rst:74
 #: c8b737f2bca74357bf97220e2e46cc02
 msgid "For such modules, your channel ID MUST be the fully-qualified name of the class. For example, if your class is located at ``<EFB_BASE_PATH>/modules/bob_irc_mod/__init__.py:IRCChannel``, the channel MUST have ID ``bob_ric_mod.IRCChannel`` for the framework to recognise it."
 msgstr ""

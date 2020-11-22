@@ -2,80 +2,82 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-31 08:53\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Azerbaijani\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: az\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/media_processing.pot\n"
+"X-Crowdin-File-ID: 90\n"
 "Language: az_AZ\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:2
+#: ../../guide/media_processing.rst:2
 #: f1eee1890f67492b908a5b82ca4e9a24
 msgid "Media processing"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:5
+#: ../../guide/media_processing.rst:5
 #: 06bc6cd5cb2e4368a0ba4a3758230645
 msgid "Choosing media formats"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:7
+#: ../../guide/media_processing.rst:7
 #: 984f3672af364f5a896dbbba6e039e53
 msgid "Both Master and Slave channel can take their charges to convert media files they send or receive. In general: **if a media file received from remote server is not a common format, convert it before deliver it on; if a media file sent to remote server requires to be in a specific format, it should be converted before sending out**. Nevertheless, this is only a guideline on channels' responsibility regarding media processing, and everyone has their own opinion on what is a common format / encoding. Therefore we only recommend this behaviour, but do not force in our code. This is to say that, you still have to take care of the accepted type of media encoding of your corresponding method of presentation, and convert and/or fallback to different type of representation if necessary. After all, the delivery of information is more important."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:25
+#: ../../guide/media_processing.rst:25
 #: 921fa94f87454147a971a04dfb6a6acb
 msgid "Media encoders"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:27
+#: ../../guide/media_processing.rst:27
 #: c6c0481b40fc4f8e8e8a118853ea6510
 msgid "Similarly, we will also not put a strict limit on this as well, but just a recommendation. As you might have already know, there are few mature pure Python media processing libraries, most of them will more or less requires internal or external binary dependencies."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:33
+#: ../../guide/media_processing.rst:33
 #: ef759db35409406cba53a81950120770
 msgid "We try to aim to use as few different libraries as we can, as more library to install means more space, install time, and complexity. While processing media files, we recommend to use the following libraries if possible:"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:39
+#: ../../guide/media_processing.rst:39
 #: 10617d9121e04cc196bad6c407cfe618
 msgid "Pillow_"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:40
+#: ../../guide/media_processing.rst:40
 #: aa941a9650c04ae6907383f44b7e7e74
 msgid "FFmpeg_"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:46
+#: ../../guide/media_processing.rst:46
 #: a5b52886ab4f4fa98027ca2250f9c2af
 msgid "Files in messages"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:48
+#: ../../guide/media_processing.rst:48
 #: 395e8a77d8c6420791212441aa69594b
 msgid "When a file sent out from a channel, it MUST be open, and sought back to 0 ( ``file.seek(0)`` ) before sending."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:51
+#: ../../guide/media_processing.rst:51
 #: 71cd144965a648bc99d0ebd0e9912d24
 msgid "Files sent MUST be able to be located somewhere in the file system, and SHOULD with a appropriate extension name, but not required. All files MUST also have its MIME type specified in the message object. If the channel is not sure about the correct MIME type, it can try to guess with ``libmagic``, or fallback to ``application/octet-stream``. Always try the best to provide the most suitable MIME type when sending."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:60
+#: ../../guide/media_processing.rst:60
 #: 59539c56b0d247cdbd10f7e8347fc7ee
 msgid "For such files, we use ``close`` to signify the end of its lifecycle. If the file is not required by the sender's channel anymore, it can be safely discarded."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/media_processing.rst:64
+#: ../../guide/media_processing.rst:64
 #: f2ba27435f84493482eb98f08b760b7d
 msgid "Generally, ``tempfile.NamedTemporaryFile`` should work for ordinary cases."
 msgstr ""

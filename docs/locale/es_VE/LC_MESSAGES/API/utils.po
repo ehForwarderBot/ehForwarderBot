@@ -2,33 +2,35 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-31 08:56\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Spanish, Venezuela\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: es-VE\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/API/utils.pot\n"
+"X-Crowdin-File-ID: 94\n"
 "Language: es_VE\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/utils.rst:2
+#: ../../API/utils.rst:2
 #: 49d1e95fceee482f915bd9a7c0738fbb
 msgid "Utilities"
 msgstr "Utilidades"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:1
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:1
 #: 612a29770d9f47a498a7b927aadb0ec0
 msgid "Decorator for slave channel's \"additional features\" interface."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:0
 #: 377f1540ffbc4a72acd8868c249a6e63
 #: 249cf107919d4ae89b01d4f14a3dcd17
 #: f7a3d98d88214aec9df976505bfeafd4
@@ -36,21 +38,21 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:4
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:4
 #: 14d63e1666a14632a2f0cba5e963cff5
 msgid "A human readable name for the function."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:6
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:6
 #: ef8d6bdca476469e8b4f8804e130368e
 msgid "A short description and usage of it. Use ``{function_name}`` in place of the function name in the description."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
 #: 3bae5ea5aba148aa806e15f88a3569dd
 #: 31ee96135abd4838b1687e1b0c720b81
 #: dc6c36f476b7498f9fd41c07d27f6a85
@@ -59,16 +61,16 @@ msgstr ""
 msgid "Return type"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:10
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:10
 #: b11bc06df7814576ae0f90c9bda98fa9
 msgid ":py:data:`~typing.Callable`\\[..., :py:data:`~typing.Optional`\\[:py:class:`str`]]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:0
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:0
 #: 3a4be66db09a49dda9ed4a36b89e2266
 #: 87c4609218f040bbae748f5f8f1addd4
 #: 4ccf71f8a3144004bd83a13af70362aa
@@ -77,44 +79,44 @@ msgstr ""
 msgid "Returns"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:11
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:11
 #: b8d9feadd1f44a068117bc3021bf3be1
 msgid "The decorated method."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:14
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:14
 #: f500ced3fb4a4d609866109ce65b7d80
 msgid "Example"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:15
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.extra:15
 #: b37333e8a9194c8bb6026c865cce43f1
 msgid "@extra(name=\"Echo\", desc=\"Return the text entered.\\n\\nUsage:\\n    {function_name} text\")\n"
 "def echo(self, text: str) -> Optional[str]:\n"
 "    return text"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:1
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:1
 #: 5ad3d4d345c94c0880c32b54eb4c6ecd
 msgid "Get the base data path for EFB. This can be defined by the environment variable ``EFB_DATA_PATH``."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:4
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:4
 #: cd8a7918da6f41189160287afa53f9f2
 msgid "If ``EFB_DATA_PATH`` is not defined, this gives ``~/.ehforwarderbot``."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:7
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:3
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:7
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:3
 #: 1dec8392279a41d39033ac8d6aefdec0
 #: c3451185553847df983583af9458fd34
 msgid "This method creates the queried path if not existing."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:9
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:12
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:3
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:8
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:9
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:12
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:3
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:8
 #: 04ebc0b8a1b140db851982f0c683df46
 #: 0d10a9272e5042a8a5a18cc54b1b4c25
 #: 63c4da3b72a647b0a12fbd4e5cc45df8
@@ -122,69 +124,69 @@ msgstr ""
 msgid ":py:class:`~pathlib.Path`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:10
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_base_path:10
 #: f94652d21e9f49db967b2f876909d908
 msgid "The base path."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:1
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:1
 #: a64deccbdab746198733b8d59b8ff5ad
 msgid "Get path for configuration file. Defaulted to :file:`~/.ehforwarderbot/profiles/{profile_name}/{module_id}/config.yaml`."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:4
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:4
 #: 5c940dc5b3d6448f9ea24dda904fc72d
 msgid "This method creates the queried path if not existing. The config file will not be created, however."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:8
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:8
 #: 2a7c79d9d1454cae8159a27919aaf941
 msgid "Module ID."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:10
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:10
 #: cb767dff49f443d8962a686f86c2b602
 msgid "Extension name of the config file. Defaulted to ``\"yaml\"``."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:13
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_config_path:13
 #: 5c095971b98e4a038a672ef3a4c74a2d
 msgid "The path to the configuration file."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:1
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:1
 #: 1ee855066e7c4ea1a1fcabb4e569d7c0
 msgid "Get the path to custom channels"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:4
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_custom_modules_path:4
 #: 028da1f9e5c4485b91c8d3d13e871758
 msgid "The path for custom channels."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:1
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:1
 #: 52f1322dd14f4e459ff1f9db472af58f
 msgid "Get the path for permanent storage of a module."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:6
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:4
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:6
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:4
 #: 93b14d7f75ca427a8a927d0154bc7dec
 #: 3a76a9b07ad1416fab80cdeb9f69ab2c
 msgid "Module ID"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:9
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.get_data_path:9
 #: b7bfe5713b174f19985d1edf5fa84caa
 msgid "The data path of indicated module."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:1
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:1
 #: 32bf155dfda24e73a746e8858cd9ae4c
 msgid "Locate module by module ID"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:6
+#: ../../../ehforwarderbot/utils.py:docstring of ehforwarderbot.utils.locate_module:6
 #: f8482f80d2bb4b29ba82bf47ea6b9e7d
 msgid "Type of module, one of ``'master'``, ``'slave'`` and ``'middleware'``"
 msgstr ""

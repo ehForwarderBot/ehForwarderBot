@@ -2,65 +2,67 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-31 08:54\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: zh-CN\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/misc.pot\n"
+"X-Crowdin-File-ID: 82\n"
 "Language: zh_CN\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:2
+#: ../../guide/misc.rst:2
 #: 34aa2b6de40445d5a210373500bc1bb0
 msgid "Miscellaneous"
 msgstr "其他"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:5
+#: ../../guide/misc.rst:5
 #: fb12a296ee0545a0ad1bb33df40ea8f6
 msgid "Logging"
 msgstr "日志"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:7
+#: ../../guide/misc.rst:7
 #: 3d9d56c5b4a94caa8e3bdf49c98082e2
 msgid "In complex modules, you should have detailed logs in DEBUG level and optionally INFO level. All your log handlers SHOULD follow that of the root logger, which is controlled by the framework. This could be helpful when for you to locate issues reported by users."
 msgstr "在复杂的组件中，我们建议您在 DEBUG 级别和 INFO 级别中输出调试日志，所有 handler 的日志级别都应该（SHOULD）继承由框架控制的 root logger。良好的日志记录会帮助开发者查找用户报告的问题。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:14
+#: ../../guide/misc.rst:14
 #: 3b46a567631c47ac921f80c63d1a3eea
 msgid "Vendor-specifics"
 msgstr "供应商特定数据"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:16
+#: ../../guide/misc.rst:16
 #: 35db493648f4452a9c5891dc08bd127d
 msgid "If you are going to include vendor specific information in messages and/or chats, please make your effort to document them in your README or documentation, so that other developers can refer to it when adapting your module."
 msgstr "若要在消息和/或会话中包含供应商特定数据，请在项目的 README 文件或项目文档中说明这些信息，以便其他开发人员在适配该组件时参考。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:23
+#: ../../guide/misc.rst:23
 #: 96464429bd90457886a9dd6f56730901
 msgid "Threading"
 msgstr "线程"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:25
+#: ../../guide/misc.rst:25
 #: 779eced40a624828a32bdc78b06509a0
 msgid "All channels are RECOMMENDED a separate thread while processing a new message, so as to prevent unexpectedly long thread blocking."
 msgstr "在处理新消息时，建议（RECOMMEND）给每个信道分配一条单独的线程，以防止线程堵塞。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:29
+#: ../../guide/misc.rst:29
 #: ff4f1b8f23184bf3baa1060892435ecc
 msgid "We are also considering to move completely to asynchronous programming when most channels are ready for the change."
 msgstr "我们也考虑在大多数信道做好准备时完全迁移到异步编程。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:34
+#: ../../guide/misc.rst:34
 #: 2f6054525a684b188d84af3cb520fbcd
 msgid "Static type checking"
 msgstr "静态类型检查"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/misc.rst:36
+#: ../../guide/misc.rst:36
 #: 76a0f2aa927a42368fcc889d84413a53
 msgid "EH Forwarder Bot is fully labeled in the Python 3 type hint notations. Since sometimes maintaining a module with high complexity could be difficult, we RECOMMEND you to type your module too and use tools like mypy_ to check your code statically."
 msgstr "EH Forwarder Bot 在已完全覆盖 Python 3 类型提示。 鉴于维护一个复杂的组件组件是一件机器困难的事情，我们建议（RECOMMEND）您将您的组件代码标注类型提示，并使用诸如 \\ mypy_\\  之类的工具来静态检查代码类型。"

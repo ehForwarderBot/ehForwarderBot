@@ -2,45 +2,47 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-31 08:55\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Romanian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100>0 && n%100<20)) ? 1 : 2);\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: ro\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/directories.pot\n"
+"X-Crowdin-File-ID: 79\n"
 "Language: ro_RO\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/directories.rst:2
+#: ../../directories.rst:2
 #: e615eb4abaa543aa84457d55606acaed
 msgid "Directories"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/directories.rst:4
+#: ../../directories.rst:4
 #: 07f9d35a9e9f4b89ad82838fc664f997
 msgid "Since EH Forwarder Bot 2.0, most modules should be installed with the Python Package Manager ``pip``, while configurations and data are stored in the \"EFB data directory\"."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/directories.rst:9
+#: ../../directories.rst:9
 #: 964349d29d2346939ec530904a1d9241
 msgid "By default, the data directory is user specific, located in the user's home directory, ``~/.ehforwarderbot``.  This can be overridden with the environment variable ``EFB_DATA_PATH``. This path defined here should be an **absolute path**."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/directories.rst:16
+#: ../../directories.rst:16
 #: fbf1d5e5a9274218aad0f84248aac769
 msgid "Directory structure"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/directories.rst:18
+#: ../../directories.rst:18
 #: b167d13cd34c4fe7842c85ffdd658705
 msgid "Using the default configuration as an example, this section will introduce about the structure of EFB data directory."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/directories.rst:23
+#: ../../directories.rst:23
 #: f41ad90395a848b18adcbff2ff9bd937
 msgid "./ehforwarderbot                or $EFB_DATA_PATH\n"
 "|- profiles\n"

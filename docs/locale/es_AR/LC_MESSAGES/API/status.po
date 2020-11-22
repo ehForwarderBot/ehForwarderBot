@@ -2,47 +2,49 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-25 14:13+0800\n"
-"PO-Revision-Date: 2020-01-31 08:55\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Spanish, Argentina\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: es-AR\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/API/status.pot\n"
+"X-Crowdin-File-ID: 98\n"
 "Language: es_AR\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/status.rst:2
+#: ../../API/status.rst:2
 #: 0e7c8f3ba511428783a211aab36a35d0
 msgid "Status"
 msgstr "Estado"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.Status:1
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.Status:1
 #: 2c66630991734189be6f977de198f382
 msgid "Abstract class of a status"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.Status:5
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.Status:5
 #: 03e6f1115382465d993afa1cdb7fc588
 msgid "The channel that this status is sent to, usually the master channel."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.Status:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.Status:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:0
 #: e2d71bdb83b7468ca7c690ce8ca25539
 #: d5c9de8e385d42ab973e8e14d20c251f
 #: e31df67a9c834d66ab9a2623e88671c0
@@ -54,29 +56,29 @@ msgstr ""
 #: 52e509ca8e024830bfef46af73e32d41
 #: 19859ccc687642aca9861620dd7a6a87
 #: 2c578e77a265483cac4d991635477592
-#: f1e9cb9d644445b39ff0e783f9b5bbe6
-#: 9da6569b8a3d47699bd45b828abb8f49
+#: 2c578e77a265483cac4d991635477592
+#: 2c578e77a265483cac4d991635477592
 msgid "type"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.Status:9
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:18
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:24
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.Status:9
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:18
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:24
 #: 9ae00f8ee21c4e6cb23557599602ca3b
 #: 749e337f670945b9ace2ad7b350cc5be
-#: f1bb03d6f3e740baa51e39d4521c4a35
+#: 749e337f670945b9ace2ad7b350cc5be
 msgid ":obj:`.Channel`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:1
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:1
 #: 092ac23d94cf4d4ab453d58bce09341b
 msgid "Inform the master channel on updates of slave chats."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:5
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates.__init__:2
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:5
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:2
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:5
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates.__init__:2
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:5
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:2
 #: ba3793b4bc544d1f8a2dca4307e6a828
 #: 0694f75eab5f401bad153c0327552d8f
 #: 03855b305150432a9d20003f8172a9ff
@@ -84,26 +86,26 @@ msgstr ""
 msgid "Slave channel that issues the update"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:7
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:7
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:7
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:7
 #: 5b1f15d8d3bc4906a389ab168430a5c6
 #: d13ae760ff73495cb1824b4e5bfb8ce1
 msgid ":obj:`.SlaveChannel`"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:11
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates.__init__:5
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:11
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates.__init__:5
 #: bc1577e517c641d99b3d6729aee40e53
 #: 6c1789644fde40b69f4d73c91ac0bc7c
 msgid "Unique ID of new chats"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:13
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:19
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:25
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:19
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:25
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:31
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:13
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:19
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:25
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:19
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:25
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:31
 #: 9edc7b9e9cbb489ebeb007db2e446279
 #: 36359e3c0ee34681942246e8d2bf77a2
 #: 49c74e3dc3984fd3bb70a6e594012226
@@ -113,230 +115,230 @@ msgstr ""
 msgid "Optional[Collection[str]]"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:17
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates.__init__:8
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:17
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates.__init__:8
 #: f0a5d8c7f0ed4a96a375bd070fe1c7bf
 #: 6bd82334e8324363b83a4d0fc345932c
 msgid "Unique ID of removed chats"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:23
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates.__init__:11
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates:23
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates.__init__:11
 #: 201de5d1c8c749abb494d01c31237f56
 #: b99afc16cf3d40cbac2556f6b64777f4
 msgid "Unique ID of modified chats"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates.__init__:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage.__init__:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate.__init__:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ChatUpdates.__init__:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate.__init__:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage.__init__:0
 #: 7ddb0bc36e634a9b9ba27e7f90e72051
 #: 99ce185bcda64471b715d614c01914a0
 #: 0f869c96ff374b46bb5e4fc485811988
-#: c8caedf670344486af08d349ad91edf3
-#: bf4d4c1ee8c34610924b3ade4237b3eb
-#: 9a5dd75fc04f40e99ac64f0a47a2f84e
+#: 0f869c96ff374b46bb5e4fc485811988
+#: 0f869c96ff374b46bb5e4fc485811988
+#: 0f869c96ff374b46bb5e4fc485811988
 #: 0f2db5dbece24c359867d3ad9e84e1c8
 msgid "Parameters"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:1
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:1
 #: 9a7a98e9209d46e982b5921b38708316
 msgid "Inform the master channel on updates of members in a slave chat."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:11
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:5
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:11
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:5
 #: 00708834eb844237a14f94b364811705
 #: 8c6f5d08db8b4ae48dc4b2af064624e5
 msgid "Unique ID of the chat."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:13
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:13
 #: ae8ca154646b4319bdc85d703a0115cb
 msgid "str"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:17
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:8
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:17
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:8
 #: e48533a68fe04b3d915626820c7c6076
 #: 2e0aadcea5d84effa618473aaff6e5cc
 msgid "Unique ID of new members"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:23
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:11
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:23
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:11
 #: a72a28f7be1345ffab0231b244c6b3d0
 #: 581e67734b164c5e9c1c6e16b1c7a247
 msgid "Unique ID of removed members"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:29
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:14
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates:29
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MemberUpdates.__init__:14
 #: d2a3f8c5090647049fd4470b93448e88
 #: 35b0d944a29b4e418b299ef8771fe4f1
 msgid "Unique ID of modified members"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:1
-#: cd1616d39dfd4772af0ff05af235950d
-msgid "Inform a channel to remove a certain message."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:3
-#: 3410ee18095f4a5b950d0b3886b3cfe9
-msgid "This is usually known as “delete from everyone”, “delete from recipient”, “recall a message”, “unsend”, or “revoke a message” as well, depends on the IM platform."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:7
-#: 2ddcb95a3b8347eca2c76de8e410af02
-msgid "Some channels MAY not support removal of messages, and raises a :obj:`.exceptions.EFBOperationNotSupported` exception."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:10
-#: 23775d672b2a4dd68cd711c63312cc1e
-msgid "Feedback by sending another ``MessageRemoval`` back is not required when this object is sent from a master channel. Master channels SHOULD treat a successful delivery of this status as a successful removal."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:16
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:11
-#: 87cbeec598684acfacea45dc9f100ab7
-#: da9e16084d1a44e5948a76bdf762c9cc
-msgid "Channel issued the status"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:22
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:14
-#: 36ded1baeb0a48bd9a4edf3208775617
-#: f4400bcba5104d75af9559cbed67487c
-msgid "Channel the status is issued to"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:28
-#: 83356a7526da4e5d8082d405bb3f0aa2
-msgid "Message to remove. This MAY not be a complete :obj:`.message.Message` object."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:31
-#: 9c8502f9250a408194154cb763a8ebcc
-msgid ":obj:`~.message.Message`"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:0
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:0
-#: 8120c146cae94baa9a7adac4f302bb3f
-#: f50043fe584841c192a09485bf6b3337
-msgid "Raises"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:33
-#: 109a5833eda247d4b450dc31b9b82ff0
-msgid "When message removal is not supported in the channel."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:1
-#: 32a39a38e74841efa116169ec846ef7d
-msgid "Create a message removal status"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:3
-#: 9f18fafe653445358c63a4af4dc3f2b0
-msgid "Try to provided as much as you can, if not, provide a minimum information in the channel:"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:6
-#: 354bd16bba01468dbf1d12c204e5b23e
-msgid "Slave channel ID and chat ID (:attr:`message.chat.module_id <.Chat.module_id>` and :attr:`message.chat.uid <.Chat.uid>`)"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:8
-#: 46fc2113940749a1a8cd568d6e0c881c
-msgid "Message unique ID from the slave channel (:attr:`message.uid <.message.Message.uid>`)"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:17
-#: 746d30104d1941f8b643a38b016d5caf
-msgid "Message to remove."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:1
-#: 104ab6c27acc43e3af011e8e506582bf
-msgid "Created when user react to a message, issued from master channel."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:3
-#: 6f70709a0cf54fb182be03e217fd896d
-msgid "When this status is sent, a :obj:`.status.MessageReactionsUpdate` is RECOMMENDED to be issued back to master channel."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:7
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage.__init__:2
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:4
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate.__init__:2
-#: 97133ce81d264264ae0e702a3b70e7dd
-#: 96527687d0eb4130befa139b5742f8d7
-#: 339fc39fcdc64272be3fd77c333520c0
-#: fcb5ed7148c2472c8796a741f39731f7
-msgid "The chat where message is sent"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:10
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage.__init__:5
-#: 878b4c820765430483013955cdaef7f8
-#: 76b6cbc7a92542bb843a76b07d82f50b
-msgid "ID of the message to react to"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:13
-#: 275165b079ec42468d31e65fb6742320
-msgid "The reaction name to be sent, usually an emoji. Set to ``None`` to remove reaction."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:16
-#: d430ba7541c04c6c9b5aaeb2d11261e2
-msgid "Channel the status is issued to, extracted from the chat object."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:19
-#: 6a30c1b10db64baca66d8d5465a6ab4d
-msgid "Raised when the reaction is not valid (e.g. the specific reaction is not     in the list of possible reactions)."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:20
-#: 48dfe3b4c4a94fd288c0d3b6b4826817
-msgid "Raised when reaction in any form is not supported to the message at all."
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage.__init__:8
-#: 354004f1103a4442bb4f74904f66c6d0
-msgid "The reaction name to be sent, usually an emoji"
-msgstr ""
-
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:1
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:1
 #: 7cf25f28e73c459a91ee50e22ea31ab8
 msgid "Update reacts of a message, issued from slave channel to master channel."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:7
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate.__init__:5
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:4
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate.__init__:2
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:7
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage.__init__:2
+#: 97133ce81d264264ae0e702a3b70e7dd
+#: 97133ce81d264264ae0e702a3b70e7dd
+#: 97133ce81d264264ae0e702a3b70e7dd
+#: fcb5ed7148c2472c8796a741f39731f7
+msgid "The chat where message is sent"
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:7
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate.__init__:5
 #: fdebd9279364418abde19d5e4c02d9b4
-#: 7550a5a4c3c54a419312f6555d96d558
+#: fdebd9279364418abde19d5e4c02d9b4
 msgid "ID of the message for the reacts"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:10
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate.__init__:8
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:10
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate.__init__:8
 #: 38f1680b887b4bc4be848bd4f8613e38
-#: e15abc49274c4732b31c277202b86b54
+#: 38f1680b887b4bc4be848bd4f8613e38
 msgid "Indicate reactions to the message. Dictionary key represents the reaction name, usually an emoji. Value is a collection of users who reacted to the message with that certain emoji. All :obj:`Chat` objects in this dict MUST be members in the chat of the message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:15
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageReactionsUpdate:15
 #: e42a92fa67c347cfa338e6d798a51b0c
 msgid "Channel the status is issued to, which is always the master channel."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:1
+#: cd1616d39dfd4772af0ff05af235950d
+msgid "Inform a channel to remove a certain message."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:3
+#: 3410ee18095f4a5b950d0b3886b3cfe9
+msgid "This is usually known as “delete from everyone”, “delete from recipient”, “recall a message”, “unsend”, or “revoke a message” as well, depends on the IM platform."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:7
+#: 2ddcb95a3b8347eca2c76de8e410af02
+msgid "Some channels MAY not support removal of messages, and raises a :obj:`.exceptions.EFBOperationNotSupported` exception."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:10
+#: 23775d672b2a4dd68cd711c63312cc1e
+msgid "Feedback by sending another ``MessageRemoval`` back is not required when this object is sent from a master channel. Master channels SHOULD treat a successful delivery of this status as a successful removal."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:16
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:11
+#: 87cbeec598684acfacea45dc9f100ab7
+#: 87cbeec598684acfacea45dc9f100ab7
+msgid "Channel issued the status"
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:22
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:14
+#: 36ded1baeb0a48bd9a4edf3208775617
+#: 36ded1baeb0a48bd9a4edf3208775617
+msgid "Channel the status is issued to"
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:28
+#: 83356a7526da4e5d8082d405bb3f0aa2
+msgid "Message to remove. This MAY not be a complete :obj:`.message.Message` object."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:31
+#: 9c8502f9250a408194154cb763a8ebcc
+msgid ":obj:`~.message.Message`"
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:0
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:0
+#: 8120c146cae94baa9a7adac4f302bb3f
+#: 8120c146cae94baa9a7adac4f302bb3f
+msgid "Raises"
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval:33
+#: 109a5833eda247d4b450dc31b9b82ff0
+msgid "When message removal is not supported in the channel."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:1
+#: 32a39a38e74841efa116169ec846ef7d
+msgid "Create a message removal status"
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:3
+#: 9f18fafe653445358c63a4af4dc3f2b0
+msgid "Try to provided as much as you can, if not, provide a minimum information in the channel:"
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:6
+#: 354bd16bba01468dbf1d12c204e5b23e
+msgid "Slave channel ID and chat ID (:attr:`message.chat.module_id <.Chat.module_id>` and :attr:`message.chat.uid <.Chat.uid>`)"
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:8
+#: 46fc2113940749a1a8cd568d6e0c881c
+msgid "Message unique ID from the slave channel (:attr:`message.uid <.message.Message.uid>`)"
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.MessageRemoval.__init__:17
+#: 746d30104d1941f8b643a38b016d5caf
+msgid "Message to remove."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:1
+#: 104ab6c27acc43e3af011e8e506582bf
+msgid "Created when user react to a message, issued from master channel."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:3
+#: 6f70709a0cf54fb182be03e217fd896d
+msgid "When this status is sent, a :obj:`.status.MessageReactionsUpdate` is RECOMMENDED to be issued back to master channel."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:10
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage.__init__:5
+#: 878b4c820765430483013955cdaef7f8
+#: 878b4c820765430483013955cdaef7f8
+msgid "ID of the message to react to"
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:13
+#: 275165b079ec42468d31e65fb6742320
+msgid "The reaction name to be sent, usually an emoji. Set to ``None`` to remove reaction."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:16
+#: d430ba7541c04c6c9b5aaeb2d11261e2
+msgid "Channel the status is issued to, extracted from the chat object."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:19
+#: 6a30c1b10db64baca66d8d5465a6ab4d
+msgid "Raised when the reaction is not valid (e.g. the specific reaction is not     in the list of possible reactions)."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage:20
+#: 48dfe3b4c4a94fd288c0d3b6b4826817
+msgid "Raised when reaction in any form is not supported to the message at all."
+msgstr ""
+
+#: ../../../ehforwarderbot/status.py:docstring of ehforwarderbot.status.ReactToMessage.__init__:8
+#: 354004f1103a4442bb4f74904f66c6d0
+msgid "The reaction name to be sent, usually an emoji"
 msgstr ""
 

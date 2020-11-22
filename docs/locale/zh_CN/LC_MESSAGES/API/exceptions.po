@@ -2,38 +2,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-31 08:54\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: zh-CN\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/API/exceptions.pot\n"
+"X-Crowdin-File-ID: 95\n"
 "Language: zh_CN\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/exceptions.rst:2
+#: ../../API/exceptions.rst:2
 #: 5f68ccf4914e4e11b8d9bfda255c6520
 msgid "Exceptions"
 msgstr "异常"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBException:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBException:1
 #: c08d354fa2e949acbe8b8ca3ef25c0ff
 msgid "Bases: :class:`Exception`"
 msgstr "父类：\\ :class:`Exception`"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBException:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBException:1
 #: 4cdcb5fcd7d343ba8db2acc8ca343d94
 msgid "A general class to indicate that the exception is from EFB framework."
 msgstr "用来表示来自 EFB 框架异常的一个通用类。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChatNotFound:1
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChannelNotFound:1
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:1
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageReactionNotPossible:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChatNotFound:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChannelNotFound:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageReactionNotPossible:1
 #: dbb1cb0e57294bc7b0053b544af44801
 #: bb4172c3d60b4eba9be375cf6be7be28
 #: 3677b2717bc144f997fe7ac05330f762
@@ -41,73 +43,73 @@ msgstr "用来表示来自 EFB 框架异常的一个通用类。"
 msgid "Bases: :class:`ehforwarderbot.exceptions.EFBException`"
 msgstr "父类：\\ :class:`ehforwarderbot.exceptions.EFBException`"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChatNotFound:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChatNotFound:1
 #: cb2a1569601e4ff4a7abba3120304301
 msgid "Raised by a slave channel when a chat indicated is not found."
 msgstr "当指定的会话无法找到时由从端抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChatNotFound:3
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChatNotFound:3
 #: b45f13229d2047308ed93b0cc6be3a90
 msgid "Can be raised by any method that involves a chat or a message."
 msgstr "可以由任何涉及会话或消息的方法来抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChannelNotFound:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBChannelNotFound:1
 #: f9ffb4f6171a46d8968b03b016e03f03
 msgid "Raised by the coordinator when the message sent delivers to a missing channel."
 msgstr "当已发送的消息传递到不存在的信道时由协调器抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:1
 #: 6e36741bffca47d19636a015afe27978
 msgid "Raised by slave channel for any other error occurred when sending a message or a status."
 msgstr "在发送消息或状态的过程中发生其他错误时，由从端抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:4
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:4
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageError:4
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:4
 #: 31d5b4d61a534a6e8ac5fdf8c1723c31
 #: fde38ca8910344d4a6be93c30ef090e8
 msgid "Can be raised in :meth:`.Channel.send_message` and :meth:`.Channel.send_status`."
 msgstr "可以在 :meth:`.Channel.send_message` 和 :meth:`.Channel.send_status` 中被抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:1
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:1
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:1
 #: f72e3a3fcb1143d08c3c12e4ee0ad1eb
 #: 08414dd613ad488c8323982b24624cf9
 #: 37897c875252493ea7a21e87d9f7db36
 msgid "Bases: :class:`ehforwarderbot.exceptions.EFBMessageError`"
 msgstr "父类：\\ :class:`ehforwarderbot.exceptions.EFBMessageError`"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:1
 #: 181fe7d05d364e4e834de8998ff41c6c
 msgid "Raised by a slave channel when a message indicated is not found."
 msgstr "当指定的消息无法找到时由从端抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:3
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageNotFound:3
 #: a4e319420e0a4389bd793c612dfd1506
 msgid "Can be raised in :meth:`.Channel.send_message` (edited message / target message not found) and in :meth:`.Channel.send_status` (message to delete is not found)."
 msgstr "可以在 :meth:`.Channel.send_message`\\ （需要编辑的消息、目标消息无法找到）和 :meth:`.EFBChannel.send_status`\\ （需要删除的消息无法找到）中被抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:1
 #: 763c1a1ece2d455d8d70cdc0aec819a7
 msgid "Raised by a slave channel when the indicated message type is not supported."
 msgstr "当指定的消息类型不被支持时由从端抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:3
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageTypeNotSupported:3
 #: fde24e7f52b14266975fae85b0a9c7c5
 msgid "Can be raised in :meth:`.Channel.send_message`."
 msgstr "可以在 :meth:`.Channel.send_message` 中被抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBOperationNotSupported:1
 #: 6e8eb3f724f641199630844749f88f46
 msgid "Raised by slave channels when a chat operation is not supported. E.g.: cannot edit message, cannot delete message."
 msgstr "当聊天操作不被支持时由从端抛出。例如：无法编辑消息，无法删除消息。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageReactionNotPossible:1
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageReactionNotPossible:1
 #: d6ff49d485984cf8a52bb5e5e09c5ecb
 msgid "Raised by slave channel when a message reaction request from master channel is not possible to be processed."
 msgstr "当主端发出的对消息回应的请求无法被处理时，由从端抛出。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageReactionNotPossible:4
+#: ../../../ehforwarderbot/exceptions.py:docstring of ehforwarderbot.exceptions.EFBMessageReactionNotPossible:4
 #: cda8cbe6c54948358777503582e4044e
 msgid "Can be raised in :meth:`.Channel.send_status`."
 msgstr "可以在 :meth:`.Channel.send_status` 中被抛出。"

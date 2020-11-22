@@ -2,100 +2,102 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-31 08:55\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: ja\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/API/constants.pot\n"
+"X-Crowdin-File-ID: 97\n"
 "Language: ja_JP\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/constants.rst:2
+#: ../../API/constants.rst:2
 #: 938b18be4e45487bb9f47b5ca000f195
 msgid "Constants"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType:1
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType:1
 #: 3f48d9be3d5f4874908af3cd9cc913d2
 msgid "An enumeration."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Animation:1
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Animation:1
 #: e85ad6ba428a4ef7833b0e3cbb9ae304
 msgid "Message with an animation, usually in the form of GIF or soundless video."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Audio:1
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Audio:1
 #: 5a36c1eac7534ba6aa329e71457b4660
 msgid "Audio messages (deprecated)."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Audio:3
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Audio:3
 #: 7aca960ae3254de8b79ef88c0e3ddff7
 msgid ":attr:`.Voice` if the message has a voice message (usually recorded). Use :attr:`.File` if the message has a music file (usually uploaded)."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.File:1
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.File:1
 #: 07b41795bab74f7a84a050986ff1f618
 msgid "File message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Image:1
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Image:1
 #: 3d174e1d551445519a9b330df8272fb5
 msgid "Image (picture) message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Image:3
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Image:3
 #: 465df50dab3d4029837d1110da3fce16
 msgid "Notes"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Image:5
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Image:5
 #: 882d94b5f4334ae0b28e48d40e8a271a
 msgid "Animated GIF images must use :attr:`Animation` type instead."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Link:1
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Link:1
 #: 66a9ff50718e45bc9e24ace3477d534c
 msgid "Message that is mainly one specific link, or a text message with one link preview."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Location:1
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Location:1
 #: 31af6f26ee1347a5ae81b07cb83eb7a0
 msgid "Location message."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Status:1
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Status:1
 #: 6abc63c371724330a4aab037076429bf
 msgid "Status from a user in a chat, usually typing and uploading."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Sticker:1
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Sticker:1
 #: 5858dc24408a4fe294803f4047ff780d
 msgid "Pictures sent with few text caption, usually a transparent background, and a limited number of options that is usually not from the user's photo gallery."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Text:1
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Text:1
 #: 26c891bacca34ad48c5fc333628027e3
 msgid "Text message"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Unsupported:1
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Unsupported:1
 #: fc231a133f174185813d9ac59677109c
 msgid "Any type of message that is not listed above. A text representation is required."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Video:1
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Video:1
 #: 50f74b59e6f04829990767e6cb2199ab
 msgid "Video message"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Voice:1
+#: ../../../ehforwarderbot/constants.py:docstring of ehforwarderbot.constants.MsgType.Voice:1
 #: 31e25debd4194160ba5383330037050e
 msgid "Voice messages, usually recorded right before sending."
 msgstr ""

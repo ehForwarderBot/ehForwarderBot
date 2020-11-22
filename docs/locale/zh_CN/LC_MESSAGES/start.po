@@ -2,96 +2,123 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-31 08:54\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: zh-CN\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/start.pot\n"
+"X-Crowdin-File-ID: 75\n"
 "Language: zh_CN\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:2
+#: ../../start.rst:2
 #: 8d47ba3dfffe4ac1ac4fba49316ef6a3
 msgid "Launch the framework"
 msgstr "启动框架"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:4
+#: ../../start.rst:4
 #: c2d7c074bdb04800aaa0a4899314257d
 msgid "EH Forwarder Bot offered 2 ways to launch the framework:"
 msgstr "EFB 提供了两种方法来启动框架："
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:6
+#: ../../start.rst:6
 #: a0a030b2ac434fa2982b442609ce57ac
 msgid "``ehforwarderbot``"
 msgstr "``ehforwarderbot``"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:7
+#: ../../start.rst:7
 #: 31746eeb452f4dfc95094f0ccd37abac
 msgid "``python3 -m ehforwarderbot``"
 msgstr "``python3 -m ehforwarderbot``"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:9
+#: ../../start.rst:9
 #: 9465fde15ab04f5f946bb00330ab04f6
 msgid "Both commands are exactly the same thing, accept the same flags, run the same code. The latter is only a backup in case the former does not work."
 msgstr "两个命令的功能及用法完全一致，运行相同的代码。后者只是一个备份，以防前者不起作用。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:14
+#: ../../start.rst:14
 #: 832c78c523a746d9a9b1639e57fbb66d
 msgid "Options"
 msgstr "选项"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:16
+#: ../../start.rst:16
 #: b0c8da2655cb420ca28af71558f44a03
 msgid "``-h``, ``--help``: Show help message"
 msgstr "``-h``, ``--help``：显示帮助信息"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:18
+#: ../../start.rst:18
 #: 905f26106dac4fd2886de79eea08e601
 msgid ":samp:`-p {PROFILE}`, :samp:`--profile {PROFILE}`: Switch :doc:`profile <profile>`"
 msgstr ":samp:`-p {PROFILE}`, :samp:`--profile {PROFILE}`: 切换\\ :doc:`配置档案 <profile>`"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:20
+#: ../../start.rst:20
 #: c71b0748cae64d17998256137141c9be
 msgid "From version 2, EFB supports running different instances under the same user, identified by their profiles. The default profile is named ``default``."
 msgstr "从 2.0 版本开始，EFB 支持在同一用户下运行多个实例（根据配置档案进行区分）。默认的配置档案名称为 ``default`` 。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:24
+#: ../../start.rst:24
 #: 2bdd0a0a32ff4159b2bb9679f5f34264
 msgid "``-V``, ``--version``: Print version information"
 msgstr "``-V``, ``--version``: 打印版本信息"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:26
+#: ../../start.rst:26
 #: 7f15fb9bf368415cb05c92b51fd92b31
 msgid "This shows version number of Python you are using, the EFB framework, and all channels and middlewares enabled."
 msgstr "显示您的 Python、EFB 框架、以及所有已启用的信道和中间件的版本号。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:30
+#: ../../start.rst:30
 #: cdafd79c489d431f90a0fc3960e7cb2a
 msgid "``-v``, ``--verbose``: Print verbose log"
 msgstr "``-v``, ``--verbose``: 打印详细日志"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:32
+#: ../../start.rst:32
 #: 52fc17f8399a4d4dbd3a8149f6312533
-msgid "This option enables verbose log of EFB and all enabled modules. This, together with ``-V``, is particularly useful in debugging and issue reporting."
-msgstr "开启该选项会记录 EFB 及所有已启用的组件的详细日志。该选项与 ``-V`` 一样，对于调试及问题反馈有着极大帮助。"
+msgid "This option enables verbose log of EFB and all enabled modules. This, together with ``--version``, is particularly useful in debugging and issue reporting."
+msgstr "开启该选项会记录 EFB 及所有已启用的模块的详细日志。该选项和 ``--version`` 一同，对于调试及问题反馈有着极大帮助。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:37
+#: ../../start.rst:36
+#: c7e6357e43ac4f08950b8b2f5e2261b1
+msgid "``--trace-threads``: Trace hanging threads"
+msgstr "``--trace-threads``：跟踪阻塞线程"
+
+#: ../../start.rst:38
+#: a8ee0016336645039e7f52d55f33523d
+msgid "This option is useful to identify source of the issue when you encounter situations where you had to force quit EFB. When this option is enabled, once the first stop signal (``SIGINT`` or ``SIGTERM``) is sent, threads that are *asleep* will be identified and reported every 10 seconds, until a second stop signal is seen."
+msgstr "当您遇到必须强制退出 EFB 的情况时，此选项可用于确定问题的来源。启用此选项后，在发送第一个停止信号（``SIGINT`` 或 ``SIGTERM``）之后，将会每 10 秒识别一次\\ *休眠*\\ 中的线程，直到收到下一个停止信号。"
+
+#: ../../start.rst:44
+#: ba4592daa66a49d2aa46136ce2adfa1e
+msgid "In order to use this option, you need to install extra Python dependencies using the following command."
+msgstr "要使用此选项，您需要使用以下命令来安装额外的 Python 依赖关系。"
+
+#: ../../start.rst:47
+#: d8d8c06744bc4b2f8db0ac4759e6d409
+msgid "pip3 install 'ehforwarderbot[trace]'"
+msgstr "pip3 install 'ehforwarderbot[trace]'"
+
+#: ../../start.rst:53
 #: 1abc734d11ac457b8d850c59a0adce58
 msgid "Quitting EFB"
 msgstr "退出 EFB"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:39
+#: ../../start.rst:55
 #: c6457b403107411bb24fe8af9eef40ee
-msgid "If you started EFB in a shell, you can simply press Control-C to trigger the quit process. Otherwise, ask your service manager to issue a ``SIGTERM`` for a graceful exit. The exit process may take a few second to complete."
-msgstr "如果您在 shell 中启动了 EFB， 您可以简单地通过 Control-C 来开始退出进程。否则，请使用您的服务管理器发送 ``SIGTERM`` 信号。完全退出进程可能会耗时数秒种。"
+msgid "If you started EFB in a shell, you can simply press :kbd:`Control-c` to trigger the quit process. Otherwise, ask your service manager to issue a ``SIGTERM`` for a graceful exit. The exit process may take a few second to complete."
+msgstr "如果您在 shell 中启动了 EFB， 您可以简单地通过 :kbd:`Control-c` 来触发退出流程。否则，请使用您的服务管理器发送 ``SIGTERM`` 信号。完全退出进程可能会耗时数秒种。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/start.rst:44
+#: ../../start.rst:60
 #: 58a91590184f434fbb68777c5e83b938
 msgid "It is important for you to issue a graceful termination signal (e.g. ``SIGTERM``), and **NOT** to use ``SIGKILL``. Otherwise you may face the risk of losing data and breaking programs."
 msgstr "使用优雅终止信号（例如 ``SIGTERM``\\ ）十分重要。请\\ **不要**\\ 使用 ``SIGKILL``，否则可能会导致数据丢失或程序异常。"
+
+#: ../../start.rst:64
+#: 73792599cf254624b6d95ba1c66a111f
+msgid "If you have encountered any issue quitting EFB, press :kbd:`Control-c` for 5 times consecutively to trigger a force quit. In case you have frequently encountered situations where you had to force quit EFB, there might be a bug with EFB or any modules enabled. You may want to use the ``--trace-threads`` option described above to identify the source of issue, and report this to relevant developers."
+msgstr "如果您在退出 EFB 时遇到任何问题，请连按五次 :kbd:`Control-c` 触发强制退出。如果您经常遇到必须强制退出 EFB 的情况，则表明 EFB 或任何使用中的组件可能正在发生故障。您可能需要使用上文中的 ``--trace-threads`` 选项来确定问题的根源，并向相关开发者报告。"
 

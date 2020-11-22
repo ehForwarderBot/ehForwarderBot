@@ -2,50 +2,52 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-31 13:44+0800\n"
-"PO-Revision-Date: 2020-01-31 08:54\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: zh-CN\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/support.pot\n"
+"X-Crowdin-File-ID: 159\n"
 "Language: zh_CN\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/support.rst:3
+#: ../../support.rst:3
 #: 59233cb2e49348229eb8d404a808edaf
 msgid "Support"
 msgstr "寻求帮助"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/support.rst:6
+#: ../../support.rst:6
 #: f75d7450afa04ee3b2929f799fb3c19c
 msgid "Bug reports and feature requests"
 msgstr "错误报告和功能请求"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/support.rst:8
+#: ../../support.rst:8
 #: 046af0f33ded4193901fc8498e54405c
 msgid "See :doc:`contribution guideline <./contributing>` for details."
 msgstr "详情请参阅\\ :doc:`贡献指南 <./contributing>`\\ 。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/support.rst:11
+#: ../../support.rst:11
 #: ffa97ebe1b69430dbd7cf5926d154bf5
 msgid "Questions about development and usage"
 msgstr "有关开发和使用的问题"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/support.rst:13
+#: ../../support.rst:13
 #: bb185e4aac22497791989bdb401d804a
 msgid "If you have any question about developing a module for EFB, or about usages, you can join our `Gitter chat`_ or `Telegram Group`_ for help."
 msgstr "如果您有任何关于开发 EFB 模块的问题，或是关于使用方法的问题，您可以加入我们的 `Gitter 聊天室`_\\ 或 `Telegram 群组`_\\ 以获取帮助。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/support.rst:16
+#: ../../support.rst:16
 #: 29c44c66e1de4affa9b6b9bf2e7a3a69
 msgid "Or if you have enough reputation on StackOverflow, I am more than appreciated if you a new tag (``ehforwarderbot``) can be created there when you post a question [#]_. Let me know so that I can add the tag to my watch list."
 msgstr "或者，如果您在 StackOverflow 上有足够的声誉值（reputation），当您发布在那边问题时可以创建一个新的标签（``ehforwarderbot``）\\ [#]_\\ 。创建后记得通知我一下，我会把这个标签加入关注列表。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/support.rst:22
+#: ../../support.rst:22
 #: 060c0fcb68064a5eb0d2788d2a45d64e
 msgid "StackOverflow requires_ a tag to be on-topic, has at least 2 questions in the period of 6 months, and the tag creator to have at least 1,500 reputations for it to be created."
 msgstr "StackOverflow 要求_\\ 创建的标签必须切题、在近 6 个月内至少有提出 2 个问题，并且标签创建者须至少具有 1500 声誉值（reputation）。"

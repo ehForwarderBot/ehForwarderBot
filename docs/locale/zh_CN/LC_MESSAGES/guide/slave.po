@@ -2,125 +2,127 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-25 14:13+0800\n"
-"PO-Revision-Date: 2020-01-31 08:54\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: zh-CN\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/slave.pot\n"
+"X-Crowdin-File-ID: 87\n"
 "Language: zh_CN\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:2
+#: ../../guide/slave.rst:2
 #: aa19f8f651de417e93ba53a0a458c913
 msgid "Slave channels"
 msgstr "从端"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:4
+#: ../../guide/slave.rst:4
 #: 9141745beca1483ca7050b74e8a9aa6a
 msgid "Slave channel is more like a wrap over an API of IM, it encloses messages from the IM into appropriate objects and deliver it to the master channel."
 msgstr "从端更像是对即时通讯 API 的封装，它将来自通讯平台的消息封装到对应的对象中并将其传递给主端。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:8
+#: ../../guide/slave.rst:8
 #: c2bc0744d1bd4ab0ba5d1ffa620fba45
 msgid "Although we suggest that slave channel should match with an IM platform, but you may try to model it for anything that can deliver information as messages, and has a limited list of end-points to deliver messages to and from as chats."
 msgstr "尽管我们建议从属通道应该和即使通讯平台适配，但你可以尝试适配任何适宜的系统模型：该系统可以将数据以消息方式发送，同时可以有一个有限的用于收发消息的终端列表。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:14
+#: ../../guide/slave.rst:14
 #: 6b44ab973c63402ebdcde5a34f64c6e2
 msgid "In most of the cases, slave channels SHOULD be identified as one single user from the IM platform, instead of a bot. You should only use a bot for slave channels when:"
-msgstr ""
+msgstr "在大多数情况下，从端应该被看作为一个来自即时通讯平台的普通用户，而不是一个机器人。你只应在如下情况下为从端使用机器人："
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:19
+#: ../../guide/slave.rst:19
 #: 753e52aa8dc8442082977071c237977f
 msgid "the IM platform puts no difference between a user and a bot, or"
 msgstr "该平台不对用户和机器人做特别区分，或者"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:21
+#: ../../guide/slave.rst:21
 #: f2201b7d329d48a6952bc466f8157d89
 msgid "bots on the IM platform can do exactly same things, if not more, as a user, and bots can be created easier than user account."
 msgstr "该平台上的机器人可以实现与用户同等或更多的功能，并且机器人相对比一般用户账户更容易创建"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:28
+#: ../../guide/slave.rst:28
 #: f050e708017447a2a1fd779d078fed03
 msgid "Additional features"
 msgstr "附加功能"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:30
+#: ../../guide/slave.rst:30
 #: 1517b7e46b3a4643b3055a520f3b52cd
 msgid "Slave channels can offer more functions than what EFB requires, such as creating groups, search for friends, etc, via *additional features*."
 msgstr "通过 *附加功能*，从端能够提供 EFB 没有要求的更多功能，例如创建组群组，搜索好友等。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:34
+#: ../../guide/slave.rst:34
 #: 98fb752dfe3d4ddbb0e9465b7c3a8a45
 msgid "Such features are accessed by the user in a CLI-like style. An “additional feature” method MUST only take one string parameter aside from ``self``, and wrap it with :meth:`~ehforwarderbot.utils.extra` decorator. The ``extra`` decorator takes 2 arguments: ``name`` -- a short name of the feature, and ``desc`` -- a description of the feature with its usage."
-msgstr ""
+msgstr "用户可以通过和 CLI 类似的方式来访问这些功能。「附加功能」方法除 ``self`` 之外只能（MUST）接受一个字符串参数，并使用 :meth:`~ehforwarderbot.utils.extra` 装饰器将其封装。该装饰器接受两个参数：``name`` 表示功能的名称，以及 ``desc`` 表示功能的描述及其用法。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:42
+#: ../../guide/slave.rst:42
 #: cfa47070ea444dcf84a5b9fe0f98d950
 msgid "``desc`` SHOULD describe what the feature does and how to use it. It's more like the help text for an CLI program. Since method of invoking the feature depends on the implementation of the master channel, you SHOULD use ``\"{function_name}\"`` as its name in ``desc``, and master channel will replace it with respective name depend on their implementation."
 msgstr "``desc`` 应该（SHOULD）描述功能的用途以及用法。它更像是 CLI 程序的帮助文本。由于调用这些功能的方法依赖于主端的实现方式，因此 ``desc`` 中应（SHOULD）使用 ``\"{function_name}\"`` 代替用法中的名称，根据实现方式的不同，主端会使用适合名称来替代它。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:50
+#: ../../guide/slave.rst:50
 #: 386c4021c38a479b88ade458830220f9
 msgid "The method MUST in the end return a string, which will be shown to the user as its result, or ``None`` to notify the master channel there will be further interaction happen. Depending on the functionality of the feature, it may be just a simple success message, or a long chunk of results."
-msgstr ""
+msgstr "方法在结束时必须（MUST）返回一个字符串或 ``None``。字符串会被作为运行结果显示给用户，``None`` 代表后续将会有进一步的交互。根据这个特性的具体功能，输出可能只是一个简单的成功消息，或者是一个很长的结果。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:56
+#: ../../guide/slave.rst:56
 #: 17f2e44300284e89b6587b9227c59457
 msgid "The callable MUST NOT raise any exception to its caller. Any exceptions occurred within should be ``expect``\\ ed and processed."
 msgstr "该函数不可（MUST NOT）抛出任何异常。任何发生的异常都应该被 ``expect`` 并处理。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:60
+#: ../../guide/slave.rst:60
 #: a09a3be4f2df4c1bb2cd190da6a37b33
 msgid "Callable name of such methods has a more strict standard than a normal Python 3 identifier name, for compatibility reason. An additional feature callable name MUST:"
 msgstr "出于兼容性考虑，该类功能的方法名称具有比一般 Python 3 标识符名称更严格的限制。附加功能函数的调用名称须（MUST）："
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:64
+#: ../../guide/slave.rst:64
 #: bed3759dae02481496a2d896d29dafde
 msgid "be case sensitive"
 msgstr "区分大小写"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:65
+#: ../../guide/slave.rst:65
 #: 17e297b6a9584d0ea94e061e88ffbc04
 msgid "include only upper and lower-case letters, digits, and underscore."
 msgstr "只包含大小写字母，数字，和下划线。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:66
+#: ../../guide/slave.rst:66
 #: bae6e4ec65e140a5950d5e5ea367520f
 msgid "does not start with a digit."
 msgstr "不以数字开头。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:67
+#: ../../guide/slave.rst:67
 #: 78b5249209ec4f82ac8d1468898bcd8e
 msgid "be in a length between 1 and 20 inclusive"
 msgstr "长度为 1 到 20字符（含）"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:68
+#: ../../guide/slave.rst:68
 #: f3c7a42bae3c4198a9f0ed60c8103cf6
 msgid "*be as short and concise as possible, but keep understandable*"
 msgstr "*越短越精确越好，但是要容易被理解*"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:70
+#: ../../guide/slave.rst:70
 #: 6713976667034a539ef08eb59c7e494a
 msgid "It can be expressed in a regular expression as::"
 msgstr "用正则表达式表示则为::"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:72
+#: ../../guide/slave.rst:72
 #: c8d9de1e0fae432ba23ccf755b7ebfb5
 msgid "^[A-Za-z][A-Za-z0-9_]{0,19}$"
 msgstr "^[A-Za-z][A-Za-z0-9_]{0,19}$"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:74
+#: ../../guide/slave.rst:74
 #: 00b78f21fb0d485c863cbbb1396fdf67
 msgid "An example is as follows:"
 msgstr "示例如下："
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:76
+#: ../../guide/slave.rst:76
 #: bc1a82662e6743769cf4552258efc171
 msgid "@extra(name=\"Echo\",\n"
 "       desc=\"Return back the same string from input.\\n\"\n"
@@ -135,87 +137,87 @@ msgstr "@extra(name=\"Echo\",\n"
 "def echo(self, arguments: str = \"\") -> str:\n"
 "    return arguments"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:86
+#: ../../guide/slave.rst:86
 #: a24281d89238495ba02c4ab9862bea6a
 msgid "Message commands"
 msgstr "消息命令"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:88
+#: ../../guide/slave.rst:88
 #: 3316dccdc9a4468281e3c446fc99aa52
 msgid "Message commands are usually sent by slave channels so that users can respond to certain messages that has specific required actions."
 msgstr "消息命令通常由从端发送，以允许用户对于要求特殊操作的消息做出回应。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:92
+#: ../../guide/slave.rst:92
 #: 2f1cd77bdf0341a9b7e942032594bf68
 msgid "Possible cases when message commands could be useful:"
 msgstr "消息命令的使用场景示例："
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:94
+#: ../../guide/slave.rst:94
 #: dcbba54e79ab44e58e321ad666455688
 msgid "Add as friends when a contact card is received."
 msgstr "添加推荐联系人为好友。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:95
+#: ../../guide/slave.rst:95
 #: 5488aaf76dcd45f8a184dee5dd73f9bd
 msgid "Accept or decline when a friend request is received."
 msgstr "接受或拒绝好友请求。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:96
+#: ../../guide/slave.rst:96
 #: 27fe380822c64bfe9a3e204806d0d464
 msgid "Vote to a voting message."
 msgstr "向投票消息进行投票."
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:98
+#: ../../guide/slave.rst:98
 #: 0df8cb0b9d474996a97cc278ebbb6509
 msgid "A message can be attached with a ``list`` of commands, in which each of them has:"
 msgstr "一条消息可以附加到在 ``list`` 之中附加一系列命令，其中的每个命令有："
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:101
+#: ../../guide/slave.rst:101
 #: 6f68e32255664408aa2d31a243ac20fd
 msgid "a human-friendly name,"
 msgstr "面向用户的名称，"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:102
+#: ../../guide/slave.rst:102
 #: fa695cae1f0a4868a0954b1f22726404
 msgid "a callable name,"
 msgstr "方法名称，"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:103
+#: ../../guide/slave.rst:103
 #: 9e285b5ad1b149f9a842f4570103fd57
 msgid "a ``list`` of positional arguments (``*args``), and"
 msgstr "位置指定参数（\\ ``*args``\\ ) 的 \\ ``list``\\  列表，以及"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:104
+#: ../../guide/slave.rst:104
 #: 424ffa6034ff467da5176e0e05e2ec7b
 msgid "a ``dict`` of keyword arguments (``**kwargs``)"
 msgstr "关键字参数（\\ ``**kwargs``\\ ）的 \\ ``dict``\\  字典"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:106
+#: ../../guide/slave.rst:106
 #: e1f4b466f023484a82d60a32a820642b
 msgid "When the User clicked the button, the corresponding method of your channel will be called with provided arguments."
-msgstr ""
+msgstr "当用户单击按钮时，将会调用相应的信道方法并传递指定的参数。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:109
+#: ../../guide/slave.rst:109
 #: 7a80a80cfcf049f7b48ba23625c0bf69
 msgid "Note that all such methods MUST return a ``str`` as a respond to the action from user, and they MUST NOT raise any exception to its caller. Any exceptions occurred within MUST be ``expect``\\ ed and processed."
 msgstr "注意：作为对用户操作的响应，所有这样的方法必须（MUST）返回一个 ``str``，且不可（MUST NOT）抛出任何异常。任何发生的异常都必须（MUST）被 ``expect`` 并被处理。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:116
+#: ../../guide/slave.rst:116
 #: e1146bb7ea514097b21642a89c53703d
 msgid "Message delivery"
 msgstr "消息传递"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:118
+#: ../../guide/slave.rst:118
 #: 1139361a082b4d97882f908af0dc1c7b
 msgid "Slave channels SHOULD deliver all messages that the IM provides, including what the User sent outside of this channel. But it SHOULD NOT deliver message sent from the master channel again back to the master channel as a new message."
 msgstr "从端应该（SHOULD）发送 IM 提供的所有消息，包括用户在没有通过改从端发送的消息。但用户通过主端发出的消息不应（SHOULD NOT）再传回主端。"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:125
+#: ../../guide/slave.rst:125
 #: 528df8ce319643f299fa46de2b23bcd3
 msgid "Implementation details"
 msgstr "实现细节"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/slave.rst:127
+#: ../../guide/slave.rst:127
 #: 12b934b4756c483986b867d3cf230553
 msgid "See :class:`.SlaveChannel`."
 msgstr "参见 \\ :class:`.SlaveChannel`\\ 。"

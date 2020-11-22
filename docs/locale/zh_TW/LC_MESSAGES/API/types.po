@@ -2,65 +2,67 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-31 08:54\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: zh-TW\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/API/types.pot\n"
+"X-Crowdin-File-ID: 152\n"
 "Language: zh_TW\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/API/types.rst:2
+#: ../../API/types.rst:2
 #: c06809f1cb24401b968930df158ec7b1
 msgid "Custom Type Hints"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/types.py:docstring of ehforwarderbot.types:1
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types:1
 #: 44002b36f2e74720afd6d2ba7d9405dd
 msgid "A list of type aliases when no separate class is defined for some types of values. Types for user-facing values (display names, descriptions, message text, etc.) are not otherwise defined."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/types.py:docstring of ehforwarderbot.types:5
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types:5
 #: b263d3c19ad84e79b3efa53f15ac2268
 msgid "Most of types listed here are defined under the \"NewType\" syntax in order to clarify some ambiguous values not covered by simple type checking. This is only useful if you are using static type checking in your development. If you are not using type checking of any kind, you can simply ignore values in this module."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/types.py:docstring of ehforwarderbot.types.ChatID:1
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types.ChatID:1
 #: b842132b414b49a5997a32775e975d3a
 msgid "Chat ID from slave channel or middleware, applicable to both chat and chat members."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/types.py:docstring of ehforwarderbot.types.ExtraCommandName:1
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types.ExtraCommandName:1
 #: b3659997c4b74621818cedd79ae50b9a
 msgid "Command name of additional features, in the format of ``^[A-Za-z][A-Za-z0-9_]{0,19}$``."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/types.py:docstring of ehforwarderbot.types.InstanceID:1
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types.InstanceID:1
 #: 492e0fcde60147b6a06a4cb010dbba7a
 msgid "Instance ID of a module."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/types.py:docstring of ehforwarderbot.types.MessageID:1
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types.MessageID:1
 #: c2a69011e5db4bb7a96306c18a6130c2
 msgid "Message ID from slave channel or middleware."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/types.py:docstring of ehforwarderbot.types.ModuleID:1
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types.ModuleID:1
 #: 243d44afd7224521a1c52444481f9d26
 msgid "Module ID, including instance ID after ``#`` if available."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/types.py:docstring of ehforwarderbot.types.ReactionName:1
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types.ReactionName:1
 #: 4ce1ae2c1f344524b36d81afc5765f0b
 msgid "Canonical representation of a reaction, usually an emoji."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/ehforwarderbot/types.py:docstring of ehforwarderbot.types.Reactions:1
+#: ../../../ehforwarderbot/types.py:docstring of ehforwarderbot.types.Reactions:1
 #: e8414d1806fb4d69a0f3f1854f97e7d3
 msgid "Reactions to a message."
 msgstr ""

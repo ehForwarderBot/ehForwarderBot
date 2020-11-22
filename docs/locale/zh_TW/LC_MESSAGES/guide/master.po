@@ -2,125 +2,127 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-31 08:54\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: zh-TW\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/guide/master.pot\n"
+"X-Crowdin-File-ID: 88\n"
 "Language: zh_TW\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:2
+#: ../../guide/master.rst:2
 #: 7a1aa350f3e041c6a0101397984addd3
 msgid "Master channels"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:4
+#: ../../guide/master.rst:4
 #: 7082092ffb654c9ab10f72ab342d2a3c
 msgid "Master channels are the interface that directly or indirectly interact with the user. Despite the first master channel of EFB (EFB Telegram Master) is written in a form of Telegram Bot, master channels can be written in many forms, such as:"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:10
+#: ../../guide/master.rst:10
 #: ed0237a5f45e4ec8acbdfc38e03da53b
 msgid "A web app"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:11
+#: ../../guide/master.rst:11
 #: d218c42895eb488f96e283d8e7c07c77
 msgid "A server that expose APIs to dedicated desktop and mobile clients"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:13
+#: ../../guide/master.rst:13
 #: 89aa756b2ca14d2c85fd2c2c6c4ce181
 msgid "A chat bot on an existing IM"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:14
+#: ../../guide/master.rst:14
 #: 91d29b578cc7494cb5c70556112a156b
 msgid "A server that compiles with a generic IM Protocol"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:15
+#: ../../guide/master.rst:15
 #: 7d44a7e1fc3845d783aa742666c7ff6c
 msgid "A CLI client"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:16
+#: ../../guide/master.rst:16
 #: 52f63d2e7eca4bb7a1eda5eb155b3333
 msgid "Anything else you can think of..."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:19
+#: ../../guide/master.rst:19
 #: 97ea786cae7d492e8b7231e8b51464a6
 msgid "Design guideline"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:21
+#: ../../guide/master.rst:21
 #: 78253769f5434a1a81006eab88a1ec67
 msgid "When the master channel is implemented on an existing protocol or platform, as far as possible, while considering the user experience, a master channel SHOULD:"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:25
+#: ../../guide/master.rst:25
 #: a28f543bfed142bf99d6f09c3313eb0d
 msgid "maintain one conversation thread per chat, indicating its name, source channel and type;"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:27
+#: ../../guide/master.rst:27
 #: 89f63cd593474043bcb479cf1dfe9a76
 msgid "support all, if not most, types of messages defined in the framework, process and deliver messages between the user and slave channels;"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:30
+#: ../../guide/master.rst:30
 #: 40546aee157f4565b96903fa409cf713
 msgid "support all, if not most, features of messages, including: targeted message reply, chat substitution in text (usually used in @ references), commands, etc. Master channel SHOULD be able to process incoming messages with such features, and send messages with such features to slave channels if applicable;"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:36
+#: ../../guide/master.rst:36
 #: b139ae5cb1514c6393af70594c618233
 msgid "be able to invoke and process \"additional features\" offered by slave channels."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:39
+#: ../../guide/master.rst:39
 #: 3bb251362001491fb187f6c428fc0623
 msgid "Optionally, a master channel can also support / identify vendor-specified information from certain slave channels."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:46
+#: ../../guide/master.rst:46
 #: 0fbaa80e85f644d7a93634b3dc157e48
 msgid ".. image:: guide/../_static/master-channel-0.png"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:46
+#: ../../guide/master.rst:46
 #: 2b1aeec595a041118715af1122907ecd
 msgid "An example of an ideal design of a master channel, inspired by Telegram Desktop"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:49
+#: ../../guide/master.rst:49
 #: 45b0027aaf03480288d2f11729eab741
 msgid "Depends on your implementation, a master channel may probably needs to maintain a list of chats and messages, for presentation or other purposes."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:54
+#: ../../guide/master.rst:54
 #: 9793c8cfa87b4d579cb7c1e072f04fc2
 msgid "Message delivery"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:56
+#: ../../guide/master.rst:56
 #: 20ee8085cc1a4117970b6faa974fb79e
 msgid "Note that sometimes the User may send messages outside of this EFB session, so that slave channels MAY provide a message with its author in the “self” type."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:61
+#: ../../guide/master.rst:61
 #: a483e68437ae46b99503f0368518184b
 msgid "Implementation details"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/guide/master.rst:63
+#: ../../guide/master.rst:63
 #: bde524209e44464f988c5ecf5cef5258
 msgid "See :class:`.MasterChannel`."
 msgstr ""

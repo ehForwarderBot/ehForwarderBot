@@ -2,85 +2,87 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-20 01:17+0800\n"
-"PO-Revision-Date: 2020-01-31 08:55\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2020-11-23 00:29+0800\n"
+"PO-Revision-Date: 2020-11-22 16:30\n"
+"Last-Translator: \n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: ehforwarderbot\n"
+"X-Crowdin-Project-ID: 299617\n"
 "X-Crowdin-Language: ms\n"
 "X-Crowdin-File: /ehForwarderBot/docs/_build/locale/telemetry.pot\n"
+"X-Crowdin-File-ID: 124\n"
 "Language: ms_MY\n"
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/telemetry.rst:2
+#: ../../telemetry.rst:2
 #: bb8a69e18a384543bca1a5767dffaf07
 msgid "Telemetry / Error Tracking"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/telemetry.rst:4
+#: ../../telemetry.rst:4
 #: fa519fbed1d94c98b7b813833c845b4d
 msgid "If you want to enable telemetry / error tracking / log analysis to help us make EFB better, you can install EFB with optional ``telemetry`` option."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/telemetry.rst:7
+#: ../../telemetry.rst:7
 #: 3034a395130f46debb2720ea8cbaf434
 msgid "pip3 install --update 'ehforwarderbot[telemetry]'"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/telemetry.rst:11
+#: ../../telemetry.rst:11
 #: 7305434e43c8416e8aca2c651bac7297
 msgid "And then, enable in the config file under the name ``telemetry``. There are 2 options you can choose from."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/telemetry.rst:14
+#: ../../telemetry.rst:14
 #: 8ba0e374b34d44f1975a4802563c6d6e
 msgid "Exception only: Send only exceptions and stack trace to us."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/telemetry.rst:15
+#: ../../telemetry.rst:15
 #: 4cf13699617e4b29b8a4ef471a599e05
 msgid "Exception log: Send verbose log to us alongside exceptions."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/telemetry.rst:16
+#: ../../telemetry.rst:16
 #: cefdc32bc06a4ba48954a6affe2faec4
 msgid "Full log: Send the full verbose log content and what's send in previous modes."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/telemetry.rst:19
+#: ../../telemetry.rst:19
 #: f5f4b9bd4753470094c7f33a74218b37
 msgid "To enable \"exception only\" mode, append the following line to the config file:"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/telemetry.rst:22
+#: ../../telemetry.rst:22
 #: fea86e5169ea4ecbbc0281dbdc5fb593
 msgid "telemetry: I agree."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/telemetry.rst:26
+#: ../../telemetry.rst:26
 #: 63c824d3e42247e8855c76d94f33c817
 msgid "To enable \"Exception log\" mode, append the following line to the config file:"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/telemetry.rst:29
+#: ../../telemetry.rst:29
 #: 7035f968096b46818411d024827988bd
 msgid "telemetry: I agree to surrender my immortal soul."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/telemetry.rst:33
+#: ../../telemetry.rst:33
 #: a25056b8c13e4aaaae8b1a6cadcdf441
 msgid "To enable \"Full log\" mode, append the following line to the config file:"
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/telemetry.rst:36
+#: ../../telemetry.rst:36
 #: ea7f4edce68e481486279706754d396d
 msgid "telemetry: I agree to surrender my immortal soul and endless knowledge."
 msgstr ""
 
-#: /Users/blueset/Codebase/ehForwarderBot/docs/telemetry.rst:41
+#: ../../telemetry.rst:41
 #: 080da52656df4974bc2b75b9ef529548
 msgid "For more details about what telemetry service we are using, privacy policies, and how we are collecting information through this, you can visit `1A23 Telemetry GitHub Repository`_ for more details."
 msgstr ""
