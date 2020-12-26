@@ -29,7 +29,7 @@ stable, so proceed with caution.
 
 .. code-block:: shell
 
-    pip3 install git+https://github.com/blueset/ehforwarderbot.git
+    pip3 install git+https://github.com/ehForwarderBot/ehforwarderbot.git
 
 
 Alternative installation methods

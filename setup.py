@@ -21,7 +21,7 @@ setup(
     long_description=long_description,
     author='Eana Hufwe',
     author_email='ilove@1a23.com',
-    url='https://efb.1a23.studio',
+    url='https://github.com/ehForwarderBot/ehForwarderBot',
     license='AGPLv3+',
     python_requires='>=3.6',
     include_package_data=True,
@@ -59,7 +59,7 @@ setup(
     },
     project_urls={
         "Documentation": "https://ehForwarderBot.readthedocs.io",
-        "Telegram Chat": "https://t.me/EFBSupport",
-        "Gitter Chat": "https://gitter.im/blueset/ehForwarderBot"
+        "GitHub Discussions": "https://github.com/ehForwarderBot/ehForwarderBot/discussions",
+        "Telegram Chat": "https://t.me/EFBSupport"
     }
 )

@@ -15,13 +15,13 @@ EH Forwarder Bot
         .. image:: https://readthedocs.org/projects/ehforwarderbot/badge/?version=latest
            :alt: Documentation
            :target: https://ehforwarderbot.readthedocs.io/en/latest/
-        .. image:: https://github.com/blueset/ehforwarderbot/workflows/Tests/badge.svg
+        .. image:: https://github.com/ehForwarderBot/ehforwarderbot/workflows/Tests/badge.svg
            :alt: Tests status
-           :target: https://github.com/blueset/ehforwarderbot/actions
+           :target: https://github.com/ehForwarderBot/ehforwarderbot/actions
     :Community:
-        .. image:: https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg
-           :alt: Gitter
-           :target: https://gitter.im/blueset/ehForwarderBot
+        .. image:: https://img.shields.io/badge/GitHub-Discussions-lightgrey?logo=github
+           :alt: GitHub Discussions
+           :target: https://github.com/ehForwarderBot/ehForwarderBot/discussions
         .. image:: https://img.shields.io/badge/-Telegram-blue.svg?logo=data:image/svg%2Bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTkuNzgsMTguNjVMMTAuMDYsMTQuNDJMMTcuNzQsNy41QzE4LjA4LDcuMTkgMTcuNjcsNy4wNCAxNy4yMiw3LjMxTDcuNzQsMTMuM0wzLjY0LDEyQzIuNzYsMTEuNzUgMi43NSwxMS4xNCAzLjg0LDEwLjdMMTkuODEsNC41NEMyMC41NCw0LjIxIDIxLjI0LDQuNzIgMjAuOTYsNS44NEwxOC4yNCwxOC42NUMxOC4wNSwxOS41NiAxNy41LDE5Ljc4IDE2Ljc0LDE5LjM2TDEyLjYsMTYuM0wxMC42MSwxOC4yM0MxMC4zOCwxOC40NiAxMC4xOSwxOC42NSA5Ljc4LDE4LjY1WiIgLz48L3N2Zz4=
            :alt: Telegram
            :target: https://telegram.me/efbsupport

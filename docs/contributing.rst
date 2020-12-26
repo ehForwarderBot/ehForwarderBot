@@ -13,7 +13,7 @@ Here is a simple guide on how you can file in an issue,
 or submit a pull request that is useful and effective.
 
 If you need help, or want to talk to the authors, feel
-free to chat with us at our `Gitter chat`_ or
+free to visit our `GitHub Discussions`_ forum, or chat with us at our
 `Telegram support group`_.
 
 Before you ask a question, please read and follow `this guide`_
@@ -21,7 +21,7 @@ as far as possible. Without doing so might lead to
 unfriendly or no response from the community, although
 we try to refrain from doing so.
 
-.. _Gitter chat: https://gitter.im/blueset/ehForwarderBot
+.. _GitHub Discussions: https://github.com/ehForwarderBot/ehForwarderBot/discussions
 .. _Telegram support group: https://telegram.me/efbsupport
 .. _this guide: http://www.catb.org/~esr/faqs/smart-questions.html
 
