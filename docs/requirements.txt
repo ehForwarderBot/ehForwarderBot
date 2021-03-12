@@ -1,5 +1,5 @@
 sphinx==3.5.2
-sphinxcontrib-restbuilder==0.2
+sphinxcontrib-restbuilder==0.3
 sphinx-autodoc-typehints==1.11.1
 sphinx-intl==2.0.1
 sphinxcontrib-plantuml==0.19
