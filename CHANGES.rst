@@ -25,6 +25,8 @@ Removed
 
 Fixed
 -----
+- :kbd:`^c` not able to terminate initialization process due to the handler
+  registered.
 
 Known issue
 -----------

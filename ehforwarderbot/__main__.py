@@ -332,11 +332,14 @@ def main():
     setup_logging(args, conf)
     setup_telemetry(conf['telemetry'])
 
+    init(conf)
+
+    # Only register graceful stop signals when we are ready to start
+    # polling threads.
     atexit.register(stop_gracefully)
     signal.signal(signal.SIGTERM, stop_gracefully)
     signal.signal(signal.SIGINT, stop_gracefully)
 
-    init(conf)
     poll()
 
 
