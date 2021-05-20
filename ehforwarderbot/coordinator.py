@@ -103,8 +103,6 @@ def send_message(msg: 'Message') -> Optional['Message']:
         m = i.process_message(msg)
         if m is None:
             return None
-        # for mypy type check
-        assert m is not None
         msg = m
 
     msg.verify()
