@@ -126,7 +126,7 @@ def init(conf):
     # (Load libraries and modules and init them)
 
     for i in conf['slave_channels']:
-        logger.log(99, "\x1b[0;37;46m %s \x1b[0m", _("Initializing slave {}...").format(i))
+        logger.log(99, "\x1b[0;36m %s \x1b[0m", _("Initializing slave {}...").format(i))
 
         cls = utils.locate_module(i, 'slave')
         telemetry_set_metadata({i: cls.__version__})
@@ -134,39 +134,39 @@ def init(conf):
         instance_id = (instance_id and instance_id[0]) or None
         coordinator.add_channel(cls(instance_id=instance_id))
 
-        logger.log(99, "\x1b[0;37;42m %s \x1b[0m",
+        logger.log(99, "\x1b[0;32m %s \x1b[0m",
                    _("Slave channel {name} ({id}) # {instance_id} is initialized.")
                    .format(name=cls.channel_name, id=cls.channel_id,
                            instance_id=instance_id or _("Default profile")))
 
-    logger.log(99, "\x1b[0;37;46m %s \x1b[0m",
+    logger.log(99, "\x1b[0;36m %s \x1b[0m",
                _("Initializing master {}...").format(conf['master_channel']))
     instance_id = conf['master_channel'].split('#', 1)[1:]
     instance_id = (instance_id and instance_id[0]) or None
     module = utils.locate_module(conf['master_channel'], 'master')
     coordinator.add_channel(module(instance_id=instance_id))
     telemetry_set_metadata({conf['master_channel']: module.__version__})
-    logger.log(99, "\x1b[0;37;42m %s \x1b[0m",
+    logger.log(99, "\x1b[0;32m %s \x1b[0m",
                _("Master channel {name} ({id}) # {instance_id} is initialized.")
                .format(name=coordinator.master.channel_name,
                        id=coordinator.master.channel_id,
                        instance_id=instance_id or _("Default profile")))
 
-    logger.log(99, "\x1b[1;37;42m %s \x1b[0m", _("All channels initialized."))
+    logger.log(99, "\x1b[1;32m %s \x1b[0m", _("All channels initialized."))
     for i in conf['middlewares']:
-        logger.log(99, "\x1b[0;37;46m %s \x1b[0m", _("Initializing middleware {}...").format(i))
+        logger.log(99, "\x1b[0;36m %s \x1b[0m", _("Initializing middleware {}...").format(i))
         cls = utils.locate_module(i, 'middleware')
         telemetry_set_metadata({i: cls.__version__})
 
         instance_id = i.split('#', 1)[1:]
         instance_id = (instance_id and instance_id[0]) or None
         coordinator.add_middleware(cls(instance_id=instance_id))
-        logger.log(99, "\x1b[0;37;42m %s \x1b[0m",
+        logger.log(99, "\x1b[0;32m %s \x1b[0m",
                    _("Middleware {name} ({id}) # {instance_id} is initialized.")
                    .format(name=cls.middleware_name, id=cls.middleware_id,
                            instance_id=instance_id or _("Default profile")))
 
-    logger.log(99, "\x1b[1;37;42m %s \x1b[0m", _("All middlewares are initialized."))
+    logger.log(99, "\x1b[1;32m %s \x1b[0m", _("All middlewares are initialized."))
 
     coordinator.master_thread = threading.Thread(target=coordinator.master.poll,
                                                  name=f"{coordinator.master.channel_id} polling thread")

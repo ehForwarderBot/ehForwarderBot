@@ -19,6 +19,7 @@ Added
 
 Changed
 -------
+- Changed the critical log colors for better contrast
 
 Removed
 -------
