@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-23 00:29+0800\n"
-"PO-Revision-Date: 2020-11-22 16:30\n"
+"POT-Creation-Date: 2021-05-22 15:29-0700\n"
+"PO-Revision-Date: 2021-05-22 22:29\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -39,8 +39,8 @@ msgstr "下面是一个简单的指南，介绍如何提交一个简洁明了的
 
 #: ../../contributing.rst:15
 #: 26e4de73b1474eff9f843a866c1fa048
-msgid "If you need help, or want to talk to the authors, feel free to chat with us at our `Gitter chat`_ or `Telegram support group`_."
-msgstr "如果您有任何问题，或是想与作者交流，欢迎加入我们的 \\ `Gitter 聊天室`_\\ 或是 \\ `Telegram 群组`_\\ 。"
+msgid "If you need help, or want to talk to the authors, feel free to visit our `GitHub Discussions`_ forum, or chat with us at our `Telegram support group`_."
+msgstr ""
 
 #: ../../contributing.rst:19
 #: 89e9ea36184e414d9ed0975e1296d707

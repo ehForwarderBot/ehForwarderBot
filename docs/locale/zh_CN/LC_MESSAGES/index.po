@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-23 00:29+0800\n"
-"PO-Revision-Date: 2020-11-22 16:30\n"
+"POT-Creation-Date: 2021-05-22 15:29-0700\n"
+"PO-Revision-Date: 2021-05-22 22:29\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -31,15 +31,13 @@ msgstr "版本"
 #: ceb4efd0c9fe45649cb29e4e591b6006
 msgid ".. image:: https://img.shields.io/badge/Python->%3D%203.6-blue.svg\n"
 "   :alt: Python >= 3.6"
-msgstr ".. image:: https://img.shields.io/badge/Python->%3D%203.6-blue.svg\n"
-"   :alt: Python >= 3.6"
+msgstr ""
 
 #: ../../index.rst:0
 #: 4fbe49c2eeee47b3adf6acc6bdfb537c
 msgid ".. image:: https://img.shields.io/pypi/v/ehforwarderbot.svg\n"
 "   :alt: PyPI release"
-msgstr ".. image:: https://img.shields.io/pypi/v/ehforwarderbot.svg\n"
-"   :alt: PyPI release"
+msgstr ""
 
 #: ../../index.rst:0
 #: 3b2f1c585f73480f84a01a8d90d96978
@@ -50,15 +48,13 @@ msgstr "构建"
 #: 663a09a2bc8245aab914b8e351d2a305
 msgid ".. image:: https://readthedocs.org/projects/ehforwarderbot/badge/?version=latest\n"
 "   :alt: Documentation"
-msgstr ".. image:: https://readthedocs.org/projects/ehforwarderbot/badge/?version=latest\n"
-"   :alt: 文档"
+msgstr ""
 
 #: ../../index.rst:0
 #: a0e80a756aa04f4784491d8a537b8a9a
-msgid ".. image:: https://github.com/blueset/ehforwarderbot/workflows/Tests/badge.svg\n"
+msgid ".. image:: https://github.com/ehForwarderBot/ehforwarderbot/workflows/Tests/badge.svg\n"
 "   :alt: Tests status"
-msgstr ".. image:: https://github.com/blueset/ehforwarderbot/workflows/Tests/badge.svg\n"
-"   :alt: 测试状态"
+msgstr ""
 
 #: ../../index.rst:0
 #: 1e3f426ca8174f698a6c5ec26f08fea3
@@ -66,18 +62,16 @@ msgid "Community"
 msgstr "社区"
 
 #: ../../index.rst:0
-#: 1ba570691f154f01b099eb06c923e424
-msgid ".. image:: https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg\n"
-"   :alt: Gitter"
-msgstr ".. image:: https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg\n"
-"   :alt: Gitter"
+#: a0e80a756aa04f4784491d8a537b8a9a
+msgid ".. image:: https://img.shields.io/badge/GitHub-Discussions-lightgrey?logo=github\n"
+"   :alt: GitHub Discussions"
+msgstr ""
 
 #: ../../index.rst:0
 #: 389205d1abba44049d8a81bb1c0e93ea
 msgid ".. image:: https://img.shields.io/badge/-Telegram-blue.svg?logo=data:image/svg%2Bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTkuNzgsMTguNjVMMTAuMDYsMTQuNDJMMTcuNzQsNy41QzE4LjA4LDcuMTkgMTcuNjcsNy4wNCAxNy4yMiw3LjMxTDcuNzQsMTMuM0wzLjY0LDEyQzIuNzYsMTEuNzUgMi43NSwxMS4xNCAzLjg0LDEwLjdMMTkuODEsNC41NEMyMC41NCw0LjIxIDIxLjI0LDQuNzIgMjAuOTYsNS44NEwxOC4yNCwxOC42NUMxOC4wNSwxOS41NiAxNy41LDE5Ljc4IDE2Ljc0LDE5LjM2TDEyLjYsMTYuM0wxMC42MSwxOC4yM0MxMC4zOCwxOC40NiAxMC4xOSwxOC42NSA5Ljc4LDE4LjY1WiIgLz48L3N2Zz4=\n"
 "   :alt: Telegram"
-msgstr ".. image:: https://img.shields.io/badge/-Telegram-blue.svg?logo=data:image/svg%2Bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTkuNzgsMTguNjVMMTAuMDYsMTQuNDJMMTcuNzQsNy41QzE4LjA4LDcuMTkgMTcuNjcsNy4wNCAxNy4yMiw3LjMxTDcuNzQsMTMuM0wzLjY0LDEyQzIuNzYsMTEuNzUgMi43NSwxMS4xNCAzLjg0LDEwLjdMMTkuODEsNC41NEMyMC41NCw0LjIxIDIxLjI0LDQuNzIgMjAuOTYsNS44NEwxOC4yNCwxOC42NUMxOC4wNSwxOS41NiAxNy41LDE5Ljc4IDE2Ljc0LDE5LjM2TDEyLjYsMTYuM0wxMC42MSwxOC4yM0MxMC4zOCwxOC40NiAxMC4xOSwxOC42NSA5Ljc4LDE4LjY1WiIgLz48L3N2Zz4=\n"
-"   :alt: Telegram"
+msgstr ""
 
 #: ../../index.rst:0
 #: a039d897981d42c9a19301356955b393
@@ -88,29 +82,25 @@ msgstr "统计"
 #: 99a94db45a2f4a6c992a002dbbf38e69
 msgid ".. image:: https://pepy.tech/badge/ehforwarderbot/month\n"
 "   :alt: Downloads per month"
-msgstr ".. image:: https://pepy.tech/badge/ehforwarderbot/month\n"
-"   :alt: 每月下载数量"
+msgstr ""
 
 #: ../../index.rst:0
 #: 87bde2f7b27441349ba79ff3e1589b8f
 msgid ".. image:: https://img.shields.io/codacy/grade/3b2555f9134844e3b01b00700bc43eeb.svg\n"
 "   :alt: Codacy grade"
-msgstr ".. image:: https://img.shields.io/codacy/grade/3b2555f9134844e3b01b00700bc43eeb.svg\n"
-"   :alt: Codacy 等级"
+msgstr ""
 
 #: ../../index.rst:0
 #: 36c0f7ffe5e14c45bd4e0cfa59419307
 msgid ".. image:: https://d322cqt584bo4o.cloudfront.net/ehforwarderbot/localized.svg\n"
 "   :alt: Translate this project"
-msgstr ".. image:: https://d322cqt584bo4o.cloudfront.net/ehforwarderbot/localized.svg\n"
-"   :alt: 翻译本项目"
+msgstr ""
 
 #: ../../index.rst:None
 #: c14a249936f142a1b0a0c967426229f7
 msgid ".. image:: https://raw.githubusercontent.com/blueset/ehForwarderBot/master/banner.png\n"
 "   :alt: Banner"
-msgstr ".. image:: https://raw.githubusercontent.com/blueset/ehForwarderBot/master/banner.png\n"
-"   :alt: Banner"
+msgstr ""
 
 #: ../../index.rst:44
 #: f33d447ea9604ea183ad88b414f3a77a

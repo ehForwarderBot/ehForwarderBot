@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-23 00:29+0800\n"
-"PO-Revision-Date: 2020-11-22 16:30\n"
+"PO-Revision-Date: 2021-05-22 22:29\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -612,7 +612,7 @@ msgstr "传递给函数的关键字参数。默认为空字典。"
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommands:1
 #: 2e298a0dbb20413e866406a854f22645
 msgid "Bases: :class:`list`, :class:`typing.Generic`"
-msgstr "基类：\\ :class:`list`\\ 、\\ :class:`typing.Generic`"
+msgstr ""
 
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.MessageCommands:3
 #: 7848b09c75b14ad8a151839376b9cd14
@@ -696,7 +696,7 @@ msgstr "状态类型。"
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.Substitutions:1
 #: 71eeec7c7a2b4a8790b89f85c0bdf5c7
 msgid "Bases: :class:`dict`, :class:`typing.Generic`"
-msgstr "基类：\\ :class:`dict`\\ 、\\ :class:`typing.Generic`"
+msgstr ""
 
 #: ../../../ehforwarderbot/message.py:docstring of ehforwarderbot.message.Substitutions:3
 #: 7710c341ae3f4281b75e0217dfbb0e8a

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-23 00:29+0800\n"
-"PO-Revision-Date: 2020-11-22 16:30\n"
+"POT-Creation-Date: 2021-05-22 15:29-0700\n"
+"PO-Revision-Date: 2021-05-22 22:30\n"
 "Last-Translator: \n"
 "Language-Team: Malay\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +64,7 @@ msgstr "Ini akan memasang terbaru melakukan daripada Orang. Ia mungkin tidak sta
 
 #: ../../getting-started.rst:30
 #: f851381b1c8947be8fffbcb3133372bc
-msgid "pip3 install git+https://github.com/blueset/ehforwarderbot.git"
+msgid "pip3 install git+https://github.com/ehForwarderBot/ehforwarderbot.git"
 msgstr ""
 
 #: ../../getting-started.rst:36

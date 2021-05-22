@@ -59,4 +59,5 @@ First release.
 
 .. _2.0.0: https://efb.1a23.studio/releases/tag/v2.0.0
 .. _2.1.0: https://efb.1a23.studio/compare/v2.0.0...v2.1.0
+.. _2.1.1: https://efb.1a23.studio/compare/v2.1.0...v2.1.1
 .. _#225: https://efb.1a23.studio/issues/225

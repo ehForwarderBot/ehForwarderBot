@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-23 00:29+0800\n"
-"PO-Revision-Date: 2020-11-22 16:30\n"
+"POT-Creation-Date: 2021-05-22 15:29-0700\n"
+"PO-Revision-Date: 2021-05-22 22:30\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -18,67 +18,67 @@ msgstr ""
 "Language: it_IT\n"
 
 #: ../../_templates/donate.html:2
-#: 156eb9006a1c44be89191fb7201449a5
+#: 621e8a4465e04251bf00128543bff6bc
 msgid "Donate/support"
 msgstr ""
 
 #: ../../_templates/layout.html:19
-#: dcece0e0df484735b6423c70550574d2
+#: a2e8c299db28486c98907dd12e4c8b9a
 msgid "Build"
 msgstr ""
 
 #: ../../_templates/layout.html:24
-#: 90b61537e2b247bd82fd6a6095412a84
+#: 73d44453ac074bfbb733086def8bd279
 msgid "Revision"
 msgstr ""
 
 #: ../../_templates/layout.html:28
-#: fdb7ec9ffaa14774b4e7da942fb3e3df
+#: e8e9fffc648a4dccb9a39545b30b6159
 msgid "Last updated on %(last_updated)s."
 msgstr ""
 
 #: ../../_templates/layout.html:37
-#: 29160f920c6d46cca2b6e5d8f0953d35
+#: 6ca9028be67b4455bb08d0dc28a42b29
 msgid "Page source"
 msgstr ""
 
 #: ../../_templates/relations.html:1
-#: bb95f873fc7b4ea6bae1f2eeada770eb
+#: 21baa2c42d2048d7832eafbd305ea03c
 msgid "previous chapter"
 msgstr ""
 
 #: ../../_templates/relations.html:1
-#: 8b482318916e4365a357991203973131
+#: d9e6cf35c258494c93b05bec6c6e82b1
 msgid "next chapter"
 msgstr ""
 
 #: ../../_templates/relations.html:3
-#: 861c0543a7da443d91752b588ea5e4dd
+#: 97ba2788e8f64b5f908e876f792982e2
 msgid "Related Topics"
 msgstr ""
 
 #: ../../_templates/relations.html:5
-#: fa4b926ed52e4da0b9ec58289a71fc31
+#: ceb1aaa7eec94150ae5150aa1ff2f075
 msgid "Documentation overview"
 msgstr ""
 
 #: ../../_templates/relations.html:10
-#: 4912189beae544c795a328ba66b58143
+#: e77619fff38f4ff096f15ea0a85665ee
 msgid "Previous: "
 msgstr ""
 
 #: ../../_templates/relations.html:13
-#: abf5776150fd4d3bb7a3027204618138
+#: 2863a3e3a489433199a574aa139fb041
 msgid "Next: "
 msgstr ""
 
 #: ../../_templates/translate.html:2
-#: 3bd14187461844c286c6f305c74854c2
+#: 0f9001e7299d4ce1891b168d24a6b236
 msgid "Contribute translations"
 msgstr ""
 
 #: ../../_templates/translate.html:3
-#: b16b822e99f64fe6a58625d421bff86e
+#: 169e3bc9962b43bfa3905744989476b7
 msgid "Help translate this docs on Crowdin"
 msgstr ""
 

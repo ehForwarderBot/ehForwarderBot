@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-23 00:29+0800\n"
-"PO-Revision-Date: 2020-11-22 16:30\n"
+"POT-Creation-Date: 2021-05-22 15:29-0700\n"
+"PO-Revision-Date: 2021-05-22 22:30\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -39,8 +39,8 @@ msgstr "Aşağıda, bir konuyla nasıl dosya indirebileceğinizle ilgili basit b
 
 #: ../../contributing.rst:15
 #: 26e4de73b1474eff9f843a866c1fa048
-msgid "If you need help, or want to talk to the authors, feel free to chat with us at our `Gitter chat`_ or `Telegram support group`_."
-msgstr "Eğer yardıma ihtiyacınız varsa veya yazarlarla konuşmak istiyorsanız, lütfen bizle `Gitter chat`_ veya `Telegram support group`_ üzerinden sohbet etmekten çekinmeyiniz."
+msgid "If you need help, or want to talk to the authors, feel free to visit our `GitHub Discussions`_ forum, or chat with us at our `Telegram support group`_."
+msgstr ""
 
 #: ../../contributing.rst:19
 #: 89e9ea36184e414d9ed0975e1296d707

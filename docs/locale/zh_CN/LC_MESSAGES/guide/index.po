@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-23 00:29+0800\n"
-"PO-Revision-Date: 2020-11-22 16:30\n"
+"PO-Revision-Date: 2021-05-22 22:29\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr "开发指南"
 #: ../../guide/index.rst:4
 #: 85230464c1154e5cbff1aa250a3747a1
 msgid "This section includes guides on how to develop channels and middlewares for EH Forwarder Bot."
-msgstr "本章节介绍如何为 EH Forwarder Bot 开发信道及中间件。"
+msgstr "本节包括如何为EH-Forwarder-Bot开发渠道和中间产品的指南。"
 
 #: ../../guide/index.rst:7
 #: a4f837a3bd8149f2977f1fbcdc359fae

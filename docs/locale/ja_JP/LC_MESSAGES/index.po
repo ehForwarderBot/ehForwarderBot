@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-23 00:29+0800\n"
-"PO-Revision-Date: 2020-11-22 16:30\n"
+"POT-Creation-Date: 2021-05-22 15:29-0700\n"
+"PO-Revision-Date: 2021-05-22 22:30\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -37,8 +37,7 @@ msgstr ""
 #: 4fbe49c2eeee47b3adf6acc6bdfb537c
 msgid ".. image:: https://img.shields.io/pypi/v/ehforwarderbot.svg\n"
 "   :alt: PyPI release"
-msgstr ".. image:: https://img.shields.io/pypi/v/ehforwarderbot.svg\n"
-"   :alt: PyPI release"
+msgstr ""
 
 #: ../../index.rst:0
 #: 3b2f1c585f73480f84a01a8d90d96978
@@ -53,7 +52,7 @@ msgstr ""
 
 #: ../../index.rst:0
 #: a0e80a756aa04f4784491d8a537b8a9a
-msgid ".. image:: https://github.com/blueset/ehforwarderbot/workflows/Tests/badge.svg\n"
+msgid ".. image:: https://github.com/ehForwarderBot/ehforwarderbot/workflows/Tests/badge.svg\n"
 "   :alt: Tests status"
 msgstr ""
 
@@ -63,9 +62,9 @@ msgid "Community"
 msgstr ""
 
 #: ../../index.rst:0
-#: 1ba570691f154f01b099eb06c923e424
-msgid ".. image:: https://img.shields.io/gitter/room/blueset/ehForwarderBot.svg\n"
-"   :alt: Gitter"
+#: a0e80a756aa04f4784491d8a537b8a9a
+msgid ".. image:: https://img.shields.io/badge/GitHub-Discussions-lightgrey?logo=github\n"
+"   :alt: GitHub Discussions"
 msgstr ""
 
 #: ../../index.rst:0
@@ -95,8 +94,7 @@ msgstr ""
 #: 36c0f7ffe5e14c45bd4e0cfa59419307
 msgid ".. image:: https://d322cqt584bo4o.cloudfront.net/ehforwarderbot/localized.svg\n"
 "   :alt: Translate this project"
-msgstr ".. image:: https://d322cqt584bo4o.cloudfront.net/ehforwarderbot/localized.svg\n"
-"   :alt: Translate this project"
+msgstr ""
 
 #: ../../index.rst:None
 #: c14a249936f142a1b0a0c967426229f7

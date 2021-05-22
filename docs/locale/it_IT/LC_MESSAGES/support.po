@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-23 00:29+0800\n"
-"PO-Revision-Date: 2020-11-22 16:30\n"
+"POT-Creation-Date: 2021-05-22 15:29-0700\n"
+"PO-Revision-Date: 2021-05-22 22:30\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -39,16 +39,6 @@ msgstr ""
 
 #: ../../support.rst:13
 #: bb185e4aac22497791989bdb401d804a
-msgid "If you have any question about developing a module for EFB, or about usages, you can join our `Gitter chat`_ or `Telegram Group`_ for help."
-msgstr ""
-
-#: ../../support.rst:16
-#: 29c44c66e1de4affa9b6b9bf2e7a3a69
-msgid "Or if you have enough reputation on StackOverflow, I am more than appreciated if you a new tag (``ehforwarderbot``) can be created there when you post a question [#]_. Let me know so that I can add the tag to my watch list."
-msgstr ""
-
-#: ../../support.rst:22
-#: 060c0fcb68064a5eb0d2788d2a45d64e
-msgid "StackOverflow requires_ a tag to be on-topic, has at least 2 questions in the period of 6 months, and the tag creator to have at least 1,500 reputations for it to be created."
+msgid "If you have any question about developing a module for EFB, or about usages, you can always visit our `GitHub Discussions`_ forum or join our `Telegram Group`_ for help."
 msgstr ""
 

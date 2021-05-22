@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: ehforwarderbot\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-11-23 00:29+0800\n"
-"PO-Revision-Date: 2020-11-22 16:30\n"
+"PO-Revision-Date: 2021-05-22 22:29\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
@@ -31,8 +31,7 @@ msgstr "EH Forwarder Bot 是一个可扩展的框架，允许用户使用统一�
 #: 5881c200e12b49cd95a77337872b1fd8
 msgid ".. image:: guide/../_static/EFB-docs-0.png\n"
 "   :alt: EFB Project Structure"
-msgstr ".. image:: guide/../_static/EFB-docs-0.png\n"
-"   :alt: EFB 项目结构"
+msgstr ""
 
 #: ../../guide/walkthrough.rst:15
 #: 6ad0f749f6c54fd387881d86c88df3f8
