@@ -19,18 +19,27 @@ Added
 
 Changed
 -------
-- Changed the critical log colors for better contrast
 
 Removed
 -------
 
 Fixed
 -----
-- :kbd:`^c` not able to terminate initialization process due to the handler
-  registered.
 
 Known issue
 -----------
+
+2.1.1_ - 2021-05-22
+===================
+
+Changed
+-------
+- Changed the critical log colors for better contrast
+
+Fixed
+-----
+- :kbd:`^c` not able to terminate initialization process due to the handler
+  registered.
 
 2.1.0_ - 2020-11-23
 ===================
