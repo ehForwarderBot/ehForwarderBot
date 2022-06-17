@@ -1,4 +1,4 @@
-sphinx==5.0.1
+sphinx==5.0.2
 sphinxcontrib-restbuilder==0.3
 sphinx-autodoc-typehints==1.18.3
 sphinx-intl==2.0.1
