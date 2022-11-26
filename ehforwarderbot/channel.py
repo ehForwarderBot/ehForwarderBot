@@ -257,6 +257,33 @@ class SlaveChannel(Channel, ABC):
         raise NotImplementedError()
 
     @abstractmethod
+    def get_msg_picture(self, msg: 'Message') -> BinaryIO:
+        """get_msg_picture(msg: Message) -> BinaryIO
+
+        Get the profile picture of a message sender. Profile picture is
+        also referred as profile photo, avatar, "head image"
+        sometimes.
+
+        Args:
+            msg (.Message): Message to get picture from.
+
+        Returns:
+            BinaryIO: Opened temporary file object.
+            The file object MUST have appropriate extension name
+            that matches to the format of picture sent,
+            and seek to position 0.
+
+            It MAY be deleted or discarded once closed, if not needed otherwise.
+
+        Raises:
+            EFBMessageNotFound:
+                Raised when a message required is not found.
+            EFBOperationNotSupported:
+                Raised when the chat does not offer a profile picture.
+        """
+        raise NotImplementedError()
+
+    @abstractmethod
     def get_chat(self, chat_uid: ChatID) -> 'Chat':
         """
         Get the chat object from a slave channel.
