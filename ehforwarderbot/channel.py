@@ -7,7 +7,7 @@ from .constants import MsgType
 from .types import ModuleID, InstanceID, ExtraCommandName, ReactionName, ChatID, MessageID
 
 if TYPE_CHECKING:
-    from .chat import Chat
+    from .chat import Chat, ChatMember
     from .message import Message
     from .status import Status
 
@@ -257,15 +257,15 @@ class SlaveChannel(Channel, ABC):
         raise NotImplementedError()
 
     @abstractmethod
-    def get_msg_picture(self, msg: 'Message') -> BinaryIO:
-        """get_msg_picture(msg: Message) -> BinaryIO
+    def get_chat_member_picture(self, chat_member: 'ChatMember') -> BinaryIO:
+        """get_chat_member_picture(chat_member: ChatMember) -> BinaryIO
 
-        Get the profile picture of a message sender. Profile picture is
+        Get the profile picture of a chat member. Profile picture is
         also referred as profile photo, avatar, "head image"
         sometimes.
 
         Args:
-            msg (.Message): Message to get picture from.
+            chat_member(.ChatMember): Chat member to get picture from.
 
         Returns:
             BinaryIO: Opened temporary file object.
@@ -276,8 +276,8 @@ class SlaveChannel(Channel, ABC):
             It MAY be deleted or discarded once closed, if not needed otherwise.
 
         Raises:
-            EFBMessageNotFound:
-                Raised when a message required is not found.
+            EFBChatMemberNotFound:
+                Raised when a chat member required is not found.
             EFBOperationNotSupported:
                 Raised when the chat does not offer a profile picture.
         """

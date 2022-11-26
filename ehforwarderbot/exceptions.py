@@ -70,3 +70,12 @@ class EFBMessageReactionNotPossible(EFBException):
     Can be raised in :meth:`.Channel.send_status`.
     """
     pass
+
+
+class EFBChatMemberNotFound(EFBException):
+    """
+    Raised by a slave channel when a chat member indicated is not found.
+
+    Can be raised in :meth:`.Channel.get_chat_member_picture`
+    """
+    pass
