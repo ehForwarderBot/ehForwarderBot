@@ -142,7 +142,9 @@ class BaseChat(ABC):
         in parenthesis. Otherwise, this will return the name
         """
         if self.alias:
-            return "{0} ({1})".format(self.alias, self.name)
+            if self.name:
+                return "{0} ({1})".format(self.alias, self.name)
+            return self.alias
         else:
             return self.name
 
