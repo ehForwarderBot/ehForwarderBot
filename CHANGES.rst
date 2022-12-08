@@ -16,6 +16,7 @@ Unreleased
 
 Added
 -----
+- Add ``get_chat_picture()`` method to allow slave channels to provide profile pictures for members of chats. (`#310`_ by @ojhdt)
 
 Changed
 -------
@@ -61,3 +62,4 @@ First release.
 .. _2.1.0: https://efb.1a23.studio/compare/v2.0.0...v2.1.0
 .. _2.1.1: https://efb.1a23.studio/compare/v2.1.0...v2.1.1
 .. _#225: https://efb.1a23.studio/issues/225
+.. _#310: https://efb.1a23.studio/pull/310
