@@ -2,5 +2,5 @@ sphinx==5.3.0
 sphinxcontrib-restbuilder==0.3
 sphinx-autodoc-typehints==1.19.5
 sphinx-intl==2.0.1
-sphinxcontrib-plantuml==0.24.1
+sphinxcontrib-plantuml==0.25
 git+https://github.com/readthedocs/readthedocs-sphinx-search@master
